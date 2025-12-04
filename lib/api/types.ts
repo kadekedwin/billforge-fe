@@ -8,7 +8,7 @@ export interface ApiErrorResponse {
   success: false;
   message: string;
   errors?: Record<string, string[]>;
-  data?: any;
+  data?: unknown;
 }
 
 export interface User {
@@ -42,22 +42,22 @@ export interface Business {
   uuid: string;
   user_uuid: string;
   name: string;
-  address: string;
-  phone: string;
+  address: string | null;
+  phone: string | null;
   created_at: string;
   updated_at: string;
 }
 
 export interface CreateBusinessRequest {
   name: string;
-  address: string;
-  phone: string;
+  address?: string | null;
+  phone?: string | null;
 }
 
 export interface UpdateBusinessRequest {
   name?: string;
-  address?: string;
-  phone?: string;
+  address?: string | null;
+  phone?: string | null;
 }
 
 export interface ItemTax {
@@ -65,7 +65,8 @@ export interface ItemTax {
   uuid: string;
   business_uuid: string;
   name: string;
-  rate: string;
+  type: "percentage" | "fixed";
+  value: string;
   created_at: string;
   updated_at: string;
 }
@@ -73,50 +74,49 @@ export interface ItemTax {
 export interface CreateItemTaxRequest {
   business_uuid: string;
   name: string;
-  rate: number;
+  type: "percentage" | "fixed";
+  value: number;
 }
 
 export interface UpdateItemTaxRequest {
   name?: string;
-  rate?: number;
+  type?: "percentage" | "fixed";
+  value?: number;
 }
 
 export interface ItemDiscount {
   id: number;
   uuid: string;
   business_uuid: string;
+  name: string;
   type: "percentage" | "fixed";
   value: string;
-  start_date: string;
-  end_date: string;
   created_at: string;
   updated_at: string;
 }
 
 export interface CreateItemDiscountRequest {
   business_uuid: string;
+  name: string;
   type: "percentage" | "fixed";
   value: number;
-  start_date: string;
-  end_date: string;
 }
 
 export interface UpdateItemDiscountRequest {
+  name?: string;
   type?: "percentage" | "fixed";
   value?: number;
-  start_date?: string;
-  end_date?: string;
 }
 
 export interface Item {
   id: number;
   uuid: string;
   business_uuid: string;
-  discount_uuid: string;
-  tax_uuid: string;
+  discount_uuid: string | null;
+  tax_uuid: string | null;
   name: string;
-  sku: string;
-  description: string;
+  sku: string | null;
+  description: string | null;
   base_price: string;
   is_active: boolean;
   created_at: string;
@@ -126,32 +126,34 @@ export interface Item {
     uuid: string;
     business_uuid: string;
     name: string;
-    rate: string;
-  };
+    type: string;
+    value: string;
+  } | null;
   discount: {
     id: number;
     uuid: string;
     business_uuid: string;
+    name: string;
     type: string;
     value: string;
-  };
+  } | null;
 }
 
 export interface CreateItemRequest {
   business_uuid: string;
-  discount_uuid: string;
-  tax_uuid: string;
+  discount_uuid?: string | null;
+  tax_uuid?: string | null;
   name: string;
-  sku: string;
-  description: string;
+  sku?: string | null;
+  description?: string | null;
   base_price: number;
   is_active: boolean;
 }
 
 export interface UpdateItemRequest {
   name?: string;
-  sku?: string;
-  description?: string;
+  sku?: string | null;
+  description?: string | null;
   base_price?: number;
   is_active?: boolean;
 }
@@ -165,8 +167,8 @@ export interface Transaction {
   id: number;
   uuid: string;
   business_uuid: string;
-  payment_uuid: string;
-  customer_name: string;
+  payment_uuid: string | null;
+  customer_name: string | null;
   total_amount: string;
   tax_amount: string;
   discount_amount: string;
@@ -178,8 +180,8 @@ export interface Transaction {
 
 export interface CreateTransactionRequest {
   business_uuid: string;
-  payment_uuid: string;
-  customer_name: string;
+  payment_uuid?: string | null;
+  customer_name?: string | null;
   total_amount: number;
   tax_amount: number;
   discount_amount: number;
@@ -188,7 +190,7 @@ export interface CreateTransactionRequest {
 }
 
 export interface UpdateTransactionRequest {
-  customer_name?: string;
+  customer_name?: string | null;
   total_amount?: number;
   tax_amount?: number;
   discount_amount?: number;
@@ -244,7 +246,7 @@ export interface Payment {
   business_uuid: string;
   method: string;
   amount: string;
-  paid_at: string;
+  paid_at: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -253,13 +255,13 @@ export interface CreatePaymentRequest {
   business_uuid: string;
   method: string;
   amount: number;
-  paid_at: string;
+  paid_at?: string | null;
 }
 
 export interface UpdatePaymentRequest {
   method?: string;
   amount?: number;
-  paid_at?: string;
+  paid_at?: string | null;
 }
 
 export interface PaymentQueryParams extends Record<string, string | number | boolean | undefined> {

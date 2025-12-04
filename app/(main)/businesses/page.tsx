@@ -47,8 +47,8 @@ export default function BusinessesPage() {
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<CreateBusinessRequest>({
         name: "",
-        address: "",
-        phone: "",
+        address: undefined,
+        phone: undefined,
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
@@ -80,7 +80,8 @@ export default function BusinessesPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        const processedValue = (name === "address" || name === "phone") && value === "" ? undefined : value;
+        setFormData((prev) => ({ ...prev, [name]: processedValue }));
         if (formErrors[name]) {
             setFormErrors((prev) => {
                 const newErrors = { ...prev };
@@ -106,7 +107,7 @@ export default function BusinessesPage() {
                         )
                     );
                     setIsDialogOpen(false);
-                    setFormData({ name: "", address: "", phone: "" });
+                    setFormData({ name: "", address: undefined, phone: undefined });
                     setEditingBusiness(null);
                 } else {
                     const errorData = response as unknown as {
@@ -133,7 +134,7 @@ export default function BusinessesPage() {
                 if (response.success) {
                     setBusinesses((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
-                    setFormData({ name: "", address: "", phone: "" });
+                    setFormData({ name: "", address: undefined, phone: undefined });
                 } else {
                     const errorData = response as unknown as {
                         success: false;
@@ -208,7 +209,7 @@ export default function BusinessesPage() {
         setIsDialogOpen(open);
         if (!open) {
             setEditingBusiness(null);
-            setFormData({ name: "", address: "", phone: "" });
+            setFormData({ name: "", address: undefined, phone: undefined });
             setFormErrors({});
             setError(null);
         }
@@ -261,15 +262,14 @@ export default function BusinessesPage() {
                                     )}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="address">Address</Label>
+                                    <Label htmlFor="address">Address (Optional)</Label>
                                     <Input
                                         id="address"
                                         name="address"
                                         placeholder="123 Main St, City, Country"
-                                        value={formData.address}
+                                        value={formData.address || ""}
                                         onChange={handleInputChange}
                                         disabled={isSubmitting}
-                                        required
                                         className={formErrors.address ? "border-destructive" : ""}
                                     />
                                     {formErrors.address && (
@@ -277,15 +277,14 @@ export default function BusinessesPage() {
                                     )}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="phone">Phone Number</Label>
+                                    <Label htmlFor="phone">Phone Number (Optional)</Label>
                                     <Input
                                         id="phone"
                                         name="phone"
                                         placeholder="+1234567890"
-                                        value={formData.phone}
+                                        value={formData.phone || ""}
                                         onChange={handleInputChange}
                                         disabled={isSubmitting}
-                                        required
                                         className={formErrors.phone ? "border-destructive" : ""}
                                     />
                                     {formErrors.phone && (

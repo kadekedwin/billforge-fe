@@ -56,11 +56,11 @@ export default function ItemsPage() {
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<CreateItemRequest>({
         business_uuid: "",
-        discount_uuid: "",
-        tax_uuid: "",
+        discount_uuid: undefined,
+        tax_uuid: undefined,
         name: "",
-        sku: "",
-        description: "",
+        sku: undefined,
+        description: undefined,
         base_price: 0,
         is_active: true,
     });
@@ -112,9 +112,17 @@ export default function ItemsPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
+        let processedValue: string | number | undefined = value;
+
+        if (name === "base_price") {
+            processedValue = parseFloat(value) || 0;
+        } else if ((name === "tax_uuid" || name === "discount_uuid" || name === "sku" || name === "description") && value === "") {
+            processedValue = undefined;
+        }
+
         setFormData((prev) => ({
             ...prev,
-            [name]: name === "base_price" ? parseFloat(value) || 0 : value
+            [name]: processedValue
         }));
         if (formErrors[name]) {
             setFormErrors((prev) => {
@@ -154,11 +162,11 @@ export default function ItemsPage() {
                     setIsDialogOpen(false);
                     setFormData({
                         business_uuid: "",
-                        discount_uuid: "",
-                        tax_uuid: "",
+                        discount_uuid: undefined,
+                        tax_uuid: undefined,
                         name: "",
-                        sku: "",
-                        description: "",
+                        sku: undefined,
+                        description: undefined,
                         base_price: 0,
                         is_active: true,
                     });
@@ -190,11 +198,11 @@ export default function ItemsPage() {
                     setIsDialogOpen(false);
                     setFormData({
                         business_uuid: "",
-                        discount_uuid: "",
-                        tax_uuid: "",
+                        discount_uuid: undefined,
+                        tax_uuid: undefined,
                         name: "",
-                        sku: "",
-                        description: "",
+                        sku: undefined,
+                        description: undefined,
                         base_price: 0,
                         is_active: true,
                     });
@@ -279,11 +287,11 @@ export default function ItemsPage() {
             setEditingItem(null);
             setFormData({
                 business_uuid: "",
-                discount_uuid: "",
-                tax_uuid: "",
+                discount_uuid: undefined,
+                tax_uuid: undefined,
                 name: "",
-                sku: "",
-                description: "",
+                sku: undefined,
+                description: undefined,
                 base_price: 0,
                 is_active: true,
             });
@@ -351,20 +359,19 @@ export default function ItemsPage() {
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="tax_uuid">Tax</Label>
+                                        <Label htmlFor="tax_uuid">Tax (Optional)</Label>
                                         <select
                                             id="tax_uuid"
                                             name="tax_uuid"
-                                            value={formData.tax_uuid}
+                                            value={formData.tax_uuid || ""}
                                             onChange={handleInputChange}
                                             disabled={isSubmitting || !!editingItem}
-                                            required
                                             className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.tax_uuid ? "border-destructive" : ""}`}
                                         >
-                                            <option value="">Select a tax</option>
+                                            <option value="">No tax</option>
                                             {taxes.map((tax) => (
                                                 <option key={tax.uuid} value={tax.uuid}>
-                                                    {tax.name} ({tax.rate}%)
+                                                    {tax.name} ({tax.type === 'percentage' ? `${tax.value}%` : `$${tax.value}`})
                                                 </option>
                                             ))}
                                         </select>
@@ -373,20 +380,19 @@ export default function ItemsPage() {
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="discount_uuid">Discount</Label>
+                                        <Label htmlFor="discount_uuid">Discount (Optional)</Label>
                                         <select
                                             id="discount_uuid"
                                             name="discount_uuid"
-                                            value={formData.discount_uuid}
+                                            value={formData.discount_uuid || ""}
                                             onChange={handleInputChange}
                                             disabled={isSubmitting || !!editingItem}
-                                            required
                                             className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.discount_uuid ? "border-destructive" : ""}`}
                                         >
-                                            <option value="">Select a discount</option>
+                                            <option value="">No discount</option>
                                             {discounts.map((discount) => (
                                                 <option key={discount.uuid} value={discount.uuid}>
-                                                    {discount.type === 'percentage' ? `${discount.value}%` : `$${discount.value}`}
+                                                    {discount.name} ({discount.type === 'percentage' ? `${discount.value}%` : `$${discount.value}`})
                                                 </option>
                                             ))}
                                         </select>
@@ -411,15 +417,14 @@ export default function ItemsPage() {
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="sku">SKU</Label>
+                                        <Label htmlFor="sku">SKU (Optional)</Label>
                                         <Input
                                             id="sku"
                                             name="sku"
                                             placeholder="PROD-001"
-                                            value={formData.sku}
+                                            value={formData.sku || ""}
                                             onChange={handleInputChange}
                                             disabled={isSubmitting}
-                                            required
                                             className={formErrors.sku ? "border-destructive" : ""}
                                         />
                                         {formErrors.sku && (
@@ -427,15 +432,14 @@ export default function ItemsPage() {
                                         )}
                                     </div>
                                     <div className="space-y-2 col-span-2">
-                                        <Label htmlFor="description">Description</Label>
+                                        <Label htmlFor="description">Description (Optional)</Label>
                                         <Textarea
                                             id="description"
                                             name="description"
                                             placeholder="Product description..."
-                                            value={formData.description}
+                                            value={formData.description || ""}
                                             onChange={handleInputChange}
                                             disabled={isSubmitting}
-                                            required
                                             className={formErrors.description ? "border-destructive" : ""}
                                             rows={3}
                                         />
