@@ -1,4 +1,3 @@
-// Base API Response Types
 export interface ApiResponse<T> {
   success: boolean;
   data: T;
@@ -12,7 +11,6 @@ export interface ApiErrorResponse {
   };
 }
 
-// User Types
 export interface User {
   id: number;
   uuid: string;
@@ -26,7 +24,6 @@ export interface RegisterRequest {
   name: string;
   email: string;
   password: string;
-  password_confirmation: string;
 }
 
 export interface LoginRequest {
@@ -35,11 +32,12 @@ export interface LoginRequest {
 }
 
 export interface AuthResponse {
+  message?: string;
   user: User;
-  token: string;
+  access_token: string;
+  token_type: string;
 }
 
-// Business Types
 export interface Business {
   id: number;
   uuid: string;
@@ -63,11 +61,10 @@ export interface UpdateBusinessRequest {
   phone?: string;
 }
 
-// Item Tax Types
 export interface ItemTax {
   id: number;
   uuid: string;
-  item_uuid: string;
+  business_uuid: string;
   name: string;
   rate: string;
   created_at: string;
@@ -75,7 +72,7 @@ export interface ItemTax {
 }
 
 export interface CreateItemTaxRequest {
-  item_uuid: string;
+  business_uuid: string;
   name: string;
   rate: number;
 }
@@ -85,11 +82,10 @@ export interface UpdateItemTaxRequest {
   rate?: number;
 }
 
-// Item Discount Types
 export interface ItemDiscount {
   id: number;
   uuid: string;
-  item_uuid: string;
+  business_uuid: string;
   type: "percentage" | "fixed";
   value: string;
   start_date: string;
@@ -99,7 +95,7 @@ export interface ItemDiscount {
 }
 
 export interface CreateItemDiscountRequest {
-  item_uuid: string;
+  business_uuid: string;
   type: "percentage" | "fixed";
   value: number;
   start_date: string;
@@ -113,11 +109,12 @@ export interface UpdateItemDiscountRequest {
   end_date?: string;
 }
 
-// Item Types
 export interface Item {
   id: number;
   uuid: string;
   business_uuid: string;
+  discount_uuid: string;
+  tax_uuid: string;
   name: string;
   sku: string;
   description: string;
@@ -125,12 +122,26 @@ export interface Item {
   is_active: boolean;
   created_at: string;
   updated_at: string;
-  taxes: ItemTax[];
-  discounts: ItemDiscount[];
+  tax: {
+    id: number;
+    uuid: string;
+    business_uuid: string;
+    name: string;
+    rate: string;
+  };
+  discount: {
+    id: number;
+    uuid: string;
+    business_uuid: string;
+    type: string;
+    value: string;
+  };
 }
 
 export interface CreateItemRequest {
   business_uuid: string;
+  discount_uuid: string;
+  tax_uuid: string;
   name: string;
   sku: string;
   description: string;
@@ -151,11 +162,11 @@ export interface ItemQueryParams extends Record<string, string | number | boolea
   is_active?: boolean;
 }
 
-// Transaction Types
 export interface Transaction {
   id: number;
   uuid: string;
   business_uuid: string;
+  payment_uuid: string;
   customer_name: string;
   total_amount: string;
   tax_amount: string;
@@ -168,6 +179,7 @@ export interface Transaction {
 
 export interface CreateTransactionRequest {
   business_uuid: string;
+  payment_uuid: string;
   customer_name: string;
   total_amount: number;
   tax_amount: number;
@@ -190,7 +202,6 @@ export interface TransactionQueryParams extends Record<string, string | number |
   status?: "pending" | "paid" | "cancelled";
 }
 
-// Transaction Item Types
 export interface TransactionItem {
   id: number;
   uuid: string;
@@ -228,11 +239,10 @@ export interface TransactionItemQueryParams extends Record<string, string | numb
   item_uuid?: string;
 }
 
-// Payment Types
 export interface Payment {
   id: number;
   uuid: string;
-  transaction_uuid: string;
+  business_uuid: string;
   method: string;
   amount: string;
   paid_at: string;
@@ -241,7 +251,7 @@ export interface Payment {
 }
 
 export interface CreatePaymentRequest {
-  transaction_uuid: string;
+  business_uuid: string;
   method: string;
   amount: number;
   paid_at: string;
@@ -254,11 +264,10 @@ export interface UpdatePaymentRequest {
 }
 
 export interface PaymentQueryParams extends Record<string, string | number | boolean | undefined> {
-  transaction_uuid?: string;
+  business_uuid?: string;
   method?: string;
 }
 
-// Generic Message Response
 export interface MessageResponse {
   message: string;
 }

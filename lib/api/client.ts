@@ -15,27 +15,19 @@ class ApiClient {
     this.baseUrl = baseUrl;
   }
 
-  /**
-   * Set the authentication token
-   */
   setToken(token: string | null) {
     this.token = token;
     if (typeof window !== "undefined") {
       if (token) {
         localStorage.setItem("auth_token", token);
-        // Set cookie for middleware
         document.cookie = `auth_token=${token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
       } else {
         localStorage.removeItem("auth_token");
-        // Remove cookie
         document.cookie = "auth_token=; path=/; max-age=0; SameSite=Lax";
       }
     }
   }
 
-  /**
-   * Get the authentication token
-   */
   getToken(): string | null {
     if (this.token) {
       return this.token;
@@ -48,9 +40,6 @@ class ApiClient {
     return null;
   }
 
-  /**
-   * Build headers for the request
-   */
   private buildHeaders(customHeaders?: HeadersInit): Headers {
     const headers = new Headers(customHeaders);
 
@@ -66,9 +55,6 @@ class ApiClient {
     return headers;
   }
 
-  /**
-   * Build URL with query parameters
-   */
   private buildUrl(endpoint: string, params?: Record<string, string | number | boolean | undefined>): string {
     const url = new URL(`${this.baseUrl}${endpoint}`);
 
@@ -83,9 +69,6 @@ class ApiClient {
     return url.toString();
   }
 
-  /**
-   * Make an HTTP request
-   */
   private async request<T>(
     endpoint: string,
     options: RequestOptions = {}
@@ -109,9 +92,6 @@ class ApiClient {
     return data as ApiResponse<T>;
   }
 
-  /**
-   * GET request
-   */
   async get<T>(endpoint: string, options?: RequestOptions): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
       ...options,
@@ -119,9 +99,6 @@ class ApiClient {
     });
   }
 
-  /**
-   * POST request
-   */
   async post<T>(endpoint: string, body?: unknown, options?: RequestOptions): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
       ...options,
@@ -130,9 +107,6 @@ class ApiClient {
     });
   }
 
-  /**
-   * PUT request
-   */
   async put<T>(endpoint: string, body?: unknown, options?: RequestOptions): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
       ...options,
@@ -141,9 +115,6 @@ class ApiClient {
     });
   }
 
-  /**
-   * PATCH request
-   */
   async patch<T>(endpoint: string, body?: unknown, options?: RequestOptions): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
       ...options,
@@ -152,9 +123,6 @@ class ApiClient {
     });
   }
 
-  /**
-   * DELETE request
-   */
   async delete<T>(endpoint: string, options?: RequestOptions): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
       ...options,
@@ -163,5 +131,4 @@ class ApiClient {
   }
 }
 
-// Create and export a singleton instance
 export const apiClient = new ApiClient(API_BASE_URL);
