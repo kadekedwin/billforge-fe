@@ -47,8 +47,8 @@ export default function BusinessesPage() {
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<CreateBusinessRequest>({
         name: "",
-        address: undefined,
-        phone: undefined,
+        address: null,
+        phone: null,
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
@@ -80,7 +80,7 @@ export default function BusinessesPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const processedValue = (name === "address" || name === "phone") && value === "" ? undefined : value;
+        const processedValue = (name === "address" || name === "phone") && value === "" ? null : value;
         setFormData((prev) => ({ ...prev, [name]: processedValue }));
         if (formErrors[name]) {
             setFormErrors((prev) => {
@@ -107,7 +107,7 @@ export default function BusinessesPage() {
                         )
                     );
                     setIsDialogOpen(false);
-                    setFormData({ name: "", address: undefined, phone: undefined });
+                    setFormData({ name: "", address: null, phone: null });
                     setEditingBusiness(null);
                 } else {
                     const errorData = response as unknown as {
@@ -134,7 +134,7 @@ export default function BusinessesPage() {
                 if (response.success) {
                     setBusinesses((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
-                    setFormData({ name: "", address: undefined, phone: undefined });
+                    setFormData({ name: "", address: null, phone: null });
                 } else {
                     const errorData = response as unknown as {
                         success: false;
@@ -209,7 +209,7 @@ export default function BusinessesPage() {
         setIsDialogOpen(open);
         if (!open) {
             setEditingBusiness(null);
-            setFormData({ name: "", address: undefined, phone: undefined });
+            setFormData({ name: "", address: null, phone: null });
             setFormErrors({});
             setError(null);
         }

@@ -56,11 +56,11 @@ export default function ItemsPage() {
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<CreateItemRequest>({
         business_uuid: "",
-        discount_uuid: undefined,
-        tax_uuid: undefined,
+        discount_uuid: null,
+        tax_uuid: null,
         name: "",
-        sku: undefined,
-        description: undefined,
+        sku: null,
+        description: null,
         base_price: 0,
         is_active: true,
     });
@@ -112,12 +112,14 @@ export default function ItemsPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        let processedValue: string | number | undefined = value;
+        let processedValue: string | number | undefined | null = value;
 
         if (name === "base_price") {
             processedValue = parseFloat(value) || 0;
-        } else if ((name === "tax_uuid" || name === "discount_uuid" || name === "sku" || name === "description") && value === "") {
-            processedValue = undefined;
+        } else if ((name === "tax_uuid" || name === "discount_uuid") && value === "") {
+            processedValue = null;
+        } else if ((name === "sku" || name === "description") && value === "") {
+            processedValue = null;
         }
 
         setFormData((prev) => ({
@@ -165,11 +167,11 @@ export default function ItemsPage() {
                     setIsDialogOpen(false);
                     setFormData({
                         business_uuid: "",
-                        discount_uuid: undefined,
-                        tax_uuid: undefined,
+                        discount_uuid: null,
+                        tax_uuid: null,
                         name: "",
-                        sku: undefined,
-                        description: undefined,
+                        sku: null,
+                        description: null,
                         base_price: 0,
                         is_active: true,
                     });
@@ -201,11 +203,11 @@ export default function ItemsPage() {
                     setIsDialogOpen(false);
                     setFormData({
                         business_uuid: "",
-                        discount_uuid: undefined,
-                        tax_uuid: undefined,
+                        discount_uuid: null,
+                        tax_uuid: null,
                         name: "",
-                        sku: undefined,
-                        description: undefined,
+                        sku: null,
+                        description: null,
                         base_price: 0,
                         is_active: true,
                     });
@@ -290,11 +292,11 @@ export default function ItemsPage() {
             setEditingItem(null);
             setFormData({
                 business_uuid: "",
-                discount_uuid: undefined,
-                tax_uuid: undefined,
+                discount_uuid: null,
+                tax_uuid: null,
                 name: "",
-                sku: undefined,
-                description: undefined,
+                sku: null,
+                description: null,
                 base_price: 0,
                 is_active: true,
             });

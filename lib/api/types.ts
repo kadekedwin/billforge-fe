@@ -123,22 +123,6 @@ export interface Item {
   is_active: boolean;
   created_at: string;
   updated_at: string;
-  tax: {
-    id: number;
-    uuid: string;
-    business_uuid: string;
-    name: string;
-    type: string;
-    value: string;
-  } | null;
-  discount: {
-    id: number;
-    uuid: string;
-    business_uuid: string;
-    name: string;
-    type: string;
-    value: string;
-  } | null;
 }
 
 export interface CreateItemRequest {
