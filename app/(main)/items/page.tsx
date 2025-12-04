@@ -146,6 +146,9 @@ export default function ItemsPage() {
         try {
             if (editingItem) {
                 const updateData: UpdateItemRequest = {
+                    business_uuid: formData.business_uuid,
+                    discount_uuid: formData.discount_uuid,
+                    tax_uuid: formData.tax_uuid,
                     name: formData.name,
                     sku: formData.sku,
                     description: formData.description,
@@ -343,7 +346,7 @@ export default function ItemsPage() {
                                             name="business_uuid"
                                             value={formData.business_uuid}
                                             onChange={handleInputChange}
-                                            disabled={isSubmitting || !!editingItem}
+                                            disabled={isSubmitting}
                                             required
                                             className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
                                         >
@@ -365,7 +368,7 @@ export default function ItemsPage() {
                                             name="tax_uuid"
                                             value={formData.tax_uuid || ""}
                                             onChange={handleInputChange}
-                                            disabled={isSubmitting || !!editingItem}
+                                            disabled={isSubmitting}
                                             className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.tax_uuid ? "border-destructive" : ""}`}
                                         >
                                             <option value="">No tax</option>
@@ -386,7 +389,7 @@ export default function ItemsPage() {
                                             name="discount_uuid"
                                             value={formData.discount_uuid || ""}
                                             onChange={handleInputChange}
-                                            disabled={isSubmitting || !!editingItem}
+                                            disabled={isSubmitting}
                                             className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.discount_uuid ? "border-destructive" : ""}`}
                                         >
                                             <option value="">No discount</option>

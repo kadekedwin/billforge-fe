@@ -120,6 +120,7 @@ export default function ItemTaxesPage() {
         try {
             if (editingTax) {
                 const updateData: UpdateItemTaxRequest = {
+                    business_uuid: formData.business_uuid,
                     name: formData.name,
                     type: formData.type,
                     value: formData.value,
@@ -298,7 +299,7 @@ export default function ItemTaxesPage() {
                                         name="business_uuid"
                                         value={formData.business_uuid}
                                         onChange={handleInputChange}
-                                        disabled={isSubmitting || !!editingTax}
+                                        disabled={isSubmitting}
                                         required
                                         className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
                                     >

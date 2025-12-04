@@ -79,6 +79,7 @@ export interface CreateItemTaxRequest {
 }
 
 export interface UpdateItemTaxRequest {
+  business_uuid?: string;
   name?: string;
   type?: "percentage" | "fixed";
   value?: number;
@@ -103,6 +104,7 @@ export interface CreateItemDiscountRequest {
 }
 
 export interface UpdateItemDiscountRequest {
+  business_uuid?: string;
   name?: string;
   type?: "percentage" | "fixed";
   value?: number;
@@ -151,6 +153,9 @@ export interface CreateItemRequest {
 }
 
 export interface UpdateItemRequest {
+  business_uuid?: string;
+  discount_uuid?: string | null;
+  tax_uuid?: string | null;
   name?: string;
   sku?: string | null;
   description?: string | null;
@@ -190,6 +195,8 @@ export interface CreateTransactionRequest {
 }
 
 export interface UpdateTransactionRequest {
+  business_uuid?: string;
+  payment_uuid?: string | null;
   customer_name?: string | null;
   total_amount?: number;
   tax_amount?: number;
@@ -228,6 +235,8 @@ export interface CreateTransactionItemRequest {
 }
 
 export interface UpdateTransactionItemRequest {
+  transaction_uuid?: string;
+  item_uuid?: string;
   quantity?: number;
   base_price?: number;
   discount_amount?: number;
@@ -259,6 +268,7 @@ export interface CreatePaymentRequest {
 }
 
 export interface UpdatePaymentRequest {
+  business_uuid?: string;
   method?: string;
   amount?: number;
   paid_at?: string | null;
