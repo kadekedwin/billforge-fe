@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,6 +20,7 @@ import type { RegisterRequest } from "@/lib/api/types";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { setAuth } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<RegisterRequest>({
@@ -46,12 +48,11 @@ export default function RegisterPage() {
       const response = await register(formData);
 
       if (response.success) {
-        // Store token in localStorage
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+        // Set auth state (stores in localStorage and cookies)
+        setAuth(response.data.user, response.data.token);
 
-        // Redirect to dashboard or home
-        router.push("/");
+        // Redirect to dashboard
+        router.push("/dashboard");
       } else {
         // Handle API error response
         const errorData = response as unknown as {
