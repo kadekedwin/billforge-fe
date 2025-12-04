@@ -11,6 +11,8 @@ import {
   LogOut,
   Menu,
   X,
+  Percent,
+  Tag,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -42,6 +44,16 @@ const navItems = [
     title: "Items",
     href: "/items",
     icon: Package,
+  },
+  {
+    title: "Item Taxes",
+    href: "/item-taxes",
+    icon: Percent,
+  },
+  {
+    title: "Item Discounts",
+    href: "/item-discounts",
+    icon: Tag,
   },
   {
     title: "Businesses",
