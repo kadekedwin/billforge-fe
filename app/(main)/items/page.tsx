@@ -37,11 +37,15 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItems, createItem, updateItem, deleteItem } from "@/lib/api/items";
 import { getBusinesses } from "@/lib/api/businesses";
-import type { Item, CreateItemRequest, UpdateItemRequest, Business } from "@/lib/api/types";
+import { getItemTaxes } from "@/lib/api/item-taxes";
+import { getItemDiscounts } from "@/lib/api/item-discounts";
+import type { Item, CreateItemRequest, UpdateItemRequest, Business, ItemTax, ItemDiscount } from "@/lib/api/types";
 
 export default function ItemsPage() {
     const [items, setItems] = useState<Item[]>([]);
     const [businesses, setBusinesses] = useState<Business[]>([]);
+    const [taxes, setTaxes] = useState<ItemTax[]>([]);
+    const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,6 +56,8 @@ export default function ItemsPage() {
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<CreateItemRequest>({
         business_uuid: "",
+        discount_uuid: "",
+        tax_uuid: "",
         name: "",
         sku: "",
         description: "",
@@ -68,9 +74,11 @@ export default function ItemsPage() {
         try {
             setIsLoading(true);
             setError(null);
-            const [itemsResponse, businessesResponse] = await Promise.all([
+            const [itemsResponse, businessesResponse, taxesResponse, discountsResponse] = await Promise.all([
                 getItems(),
                 getBusinesses(),
+                getItemTaxes(),
+                getItemDiscounts(),
             ]);
 
             if (itemsResponse.success) {
@@ -85,6 +93,14 @@ export default function ItemsPage() {
 
             if (businessesResponse.success) {
                 setBusinesses(businessesResponse.data);
+            }
+
+            if (taxesResponse.success) {
+                setTaxes(taxesResponse.data);
+            }
+
+            if (discountsResponse.success) {
+                setDiscounts(discountsResponse.data);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -138,6 +154,8 @@ export default function ItemsPage() {
                     setIsDialogOpen(false);
                     setFormData({
                         business_uuid: "",
+                        discount_uuid: "",
+                        tax_uuid: "",
                         name: "",
                         sku: "",
                         description: "",
@@ -171,6 +189,8 @@ export default function ItemsPage() {
                     setIsDialogOpen(false);
                     setFormData({
                         business_uuid: "",
+                        discount_uuid: "",
+                        tax_uuid: "",
                         name: "",
                         sku: "",
                         description: "",
@@ -240,6 +260,8 @@ export default function ItemsPage() {
         setEditingItem(item);
         setFormData({
             business_uuid: item.business_uuid,
+            discount_uuid: item.discount_uuid,
+            tax_uuid: item.tax_uuid,
             name: item.name,
             sku: item.sku,
             description: item.description,
@@ -255,6 +277,8 @@ export default function ItemsPage() {
             setEditingItem(null);
             setFormData({
                 business_uuid: "",
+                discount_uuid: "",
+                tax_uuid: "",
                 name: "",
                 sku: "",
                 description: "",
@@ -322,6 +346,50 @@ export default function ItemsPage() {
                                         </select>
                                         {formErrors.business_uuid && (
                                             <p className="text-sm text-destructive">{formErrors.business_uuid}</p>
+                                        )}
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="tax_uuid">Tax</Label>
+                                        <select
+                                            id="tax_uuid"
+                                            name="tax_uuid"
+                                            value={formData.tax_uuid}
+                                            onChange={handleInputChange}
+                                            disabled={isSubmitting || !!editingItem}
+                                            required
+                                            className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.tax_uuid ? "border-destructive" : ""}`}
+                                        >
+                                            <option value="">Select a tax</option>
+                                            {taxes.map((tax) => (
+                                                <option key={tax.uuid} value={tax.uuid}>
+                                                    {tax.name} ({tax.rate}%)
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {formErrors.tax_uuid && (
+                                            <p className="text-sm text-destructive">{formErrors.tax_uuid}</p>
+                                        )}
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="discount_uuid">Discount</Label>
+                                        <select
+                                            id="discount_uuid"
+                                            name="discount_uuid"
+                                            value={formData.discount_uuid}
+                                            onChange={handleInputChange}
+                                            disabled={isSubmitting || !!editingItem}
+                                            required
+                                            className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.discount_uuid ? "border-destructive" : ""}`}
+                                        >
+                                            <option value="">Select a discount</option>
+                                            {discounts.map((discount) => (
+                                                <option key={discount.uuid} value={discount.uuid}>
+                                                    {discount.type === 'percentage' ? `${discount.value}%` : `$${discount.value}`}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {formErrors.discount_uuid && (
+                                            <p className="text-sm text-destructive">{formErrors.discount_uuid}</p>
                                         )}
                                     </div>
                                     <div className="space-y-2">

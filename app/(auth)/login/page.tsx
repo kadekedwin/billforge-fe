@@ -39,10 +39,7 @@ export default function LoginPage() {
       const response = await login(formData);
 
       if (response.success) {
-        // Set auth state (stores in localStorage and cookies)
-        setAuth(response.data.user, response.data.token);
-
-        // Redirect to dashboard
+        setAuth(response.data.user, response.data.access_token);
         router.push("/dashboard");
       } else {
         // Handle API error response

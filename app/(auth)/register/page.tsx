@@ -23,7 +23,7 @@ export default function RegisterPage() {
   const { setAuth } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [formData, setFormData] = useState<RegisterRequest>({
+  const [formData, setFormData] = useState<RegisterRequest & { password_confirmation: string }>({
     name: "",
     email: "",
     password: "",
@@ -45,13 +45,11 @@ export default function RegisterPage() {
     }
 
     try {
-      const response = await register(formData);
+      const { password_confirmation: _password_confirmation, ...registerData } = formData;
+      const response = await register(registerData);
 
       if (response.success) {
-        // Set auth state (stores in localStorage and cookies)
-        setAuth(response.data.user, response.data.token);
-
-        // Redirect to dashboard
+        setAuth(response.data.user, response.data.access_token);
         router.push("/dashboard");
       } else {
         // Handle API error response
