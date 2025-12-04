@@ -42,22 +42,21 @@ export default function LoginPage() {
         setAuth(response.data.user, response.data.access_token);
         router.push("/dashboard");
       } else {
-        // Handle API error response
         const errorData = response as unknown as {
           success: false;
-          data: { message?: string; errors?: Record<string, string[]> };
+          message: string;
+          errors?: Record<string, string[]>;
         };
-        if (errorData.data?.errors) {
-          // Field-specific errors
+        if (errorData.errors) {
           const errors: Record<string, string> = {};
-          Object.keys(errorData.data.errors).forEach((key) => {
-            if (errorData.data.errors) {
-              errors[key] = errorData.data.errors[key][0];
+          Object.keys(errorData.errors).forEach((key) => {
+            if (errorData.errors) {
+              errors[key] = errorData.errors[key][0];
             }
           });
           setFieldErrors(errors);
-        } else if (errorData.data?.message) {
-          setError(errorData.data.message);
+        } else if (errorData.message) {
+          setError(errorData.message);
         } else {
           setError("Login failed. Please try again.");
         }

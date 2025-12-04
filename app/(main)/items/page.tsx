@@ -86,9 +86,9 @@ export default function ItemsPage() {
             } else {
                 const errorData = itemsResponse as unknown as {
                     success: false;
-                    data: { message?: string };
+                    message: string;
                 };
-                setError(errorData.data?.message || "Failed to load items");
+                setError(errorData.message || "Failed to load items");
             }
 
             if (businessesResponse.success) {
@@ -166,18 +166,19 @@ export default function ItemsPage() {
                 } else {
                     const errorData = response as unknown as {
                         success: false;
-                        data: { message?: string; errors?: Record<string, string[]> };
+                        message: string;
+                        errors?: Record<string, string[]>;
                     };
-                    if (errorData.data?.errors) {
+                    if (errorData.errors) {
                         const errors: Record<string, string> = {};
-                        Object.keys(errorData.data.errors).forEach((key) => {
-                            if (errorData.data.errors) {
-                                errors[key] = errorData.data.errors[key][0];
+                        Object.keys(errorData.errors).forEach((key) => {
+                            if (errorData.errors) {
+                                errors[key] = errorData.errors[key][0];
                             }
                         });
                         setFormErrors(errors);
-                    } else if (errorData.data?.message) {
-                        setError(errorData.data.message);
+                    } else if (errorData.message) {
+                        setError(errorData.message);
                     } else {
                         setError("Failed to update item");
                     }
@@ -200,18 +201,19 @@ export default function ItemsPage() {
                 } else {
                     const errorData = response as unknown as {
                         success: false;
-                        data: { message?: string; errors?: Record<string, string[]> };
+                        message: string;
+                        errors?: Record<string, string[]>;
                     };
-                    if (errorData.data?.errors) {
+                    if (errorData.errors) {
                         const errors: Record<string, string> = {};
-                        Object.keys(errorData.data.errors).forEach((key) => {
-                            if (errorData.data.errors) {
-                                errors[key] = errorData.data.errors[key][0];
+                        Object.keys(errorData.errors).forEach((key) => {
+                            if (errorData.errors) {
+                                errors[key] = errorData.errors[key][0];
                             }
                         });
                         setFormErrors(errors);
-                    } else if (errorData.data?.message) {
-                        setError(errorData.data.message);
+                    } else if (errorData.message) {
+                        setError(errorData.message);
                     } else {
                         setError("Failed to create item");
                     }
@@ -244,9 +246,9 @@ export default function ItemsPage() {
             } else {
                 const errorData = response as unknown as {
                     success: false;
-                    data: { message?: string };
+                    message: string;
                 };
-                setError(errorData.data?.message || "Failed to delete item");
+                setError(errorData.message || "Failed to delete item");
             }
         } catch (err) {
             setError("An error occurred while deleting item");

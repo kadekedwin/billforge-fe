@@ -1,14 +1,14 @@
 export interface ApiResponse<T> {
   success: boolean;
+  message: string;
   data: T;
 }
 
 export interface ApiErrorResponse {
   success: false;
-  data: {
-    message?: string;
-    errors?: Record<string, string[]>;
-  };
+  message: string;
+  errors?: Record<string, string[]>;
+  data?: any;
 }
 
 export interface User {
@@ -32,7 +32,6 @@ export interface LoginRequest {
 }
 
 export interface AuthResponse {
-  message?: string;
   user: User;
   access_token: string;
   token_type: string;

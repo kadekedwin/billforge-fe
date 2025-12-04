@@ -47,6 +47,8 @@ class ApiClient {
       headers.set("Content-Type", "application/json");
     }
 
+    headers.set("Accept", "application/json");
+
     const token = this.getToken();
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
