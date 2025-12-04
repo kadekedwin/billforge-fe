@@ -8,7 +8,7 @@ import type {
 } from "./types";
 
 /**
- * Get all item discounts with optional filter by item_uuid
+ * Get all items discounts with optional filter by item_uuid
  */
 export async function getItemDiscounts(itemUuid?: string): Promise<ApiResponse<ItemDiscount[]>> {
   const params = itemUuid ? { item_uuid: itemUuid } : undefined;
@@ -16,14 +16,14 @@ export async function getItemDiscounts(itemUuid?: string): Promise<ApiResponse<I
 }
 
 /**
- * Get a single item discount by ID
+ * Get a single items discount by ID
  */
 export async function getItemDiscount(id: string | number): Promise<ApiResponse<ItemDiscount>> {
   return apiClient.get<ItemDiscount>(`/item-discounts/${id}`);
 }
 
 /**
- * Create a new item discount
+ * Create a new items discount
  */
 export async function createItemDiscount(
   data: CreateItemDiscountRequest
@@ -32,7 +32,7 @@ export async function createItemDiscount(
 }
 
 /**
- * Update an item discount
+ * Update an items discount
  */
 export async function updateItemDiscount(
   id: string | number,
@@ -42,7 +42,7 @@ export async function updateItemDiscount(
 }
 
 /**
- * Delete an item discount
+ * Delete an items discount
  */
 export async function deleteItemDiscount(
   id: string | number

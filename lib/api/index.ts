@@ -16,10 +16,10 @@ export * as businesses from "./businesses";
 // Export items functions
 export * as items from "./items";
 
-// Export item taxes functions
+// Export items taxes functions
 export * as itemTaxes from "./item-taxes";
 
-// Export item discounts functions
+// Export items discounts functions
 export * as itemDiscounts from "./item-discounts";
 
 // Export transactions functions

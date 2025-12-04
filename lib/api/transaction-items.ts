@@ -18,7 +18,7 @@ export async function getTransactionItems(
 }
 
 /**
- * Get a single transaction item by ID
+ * Get a single transaction items by ID
  */
 export async function getTransactionItem(
   id: string | number
@@ -27,7 +27,7 @@ export async function getTransactionItem(
 }
 
 /**
- * Create a new transaction item
+ * Create a new transaction items
  */
 export async function createTransactionItem(
   data: CreateTransactionItemRequest
@@ -36,7 +36,7 @@ export async function createTransactionItem(
 }
 
 /**
- * Update a transaction item
+ * Update a transaction items
  */
 export async function updateTransactionItem(
   id: string | number,
@@ -46,7 +46,7 @@ export async function updateTransactionItem(
 }
 
 /**
- * Delete a transaction item
+ * Delete a transaction items
  */
 export async function deleteTransactionItem(
   id: string | number
