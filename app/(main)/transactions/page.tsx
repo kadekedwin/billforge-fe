@@ -1,342 +1,329 @@
 "use client";
 
-import { useState, useEffect, useCallback, memo } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Plus, ShoppingCart, Loader2 } from "lucide-react";
-import { getItems } from "@/lib/api/items";
+import { Eye, Loader2 } from "lucide-react";
+import { getTransactions } from "@/lib/api/transactions";
 import { getBusinesses } from "@/lib/api/businesses";
-import { getImageUrl } from "@/lib/images";
-import type { Item, Business } from "@/lib/api";
-import Image from "next/image";
-
-const ItemImageCard = memo(({ item }: { item: Item }) => {
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        const loadImage = async () => {
-            if (item.image_size_bytes) {
-                setLoading(true);
-                const result = await getImageUrl({
-                    folder: 'items',
-                    uuid: item.uuid,
-                });
-                if (result.success && result.url) {
-                    setImageUrl(result.url);
-                }
-                setLoading(false);
-            }
-        };
-        loadImage();
-    }, [item.uuid, item.image_size_bytes]);
-
-    if (loading) {
-        return (
-            <div className="flex h-full w-full items-center justify-center bg-muted">
-                <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-            </div>
-        );
-    }
-
-    if (imageUrl) {
-        return (
-            <Image
-                src={imageUrl}
-                alt={item.name}
-                fill
-                className="object-cover transition-transform group-hover:scale-105"
-            />
-        );
-    }
-
-    return (
-        <div className="flex h-full w-full items-center justify-center bg-muted">
-            <div className="text-center p-4">
-                <div className="text-4xl font-bold text-muted-foreground">
-                    {item.name.substring(0, 2).toUpperCase()}
-                </div>
-            </div>
-        </div>
-    );
-});
-
-ItemImageCard.displayName = 'ItemImageCard';
+import { getCustomers } from "@/lib/api/customers";
+import { getPaymentMethods } from "@/lib/api/payment-methods";
+import { getTransactionItems } from "@/lib/api/transaction-items";
+import { getItems } from "@/lib/api/items";
+import type { Transaction, Business, Customer, PaymentMethod, TransactionItem, Item } from "@/lib/api";
 
 export default function TransactionsPage() {
-    const [items, setItems] = useState<Item[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [businesses, setBusinesses] = useState<Business[]>([]);
+    const [customers, setCustomers] = useState<Customer[]>([]);
+    const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
+    const [items, setItems] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false);
+    const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
+    const [transactionItems, setTransactionItems] = useState<TransactionItem[]>([]);
+    const [isLoadingItems, setIsLoadingItems] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [selectedBusiness, setSelectedBusiness] = useState<string>("");
-    const [cart, setCart] = useState<Map<string, number>>(new Map());
 
+    useEffect(() => {
+        loadData();
+    }, []);
 
-    const loadData = useCallback(async () => {
+    const loadData = async () => {
         try {
             setIsLoading(true);
             setError(null);
-            const [itemsResponse, businessesResponse] = await Promise.all([
-                getItems({ is_active: true }),
+            const [
+                transactionsResponse,
+                businessesResponse,
+                customersResponse,
+                paymentMethodsResponse,
+                itemsResponse,
+            ] = await Promise.all([
+                getTransactions(),
                 getBusinesses(),
+                getCustomers(),
+                getPaymentMethods(),
+                getItems(),
             ]);
 
-            if (itemsResponse.success) {
-                setItems(itemsResponse.data);
+            if (transactionsResponse.success) {
+                setTransactions(transactionsResponse.data);
             } else {
-                const errorData = itemsResponse as unknown as {
+                const errorData = transactionsResponse as unknown as {
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load items");
+                setError(errorData.message || "Failed to load transactions");
             }
 
             if (businessesResponse.success) {
                 setBusinesses(businessesResponse.data);
-                if (businessesResponse.data.length > 0 && !selectedBusiness) {
-                    setSelectedBusiness(businessesResponse.data[0].uuid);
-                }
+            }
+
+            if (customersResponse.success) {
+                setCustomers(customersResponse.data);
+            }
+
+            if (paymentMethodsResponse.success) {
+                setPaymentMethods(paymentMethodsResponse.data);
+            }
+
+            if (itemsResponse.success) {
+                setItems(itemsResponse.data);
             }
         } catch (err) {
-            setError(err instanceof Error ? err.message : "An error occurred");
+            setError("An error occurred while loading data");
+            console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);
         }
-    }, [selectedBusiness]);
-
-    useEffect(() => {
-        loadData();
-    }, [loadData]);
-
-    const addToCart = (itemUuid: string) => {
-        setCart((prev) => {
-            const newCart = new Map(prev);
-            const currentQty = newCart.get(itemUuid) || 0;
-            newCart.set(itemUuid, currentQty + 1);
-            return newCart;
-        });
     };
 
-    const removeFromCart = (itemUuid: string) => {
-        setCart((prev) => {
-            const newCart = new Map(prev);
-            const currentQty = newCart.get(itemUuid) || 0;
-            if (currentQty > 1) {
-                newCart.set(itemUuid, currentQty - 1);
-            } else {
-                newCart.delete(itemUuid);
+    const handleViewDetails = async (transaction: Transaction) => {
+        setSelectedTransaction(transaction);
+        setIsDetailsDialogOpen(true);
+        setIsLoadingItems(true);
+
+        try {
+            const response = await getTransactionItems({ transaction_uuid: transaction.uuid });
+            if (response.success) {
+                setTransactionItems(response.data);
             }
-            return newCart;
-        });
+        } catch (err) {
+            console.error("Error loading transaction items:", err);
+        } finally {
+            setIsLoadingItems(false);
+        }
     };
 
-    const getCartItemCount = (itemUuid: string) => {
-        return cart.get(itemUuid) || 0;
+    const getBusinessName = (business_uuid: string) => {
+        const business = businesses.find(b => b.uuid === business_uuid);
+        return business?.name || "Unknown Business";
     };
 
-    const getTotalItems = () => {
-        return Array.from(cart.values()).reduce((sum, qty) => sum + qty, 0);
+    const getCustomerName = (customer_uuid: string | null) => {
+        if (!customer_uuid) return "-";
+        const customer = customers.find(c => c.uuid === customer_uuid);
+        return customer?.name || "Unknown Customer";
     };
 
-    const getTotalAmount = () => {
-        let total = 0;
-        cart.forEach((qty, itemUuid) => {
-            const item = items.find((i) => i.uuid === itemUuid);
-            if (item) {
-                total += parseFloat(item.base_price) * qty;
-            }
-        });
-        return total;
+    const getPaymentMethodName = (payment_method_uuid: string | null) => {
+        if (!payment_method_uuid) return "-";
+        const paymentMethod = paymentMethods.find(pm => pm.uuid === payment_method_uuid);
+        return paymentMethod?.name || "Unknown Method";
     };
 
-    const filteredItems = selectedBusiness
-        ? items.filter((item) => item.business_uuid === selectedBusiness)
-        : items;
+    const getItemName = (item_uuid: string) => {
+        const item = items.find(i => i.uuid === item_uuid);
+        return item?.name || "Unknown Item";
+    };
 
-    if (isLoading) {
-        return (
-            <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
-                <div className="text-center">
-                    <p className="text-lg font-semibold text-destructive">Error</p>
-                    <p className="text-muted-foreground">{error}</p>
-                    <Button onClick={loadData} className="mt-4">
-                        Retry
-                    </Button>
-                </div>
-            </div>
-        );
-    }
+    const getStatusBadge = (status: string) => {
+        switch (status) {
+            case "paid":
+                return <Badge variant="default" className="bg-green-500">Paid</Badge>;
+            case "pending":
+                return <Badge variant="secondary">Pending</Badge>;
+            case "cancelled":
+                return <Badge variant="destructive">Cancelled</Badge>;
+            default:
+                return <Badge variant="outline">{status}</Badge>;
+        }
+    };
 
     return (
-        <div className="container mx-auto p-6">
-            <div className="mb-6 flex items-center justify-between">
+        <div className="space-y-6">
+            <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold">New Transaction</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">Transactions</h1>
                     <p className="text-muted-foreground">
-                        Select items to add to the transaction
+                        View all transaction history
                     </p>
-                </div>
-                <div className="flex items-center gap-4">
-                    {businesses.length > 1 && (
-                        <select
-                            value={selectedBusiness}
-                            onChange={(e) => setSelectedBusiness(e.target.value)}
-                            className="rounded-md border border-input bg-background px-3 py-2"
-                        >
-                            {businesses.map((business) => (
-                                <option key={business.uuid} value={business.uuid}>
-                                    {business.name}
-                                </option>
-                            ))}
-                        </select>
-                    )}
-                    <Button
-                        variant="outline"
-                        className="relative"
-                        disabled={getTotalItems() === 0}
-                    >
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        Cart
-                        {getTotalItems() > 0 && (
-                            <Badge
-                                variant="destructive"
-                                className="absolute -right-2 -top-2 h-5 w-5 rounded-full p-0 text-xs"
-                            >
-                                {getTotalItems()}
-                            </Badge>
-                        )}
-                    </Button>
                 </div>
             </div>
 
-            {filteredItems.length === 0 ? (
-                <div className="flex h-[400px] items-center justify-center rounded-lg border border-dashed">
-                    <div className="text-center">
-                        <p className="text-lg font-semibold">No items available</p>
-                        <p className="text-muted-foreground">
-                            Add items to your inventory to start creating transactions
-                        </p>
-                    </div>
+            {error && (
+                <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                    {error}
                 </div>
-            ) : (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {filteredItems.map((item) => {
-                        const quantity = getCartItemCount(item.uuid);
-                        const business = businesses.find(
-                            (b) => b.uuid === item.business_uuid
-                        );
+            )}
 
-                        return (
-                            <Card
-                                key={item.uuid}
-                                className="group relative overflow-hidden transition-shadow hover:shadow-lg"
-                            >
-                                <CardHeader className="p-0">
-                                    <div className="relative aspect-square w-full overflow-hidden bg-muted">
-                                        <ItemImageCard item={item} />
-                                        {!item.is_active && (
-                                            <Badge
-                                                variant="destructive"
-                                                className="absolute right-2 top-2"
-                                            >
-                                                Inactive
-                                            </Badge>
-                                        )}
-                                    </div>
-                                </CardHeader>
-                                <CardContent className="p-4">
-                                    <CardTitle className="mb-1 line-clamp-2 text-lg">
-                                        {item.name}
-                                    </CardTitle>
-                                    {item.sku && (
-                                        <p className="text-xs text-muted-foreground">
-                                            SKU: {item.sku}
-                                        </p>
-                                    )}
-                                    {item.description && (
-                                        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
-                                            {item.description}
-                                        </p>
-                                    )}
-                                    <p className="mt-3 text-2xl font-bold text-primary">
-                                        ${parseFloat(item.base_price).toFixed(2)}
-                                    </p>
-                                    {business && (
-                                        <p className="mt-1 text-xs text-muted-foreground">
-                                            {business.name}
-                                        </p>
-                                    )}
-                                </CardContent>
-                                <CardFooter className="p-4 pt-0">
-                                    {quantity > 0 ? (
-                                        <div className="flex w-full items-center justify-between gap-2">
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                onClick={() => removeFromCart(item.uuid)}
-                                                className="h-9 w-9 p-0"
-                                            >
-                                                -
-                                            </Button>
-                                            <span className="text-lg font-semibold">
-                                                {quantity}
-                                            </span>
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                onClick={() => addToCart(item.uuid)}
-                                                className="h-9 w-9 p-0"
-                                            >
-                                                +
-                                            </Button>
-                                        </div>
-                                    ) : (
+            <div className="rounded-lg border bg-card">
+                {isLoading ? (
+                    <div className="flex h-64 items-center justify-center">
+                        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                    </div>
+                ) : transactions.length === 0 ? (
+                    <div className="flex h-64 flex-col items-center justify-center space-y-4">
+                        <p className="text-lg text-muted-foreground">No transactions found</p>
+                    </div>
+                ) : (
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Date</TableHead>
+                                <TableHead>Business</TableHead>
+                                <TableHead>Customer</TableHead>
+                                <TableHead>Payment Method</TableHead>
+                                <TableHead>Total Amount</TableHead>
+                                <TableHead>Final Amount</TableHead>
+                                <TableHead>Status</TableHead>
+                                <TableHead className="text-right">Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {transactions.map((transaction) => (
+                                <TableRow key={transaction.id}>
+                                    <TableCell>
+                                        {new Date(transaction.created_at).toLocaleString()}
+                                    </TableCell>
+                                    <TableCell>{getBusinessName(transaction.business_uuid)}</TableCell>
+                                    <TableCell>{getCustomerName(transaction.customer_uuid)}</TableCell>
+                                    <TableCell>{getPaymentMethodName(transaction.payment_method_uuid)}</TableCell>
+                                    <TableCell>${parseFloat(transaction.total_amount).toFixed(2)}</TableCell>
+                                    <TableCell className="font-semibold">
+                                        ${parseFloat(transaction.final_amount).toFixed(2)}
+                                    </TableCell>
+                                    <TableCell>{getStatusBadge(transaction.status)}</TableCell>
+                                    <TableCell className="text-right">
                                         <Button
-                                            onClick={() => addToCart(item.uuid)}
-                                            className="w-full"
-                                            size="sm"
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={() => handleViewDetails(transaction)}
                                         >
-                                            <Plus className="mr-2 h-4 w-4" />
-                                            Add to Cart
+                                            <Eye className="h-4 w-4" />
                                         </Button>
-                                    )}
-                                </CardFooter>
-                            </Card>
-                        );
-                    })}
-                </div>
-            )}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                )}
+            </div>
 
-            {getTotalItems() > 0 && (
-                <div className="fixed bottom-6 right-6 rounded-lg border bg-card p-4 shadow-lg">
-                    <div className="flex items-center gap-4">
-                        <div>
-                            <p className="text-sm text-muted-foreground">Total Items</p>
-                            <p className="text-2xl font-bold">{getTotalItems()}</p>
+            <Dialog open={isDetailsDialogOpen} onOpenChange={setIsDetailsDialogOpen}>
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                        <DialogTitle>Transaction Details</DialogTitle>
+                        <DialogDescription>
+                            View complete transaction information
+                        </DialogDescription>
+                    </DialogHeader>
+                    {selectedTransaction && (
+                        <div className="space-y-6">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground">Business</p>
+                                    <p className="text-sm">{getBusinessName(selectedTransaction.business_uuid)}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground">Customer</p>
+                                    <p className="text-sm">{getCustomerName(selectedTransaction.customer_uuid)}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground">Payment Method</p>
+                                    <p className="text-sm">{getPaymentMethodName(selectedTransaction.payment_method_uuid)}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground">Status</p>
+                                    <div className="mt-1">{getStatusBadge(selectedTransaction.status)}</div>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground">Date</p>
+                                    <p className="text-sm">{new Date(selectedTransaction.created_at).toLocaleString()}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground">Transaction ID</p>
+                                    <p className="text-sm font-mono">{selectedTransaction.uuid}</p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <h3 className="text-lg font-semibold">Items</h3>
+                                {isLoadingItems ? (
+                                    <div className="flex h-32 items-center justify-center">
+                                        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                                    </div>
+                                ) : transactionItems.length === 0 ? (
+                                    <p className="text-sm text-muted-foreground">No items found</p>
+                                ) : (
+                                    <div className="rounded-lg border">
+                                        <Table>
+                                            <TableHeader>
+                                                <TableRow>
+                                                    <TableHead>Item</TableHead>
+                                                    <TableHead>Quantity</TableHead>
+                                                    <TableHead>Base Price</TableHead>
+                                                    <TableHead>Tax</TableHead>
+                                                    <TableHead>Discount</TableHead>
+                                                    <TableHead>Total</TableHead>
+                                                </TableRow>
+                                            </TableHeader>
+                                            <TableBody>
+                                                {transactionItems.map((item) => (
+                                                    <TableRow key={item.id}>
+                                                        <TableCell>{getItemName(item.item_uuid)}</TableCell>
+                                                        <TableCell>{item.quantity}</TableCell>
+                                                        <TableCell>${parseFloat(item.base_price).toFixed(2)}</TableCell>
+                                                        <TableCell>${parseFloat(item.tax_amount).toFixed(2)}</TableCell>
+                                                        <TableCell>-${parseFloat(item.discount_amount).toFixed(2)}</TableCell>
+                                                        <TableCell className="font-semibold">
+                                                            ${parseFloat(item.total_price).toFixed(2)}
+                                                        </TableCell>
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="space-y-2 rounded-lg bg-muted p-4">
+                                <div className="flex justify-between">
+                                    <span className="text-sm">Total Amount:</span>
+                                    <span className="text-sm font-medium">
+                                        ${parseFloat(selectedTransaction.total_amount).toFixed(2)}
+                                    </span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-sm">Tax Amount:</span>
+                                    <span className="text-sm font-medium">
+                                        ${parseFloat(selectedTransaction.tax_amount).toFixed(2)}
+                                    </span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-sm">Discount Amount:</span>
+                                    <span className="text-sm font-medium text-green-600">
+                                        -${parseFloat(selectedTransaction.discount_amount).toFixed(2)}
+                                    </span>
+                                </div>
+                                <div className="flex justify-between border-t pt-2">
+                                    <span className="font-semibold">Final Amount:</span>
+                                    <span className="font-semibold text-lg">
+                                        ${parseFloat(selectedTransaction.final_amount).toFixed(2)}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div className="h-12 w-px bg-border" />
-                        <div>
-                            <p className="text-sm text-muted-foreground">Total Amount</p>
-                            <p className="text-2xl font-bold text-primary">
-                                ${getTotalAmount().toFixed(2)}
-                            </p>
-                        </div>
-                        <Button size="lg" className="ml-4">
-                            Checkout
-                        </Button>
-                    </div>
-                </div>
-            )}
+                    )}
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
-
