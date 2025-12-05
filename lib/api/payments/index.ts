@@ -1,12 +1,8 @@
-import { apiClient } from "./client";
-import type {
-  ApiResponse,
-  Payment,
-  CreatePaymentRequest,
-  UpdatePaymentRequest,
-  PaymentQueryParams,
-  MessageResponse,
-} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../common-types";
+import type { Payment, CreatePaymentRequest, UpdatePaymentRequest, PaymentQueryParams } from "./types";
+
+export type { Payment, CreatePaymentRequest, UpdatePaymentRequest, PaymentQueryParams } from "./types";
 
 export async function getPayments(params?: PaymentQueryParams): Promise<ApiResponse<Payment[]>> {
   return apiClient.get<Payment[]>("/payments", { params });
@@ -30,3 +26,4 @@ export async function updatePayment(
 export async function deletePayment(id: string | number): Promise<ApiResponse<MessageResponse>> {
   return apiClient.delete<MessageResponse>(`/payments/${id}`);
 }
+

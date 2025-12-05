@@ -1,11 +1,8 @@
-import { apiClient } from "./client";
-import type {
-  ApiResponse,
-  ItemTax,
-  CreateItemTaxRequest,
-  UpdateItemTaxRequest,
-  MessageResponse,
-} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../common-types";
+import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "./types";
+
+export type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "./types";
 
 export async function getItemTaxes(businessUuid?: string): Promise<ApiResponse<ItemTax[]>> {
   const params = businessUuid ? { business_uuid: businessUuid } : undefined;
@@ -30,3 +27,4 @@ export async function updateItemTax(
 export async function deleteItemTax(id: string | number): Promise<ApiResponse<MessageResponse>> {
   return apiClient.delete<MessageResponse>(`/item-taxes/${id}`);
 }
+

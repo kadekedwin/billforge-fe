@@ -1,4 +1,4 @@
-import type {ApiErrorResponse} from "./types";
+import type {ApiErrorResponse} from "./common-types";
 
 export class ApiError extends Error {
     public statusCode: number;

@@ -35,7 +35,7 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItemDiscounts, createItemDiscount, updateItemDiscount, deleteItemDiscount } from "@/lib/api/item-discounts";
 import { getBusinesses } from "@/lib/api/businesses";
-import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest, Business } from "@/lib/api/types";
+import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest, Business } from "@/lib/api";
 
 export default function ItemDiscountsPage() {
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);

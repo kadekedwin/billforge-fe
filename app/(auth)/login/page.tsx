@@ -16,7 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { login } from "@/lib/api/auth";
-import type { LoginRequest } from "@/lib/api/types";
+import type { LoginRequest } from "@/lib/api";
 
 export default function LoginPage() {
   const router = useRouter();

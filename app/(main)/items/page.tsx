@@ -39,7 +39,7 @@ import { getItems, createItem, updateItem, deleteItem } from "@/lib/api/items";
 import { getBusinesses } from "@/lib/api/businesses";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
-import type { Item, CreateItemRequest, UpdateItemRequest, Business, ItemTax, ItemDiscount } from "@/lib/api/types";
+import type { Item, CreateItemRequest, UpdateItemRequest, Business, ItemTax, ItemDiscount } from "@/lib/api";
 
 export default function ItemsPage() {
     const [items, setItems] = useState<Item[]>([]);

@@ -33,7 +33,7 @@ import {
 } from "@/components/ui/table";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getBusinesses, createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
-import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api/types";
+import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
 
 export default function BusinessesPage() {
     const [businesses, setBusinesses] = useState<Business[]>([]);

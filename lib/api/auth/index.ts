@@ -1,11 +1,8 @@
-import { apiClient } from "./client";
-import type {
-  ApiResponse,
-  RegisterRequest,
-  LoginRequest,
-  AuthResponse,
-  MessageResponse,
-} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../common-types";
+import type { RegisterRequest, LoginRequest, AuthResponse } from "./types";
+
+export type { RegisterRequest, LoginRequest, AuthResponse } from "./types";
 
 export async function register(data: RegisterRequest): Promise<ApiResponse<AuthResponse>> {
   const response = await apiClient.post<AuthResponse>("/register", data);
@@ -42,3 +39,4 @@ export function isAuthenticated(): boolean {
 export function getAuthToken(): string | null {
   return apiClient.getToken();
 }
+

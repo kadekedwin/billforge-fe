@@ -1,11 +1,8 @@
-import { apiClient } from "./client";
-import type {
-  ApiResponse,
-  ItemDiscount,
-  CreateItemDiscountRequest,
-  UpdateItemDiscountRequest,
-  MessageResponse,
-} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../common-types";
+import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest } from "./types";
+
+export type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest } from "./types";
 
 export async function getItemDiscounts(businessUuid?: string): Promise<ApiResponse<ItemDiscount[]>> {
   const params = businessUuid ? { business_uuid: businessUuid } : undefined;
@@ -34,3 +31,4 @@ export async function deleteItemDiscount(
 ): Promise<ApiResponse<MessageResponse>> {
   return apiClient.delete<MessageResponse>(`/item-discounts/${id}`);
 }
+

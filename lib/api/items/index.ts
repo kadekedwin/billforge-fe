@@ -1,12 +1,8 @@
-import { apiClient } from "./client";
-import type {
-  ApiResponse,
-  Item,
-  CreateItemRequest,
-  UpdateItemRequest,
-  ItemQueryParams,
-  MessageResponse,
-} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../common-types";
+import type { Item, CreateItemRequest, UpdateItemRequest, ItemQueryParams } from "./types";
+
+export type { Item, CreateItemRequest, UpdateItemRequest, ItemQueryParams } from "./types";
 
 export async function getItems(params?: ItemQueryParams): Promise<ApiResponse<Item[]>> {
   return apiClient.get<Item[]>("/items", { params });
@@ -30,3 +26,4 @@ export async function updateItem(
 export async function deleteItem(id: string | number): Promise<ApiResponse<MessageResponse>> {
   return apiClient.delete<MessageResponse>(`/items/${id}`);
 }
+

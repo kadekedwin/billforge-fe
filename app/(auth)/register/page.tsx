@@ -16,7 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { register } from "@/lib/api/auth";
-import type { RegisterRequest } from "@/lib/api/types";
+import type { RegisterRequest } from "@/lib/api";
 
 export default function RegisterPage() {
   const router = useRouter();

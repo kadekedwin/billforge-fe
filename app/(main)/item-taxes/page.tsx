@@ -35,7 +35,7 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItemTaxes, createItemTax, updateItemTax, deleteItemTax } from "@/lib/api/item-taxes";
 import { getBusinesses } from "@/lib/api/businesses";
-import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest, Business } from "@/lib/api/types";
+import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest, Business } from "@/lib/api";
 
 export default function ItemTaxesPage() {
     const [taxes, setTaxes] = useState<ItemTax[]>([]);

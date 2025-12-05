@@ -1,12 +1,8 @@
-import { apiClient } from "./client";
-import type {
-  ApiResponse,
-  TransactionItem,
-  CreateTransactionItemRequest,
-  UpdateTransactionItemRequest,
-  TransactionItemQueryParams,
-  MessageResponse,
-} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../common-types";
+import type { TransactionItem, CreateTransactionItemRequest, UpdateTransactionItemRequest, TransactionItemQueryParams } from "./types";
+
+export type { TransactionItem, CreateTransactionItemRequest, UpdateTransactionItemRequest, TransactionItemQueryParams } from "./types";
 
 export async function getTransactionItems(
   params?: TransactionItemQueryParams
@@ -38,3 +34,4 @@ export async function deleteTransactionItem(
 ): Promise<ApiResponse<MessageResponse>> {
   return apiClient.delete<MessageResponse>(`/transaction-items/${id}`);
 }
+

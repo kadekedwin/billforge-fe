@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, ShoppingCart, Loader2 } from "lucide-react";
 import { getItems } from "@/lib/api/items";
 import { getBusinesses } from "@/lib/api/businesses";
-import type { Item, Business } from "@/lib/api/types";
+import type { Item, Business } from "@/lib/api";
 import Image from "next/image";
 
 export default function TransactionsPage() {
