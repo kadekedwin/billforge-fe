@@ -121,19 +121,6 @@ export default function TransactionsPage() {
         return paymentMethod?.name || "Unknown Method";
     };
 
-    const getStatusBadge = (status: string) => {
-        switch (status) {
-            case "paid":
-                return <Badge variant="default" className="bg-green-500">Paid</Badge>;
-            case "pending":
-                return <Badge variant="secondary">Pending</Badge>;
-            case "cancelled":
-                return <Badge variant="destructive">Cancelled</Badge>;
-            default:
-                return <Badge variant="outline">{status}</Badge>;
-        }
-    };
-
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -170,7 +157,6 @@ export default function TransactionsPage() {
                                 <TableHead>Payment Method</TableHead>
                                 <TableHead>Total Amount</TableHead>
                                 <TableHead>Final Amount</TableHead>
-                                <TableHead>Status</TableHead>
                                 <TableHead className="text-right">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -187,7 +173,6 @@ export default function TransactionsPage() {
                                     <TableCell className="font-semibold">
                                         ${parseFloat(transaction.final_amount).toFixed(2)}
                                     </TableCell>
-                                    <TableCell>{getStatusBadge(transaction.status)}</TableCell>
                                     <TableCell className="text-right">
                                         <Button
                                             variant="ghost"
@@ -228,17 +213,19 @@ export default function TransactionsPage() {
                                     <p className="text-sm">{getPaymentMethodName(selectedTransaction.payment_method_uuid)}</p>
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-muted-foreground">Status</p>
-                                    <div className="mt-1">{getStatusBadge(selectedTransaction.status)}</div>
-                                </div>
-                                <div>
                                     <p className="text-sm font-medium text-muted-foreground">Date</p>
                                     <p className="text-sm">{new Date(selectedTransaction.created_at).toLocaleString()}</p>
                                 </div>
-                                <div>
+                                <div className="col-span-2">
                                     <p className="text-sm font-medium text-muted-foreground">Transaction ID</p>
                                     <p className="text-sm font-mono">{selectedTransaction.uuid}</p>
                                 </div>
+                                {selectedTransaction.notes && (
+                                    <div className="col-span-2">
+                                        <p className="text-sm font-medium text-muted-foreground">Notes</p>
+                                        <p className="text-sm whitespace-pre-wrap">{selectedTransaction.notes}</p>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="space-y-2">

@@ -8,7 +8,7 @@ export interface Transaction {
   tax_amount: string;
   discount_amount: string;
   final_amount: string;
-  status: "pending" | "paid" | "cancelled";
+  notes: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -21,7 +21,7 @@ export interface CreateTransactionRequest {
   tax_amount: number;
   discount_amount: number;
   final_amount: number;
-  status: "pending" | "paid" | "cancelled";
+  notes?: string | null;
 }
 
 export interface UpdateTransactionRequest {
@@ -32,11 +32,10 @@ export interface UpdateTransactionRequest {
   tax_amount?: number;
   discount_amount?: number;
   final_amount?: number;
-  status?: "pending" | "paid" | "cancelled";
+  notes?: string | null;
 }
 
 export interface TransactionQueryParams extends Record<string, string | number | boolean | undefined> {
   business_uuid?: string;
-  status?: "pending" | "paid" | "cancelled";
 }
 

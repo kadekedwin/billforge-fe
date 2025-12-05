@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import {
     Table,
     TableBody,
@@ -95,6 +96,7 @@ export default function TransactionsPage() {
     const [isCheckout, setIsCheckout] = useState(false);
     const [selectedCustomer, setSelectedCustomer] = useState<string>("");
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>("");
+    const [notes, setNotes] = useState<string>("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
 
@@ -262,7 +264,7 @@ export default function TransactionsPage() {
                 tax_amount: summary.taxAmount,
                 discount_amount: summary.discountAmount,
                 final_amount: summary.finalAmount,
-                status: "paid" as const,
+                notes: notes || null,
             };
 
             const transactionResponse = await createTransaction(transactionData);
@@ -305,6 +307,7 @@ export default function TransactionsPage() {
             setIsCheckout(false);
             setSelectedCustomer("");
             setSelectedPaymentMethod("");
+            setNotes("");
             router.push("/transactions");
         } catch (err) {
             setError(err instanceof Error ? err.message : "An error occurred while completing the transaction");
@@ -448,6 +451,17 @@ export default function TransactionsPage() {
                                         </option>
                                     ))}
                                 </select>
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="notes">Notes (Optional)</Label>
+                                <Textarea
+                                    id="notes"
+                                    value={notes}
+                                    onChange={(e) => setNotes(e.target.value)}
+                                    disabled={isSubmitting}
+                                    placeholder="Add any notes about this transaction..."
+                                    rows={3}
+                                />
                             </div>
                         </CardContent>
                     </Card>
