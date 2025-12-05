@@ -1,14 +1,68 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, ShoppingCart, Loader2 } from "lucide-react";
 import { getItems } from "@/lib/api/items";
 import { getBusinesses } from "@/lib/api/businesses";
+import { getImageUrl } from "@/lib/images";
 import type { Item, Business } from "@/lib/api";
 import Image from "next/image";
+
+const ItemImageCard = memo(({ item }: { item: Item }) => {
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const loadImage = async () => {
+            if (item.image_size_bytes) {
+                setLoading(true);
+                const result = await getImageUrl({
+                    folder: 'items',
+                    uuid: item.uuid,
+                });
+                if (result.success && result.url) {
+                    setImageUrl(result.url);
+                }
+                setLoading(false);
+            }
+        };
+        loadImage();
+    }, [item.uuid, item.image_size_bytes]);
+
+    if (loading) {
+        return (
+            <div className="flex h-full w-full items-center justify-center bg-muted">
+                <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            </div>
+        );
+    }
+
+    if (imageUrl) {
+        return (
+            <Image
+                src={imageUrl}
+                alt={item.name}
+                fill
+                className="object-cover transition-transform group-hover:scale-105"
+            />
+        );
+    }
+
+    return (
+        <div className="flex h-full w-full items-center justify-center bg-muted">
+            <div className="text-center p-4">
+                <div className="text-4xl font-bold text-muted-foreground">
+                    {item.name.substring(0, 2).toUpperCase()}
+                </div>
+            </div>
+        </div>
+    );
+});
+
+ItemImageCard.displayName = 'ItemImageCard';
 
 export default function TransactionsPage() {
     const [items, setItems] = useState<Item[]>([]);
@@ -188,12 +242,7 @@ export default function TransactionsPage() {
                             >
                                 <CardHeader className="p-0">
                                     <div className="relative aspect-square w-full overflow-hidden bg-muted">
-                                        <Image
-                                            src="/placeholder.svg"
-                                            alt={item.name}
-                                            fill
-                                            className="object-cover transition-transform group-hover:scale-105"
-                                        />
+                                        <ItemImageCard item={item} />
                                         {!item.is_active && (
                                             <Badge
                                                 variant="destructive"
