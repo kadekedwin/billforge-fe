@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,12 +34,58 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Plus, Trash2, Loader2, Pencil, X } from "lucide-react";
 import { getItems, createItem, updateItem, deleteItem } from "@/lib/api/items";
 import { getBusinesses } from "@/lib/api/businesses";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
+import { uploadImage, deleteImage, getImageUrl, getFileSizeBytes } from "@/lib/images";
 import type { Item, CreateItemRequest, UpdateItemRequest, Business, ItemTax, ItemDiscount } from "@/lib/api";
+
+const ItemImage = memo(({ item }: { item: Item }) => {
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const loadImage = async () => {
+            if (item.image_size_bytes) {
+                setLoading(true);
+                const result = await getImageUrl({
+                    folder: 'items',
+                    uuid: item.uuid,
+                });
+                if (result.success && result.url) {
+                    setImageUrl(result.url);
+                }
+                setLoading(false);
+            }
+        };
+        loadImage();
+    }, [item.uuid, item.image_size_bytes]);
+
+    if (loading) {
+        return (
+            <Avatar className="h-10 w-10">
+                <AvatarFallback>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                </AvatarFallback>
+            </Avatar>
+        );
+    }
+
+    return (
+        <Avatar className="h-10 w-10">
+            {imageUrl ? (
+                <AvatarImage src={imageUrl} alt={item.name} />
+            ) : (
+                <AvatarFallback>{item.name.substring(0, 2).toUpperCase()}</AvatarFallback>
+            )}
+        </Avatar>
+    );
+});
+
+ItemImage.displayName = 'ItemImage';
 
 export default function ItemsPage() {
     const [items, setItems] = useState<Item[]>([]);
@@ -54,6 +100,11 @@ export default function ItemsPage() {
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [editingItem, setEditingItem] = useState<Item | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
+    const [imageDeleted, setImageDeleted] = useState(false);
     const [formData, setFormData] = useState<CreateItemRequest>({
         business_uuid: "",
         discount_uuid: null,
@@ -140,6 +191,32 @@ export default function ItemsPage() {
         setFormData((prev) => ({ ...prev, is_active: checked }));
     };
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (!file.type.startsWith('image/')) {
+                setError('Please select an image file');
+                return;
+            }
+            setSelectedImage(file);
+            setImageDeleted(false);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageDeleted(true);
+        setExistingImageUrl(null);
+        const fileInput = document.getElementById('image') as HTMLInputElement;
+        if (fileInput) fileInput.value = '';
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -147,7 +224,34 @@ export default function ItemsPage() {
         setError(null);
 
         try {
+            let imageSizeBytes: number | null = null;
+
             if (editingItem) {
+                if (selectedImage) {
+                    setIsUploadingImage(true);
+                    const uploadResult = await uploadImage({
+                        file: selectedImage,
+                        folder: 'items',
+                        uuid: editingItem.uuid,
+                    });
+                    setIsUploadingImage(false);
+
+                    if (!uploadResult.success) {
+                        setError(uploadResult.error || 'Failed to upload image');
+                        setIsSubmitting(false);
+                        return;
+                    }
+                    imageSizeBytes = getFileSizeBytes(selectedImage);
+                } else if (imageDeleted) {
+                    await deleteImage({
+                        folder: 'items',
+                        uuid: editingItem.uuid,
+                    });
+                    imageSizeBytes = null;
+                } else if (existingImageUrl) {
+                    imageSizeBytes = editingItem.image_size_bytes;
+                }
+
                 const updateData: UpdateItemRequest = {
                     business_uuid: formData.business_uuid,
                     discount_uuid: formData.discount_uuid,
@@ -157,6 +261,7 @@ export default function ItemsPage() {
                     description: formData.description,
                     base_price: formData.base_price,
                     is_active: formData.is_active,
+                    image_size_bytes: imageSizeBytes,
                 };
                 const response = await updateItem(editingItem.id, updateData);
                 if (response.success) {
@@ -175,8 +280,13 @@ export default function ItemsPage() {
                         description: null,
                         base_price: 0,
                         is_active: true,
+                        image_size_bytes: null,
                     });
                     setEditingItem(null);
+                    setSelectedImage(null);
+                    setImagePreview(null);
+                    setExistingImageUrl(null);
+                    setImageDeleted(false);
                 } else {
                     const errorData = response as unknown as {
                         success: false;
@@ -198,8 +308,34 @@ export default function ItemsPage() {
                     }
                 }
             } else {
-                const response = await createItem(formData);
+                let imageSizeBytes: number | null = null;
+                let createdItemUuid: string | null = null;
+
+                const createData = {
+                    ...formData,
+                    image_size_bytes: null,
+                };
+
+                const response = await createItem(createData);
                 if (response.success) {
+                    createdItemUuid = response.data.uuid;
+
+                    if (selectedImage && createdItemUuid) {
+                        setIsUploadingImage(true);
+                        const uploadResult = await uploadImage({
+                            file: selectedImage,
+                            folder: 'items',
+                            uuid: createdItemUuid,
+                        });
+                        setIsUploadingImage(false);
+
+                        if (uploadResult.success) {
+                            imageSizeBytes = getFileSizeBytes(selectedImage);
+                            await updateItem(response.data.id, { image_size_bytes: imageSizeBytes });
+                            response.data.image_size_bytes = imageSizeBytes;
+                        }
+                    }
+
                     setItems((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({
@@ -211,7 +347,12 @@ export default function ItemsPage() {
                         description: null,
                         base_price: 0,
                         is_active: true,
+                        image_size_bytes: null,
                     });
+                    setSelectedImage(null);
+                    setImagePreview(null);
+                    setExistingImageUrl(null);
+                    setImageDeleted(false);
                 } else {
                     const errorData = response as unknown as {
                         success: false;
@@ -272,7 +413,7 @@ export default function ItemsPage() {
         }
     };
 
-    const handleEdit = (item: Item) => {
+    const handleEdit = async (item: Item) => {
         setEditingItem(item);
         setFormData({
             business_uuid: item.business_uuid,
@@ -283,7 +424,27 @@ export default function ItemsPage() {
             description: item.description,
             base_price: parseFloat(item.base_price),
             is_active: item.is_active,
+            image_size_bytes: item.image_size_bytes,
         });
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageDeleted(false);
+
+        if (item.image_size_bytes) {
+            const imageResult = await getImageUrl({
+                folder: 'items',
+                uuid: item.uuid,
+            });
+            if (imageResult.success && imageResult.url) {
+                setExistingImageUrl(imageResult.url);
+                setImagePreview(imageResult.url);
+            } else {
+                setExistingImageUrl(null);
+            }
+        } else {
+            setExistingImageUrl(null);
+        }
+
         setIsDialogOpen(true);
     };
 
@@ -304,6 +465,10 @@ export default function ItemsPage() {
             });
             setFormErrors({});
             setError(null);
+            setSelectedImage(null);
+            setImagePreview(null);
+            setExistingImageUrl(null);
+            setImageDeleted(false);
         }
     };
 
@@ -311,6 +476,7 @@ export default function ItemsPage() {
         const business = businesses.find(b => b.uuid === business_uuid);
         return business?.name || "Unknown Business";
     };
+
 
     return (
         <div className="space-y-6">
@@ -328,7 +494,7 @@ export default function ItemsPage() {
                             Add Item
                         </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-2xl">
+                    <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                         <form onSubmit={handleSubmit}>
                             <DialogHeader>
                                 <DialogTitle>{editingItem ? "Edit Item" : "Create New Item"}</DialogTitle>
@@ -454,6 +620,49 @@ export default function ItemsPage() {
                                             <p className="text-sm text-destructive">{formErrors.description}</p>
                                         )}
                                     </div>
+                                    <div className="space-y-2 col-span-2">
+                                        <Label htmlFor="image">Item Image (Optional)</Label>
+                                        <div className="flex items-center gap-4">
+                                            {imagePreview && (
+                                                <div className="relative">
+                                                    <Avatar className="h-20 w-20">
+                                                        <AvatarImage src={imagePreview} alt="Item preview" />
+                                                        <AvatarFallback>IMG</AvatarFallback>
+                                                    </Avatar>
+                                                    <Button
+                                                        type="button"
+                                                        variant="destructive"
+                                                        size="icon"
+                                                        className="absolute -top-2 -right-2 h-6 w-6 rounded-full"
+                                                        onClick={handleRemoveImage}
+                                                        disabled={isSubmitting || isUploadingImage}
+                                                    >
+                                                        <X className="h-3 w-3" />
+                                                    </Button>
+                                                </div>
+                                            )}
+                                            <div className="flex-1">
+                                                <Input
+                                                    id="image"
+                                                    name="image"
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={handleImageChange}
+                                                    disabled={isSubmitting || isUploadingImage}
+                                                    className="cursor-pointer"
+                                                />
+                                                <p className="text-xs text-muted-foreground mt-1">
+                                                    Supported formats: JPG, JPEG, PNG, GIF, WEBP
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {isUploadingImage && (
+                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                <Loader2 className="h-4 w-4 animate-spin" />
+                                                Uploading image...
+                                            </div>
+                                        )}
+                                    </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="base_price">Base Price</Label>
                                         <Input
@@ -528,6 +737,7 @@ export default function ItemsPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
+                                <TableHead>Image</TableHead>
                                 <TableHead>Name</TableHead>
                                 <TableHead>SKU</TableHead>
                                 <TableHead>Business</TableHead>
@@ -540,6 +750,9 @@ export default function ItemsPage() {
                         <TableBody>
                             {items.map((item) => (
                                 <TableRow key={item.id}>
+                                    <TableCell>
+                                        <ItemImage item={item} />
+                                    </TableCell>
                                     <TableCell className="font-medium">{item.name}</TableCell>
                                     <TableCell className="font-mono text-sm">{item.sku}</TableCell>
                                     <TableCell>{getBusinessName(item.business_uuid)}</TableCell>
