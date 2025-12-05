@@ -13,6 +13,7 @@ import {
   X,
   Percent,
   Tag,
+  CreditCard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,11 @@ const navItems = [
     title: "Items",
     href: "/items",
     icon: Package,
+  },
+  {
+    title: "Payment Methods",
+    href: "/payment-methods",
+    icon: CreditCard,
   },
   {
     title: "Item Taxes",

@@ -14,5 +14,5 @@ export * as transactions from "./transactions";
 export type { Transaction, CreateTransactionRequest, UpdateTransactionRequest, TransactionQueryParams } from "./transactions";
 export * as transactionItems from "./transaction-items";
 export type { TransactionItem, CreateTransactionItemRequest, UpdateTransactionItemRequest, TransactionItemQueryParams } from "./transaction-items";
-export * as payments from "./payments";
-export type { Payment, CreatePaymentRequest, UpdatePaymentRequest, PaymentQueryParams } from "./payments";
+export * as paymentMethods from "./payment-methods";
+export type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequest, PaymentMethodQueryParams } from "./payment-methods";
