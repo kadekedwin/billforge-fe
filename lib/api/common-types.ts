@@ -17,6 +17,7 @@ export interface User {
   uuid: string;
   name: string;
   email: string;
+  image_size_bytes: number | null;
   created_at: string;
   updated_at: string;
 }

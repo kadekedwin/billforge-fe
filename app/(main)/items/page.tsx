@@ -63,6 +63,7 @@ export default function ItemsPage() {
         description: null,
         base_price: 0,
         is_active: true,
+        image_size_bytes: null,
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
@@ -299,6 +300,7 @@ export default function ItemsPage() {
                 description: null,
                 base_price: 0,
                 is_active: true,
+                image_size_bytes: null,
             });
             setFormErrors({});
             setError(null);

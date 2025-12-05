@@ -9,6 +9,7 @@ export interface Item {
   description: string | null;
   base_price: string;
   is_active: boolean;
+  image_size_bytes: number | null;
   created_at: string;
   updated_at: string;
 }
@@ -22,6 +23,7 @@ export interface CreateItemRequest {
   description?: string | null;
   base_price: number;
   is_active: boolean;
+  image_size_bytes?: number | null;
 }
 
 export interface UpdateItemRequest {
@@ -33,6 +35,7 @@ export interface UpdateItemRequest {
   description?: string | null;
   base_price?: number;
   is_active?: boolean;
+  image_size_bytes?: number | null;
 }
 
 export interface ItemQueryParams extends Record<string, string | number | boolean | undefined> {

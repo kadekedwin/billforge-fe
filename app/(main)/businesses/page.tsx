@@ -49,6 +49,7 @@ export default function BusinessesPage() {
         name: "",
         address: null,
         phone: null,
+        image_size_bytes: null,
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
@@ -209,7 +210,7 @@ export default function BusinessesPage() {
         setIsDialogOpen(open);
         if (!open) {
             setEditingBusiness(null);
-            setFormData({ name: "", address: null, phone: null });
+            setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
             setFormErrors({});
             setError(null);
         }
