@@ -393,6 +393,14 @@ export default function ItemsPage() {
         try {
             setDeletingId(itemToDelete.id);
             setError(null);
+
+            if (itemToDelete.image_size_bytes) {
+                await deleteImage({
+                    folder: 'items',
+                    uuid: itemToDelete.uuid,
+                });
+            }
+
             const response = await deleteItem(itemToDelete.id);
             if (response.success) {
                 setItems((prev) => prev.filter((item) => item.id !== itemToDelete.id));
