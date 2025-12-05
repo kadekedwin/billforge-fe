@@ -11,7 +11,7 @@ import {
     GetImageUrlResult,
 } from "./types";
 
-const R2_PUBLIC_DOMAIN = process.env.R2_PUBLIC_DOMAIN;
+const R2_ENDPOINT = process.env.NEXT_PUBLIC_R2_ENDPOINT;
 
 export async function uploadImage(options: UploadImageOptions): Promise<UploadImageResult> {
     const { file, folder, uuid } = options;
@@ -32,7 +32,7 @@ export async function uploadImage(options: UploadImageOptions): Promise<UploadIm
             })
         );
 
-        const url = `${R2_PUBLIC_DOMAIN}/${key}`;
+        const url = `${R2_ENDPOINT}/${key}`;
 
         return {
             success: true,
@@ -108,7 +108,7 @@ export async function getImageUrl(options: GetImageUrlOptions): Promise<GetImage
                     })
                 );
 
-                const url = `${R2_PUBLIC_DOMAIN}/${key}`;
+                const url = `${R2_ENDPOINT}/${key}`;
 
                 return {
                     success: true,
