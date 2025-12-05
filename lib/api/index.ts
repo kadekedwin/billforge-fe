@@ -4,6 +4,8 @@ export { apiClient } from "./client";
 export * from "./auth";
 export * as businesses from "./businesses";
 export type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "./businesses";
+export * as customers from "./customers";
+export type { Customer, CreateCustomerRequest, UpdateCustomerRequest, CustomerQueryParams } from "./customers";
 export * as items from "./items";
 export type { Item, CreateItemRequest, UpdateItemRequest, ItemQueryParams } from "./items";
 export * as itemTaxes from "./item-taxes";

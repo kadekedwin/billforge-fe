@@ -3,7 +3,7 @@ export interface Transaction {
   uuid: string;
   business_uuid: string;
   payment_method_uuid: string | null;
-  customer_name: string | null;
+  customer_uuid: string | null;
   total_amount: string;
   tax_amount: string;
   discount_amount: string;
@@ -16,7 +16,7 @@ export interface Transaction {
 export interface CreateTransactionRequest {
   business_uuid: string;
   payment_method_uuid?: string | null;
-  customer_name?: string | null;
+  customer_uuid?: string | null;
   total_amount: number;
   tax_amount: number;
   discount_amount: number;
@@ -27,7 +27,7 @@ export interface CreateTransactionRequest {
 export interface UpdateTransactionRequest {
   business_uuid?: string;
   payment_method_uuid?: string | null;
-  customer_name?: string | null;
+  customer_uuid?: string | null;
   total_amount?: number;
   tax_amount?: number;
   discount_amount?: number;
