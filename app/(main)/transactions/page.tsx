@@ -24,15 +24,13 @@ import { getBusinesses } from "@/lib/api/businesses";
 import { getCustomers } from "@/lib/api/customers";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getTransactionItems } from "@/lib/api/transaction-items";
-import { getItems } from "@/lib/api/items";
-import type { Transaction, Business, Customer, PaymentMethod, TransactionItem, Item } from "@/lib/api";
+import type { Transaction, Business, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
 
 export default function TransactionsPage() {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [businesses, setBusinesses] = useState<Business[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
-    const [items, setItems] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false);
     const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
@@ -53,13 +51,11 @@ export default function TransactionsPage() {
                 businessesResponse,
                 customersResponse,
                 paymentMethodsResponse,
-                itemsResponse,
             ] = await Promise.all([
                 getTransactions(),
                 getBusinesses(),
                 getCustomers(),
                 getPaymentMethods(),
-                getItems(),
             ]);
 
             if (transactionsResponse.success) {
@@ -82,10 +78,6 @@ export default function TransactionsPage() {
 
             if (paymentMethodsResponse.success) {
                 setPaymentMethods(paymentMethodsResponse.data);
-            }
-
-            if (itemsResponse.success) {
-                setItems(itemsResponse.data);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -127,11 +119,6 @@ export default function TransactionsPage() {
         if (!payment_method_uuid) return "-";
         const paymentMethod = paymentMethods.find(pm => pm.uuid === payment_method_uuid);
         return paymentMethod?.name || "Unknown Method";
-    };
-
-    const getItemName = (item_uuid: string) => {
-        const item = items.find(i => i.uuid === item_uuid);
-        return item?.name || "Unknown Item";
     };
 
     const getStatusBadge = (status: string) => {
@@ -278,7 +265,19 @@ export default function TransactionsPage() {
                                             <TableBody>
                                                 {transactionItems.map((item) => (
                                                     <TableRow key={item.id}>
-                                                        <TableCell>{getItemName(item.item_uuid)}</TableCell>
+                                                        <TableCell>
+                                                            <div className="font-medium">{item.name}</div>
+                                                            {item.sku && (
+                                                                <div className="text-xs text-muted-foreground">
+                                                                    SKU: {item.sku}
+                                                                </div>
+                                                            )}
+                                                            {item.description && (
+                                                                <div className="text-xs text-muted-foreground mt-1">
+                                                                    {item.description}
+                                                                </div>
+                                                            )}
+                                                        </TableCell>
                                                         <TableCell>{item.quantity}</TableCell>
                                                         <TableCell>${parseFloat(item.base_price).toFixed(2)}</TableCell>
                                                         <TableCell>${parseFloat(item.tax_amount).toFixed(2)}</TableCell>

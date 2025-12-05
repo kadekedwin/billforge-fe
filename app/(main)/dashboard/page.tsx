@@ -289,7 +289,9 @@ export default function TransactionsPage() {
 
                     await createTransactionItem({
                         transaction_uuid: transaction.uuid,
-                        item_uuid: itemUuid,
+                        name: item.name,
+                        sku: item.sku || null,
+                        description: item.description || null,
                         quantity: qty,
                         base_price: basePrice,
                         tax_amount: taxAmount,
