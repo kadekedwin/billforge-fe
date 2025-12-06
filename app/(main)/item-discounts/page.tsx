@@ -34,12 +34,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItemDiscounts, createItemDiscount, updateItemDiscount, deleteItemDiscount } from "@/lib/api/item-discounts";
-import { getBusinesses } from "@/lib/api/businesses";
-import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest, Business } from "@/lib/api";
+import { useBusiness } from "@/lib/business-context";
+import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest } from "@/lib/api";
 
 export default function ItemDiscountsPage() {
+    const { selectedBusiness } = useBusiness();
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,8 +48,7 @@ export default function ItemDiscountsPage() {
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [editingDiscount, setEditingDiscount] = useState<ItemDiscount | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [formData, setFormData] = useState<CreateItemDiscountRequest>({
-        business_uuid: "",
+    const [formData, setFormData] = useState<Omit<CreateItemDiscountRequest, "business_uuid">>({
         name: "",
         type: "percentage",
         value: 0,
@@ -58,29 +57,27 @@ export default function ItemDiscountsPage() {
 
     useEffect(() => {
         loadData();
-    }, []);
+    }, [selectedBusiness]);
 
     const loadData = async () => {
+        if (!selectedBusiness) return;
+
         try {
             setIsLoading(true);
             setError(null);
-            const [discountsResponse, businessesResponse] = await Promise.all([
-                getItemDiscounts(),
-                getBusinesses(),
-            ]);
+            const discountsResponse = await getItemDiscounts();
 
             if (discountsResponse.success) {
-                setDiscounts(discountsResponse.data);
+                const filteredDiscounts = discountsResponse.data.filter(
+                    (discount) => discount.business_uuid === selectedBusiness.uuid
+                );
+                setDiscounts(filteredDiscounts);
             } else {
                 const errorData = discountsResponse as unknown as {
                     success: false;
                     message: string;
                 };
                 setError(errorData.message || "Failed to load discounts");
-            }
-
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -113,6 +110,8 @@ export default function ItemDiscountsPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!selectedBusiness) return;
+
         setIsSubmitting(true);
         setFormErrors({});
         setError(null);
@@ -120,7 +119,7 @@ export default function ItemDiscountsPage() {
         try {
             if (editingDiscount) {
                 const updateData: UpdateItemDiscountRequest = {
-                    business_uuid: formData.business_uuid,
+                    business_uuid: selectedBusiness.uuid,
                     name: formData.name,
                     type: formData.type,
                     value: formData.value,
@@ -134,7 +133,6 @@ export default function ItemDiscountsPage() {
                     );
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                         type: "percentage",
                         value: 0,
@@ -161,12 +159,14 @@ export default function ItemDiscountsPage() {
                     }
                 }
             } else {
-                const response = await createItemDiscount(formData);
+                const response = await createItemDiscount({
+                    ...formData,
+                    business_uuid: selectedBusiness.uuid,
+                });
                 if (response.success) {
                     setDiscounts((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                         type: "percentage",
                         value: 0,
@@ -234,7 +234,6 @@ export default function ItemDiscountsPage() {
     const handleEdit = (discount: ItemDiscount) => {
         setEditingDiscount(discount);
         setFormData({
-            business_uuid: discount.business_uuid,
             name: discount.name,
             type: discount.type,
             value: parseFloat(discount.value),
@@ -247,7 +246,6 @@ export default function ItemDiscountsPage() {
         if (!open) {
             setEditingDiscount(null);
             setFormData({
-                business_uuid: "",
                 name: "",
                 type: "percentage",
                 value: 0,
@@ -255,11 +253,6 @@ export default function ItemDiscountsPage() {
             setFormErrors({});
             setError(null);
         }
-    };
-
-    const getBusinessName = (business_uuid: string) => {
-        const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
     };
 
     return (
@@ -292,28 +285,6 @@ export default function ItemDiscountsPage() {
                                         {error}
                                     </div>
                                 )}
-                                <div className="space-y-2">
-                                    <Label htmlFor="business_uuid">Business</Label>
-                                    <select
-                                        id="business_uuid"
-                                        name="business_uuid"
-                                        value={formData.business_uuid}
-                                        onChange={handleInputChange}
-                                        disabled={isSubmitting}
-                                        required
-                                        className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
-                                    >
-                                        <option value="">Select a business</option>
-                                        {businesses.map((business) => (
-                                            <option key={business.uuid} value={business.uuid}>
-                                                {business.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {formErrors.business_uuid && (
-                                        <p className="text-sm text-destructive">{formErrors.business_uuid}</p>
-                                    )}
-                                </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="name">Discount Name</Label>
                                     <Input
@@ -409,7 +380,6 @@ export default function ItemDiscountsPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Business</TableHead>
                                 <TableHead>Name</TableHead>
                                 <TableHead>Type</TableHead>
                                 <TableHead>Value</TableHead>
@@ -419,9 +389,6 @@ export default function ItemDiscountsPage() {
                         <TableBody>
                             {discounts.map((discount) => (
                                 <TableRow key={discount.id}>
-                                    <TableCell className="font-medium">
-                                        {getBusinessName(discount.business_uuid)}
-                                    </TableCell>
                                     <TableCell>{discount.name}</TableCell>
                                     <TableCell>
                                         <Badge variant={discount.type === "percentage" ? "default" : "secondary"}>

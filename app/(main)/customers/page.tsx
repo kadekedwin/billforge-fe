@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useBusiness } from "@/lib/business-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,12 +35,11 @@ import {
 } from "@/components/ui/table";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getCustomers, createCustomer, updateCustomer, deleteCustomer } from "@/lib/api/customers";
-import { getBusinesses } from "@/lib/api/businesses";
-import type { Customer, CreateCustomerRequest, UpdateCustomerRequest, Business } from "@/lib/api";
+import type { Customer, CreateCustomerRequest, UpdateCustomerRequest } from "@/lib/api";
 
 export default function CustomersPage() {
+    const { selectedBusiness } = useBusiness();
     const [customers, setCustomers] = useState<Customer[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,8 +48,7 @@ export default function CustomersPage() {
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [editingCustomer, setEditingCustomer] = useState<Customer | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [formData, setFormData] = useState<CreateCustomerRequest>({
-        business_uuid: "",
+    const [formData, setFormData] = useState<Omit<CreateCustomerRequest, 'business_uuid'>>({
         name: "",
         email: null,
         address: null,
@@ -59,29 +58,27 @@ export default function CustomersPage() {
 
     useEffect(() => {
         loadData();
-    }, []);
+    }, [selectedBusiness]);
 
     const loadData = async () => {
+        if (!selectedBusiness) return;
+
         try {
             setIsLoading(true);
             setError(null);
-            const [customersResponse, businessesResponse] = await Promise.all([
-                getCustomers(),
-                getBusinesses(),
-            ]);
+            const customersResponse = await getCustomers();
 
             if (customersResponse.success) {
-                setCustomers(customersResponse.data);
+                const filteredCustomers = customersResponse.data.filter(
+                    (customer: Customer) => customer.business_uuid === selectedBusiness.uuid
+                );
+                setCustomers(filteredCustomers);
             } else {
                 const errorData = customersResponse as unknown as {
                     success: false;
                     message: string;
                 };
                 setError(errorData.message || "Failed to load customers");
-            }
-
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -114,6 +111,8 @@ export default function CustomersPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!selectedBusiness) return;
+
         setIsSubmitting(true);
         setFormErrors({});
         setError(null);
@@ -121,7 +120,7 @@ export default function CustomersPage() {
         try {
             if (editingCustomer) {
                 const updateData: UpdateCustomerRequest = {
-                    business_uuid: formData.business_uuid,
+                    business_uuid: selectedBusiness.uuid,
                     name: formData.name,
                     email: formData.email,
                     address: formData.address,
@@ -136,7 +135,6 @@ export default function CustomersPage() {
                     );
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                         email: null,
                         address: null,
@@ -164,12 +162,15 @@ export default function CustomersPage() {
                     }
                 }
             } else {
-                const response = await createCustomer(formData);
+                const createData: CreateCustomerRequest = {
+                    ...formData,
+                    business_uuid: selectedBusiness.uuid,
+                };
+                const response = await createCustomer(createData);
                 if (response.success) {
                     setCustomers((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                         email: null,
                         address: null,
@@ -238,7 +239,6 @@ export default function CustomersPage() {
     const handleEdit = (customer: Customer) => {
         setEditingCustomer(customer);
         setFormData({
-            business_uuid: customer.business_uuid,
             name: customer.name,
             email: customer.email,
             address: customer.address,
@@ -261,11 +261,6 @@ export default function CustomersPage() {
             setFormErrors({});
             setError(null);
         }
-    };
-
-    const getBusinessName = (business_uuid: string) => {
-        const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
     };
 
     return (
@@ -299,28 +294,6 @@ export default function CustomersPage() {
                                     </div>
                                 )}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="space-y-2 col-span-2">
-                                        <Label htmlFor="business_uuid">Business</Label>
-                                        <select
-                                            id="business_uuid"
-                                            name="business_uuid"
-                                            value={formData.business_uuid}
-                                            onChange={handleInputChange}
-                                            disabled={isSubmitting}
-                                            required
-                                            className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
-                                        >
-                                            <option value="">Select a business</option>
-                                            {businesses.map((business) => (
-                                                <option key={business.uuid} value={business.uuid}>
-                                                    {business.name}
-                                                </option>
-                                            ))}
-                                        </select>
-                                        {formErrors.business_uuid && (
-                                            <p className="text-sm text-destructive">{formErrors.business_uuid}</p>
-                                        )}
-                                    </div>
                                     <div className="space-y-2 col-span-2">
                                         <Label htmlFor="name">Customer Name</Label>
                                         <Input
@@ -431,7 +404,6 @@ export default function CustomersPage() {
                                 <TableHead>Name</TableHead>
                                 <TableHead>Email</TableHead>
                                 <TableHead>Phone</TableHead>
-                                <TableHead>Business</TableHead>
                                 <TableHead>Created</TableHead>
                                 <TableHead className="text-right">Actions</TableHead>
                             </TableRow>
@@ -442,7 +414,6 @@ export default function CustomersPage() {
                                     <TableCell className="font-medium">{customer.name}</TableCell>
                                     <TableCell>{customer.email || "-"}</TableCell>
                                     <TableCell>{customer.phone || "-"}</TableCell>
-                                    <TableCell>{getBusinessName(customer.business_uuid)}</TableCell>
                                     <TableCell>
                                         {new Date(customer.created_at).toLocaleDateString()}
                                     </TableCell>

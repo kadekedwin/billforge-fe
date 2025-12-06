@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Sidebar, MobileSidebar } from "@/components/sidebar";
 import { useAuth } from "@/lib/auth-context";
+import { useBusiness } from "@/lib/business-context";
+import { BusinessOnboarding } from "@/components/business-onboarding";
 
 export default function DashboardLayout({
   children,
@@ -11,6 +13,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const { isAuthenticated, isLoading } = useAuth();
+  const { selectedBusiness, businesses, isLoading: isBusinessLoading } = useBusiness();
   const router = useRouter();
 
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function DashboardLayout({
     }
   }, [isAuthenticated, isLoading, router]);
 
-  if (isLoading) {
+  if (isLoading || isBusinessLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
         <div className="text-center">
@@ -32,6 +35,11 @@ export default function DashboardLayout({
 
   if (!isAuthenticated) {
     return null;
+  }
+
+  // Show onboarding if there are no businesses or no selected business
+  if (!selectedBusiness || businesses.length === 0) {
+    return <BusinessOnboarding />;
   }
 
   return (

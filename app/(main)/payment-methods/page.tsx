@@ -34,12 +34,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getPaymentMethods, createPaymentMethod, updatePaymentMethod, deletePaymentMethod } from "@/lib/api/payment-methods";
-import { getBusinesses } from "@/lib/api/businesses";
-import type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequest, Business } from "@/lib/api";
+import { useBusiness } from "@/lib/business-context";
+import type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequest } from "@/lib/api";
 
 export default function PaymentMethodsPage() {
+    const { selectedBusiness } = useBusiness();
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,37 +48,34 @@ export default function PaymentMethodsPage() {
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [editingPaymentMethod, setEditingPaymentMethod] = useState<PaymentMethod | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [formData, setFormData] = useState<CreatePaymentMethodRequest>({
-        business_uuid: "",
+    const [formData, setFormData] = useState<Omit<CreatePaymentMethodRequest, "business_uuid">>({
         name: "",
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
     useEffect(() => {
         loadData();
-    }, []);
+    }, [selectedBusiness]);
 
     const loadData = async () => {
+        if (!selectedBusiness) return;
+
         try {
             setIsLoading(true);
             setError(null);
-            const [paymentMethodsResponse, businessesResponse] = await Promise.all([
-                getPaymentMethods(),
-                getBusinesses(),
-            ]);
+            const paymentMethodsResponse = await getPaymentMethods();
 
             if (paymentMethodsResponse.success) {
-                setPaymentMethods(paymentMethodsResponse.data);
+                const filteredPaymentMethods = paymentMethodsResponse.data.filter(
+                    (pm) => pm.business_uuid === selectedBusiness.uuid
+                );
+                setPaymentMethods(filteredPaymentMethods);
             } else {
                 const errorData = paymentMethodsResponse as unknown as {
                     success: false;
                     message: string;
                 };
                 setError(errorData.message || "Failed to load payment methods");
-            }
-
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -106,6 +103,8 @@ export default function PaymentMethodsPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!selectedBusiness) return;
+
         setIsSubmitting(true);
         setFormErrors({});
         setError(null);
@@ -113,7 +112,7 @@ export default function PaymentMethodsPage() {
         try {
             if (editingPaymentMethod) {
                 const updateData: UpdatePaymentMethodRequest = {
-                    business_uuid: formData.business_uuid,
+                    business_uuid: selectedBusiness.uuid,
                     name: formData.name,
                 };
                 const response = await updatePaymentMethod(editingPaymentMethod.id, updateData);
@@ -125,7 +124,6 @@ export default function PaymentMethodsPage() {
                     );
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                     });
                     setEditingPaymentMethod(null);
@@ -150,12 +148,14 @@ export default function PaymentMethodsPage() {
                     }
                 }
             } else {
-                const response = await createPaymentMethod(formData);
+                const response = await createPaymentMethod({
+                    ...formData,
+                    business_uuid: selectedBusiness.uuid,
+                });
                 if (response.success) {
                     setPaymentMethods((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                     });
                 } else {
@@ -221,7 +221,6 @@ export default function PaymentMethodsPage() {
     const handleEdit = (paymentMethod: PaymentMethod) => {
         setEditingPaymentMethod(paymentMethod);
         setFormData({
-            business_uuid: paymentMethod.business_uuid,
             name: paymentMethod.name,
         });
         setIsDialogOpen(true);
@@ -232,17 +231,11 @@ export default function PaymentMethodsPage() {
         if (!open) {
             setEditingPaymentMethod(null);
             setFormData({
-                business_uuid: "",
                 name: "",
             });
             setFormErrors({});
             setError(null);
         }
-    };
-
-    const getBusinessName = (business_uuid: string) => {
-        const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
     };
 
     return (
@@ -275,28 +268,6 @@ export default function PaymentMethodsPage() {
                                         {error}
                                     </div>
                                 )}
-                                <div className="space-y-2">
-                                    <Label htmlFor="business_uuid">Business</Label>
-                                    <select
-                                        id="business_uuid"
-                                        name="business_uuid"
-                                        value={formData.business_uuid}
-                                        onChange={handleInputChange}
-                                        disabled={isSubmitting}
-                                        required
-                                        className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
-                                    >
-                                        <option value="">Select a business</option>
-                                        {businesses.map((business) => (
-                                            <option key={business.uuid} value={business.uuid}>
-                                                {business.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {formErrors.business_uuid && (
-                                        <p className="text-sm text-destructive">{formErrors.business_uuid}</p>
-                                    )}
-                                </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="name">Payment Method Name</Label>
                                     <Input
@@ -356,7 +327,6 @@ export default function PaymentMethodsPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Business</TableHead>
                                 <TableHead>Payment Method</TableHead>
                                 <TableHead>Created</TableHead>
                                 <TableHead className="text-right">Actions</TableHead>
@@ -365,7 +335,6 @@ export default function PaymentMethodsPage() {
                         <TableBody>
                             {paymentMethods.map((paymentMethod) => (
                                 <TableRow key={paymentMethod.id}>
-                                    <TableCell className="font-medium">{getBusinessName(paymentMethod.business_uuid)}</TableCell>
                                     <TableCell>
                                         <Badge variant="outline">{paymentMethod.name}</Badge>
                                     </TableCell>
@@ -407,7 +376,7 @@ export default function PaymentMethodsPage() {
                     <AlertDialogHeader>
                         <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                         <AlertDialogDescription>
-                            This will permanently delete the payment method <span className="font-semibold">{paymentMethodToDelete?.name}</span> for <span className="font-semibold">{paymentMethodToDelete && getBusinessName(paymentMethodToDelete.business_uuid)}</span>.
+                            This will permanently delete the payment method <span className="font-semibold">{paymentMethodToDelete?.name}</span>.
                             This action cannot be undone.
                         </AlertDialogDescription>
                     </AlertDialogHeader>

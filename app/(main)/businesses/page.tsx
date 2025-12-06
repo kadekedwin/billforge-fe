@@ -33,9 +33,11 @@ import {
 } from "@/components/ui/table";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getBusinesses, createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
+import { useBusiness } from "@/lib/business-context";
 import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
 
 export default function BusinessesPage() {
+    const { refreshBusinesses } = useBusiness();
     const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -181,6 +183,8 @@ export default function BusinessesPage() {
                 setBusinesses((prev) => prev.filter((business) => business.id !== businessToDelete.id));
                 setIsDeleteDialogOpen(false);
                 setBusinessToDelete(null);
+                // Refresh business context to update selected business
+                await refreshBusinesses();
             } else {
                 const errorData = response as unknown as {
                     success: false;

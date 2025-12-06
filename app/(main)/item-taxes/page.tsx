@@ -34,12 +34,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItemTaxes, createItemTax, updateItemTax, deleteItemTax } from "@/lib/api/item-taxes";
-import { getBusinesses } from "@/lib/api/businesses";
-import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest, Business } from "@/lib/api";
+import { useBusiness } from "@/lib/business-context";
+import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "@/lib/api";
 
 export default function ItemTaxesPage() {
+    const { selectedBusiness } = useBusiness();
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,8 +48,7 @@ export default function ItemTaxesPage() {
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [editingTax, setEditingTax] = useState<ItemTax | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [formData, setFormData] = useState<CreateItemTaxRequest>({
-        business_uuid: "",
+    const [formData, setFormData] = useState<Omit<CreateItemTaxRequest, "business_uuid">>({
         name: "",
         type: "percentage",
         value: 0,
@@ -58,29 +57,27 @@ export default function ItemTaxesPage() {
 
     useEffect(() => {
         loadData();
-    }, []);
+    }, [selectedBusiness]);
 
     const loadData = async () => {
+        if (!selectedBusiness) return;
+
         try {
             setIsLoading(true);
             setError(null);
-            const [taxesResponse, businessesResponse] = await Promise.all([
-                getItemTaxes(),
-                getBusinesses(),
-            ]);
+            const taxesResponse = await getItemTaxes();
 
             if (taxesResponse.success) {
-                setTaxes(taxesResponse.data);
+                const filteredTaxes = taxesResponse.data.filter(
+                    (tax) => tax.business_uuid === selectedBusiness.uuid
+                );
+                setTaxes(filteredTaxes);
             } else {
                 const errorData = taxesResponse as unknown as {
                     success: false;
                     message: string;
                 };
                 setError(errorData.message || "Failed to load taxes");
-            }
-
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -113,6 +110,8 @@ export default function ItemTaxesPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!selectedBusiness) return;
+
         setIsSubmitting(true);
         setFormErrors({});
         setError(null);
@@ -120,7 +119,7 @@ export default function ItemTaxesPage() {
         try {
             if (editingTax) {
                 const updateData: UpdateItemTaxRequest = {
-                    business_uuid: formData.business_uuid,
+                    business_uuid: selectedBusiness.uuid,
                     name: formData.name,
                     type: formData.type,
                     value: formData.value,
@@ -134,7 +133,6 @@ export default function ItemTaxesPage() {
                     );
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                         type: "percentage",
                         value: 0,
@@ -161,12 +159,14 @@ export default function ItemTaxesPage() {
                     }
                 }
             } else {
-                const response = await createItemTax(formData);
+                const response = await createItemTax({
+                    ...formData,
+                    business_uuid: selectedBusiness.uuid,
+                });
                 if (response.success) {
                     setTaxes((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         name: "",
                         type: "percentage",
                         value: 0,
@@ -234,7 +234,6 @@ export default function ItemTaxesPage() {
     const handleEdit = (tax: ItemTax) => {
         setEditingTax(tax);
         setFormData({
-            business_uuid: tax.business_uuid,
             name: tax.name,
             type: tax.type,
             value: parseFloat(tax.value),
@@ -247,7 +246,6 @@ export default function ItemTaxesPage() {
         if (!open) {
             setEditingTax(null);
             setFormData({
-                business_uuid: "",
                 name: "",
                 type: "percentage",
                 value: 0,
@@ -255,11 +253,6 @@ export default function ItemTaxesPage() {
             setFormErrors({});
             setError(null);
         }
-    };
-
-    const getBusinessName = (business_uuid: string) => {
-        const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
     };
 
     return (
@@ -292,28 +285,6 @@ export default function ItemTaxesPage() {
                                         {error}
                                     </div>
                                 )}
-                                <div className="space-y-2">
-                                    <Label htmlFor="business_uuid">Business</Label>
-                                    <select
-                                        id="business_uuid"
-                                        name="business_uuid"
-                                        value={formData.business_uuid}
-                                        onChange={handleInputChange}
-                                        disabled={isSubmitting}
-                                        required
-                                        className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
-                                    >
-                                        <option value="">Select a business</option>
-                                        {businesses.map((business) => (
-                                            <option key={business.uuid} value={business.uuid}>
-                                                {business.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {formErrors.business_uuid && (
-                                        <p className="text-sm text-destructive">{formErrors.business_uuid}</p>
-                                    )}
-                                </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="name">Tax Name</Label>
                                     <Input
@@ -409,7 +380,6 @@ export default function ItemTaxesPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Business</TableHead>
                                 <TableHead>Name</TableHead>
                                 <TableHead>Type</TableHead>
                                 <TableHead>Value</TableHead>
@@ -419,9 +389,6 @@ export default function ItemTaxesPage() {
                         <TableBody>
                             {taxes.map((tax) => (
                                 <TableRow key={tax.id}>
-                                    <TableCell className="font-medium">
-                                        {getBusinessName(tax.business_uuid)}
-                                    </TableCell>
                                     <TableCell>{tax.name}</TableCell>
                                     <TableCell>
                                         <Badge variant={tax.type === "percentage" ? "default" : "secondary"}>

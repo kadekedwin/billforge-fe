@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useCallback } from "react";
+import { useBusiness } from "@/lib/business-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,11 +38,10 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Plus, Trash2, Loader2, Pencil, X } from "lucide-react";
 import { getItems, createItem, updateItem, deleteItem } from "@/lib/api/items";
-import { getBusinesses } from "@/lib/api/businesses";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { uploadImage, deleteImage, getImageUrl, getFileSizeBytes } from "@/lib/images";
-import type { Item, CreateItemRequest, UpdateItemRequest, Business, ItemTax, ItemDiscount } from "@/lib/api";
+import type { Item, CreateItemRequest, UpdateItemRequest, ItemTax, ItemDiscount } from "@/lib/api";
 
 const ItemImage = memo(({ item }: { item: Item }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -88,8 +88,8 @@ const ItemImage = memo(({ item }: { item: Item }) => {
 ItemImage.displayName = 'ItemImage';
 
 export default function ItemsPage() {
+    const { selectedBusiness, businesses } = useBusiness();
     const [items, setItems] = useState<Item[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -105,8 +105,7 @@ export default function ItemsPage() {
     const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
     const [isUploadingImage, setIsUploadingImage] = useState(false);
     const [imageDeleted, setImageDeleted] = useState(false);
-    const [formData, setFormData] = useState<CreateItemRequest>({
-        business_uuid: "",
+    const [formData, setFormData] = useState<Omit<CreateItemRequest, 'business_uuid'>>({
         discount_uuid: null,
         tax_uuid: null,
         name: "",
@@ -118,23 +117,23 @@ export default function ItemsPage() {
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
-    useEffect(() => {
-        loadData();
-    }, []);
+    const loadData = useCallback(async () => {
+        if (!selectedBusiness) return;
 
-    const loadData = async () => {
         try {
             setIsLoading(true);
             setError(null);
-            const [itemsResponse, businessesResponse, taxesResponse, discountsResponse] = await Promise.all([
+            const [itemsResponse, taxesResponse, discountsResponse] = await Promise.all([
                 getItems(),
-                getBusinesses(),
                 getItemTaxes(),
                 getItemDiscounts(),
             ]);
 
             if (itemsResponse.success) {
-                setItems(itemsResponse.data);
+                const filteredItems = itemsResponse.data.filter(
+                    (item: Item) => item.business_uuid === selectedBusiness.uuid
+                );
+                setItems(filteredItems);
             } else {
                 const errorData = itemsResponse as unknown as {
                     success: false;
@@ -143,16 +142,18 @@ export default function ItemsPage() {
                 setError(errorData.message || "Failed to load items");
             }
 
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
-            }
-
             if (taxesResponse.success) {
-                setTaxes(taxesResponse.data);
+                const filteredTaxes = taxesResponse.data.filter(
+                    (tax: ItemTax) => tax.business_uuid === selectedBusiness.uuid
+                );
+                setTaxes(filteredTaxes);
             }
 
             if (discountsResponse.success) {
-                setDiscounts(discountsResponse.data);
+                const filteredDiscounts = discountsResponse.data.filter(
+                    (discount: ItemDiscount) => discount.business_uuid === selectedBusiness.uuid
+                );
+                setDiscounts(filteredDiscounts);
             }
         } catch (err) {
             setError("An error occurred while loading data");
@@ -160,6 +161,15 @@ export default function ItemsPage() {
         } finally {
             setIsLoading(false);
         }
+    }, [selectedBusiness]);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
+
+    const getBusinessName = (business_uuid: string) => {
+        const business = businesses.find(b => b.uuid === business_uuid);
+        return business?.name || "Unknown Business";
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -219,6 +229,8 @@ export default function ItemsPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!selectedBusiness) return;
+
         setIsSubmitting(true);
         setFormErrors({});
         setError(null);
@@ -253,7 +265,7 @@ export default function ItemsPage() {
                 }
 
                 const updateData: UpdateItemRequest = {
-                    business_uuid: formData.business_uuid,
+                    business_uuid: selectedBusiness.uuid,
                     discount_uuid: formData.discount_uuid,
                     tax_uuid: formData.tax_uuid,
                     name: formData.name,
@@ -272,7 +284,6 @@ export default function ItemsPage() {
                     );
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         discount_uuid: null,
                         tax_uuid: null,
                         name: "",
@@ -311,8 +322,9 @@ export default function ItemsPage() {
                 let imageSizeBytes: number | null = null;
                 let createdItemUuid: string | null = null;
 
-                const createData = {
+                const createData: CreateItemRequest = {
                     ...formData,
+                    business_uuid: selectedBusiness.uuid,
                     image_size_bytes: null,
                 };
 
@@ -339,7 +351,6 @@ export default function ItemsPage() {
                     setItems((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({
-                        business_uuid: "",
                         discount_uuid: null,
                         tax_uuid: null,
                         name: "",
@@ -424,7 +435,6 @@ export default function ItemsPage() {
     const handleEdit = async (item: Item) => {
         setEditingItem(item);
         setFormData({
-            business_uuid: item.business_uuid,
             discount_uuid: item.discount_uuid,
             tax_uuid: item.tax_uuid,
             name: item.name,
@@ -461,7 +471,6 @@ export default function ItemsPage() {
         if (!open) {
             setEditingItem(null);
             setFormData({
-                business_uuid: "",
                 discount_uuid: null,
                 tax_uuid: null,
                 name: "",
@@ -479,12 +488,6 @@ export default function ItemsPage() {
             setImageDeleted(false);
         }
     };
-
-    const getBusinessName = (business_uuid: string) => {
-        const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
-    };
-
 
     return (
         <div className="space-y-6">
@@ -517,28 +520,6 @@ export default function ItemsPage() {
                                     </div>
                                 )}
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="space-y-2 col-span-2">
-                                        <Label htmlFor="business_uuid">Business</Label>
-                                        <select
-                                            id="business_uuid"
-                                            name="business_uuid"
-                                            value={formData.business_uuid}
-                                            onChange={handleInputChange}
-                                            disabled={isSubmitting}
-                                            required
-                                            className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.business_uuid ? "border-destructive" : ""}`}
-                                        >
-                                            <option value="">Select a business</option>
-                                            {businesses.map((business) => (
-                                                <option key={business.uuid} value={business.uuid}>
-                                                    {business.name}
-                                                </option>
-                                            ))}
-                                        </select>
-                                        {formErrors.business_uuid && (
-                                            <p className="text-sm text-destructive">{formErrors.business_uuid}</p>
-                                        )}
-                                    </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="tax_uuid">Tax (Optional)</Label>
                                         <select

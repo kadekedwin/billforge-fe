@@ -29,7 +29,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth-context";
+import { useBusiness } from "@/lib/business-context";
 import { useState } from "react";
+import { Building2, ChevronDown } from "lucide-react";
 
 const navItems = [
   {
@@ -82,6 +84,7 @@ const navItems = [
 function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const { user, logout } = useAuth();
+  const { selectedBusiness, businesses, setSelectedBusiness } = useBusiness();
 
   const handleLogout = () => {
     logout();
@@ -122,6 +125,45 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
           );
         })}
       </nav>
+
+      {/* Business Selector */}
+      {selectedBusiness && businesses.length > 0 && (
+        <div className="border-t p-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-between"
+              >
+                <div className="flex items-center space-x-2">
+                  <Building2 className="h-4 w-4" />
+                  <span className="truncate text-sm">{selectedBusiness.name}</span>
+                </div>
+                <ChevronDown className="h-4 w-4 opacity-50" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+              <DropdownMenuLabel>Switch Business</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {businesses.map((business) => (
+                <DropdownMenuItem
+                  key={business.uuid}
+                  onClick={() => {
+                    setSelectedBusiness(business);
+                    onNavigate?.();
+                  }}
+                  className={cn(
+                    selectedBusiness.uuid === business.uuid && "bg-accent"
+                  )}
+                >
+                  <Building2 className="mr-2 h-4 w-4" />
+                  <span>{business.name}</span>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      )}
 
       {/* User Profile */}
       <div className="border-t p-4">
