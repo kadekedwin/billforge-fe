@@ -102,11 +102,11 @@ export default function BusinessesPage() {
 
         try {
             if (editingBusiness) {
-                const response = await updateBusiness(editingBusiness.id, formData as UpdateBusinessRequest);
+                const response = await updateBusiness(editingBusiness.uuid, formData as UpdateBusinessRequest);
                 if (response.success) {
                     setBusinesses((prev) =>
                         prev.map((business) =>
-                            business.id === editingBusiness.id ? response.data : business
+                            business.uuid === editingBusiness.uuid ? response.data : business
                         )
                     );
                     setIsDialogOpen(false);
@@ -178,9 +178,9 @@ export default function BusinessesPage() {
         try {
             setDeletingId(businessToDelete.id);
             setError(null);
-            const response = await deleteBusiness(businessToDelete.id);
+            const response = await deleteBusiness(businessToDelete.uuid);
             if (response.success) {
-                setBusinesses((prev) => prev.filter((business) => business.id !== businessToDelete.id));
+                setBusinesses((prev) => prev.filter((business) => business.uuid !== businessToDelete.uuid));
                 setIsDeleteDialogOpen(false);
                 setBusinessToDelete(null);
                 // Refresh business context to update selected business

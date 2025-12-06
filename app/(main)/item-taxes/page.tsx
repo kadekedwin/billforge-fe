@@ -124,11 +124,11 @@ export default function ItemTaxesPage() {
                     type: formData.type,
                     value: formData.value,
                 };
-                const response = await updateItemTax(editingTax.id, updateData);
+                const response = await updateItemTax(editingTax.uuid, updateData);
                 if (response.success) {
                     setTaxes((prev) =>
                         prev.map((tax) =>
-                            tax.id === editingTax.id ? response.data : tax
+                            tax.uuid === editingTax.uuid ? response.data : tax
                         )
                     );
                     setIsDialogOpen(false);
@@ -211,9 +211,9 @@ export default function ItemTaxesPage() {
         try {
             setDeletingId(taxToDelete.id);
             setError(null);
-            const response = await deleteItemTax(taxToDelete.id);
+            const response = await deleteItemTax(taxToDelete.uuid);
             if (response.success) {
-                setTaxes((prev) => prev.filter((tax) => tax.id !== taxToDelete.id));
+                setTaxes((prev) => prev.filter((tax) => tax.uuid !== taxToDelete.uuid));
                 setIsDeleteDialogOpen(false);
                 setTaxToDelete(null);
             } else {

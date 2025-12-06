@@ -124,11 +124,11 @@ export default function ItemDiscountsPage() {
                     type: formData.type,
                     value: formData.value,
                 };
-                const response = await updateItemDiscount(editingDiscount.id, updateData);
+                const response = await updateItemDiscount(editingDiscount.uuid, updateData);
                 if (response.success) {
                     setDiscounts((prev) =>
                         prev.map((discount) =>
-                            discount.id === editingDiscount.id ? response.data : discount
+                            discount.uuid === editingDiscount.uuid ? response.data : discount
                         )
                     );
                     setIsDialogOpen(false);
@@ -211,9 +211,9 @@ export default function ItemDiscountsPage() {
         try {
             setDeletingId(discountToDelete.id);
             setError(null);
-            const response = await deleteItemDiscount(discountToDelete.id);
+            const response = await deleteItemDiscount(discountToDelete.uuid);
             if (response.success) {
-                setDiscounts((prev) => prev.filter((discount) => discount.id !== discountToDelete.id));
+                setDiscounts((prev) => prev.filter((discount) => discount.uuid !== discountToDelete.uuid));
                 setIsDeleteDialogOpen(false);
                 setDiscountToDelete(null);
             } else {

@@ -115,11 +115,11 @@ export default function PaymentMethodsPage() {
                     business_uuid: selectedBusiness.uuid,
                     name: formData.name,
                 };
-                const response = await updatePaymentMethod(editingPaymentMethod.id, updateData);
+                const response = await updatePaymentMethod(editingPaymentMethod.uuid, updateData);
                 if (response.success) {
                     setPaymentMethods((prev) =>
                         prev.map((paymentMethod) =>
-                            paymentMethod.id === editingPaymentMethod.id ? response.data : paymentMethod
+                            paymentMethod.uuid === editingPaymentMethod.uuid ? response.data : paymentMethod
                         )
                     );
                     setIsDialogOpen(false);
@@ -198,9 +198,9 @@ export default function PaymentMethodsPage() {
         try {
             setDeletingId(paymentMethodToDelete.id);
             setError(null);
-            const response = await deletePaymentMethod(paymentMethodToDelete.id);
+            const response = await deletePaymentMethod(paymentMethodToDelete.uuid);
             if (response.success) {
-                setPaymentMethods((prev) => prev.filter((paymentMethod) => paymentMethod.id !== paymentMethodToDelete.id));
+                setPaymentMethods((prev) => prev.filter((paymentMethod) => paymentMethod.uuid !== paymentMethodToDelete.uuid));
                 setIsDeleteDialogOpen(false);
                 setPaymentMethodToDelete(null);
             } else {

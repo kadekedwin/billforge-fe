@@ -126,11 +126,11 @@ export default function CustomersPage() {
                     address: formData.address,
                     phone: formData.phone,
                 };
-                const response = await updateCustomer(editingCustomer.id, updateData);
+                const response = await updateCustomer(editingCustomer.uuid, updateData);
                 if (response.success) {
                     setCustomers((prev) =>
                         prev.map((customer) =>
-                            customer.id === editingCustomer.id ? response.data : customer
+                            customer.uuid === editingCustomer.uuid ? response.data : customer
                         )
                     );
                     setIsDialogOpen(false);
@@ -216,9 +216,9 @@ export default function CustomersPage() {
         try {
             setDeletingId(customerToDelete.id);
             setError(null);
-            const response = await deleteCustomer(customerToDelete.id);
+            const response = await deleteCustomer(customerToDelete.uuid);
             if (response.success) {
-                setCustomers((prev) => prev.filter((customer) => customer.id !== customerToDelete.id));
+                setCustomers((prev) => prev.filter((customer) => customer.uuid !== customerToDelete.uuid));
                 setIsDeleteDialogOpen(false);
                 setCustomerToDelete(null);
             } else {
@@ -252,7 +252,6 @@ export default function CustomersPage() {
         if (!open) {
             setEditingCustomer(null);
             setFormData({
-                business_uuid: "",
                 name: "",
                 email: null,
                 address: null,

@@ -275,11 +275,11 @@ export default function ItemsPage() {
                     is_active: formData.is_active,
                     image_size_bytes: imageSizeBytes,
                 };
-                const response = await updateItem(editingItem.id, updateData);
+                const response = await updateItem(editingItem.uuid, updateData);
                 if (response.success) {
                     setItems((prev) =>
                         prev.map((item) =>
-                            item.id === editingItem.id ? response.data : item
+                            item.uuid === editingItem.uuid ? response.data : item
                         )
                     );
                     setIsDialogOpen(false);
@@ -343,7 +343,7 @@ export default function ItemsPage() {
 
                         if (uploadResult.success) {
                             imageSizeBytes = getFileSizeBytes(selectedImage);
-                            await updateItem(response.data.id, { image_size_bytes: imageSizeBytes });
+                            await updateItem(response.data.uuid, { image_size_bytes: imageSizeBytes });
                             response.data.image_size_bytes = imageSizeBytes;
                         }
                     }
@@ -412,9 +412,9 @@ export default function ItemsPage() {
                 });
             }
 
-            const response = await deleteItem(itemToDelete.id);
+            const response = await deleteItem(itemToDelete.uuid);
             if (response.success) {
-                setItems((prev) => prev.filter((item) => item.id !== itemToDelete.id));
+                setItems((prev) => prev.filter((item) => item.uuid !== itemToDelete.uuid));
                 setIsDeleteDialogOpen(false);
                 setItemToDelete(null);
             } else {
