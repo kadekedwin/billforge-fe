@@ -24,9 +24,10 @@ import { createTransaction } from "@/lib/api/transactions";
 import { createTransactionItem } from "@/lib/api/transaction-items";
 import { getImageUrl } from "@/lib/images/operations";
 import { useBusiness } from "@/contexts/business-context";
-import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount } from "@/lib/api";
+import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction, TransactionItem } from "@/lib/api";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { ReceiptPopup } from "@/components/receipt-popup";
+import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
 
 const ItemImageCard = memo(({ item }: { item: Item }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -82,7 +83,6 @@ const ItemImageCard = memo(({ item }: { item: Item }) => {
 ItemImageCard.displayName = 'ItemImageCard';
 
 export default function DashboardPage() {
-    const router = useRouter();
     const { selectedBusiness } = useBusiness();
     const [items, setItems] = useState<Item[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
@@ -97,6 +97,13 @@ export default function DashboardPage() {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>("");
     const [notes, setNotes] = useState<string>("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isReceiptPopupOpen, setIsReceiptPopupOpen] = useState(false);
+    const [completedTransaction, setCompletedTransaction] = useState<Transaction | null>(null);
+    const [completedTransactionItems, setCompletedTransactionItems] = useState<TransactionItem[]>([]);
+    const [completedCustomerName, setCompletedCustomerName] = useState<string | undefined>(undefined);
+    const [completedPaymentMethodName, setCompletedPaymentMethodName] = useState<string | undefined>(undefined);
+    const [completedCustomerEmail, setCompletedCustomerEmail] = useState<string | null>(null);
+    const [completedCustomerPhone, setCompletedCustomerPhone] = useState<string | null>(null);
 
 
     const loadData = useCallback(async () => {
@@ -270,6 +277,7 @@ export default function DashboardPage() {
             }
 
             const transaction = transactionResponse.data;
+            const createdItems: TransactionItem[] = [];
 
             for (const [itemUuid, qty] of cart.entries()) {
                 const item = items.find((i) => i.uuid === itemUuid);
@@ -279,7 +287,7 @@ export default function DashboardPage() {
                     const discountAmount = calculateItemDiscount(item, basePrice);
                     const totalPrice = basePrice + taxAmount - discountAmount;
 
-                    await createTransactionItem({
+                    const itemData = {
                         transaction_uuid: transaction.uuid,
                         name: item.name,
                         sku: item.sku || null,
@@ -289,16 +297,37 @@ export default function DashboardPage() {
                         tax_amount: taxAmount,
                         discount_amount: discountAmount,
                         total_price: totalPrice,
+                    };
+
+                    await createTransactionItem(itemData);
+
+                    createdItems.push({
+                        id: 0,
+                        uuid: `temp-${itemUuid}`,
+                        transaction_uuid: transaction.uuid,
+                        name: item.name,
+                        sku: item.sku || null,
+                        description: item.description || null,
+                        quantity: qty,
+                        base_price: basePrice.toString(),
+                        tax_amount: taxAmount.toString(),
+                        discount_amount: discountAmount.toString(),
+                        total_price: totalPrice.toString(),
+                        created_at: new Date().toISOString(),
+                        updated_at: new Date().toISOString(),
                     });
                 }
             }
+
+            setCompletedTransaction(transaction);
+            setCompletedTransactionItems(createdItems);
+            setIsReceiptPopupOpen(true);
 
             setCart(new Map());
             setIsCheckout(false);
             setSelectedCustomer("");
             setSelectedPaymentMethod("");
             setNotes("");
-            router.push("/transactions");
         } catch (err) {
             setError(err instanceof Error ? err.message : "An error occurred while completing the transaction");
         } finally {
@@ -644,6 +673,29 @@ export default function DashboardPage() {
                         </Button>
                     </div>
                 </div>
+            )}
+
+            {completedTransaction && selectedBusiness && (
+                <ReceiptPopup
+                    open={isReceiptPopupOpen}
+                    onOpenChange={(open) => {
+                        setIsReceiptPopupOpen(open);
+                        if (!open) {
+                            setCompletedTransaction(null);
+                            setCompletedTransactionItems([]);
+                        }
+                    }}
+                    receiptData={convertTransactionToReceiptData(
+                        completedTransaction,
+                        completedTransactionItems,
+                        selectedBusiness,
+                        selectedCustomer ? customers.find(c => c.uuid === selectedCustomer)?.name : undefined,
+                        selectedPaymentMethod ? paymentMethods.find(pm => pm.uuid === selectedPaymentMethod)?.name : "Cash",
+                        undefined
+                    )}
+                    customerEmail={selectedCustomer ? customers.find(c => c.uuid === selectedCustomer)?.email : null}
+                    customerPhone={selectedCustomer ? customers.find(c => c.uuid === selectedCustomer)?.phone : null}
+                />
             )}
         </div>
     );

@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer, { ScreenshotOptions } from 'puppeteer';
 import { ReceiptData, ReceiptTemplateType } from './types';
 import { generateReceiptHTML } from './templates';
 
@@ -26,25 +26,28 @@ export const generateReceiptImage = async (
 
     const page = await browser.newPage();
 
-    if (options.width || options.height) {
-        await page.setViewport({
-            width: options.width || 800,
-            height: options.height || 1200,
-            deviceScaleFactor: 2
-        });
-    }
-
     await page.setContent(html, {
         waitUntil: 'networkidle0'
     });
 
-    await page.screenshot({
+    const receiptElement = await page.$('.receipt');
+
+    if (!receiptElement) {
+        await browser.close();
+        throw new Error('Receipt element not found');
+    }
+
+    const screenshotOptions: ScreenshotOptions = {
         path: outputPath,
         type: options.type || 'png',
-        quality: options.quality || 90,
-        fullPage: options.fullPage !== false,
         omitBackground: options.omitBackground || false
-    });
+    };
+
+    if ((options.type === 'jpeg' || options.type === 'webp') && options.quality) {
+        screenshotOptions.quality = options.quality;
+    }
+
+    await receiptElement.screenshot(screenshotOptions);
 
     await browser.close();
 };
@@ -62,26 +65,29 @@ export const generateReceiptImageBuffer = async (
 
     const page = await browser.newPage();
 
-    if (options.width || options.height) {
-        await page.setViewport({
-            width: options.width || 800,
-            height: options.height || 1200,
-            deviceScaleFactor: 2
-        });
-    }
-
     await page.setContent(html, {
         waitUntil: 'networkidle0'
     });
 
-    const buffer = await page.screenshot({
+    const receiptElement = await page.$('.receipt');
+
+    if (!receiptElement) {
+        await browser.close();
+        throw new Error('Receipt element not found');
+    }
+
+    const screenshotOptions: ScreenshotOptions = {
         type: options.type || 'png',
-        quality: options.quality || 90,
-        fullPage: options.fullPage !== false,
         omitBackground: options.omitBackground || false
-    });
+    };
+
+    if ((options.type === 'jpeg' || options.type === 'webp') && options.quality) {
+        screenshotOptions.quality = options.quality;
+    }
+
+    const buffer = await receiptElement.screenshot(screenshotOptions);
 
     await browser.close();
 
-    return buffer as Buffer;
+    return Buffer.from(buffer);
 };
