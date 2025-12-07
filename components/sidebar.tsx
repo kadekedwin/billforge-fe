@@ -6,11 +6,8 @@ import {
     LayoutDashboard,
     FileText,
     Package,
-    Users,
-    Settings,
     LogOut,
     Menu,
-    X,
     Percent,
     Tag,
     CreditCard,
@@ -31,10 +28,21 @@ import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {useAuth} from "@/lib/auth-context";
 import {useBusiness} from "@/lib/business-context";
 import {useState, useEffect, memo} from "react";
-import {Building2, ChevronDown, Loader2} from "lucide-react";
+import {Building2, ChevronDown, Loader2, Plus, Pencil, X} from "lucide-react";
 import Image from "next/image";
-import { getImageUrl } from "@/lib/images";
-import type { Business } from "@/lib/api";
+import { getImageUrl, uploadImage, deleteImage, getFileSizeBytes } from "@/lib/images";
+import { createBusiness, updateBusiness } from "@/lib/api/businesses";
+import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const BusinessLogo = memo(({ business, size = "sm" }: { business: Business; size?: "sm" | "lg" }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -113,26 +121,247 @@ const navItems = [
         href: "/item-discounts",
         icon: Tag,
     },
-    {
-        title: "Businesses",
-        href: "/businesses",
-        icon: Users,
-    },
-    {
-        title: "Settings",
-        href: "/settings",
-        icon: Settings,
-    },
 ];
 
 function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
     const pathname = usePathname();
     const {user, logout} = useAuth();
-    const {selectedBusiness, businesses, setSelectedBusiness} = useBusiness();
+    const {selectedBusiness, businesses, setSelectedBusiness, refreshBusinesses} = useBusiness();
+
+    const [isBusinessDialogOpen, setIsBusinessDialogOpen] = useState(false);
+    const [editingBusiness, setEditingBusiness] = useState<Business | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [formData, setFormData] = useState<CreateBusinessRequest>({
+        name: "",
+        address: null,
+        phone: null,
+        image_size_bytes: null,
+    });
+    const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
+    const [imageDeleted, setImageDeleted] = useState(false);
 
     const handleLogout = () => {
         logout();
         onNavigate?.();
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        const processedValue = (name === "address" || name === "phone") && value === "" ? null : value;
+        setFormData((prev) => ({ ...prev, [name]: processedValue }));
+        if (formErrors[name]) {
+            setFormErrors((prev) => {
+                const newErrors = { ...prev };
+                delete newErrors[name];
+                return newErrors;
+            });
+        }
+    };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedImage(file);
+            setImageDeleted(false);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageDeleted(true);
+        setExistingImageUrl(null);
+        const fileInput = document.getElementById('business-logo') as HTMLInputElement;
+        if (fileInput) {
+            fileInput.value = '';
+        }
+    };
+
+    const handleAddBusiness = () => {
+        setEditingBusiness(null);
+        setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
+        setFormErrors({});
+        setError(null);
+        setSelectedImage(null);
+        setImagePreview(null);
+        setExistingImageUrl(null);
+        setImageDeleted(false);
+        setIsBusinessDialogOpen(true);
+    };
+
+    const handleEditBusiness = async (business: Business) => {
+        setEditingBusiness(business);
+        setFormData({
+            name: business.name,
+            address: business.address,
+            phone: business.phone,
+            image_size_bytes: business.image_size_bytes,
+        });
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageDeleted(false);
+
+        if (business.image_size_bytes) {
+            const imageResult = await getImageUrl({
+                folder: 'businesses',
+                uuid: business.uuid,
+            });
+            if (imageResult.success && imageResult.url) {
+                setExistingImageUrl(imageResult.url);
+                setImagePreview(imageResult.url);
+            } else {
+                setExistingImageUrl(null);
+            }
+        } else {
+            setExistingImageUrl(null);
+        }
+
+        setIsBusinessDialogOpen(true);
+    };
+
+    const handleBusinessDialogClose = (open: boolean) => {
+        setIsBusinessDialogOpen(open);
+        if (!open) {
+            setEditingBusiness(null);
+            setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
+            setFormErrors({});
+            setError(null);
+            setSelectedImage(null);
+            setImagePreview(null);
+            setExistingImageUrl(null);
+            setImageDeleted(false);
+        }
+    };
+
+    const handleSubmitBusiness = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setFormErrors({});
+        setError(null);
+
+        try {
+            if (editingBusiness) {
+                // Handle image upload/delete for editing
+                let imageSizeBytes = formData.image_size_bytes;
+
+                if (imageDeleted && editingBusiness.image_size_bytes) {
+                    setIsUploadingImage(true);
+                    await deleteImage({
+                        folder: 'businesses',
+                        uuid: editingBusiness.uuid,
+                    });
+                    imageSizeBytes = null;
+                    setIsUploadingImage(false);
+                }
+
+                if (selectedImage) {
+                    setIsUploadingImage(true);
+                    const uploadResult = await uploadImage({
+                        file: selectedImage,
+                        folder: 'businesses',
+                        uuid: editingBusiness.uuid,
+                    });
+
+                    if (uploadResult.success) {
+                        imageSizeBytes = getFileSizeBytes(selectedImage);
+                    }
+                    setIsUploadingImage(false);
+                }
+
+                const response = await updateBusiness(editingBusiness.uuid, {
+                    ...formData,
+                    image_size_bytes: imageSizeBytes,
+                } as UpdateBusinessRequest);
+
+                if (response.success) {
+                    setIsBusinessDialogOpen(false);
+                    await refreshBusinesses();
+                } else {
+                    const errorData = response as unknown as {
+                        success: false;
+                        message: string;
+                        errors?: Record<string, string[]>;
+                    };
+                    if (errorData.errors) {
+                        const errors: Record<string, string> = {};
+                        Object.keys(errorData.errors).forEach((key) => {
+                            if (errorData.errors) {
+                                errors[key] = errorData.errors[key][0];
+                            }
+                        });
+                        setFormErrors(errors);
+                    } else if (errorData.message) {
+                        setError(errorData.message);
+                    } else {
+                        setError("Failed to update business");
+                    }
+                }
+            } else {
+                // Create new business
+                const response = await createBusiness(formData);
+                if (response.success) {
+                    const createdBusinessUuid = response.data.uuid;
+                    let imageSizeBytes: number | null = null;
+
+                    if (selectedImage && createdBusinessUuid) {
+                        setIsUploadingImage(true);
+                        const uploadResult = await uploadImage({
+                            file: selectedImage,
+                            folder: 'businesses',
+                            uuid: createdBusinessUuid,
+                        });
+
+                        if (uploadResult.success) {
+                            imageSizeBytes = getFileSizeBytes(selectedImage);
+                        }
+                        setIsUploadingImage(false);
+                    }
+
+                    if (imageSizeBytes !== null) {
+                        await updateBusiness(createdBusinessUuid, {
+                            image_size_bytes: imageSizeBytes,
+                        });
+                    }
+
+                    setIsBusinessDialogOpen(false);
+                    await refreshBusinesses();
+                } else {
+                    const errorData = response as unknown as {
+                        success: false;
+                        message: string;
+                        errors?: Record<string, string[]>;
+                    };
+                    if (errorData.errors) {
+                        const errors: Record<string, string> = {};
+                        Object.keys(errorData.errors).forEach((key) => {
+                            if (errorData.errors) {
+                                errors[key] = errorData.errors[key][0];
+                            }
+                        });
+                        setFormErrors(errors);
+                    } else if (errorData.message) {
+                        setError(errorData.message);
+                    } else {
+                        setError("Failed to create business");
+                    }
+                }
+            }
+        } catch (err) {
+            setError(editingBusiness ? "An error occurred while updating business" : "An error occurred while creating business");
+            console.error("Error saving business:", err);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -192,20 +421,45 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                             {businesses.map((business) => (
                                 <DropdownMenuItem
                                     key={business.uuid}
-                                    onClick={() => {
-                                        setSelectedBusiness(business);
-                                        onNavigate?.();
-                                    }}
                                     className={cn(
+                                        "flex items-center justify-between group",
                                         selectedBusiness.uuid === business.uuid && "bg-accent"
                                     )}
+                                    onSelect={(e) => e.preventDefault()}
                                 >
-                                    <div className="mr-2">
-                                        <BusinessLogo business={business} size="sm" />
+                                    <div
+                                        className="flex items-center flex-1 cursor-pointer"
+                                        onClick={() => {
+                                            setSelectedBusiness(business);
+                                            onNavigate?.();
+                                        }}
+                                    >
+                                        <div className="mr-2">
+                                            <BusinessLogo business={business} size="sm" />
+                                        </div>
+                                        <span className="flex-1">{business.name}</span>
                                     </div>
-                                    <span>{business.name}</span>
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleEditBusiness(business);
+                                        }}
+                                    >
+                                        <Pencil className="h-3 w-3" />
+                                    </Button>
                                 </DropdownMenuItem>
                             ))}
+                            <DropdownMenuSeparator/>
+                            <DropdownMenuItem
+                                onClick={handleAddBusiness}
+                                className="cursor-pointer"
+                            >
+                                <Plus className="mr-2 h-4 w-4" />
+                                <span>Add Business</span>
+                            </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
@@ -236,13 +490,6 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                     <DropdownMenuContent align="end" className="w-56">
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator/>
-                        <DropdownMenuItem asChild>
-                            <Link href="/profile">Profile</Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem asChild>
-                            <Link href="/settings">Settings</Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator/>
                         <DropdownMenuItem onClick={handleLogout} className="text-destructive">
                             <LogOut className="mr-2 h-4 w-4"/>
                             <span>Log out</span>
@@ -250,6 +497,130 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
+
+            {/* Business Create/Edit Dialog */}
+            <Dialog open={isBusinessDialogOpen} onOpenChange={handleBusinessDialogClose}>
+                <DialogContent>
+                    <form onSubmit={handleSubmitBusiness}>
+                        <DialogHeader>
+                            <DialogTitle>{editingBusiness ? "Edit Business" : "Create New Business"}</DialogTitle>
+                            <DialogDescription>
+                                {editingBusiness ? "Update business information" : "Add a new business location to your account"}
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="space-y-4 py-4">
+                            {error && (
+                                <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                                    {error}
+                                </div>
+                            )}
+                            <div className="space-y-2">
+                                <Label htmlFor="name">Business Name</Label>
+                                <Input
+                                    id="name"
+                                    name="name"
+                                    placeholder="Business name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    disabled={isSubmitting}
+                                    required
+                                    className={formErrors.name ? "border-destructive" : ""}
+                                />
+                                {formErrors.name && (
+                                    <p className="text-sm text-destructive">{formErrors.name}</p>
+                                )}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="address">Address (Optional)</Label>
+                                <Input
+                                    id="address"
+                                    name="address"
+                                    placeholder="123 Main St, City, Country"
+                                    value={formData.address || ""}
+                                    onChange={handleInputChange}
+                                    disabled={isSubmitting}
+                                    className={formErrors.address ? "border-destructive" : ""}
+                                />
+                                {formErrors.address && (
+                                    <p className="text-sm text-destructive">{formErrors.address}</p>
+                                )}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="phone">Phone Number (Optional)</Label>
+                                <Input
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="+1234567890"
+                                    value={formData.phone || ""}
+                                    onChange={handleInputChange}
+                                    disabled={isSubmitting}
+                                    className={formErrors.phone ? "border-destructive" : ""}
+                                />
+                                {formErrors.phone && (
+                                    <p className="text-sm text-destructive">{formErrors.phone}</p>
+                                )}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="business-logo">Business Logo (Optional)</Label>
+                                <div className="flex items-start gap-4">
+                                    {imagePreview && (
+                                        <div className="relative">
+                                            <Avatar className="h-20 w-20">
+                                                <AvatarImage src={imagePreview} alt="Business logo preview" />
+                                                <AvatarFallback>Logo</AvatarFallback>
+                                            </Avatar>
+                                            <Button
+                                                type="button"
+                                                variant="destructive"
+                                                size="icon"
+                                                className="absolute -top-2 -right-2 h-6 w-6 rounded-full"
+                                                onClick={handleRemoveImage}
+                                                disabled={isSubmitting || isUploadingImage}
+                                            >
+                                                <X className="h-3 w-3" />
+                                            </Button>
+                                        </div>
+                                    )}
+                                    <div className="flex-1">
+                                        <Input
+                                            id="business-logo"
+                                            name="business-logo"
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            disabled={isSubmitting || isUploadingImage}
+                                            className="cursor-pointer"
+                                        />
+                                        <p className="text-xs text-muted-foreground mt-1">
+                                            Supported formats: JPG, JPEG, PNG, GIF, WEBP
+                                        </p>
+                                    </div>
+                                </div>
+                                {isUploadingImage && (
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                        Uploading logo...
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button
+                                type="button"
+                                variant="outline"
+                                onClick={() => handleBusinessDialogClose(false)}
+                                disabled={isSubmitting}
+                            >
+                                Cancel
+                            </Button>
+                            <Button type="submit" disabled={isSubmitting || isUploadingImage}>
+                                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {editingBusiness ? "Update" : "Create"}
+                            </Button>
+                        </DialogFooter>
+                    </form>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
