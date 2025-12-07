@@ -41,7 +41,7 @@ export default function TransactionsPage() {
     const [error, setError] = useState<string | null>(null);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
-    const { generatePDF, loading: receiptLoading } = useReceiptGenerator();
+    const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
     const { template: receiptTemplate } = useReceiptTemplatePreference();
 
     const loadData = useCallback(async () => {
@@ -126,7 +126,7 @@ export default function TransactionsPage() {
         return customers.find(c => c.uuid === customer_uuid);
     };
 
-    const handleDownloadReceipt = async () => {
+    const handleDownloadPDF = async () => {
         if (!selectedTransaction || !selectedBusiness) return;
 
         try {
@@ -148,6 +148,31 @@ export default function TransactionsPage() {
         } catch (err) {
             console.error("Error generating receipt:", err);
             alert("Failed to generate receipt");
+        }
+    };
+
+    const handleDownloadImage = async () => {
+        if (!selectedTransaction || !selectedBusiness) return;
+
+        try {
+            const customer = getCustomer(selectedTransaction.customer_uuid);
+            const paymentMethodName = selectedTransaction.payment_method_uuid
+                ? getPaymentMethodName(selectedTransaction.payment_method_uuid)
+                : "Cash";
+
+            const receiptData = convertTransactionToReceiptData(
+                selectedTransaction,
+                transactionItems,
+                selectedBusiness,
+                customer?.name,
+                paymentMethodName,
+                undefined
+            );
+
+            await generateImage(receiptData, { type: 'png' }, receiptTemplate);
+        } catch (err) {
+            console.error("Error downloading image:", err);
+            alert("Failed to download receipt image");
         }
     };
 
@@ -379,19 +404,34 @@ export default function TransactionsPage() {
 
                             {/* Receipt Actions */}
                             <div className="space-y-2 pt-4 border-t">
-                                <Button
-                                    onClick={handleDownloadReceipt}
-                                    disabled={receiptLoading}
-                                    className="w-full"
-                                    variant="default"
-                                >
-                                    {receiptLoading ? (
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                    ) : (
-                                        <Download className="mr-2 h-4 w-4" />
-                                    )}
-                                    Download Receipt
-                                </Button>
+                                <div className="flex gap-2">
+                                    <Button
+                                        onClick={handleDownloadPDF}
+                                        disabled={receiptLoading}
+                                        className="flex-1"
+                                        variant="default"
+                                    >
+                                        {receiptLoading ? (
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        ) : (
+                                            <Download className="mr-2 h-4 w-4" />
+                                        )}
+                                        Download PDF
+                                    </Button>
+                                    <Button
+                                        onClick={handleDownloadImage}
+                                        disabled={receiptLoading}
+                                        className="flex-1"
+                                        variant="outline"
+                                    >
+                                        {receiptLoading ? (
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        ) : (
+                                            <Download className="mr-2 h-4 w-4" />
+                                        )}
+                                        Download Image
+                                    </Button>
+                                </div>
 
                                 {selectedTransaction.customer_uuid && (() => {
                                     const customer = getCustomer(selectedTransaction.customer_uuid);
