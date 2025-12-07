@@ -28,10 +28,10 @@ import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {useAuth} from "@/lib/auth-context";
 import {useBusiness} from "@/lib/business-context";
 import {useState, useEffect, memo} from "react";
-import {Building2, ChevronDown, Loader2, Plus, Pencil, X} from "lucide-react";
+import {Building2, ChevronDown, Loader2, Plus, Pencil, X, Trash2} from "lucide-react";
 import Image from "next/image";
 import { getImageUrl, uploadImage, deleteImage, getFileSizeBytes } from "@/lib/images";
-import { createBusiness, updateBusiness } from "@/lib/api/businesses";
+import { createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
 import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
 import {
     Dialog,
@@ -41,6 +41,16 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -145,6 +155,10 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
     const [isUploadingImage, setIsUploadingImage] = useState(false);
     const [imageDeleted, setImageDeleted] = useState(false);
 
+    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+    const [businessToDelete, setBusinessToDelete] = useState<Business | null>(null);
+    const [isDeleting, setIsDeleting] = useState(false);
+
     const handleLogout = () => {
         logout();
         onNavigate?.();
@@ -240,6 +254,38 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
             setImagePreview(null);
             setExistingImageUrl(null);
             setImageDeleted(false);
+        }
+    };
+
+    const handleDeleteBusiness = (business: Business) => {
+        setBusinessToDelete(business);
+        setIsDeleteDialogOpen(true);
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!businessToDelete) return;
+
+        try {
+            setIsDeleting(true);
+
+            // Delete logo if exists
+            if (businessToDelete.image_size_bytes) {
+                await deleteImage({
+                    folder: 'businesses',
+                    uuid: businessToDelete.uuid,
+                });
+            }
+
+            const response = await deleteBusiness(businessToDelete.uuid);
+            if (response.success) {
+                setIsDeleteDialogOpen(false);
+                setBusinessToDelete(null);
+                await refreshBusinesses();
+            }
+        } catch (err) {
+            console.error("Error deleting business:", err);
+        } finally {
+            setIsDeleting(false);
         }
     };
 
@@ -439,17 +485,30 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                                         </div>
                                         <span className="flex-1">{business.name}</span>
                                     </div>
-                                    <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleEditBusiness(business);
-                                        }}
-                                    >
-                                        <Pencil className="h-3 w-3" />
-                                    </Button>
+                                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            className="h-6 w-6"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleEditBusiness(business);
+                                            }}
+                                        >
+                                            <Pencil className="h-3 w-3" />
+                                        </Button>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            className="h-6 w-6 text-destructive hover:text-destructive"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDeleteBusiness(business);
+                                            }}
+                                        >
+                                            <Trash2 className="h-3 w-3" />
+                                        </Button>
+                                    </div>
                                 </DropdownMenuItem>
                             ))}
                             <DropdownMenuSeparator/>
@@ -489,6 +548,13 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56">
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator/>
+                        <DropdownMenuItem asChild>
+                            <Link href="/profile">Profile</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href="/settings">Settings</Link>
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator/>
                         <DropdownMenuItem onClick={handleLogout} className="text-destructive">
                             <LogOut className="mr-2 h-4 w-4"/>
@@ -621,6 +687,29 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                     </form>
                 </DialogContent>
             </Dialog>
+
+            {/* Delete Business Confirmation */}
+            <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Delete Business</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Are you sure you want to delete &#34;{businessToDelete?.name}&#34;? This action cannot be undone.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={handleDeleteConfirm}
+                            disabled={isDeleting}
+                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                            {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            Delete
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }
