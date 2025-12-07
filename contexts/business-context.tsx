@@ -1,9 +1,10 @@
 'use client'
 
-import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react'
+import React, {createContext, useContext, useState, useEffect, ReactNode, useCallback} from 'react'
 import {usePathname} from 'next/navigation'
 import {Business} from '@/lib/api/businesses/types'
 import {getBusinesses} from '@/lib/api/businesses'
+import {useAuth} from '@/contexts/auth-context'
 
 interface BusinessContextType {
     selectedBusiness: Business | null
@@ -17,11 +18,12 @@ const BusinessContext = createContext<BusinessContextType | undefined>(undefined
 
 export function BusinessProvider({children}: { children: ReactNode }) {
     const pathname = usePathname()
+    const { isAuthenticated, isLoading: authLoading } = useAuth()
     const [selectedBusiness, setSelectedBusinessState] = useState<Business | null>(null)
     const [businesses, setBusinesses] = useState<Business[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
-    const fetchBusinesses = async () => {
+    const fetchBusinesses = useCallback(async () => {
         if (typeof window === "undefined") {
             setIsLoading(false)
             return
@@ -62,15 +64,30 @@ export function BusinessProvider({children}: { children: ReactNode }) {
         } finally {
             setIsLoading(false)
         }
-    }
+    }, [])
 
     useEffect(() => {
+        // Don't fetch on login/register pages
         if (pathname === '/login' || pathname === '/register') {
             setIsLoading(false)
             return
         }
-        fetchBusinesses()
-    }, [])
+
+        // Wait for auth to finish loading
+        if (authLoading) {
+            return
+        }
+
+        // Only fetch businesses if authenticated
+        if (isAuthenticated) {
+            fetchBusinesses()
+        } else {
+            // Clear businesses if not authenticated
+            setBusinesses([])
+            setSelectedBusinessState(null)
+            setIsLoading(false)
+        }
+    }, [isAuthenticated, authLoading, pathname, fetchBusinesses])
 
     const setSelectedBusiness = (business: Business | null) => {
         setSelectedBusinessState(business)
