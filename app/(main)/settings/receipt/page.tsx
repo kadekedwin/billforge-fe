@@ -21,11 +21,12 @@ interface ReceiptTemplateCardProps {
     sampleReceipt: ReceiptData;
     includeLogo: boolean;
     footerMessage: string;
+    qrcodeValue: string;
     isSelected: boolean;
     onSelect: () => void;
 }
 
-function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessage, isSelected, onSelect }: ReceiptTemplateCardProps) {
+function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessage, qrcodeValue, isSelected, onSelect }: ReceiptTemplateCardProps) {
     const iframeRef = useRef<HTMLIFrameElement>(null);
 
     useEffect(() => {
@@ -46,15 +47,15 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
 
         iframe.addEventListener('load', adjustHeight);
 
-        const timer = setTimeout(adjustHeight, 100);
+        const timer = setTimeout(adjustHeight, 500);
 
         return () => {
             iframe.removeEventListener('load', adjustHeight);
             clearTimeout(timer);
         };
-    }, []);
+    }, [qrcodeValue, footerMessage, includeLogo]);
 
-    const templateHTML = generateReceiptHTML({ ...sampleReceipt, storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined, footer: footerMessage }, template.type);
+    const templateHTML = generateReceiptHTML({ ...sampleReceipt, storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined, footer: footerMessage, qrcode: qrcodeValue }, template.type);
 
     return (
         <button
@@ -79,6 +80,7 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
 
             <div className="relative bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
                 <iframe
+                    key={`${includeLogo}-${footerMessage}-${qrcodeValue}`}
                     ref={iframeRef}
                     srcDoc={templateHTML}
                     className="w-full border-0 pointer-events-none"
@@ -89,7 +91,7 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
                         transformOrigin: 'top left'
                     }}
                     title={`${template.name} preview`}
-                    sandbox="allow-same-origin"
+                    sandbox="allow-same-origin allow-scripts"
                 />
             </div>
         </button>
@@ -141,7 +143,7 @@ const sampleReceipt: ReceiptData = {
 };
 
 export default function ReceiptSettingsPage() {
-    const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage } = useReceiptTemplatePreference();
+    const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage, qrcodeValue, updateQrcodeValue } = useReceiptTemplatePreference();
 
     return (
         <div className="p-6 max-w-6xl mx-auto space-y-6">
@@ -192,6 +194,22 @@ export default function ReceiptSettingsPage() {
                             className="max-w-md"
                         />
                     </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="qrcode-value" className="text-base">
+                            qrcode Value
+                        </Label>
+                        <p className="text-sm text-muted-foreground">
+                            Enter a value to generate a qrcode on the receipt
+                        </p>
+                        <Input
+                            id="qrcode-value"
+                            placeholder="Enter qrcode value (e.g., Social Media)"
+                            value={qrcodeValue}
+                            onChange={(e) => updateQrcodeValue(e.target.value)}
+                            className="max-w-md"
+                        />
+                    </div>
                 </CardContent>
             </Card>
 
@@ -201,7 +219,7 @@ export default function ReceiptSettingsPage() {
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto pb-4">
-                        <div className="flex items-start gap-6 min-w-min" key={includeLogo ? 1 : 0}>
+                        <div className="flex items-start gap-6 min-w-min" key={`${includeLogo}-${footerMessage}-${qrcodeValue}`}>
                             {receiptTemplates.map((template) => (
                                 <ReceiptTemplateCard
                                     key={template.type}
@@ -209,6 +227,7 @@ export default function ReceiptSettingsPage() {
                                     sampleReceipt={sampleReceipt}
                                     includeLogo={includeLogo}
                                     footerMessage={footerMessage}
+                                    qrcodeValue={qrcodeValue}
                                     isSelected={selectedTemplate === template.type}
                                     onSelect={() => updateTemplate(template.type)}
                                 />

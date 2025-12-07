@@ -146,7 +146,27 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
       text-align: center;
       margin: 20px 0;
     }
+    .qrcode-container {
+      text-align: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .qrcode-container #qrcode {
+      display: inline-block;
+      line-height: 0;
+    }
+    .qrcode-container canvas {
+      display: block !important;
+      margin: 0 auto;
+    }
+    .qrcode-container img {
+      display: none !important;
+    }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
   <div class="receipt">
@@ -264,6 +284,40 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
     <div style="text-align: center; font-size: 10px; font-style: italic; margin-top: 10px; color: #999;">
       ${data.notes}
     </div>
+    ` : ''}
+    ${data.qrcode ? `
+    <div class="qrcode-container">
+      <div id="qrcode"></div>
+    </div>
+    <script>
+      (function() {
+        var generated = false;
+        function generateQR() {
+          if (generated) return;
+          if (typeof QRCode !== 'undefined') {
+            var qrcodeEl = document.getElementById("qrcode");
+            if (qrcodeEl && qrcodeEl.innerHTML === '') {
+              new QRCode(qrcodeEl, {
+                text: "${data.qrcode}",
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+              });
+              generated = true;
+            }
+          } else {
+            setTimeout(generateQR, 100);
+          }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', generateQR);
+        } else {
+          generateQR();
+        }
+      })();
+    </script>
     ` : ''}
   </div>
 </body>

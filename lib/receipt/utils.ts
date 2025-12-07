@@ -66,6 +66,7 @@ export const convertTransactionToReceiptData = (
     paymentMethodName?: string,
     footer?: string,
     storeLogo?: string,
+    qrcode?: string,
 ): ReceiptData => {
     const receiptItems: ReceiptItem[] = items.map(item => ({
         id: item.uuid,
@@ -93,6 +94,7 @@ export const convertTransactionToReceiptData = (
         total: parseFloat(transaction.final_amount),
         paymentMethod: paymentMethodName || "Cash",
         footer: footer,
+        qrcode: qrcode || undefined,
         notes: transaction.notes || undefined,
     };
 };

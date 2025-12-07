@@ -35,6 +35,14 @@ export function useReceiptTemplatePreference() {
         return '';
     });
 
+    const [qrcodeValue, setQrcodeValue] = useState<string>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('receiptQrcodeValue');
+            return saved || '';
+        }
+        return '';
+    });
+
     const updateTemplate = (newTemplate: ReceiptTemplateType) => {
         setTemplate(newTemplate);
         localStorage.setItem('receiptTemplate', newTemplate);
@@ -50,6 +58,11 @@ export function useReceiptTemplatePreference() {
         localStorage.setItem('receiptFooterMessage', value);
     };
 
+    const updateQrcodeValue = (value: string) => {
+        setQrcodeValue(value);
+        localStorage.setItem('receiptQrcodeValue', value);
+    };
+
     useEffect(() => {
         const handleStorageChange = (e: StorageEvent) => {
             if (e.key === 'receiptTemplate') {
@@ -61,6 +74,8 @@ export function useReceiptTemplatePreference() {
                 setIncludeLogo(e.newValue === 'true');
             } else if (e.key === 'receiptFooterMessage') {
                 setFooterMessage(e.newValue || '');
+            } else if (e.key === 'receiptQrcodeValue') {
+                setQrcodeValue(e.newValue || '');
             }
         };
 
@@ -68,5 +83,5 @@ export function useReceiptTemplatePreference() {
         return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
-    return { template, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage };
+    return { template, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage, qrcodeValue, updateQrcodeValue };
 }

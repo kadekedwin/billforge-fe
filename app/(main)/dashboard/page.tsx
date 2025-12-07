@@ -85,7 +85,7 @@ ItemImageCard.displayName = 'ItemImageCard';
 
 export default function DashboardPage() {
     const { selectedBusiness } = useBusiness();
-    const { includeLogo, footerMessage } = useReceiptTemplatePreference();
+    const { includeLogo, footerMessage, qrcodeValue } = useReceiptTemplatePreference();
     const [items, setItems] = useState<Item[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
@@ -570,7 +570,7 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className="space-y-4">
+        <div className="container mx-auto max-w-7xl space-y-4 px-4">
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl sm:text-3xl font-bold">New Transaction</h1>
@@ -606,7 +606,7 @@ export default function DashboardPage() {
                     </div>
                 </div>
             ) : (
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
                     {filteredItems.map((item) => {
                         const quantity = getCartItemCount(item.uuid);
 
@@ -723,7 +723,8 @@ export default function DashboardPage() {
                         completedCustomerName,
                         completedPaymentMethodName,
                         footerMessage || undefined,
-                        businessLogoUrl
+                        businessLogoUrl,
+                        qrcodeValue || undefined
                     )}
                     customerEmail={completedCustomerEmail}
                     customerPhone={completedCustomerPhone}

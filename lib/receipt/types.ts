@@ -25,6 +25,7 @@ export interface ReceiptData {
     paymentAmount?: number;
     changeAmount?: number;
     footer?: string;
+    qrcode?: string;
     notes?: string;
 }
 

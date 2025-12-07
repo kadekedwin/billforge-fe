@@ -31,7 +31,7 @@ import {useReceiptTemplatePreference} from "@/lib/receipt";
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();
-    const { includeLogo, footerMessage } = useReceiptTemplatePreference();
+    const { includeLogo, footerMessage, qrcodeValue } = useReceiptTemplatePreference();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
@@ -165,7 +165,8 @@ export default function TransactionsPage() {
                 customer?.name,
                 paymentMethodName,
                 footerMessage || undefined,
-                businessLogoUrl
+                businessLogoUrl,
+                qrcodeValue || undefined
             );
 
             await generatePDF(receiptData, undefined, receiptTemplate);
@@ -191,7 +192,8 @@ export default function TransactionsPage() {
                 customer?.name,
                 paymentMethodName,
                 footerMessage || undefined,
-                businessLogoUrl
+                businessLogoUrl,
+                qrcodeValue || undefined
             );
 
             await generateImage(receiptData, { type: 'png' }, receiptTemplate);
