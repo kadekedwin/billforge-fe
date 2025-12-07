@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {
     LayoutDashboard,
     FileText,
@@ -32,7 +32,7 @@ import {Building2, ChevronDown, Loader2, Plus, Pencil, X, Trash2} from "lucide-r
 import Image from "next/image";
 import { getImageUrl, uploadImage, deleteImage, getFileSizeBytes } from "@/lib/images";
 import { createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
-import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
+import {Business, CreateBusinessRequest, login, UpdateBusinessRequest} from "@/lib/api";
 import {
     Dialog,
     DialogContent,
@@ -53,6 +53,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {logout} from "@/lib/api/auth";
 
 const BusinessLogo = memo(({ business, size = "sm" }: { business: Business; size?: "sm" | "lg" }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -134,8 +135,9 @@ const navItems = [
 ];
 
 function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
+    const router = useRouter();
     const pathname = usePathname();
-    const {user, logout} = useAuth();
+    const {user, removeAuth} = useAuth();
     const {selectedBusiness, businesses, setSelectedBusiness, refreshBusinesses} = useBusiness();
 
     const [isBusinessDialogOpen, setIsBusinessDialogOpen] = useState(false);
@@ -159,9 +161,23 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
     const [businessToDelete, setBusinessToDelete] = useState<Business | null>(null);
     const [isDeleting, setIsDeleting] = useState(false);
 
-    const handleLogout = () => {
-        logout();
-        onNavigate?.();
+    const handleLogout = async () => {
+        try {
+            const response = await logout();
+
+            if (response.success) {
+                // Successfully logged out
+            } else {
+                setError("Logout error");
+                console.error("Logout error:", response.message);
+            }
+        } catch (err) {
+            setError("An unexpected error occurred. Please try again.");
+            console.error("Logout error:", err);
+        } finally {
+            removeAuth();
+            onNavigate?.();
+        }
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

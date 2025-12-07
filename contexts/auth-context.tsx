@@ -10,7 +10,7 @@ interface AuthContextType {
     isLoading: boolean;
     isAuthenticated: boolean;
     setAuth: (user: User, token: string) => void;
-    logout: () => void;
+    removeAuth: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -63,7 +63,7 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
         document.cookie = `token=${newToken}; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
     };
 
-    const logout = () => {
+    const removeAuth = () => {
         setUser(null);
         setToken(null);
         localStorage.removeItem("token");
@@ -83,7 +83,7 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
                 isLoading,
                 isAuthenticated: !!token && !!user,
                 setAuth,
-                logout,
+                removeAuth,
             }}
         >
             {children}
