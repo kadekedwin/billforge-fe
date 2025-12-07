@@ -208,6 +208,12 @@ export default function ItemsPage() {
                 setError('Please select an image file');
                 return;
             }
+            // Check file size (1MB = 1048576 bytes)
+            if (file.size > 1048576) {
+                setError('Image size must be less than 1MB');
+                e.target.value = ''; // Clear the input
+                return;
+            }
             setSelectedImage(file);
             setImageDeleted(false);
             const reader = new FileReader();
@@ -641,7 +647,7 @@ export default function ItemsPage() {
                                                     className="cursor-pointer"
                                                 />
                                                 <p className="text-xs text-muted-foreground mt-1">
-                                                    Supported formats: JPG, JPEG, PNG, GIF, WEBP
+                                                    Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB
                                                 </p>
                                             </div>
                                         </div>

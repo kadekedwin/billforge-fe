@@ -180,6 +180,12 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            // Check file size (1MB = 1048576 bytes)
+            if (file.size > 1048576) {
+                setError('Image size must be less than 1MB');
+                e.target.value = ''; // Clear the input
+                return;
+            }
             setSelectedImage(file);
             setImageDeleted(false);
             const reader = new FileReader();
@@ -658,7 +664,7 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                                             className="cursor-pointer"
                                         />
                                         <p className="text-xs text-muted-foreground mt-1">
-                                            Supported formats: JPG, JPEG, PNG, GIF, WEBP
+                                            Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB
                                         </p>
                                     </div>
                                 </div>
