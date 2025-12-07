@@ -9,7 +9,8 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Building2, Loader2, X } from 'lucide-react'
 import { createBusiness, updateBusiness } from '@/lib/api/businesses'
 import { useBusiness } from '@/contexts/business-context'
-import { uploadImage, getFileSizeBytes } from '@/lib/images'
+import { uploadImage } from '@/lib/images/operations'
+import { getFileSizeBytes } from '@/lib/images/utils'
 import type { CreateBusinessRequest } from '@/lib/api'
 
 export function BusinessOnboarding() {
