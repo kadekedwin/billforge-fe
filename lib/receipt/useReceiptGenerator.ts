@@ -1,13 +1,43 @@
 import { useState } from 'react';
-import { ReceiptData } from '@/lib/receipt/types';
-import { PDFGeneratorOptions } from '@/lib/receipt/pdfGenerator';
-import { ImageGeneratorOptions } from '@/lib/receipt/imageGenerator';
+import { ReceiptData, ReceiptTemplateType } from '@/lib/receipt/types';
+
+export interface PDFGeneratorOptions {
+    width?: string;
+    height?: string;
+    printBackground?: boolean;
+    margin?: {
+        top?: string;
+        right?: string;
+        bottom?: string;
+        left?: string;
+    };
+    template?: ReceiptTemplateType;
+}
+
+export interface ImageGeneratorOptions {
+    type?: 'png' | 'jpeg' | 'webp';
+    quality?: number;
+    fullPage?: boolean;
+    omitBackground?: boolean;
+    width?: number;
+    height?: number;
+    template?: ReceiptTemplateType;
+}
+
+const receiptTemplates = [
+    { name: 'Classic', type: 'classic' as const, description: 'Traditional monospace receipt with dashed lines' },
+    { name: 'Sans Serif', type: 'sans-serif' as const, description: 'Clean sans-serif receipt with dashed lines' }
+];
 
 export const useReceiptGenerator = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const generatePDF = async (receiptData: ReceiptData, options: PDFGeneratorOptions = {}) => {
+    const generatePDF = async (
+        receiptData: ReceiptData,
+        options: PDFGeneratorOptions = {},
+        template: ReceiptTemplateType = 'classic',
+    ) => {
         setLoading(true);
         setError(null);
 
@@ -17,7 +47,7 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options }),
+                body: JSON.stringify({ receiptData, options: { ...options, template } }),
             });
 
             if (!response.ok) {
@@ -45,7 +75,11 @@ export const useReceiptGenerator = () => {
         }
     };
 
-    const generateImage = async (receiptData: ReceiptData, options: ImageGeneratorOptions = {}) => {
+    const generateImage = async (
+        receiptData: ReceiptData,
+        options: ImageGeneratorOptions = {},
+        template: ReceiptTemplateType = 'classic'
+    ) => {
         setLoading(true);
         setError(null);
 
@@ -55,7 +89,7 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options }),
+                body: JSON.stringify({ receiptData, options: { ...options, template } }),
             });
 
             if (!response.ok) {
@@ -84,7 +118,11 @@ export const useReceiptGenerator = () => {
         }
     };
 
-    const previewPDF = async (receiptData: ReceiptData, options: PDFGeneratorOptions = {}) => {
+    const previewPDF = async (
+        receiptData: ReceiptData,
+        options: PDFGeneratorOptions = {},
+        template: ReceiptTemplateType = 'classic'
+    ) => {
         setLoading(true);
         setError(null);
 
@@ -94,7 +132,7 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options }),
+                body: JSON.stringify({ receiptData, options: { ...options, template } }),
             });
 
             if (!response.ok) {
@@ -105,7 +143,7 @@ export const useReceiptGenerator = () => {
             const url = window.URL.createObjectURL(blob);
             window.open(url, '_blank');
 
-            return url;
+            return blob;
         } catch (err) {
             const errorMessage = err instanceof Error ? err.message : 'Unknown error';
             setError(errorMessage);
@@ -115,7 +153,11 @@ export const useReceiptGenerator = () => {
         }
     };
 
-    const previewImage = async (receiptData: ReceiptData, options: ImageGeneratorOptions = {}) => {
+    const previewImage = async (
+        receiptData: ReceiptData,
+        options: ImageGeneratorOptions = {},
+        template: ReceiptTemplateType = 'classic'
+    ) => {
         setLoading(true);
         setError(null);
 
@@ -125,7 +167,7 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options }),
+                body: JSON.stringify({ receiptData, options: { ...options, template } }),
             });
 
             if (!response.ok) {
@@ -134,8 +176,9 @@ export const useReceiptGenerator = () => {
 
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
+            window.open(url, '_blank');
 
-            return url;
+            return blob;
         } catch (err) {
             const errorMessage = err instanceof Error ? err.message : 'Unknown error';
             setError(errorMessage);
@@ -145,12 +188,15 @@ export const useReceiptGenerator = () => {
         }
     };
 
+    const getTemplates = () => receiptTemplates;
+
     return {
         generatePDF,
         generateImage,
         previewPDF,
         previewImage,
+        getTemplates,
         loading,
-        error,
+        error
     };
 };

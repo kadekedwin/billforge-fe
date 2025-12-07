@@ -138,7 +138,8 @@ export default function TransactionsPage() {
                 transactionItems,
                 selectedBusiness,
                 customer?.name,
-                paymentMethodName
+                paymentMethodName,
+                undefined
             );
 
             await generatePDF(receiptData);

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateReceiptImageBuffer, ImageGeneratorOptions } from '@/lib/receipt/imageGenerator';
-import { ReceiptData } from '@/lib/receipt/types';
+import { generateReceiptImageBuffer } from '@/lib/receipt/imageGenerator';
+import type { ImageGeneratorOptions } from '@/lib/receipt/imageGenerator';
+import type { ReceiptData } from '@/lib/receipt/types';
 
 export async function POST(request: NextRequest) {
     try {
@@ -32,3 +33,4 @@ export async function POST(request: NextRequest) {
         );
     }
 }
+

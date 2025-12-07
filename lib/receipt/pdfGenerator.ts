@@ -1,6 +1,6 @@
 import puppeteer, { PDFOptions } from 'puppeteer';
-import { ReceiptData } from './types';
-import { generateReceiptHTML } from './receiptHtml';
+import { ReceiptData, ReceiptTemplateType } from './types';
+import { generateReceiptHTML } from './templates';
 
 export interface PDFGeneratorOptions {
     width?: string;
@@ -12,6 +12,7 @@ export interface PDFGeneratorOptions {
         bottom?: string;
         left?: string;
     };
+    template?: ReceiptTemplateType;
 }
 
 export const generateReceiptPDF = async (
@@ -19,7 +20,7 @@ export const generateReceiptPDF = async (
     outputPath: string,
     options: PDFGeneratorOptions = {}
 ): Promise<void> => {
-    const html = generateReceiptHTML(data);
+    const html = generateReceiptHTML(data, options.template || 'classic');
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -60,7 +61,7 @@ export const generateReceiptPDFBuffer = async (
     data: ReceiptData,
     options: PDFGeneratorOptions = {}
 ): Promise<Uint8Array> => {
-    const html = generateReceiptHTML(data);
+    const html = generateReceiptHTML(data, options.template || 'classic');
 
     const browser = await puppeteer.launch({
         headless: true,

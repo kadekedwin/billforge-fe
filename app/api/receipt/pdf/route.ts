@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateReceiptPDFBuffer, PDFGeneratorOptions } from '@/lib/receipt/pdfGenerator';
-import { ReceiptData } from '@/lib/receipt/types';
+import { generateReceiptPDFBuffer } from '@/lib/receipt/pdfGenerator';
+import type { PDFGeneratorOptions } from '@/lib/receipt/pdfGenerator';
+import type { ReceiptData } from '@/lib/receipt/types';
 
 export async function POST(request: NextRequest) {
     try {
@@ -26,3 +27,4 @@ export async function POST(request: NextRequest) {
         );
     }
 }
+

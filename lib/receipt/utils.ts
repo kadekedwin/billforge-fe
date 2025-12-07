@@ -63,7 +63,8 @@ export const convertTransactionToReceiptData = (
     items: TransactionItem[],
     business: Business | null,
     customerName?: string,
-    paymentMethodName?: string
+    paymentMethodName?: string,
+    footer?: string,
 ): ReceiptData => {
     const receiptItems: ReceiptItem[] = items.map(item => ({
         id: item.uuid,
@@ -89,6 +90,7 @@ export const convertTransactionToReceiptData = (
         discount: parseFloat(transaction.discount_amount),
         total: parseFloat(transaction.final_amount),
         paymentMethod: paymentMethodName || "Cash",
+        footer: footer,
         notes: transaction.notes || undefined,
     };
 };

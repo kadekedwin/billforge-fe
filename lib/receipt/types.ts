@@ -27,20 +27,11 @@ export interface ReceiptData {
     notes?: string;
 }
 
+export type ReceiptTemplateType = 'classic' | 'sans-serif';
+
 export interface ReceiptTemplate {
-    width: number;
-    height: number;
-    padding: number;
-    fontSizes: {
-        title: number;
-        header: number;
-        body: number;
-        small: number;
-    };
-    colors: {
-        primary: string;
-        secondary: string;
-        text: string;
-        border: string;
-    };
+    name: string;
+    type: ReceiptTemplateType;
+    description: string;
+    generateHTML: (data: ReceiptData) => string;
 }
