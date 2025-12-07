@@ -19,11 +19,11 @@ class ApiClient {
     this.token = token;
     if (typeof window !== "undefined") {
       if (token) {
-        localStorage.setItem("auth_token", token);
-        document.cookie = `auth_token=${token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
+        localStorage.setItem("token", token);
+        document.cookie = `token=${token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
       } else {
-        localStorage.removeItem("auth_token");
-        document.cookie = "auth_token=; path=/; max-age=0; SameSite=Lax";
+        localStorage.removeItem("token");
+        document.cookie = "token=; path=/; max-age=0; SameSite=Lax";
       }
     }
   }
@@ -34,7 +34,7 @@ class ApiClient {
     }
 
     if (typeof window !== "undefined") {
-      return localStorage.getItem("auth_token");
+      return localStorage.getItem("token");
     }
 
     return null;

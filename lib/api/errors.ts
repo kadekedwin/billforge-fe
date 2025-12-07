@@ -24,10 +24,8 @@ export function handleApiError(response: Response, data: ApiErrorResponse): neve
 
       // Only clear tokens and redirect if we're not on an auth page
       if (!isOnAuthPage) {
-        localStorage.removeItem("auth_token");
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        document.cookie = "auth_token=; path=/; max-age=0; SameSite=Lax";
         document.cookie = "token=; path=/; max-age=0; SameSite=Lax";
         window.location.href = "/login";
       }

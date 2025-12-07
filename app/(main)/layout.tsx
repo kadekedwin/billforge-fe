@@ -37,8 +37,8 @@ export default function DashboardLayout({
     return null;
   }
 
-  // Show onboarding if there are no businesses or no selected business
-  if (!selectedBusiness || businesses.length === 0) {
+  // Show onboarding if there are no businesses
+  if (businesses.length === 0) {
     return <BusinessOnboarding />;
   }
 
