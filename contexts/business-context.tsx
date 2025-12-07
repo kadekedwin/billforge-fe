@@ -67,22 +67,18 @@ export function BusinessProvider({children}: { children: ReactNode }) {
     }, [])
 
     useEffect(() => {
-        // Don't fetch on login/register pages
         if (pathname === '/login' || pathname === '/register') {
             setIsLoading(false)
             return
         }
 
-        // Wait for auth to finish loading
         if (authLoading) {
             return
         }
 
-        // Only fetch businesses if authenticated
         if (isAuthenticated) {
             fetchBusinesses()
         } else {
-            // Clear businesses if not authenticated
             setBusinesses([])
             setSelectedBusinessState(null)
             setIsLoading(false)

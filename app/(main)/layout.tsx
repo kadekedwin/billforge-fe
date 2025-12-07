@@ -13,7 +13,7 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     const {isAuthenticated, isLoading: isAuthLoading} = useAuth();
-    const {selectedBusiness, businesses, isLoading: isBusinessLoading} = useBusiness();
+    const {businesses, isLoading: isBusinessLoading} = useBusiness();
     const router = useRouter();
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function DashboardLayout({
         }
     }, [isAuthenticated, isAuthLoading, router]);
 
-    if (isAuthLoading || isBusinessLoading) {
+    if (isAuthLoading) {
         return (
             <div className="flex h-screen items-center justify-center">
                 <div className="flex flex-col items-center">
@@ -35,6 +35,17 @@ export default function DashboardLayout({
 
     if (!isAuthenticated) {
         return null;
+    }
+
+    if (isBusinessLoading && businesses.length === 0) {
+        return (
+            <div className="flex h-screen items-center justify-center">
+                <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+                    <p className="mt-4 text-sm text-muted-foreground">Loading businesses...</p>
+                </div>
+            </div>
+        );
     }
 
     if (businesses.length === 0) {
