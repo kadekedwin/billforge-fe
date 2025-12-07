@@ -20,6 +20,13 @@ export function BusinessProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
 
   const fetchBusinesses = async () => {
+    // Check if user is authenticated before fetching
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+    if (!token) {
+      setIsLoading(false)
+      return
+    }
+
     try {
       setIsLoading(true)
       const response = await getBusinesses()

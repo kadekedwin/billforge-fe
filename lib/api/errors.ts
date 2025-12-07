@@ -18,12 +18,19 @@ export function handleApiError(response: Response, data: ApiErrorResponse): neve
 
   if (response.status === 401) {
     if (typeof window !== "undefined") {
-      localStorage.removeItem("auth_token");
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      document.cookie = "auth_token=; path=/; max-age=0; SameSite=Lax";
-      document.cookie = "token=; path=/; max-age=0; SameSite=Lax";
-      window.location.href = "/login";
+      // Check if we're on an auth page first
+      const currentPath = window.location.pathname;
+      const isOnAuthPage = currentPath === "/login" || currentPath === "/register" || currentPath.startsWith("/login") || currentPath.startsWith("/register");
+
+      // Only clear tokens and redirect if we're not on an auth page
+      if (!isOnAuthPage) {
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        document.cookie = "auth_token=; path=/; max-age=0; SameSite=Lax";
+        document.cookie = "token=; path=/; max-age=0; SameSite=Lax";
+        window.location.href = "/login";
+      }
     }
   }
 
