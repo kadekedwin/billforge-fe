@@ -20,9 +20,7 @@ export function BusinessProvider({children}: { children: ReactNode }) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchBusinesses = async () => {
-        // Check if user is authenticated before fetching
-        const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
-        if (!token) {
+        if (typeof window === "undefined") {
             setIsLoading(false)
             return
         }
@@ -30,6 +28,7 @@ export function BusinessProvider({children}: { children: ReactNode }) {
         try {
             setIsLoading(true)
             const response = await getBusinesses()
+
             if (response.success && response.data) {
                 setBusinesses(response.data)
 
@@ -42,7 +41,6 @@ export function BusinessProvider({children}: { children: ReactNode }) {
                         setSelectedBusinessState(response.data[0])
                         localStorage.setItem('selectedBusinessUuid', response.data[0].uuid)
                     } else {
-                        // No businesses left, clear selection
                         setSelectedBusinessState(null)
                         localStorage.removeItem('selectedBusinessUuid')
                     }
@@ -50,12 +48,10 @@ export function BusinessProvider({children}: { children: ReactNode }) {
                     setSelectedBusinessState(response.data[0])
                     localStorage.setItem('selectedBusinessUuid', response.data[0].uuid)
                 } else {
-                    // No businesses and no saved business, ensure state is cleared
                     setSelectedBusinessState(null)
                     localStorage.removeItem('selectedBusinessUuid')
                 }
             } else {
-                // Even if fetch fails, set to empty array explicitly
                 setBusinesses([])
             }
         } catch (error) {

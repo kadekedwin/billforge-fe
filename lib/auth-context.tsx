@@ -15,34 +15,43 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-function getInitialAuthState() {
-    if (typeof window === "undefined") {
-        return {user: null, token: null};
-    }
+export function AuthProvider({children}: { children: React.ReactNode }) {
+    const [user, setUser] = useState<User | null>(null);
+    const [token, setToken] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const router = useRouter();
 
-    const storedToken = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
+    const initializeAuthState = async () => {
+        if (typeof window === "undefined") {
+            setIsLoading(false)
+            return
+        }
 
-    if (storedToken && storedUser) {
         try {
-            const parsedUser = JSON.parse(storedUser);
-            return {user: parsedUser, token: storedToken};
+            const storedToken = localStorage.getItem("token");
+            const storedUser = localStorage.getItem("user");
+
+            if (storedToken && storedUser) {
+                try {
+                    const parsedUser = JSON.parse(storedUser);
+                    setToken(storedToken);
+                    setUser(parsedUser);
+                } catch (error) {
+                    console.error("Error parsing stored user:", error);
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user");
+                }
+            }
         } catch (error) {
-            console.error("Error parsing stored user:", error);
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
+            console.error('Failed to initialize auth:', error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
-    return {user: null, token: null};
-}
-
-export function AuthProvider({children}: { children: React.ReactNode }) {
-    const initialAuth = getInitialAuthState();
-    const [user, setUser] = useState<User | null>(initialAuth.user);
-    const [token, setToken] = useState<string | null>(initialAuth.token);
-    const [isLoading, setIsLoading] = useState(true);
-    const router = useRouter();
+    useEffect(() => {
+        initializeAuthState()
+    }, []);
 
     const setAuth = (newUser: User, newToken: string) => {
         setUser(newUser);
