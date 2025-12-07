@@ -26,6 +26,7 @@ import { useBusiness } from "@/contexts/business-context";
 import type { Transaction, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
 import {useReceiptGenerator} from "@/lib/receipt/useReceiptGenerator";
 import {convertTransactionToReceiptData} from "@/lib/receipt/utils";
+import {useReceiptTemplatePreference} from "@/lib/receipt";
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();
@@ -41,6 +42,7 @@ export default function TransactionsPage() {
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
     const { generatePDF, loading: receiptLoading } = useReceiptGenerator();
+    const { template: receiptTemplate } = useReceiptTemplatePreference();
 
     const loadData = useCallback(async () => {
         if (!selectedBusiness) {
@@ -142,7 +144,7 @@ export default function TransactionsPage() {
                 undefined
             );
 
-            await generatePDF(receiptData);
+            await generatePDF(receiptData, undefined, receiptTemplate);
         } catch (err) {
             console.error("Error generating receipt:", err);
             alert("Failed to generate receipt");

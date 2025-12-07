@@ -12,6 +12,7 @@ import {
     Tag,
     CreditCard,
     UserCircle,
+    Settings,
 } from "lucide-react";
 import {cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button";
@@ -132,6 +133,11 @@ const navItems = [
         title: "Item Discounts",
         href: "/item-discounts",
         icon: Tag,
+    },
+    {
+        title: "Settings",
+        href: "/settings",
+        icon: Settings,
     },
 ];
 
