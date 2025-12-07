@@ -574,9 +574,6 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl sm:text-3xl font-bold">New Transaction</h1>
-                    <p className="text-sm text-muted-foreground hidden sm:block">
-                        Select items to add to the transaction
-                    </p>
                 </div>
                 <div className="flex items-center gap-2">
                     <Button

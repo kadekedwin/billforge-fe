@@ -18,7 +18,6 @@ export default function SettingsPage() {
         <div className="p-6 max-w-4xl mx-auto space-y-6">
             <div>
                 <h1 className="text-3xl font-bold">Settings</h1>
-                <p className="text-gray-600 mt-2">Manage your application preferences</p>
             </div>
 
             <div className="grid gap-4">

@@ -260,9 +260,6 @@ export default function ItemTaxesPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Item Taxes</h1>
-                    <p className="text-muted-foreground">
-                        Manage tax configurations for your items
-                    </p>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>

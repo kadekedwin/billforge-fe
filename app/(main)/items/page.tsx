@@ -501,9 +501,6 @@ export default function ItemsPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">Items</h1>
-                    <p className="text-muted-foreground">
-                        Manage your products and services
-                    </p>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>

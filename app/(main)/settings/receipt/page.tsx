@@ -150,14 +150,12 @@ export default function ReceiptSettingsPage() {
                 </Link>
                 <div>
                     <h1 className="text-3xl font-bold">Receipt Settings</h1>
-                    <p className="text-gray-600 mt-2">Configure receipt templates and preview your receipts</p>
                 </div>
             </div>
 
             <Card>
                 <CardHeader>
                     <CardTitle>Receipt Options</CardTitle>
-                    <CardDescription>Customize your receipt appearance</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex items-center justify-between">
@@ -166,7 +164,7 @@ export default function ReceiptSettingsPage() {
                                 Include Business Logo
                             </Label>
                             <p className="text-sm text-muted-foreground">
-                                Show your business logo on the receipt
+                                * Make sure to add business logo to generate receipt with logo.
                             </p>
                         </div>
                         <Switch
@@ -181,7 +179,6 @@ export default function ReceiptSettingsPage() {
             <Card>
                 <CardHeader>
                     <CardTitle>Receipt Template</CardTitle>
-                    <CardDescription>Choose a template for your receipts</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto pb-4">
