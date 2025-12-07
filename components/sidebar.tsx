@@ -30,7 +30,8 @@ import {useBusiness} from "@/contexts/business-context";
 import {useState, useEffect, memo} from "react";
 import {Building2, ChevronDown, Loader2, Plus, Pencil, X, Trash2} from "lucide-react";
 import Image from "next/image";
-import { getImageUrl, uploadImage, deleteImage, getFileSizeBytes } from "@/lib/images";
+import { getImageUrl, uploadImage, deleteImage } from "@/lib/images/operations";
+import { getFileSizeBytes } from "@/lib/images/utils";
 import { createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
 import {Business, CreateBusinessRequest, login, UpdateBusinessRequest} from "@/lib/api";
 import {

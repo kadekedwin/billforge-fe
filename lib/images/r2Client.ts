@@ -8,3 +8,5 @@ export const r2Client = new S3Client({
         secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
     },
 });
+
+export default r2Client;

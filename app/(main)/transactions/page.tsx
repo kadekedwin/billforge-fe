@@ -25,7 +25,7 @@ import { getTransactionItems } from "@/lib/api/transaction-items";
 import { useBusiness } from "@/contexts/business-context";
 import type { Transaction, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
 import {useReceiptGenerator} from "@/lib/receipt/useReceiptGenerator";
-import {convertTransactionToReceiptData} from "@/lib/receipt";
+import {convertTransactionToReceiptData} from "@/lib/receipt/utils";
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();

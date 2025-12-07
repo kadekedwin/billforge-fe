@@ -35,7 +35,8 @@ import { Plus, Trash2, Loader2, Pencil, X } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { getBusinesses, createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
 import { useBusiness } from "@/contexts/business-context";
-import { uploadImage, deleteImage, getImageUrl, getFileSizeBytes } from "@/lib/images";
+import { uploadImage, deleteImage, getImageUrl } from "@/lib/images/operations";
+import { getFileSizeBytes } from "@/lib/images/utils";
 import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
 
 export default function BusinessesPage() {

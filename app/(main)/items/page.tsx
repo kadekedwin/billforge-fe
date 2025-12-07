@@ -40,7 +40,8 @@ import { Plus, Trash2, Loader2, Pencil, X } from "lucide-react";
 import { getItems, createItem, updateItem, deleteItem } from "@/lib/api/items";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
-import { uploadImage, deleteImage, getImageUrl, getFileSizeBytes } from "@/lib/images";
+import { uploadImage, deleteImage, getImageUrl } from "@/lib/images/operations";
+import { getFileSizeBytes } from "@/lib/images/utils";
 import type { Item, CreateItemRequest, UpdateItemRequest, ItemTax, ItemDiscount } from "@/lib/api";
 
 const ItemImage = memo(({ item }: { item: Item }) => {
