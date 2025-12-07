@@ -27,7 +27,7 @@ export interface ReceiptData {
     notes?: string;
 }
 
-export type ReceiptTemplateType = 'classic' | 'sans-serif';
+export type ReceiptTemplateType = 'classic' | 'sans-serif' | 'modern-bold';
 
 export interface ReceiptTemplate {
     name: string;

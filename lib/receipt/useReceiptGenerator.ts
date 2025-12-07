@@ -24,11 +24,6 @@ export interface ImageGeneratorOptions {
     template?: ReceiptTemplateType;
 }
 
-const receiptTemplates = [
-    { name: 'Classic', type: 'classic' as const, description: 'Traditional monospace receipt with dashed lines' },
-    { name: 'Sans Serif', type: 'sans-serif' as const, description: 'Clean sans-serif receipt with dashed lines' }
-];
-
 export const useReceiptGenerator = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -188,14 +183,11 @@ export const useReceiptGenerator = () => {
         }
     };
 
-    const getTemplates = () => receiptTemplates;
-
     return {
         generatePDF,
         generateImage,
         previewPDF,
         previewImage,
-        getTemplates,
         loading,
         error
     };
