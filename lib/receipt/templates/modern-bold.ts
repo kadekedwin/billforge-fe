@@ -120,7 +120,11 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
       font-weight: bold;
       padding-bottom: 8px;
       margin-bottom: 8px;
-      border-bottom: 1px dashed #000;
+    }
+    .total-row.tax {
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 2px dashed #000;
     }
     .total-row.grand-total {
       font-size: 22px;
@@ -244,7 +248,7 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
       </div>
       ` : ''}
       ${data.tax !== undefined ? `
-      <div class="total-row">
+      <div class="total-row tax">
         <span>Tax:</span>
         <span>$${data.tax.toFixed(2)}</span>
       </div>
