@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { ReceiptTemplateType } from '@/lib/receipt';
+import { receiptTemplates } from '@/lib/receipt/templates';
 
 export function useReceiptTemplatePreference() {
+    const isValidTemplateType = (value: string | null): value is ReceiptTemplateType => {
+        return receiptTemplates.some(t => t.type === value);
+    };
+
     const [template, setTemplate] = useState<ReceiptTemplateType>(() => {
         if (typeof window !== 'undefined') {
             const saved = localStorage.getItem('receiptTemplate');
-            if (saved && (saved === 'classic' || saved === 'sans-serif')) {
+            if (isValidTemplateType(saved)) {
                 return saved;
             }
         }
@@ -21,10 +26,11 @@ export function useReceiptTemplatePreference() {
 
     useEffect(() => {
         const handleStorageChange = (e: StorageEvent) => {
-            if (e.key === 'receiptTemplate' && e.newValue) {
-                if (e.newValue === 'classic' || e.newValue === 'sans-serif') {
-                    setTemplate(e.newValue);
-                }
+            if (e.key !== 'receiptTemplate') return;
+
+            const value = e.newValue;
+            if (isValidTemplateType(value)) {
+                setTemplate(value);
             }
         };
 
@@ -34,4 +40,3 @@ export function useReceiptTemplatePreference() {
 
     return { template, updateTemplate };
 }
-
