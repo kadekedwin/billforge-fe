@@ -2,10 +2,11 @@
 
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { Input } from '@/components/ui/input';
 import { useReceiptTemplatePreference, ReceiptData, ReceiptTemplateType } from '@/lib/receipt';
 import { generateReceiptHTML } from '@/lib/receipt/templates';
 import { Check, ChevronLeft } from 'lucide-react';
@@ -18,11 +19,13 @@ interface ReceiptTemplateCardProps {
         description: string;
     };
     sampleReceipt: ReceiptData;
+    includeLogo: boolean;
+    footerMessage: string;
     isSelected: boolean;
     onSelect: () => void;
 }
 
-function ReceiptTemplateCard({ template, sampleReceipt, isSelected, onSelect }: ReceiptTemplateCardProps) {
+function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessage, isSelected, onSelect }: ReceiptTemplateCardProps) {
     const iframeRef = useRef<HTMLIFrameElement>(null);
 
     useEffect(() => {
@@ -51,7 +54,7 @@ function ReceiptTemplateCard({ template, sampleReceipt, isSelected, onSelect }: 
         };
     }, []);
 
-    const templateHTML = generateReceiptHTML(sampleReceipt, template.type);
+    const templateHTML = generateReceiptHTML({ ...sampleReceipt, storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined, footer: footerMessage }, template.type);
 
     return (
         <button
@@ -133,12 +136,12 @@ const sampleReceipt: ReceiptData = {
     paymentMethod: 'Cash',
     paymentAmount: 20.00,
     changeAmount: 3.71,
-    footer: 'Thank you for your purchase!',
+    footer: '',
     notes: 'Please visit us again soon'
 };
 
 export default function ReceiptSettingsPage() {
-    const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo } = useReceiptTemplatePreference();
+    const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage } = useReceiptTemplatePreference();
 
     return (
         <div className="p-6 max-w-6xl mx-auto space-y-6">
@@ -157,7 +160,7 @@ export default function ReceiptSettingsPage() {
                 <CardHeader>
                     <CardTitle>Receipt Options</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-6">
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
                             <Label htmlFor="include-logo" className="text-base">
@@ -171,6 +174,22 @@ export default function ReceiptSettingsPage() {
                             id="include-logo"
                             checked={includeLogo}
                             onCheckedChange={updateIncludeLogo}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="footer-message" className="text-base">
+                            Footer Message
+                        </Label>
+                        <p className="text-sm text-muted-foreground">
+                            Add a custom message at the bottom of the receipt
+                        </p>
+                        <Input
+                            id="footer-message"
+                            placeholder="Thank you for your business!"
+                            value={footerMessage}
+                            onChange={(e) => updateFooterMessage(e.target.value)}
+                            className="max-w-md"
                         />
                     </div>
                 </CardContent>
@@ -187,7 +206,9 @@ export default function ReceiptSettingsPage() {
                                 <ReceiptTemplateCard
                                     key={template.type}
                                     template={template}
-                                    sampleReceipt={includeLogo ? sampleReceipt : { ...sampleReceipt, storeLogo: undefined }}
+                                    sampleReceipt={sampleReceipt}
+                                    includeLogo={includeLogo}
+                                    footerMessage={footerMessage}
                                     isSelected={selectedTemplate === template.type}
                                     onSelect={() => updateTemplate(template.type)}
                                 />

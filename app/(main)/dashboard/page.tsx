@@ -85,7 +85,7 @@ ItemImageCard.displayName = 'ItemImageCard';
 
 export default function DashboardPage() {
     const { selectedBusiness } = useBusiness();
-    const { includeLogo } = useReceiptTemplatePreference();
+    const { includeLogo, footerMessage } = useReceiptTemplatePreference();
     const [items, setItems] = useState<Item[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
@@ -722,7 +722,7 @@ export default function DashboardPage() {
                         selectedBusiness,
                         completedCustomerName,
                         completedPaymentMethodName,
-                        undefined,
+                        footerMessage || undefined,
                         businessLogoUrl
                     )}
                     customerEmail={completedCustomerEmail}

@@ -31,7 +31,7 @@ import {useReceiptTemplatePreference} from "@/lib/receipt";
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();
-    const { includeLogo } = useReceiptTemplatePreference();
+    const { includeLogo, footerMessage } = useReceiptTemplatePreference();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
@@ -164,7 +164,7 @@ export default function TransactionsPage() {
                 selectedBusiness,
                 customer?.name,
                 paymentMethodName,
-                undefined,
+                footerMessage || undefined,
                 businessLogoUrl
             );
 
@@ -190,7 +190,7 @@ export default function TransactionsPage() {
                 selectedBusiness,
                 customer?.name,
                 paymentMethodName,
-                undefined,
+                footerMessage || undefined,
                 businessLogoUrl
             );
 

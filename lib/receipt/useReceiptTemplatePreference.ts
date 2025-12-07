@@ -27,6 +27,14 @@ export function useReceiptTemplatePreference() {
         return false;
     });
 
+    const [footerMessage, setFooterMessage] = useState<string>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('receiptFooterMessage');
+            return saved || '';
+        }
+        return '';
+    });
+
     const updateTemplate = (newTemplate: ReceiptTemplateType) => {
         setTemplate(newTemplate);
         localStorage.setItem('receiptTemplate', newTemplate);
@@ -35,6 +43,11 @@ export function useReceiptTemplatePreference() {
     const updateIncludeLogo = (value: boolean) => {
         setIncludeLogo(value);
         localStorage.setItem('receiptIncludeLogo', String(value));
+    };
+
+    const updateFooterMessage = (value: string) => {
+        setFooterMessage(value);
+        localStorage.setItem('receiptFooterMessage', value);
     };
 
     useEffect(() => {
@@ -46,6 +59,8 @@ export function useReceiptTemplatePreference() {
                 }
             } else if (e.key === 'receiptIncludeLogo') {
                 setIncludeLogo(e.newValue === 'true');
+            } else if (e.key === 'receiptFooterMessage') {
+                setFooterMessage(e.newValue || '');
             }
         };
 
@@ -53,5 +68,5 @@ export function useReceiptTemplatePreference() {
         return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
-    return { template, updateTemplate, includeLogo, updateIncludeLogo };
+    return { template, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage };
 }
