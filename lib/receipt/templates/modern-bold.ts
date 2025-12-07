@@ -32,6 +32,13 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
       padding: 15px;
       margin-bottom: 20px;
     }
+    .store-logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      display: block;
+      object-fit: contain;
+    }
     .logo-section {
       display: flex;
       align-items: center;
@@ -144,6 +151,7 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
 <body>
   <div class="receipt">
     <div class="header">
+      ${data.storeLogo ? `<img src="${data.storeLogo}" alt="${data.storeName}" class="store-logo" />` : ''}
       <div class="logo-section">
         <div class="logo-number">${data.storeName}</div>
       </div>

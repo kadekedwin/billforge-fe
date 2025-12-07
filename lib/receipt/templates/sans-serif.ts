@@ -33,6 +33,13 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
       padding-bottom: 15px;
       margin-bottom: 15px;
     }
+    .store-logo {
+      width: 60px;
+      height: 60px;
+      margin: 10px auto 20px;
+      display: block;
+      object-fit: contain;
+    }
     .store-name {
       font-size: 20px;
       font-weight: bold;
@@ -118,6 +125,7 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
 <body>
   <div class="receipt">
     <div class="header">
+      ${data.storeLogo ? `<img src="${data.storeLogo}" alt="${data.storeName}" class="store-logo" />` : ''}
       <div class="store-name">${data.storeName}</div>
       ${data.storeAddress || data.storePhone ? `
       <div class="store-info">

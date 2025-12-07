@@ -4,6 +4,8 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { useReceiptTemplatePreference, ReceiptData, ReceiptTemplateType } from '@/lib/receipt';
 import { generateReceiptHTML } from '@/lib/receipt/templates';
 import { Check, ChevronLeft } from 'lucide-react';
@@ -98,6 +100,7 @@ const sampleReceipt: ReceiptData = {
     storeName: 'BillForge Store',
     storeAddress: '123 Main Street, City, State 12345',
     storePhone: '(555) 123-4567',
+    storeLogo: '/logoblack.png',
     cashierName: 'John Doe',
     customerName: 'Jane Smith',
     items: [
@@ -135,7 +138,7 @@ const sampleReceipt: ReceiptData = {
 };
 
 export default function ReceiptSettingsPage() {
-    const { template: selectedTemplate, updateTemplate } = useReceiptTemplatePreference();
+    const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo } = useReceiptTemplatePreference();
 
     return (
         <div className="p-6 max-w-6xl mx-auto space-y-6">
@@ -153,17 +156,41 @@ export default function ReceiptSettingsPage() {
 
             <Card>
                 <CardHeader>
+                    <CardTitle>Receipt Options</CardTitle>
+                    <CardDescription>Customize your receipt appearance</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="flex items-center justify-between">
+                        <div className="space-y-0.5">
+                            <Label htmlFor="include-logo" className="text-base">
+                                Include Business Logo
+                            </Label>
+                            <p className="text-sm text-muted-foreground">
+                                Show your business logo on the receipt
+                            </p>
+                        </div>
+                        <Switch
+                            id="include-logo"
+                            checked={includeLogo}
+                            onCheckedChange={updateIncludeLogo}
+                        />
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
                     <CardTitle>Receipt Template</CardTitle>
                     <CardDescription>Choose a template for your receipts</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto pb-4">
-                        <div className="flex items-start gap-6 min-w-min">
+                        <div className="flex items-start gap-6 min-w-min" key={includeLogo ? 1 : 0}>
                             {receiptTemplates.map((template) => (
                                 <ReceiptTemplateCard
                                     key={template.type}
                                     template={template}
-                                    sampleReceipt={sampleReceipt}
+                                    sampleReceipt={includeLogo ? sampleReceipt : { ...sampleReceipt, storeLogo: undefined }}
                                     isSelected={selectedTemplate === template.type}
                                     onSelect={() => updateTemplate(template.type)}
                                 />

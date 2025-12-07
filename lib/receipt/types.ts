@@ -15,6 +15,7 @@ export interface ReceiptData {
     storeName: string;
     storeAddress?: string;
     storePhone?: string;
+    storeLogo?: string;
     items: ReceiptItem[];
     subtotal: number;
     tax?: number;

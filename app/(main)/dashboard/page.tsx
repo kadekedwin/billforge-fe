@@ -28,6 +28,7 @@ import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction,
 import Image from "next/image";
 import { ReceiptPopup } from "@/components/receipt-popup";
 import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
+import { useReceiptTemplatePreference } from "@/lib/receipt";
 
 const ItemImageCard = memo(({ item }: { item: Item }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -84,6 +85,7 @@ ItemImageCard.displayName = 'ItemImageCard';
 
 export default function DashboardPage() {
     const { selectedBusiness } = useBusiness();
+    const { includeLogo } = useReceiptTemplatePreference();
     const [items, setItems] = useState<Item[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
@@ -104,6 +106,7 @@ export default function DashboardPage() {
     const [completedPaymentMethodName, setCompletedPaymentMethodName] = useState<string>("Cash");
     const [completedCustomerEmail, setCompletedCustomerEmail] = useState<string | null>(null);
     const [completedCustomerPhone, setCompletedCustomerPhone] = useState<string | null>(null);
+    const [businessLogoUrl, setBusinessLogoUrl] = useState<string | undefined>(undefined);
 
 
     const loadData = useCallback(async () => {
@@ -159,6 +162,26 @@ export default function DashboardPage() {
     useEffect(() => {
         loadData();
     }, [loadData]);
+
+    useEffect(() => {
+        const fetchBusinessLogo = async () => {
+            if (selectedBusiness && includeLogo && selectedBusiness.image_size_bytes) {
+                const result = await getImageUrl({
+                    folder: 'businesses',
+                    uuid: selectedBusiness.uuid,
+                });
+                if (result.success && result.url) {
+                    setBusinessLogoUrl(result.url);
+                } else {
+                    setBusinessLogoUrl(undefined);
+                }
+            } else {
+                setBusinessLogoUrl(undefined);
+            }
+        };
+
+        fetchBusinessLogo();
+    }, [selectedBusiness, includeLogo]);
 
     const addToCart = (itemUuid: string) => {
         setCart((prev) => {
@@ -702,7 +725,8 @@ export default function DashboardPage() {
                         selectedBusiness,
                         completedCustomerName,
                         completedPaymentMethodName,
-                        undefined
+                        undefined,
+                        businessLogoUrl
                     )}
                     customerEmail={completedCustomerEmail}
                     customerPhone={completedCustomerPhone}

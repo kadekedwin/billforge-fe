@@ -22,6 +22,7 @@ import { getTransactions } from "@/lib/api/transactions";
 import { getCustomers } from "@/lib/api/customers";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getTransactionItems } from "@/lib/api/transaction-items";
+import { getImageUrl } from "@/lib/images/operations";
 import { useBusiness } from "@/contexts/business-context";
 import type { Transaction, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
 import {useReceiptGenerator} from "@/lib/receipt/useReceiptGenerator";
@@ -30,6 +31,7 @@ import {useReceiptTemplatePreference} from "@/lib/receipt";
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();
+    const { includeLogo } = useReceiptTemplatePreference();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
@@ -39,6 +41,7 @@ export default function TransactionsPage() {
     const [transactionItems, setTransactionItems] = useState<TransactionItem[]>([]);
     const [isLoadingItems, setIsLoadingItems] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [businessLogoUrl, setBusinessLogoUrl] = useState<string | undefined>(undefined);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
     const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
@@ -92,6 +95,26 @@ export default function TransactionsPage() {
         loadData();
     }, [loadData]);
 
+    useEffect(() => {
+        const fetchBusinessLogo = async () => {
+            if (selectedBusiness && includeLogo && selectedBusiness.image_size_bytes) {
+                const result = await getImageUrl({
+                    folder: 'businesses',
+                    uuid: selectedBusiness.uuid,
+                });
+                if (result.success && result.url) {
+                    setBusinessLogoUrl(result.url);
+                } else {
+                    setBusinessLogoUrl(undefined);
+                }
+            } else {
+                setBusinessLogoUrl(undefined);
+            }
+        };
+
+        fetchBusinessLogo();
+    }, [selectedBusiness, includeLogo]);
+
     const handleViewDetails = async (transaction: Transaction) => {
         setSelectedTransaction(transaction);
         setIsDetailsDialogOpen(true);
@@ -141,7 +164,8 @@ export default function TransactionsPage() {
                 selectedBusiness,
                 customer?.name,
                 paymentMethodName,
-                undefined
+                undefined,
+                businessLogoUrl
             );
 
             await generatePDF(receiptData, undefined, receiptTemplate);
@@ -166,7 +190,8 @@ export default function TransactionsPage() {
                 selectedBusiness,
                 customer?.name,
                 paymentMethodName,
-                undefined
+                undefined,
+                businessLogoUrl
             );
 
             await generateImage(receiptData, { type: 'png' }, receiptTemplate);

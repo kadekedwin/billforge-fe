@@ -19,18 +19,33 @@ export function useReceiptTemplatePreference() {
         return 'classic';
     });
 
+    const [includeLogo, setIncludeLogo] = useState<boolean>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('receiptIncludeLogo');
+            return saved === 'true';
+        }
+        return false;
+    });
+
     const updateTemplate = (newTemplate: ReceiptTemplateType) => {
         setTemplate(newTemplate);
         localStorage.setItem('receiptTemplate', newTemplate);
     };
 
+    const updateIncludeLogo = (value: boolean) => {
+        setIncludeLogo(value);
+        localStorage.setItem('receiptIncludeLogo', String(value));
+    };
+
     useEffect(() => {
         const handleStorageChange = (e: StorageEvent) => {
-            if (e.key !== 'receiptTemplate') return;
-
-            const value = e.newValue;
-            if (isValidTemplateType(value)) {
-                setTemplate(value);
+            if (e.key === 'receiptTemplate') {
+                const value = e.newValue;
+                if (isValidTemplateType(value)) {
+                    setTemplate(value);
+                }
+            } else if (e.key === 'receiptIncludeLogo') {
+                setIncludeLogo(e.newValue === 'true');
             }
         };
 
@@ -38,5 +53,5 @@ export function useReceiptTemplatePreference() {
         return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
-    return { template, updateTemplate };
+    return { template, updateTemplate, includeLogo, updateIncludeLogo };
 }
