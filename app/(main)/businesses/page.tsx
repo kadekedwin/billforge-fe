@@ -138,6 +138,8 @@ export default function BusinessesPage() {
                     setBusinesses((prev) => [...prev, response.data]);
                     setIsDialogOpen(false);
                     setFormData({ name: "", address: null, phone: null });
+                    // Refresh business context to update sidebar
+                    await refreshBusinesses();
                 } else {
                     const errorData = response as unknown as {
                         success: false;
