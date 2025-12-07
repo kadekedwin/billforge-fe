@@ -81,7 +81,7 @@ const ItemImageCard = memo(({ item }: { item: Item }) => {
 
 ItemImageCard.displayName = 'ItemImageCard';
 
-export default function TransactionsPage() {
+export default function DashboardPage() {
     const router = useRouter();
     const { selectedBusiness } = useBusiness();
     const [items, setItems] = useState<Item[]>([]);
@@ -511,26 +511,27 @@ export default function TransactionsPage() {
     }
 
     return (
-        <div className="container mx-auto p-6">
-            <div className="mb-6 flex items-center justify-between">
+        <div className="space-y-4">
+            <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold">New Transaction</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-2xl sm:text-3xl font-bold">New Transaction</h1>
+                    <p className="text-sm text-muted-foreground hidden sm:block">
                         Select items to add to the transaction
                     </p>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
                     <Button
                         variant="outline"
+                        size="sm"
                         className="relative"
                         disabled={getTotalItems() === 0}
                     >
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        Cart
+                        <ShoppingCart className="h-4 w-4 sm:mr-2" />
+                        <span className="hidden sm:inline">Cart</span>
                         {getTotalItems() > 0 && (
                             <Badge
                                 variant="destructive"
-                                className="absolute -right-2 -top-2 h-5 w-5 rounded-full p-0 text-xs"
+                                className="absolute -right-1 -top-1 h-4 w-4 rounded-full p-0 text-[10px]"
                             >
                                 {getTotalItems()}
                             </Badge>
@@ -549,65 +550,60 @@ export default function TransactionsPage() {
                     </div>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     {filteredItems.map((item) => {
                         const quantity = getCartItemCount(item.uuid);
 
                         return (
                             <Card
                                 key={item.uuid}
-                                className="group relative overflow-hidden transition-shadow hover:shadow-lg"
+                                className="py-0 group relative overflow-hidden transition-shadow hover:shadow-md"
                             >
-                                <CardHeader className="p-0">
+                                <CardHeader className="px-0">
                                     <div className="relative aspect-square w-full overflow-hidden bg-muted">
                                         <ItemImageCard item={item} />
                                         {!item.is_active && (
                                             <Badge
                                                 variant="destructive"
-                                                className="absolute right-2 top-2"
+                                                className="absolute right-1 top-1 text-xs px-1"
                                             >
                                                 Inactive
                                             </Badge>
                                         )}
                                     </div>
                                 </CardHeader>
-                                <CardContent className="p-4">
-                                    <CardTitle className="mb-1 line-clamp-2 text-lg">
+                                <CardContent className="px-4">
+                                    <CardTitle className="mb-0.5 line-clamp-2 text-sm">
                                         {item.name}
                                     </CardTitle>
                                     {item.sku && (
-                                        <p className="text-xs text-muted-foreground">
-                                            SKU: {item.sku}
+                                        <p className="text-[10px] text-muted-foreground truncate">
+                                            {item.sku}
                                         </p>
                                     )}
-                                    {item.description && (
-                                        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
-                                            {item.description}
-                                        </p>
-                                    )}
-                                    <p className="mt-3 text-2xl font-bold text-primary">
+                                    <p className="mt-1 text-lg font-bold text-primary">
                                         ${parseFloat(item.base_price).toFixed(2)}
                                     </p>
                                 </CardContent>
-                                <CardFooter className="p-4 pt-0">
+                                <CardFooter className="px-4 pb-4">
                                     {quantity > 0 ? (
-                                        <div className="flex w-full items-center justify-between gap-2">
+                                        <div className="flex w-full items-center justify-between gap-1">
                                             <Button
                                                 variant="outline"
                                                 size="sm"
                                                 onClick={() => removeFromCart(item.uuid)}
-                                                className="h-9 w-9 p-0"
+                                                className="h-7 w-7 p-0 text-base"
                                             >
                                                 -
                                             </Button>
-                                            <span className="text-lg font-semibold">
+                                            <span className="text-sm font-semibold">
                                                 {quantity}
                                             </span>
                                             <Button
                                                 variant="outline"
                                                 size="sm"
                                                 onClick={() => addToCart(item.uuid)}
-                                                className="h-9 w-9 p-0"
+                                                className="h-7 w-7 p-0 text-base"
                                             >
                                                 +
                                             </Button>
@@ -615,11 +611,11 @@ export default function TransactionsPage() {
                                     ) : (
                                         <Button
                                             onClick={() => addToCart(item.uuid)}
-                                            className="w-full"
+                                            className="w-full h-7 text-xs"
                                             size="sm"
                                         >
-                                            <Plus className="mr-2 h-4 w-4" />
-                                            Add to Cart
+                                            <Plus className="mr-1 h-3 w-3" />
+                                            Add
                                         </Button>
                                     )}
                                 </CardFooter>
@@ -630,20 +626,20 @@ export default function TransactionsPage() {
             )}
 
             {getTotalItems() > 0 && (
-                <div className="fixed bottom-6 right-6 rounded-lg border bg-card p-4 shadow-lg">
-                    <div className="flex items-center gap-4">
-                        <div>
-                            <p className="text-sm text-muted-foreground">Total Items</p>
-                            <p className="text-2xl font-bold">{getTotalItems()}</p>
+                <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 rounded-lg border bg-card p-3 shadow-lg">
+                    <div className="flex items-center gap-2 sm:gap-4">
+                        <div className="flex-1 sm:flex-none">
+                            <p className="text-xs text-muted-foreground">Items</p>
+                            <p className="text-lg sm:text-2xl font-bold">{getTotalItems()}</p>
                         </div>
-                        <div className="h-12 w-px bg-border" />
-                        <div>
-                            <p className="text-sm text-muted-foreground">Total Amount</p>
-                            <p className="text-2xl font-bold text-primary">
+                        <div className="h-10 sm:h-12 w-px bg-border" />
+                        <div className="flex-1 sm:flex-none">
+                            <p className="text-xs text-muted-foreground">Total</p>
+                            <p className="text-lg sm:text-2xl font-bold text-primary">
                                 ${getTotalAmount().toFixed(2)}
                             </p>
                         </div>
-                        <Button size="lg" className="ml-4" onClick={() => setIsCheckout(true)}>
+                        <Button size="sm" className="sm:h-10 sm:px-6 sm:ml-4" onClick={() => setIsCheckout(true)}>
                             Checkout
                         </Button>
                     </div>

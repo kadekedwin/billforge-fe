@@ -49,15 +49,15 @@ export default function DashboardLayout({
             {/* Main Content */}
             <div className="flex flex-1 flex-col overflow-hidden">
                 {/* Mobile Header */}
-                <header className="flex h-16 items-center border-b px-4 lg:hidden">
+                <header className="flex h-14 items-center border-b px-3 lg:hidden">
                     <MobileSidebar/>
-                    <div className="ml-4 flex items-center space-x-2">
-                        <span className="text-xl font-bold">BillForge</span>
+                    <div className="ml-3 flex items-center space-x-2">
+                        <span className="text-lg font-bold">BillForge</span>
                     </div>
                 </header>
 
                 {/* Page Content */}
-                <main className="flex-1 overflow-y-auto bg-background p-6">
+                <main className="flex-1 overflow-y-auto bg-background p-3 sm:p-6">
                     {children}
                 </main>
             </div>
