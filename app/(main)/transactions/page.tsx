@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -17,14 +17,15 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Eye, Loader2 } from "lucide-react";
+import { Eye, Loader2, Download, Mail, MessageCircle } from "lucide-react";
 import { getTransactions } from "@/lib/api/transactions";
 import { getCustomers } from "@/lib/api/customers";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getTransactionItems } from "@/lib/api/transaction-items";
 import { useBusiness } from "@/contexts/business-context";
 import type { Transaction, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
+import {useReceiptGenerator} from "@/lib/receipt/useReceiptGenerator";
+import {convertTransactionToReceiptData} from "@/lib/receipt";
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();
@@ -37,12 +38,11 @@ export default function TransactionsPage() {
     const [transactionItems, setTransactionItems] = useState<TransactionItem[]>([]);
     const [isLoadingItems, setIsLoadingItems] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isSendingEmail, setIsSendingEmail] = useState(false);
+    const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
+    const { generatePDF, loading: receiptLoading } = useReceiptGenerator();
 
-    useEffect(() => {
-        loadData();
-    }, [selectedBusiness]);
-
-    const loadData = async () => {
+    const loadData = useCallback(async () => {
         if (!selectedBusiness) {
             setIsLoading(false);
             return;
@@ -84,7 +84,11 @@ export default function TransactionsPage() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [selectedBusiness]);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
 
     const handleViewDetails = async (transaction: Transaction) => {
         setSelectedTransaction(transaction);
@@ -103,13 +107,6 @@ export default function TransactionsPage() {
         }
     };
 
-    const getBusinessName = (business_uuid: string) => {
-        if (selectedBusiness && business_uuid === selectedBusiness.uuid) {
-            return selectedBusiness.name;
-        }
-        return "Unknown Business";
-    };
-
     const getCustomerName = (customer_uuid: string | null) => {
         if (!customer_uuid) return "-";
         const customer = customers.find(c => c.uuid === customer_uuid);
@@ -120,6 +117,77 @@ export default function TransactionsPage() {
         if (!payment_method_uuid) return "-";
         const paymentMethod = paymentMethods.find(pm => pm.uuid === payment_method_uuid);
         return paymentMethod?.name || "Unknown Method";
+    };
+
+    const getCustomer = (customer_uuid: string | null) => {
+        if (!customer_uuid) return null;
+        return customers.find(c => c.uuid === customer_uuid);
+    };
+
+    const handleDownloadReceipt = async () => {
+        if (!selectedTransaction || !selectedBusiness) return;
+
+        try {
+            const customer = getCustomer(selectedTransaction.customer_uuid);
+            const paymentMethodName = selectedTransaction.payment_method_uuid
+                ? getPaymentMethodName(selectedTransaction.payment_method_uuid)
+                : "Cash";
+
+            const receiptData = convertTransactionToReceiptData(
+                selectedTransaction,
+                transactionItems,
+                selectedBusiness,
+                customer?.name,
+                paymentMethodName
+            );
+
+            await generatePDF(receiptData);
+        } catch (err) {
+            console.error("Error generating receipt:", err);
+            alert("Failed to generate receipt");
+        }
+    };
+
+    const handleSendEmail = async () => {
+        if (!selectedTransaction) return;
+
+        const customer = getCustomer(selectedTransaction.customer_uuid);
+        if (!customer?.email) return;
+
+        try {
+            setIsSendingEmail(true);
+            // TODO: Implement email sending functionality
+            console.log("Send receipt to email:", customer.email);
+            alert(`Receipt will be sent to ${customer.email}`);
+        } catch (err) {
+            console.error("Error sending email:", err);
+            alert("Failed to send email");
+        } finally {
+            setIsSendingEmail(false);
+        }
+    };
+
+    const handleSendWhatsApp = async () => {
+        if (!selectedTransaction) return;
+
+        const customer = getCustomer(selectedTransaction.customer_uuid);
+        if (!customer?.phone) return;
+
+        try {
+            setIsSendingWhatsApp(true);
+            // TODO: Implement WhatsApp sending functionality
+            console.log("Send receipt to WhatsApp:", customer.phone);
+
+            // For now, open WhatsApp web with the phone number
+            const message = encodeURIComponent(`Receipt for transaction ${selectedTransaction.uuid}`);
+            const phoneNumber = customer.phone.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        } catch (err) {
+            console.error("Error sending WhatsApp:", err);
+            alert("Failed to send WhatsApp message");
+        } finally {
+            setIsSendingWhatsApp(false);
+        }
     };
 
     const filteredTransactions = selectedBusiness
@@ -304,6 +372,66 @@ export default function TransactionsPage() {
                                         ${parseFloat(selectedTransaction.final_amount).toFixed(2)}
                                     </span>
                                 </div>
+                            </div>
+
+                            {/* Receipt Actions */}
+                            <div className="space-y-2 pt-4 border-t">
+                                <Button
+                                    onClick={handleDownloadReceipt}
+                                    disabled={receiptLoading}
+                                    className="w-full"
+                                    variant="default"
+                                >
+                                    {receiptLoading ? (
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    ) : (
+                                        <Download className="mr-2 h-4 w-4" />
+                                    )}
+                                    Download Receipt
+                                </Button>
+
+                                {selectedTransaction.customer_uuid && (() => {
+                                    const customer = getCustomer(selectedTransaction.customer_uuid);
+                                    const hasEmail = !!customer?.email;
+                                    const hasPhone = !!customer?.phone;
+
+                                    if (!hasEmail && !hasPhone) return null;
+
+                                    return (
+                                        <div className="flex gap-2">
+                                            {hasEmail && (
+                                                <Button
+                                                    onClick={handleSendEmail}
+                                                    disabled={isSendingEmail}
+                                                    className={hasPhone ? "flex-1" : "w-full"}
+                                                    variant="outline"
+                                                >
+                                                    {isSendingEmail ? (
+                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                    ) : (
+                                                        <Mail className="mr-2 h-4 w-4" />
+                                                    )}
+                                                    Send to Email
+                                                </Button>
+                                            )}
+                                            {hasPhone && (
+                                                <Button
+                                                    onClick={handleSendWhatsApp}
+                                                    disabled={isSendingWhatsApp}
+                                                    className={hasEmail ? "flex-1" : "w-full"}
+                                                    variant="outline"
+                                                >
+                                                    {isSendingWhatsApp ? (
+                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                    ) : (
+                                                        <MessageCircle className="mr-2 h-4 w-4" />
+                                                    )}
+                                                    Send to WhatsApp
+                                                </Button>
+                                            )}
+                                        </div>
+                                    );
+                                })()}
                             </div>
                         </div>
                     )}
