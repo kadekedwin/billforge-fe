@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/table";
 import { Plus, ShoppingCart, Loader2, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { getItems } from "@/lib/api/items";
-import { getBusinesses } from "@/lib/api/businesses";
 import { getCustomers } from "@/lib/api/customers";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getItemTaxes } from "@/lib/api/item-taxes";
@@ -24,7 +23,8 @@ import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { createTransaction } from "@/lib/api/transactions";
 import { createTransactionItem } from "@/lib/api/transaction-items";
 import { getImageUrl } from "@/lib/images";
-import type { Item, Business, Customer, PaymentMethod, ItemTax, ItemDiscount } from "@/lib/api";
+import { useBusiness } from "@/lib/business-context";
+import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount } from "@/lib/api";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -83,15 +83,14 @@ ItemImageCard.displayName = 'ItemImageCard';
 
 export default function TransactionsPage() {
     const router = useRouter();
+    const { selectedBusiness } = useBusiness();
     const [items, setItems] = useState<Item[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [selectedBusiness, setSelectedBusiness] = useState<string>("");
     const [cart, setCart] = useState<Map<string, number>>(new Map());
     const [isCheckout, setIsCheckout] = useState(false);
     const [selectedCustomer, setSelectedCustomer] = useState<string>("");
@@ -106,14 +105,12 @@ export default function TransactionsPage() {
             setError(null);
             const [
                 itemsResponse,
-                businessesResponse,
                 customersResponse,
                 paymentMethodsResponse,
                 taxesResponse,
                 discountsResponse,
             ] = await Promise.all([
                 getItems({ is_active: true }),
-                getBusinesses(),
                 getCustomers(),
                 getPaymentMethods(),
                 getItemTaxes(),
@@ -128,13 +125,6 @@ export default function TransactionsPage() {
                     message: string;
                 };
                 setError(errorData.message || "Failed to load items");
-            }
-
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
-                if (businessesResponse.data.length > 0 && !selectedBusiness) {
-                    setSelectedBusiness(businessesResponse.data[0].uuid);
-                }
             }
 
             if (customersResponse.success) {
@@ -157,7 +147,7 @@ export default function TransactionsPage() {
         } finally {
             setIsLoading(false);
         }
-    }, [selectedBusiness]);
+    }, []);
 
     useEffect(() => {
         loadData();
@@ -246,7 +236,7 @@ export default function TransactionsPage() {
 
     const handleCompleteTransaction = async () => {
         if (!selectedBusiness) {
-            setError("Please select a business");
+            setError("Please select a business from the sidebar");
             return;
         }
 
@@ -257,7 +247,7 @@ export default function TransactionsPage() {
             const summary = getCartSummary();
 
             const transactionData = {
-                business_uuid: selectedBusiness,
+                business_uuid: selectedBusiness.uuid,
                 customer_uuid: selectedCustomer || null,
                 payment_method_uuid: selectedPaymentMethod || null,
                 total_amount: summary.totalAmount,
@@ -317,8 +307,8 @@ export default function TransactionsPage() {
     };
 
     const filteredItems = selectedBusiness
-        ? items.filter((item) => item.business_uuid === selectedBusiness)
-        : items;
+        ? items.filter((item) => item.business_uuid === selectedBusiness.uuid)
+        : [];
 
     if (isLoading) {
         return (
@@ -344,8 +334,12 @@ export default function TransactionsPage() {
 
     if (isCheckout) {
         const summary = getCartSummary();
-        const businessCustomers = customers.filter((c) => c.business_uuid === selectedBusiness);
-        const businessPaymentMethods = paymentMethods.filter((pm) => pm.business_uuid === selectedBusiness);
+        const businessCustomers = selectedBusiness
+            ? customers.filter((c) => c.business_uuid === selectedBusiness.uuid)
+            : [];
+        const businessPaymentMethods = selectedBusiness
+            ? paymentMethods.filter((pm) => pm.business_uuid === selectedBusiness.uuid)
+            : [];
 
         return (
             <div className="container mx-auto p-6 max-w-4xl">
@@ -526,19 +520,6 @@ export default function TransactionsPage() {
                     </p>
                 </div>
                 <div className="flex items-center gap-4">
-                    {businesses.length > 1 && (
-                        <select
-                            value={selectedBusiness}
-                            onChange={(e) => setSelectedBusiness(e.target.value)}
-                            className="rounded-md border border-input bg-background px-3 py-2"
-                        >
-                            {businesses.map((business) => (
-                                <option key={business.uuid} value={business.uuid}>
-                                    {business.name}
-                                </option>
-                            ))}
-                        </select>
-                    )}
                     <Button
                         variant="outline"
                         className="relative"
@@ -571,9 +552,6 @@ export default function TransactionsPage() {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {filteredItems.map((item) => {
                         const quantity = getCartItemCount(item.uuid);
-                        const business = businesses.find(
-                            (b) => b.uuid === item.business_uuid
-                        );
 
                         return (
                             <Card
@@ -610,11 +588,6 @@ export default function TransactionsPage() {
                                     <p className="mt-3 text-2xl font-bold text-primary">
                                         ${parseFloat(item.base_price).toFixed(2)}
                                     </p>
-                                    {business && (
-                                        <p className="mt-1 text-xs text-muted-foreground">
-                                            {business.name}
-                                        </p>
-                                    )}
                                 </CardContent>
                                 <CardFooter className="p-4 pt-0">
                                     {quantity > 0 ? (

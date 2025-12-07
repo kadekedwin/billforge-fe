@@ -20,15 +20,15 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Eye, Loader2 } from "lucide-react";
 import { getTransactions } from "@/lib/api/transactions";
-import { getBusinesses } from "@/lib/api/businesses";
 import { getCustomers } from "@/lib/api/customers";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getTransactionItems } from "@/lib/api/transaction-items";
-import type { Transaction, Business, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
+import { useBusiness } from "@/lib/business-context";
+import type { Transaction, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
 
 export default function TransactionsPage() {
+    const { selectedBusiness } = useBusiness();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
-    const [businesses, setBusinesses] = useState<Business[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -40,20 +40,23 @@ export default function TransactionsPage() {
 
     useEffect(() => {
         loadData();
-    }, []);
+    }, [selectedBusiness]);
 
     const loadData = async () => {
+        if (!selectedBusiness) {
+            setIsLoading(false);
+            return;
+        }
+
         try {
             setIsLoading(true);
             setError(null);
             const [
                 transactionsResponse,
-                businessesResponse,
                 customersResponse,
                 paymentMethodsResponse,
             ] = await Promise.all([
                 getTransactions(),
-                getBusinesses(),
                 getCustomers(),
                 getPaymentMethods(),
             ]);
@@ -66,10 +69,6 @@ export default function TransactionsPage() {
                     message: string;
                 };
                 setError(errorData.message || "Failed to load transactions");
-            }
-
-            if (businessesResponse.success) {
-                setBusinesses(businessesResponse.data);
             }
 
             if (customersResponse.success) {
@@ -105,8 +104,10 @@ export default function TransactionsPage() {
     };
 
     const getBusinessName = (business_uuid: string) => {
-        const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
+        if (selectedBusiness && business_uuid === selectedBusiness.uuid) {
+            return selectedBusiness.name;
+        }
+        return "Unknown Business";
     };
 
     const getCustomerName = (customer_uuid: string | null) => {
@@ -120,6 +121,10 @@ export default function TransactionsPage() {
         const paymentMethod = paymentMethods.find(pm => pm.uuid === payment_method_uuid);
         return paymentMethod?.name || "Unknown Method";
     };
+
+    const filteredTransactions = selectedBusiness
+        ? transactions.filter((t) => t.business_uuid === selectedBusiness.uuid)
+        : [];
 
     return (
         <div className="space-y-6">
@@ -143,7 +148,7 @@ export default function TransactionsPage() {
                     <div className="flex h-64 items-center justify-center">
                         <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
                     </div>
-                ) : transactions.length === 0 ? (
+                ) : filteredTransactions.length === 0 ? (
                     <div className="flex h-64 flex-col items-center justify-center space-y-4">
                         <p className="text-lg text-muted-foreground">No transactions found</p>
                     </div>
@@ -152,7 +157,6 @@ export default function TransactionsPage() {
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Date</TableHead>
-                                <TableHead>Business</TableHead>
                                 <TableHead>Customer</TableHead>
                                 <TableHead>Payment Method</TableHead>
                                 <TableHead>Total Amount</TableHead>
@@ -161,12 +165,11 @@ export default function TransactionsPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {transactions.map((transaction) => (
+                            {filteredTransactions.map((transaction) => (
                                 <TableRow key={transaction.id}>
                                     <TableCell>
                                         {new Date(transaction.created_at).toLocaleString()}
                                     </TableCell>
-                                    <TableCell>{getBusinessName(transaction.business_uuid)}</TableCell>
                                     <TableCell>{getCustomerName(transaction.customer_uuid)}</TableCell>
                                     <TableCell>{getPaymentMethodName(transaction.payment_method_uuid)}</TableCell>
                                     <TableCell>${parseFloat(transaction.total_amount).toFixed(2)}</TableCell>
@@ -201,10 +204,6 @@ export default function TransactionsPage() {
                         <div className="space-y-6">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <p className="text-sm font-medium text-muted-foreground">Business</p>
-                                    <p className="text-sm">{getBusinessName(selectedTransaction.business_uuid)}</p>
-                                </div>
-                                <div>
                                     <p className="text-sm font-medium text-muted-foreground">Customer</p>
                                     <p className="text-sm">{getCustomerName(selectedTransaction.customer_uuid)}</p>
                                 </div>
@@ -212,7 +211,7 @@ export default function TransactionsPage() {
                                     <p className="text-sm font-medium text-muted-foreground">Payment Method</p>
                                     <p className="text-sm">{getPaymentMethodName(selectedTransaction.payment_method_uuid)}</p>
                                 </div>
-                                <div>
+                                <div className="col-span-2">
                                     <p className="text-sm font-medium text-muted-foreground">Date</p>
                                     <p className="text-sm">{new Date(selectedTransaction.created_at).toLocaleString()}</p>
                                 </div>
