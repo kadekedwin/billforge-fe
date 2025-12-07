@@ -29,7 +29,7 @@ import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {useAuth} from "@/contexts/auth-context";
 import {useBusiness} from "@/contexts/business-context";
 import {useState, useEffect, memo} from "react";
-import {Building2, ChevronDown, Loader2, Plus, Pencil, X, Trash2} from "lucide-react";
+import {Building2, ChevronDown, Loader2, Plus, Pencil, X, Trash2, MoreVertical, Info} from "lucide-react";
 import Image from "next/image";
 import { getImageUrl, uploadImage, deleteImage } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
@@ -502,8 +502,7 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                                     )}
                                     onSelect={(e) => e.preventDefault()}
                                 >
-                                    <div
-                                        className="flex items-center flex-1 cursor-pointer"
+                                    <div className="flex items-center flex-1 cursor-pointer"
                                         onClick={() => {
                                             setSelectedBusiness(business);
                                             onNavigate?.();
@@ -514,29 +513,41 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                                         </div>
                                         <span className="flex-1">{business.name}</span>
                                     </div>
-                                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            className="h-6 w-6"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleEditBusiness(business);
-                                            }}
-                                        >
-                                            <Pencil className="h-3 w-3" />
-                                        </Button>
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            className="h-6 w-6 text-destructive hover:text-destructive"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleDeleteBusiness(business);
-                                            }}
-                                        >
-                                            <Trash2 className="h-3 w-3" />
-                                        </Button>
+                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button
+                                                    variant="ghost"
+                                                    size="icon"
+                                                    className="h-6 w-6"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    <MoreVertical className="h-4 w-4" />
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end" side="right">
+                                                <DropdownMenuItem
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleEditBusiness(business);
+                                                    }}
+                                                >
+                                                    <Pencil className="mr-2 h-4 w-4" />
+                                                    <span>Edit</span>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuSeparator />
+                                                <DropdownMenuItem
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleDeleteBusiness(business);
+                                                    }}
+                                                    className="text-destructive focus:text-destructive"
+                                                >
+                                                    <Trash2 className="mr-2 h-4 w-4" />
+                                                    <span>Delete</span>
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
                                     </div>
                                 </DropdownMenuItem>
                             ))}
