@@ -23,7 +23,7 @@ import { getTransactions } from "@/lib/api/transactions";
 import { getCustomers } from "@/lib/api/customers";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getTransactionItems } from "@/lib/api/transaction-items";
-import { useBusiness } from "@/lib/business-context";
+import { useBusiness } from "@/contexts/business-context";
 import type { Transaction, Customer, PaymentMethod, TransactionItem } from "@/lib/api";
 
 export default function TransactionsPage() {

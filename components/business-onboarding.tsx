@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Building2, Loader2, X } from 'lucide-react'
 import { createBusiness, updateBusiness } from '@/lib/api/businesses'
-import { useBusiness } from '@/lib/business-context'
+import { useBusiness } from '@/contexts/business-context'
 import { uploadImage, getFileSizeBytes } from '@/lib/images'
 import type { CreateBusinessRequest } from '@/lib/api'
 

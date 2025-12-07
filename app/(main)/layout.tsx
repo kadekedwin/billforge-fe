@@ -3,8 +3,8 @@
 import {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {Sidebar, MobileSidebar} from "@/components/sidebar";
-import {useAuth} from "@/lib/auth-context";
-import {useBusiness} from "@/lib/business-context";
+import {useAuth} from "@/contexts/auth-context";
+import {useBusiness} from "@/contexts/business-context";
 import {BusinessOnboarding} from "@/components/business-onboarding";
 
 export default function DashboardLayout({

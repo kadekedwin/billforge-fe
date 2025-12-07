@@ -1,6 +1,7 @@
 'use client'
 
 import React, {createContext, useContext, useState, useEffect, ReactNode} from 'react'
+import {usePathname} from 'next/navigation'
 import {Business} from '@/lib/api/businesses/types'
 import {getBusinesses} from '@/lib/api/businesses'
 
@@ -15,6 +16,7 @@ interface BusinessContextType {
 const BusinessContext = createContext<BusinessContextType | undefined>(undefined)
 
 export function BusinessProvider({children}: { children: ReactNode }) {
+    const pathname = usePathname()
     const [selectedBusiness, setSelectedBusinessState] = useState<Business | null>(null)
     const [businesses, setBusinesses] = useState<Business[]>([])
     const [isLoading, setIsLoading] = useState(true)
@@ -63,6 +65,10 @@ export function BusinessProvider({children}: { children: ReactNode }) {
     }
 
     useEffect(() => {
+        if (pathname === '/login' || pathname === '/register') {
+            setIsLoading(false)
+            return
+        }
         fetchBusinesses()
     }, [])
 

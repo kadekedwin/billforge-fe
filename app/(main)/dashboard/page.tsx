@@ -23,7 +23,7 @@ import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { createTransaction } from "@/lib/api/transactions";
 import { createTransactionItem } from "@/lib/api/transaction-items";
 import { getImageUrl } from "@/lib/images";
-import { useBusiness } from "@/lib/business-context";
+import { useBusiness } from "@/contexts/business-context";
 import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount } from "@/lib/api";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

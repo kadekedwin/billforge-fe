@@ -25,8 +25,8 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
-import {useAuth} from "@/lib/auth-context";
-import {useBusiness} from "@/lib/business-context";
+import {useAuth} from "@/contexts/auth-context";
+import {useBusiness} from "@/contexts/business-context";
 import {useState, useEffect, memo} from "react";
 import {Building2, ChevronDown, Loader2, Plus, Pencil, X, Trash2} from "lucide-react";
 import Image from "next/image";

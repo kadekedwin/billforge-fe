@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, memo, useCallback } from "react";
-import { useBusiness } from "@/lib/business-context";
+import { useBusiness } from "@/contexts/business-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

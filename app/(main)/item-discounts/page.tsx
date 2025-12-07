@@ -34,7 +34,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItemDiscounts, createItemDiscount, updateItemDiscount, deleteItemDiscount } from "@/lib/api/item-discounts";
-import { useBusiness } from "@/lib/business-context";
+import { useBusiness } from "@/contexts/business-context";
 import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest } from "@/lib/api";
 
 export default function ItemDiscountsPage() {
