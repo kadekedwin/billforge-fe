@@ -31,9 +31,11 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
+import { Plus, Trash2, Loader2, Pencil, X } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { getBusinesses, createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
 import { useBusiness } from "@/lib/business-context";
+import { uploadImage, deleteImage, getImageUrl, getFileSizeBytes } from "@/lib/images";
 import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
 
 export default function BusinessesPage() {
@@ -54,6 +56,11 @@ export default function BusinessesPage() {
         image_size_bytes: null,
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
+    const [imageDeleted, setImageDeleted] = useState(false);
 
     useEffect(() => {
         loadBusinesses();
@@ -94,6 +101,30 @@ export default function BusinessesPage() {
         }
     };
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedImage(file);
+            setImageDeleted(false);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageDeleted(true);
+        setExistingImageUrl(null);
+        const fileInput = document.getElementById('logo') as HTMLInputElement;
+        if (fileInput) {
+            fileInput.value = '';
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -102,7 +133,38 @@ export default function BusinessesPage() {
 
         try {
             if (editingBusiness) {
-                const response = await updateBusiness(editingBusiness.uuid, formData as UpdateBusinessRequest);
+                // Handle image upload/delete for editing
+                let imageSizeBytes = formData.image_size_bytes;
+
+                if (imageDeleted && editingBusiness.image_size_bytes) {
+                    setIsUploadingImage(true);
+                    await deleteImage({
+                        folder: 'businesses',
+                        uuid: editingBusiness.uuid,
+                    });
+                    imageSizeBytes = null;
+                    setIsUploadingImage(false);
+                }
+
+                if (selectedImage) {
+                    setIsUploadingImage(true);
+                    const uploadResult = await uploadImage({
+                        file: selectedImage,
+                        folder: 'businesses',
+                        uuid: editingBusiness.uuid,
+                    });
+
+                    if (uploadResult.success) {
+                        imageSizeBytes = getFileSizeBytes(selectedImage);
+                    }
+                    setIsUploadingImage(false);
+                }
+
+                const response = await updateBusiness(editingBusiness.uuid, {
+                    ...formData,
+                    image_size_bytes: imageSizeBytes,
+                } as UpdateBusinessRequest);
+
                 if (response.success) {
                     setBusinesses((prev) =>
                         prev.map((business) =>
@@ -110,8 +172,14 @@ export default function BusinessesPage() {
                         )
                     );
                     setIsDialogOpen(false);
-                    setFormData({ name: "", address: null, phone: null });
+                    setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
                     setEditingBusiness(null);
+                    setSelectedImage(null);
+                    setImagePreview(null);
+                    setExistingImageUrl(null);
+                    setImageDeleted(false);
+                    // Refresh business context to update sidebar
+                    await refreshBusinesses();
                 } else {
                     const errorData = response as unknown as {
                         success: false;
@@ -133,11 +201,43 @@ export default function BusinessesPage() {
                     }
                 }
             } else {
+                // Create new business
                 const response = await createBusiness(formData);
                 if (response.success) {
-                    setBusinesses((prev) => [...prev, response.data]);
+                    const createdBusinessUuid = response.data.uuid;
+                    let imageSizeBytes: number | null = null;
+
+                    if (selectedImage && createdBusinessUuid) {
+                        setIsUploadingImage(true);
+                        const uploadResult = await uploadImage({
+                            file: selectedImage,
+                            folder: 'businesses',
+                            uuid: createdBusinessUuid,
+                        });
+
+                        if (uploadResult.success) {
+                            imageSizeBytes = getFileSizeBytes(selectedImage);
+                        }
+                        setIsUploadingImage(false);
+                    }
+
+                    if (imageSizeBytes !== null) {
+                        const updateResponse = await updateBusiness(createdBusinessUuid, {
+                            image_size_bytes: imageSizeBytes,
+                        });
+                        if (updateResponse.success) {
+                            setBusinesses((prev) => [...prev.filter(b => b.uuid !== createdBusinessUuid), updateResponse.data]);
+                        }
+                    } else {
+                        setBusinesses((prev) => [...prev, response.data]);
+                    }
+
                     setIsDialogOpen(false);
-                    setFormData({ name: "", address: null, phone: null });
+                    setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
+                    setSelectedImage(null);
+                    setImagePreview(null);
+                    setExistingImageUrl(null);
+                    setImageDeleted(false);
                     // Refresh business context to update sidebar
                     await refreshBusinesses();
                 } else {
@@ -180,6 +280,15 @@ export default function BusinessesPage() {
         try {
             setDeletingId(businessToDelete.id);
             setError(null);
+
+            // Delete logo if exists
+            if (businessToDelete.image_size_bytes) {
+                await deleteImage({
+                    folder: 'businesses',
+                    uuid: businessToDelete.uuid,
+                });
+            }
+
             const response = await deleteBusiness(businessToDelete.uuid);
             if (response.success) {
                 setBusinesses((prev) => prev.filter((business) => business.uuid !== businessToDelete.uuid));
@@ -202,13 +311,33 @@ export default function BusinessesPage() {
         }
     };
 
-    const handleEdit = (business: Business) => {
+    const handleEdit = async (business: Business) => {
         setEditingBusiness(business);
         setFormData({
             name: business.name,
             address: business.address,
             phone: business.phone,
+            image_size_bytes: business.image_size_bytes,
         });
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageDeleted(false);
+
+        if (business.image_size_bytes) {
+            const imageResult = await getImageUrl({
+                folder: 'businesses',
+                uuid: business.uuid,
+            });
+            if (imageResult.success && imageResult.url) {
+                setExistingImageUrl(imageResult.url);
+                setImagePreview(imageResult.url);
+            } else {
+                setExistingImageUrl(null);
+            }
+        } else {
+            setExistingImageUrl(null);
+        }
+
         setIsDialogOpen(true);
     };
 
@@ -219,6 +348,10 @@ export default function BusinessesPage() {
             setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
             setFormErrors({});
             setError(null);
+            setSelectedImage(null);
+            setImagePreview(null);
+            setExistingImageUrl(null);
+            setImageDeleted(false);
         }
     };
 
@@ -257,7 +390,7 @@ export default function BusinessesPage() {
                                     <Input
                                         id="name"
                                         name="name"
-                                        placeholder="Acme Corp"
+                                        placeholder="Business name"
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         disabled={isSubmitting}
@@ -296,6 +429,49 @@ export default function BusinessesPage() {
                                     />
                                     {formErrors.phone && (
                                         <p className="text-sm text-destructive">{formErrors.phone}</p>
+                                    )}
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="logo">Business Logo (Optional)</Label>
+                                    <div className="flex items-start gap-4">
+                                        {imagePreview && (
+                                            <div className="relative">
+                                                <Avatar className="h-20 w-20">
+                                                    <AvatarImage src={imagePreview} alt="Business logo preview" />
+                                                    <AvatarFallback>Logo</AvatarFallback>
+                                                </Avatar>
+                                                <Button
+                                                    type="button"
+                                                    variant="destructive"
+                                                    size="icon"
+                                                    className="absolute -top-2 -right-2 h-6 w-6 rounded-full"
+                                                    onClick={handleRemoveImage}
+                                                    disabled={isSubmitting || isUploadingImage}
+                                                >
+                                                    <X className="h-3 w-3" />
+                                                </Button>
+                                            </div>
+                                        )}
+                                        <div className="flex-1">
+                                            <Input
+                                                id="logo"
+                                                name="logo"
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={handleImageChange}
+                                                disabled={isSubmitting || isUploadingImage}
+                                                className="cursor-pointer"
+                                            />
+                                            <p className="text-xs text-muted-foreground mt-1">
+                                                Supported formats: JPG, JPEG, PNG, GIF, WEBP
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {isUploadingImage && (
+                                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                            Uploading logo...
+                                        </div>
                                     )}
                                 </div>
                             </div>

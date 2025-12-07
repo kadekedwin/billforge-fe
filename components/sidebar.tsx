@@ -30,9 +30,52 @@ import {
 import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {useAuth} from "@/lib/auth-context";
 import {useBusiness} from "@/lib/business-context";
-import {useState} from "react";
-import {Building2, ChevronDown} from "lucide-react";
+import {useState, useEffect, memo} from "react";
+import {Building2, ChevronDown, Loader2} from "lucide-react";
 import Image from "next/image";
+import { getImageUrl } from "@/lib/images";
+import type { Business } from "@/lib/api";
+
+const BusinessLogo = memo(({ business, size = "sm" }: { business: Business; size?: "sm" | "lg" }) => {
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const loadImage = async () => {
+            if (business.image_size_bytes) {
+                setLoading(true);
+                const result = await getImageUrl({
+                    folder: 'businesses',
+                    uuid: business.uuid,
+                });
+                if (result.success && result.url) {
+                    setImageUrl(result.url);
+                }
+                setLoading(false);
+            }
+        };
+        loadImage();
+    }, [business.uuid, business.image_size_bytes]);
+
+    const sizeClasses = size === "lg" ? "h-8 w-8" : "h-4 w-4";
+
+    if (loading) {
+        return <Loader2 className={cn(sizeClasses, "animate-spin")} />;
+    }
+
+    if (imageUrl) {
+        return (
+            <Avatar className={sizeClasses}>
+                <AvatarImage src={imageUrl} alt={business.name} />
+                <AvatarFallback>{business.name.substring(0, 2).toUpperCase()}</AvatarFallback>
+            </Avatar>
+        );
+    }
+
+    return <Building2 className={sizeClasses} />;
+});
+
+BusinessLogo.displayName = 'BusinessLogo';
 
 const navItems = [
     {
@@ -137,7 +180,7 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                                 className="w-full justify-between"
                             >
                                 <div className="flex items-center space-x-2">
-                                    <Building2 className="h-4 w-4"/>
+                                    <BusinessLogo business={selectedBusiness} size="sm" />
                                     <span className="truncate text-sm">{selectedBusiness.name}</span>
                                 </div>
                                 <ChevronDown className="h-4 w-4 opacity-50"/>
@@ -157,7 +200,9 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                                         selectedBusiness.uuid === business.uuid && "bg-accent"
                                     )}
                                 >
-                                    <Building2 className="mr-2 h-4 w-4"/>
+                                    <div className="mr-2">
+                                        <BusinessLogo business={business} size="sm" />
+                                    </div>
                                     <span>{business.name}</span>
                                 </DropdownMenuItem>
                             ))}

@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { Building2, Loader2 } from 'lucide-react'
-import { createBusiness } from '@/lib/api/businesses'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Building2, Loader2, X } from 'lucide-react'
+import { createBusiness, updateBusiness } from '@/lib/api/businesses'
 import { useBusiness } from '@/lib/business-context'
+import { uploadImage, getFileSizeBytes } from '@/lib/images'
 import type { CreateBusinessRequest } from '@/lib/api'
 
 export function BusinessOnboarding() {
@@ -18,8 +20,12 @@ export function BusinessOnboarding() {
     name: '',
     address: null,
     phone: null,
+    image_size_bytes: null,
   })
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const [selectedImage, setSelectedImage] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const [isUploadingImage, setIsUploadingImage] = useState(false)
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,6 +51,27 @@ export function BusinessOnboarding() {
     }
   }
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setSelectedImage(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null)
+    setImagePreview(null)
+    const fileInput = document.getElementById('logo') as HTMLInputElement
+    if (fileInput) {
+      fileInput.value = ''
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -54,6 +81,29 @@ export function BusinessOnboarding() {
     try {
       const response = await createBusiness(formData)
       if (response.success) {
+        const createdBusinessUuid = response.data.uuid
+        let imageSizeBytes: number | null = null
+
+        if (selectedImage && createdBusinessUuid) {
+          setIsUploadingImage(true)
+          const uploadResult = await uploadImage({
+            file: selectedImage,
+            folder: 'businesses',
+            uuid: createdBusinessUuid,
+          })
+
+          if (uploadResult.success) {
+            imageSizeBytes = getFileSizeBytes(selectedImage)
+          }
+          setIsUploadingImage(false)
+        }
+
+        if (imageSizeBytes !== null) {
+          await updateBusiness(createdBusinessUuid, {
+            image_size_bytes: imageSizeBytes,
+          })
+        }
+
         await refreshBusinesses()
       } else {
         const errorData = response as unknown as {
@@ -150,6 +200,50 @@ export function BusinessOnboarding() {
             />
             {formErrors.address && (
               <p className="text-sm text-destructive">{formErrors.address}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="logo">Business Logo (Optional)</Label>
+            <div className="flex items-start gap-4">
+              {imagePreview && (
+                <div className="relative">
+                  <Avatar className="h-20 w-20">
+                    <AvatarImage src={imagePreview} alt="Business logo preview" />
+                    <AvatarFallback>Logo</AvatarFallback>
+                  </Avatar>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    className="absolute -top-2 -right-2 h-6 w-6 rounded-full"
+                    onClick={handleRemoveImage}
+                    disabled={isSubmitting || isUploadingImage}
+                  >
+                    <X className="h-3 w-3" />
+                  </Button>
+                </div>
+              )}
+              <div className="flex-1">
+                <Input
+                  id="logo"
+                  name="logo"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  disabled={isSubmitting || isUploadingImage}
+                  className="cursor-pointer"
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  Supported formats: JPG, JPEG, PNG, GIF, WEBP
+                </p>
+              </div>
+            </div>
+            {isUploadingImage && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Uploading logo...
+              </div>
             )}
           </div>
 
