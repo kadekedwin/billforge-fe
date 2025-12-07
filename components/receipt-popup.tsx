@@ -53,9 +53,6 @@ export function ReceiptPopup({
         try {
             setIsGeneratingImage(true);
 
-            console.log('[ReceiptPopup] Generating receipt image with data:', receiptData);
-            console.log('[ReceiptPopup] Template:', receiptTemplate);
-
             const response = await fetch('/api/receipt/image', {
                 method: 'POST',
                 headers: {
@@ -71,8 +68,6 @@ export function ReceiptPopup({
                 }),
             });
 
-            console.log('[ReceiptPopup] Response status:', response.status);
-
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
                 console.error('[ReceiptPopup] Receipt image generation failed:', errorData);
@@ -80,10 +75,8 @@ export function ReceiptPopup({
             }
 
             const blob = await response.blob();
-            console.log('[ReceiptPopup] Blob size:', blob.size);
             const url = URL.createObjectURL(blob);
             setReceiptImageUrl(url);
-            console.log('[ReceiptPopup] Receipt image generated successfully');
         } catch (err) {
             console.error("[ReceiptPopup] Error generating receipt image:", err);
         } finally {

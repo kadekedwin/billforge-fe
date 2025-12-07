@@ -101,7 +101,7 @@ export default function DashboardPage() {
     const [completedTransaction, setCompletedTransaction] = useState<Transaction | null>(null);
     const [completedTransactionItems, setCompletedTransactionItems] = useState<TransactionItem[]>([]);
     const [completedCustomerName, setCompletedCustomerName] = useState<string | undefined>(undefined);
-    const [completedPaymentMethodName, setCompletedPaymentMethodName] = useState<string | undefined>(undefined);
+    const [completedPaymentMethodName, setCompletedPaymentMethodName] = useState<string>("Cash");
     const [completedCustomerEmail, setCompletedCustomerEmail] = useState<string | null>(null);
     const [completedCustomerPhone, setCompletedCustomerPhone] = useState<string | null>(null);
 
@@ -319,8 +319,15 @@ export default function DashboardPage() {
                 }
             }
 
+            const customerData = selectedCustomer ? customers.find(c => c.uuid === selectedCustomer) : null;
+            const paymentMethodData = selectedPaymentMethod ? paymentMethods.find(pm => pm.uuid === selectedPaymentMethod) : null;
+
             setCompletedTransaction(transaction);
             setCompletedTransactionItems(createdItems);
+            setCompletedCustomerName(customerData?.name);
+            setCompletedPaymentMethodName(paymentMethodData?.name || "Cash");
+            setCompletedCustomerEmail(customerData?.email || null);
+            setCompletedCustomerPhone(customerData?.phone || null);
             setIsReceiptPopupOpen(true);
 
             setCart(new Map());
@@ -683,18 +690,22 @@ export default function DashboardPage() {
                         if (!open) {
                             setCompletedTransaction(null);
                             setCompletedTransactionItems([]);
+                            setCompletedCustomerName(undefined);
+                            setCompletedPaymentMethodName("Cash");
+                            setCompletedCustomerEmail(null);
+                            setCompletedCustomerPhone(null);
                         }
                     }}
                     receiptData={convertTransactionToReceiptData(
                         completedTransaction,
                         completedTransactionItems,
                         selectedBusiness,
-                        selectedCustomer ? customers.find(c => c.uuid === selectedCustomer)?.name : undefined,
-                        selectedPaymentMethod ? paymentMethods.find(pm => pm.uuid === selectedPaymentMethod)?.name : "Cash",
+                        completedCustomerName,
+                        completedPaymentMethodName,
                         undefined
                     )}
-                    customerEmail={selectedCustomer ? customers.find(c => c.uuid === selectedCustomer)?.email : null}
-                    customerPhone={selectedCustomer ? customers.find(c => c.uuid === selectedCustomer)?.phone : null}
+                    customerEmail={completedCustomerEmail}
+                    customerPhone={completedCustomerPhone}
                 />
             )}
         </div>
