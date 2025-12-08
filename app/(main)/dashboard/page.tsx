@@ -575,25 +575,6 @@ export default function DashboardPage() {
                 <div>
                     <h1 className="text-2xl sm:text-3xl font-bold">New Transaction</h1>
                 </div>
-                <div className="flex items-center gap-2">
-                    <Button
-                        variant="outline"
-                        size="sm"
-                        className="relative"
-                        disabled={getTotalItems() === 0}
-                    >
-                        <ShoppingCart className="h-4 w-4 sm:mr-2" />
-                        <span className="hidden sm:inline">Cart</span>
-                        {getTotalItems() > 0 && (
-                            <Badge
-                                variant="destructive"
-                                className="absolute -right-1 -top-1 h-4 w-4 rounded-full p-0 text-[10px]"
-                            >
-                                {getTotalItems()}
-                            </Badge>
-                        )}
-                    </Button>
-                </div>
             </div>
 
             {filteredItems.length === 0 ? (
