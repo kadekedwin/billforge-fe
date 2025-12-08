@@ -1,0 +1,40 @@
+"use client";
+
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+import {cn} from "@/lib/utils";
+import {navItems} from "./navItems";
+
+interface NavigationProps {
+    onNavigate?: () => void;
+}
+
+export function Navigation({onNavigate}: NavigationProps) {
+    const pathname = usePathname();
+
+    return (
+        <nav className="flex-1 space-y-1 px-3 py-4">
+            {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = pathname === item.href;
+
+                return (
+                    <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={onNavigate}
+                        className={cn(
+                            "flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                            isActive
+                                ? "bg-primary text-primary-foreground"
+                                : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                        )}
+                    >
+                        <Icon className="h-5 w-5"/>
+                        <span>{item.title}</span>
+                    </Link>
+                );
+            })}
+        </nav>
+    );
+}

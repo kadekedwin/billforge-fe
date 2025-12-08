@@ -2,7 +2,7 @@
 
 import {useEffect} from "react";
 import {useRouter} from "next/navigation";
-import {Sidebar, MobileSidebar} from "@/components/sidebar";
+import {Sidebar, MobileSidebar} from "@/components/sidebar/Sidebar";
 import {useAuth} from "@/contexts/auth-context";
 import {useBusiness} from "@/contexts/business-context";
 import {BusinessOnboarding} from "@/components/business-onboarding";
