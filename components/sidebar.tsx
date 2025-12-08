@@ -169,6 +169,25 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [businessToDelete, setBusinessToDelete] = useState<Business | null>(null);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [userImageUrl, setUserImageUrl] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadUserImage = async () => {
+            if (user && user.image_size_bytes) {
+                const result = await getImageUrl({
+                    folder: 'users',
+                    uuid: user.uuid,
+                });
+                if (result.success && result.url) {
+                    setUserImageUrl(result.url);
+                }
+            } else {
+                setUserImageUrl(null);
+            }
+        };
+
+        loadUserImage();
+    }, [user]);
 
     const handleLogout = async () => {
         try {
@@ -579,7 +598,7 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
                             className="w-full justify-start space-x-3 px-2"
                         >
                             <Avatar className="h-8 w-8">
-                                <AvatarImage src=""/>
+                                <AvatarImage src={userImageUrl || ""}/>
                                 <AvatarFallback>
                                     {user?.name?.charAt(0).toUpperCase() || "U"}
                                 </AvatarFallback>
@@ -789,4 +808,3 @@ export function MobileSidebar() {
         </Sheet>
     );
 }
-
