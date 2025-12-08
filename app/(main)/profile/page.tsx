@@ -251,7 +251,6 @@ export default function ProfilePage() {
                 </Link>
                 <div>
                     <h1 className="text-3xl font-bold">Profile</h1>
-                    <p className="text-muted-foreground">Manage your personal information</p>
                 </div>
             </div>
 
@@ -351,6 +350,20 @@ export default function ProfilePage() {
                 </CardContent>
             </Card>
 
+            <div className="flex justify-end gap-4">
+                <Link href="/settings">
+                    <Button variant="outline">Cancel</Button>
+                </Link>
+                <Button onClick={handleSave} disabled={isSaving}>
+                    {isSaving ? (
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
+                    ) : (
+                        <Save className="h-4 w-4 mr-2"/>
+                    )}
+                    {isSaving ? 'Saving...' : 'Save Changes'}
+                </Button>
+            </div>
+
             <Card>
                 <CardHeader>
                     <CardTitle>Change Password</CardTitle>
@@ -423,20 +436,6 @@ export default function ProfilePage() {
                     </form>
                 </CardContent>
             </Card>
-
-            <div className="flex justify-end gap-4">
-                <Link href="/settings">
-                    <Button variant="outline">Cancel</Button>
-                </Link>
-                <Button onClick={handleSave} disabled={isSaving}>
-                    {isSaving ? (
-                        <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
-                    ) : (
-                        <Save className="h-4 w-4 mr-2"/>
-                    )}
-                    {isSaving ? 'Saving...' : 'Save Changes'}
-                </Button>
-            </div>
         </div>
     );
 }
