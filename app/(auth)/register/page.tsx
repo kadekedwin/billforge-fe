@@ -96,7 +96,6 @@ export default function RegisterPage() {
     return (
         <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
             <Card className="w-full max-w-md">
-                <Image src={"/logo.png"} alt="LogoText" width={100} height={100} className="mx-auto mt-6"/>
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold tracking-tight">
                         Create an account
