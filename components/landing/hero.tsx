@@ -2,15 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, CirclePlay } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
     <div className="min-h-[calc(100vh-4rem)] w-full flex items-center justify-center overflow-hidden border-b border-accent">
       <div className="max-w-(--breakpoint-xl) w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-0">
         <div className="max-w-xl">
-          <Badge className="rounded-full py-1 border-none">
-            🚀 Free to Start • No Credit Card Required
-          </Badge>
           <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight">
             Modern POS & Billing Made Simple
           </h1>
@@ -23,14 +21,7 @@ const Hero = () => {
               size="lg"
               className="w-full sm:w-auto rounded-full text-base"
             >
-              Start Free Trial <ArrowUpRight className="h-5! w-5!" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto rounded-full text-base shadow-none"
-            >
-              <CirclePlay className="h-5! w-5!" /> See How It Works
+              <Link href={"/login"} className="flex items-center space-x-3">Start Free Trial <ArrowUpRight className="h-5! w-5!" /></Link>
             </Button>
           </div>
         </div>
