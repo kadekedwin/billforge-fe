@@ -13,3 +13,9 @@ export interface UpdateUserRequest {
     image_size_bytes?: number | null;
 }
 
+export interface UpdatePasswordRequest {
+    current_password: string;
+    password: string;
+    password_confirmation: string;
+}
+

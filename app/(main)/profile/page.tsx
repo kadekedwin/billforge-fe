@@ -8,20 +8,22 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/compo
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
 import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar';
-import {ChevronLeft, Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2} from 'lucide-react';
-import {getUser, updateUser} from '@/lib/api/user';
 import {uploadImage, getImageUrl, deleteImage} from '@/lib/images/operations';
 import {getFileSizeBytes} from '@/lib/images/utils';
-import {useAuth} from '@/contexts/auth-context';
-import type {User} from '@/lib/api';
+import {ChevronLeft, Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock} from 'lucide-react';
+import {getUser, updateUser, updatePassword, User} from '@/lib/api/user';
+import {useAuth} from "@/contexts/auth-context";
 
 export default function ProfilePage() {
     const router = useRouter();
     const {setAuth, token} = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
+    const [isChangingPassword, setIsChangingPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
+    const [passwordError, setPasswordError] = useState<string | null>(null);
+    const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
     const [user, setUser] = useState<User | null>(null);
     const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -30,6 +32,11 @@ export default function ProfilePage() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+    });
+    const [passwordData, setPasswordData] = useState({
+        current_password: '',
+        password: '',
+        password_confirmation: '',
     });
 
     const loadUser = async () => {
@@ -160,6 +167,52 @@ export default function ProfilePage() {
         }
     };
 
+    const handlePasswordChange = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!passwordData.current_password || !passwordData.password || !passwordData.password_confirmation) {
+            setPasswordError('All fields are required');
+            return;
+        }
+
+        if (passwordData.password !== passwordData.password_confirmation) {
+            setPasswordError('New passwords do not match');
+            return;
+        }
+
+        if (passwordData.password.length < 8) {
+            setPasswordError('Password must be at least 8 characters');
+            return;
+        }
+
+        setIsChangingPassword(true);
+        setPasswordError(null);
+        setPasswordSuccess(null);
+
+        try {
+            const response = await updatePassword({
+                current_password: passwordData.current_password,
+                password: passwordData.password,
+                password_confirmation: passwordData.password_confirmation,
+            });
+
+            if (response.success) {
+                setPasswordSuccess('Password updated successfully!');
+                setPasswordData({
+                    current_password: '',
+                    password: '',
+                    password_confirmation: '',
+                });
+            } else {
+                setPasswordError(response.message || 'Failed to update password');
+            }
+        } catch (err) {
+            setPasswordError(err instanceof Error ? err.message : 'An error occurred while updating password');
+        } finally {
+            setIsChangingPassword(false);
+        }
+    };
+
     const getInitials = (name: string) => {
         return name
             .split(' ')
@@ -198,6 +251,7 @@ export default function ProfilePage() {
                 </Link>
                 <div>
                     <h1 className="text-3xl font-bold">Profile</h1>
+                    <p className="text-muted-foreground">Manage your personal information</p>
                 </div>
             </div>
 
@@ -223,9 +277,9 @@ export default function ProfilePage() {
                     <Avatar className="h-24 w-24">
                         {imagePreview ? (
                             <AvatarImage src={imagePreview} alt={user.name}/>
-                        ) : (imageDeleted || !avatarUrl) ? null : (
+                        ) : !imageDeleted && avatarUrl ? (
                             <AvatarImage src={avatarUrl} alt={user.name}/>
-                        )}
+                        ) : null}
                         <AvatarFallback className="text-2xl">{getInitials(user.name)}</AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
@@ -255,7 +309,7 @@ export default function ProfilePage() {
                             )}
                         </div>
                         <p className="text-sm text-muted-foreground mt-2">
-                            JPG, PNG or GIF. Max size 1MB.
+                            JPG, PNG or GIF. Max size 5MB.
                         </p>
                     </div>
                 </CardContent>
@@ -264,7 +318,6 @@ export default function ProfilePage() {
             <Card>
                 <CardHeader>
                     <CardTitle>Personal Information</CardTitle>
-                    <CardDescription>Update your personal details</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
@@ -293,7 +346,81 @@ export default function ProfilePage() {
                             disabled
                             className="bg-muted cursor-not-allowed"
                         />
+                        <p className="text-xs text-muted-foreground">Email cannot be changed</p>
                     </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Change Password</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    {passwordError && (
+                        <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">
+                            {passwordError}
+                        </div>
+                    )}
+
+                    {passwordSuccess && (
+                        <div className="rounded-md bg-green-50 p-3 text-sm text-green-600 flex items-center gap-2 mb-4">
+                            <CheckCircle2 className="h-4 w-4"/>
+                            {passwordSuccess}
+                        </div>
+                    )}
+
+                    <form onSubmit={handlePasswordChange} className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="current_password" className="flex items-center gap-2">
+                                <Lock className="h-4 w-4"/>
+                                Current Password
+                            </Label>
+                            <Input
+                                id="current_password"
+                                type="password"
+                                value={passwordData.current_password}
+                                onChange={(e) => setPasswordData(prev => ({...prev, current_password: e.target.value}))}
+                                placeholder="Enter current password"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="password" className="flex items-center gap-2">
+                                <Lock className="h-4 w-4"/>
+                                New Password
+                            </Label>
+                            <Input
+                                id="password"
+                                type="password"
+                                value={passwordData.password}
+                                onChange={(e) => setPasswordData(prev => ({...prev, password: e.target.value}))}
+                                placeholder="Enter new password (min 8 characters)"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="password_confirmation" className="flex items-center gap-2">
+                                <Lock className="h-4 w-4"/>
+                                Confirm New Password
+                            </Label>
+                            <Input
+                                id="password_confirmation"
+                                type="password"
+                                value={passwordData.password_confirmation}
+                                onChange={(e) => setPasswordData(prev => ({...prev, password_confirmation: e.target.value}))}
+                                placeholder="Confirm new password"
+                            />
+                        </div>
+
+                        <Button type="submit" disabled={isChangingPassword}>
+                            {isChangingPassword ? (
+                                <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
+                            ) : (
+                                <Lock className="h-4 w-4 mr-2"/>
+                            )}
+                            {isChangingPassword ? 'Changing Password...' : 'Change Password'}
+                        </Button>
+                    </form>
                 </CardContent>
             </Card>
 
