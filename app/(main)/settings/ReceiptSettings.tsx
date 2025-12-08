@@ -1,15 +1,13 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { useReceiptTemplatePreference, ReceiptData, ReceiptTemplateType } from '@/lib/receipt';
 import { generateReceiptHTML } from '@/lib/receipt/templates';
-import { Check, ChevronLeft } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { receiptTemplates } from '@/lib/receipt/templates';
 
 interface ReceiptTemplateCardProps {
@@ -142,50 +140,33 @@ const sampleReceipt: ReceiptData = {
     notes: 'Please visit us again soon'
 };
 
-export default function ReceiptSettingsPage() {
+export default function ReceiptSettings() {
     const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage, qrcodeValue, updateQrcodeValue } = useReceiptTemplatePreference();
 
     return (
-        <div className="p-6 max-w-6xl mx-auto space-y-6">
-            <div className="flex items-center gap-4">
-                <Link href="/settings">
-                    <Button variant="outline" size="icon">
-                        <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                </Link>
-                <div>
-                    <h1 className="text-3xl font-bold">Receipt Settings</h1>
-                </div>
-            </div>
-
+        <div className="space-y-6">
             <Card>
                 <CardHeader>
                     <CardTitle>Receipt Options</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                    <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                            <Label htmlFor="include-logo" className="text-base">
-                                Include Business Logo
-                            </Label>
-                            <p className="text-sm text-muted-foreground">
-                                * Make sure to add business logo to generate receipt with logo.
-                            </p>
-                        </div>
+                    <div className="flex items-center space-x-2">
                         <Switch
                             id="include-logo"
                             checked={includeLogo}
                             onCheckedChange={updateIncludeLogo}
                         />
+                        <div className="space-y-0.5">
+                            <Label htmlFor="include-logo" className="text-base">
+                                Include Business Logo
+                            </Label>
+                        </div>
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="footer-message" className="text-base">
                             Footer Message
                         </Label>
-                        <p className="text-sm text-muted-foreground">
-                            Add a custom message at the bottom of the receipt
-                        </p>
                         <Input
                             id="footer-message"
                             placeholder="Thank you for your business!"
@@ -197,14 +178,11 @@ export default function ReceiptSettingsPage() {
 
                     <div className="space-y-2">
                         <Label htmlFor="qrcode-value" className="text-base">
-                            qrcode Value
+                            QR Code Data
                         </Label>
-                        <p className="text-sm text-muted-foreground">
-                            Enter a value to generate a qrcode on the receipt
-                        </p>
                         <Input
                             id="qrcode-value"
-                            placeholder="Enter qrcode value (e.g., Social Media)"
+                            placeholder="Enter QR code value (e.g., Social Media)"
                             value={qrcodeValue}
                             onChange={(e) => updateQrcodeValue(e.target.value)}
                             className="max-w-md"

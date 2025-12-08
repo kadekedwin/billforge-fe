@@ -1,7 +1,6 @@
 'use client';
 
 import {useState, useEffect} from 'react';
-import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
@@ -10,11 +9,11 @@ import {Label} from '@/components/ui/label';
 import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar';
 import {uploadImage, getImageUrl, deleteImage} from '@/lib/images/operations';
 import {getFileSizeBytes} from '@/lib/images/utils';
-import {ChevronLeft, Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock} from 'lucide-react';
+import {Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock} from 'lucide-react';
 import {getUser, updateUser, updatePassword, User} from '@/lib/api/user';
 import {useAuth} from "@/contexts/auth-context";
 
-export default function ProfilePage() {
+export default function ProfileSettings() {
     const router = useRouter();
     const {setAuth, token} = useAuth();
     const [isLoading, setIsLoading] = useState(true);
@@ -83,7 +82,7 @@ export default function ProfilePage() {
         if (!file) return;
 
         const sizeInBytes = getFileSizeBytes(file);
-        if (sizeInBytes > 1 * 1024 * 1024) {
+        if (sizeInBytes > 1024 * 1024) {
             setError('Image size must be less than 1MB');
             return;
         }
@@ -224,7 +223,7 @@ export default function ProfilePage() {
 
     if (isLoading) {
         return (
-            <div className="flex h-screen items-center justify-center">
+            <div className="flex items-center justify-center py-12">
                 <div className="flex flex-col items-center">
                     <Loader2 className="h-8 w-8 animate-spin text-primary"/>
                     <p className="mt-4 text-sm text-muted-foreground">Loading profile...</p>
@@ -235,25 +234,14 @@ export default function ProfilePage() {
 
     if (!user) {
         return (
-            <div className="flex h-screen items-center justify-center">
+            <div className="flex items-center justify-center py-12">
                 <p className="text-muted-foreground">Failed to load user data</p>
             </div>
         );
     }
 
     return (
-        <div className="p-6 max-w-4xl mx-auto space-y-6">
-            <div className="flex items-center gap-4">
-                <Link href="/settings">
-                    <Button variant="outline" size="icon">
-                        <ChevronLeft className="h-4 w-4"/>
-                    </Button>
-                </Link>
-                <div>
-                    <h1 className="text-3xl font-bold">Profile</h1>
-                </div>
-            </div>
-
+        <div className="space-y-6">
             {error && (
                 <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
                     {error}
@@ -350,10 +338,7 @@ export default function ProfilePage() {
                 </CardContent>
             </Card>
 
-            <div className="flex justify-end gap-4">
-                <Link href="/settings">
-                    <Button variant="outline">Cancel</Button>
-                </Link>
+            <div className="flex justify-end">
                 <Button onClick={handleSave} disabled={isSaving}>
                     {isSaving ? (
                         <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
@@ -439,3 +424,4 @@ export default function ProfilePage() {
         </div>
     );
 }
+

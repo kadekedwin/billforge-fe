@@ -1,55 +1,67 @@
 'use client';
 
-import Link from 'next/link';
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import {FileText, ChevronRight, UserCircle} from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { UserCircle, FileText } from 'lucide-react';
+import dynamic from 'next/dynamic';
 
-const settingsCategories = [
+// Dynamically import the settings components
+const ProfileSettings = dynamic(() => import('./ProfileSettings'), { ssr: false });
+const ReceiptSettings = dynamic(() => import('./ReceiptSettings'), { ssr: false });
+
+type SettingsTab = 'profile' | 'receipt';
+
+const tabs = [
     {
-        title: 'Profile Settings',
-        description: 'Configure user profile and preferences',
+        id: 'profile' as const,
+        label: 'Profile',
         icon: UserCircle,
-        href: '/settings/profile'
     },
     {
-        title: 'Receipt Settings',
-        description: 'Configure receipt templates and appearance',
+        id: 'receipt' as const,
+        label: 'Receipt Settings',
         icon: FileText,
-        href: '/settings/receipt'
-    }
+    },
 ];
 
 export default function SettingsPage() {
+    const [activeTab, setActiveTab] = useState<SettingsTab>('profile');
+
     return (
-        <div className="p-6 max-w-4xl mx-auto space-y-6">
+        <div className="space-y-6">
             <div>
-                <h1 className="text-3xl font-bold">Settings</h1>
+                <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
             </div>
 
-            <div className="grid gap-4">
-                {settingsCategories.map((category) => {
-                    const Icon = category.icon;
-                    return (
-                        <Link key={category.href} href={category.href}>
-                            <Card className="hover:border-blue-500 transition-all cursor-pointer">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-3">
-                                            <div className="p-2 bg-blue-100 rounded-lg">
-                                                <Icon className="h-6 w-6 text-blue-600" />
-                                            </div>
-                                            <div>
-                                                <CardTitle>{category.title}</CardTitle>
-                                                <CardDescription>{category.description}</CardDescription>
-                                            </div>
-                                        </div>
-                                        <ChevronRight className="h-5 w-5 text-gray-400" />
-                                    </div>
-                                </CardHeader>
-                            </Card>
-                        </Link>
-                    );
-                })}
+            {/* Tab Selector */}
+            <div className="border-b">
+                <div className="flex space-x-1">
+                    {tabs.map((tab) => {
+                        const Icon = tab.icon;
+                        const isActive = activeTab === tab.id;
+                        return (
+                            <Button
+                                key={tab.id}
+                                variant="ghost"
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`relative rounded-none border-b-2 px-4 py-2 ${
+                                    isActive
+                                        ? 'border-primary text-primary'
+                                        : 'border-transparent text-muted-foreground hover:text-foreground'
+                                }`}
+                            >
+                                <Icon className="mr-2 h-4 w-4" />
+                                {tab.label}
+                            </Button>
+                        );
+                    })}
+                </div>
+            </div>
+
+            {/* Tab Content */}
+            <div className="py-4">
+                {activeTab === 'profile' && <ProfileSettings />}
+                {activeTab === 'receipt' && <ReceiptSettings />}
             </div>
         </div>
     );
