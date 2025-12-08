@@ -9,7 +9,7 @@ const settingsCategories = [
         title: 'Profile Settings',
         description: 'Configure user profile and preferences',
         icon: UserCircle,
-        href: '/profile'
+        href: '/settings/profile'
     },
     {
         title: 'Receipt Settings',
