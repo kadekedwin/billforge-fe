@@ -1,10 +1,19 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-export const LogoText = ({ color = undefined }: { color?: string; }) => {
+export const LogoText = ({ color = undefined }: { color?: string }) => {
+    const [mounted, setMounted] = useState(false);
     const { resolvedTheme } = useTheme();
-    const actualColor = color ?? resolvedTheme === "dark" ? "white" : "black";
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true);
+    }, []);
+
+    // Use a default color during SSR to prevent hydration mismatch
+    const actualColor = color ?? (mounted ? (resolvedTheme === "dark" ? "white" : "black") : "black");
 
     return (
         <svg width="160" height="33" viewBox="0 0 915 192" fill="none" xmlns="http://www.w3.org/2000/svg">
