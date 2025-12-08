@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {useState, useEffect, useRef} from "react";
 import {
     Dialog,
     DialogContent,
@@ -13,7 +13,7 @@ import { Download, Mail, MessageCircle, Loader2 } from "lucide-react";
 import { useReceiptGenerator } from "@/lib/receipt/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
 import type { ReceiptData } from "@/lib/receipt/types";
-import Image from "next/image";
+import {generateReceiptHTML} from "@/lib/receipt/templates";
 
 interface ReceiptPopupProps {
     open: boolean;
@@ -30,59 +30,38 @@ export function ReceiptPopup({
     customerEmail,
     customerPhone,
 }: ReceiptPopupProps) {
-    const [receiptImageUrl, setReceiptImageUrl] = useState<string | null>(null);
-    const [isGeneratingImage, setIsGeneratingImage] = useState(false);
+    const iframeRef = useRef<HTMLIFrameElement>(null);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
     const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
     const { template: receiptTemplate } = useReceiptTemplatePreference();
 
-    useEffect(() => {
-        if (open && receiptData) {
-            generateReceiptImage();
-        }
+    const templateHTML = generateReceiptHTML(receiptData, receiptTemplate);
 
-        return () => {
-            if (receiptImageUrl) {
-                URL.revokeObjectURL(receiptImageUrl);
+    useEffect(() => {
+        const iframe = iframeRef.current;
+        if (!iframe || !open) return;
+
+        const adjustHeight = () => {
+            try {
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
+                if (iframeDocument) {
+                    const height = iframeDocument.documentElement.scrollHeight;
+                    iframe.style.height = `${Math.max(height, 400)}px`;
+                }
+            } catch (error) {
+                console.error('Error adjusting iframe height:', error);
             }
         };
-    }, [open]);
 
-    const generateReceiptImage = async () => {
-        try {
-            setIsGeneratingImage(true);
+        iframe.addEventListener('load', adjustHeight);
+        const timer = setTimeout(adjustHeight, 500);
 
-            const response = await fetch('/api/receipt/image', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    receiptData,
-                    options: {
-                        template: receiptTemplate,
-                        type: 'png',
-                        fullPage: true
-                    }
-                }),
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-                console.error('[ReceiptPopup] Receipt image generation failed:', errorData);
-                throw new Error(errorData.details || errorData.error || 'Failed to generate receipt image');
-            }
-
-            const blob = await response.blob();
-            const url = URL.createObjectURL(blob);
-            setReceiptImageUrl(url);
-        } catch (err) {
-            console.error("[ReceiptPopup] Error generating receipt image:", err);
-        } finally {
-            setIsGeneratingImage(false);
-        }
-    };
+        return () => {
+            iframe.removeEventListener('load', adjustHeight);
+            clearTimeout(timer);
+        };
+    }, [open, receiptData]);
 
     const handleDownloadPDF = async () => {
         try {
@@ -144,25 +123,19 @@ export function ReceiptPopup({
                 </DialogHeader>
 
                 <div className="space-y-4">
-                    <div className="rounded-lg border bg-muted/50 overflow-hidden">
-                        {isGeneratingImage ? (
-                            <div className="flex h-96 items-center justify-center">
-                                <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                            </div>
-                        ) : receiptImageUrl ? (
-                            <div className="relative w-full h-96">
-                                <Image
-                                    src={receiptImageUrl}
-                                    alt="Receipt Preview"
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
-                        ) : (
-                            <div className="flex h-96 items-center justify-center">
-                                <p className="text-muted-foreground">Failed to generate preview</p>
-                            </div>
-                        )}
+                    <div className="relative bg-muted/50 rounded-lg shadow-sm border border-gray-200 flex justify-center items-start">
+                        <iframe
+                            key={receiptData.receiptNumber}
+                            ref={iframeRef}
+                            srcDoc={templateHTML}
+                            className="border-0 w-full"
+                            style={{
+                                maxWidth: '302px',
+                                minHeight: '400px'
+                            }}
+                            title="Receipt Preview"
+                            sandbox="allow-same-origin allow-scripts"
+                        />
                     </div>
 
                     <div className="space-y-2">
