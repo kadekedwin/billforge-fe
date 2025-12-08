@@ -60,7 +60,7 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
             onClick={onSelect}
             className={`relative flex-shrink-0 p-4 border-2 rounded-lg transition-all text-left ${
                 isSelected
-                    ? 'border-blue-500 bg-blue-50'
+                    ? 'border-blue-500 '
                     : 'border-gray-300 hover:border-gray-400'
             }`}
             style={{ width: '320px' }}

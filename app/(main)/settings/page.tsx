@@ -2,14 +2,15 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { UserCircle, FileText } from 'lucide-react';
+import { UserCircle, FileText, Settings } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 // Dynamically import the settings components
 const ProfileSettings = dynamic(() => import('./ProfileSettings'), { ssr: false });
 const ReceiptSettings = dynamic(() => import('./ReceiptSettings'), { ssr: false });
+const PreferencesSettings = dynamic(() => import('./PreferencesSettings'), { ssr: false });
 
-type SettingsTab = 'profile' | 'receipt';
+type SettingsTab = 'profile' | 'receipt' | 'preferences';
 
 const tabs = [
     {
@@ -21,6 +22,11 @@ const tabs = [
         id: 'receipt' as const,
         label: 'Receipt Settings',
         icon: FileText,
+    },
+    {
+        id: 'preferences' as const,
+        label: 'Preferences',
+        icon: Settings,
     },
 ];
 
@@ -62,6 +68,7 @@ export default function SettingsPage() {
             <div className="py-4">
                 {activeTab === 'profile' && <ProfileSettings />}
                 {activeTab === 'receipt' && <ReceiptSettings />}
+                {activeTab === 'preferences' && <PreferencesSettings />}
             </div>
         </div>
     );

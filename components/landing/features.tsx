@@ -1,49 +1,49 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
-  BookCheck,
-  ChartPie,
-  FolderSync,
-  Goal,
+  Receipt,
+  ShoppingCart,
   Users,
-  Zap,
+  Tags,
+  BarChart3,
+  Smartphone,
 } from "lucide-react";
 
 const features = [
   {
-    icon: Goal,
-    title: "Identify Opportunities",
+    icon: Receipt,
+    title: "Professional Receipts",
     description:
-      "Easily uncover untapped areas to explore and expand your reach effortlessly.",
+      "Create beautiful, customizable receipts with your logo, QR codes, and custom messages. Choose from multiple templates that look professional and boost your brand image.",
   },
   {
-    icon: BookCheck,
-    title: "Build Authority",
+    icon: ShoppingCart,
+    title: "Fast Checkout Process",
     description:
-      "Create valuable content that resonates, inspires trust, and positions you as an expert.",
-  },
-  {
-    icon: ChartPie,
-    title: "Instant Insights",
-    description:
-      "Gain immediate, actionable insights with a quick glance, enabling fast decision-making.",
+      "Speed up your transactions with an intuitive POS interface. Process sales quickly, accept multiple payment methods, and get your customers on their way faster.",
   },
   {
     icon: Users,
-    title: "Engage with Your Audience",
+    title: "Customer Management",
     description:
-      "Boost audience engagement with interactive features like polls, quizzes, and forms.",
+      "Build lasting relationships with customer profiles and purchase history. Track preferences, spending patterns, and provide personalized service to your regulars.",
   },
   {
-    icon: FolderSync,
-    title: "Automate Your Workflow",
+    icon: Tags,
+    title: "Smart Discounts & Taxes",
     description:
-      "Streamline your processes by automating repetitive tasks, saving time and reducing effort.",
+      "Easily manage percentage or fixed discounts and multiple tax rates. Apply promotions to specific items or entire transactions with just a few clicks.",
   },
   {
-    icon: Zap,
-    title: "Accelerate Growth",
+    icon: BarChart3,
+    title: "Real-time Analytics",
     description:
-      "Supercharge your growth by implementing strategies that drive results quickly and efficiently.",
+      "Get instant insights into your sales performance. Track daily revenue, best-selling items, and transaction trends to make data-driven business decisions.",
+  },
+  {
+    icon: Smartphone,
+    title: "Access Anywhere",
+    description:
+      "Cloud-based system works on any device - desktop, tablet, or smartphone. Manage your business from anywhere with secure, real-time data synchronization.",
   },
 ];
 
@@ -54,13 +54,16 @@ const Features = () => {
       className="max-w-(--breakpoint-xl) mx-auto w-full py-12 xs:py-20 px-6"
     >
       <h2 className="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight sm:max-w-xl sm:text-center sm:mx-auto">
-        Boost Your Strategy with Smart Features
+        Everything You Need to Run Your Business
       </h2>
+      <p className="mt-4 text-center text-lg text-muted-foreground max-w-2xl mx-auto">
+        Powerful features designed to streamline your sales, manage customers, and grow your business efficiently.
+      </p>
       <div className="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
         {features.map((feature) => (
           <Card
             key={feature.title}
-            className="flex flex-col border rounded-xl overflow-hidden shadow-none"
+            className="flex flex-col border rounded-xl overflow-hidden shadow-none pb-0"
           >
             <CardHeader>
               <feature.icon />

@@ -46,7 +46,7 @@ const Footer = () => {
         <footer id="footer" className="mt-12 xs:mt-20 dark bg-background border-t">
             <div className="max-w-(--breakpoint-xl) mx-auto py-12 grid grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10 px-6">
                 <div className="col-span-full xl:col-span-2">
-                    <LogoText color={"white"}/>
+                    <LogoText />
 
                     <p className="mt-4 text-muted-foreground">
                         Streamline your billing process with intelligent invoice management

@@ -6,6 +6,7 @@ import {Sidebar, MobileSidebar} from "@/components/sidebar/Sidebar";
 import {useAuth} from "@/contexts/auth-context";
 import {useBusiness} from "@/contexts/business-context";
 import {BusinessOnboarding} from "@/components/business-onboarding";
+import ThemeToggle from "@/components/landing/theme-toggle";
 
 export default function DashboardLayout({
                                             children,
@@ -60,11 +61,12 @@ export default function DashboardLayout({
             {/* Main Content */}
             <div className="flex flex-1 flex-col overflow-hidden">
                 {/* Mobile Header */}
-                <header className="flex h-14 items-center border-b px-3 lg:hidden">
-                    <MobileSidebar/>
-                    <div className="ml-3 flex items-center space-x-2">
+                <header className="flex h-14 items-center justify-between border-b px-3 lg:hidden">
+                    <div className="flex items-center space-x-2">
+                        <MobileSidebar/>
                         <span className="text-lg font-bold">BillForge</span>
                     </div>
+                    <ThemeToggle />
                 </header>
 
                 {/* Page Content */}
