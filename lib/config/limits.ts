@@ -1,11 +1,11 @@
 export const LIMITS = {
-    MAX_BUSINESSES: 3,
+    MAX_BUSINESSES: 1,
     MAX_ITEMS: 50,
     MAX_DISCOUNTS: 30,
     MAX_TAXES: 30,
-    MAX_TRANSACTIONS_MONTHLY: 100,
-    MAX_PAYMENT_METHODS: 10,
-    MAX_CUSTOMERS: 100,
+    MAX_TRANSACTIONS_MONTHLY: 50,
+    MAX_PAYMENT_METHODS: 5,
+    MAX_CUSTOMERS: 50,
 } as const;
 
 export type LimitType = keyof typeof LIMITS;
