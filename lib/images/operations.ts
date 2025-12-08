@@ -32,7 +32,9 @@ export async function uploadImage(options: UploadImageOptions): Promise<UploadIm
             })
         );
 
-        const url = `${R2_ENDPOINT}/${key}`;
+        // Add cache-busting timestamp to prevent browser caching
+        const timestamp = Date.now();
+        const url = `${R2_ENDPOINT}/${key}?t=${timestamp}`;
 
         return {
             success: true,
@@ -108,7 +110,9 @@ export async function getImageUrl(options: GetImageUrlOptions): Promise<GetImage
                     })
                 );
 
-                const url = `${R2_ENDPOINT}/${key}`;
+                // Add cache-busting timestamp to prevent browser caching
+                const timestamp = Date.now();
+                const url = `${R2_ENDPOINT}/${key}?t=${timestamp}`;
 
                 return {
                     success: true,

@@ -61,10 +61,12 @@ const ItemImage = memo(({ item }: { item: Item }) => {
                     setImageUrl(result.url);
                 }
                 setLoading(false);
+            } else {
+                setImageUrl(null);
             }
         };
         loadImage();
-    }, [item.uuid, item.image_size_bytes]);
+    }, [item]);
 
     if (loading) {
         return (
@@ -287,7 +289,7 @@ export default function ItemsPage() {
                 if (response.success) {
                     setItems((prev) =>
                         prev.map((item) =>
-                            item.uuid === editingItem.uuid ? response.data : item
+                            item.uuid === editingItem.uuid ? { ...response.data } : item
                         )
                     );
                     setIsDialogOpen(false);
