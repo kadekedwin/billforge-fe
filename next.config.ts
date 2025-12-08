@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
                 hostname: "**",
             },
         ],
-        minimumCacheTTL: 0, // Disable aggressive caching for external images
     },
     experimental: {
         serverActions: {

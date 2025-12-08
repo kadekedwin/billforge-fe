@@ -75,12 +75,10 @@ const BusinessLogo = memo(({ business, size = "sm" }: { business: Business; size
                     setImageUrl(result.url);
                 }
                 setLoading(false);
-            } else {
-                setImageUrl(null);
             }
         };
         loadImage();
-    }, [business]);
+    }, [business.uuid, business.image_size_bytes]);
 
     const sizeClasses = size === "lg" ? "h-8 w-8" : "h-4 w-4";
 
