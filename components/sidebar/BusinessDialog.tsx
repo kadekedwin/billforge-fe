@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, X } from "lucide-react";
 import {
     Dialog,
@@ -43,34 +43,42 @@ export function BusinessDialog({
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
-    const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
     const [isUploadingImage, setIsUploadingImage] = useState(false);
     const [imageDeleted, setImageDeleted] = useState(false);
 
-    // Load existing image when editing
-    useState(() => {
-        const loadExistingImage = async () => {
-            if (editingBusiness && editingBusiness.image_size_bytes) {
-                const imageResult = await getImageUrl({
-                    folder: 'businesses',
-                    uuid: editingBusiness.uuid,
+    // Load existing business data and image when editing
+    useEffect(() => {
+        const loadExistingData = async () => {
+            if (open && editingBusiness) {
+                // Set form data
+                setFormData({
+                    name: editingBusiness.name,
+                    address: editingBusiness.address,
+                    phone: editingBusiness.phone,
+                    image_size_bytes: editingBusiness.image_size_bytes,
                 });
-                if (imageResult.success && imageResult.url) {
-                    setExistingImageUrl(imageResult.url);
-                    setImagePreview(imageResult.url);
+
+                // Load existing image
+                if (editingBusiness.image_size_bytes) {
+                    const imageResult = await getImageUrl({
+                        folder: 'businesses',
+                        uuid: editingBusiness.uuid,
+                    });
+                    if (imageResult.success && imageResult.url) {
+                        setImagePreview(imageResult.url);
+                    }
                 }
+            } else if (open && !editingBusiness) {
+                // Reset form for new business
+                setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
+                setImagePreview(null);
+                setSelectedImage(null);
+                setImageDeleted(false);
             }
         };
-        if (open && editingBusiness) {
-            loadExistingImage();
-            setFormData({
-                name: editingBusiness.name,
-                address: editingBusiness.address,
-                phone: editingBusiness.phone,
-                image_size_bytes: editingBusiness.image_size_bytes,
-            });
-        }
-    });
+
+        loadExistingData();
+    }, [open, editingBusiness]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -107,7 +115,6 @@ export function BusinessDialog({
         setSelectedImage(null);
         setImagePreview(null);
         setImageDeleted(true);
-        setExistingImageUrl(null);
         const fileInput = document.getElementById('business-logo') as HTMLInputElement;
         if (fileInput) {
             fileInput.value = '';
@@ -121,7 +128,6 @@ export function BusinessDialog({
         setError(null);
         setSelectedImage(null);
         setImagePreview(null);
-        setExistingImageUrl(null);
         setImageDeleted(false);
     };
 
