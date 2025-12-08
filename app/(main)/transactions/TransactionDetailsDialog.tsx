@@ -1,0 +1,93 @@
+"use client";
+
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import type { Transaction, TransactionItem, Customer } from "@/lib/api";
+import { TransactionDetailsInfo } from "./TransactionDetailsInfo";
+import { TransactionItemsTable } from "./TransactionItemsTable";
+import { TransactionSummary } from "./TransactionSummary";
+import { ReceiptActions } from "./ReceiptActions";
+
+interface TransactionDetailsDialogProps {
+    open: boolean;
+    onOpenChange: (open: boolean) => void;
+    transaction: Transaction | null;
+    transactionItems: TransactionItem[];
+    isLoadingItems: boolean;
+    customer: Customer | null;
+    receiptLoading: boolean;
+    isSendingEmail: boolean;
+    isSendingWhatsApp: boolean;
+    getCustomerName: (customerUuid: string | null) => string;
+    getPaymentMethodName: (paymentMethodUuid: string | null) => string;
+    onDownloadPDF: () => void;
+    onDownloadImage: () => void;
+    onSendEmail: () => void;
+    onSendWhatsApp: () => void;
+}
+
+export function TransactionDetailsDialog({
+                                             open,
+                                             onOpenChange,
+                                             transaction,
+                                             transactionItems,
+                                             isLoadingItems,
+                                             customer,
+                                             receiptLoading,
+                                             isSendingEmail,
+                                             isSendingWhatsApp,
+                                             getCustomerName,
+                                             getPaymentMethodName,
+                                             onDownloadPDF,
+                                             onDownloadImage,
+                                             onSendEmail,
+                                             onSendWhatsApp,
+                                         }: TransactionDetailsDialogProps) {
+    if (!transaction) return null;
+
+    return (
+        <Dialog open={open} onOpenChange={onOpenChange}>
+            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                <DialogHeader>
+                    <DialogTitle>Transaction Details</DialogTitle>
+                    <DialogDescription>
+                        View complete transaction information
+                    </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-6">
+                    <TransactionDetailsInfo
+                        transaction={transaction}
+                        getCustomerName={getCustomerName}
+                        getPaymentMethodName={getPaymentMethodName}
+                    />
+
+                    <div className="space-y-2">
+                        <h3 className="text-lg font-semibold">Items</h3>
+                        <TransactionItemsTable
+                            items={transactionItems}
+                            isLoading={isLoadingItems}
+                        />
+                    </div>
+
+                    <TransactionSummary transaction={transaction} />
+
+                    <ReceiptActions
+                        customer={customer}
+                        receiptLoading={receiptLoading}
+                        isSendingEmail={isSendingEmail}
+                        isSendingWhatsApp={isSendingWhatsApp}
+                        onDownloadPDF={onDownloadPDF}
+                        onDownloadImage={onDownloadImage}
+                        onSendEmail={onSendEmail}
+                        onSendWhatsApp={onSendWhatsApp}
+                    />
+                </div>
+            </DialogContent>
+        </Dialog>
+    );
+}
