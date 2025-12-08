@@ -24,12 +24,12 @@ const footerSections = [
         title: "Legal",
         links: [
             {
-                title: "Terms",
-                href: "#",
+                title: "Terms of Service",
+                href: "/terms",
             },
             {
-                title: "Privacy",
-                href: "#",
+                title: "Privacy Policy",
+                href: "/privacy",
             },
         ],
     },

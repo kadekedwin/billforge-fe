@@ -34,23 +34,3 @@ export function handleApiError(response: Response, data: ApiErrorResponse): neve
 
   throw new ApiError(message, response.status, errors);
 }
-
-export function getErrorMessage(error: unknown): string {
-    if (error instanceof ApiError) {
-        return error.message;
-    }
-
-    if (error instanceof Error) {
-        return error.message;
-    }
-
-    return "An unknown error occurred";
-}
-
-export function getValidationErrors(error: unknown): Record<string, string[]> | undefined {
-    if (error instanceof ApiError) {
-        return error.errors;
-    }
-
-    return undefined;
-}
