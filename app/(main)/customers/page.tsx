@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/table";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getCustomers, createCustomer, updateCustomer, deleteCustomer } from "@/lib/api/customers";
+import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import type { Customer, CreateCustomerRequest, UpdateCustomerRequest } from "@/lib/api";
 
 export default function CustomersPage() {
@@ -270,7 +271,14 @@ export default function CustomersPage() {
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
-                        <Button>
+                        <Button
+                            onClick={(e) => {
+                                if (customers.length >= LIMITS.MAX_CUSTOMERS) {
+                                    e.preventDefault();
+                                    setError(getLimitMessage('MAX_CUSTOMERS'));
+                                }
+                            }}
+                        >
                             <Plus className="mr-2 h-4 w-4" />
                             Add Customer
                         </Button>

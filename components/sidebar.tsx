@@ -34,6 +34,7 @@ import Image from "next/image";
 import { getImageUrl, uploadImage, deleteImage } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
 import { createBusiness, updateBusiness, deleteBusiness } from "@/lib/api/businesses";
+import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import {Business, CreateBusinessRequest, login, UpdateBusinessRequest} from "@/lib/api";
 import {
     Dialog,
@@ -56,6 +57,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {logout} from "@/lib/api/auth";
+import { toast } from "sonner"
 
 const BusinessLogo = memo(({ business, size = "sm" }: { business: Business; size?: "sm" | "lg" }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -231,6 +233,10 @@ function SidebarContent({onNavigate}: { onNavigate?: () => void }) {
     };
 
     const handleAddBusiness = () => {
+        if (businesses.length >= LIMITS.MAX_BUSINESSES) {
+            toast.error(getLimitMessage('MAX_BUSINESSES'));
+            return;
+        }
         setEditingBusiness(null);
         setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
         setFormErrors({});

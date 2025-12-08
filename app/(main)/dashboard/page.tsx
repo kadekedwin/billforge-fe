@@ -21,14 +21,17 @@ import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { createTransaction } from "@/lib/api/transactions";
+import { getTransactions } from "@/lib/api/transactions";
 import { createTransactionItem } from "@/lib/api/transaction-items";
 import { getImageUrl } from "@/lib/images/operations";
 import { useBusiness } from "@/contexts/business-context";
+import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction, TransactionItem } from "@/lib/api";
 import Image from "next/image";
 import { ReceiptPopup } from "@/components/receipt-popup";
 import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
+import { toast } from "sonner"
 
 const ItemImageCard = memo(({ item }: { item: Item }) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -91,6 +94,7 @@ export default function DashboardPage() {
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [cart, setCart] = useState<Map<string, number>>(new Map());
@@ -119,12 +123,14 @@ export default function DashboardPage() {
                 paymentMethodsResponse,
                 taxesResponse,
                 discountsResponse,
+                transactionsResponse,
             ] = await Promise.all([
                 getItems({ is_active: true }),
                 getCustomers(),
                 getPaymentMethods(),
                 getItemTaxes(),
                 getItemDiscounts(),
+                getTransactions(),
             ]);
 
             if (itemsResponse.success) {
@@ -147,6 +153,10 @@ export default function DashboardPage() {
 
             if (taxesResponse.success) {
                 setTaxes(taxesResponse.data);
+            }
+
+            if (transactionsResponse.success) {
+                setTransactions(transactionsResponse.data);
             }
 
             if (discountsResponse.success) {
@@ -222,6 +232,22 @@ export default function DashboardPage() {
             }
         });
         return total;
+    };
+
+    const getMonthlyTransactionCount = () => {
+        if (!selectedBusiness) return 0;
+
+        const now = new Date();
+        const currentMonth = now.getMonth();
+        const currentYear = now.getFullYear();
+
+        return transactions.filter(transaction => {
+            if (transaction.business_uuid !== selectedBusiness.uuid) return false;
+
+            const transactionDate = new Date(transaction.created_at);
+            return transactionDate.getMonth() === currentMonth &&
+                   transactionDate.getFullYear() === currentYear;
+        }).length;
     };
 
     const calculateItemTax = (item: Item, basePrice: number) => {
@@ -676,7 +702,18 @@ export default function DashboardPage() {
                                 ${getTotalAmount().toFixed(2)}
                             </p>
                         </div>
-                        <Button size="sm" className="sm:h-10 sm:px-6 sm:ml-4" onClick={() => setIsCheckout(true)}>
+                        <Button
+                            size="sm"
+                            className="sm:h-10 sm:px-6 sm:ml-4"
+                            onClick={() => {
+                                const monthlyCount = getMonthlyTransactionCount();
+                                if (monthlyCount >= LIMITS.MAX_TRANSACTIONS_MONTHLY) {
+                                    toast.error(getLimitMessage('MAX_TRANSACTIONS_MONTHLY'));
+                                    return;
+                                }
+                                setIsCheckout(true);
+                            }}
+                        >
                             Checkout
                         </Button>
                     </div>

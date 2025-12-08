@@ -42,6 +42,7 @@ import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { uploadImage, deleteImage, getImageUrl } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
+import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import type { Item, CreateItemRequest, UpdateItemRequest, ItemTax, ItemDiscount } from "@/lib/api";
 
 const ItemImage = memo(({ item }: { item: Item }) => {
@@ -504,7 +505,14 @@ export default function ItemsPage() {
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
-                        <Button>
+                        <Button
+                            onClick={(e) => {
+                                if (items.length >= LIMITS.MAX_ITEMS) {
+                                    e.preventDefault();
+                                    setError(getLimitMessage('MAX_ITEMS'));
+                                }
+                            }}
+                        >
                             <Plus className="mr-2 h-4 w-4" />
                             Add Item
                         </Button>

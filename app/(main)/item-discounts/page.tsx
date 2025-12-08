@@ -35,6 +35,7 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getItemDiscounts, createItemDiscount, updateItemDiscount, deleteItemDiscount } from "@/lib/api/item-discounts";
 import { useBusiness } from "@/contexts/business-context";
+import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest } from "@/lib/api";
 
 export default function ItemDiscountsPage() {
@@ -263,7 +264,14 @@ export default function ItemDiscountsPage() {
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
-                        <Button>
+                        <Button
+                            onClick={(e) => {
+                                if (discounts.length >= LIMITS.MAX_DISCOUNTS) {
+                                    e.preventDefault();
+                                    setError(getLimitMessage('MAX_DISCOUNTS'));
+                                }
+                            }}
+                        >
                             <Plus className="mr-2 h-4 w-4" />
                             Add Discount
                         </Button>

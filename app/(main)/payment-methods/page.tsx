@@ -35,6 +35,7 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Trash2, Loader2, Pencil } from "lucide-react";
 import { getPaymentMethods, createPaymentMethod, updatePaymentMethod, deletePaymentMethod } from "@/lib/api/payment-methods";
 import { useBusiness } from "@/contexts/business-context";
+import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequest } from "@/lib/api";
 
 export default function PaymentMethodsPage() {
@@ -246,7 +247,14 @@ export default function PaymentMethodsPage() {
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
-                        <Button>
+                        <Button
+                            onClick={(e) => {
+                                if (paymentMethods.length >= LIMITS.MAX_PAYMENT_METHODS) {
+                                    e.preventDefault();
+                                    setError(getLimitMessage('MAX_PAYMENT_METHODS'));
+                                }
+                            }}
+                        >
                             <Plus className="mr-2 h-4 w-4" />
                             Add Payment Method
                         </Button>
