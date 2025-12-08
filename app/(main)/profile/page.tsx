@@ -83,8 +83,8 @@ export default function ProfilePage() {
         if (!file) return;
 
         const sizeInBytes = getFileSizeBytes(file);
-        if (sizeInBytes > 5 * 1024 * 1024) {
-            setError('Image size must be less than 5MB');
+        if (sizeInBytes > 1 * 1024 * 1024) {
+            setError('Image size must be less than 1MB');
             return;
         }
 
@@ -308,7 +308,7 @@ export default function ProfilePage() {
                             )}
                         </div>
                         <p className="text-sm text-muted-foreground mt-2">
-                            JPG, PNG or GIF. Max size 5MB.
+                            JPG, PNG or GIF. Max size 1MB.
                         </p>
                     </div>
                 </CardContent>
