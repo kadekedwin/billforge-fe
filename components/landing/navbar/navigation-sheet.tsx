@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { VisuallyHidden as VisuallyHiddenPrimitive } from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
-import { Logo } from "../logo";
+import { LogoText } from "../../logo-text";
 import { NavMenu } from "./nav-menu";
 
 export const NavigationSheet = () => {
@@ -22,7 +22,7 @@ export const NavigationSheet = () => {
         </Button>
       </SheetTrigger>
       <SheetContent>
-        <Logo />
+        <LogoText />
         <NavMenu orientation="vertical" className="mt-12" />
 
         <div className="mt-8 space-y-4">

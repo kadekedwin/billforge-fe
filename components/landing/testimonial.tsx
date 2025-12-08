@@ -15,65 +15,57 @@ import { useEffect, useState } from "react";
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    company: "TechCorp",
+    name: "Sarah Martinez",
+    designation: "Cafe Owner",
+    company: "The Daily Grind Cafe",
     testimonial:
-      "This product has completely transformed the way we work. The efficiency and ease of use are unmatched! " +
-      "We were struggling with productivity before, but this tool has streamlined our entire process. ",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+      "BillForge has revolutionized how we handle transactions at our cafe. The receipt customization is amazing, and our customers love getting digital receipts. We've cut our paper costs by 80% and checkout times have never been faster!",
+    avatar: "/testimonials/testimonial1.jpg",
   },
   {
     id: 2,
-    name: "Jane Smith",
-    designation: "Product Manager",
-    company: "InnovateX",
+    name: "Budi Santoso",
+    designation: "Store Manager",
+    company: "Warung Maju Jakarta",
     testimonial:
-      "An amazing tool that simplifies complex tasks. Highly recommended for professionals in the industry. " +
-      "The intuitive interface makes it easy to onboard new team members, and the automation features save us countless hours every week. ",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+      "Sebagai pemilik warung di Jakarta, BillForge sangat membantu saya mengelola transaksi harian. Interface-nya mudah digunakan, dan saya bisa track semua penjualan dengan mudah. Sangat recommended untuk UMKM Indonesia!",
+    avatar: "/testimonials/testimonial2.jpg",
   },
   {
     id: 3,
-    name: "Michael Johnson",
-    designation: "UX Designer",
-    company: "DesignPro",
+    name: "Michael Chen",
+    designation: "Restaurant Owner",
+    company: "Chen's Asian Bistro",
     testimonial:
-      "The user experience is top-notch! The interface is clean, intuitive, and easy to navigate. " +
-      "As a designer, I appreciate the attention to detail and well-thought-out UI components. " +
-      "It makes designing and prototyping so much more efficient.",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+      "Managing multiple payment methods used to be a nightmare. BillForge makes it seamless! The transaction history and customer management features have helped us build better relationships with our regulars. Best POS decision we've made!",
+    avatar: "/testimonials/testimonial3.jpg",
   },
   {
     id: 4,
-    name: "Emily Davis",
-    designation: "Marketing Specialist",
-    company: "BrandBoost",
+    name: "Emma Thompson",
+    designation: "Boutique Owner",
+    company: "Elegance Fashion Boutique",
     testimonial:
-      "I've seen a significant improvement in our team's productivity since we started using this service. " +
-      "The ability to track performance, analyze data, and collaborate across teams has been a game-changer.",
-    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+      "The discount and tax management in BillForge is exactly what we needed for our seasonal sales. Creating beautiful, branded receipts has elevated our customer experience. Our checkout process is now professional and efficient!",
+    avatar: "/testimonials/testimonial4.jpg",
   },
   {
     id: 5,
-    name: "Daniel Martinez",
-    designation: "Full-Stack Developer",
-    company: "CodeCrafters",
+    name: "James Wilson",
+    designation: "Bakery Owner",
+    company: "Sweet Treats Bakery",
     testimonial:
-      "The best investment we've made! The support team is also super responsive and helpful. " +
-      "As a developer, I appreciate the well-documented API, the flexibility of integrations, and the robust security features.",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+      "We switched to BillForge three months ago and haven't looked back. The item management system keeps our inventory organized, and the receipt templates look professional. Customer checkout is now a breeze, even during our busy morning rush!",
+    avatar: "/testimonials/testimonial5.jpg",
   },
   {
     id: 6,
-    name: "Sophia Lee",
-    designation: "Data Analyst",
-    company: "InsightTech",
+    name: "Lisa Rodriguez",
+    designation: "Retail Manager",
+    company: "TechGadgets Plus",
     testimonial:
-      "This tool has saved me hours of work! The analytics and reporting features are incredibly powerful. " +
-      "I can now generate detailed reports in minutes, which previously took days to compile. " +
-      "helping us make smarter, data-backed decisions.",
-    avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+      "BillForge's transaction tracking has given us incredible insights into our sales patterns. The customer database helps us provide personalized service, and the QR code receipts are a hit with our tech-savvy customers. It's the complete package!",
+    avatar: "/testimonials/testimonial6.jpg",
   },
 ];
 const Testimonial = () => {
@@ -137,7 +129,7 @@ const TestimonialCard = ({
     <div className="flex items-center justify-between gap-20">
       <div className="hidden lg:block relative shrink-0 aspect-3/4 max-w-[18rem] w-full bg-muted-foreground/20 rounded-xl">
         <Image
-          src="/placeholder.svg"
+          src={testimonial.avatar}
           fill
           alt=""
           className="object-cover rounded-xl"
