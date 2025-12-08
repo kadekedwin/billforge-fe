@@ -1,6 +1,6 @@
 import {Separator} from "@/components/ui/separator";
 import Link from "next/link";
-import {LogoText} from "@/components/logo-text";
+import {LogoText} from "@/components/icons/logoText";
 
 const footerSections = [
     {

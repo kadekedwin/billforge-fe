@@ -5,7 +5,7 @@ import { Navbar } from "@/components/landing/navbar";
 import Footer from "@/components/landing/footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {LogoText} from "@/components/logo-text";
+import {LogoText} from "@/components/icons/logoText";
 
 export default function PrivacyPage() {
   return (

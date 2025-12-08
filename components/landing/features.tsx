@@ -7,7 +7,8 @@ import {
     BarChart3,
     Smartphone,
 } from "lucide-react";
-import Image from "next/image";
+import {useTheme} from "next-themes";
+import {AnalyticIcon, CloudIcon, ReceiptIcon, SaleIcon, CustomerIcon, CheckoutIcon} from "@/components/icons/features";
 
 const features = [
     {
@@ -15,46 +16,47 @@ const features = [
         title: "Professional Receipts",
         description:
             "Create beautiful, customizable receipts with your logo, QR codes, and custom messages. Choose from multiple templates that look professional and boost your brand image.",
-        image: "/features/receipt.svg",
+        illustration: ReceiptIcon,
     },
     {
         icon: ShoppingCart,
         title: "Fast Checkout Process",
         description:
             "Speed up your transactions with an intuitive POS interface. Process sales quickly, accept multiple payment methods, and get your customers on their way faster.",
-        image: "/features/checkout.svg",
+        illustration: CheckoutIcon,
     },
     {
         icon: Users,
         title: "Customer Management",
         description:
             "Build lasting relationships with customer profiles and purchase history. Track preferences, spending patterns, and provide personalized service to your regulars.",
-        image: "/features/customer.svg",
+        illustration: CustomerIcon,
     },
     {
         icon: Tags,
         title: "Smart Discounts & Taxes",
         description:
             "Easily manage percentage or fixed discounts and multiple tax rates. Apply promotions to specific items or entire transactions with just a few clicks.",
-        image: "/features/sale.svg",
+        illustration: SaleIcon,
     },
     {
         icon: BarChart3,
         title: "Real-time Analytics",
         description:
             "Get instant insights into your sales performance. Track daily revenue, best-selling items, and transaction trends to make data-driven business decisions.",
-        image: "/features/analytic.svg",
+        illustration: AnalyticIcon,
     },
     {
         icon: Smartphone,
         title: "Access Anywhere",
         description:
             "Cloud-based system works on any device - desktop, tablet, or smartphone. Manage your business from anywhere with secure, real-time data synchronization.",
-        image: "/features/cloud.svg",
+        illustration: CloudIcon,
     },
 ];
 
 const Features = () => {
+    const { resolvedTheme } = useTheme();
     return (
         <div
             id="features"
@@ -82,13 +84,7 @@ const Features = () => {
                             </p>
                         </CardHeader>
                         <CardContent className="flex justify-end items-end mt-auto mx-10 mb-10 relative">
-                            <Image
-                                src={feature.image}
-                                alt={feature.title}
-                                width={100}
-                                height={100}
-                                className="object-cover"
-                            />
+                            <feature.illustration className="size-30" fill={resolvedTheme === "dark" ? "white" : "black"} />
                         </CardContent>
                     </Card>
                 ))}

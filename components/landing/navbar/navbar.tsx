@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button";
-import {LogoText} from "../../logo-text";
+import {LogoText} from "../../icons/logoText";
 import {NavMenu} from "./nav-menu";
 import {NavigationSheet} from "./navigation-sheet";
 import ThemeToggle from "../theme-toggle";

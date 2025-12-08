@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { VisuallyHidden as VisuallyHiddenPrimitive } from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
-import { LogoText } from "../../logo-text";
+import { LogoText } from "../../icons/logoText";
 import { NavMenu } from "./nav-menu";
 
 export const NavigationSheet = () => {
