@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { CircleCheck } from "lucide-react";
+import Link from "next/link";
 
 const plans = [
   {
@@ -21,6 +22,7 @@ const plans = [
       "Cloud Storage",
     ],
     buttonText: "Get Started Free",
+    href: "/login",
   },
   {
     name: "Pro",
@@ -42,6 +44,7 @@ const plans = [
     ],
     buttonText: "Start Pro Trial",
     isPopular: true,
+    href: "/login"
   },
   {
     name: "Enterprise",
@@ -59,6 +62,7 @@ const plans = [
       "24/7 Priority Support",
     ],
     buttonText: "Contact Sales",
+    href: "#footer"
   },
 ];
 
@@ -114,7 +118,7 @@ const Pricing = () => {
               size="lg"
               className="w-full mt-6 rounded-full"
             >
-              {plan.buttonText}
+              <Link href={plan.href}>{plan.buttonText}</Link>
             </Button>
           </div>
         ))}

@@ -9,34 +9,54 @@ import { PlusIcon } from "lucide-react";
 
 const faq = [
   {
-    question: "What is your return policy?",
+    question: "Is BillForge really free to use?",
     answer:
-      "You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
+      "Yes! Our Free plan includes 1 business, 50 items, 50 customers, 50 transactions per month, and all basic features. Perfect for small businesses getting started. Upgrade to Pro or Enterprise for higher limits and advanced features.",
   },
   {
-    question: "How do I track my order?",
+    question: "What's the difference between Free, Pro, and Enterprise plans?",
     answer:
-      "Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
+      "Free plan has basic limits (1 business, 50 items, 50 transactions/month). Pro offers 10x those limits (10 businesses, 500 items, 500 transactions/month). Enterprise provides unlimited items, customers, and transactions with advanced features like multi-user access and API access.",
   },
   {
-    question: "Do you ship internationally?",
+    question: "Can I customize my receipts?",
     answer:
-      "Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
+      "Absolutely! BillForge offers multiple receipt templates with full customization options. Add your business logo, custom footer messages, QR codes, and choose from various professional designs. Receipts can be printed or sent digitally to customers.",
   },
   {
-    question: "What payment methods do you accept?",
+    question: "What payment methods can I accept?",
     answer:
-      "We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
+      "BillForge supports all major payment methods including cash, credit/debit cards, mobile payments, and digital wallets. The Free plan allows up to 5 payment methods, while Pro and Enterprise offer unlimited payment method options.",
   },
   {
-    question: "What if I receive a damaged item?",
+    question: "How do I manage discounts and taxes?",
     answer:
-      "Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
+      "Our platform includes built-in discount and tax management. Create percentage or fixed-amount discounts, apply them to specific items or entire transactions. Set up multiple tax rates for different product categories. Free plan includes 30 discount and tax configurations.",
   },
   {
-    question: "How can I contact customer support?",
+    question: "Is my business data secure?",
     answer:
-      "You can reach our support team via email at support@example.com or through the live chat on our website. We're available 24/7 to assist you.",
+      "Yes! All data is securely stored in the cloud with encryption. We perform regular backups and use industry-standard security practices. Your transaction history, customer information, and business data are protected and accessible only to you.",
+  },
+  {
+    question: "Can I track customer purchase history?",
+    answer:
+      "Yes! BillForge includes customer management features. Store customer details, view purchase history, and build better relationships with your regulars. Track what they buy, when they visit, and their total spending to provide personalized service.",
+  },
+  {
+    question: "Do I need any special hardware?",
+    answer:
+      "No special hardware required! BillForge works on any device with a web browser - desktop, tablet, or smartphone. If you want to print receipts, you can use any standard printer. The system is cloud-based, so you can access it from anywhere.",
+  },
+  {
+    question: "What happens if I exceed my monthly transaction limit?",
+    answer:
+      "On the Free plan, you're limited to 50 transactions per month. If you need more, you can upgrade to Pro (500 transactions/month) or Enterprise (unlimited). Your data is never deleted, and you can always view past transactions regardless of your current plan.",
+  },
+  {
+    question: "How can I get support if I need help?",
+    answer:
+      "We offer email support for all users. Pro and Enterprise customers get priority support with faster response times. Enterprise customers also receive 24/7 support and a dedicated account manager. Check our documentation and tutorials for quick self-help guides.",
   },
 ];
 
@@ -50,7 +70,7 @@ const FAQ = () => {
         Frequently Asked Questions
       </h2>
       <p className="mt-1.5 md:text-center xs:text-lg text-muted-foreground">
-        Quick answers to common questions about our products and services.
+        Everything you need to know about BillForge and how it can help your business.
       </p>
 
       <div className="min-h-[550px] md:min-h-[320px] xl:min-h-[300px]">
