@@ -6,58 +6,74 @@ import { CircleCheck } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    price: 19,
+    name: "Free",
+    price: 0,
     description:
-      "Get 20 AI-generated portraits with 2 unique styles and filters.",
+      "Perfect for small businesses just getting started with digital billing.",
     features: [
-      "5 hours turnaround time",
-      "20 AI portraits",
-      "Choice of 2 styles",
-      "Choice of 2 filters",
-      "2 retouch credits",
+      "1 Business",
+      "50 Items",
+      "50 Customers",
+      "50 Transactions/month",
+      "5 Payment Methods",
+      "30 Discounts & Taxes",
+      "Basic Receipt Templates",
+      "Cloud Storage",
     ],
-    buttonText: "Get 20 portraits in 5 hours",
+    buttonText: "Get Started Free",
   },
   {
-    name: "Advanced",
+    name: "Pro",
     price: 29,
     isRecommended: true,
     description:
-      "Get 50 AI-generated portraits with 5 unique styles and filters.",
+      "Ideal for growing businesses with multiple locations and higher volume.",
     features: [
-      "3 hours turnaround time",
-      "50 AI portraits",
-      "Choice of 5 styles",
-      "Choice of 5 filters",
-      "5 retouch credits",
+      "10 Businesses",
+      "500 Items",
+      "500 Customers",
+      "500 Transactions/month",
+      "50 Payment Methods",
+      "300 Discounts & Taxes",
+      "Premium Receipt Templates",
+      "Priority Support",
+      "Advanced Analytics",
+      "Custom Branding",
     ],
-    buttonText: "Get 50 portraits in 3 hours",
+    buttonText: "Start Pro Trial",
     isPopular: true,
   },
   {
-    name: "Premium",
-    price: 49,
+    name: "Enterprise",
+    price: 99,
     description:
-      "Get 100 AI-generated portraits with 10 unique styles and filters.",
+      "For large businesses requiring advanced features and dedicated support.",
     features: [
-      "1-hour turnaround time",
-      "100 AI portraits",
-      "Choice of 10 styles",
-      "Choice of 10 filters",
-      "10 retouch credits",
+      "10 Businesses",
+      "Unlimited Items",
+      "Unlimited Customers",
+      "Unlimited Transactions",
+      "Unlimited Payment Methods",
+      "Unlimited Discounts & Taxes",
+      "API Access",
+      "24/7 Priority Support",
     ],
-    buttonText: "Get 100 portraits in 1 hour",
+    buttonText: "Contact Sales",
   },
 ];
 
 const Pricing = () => {
   return (
     <div id="pricing" className="max-w-(--breakpoint-lg) mx-auto py-12 xs:py-20 px-6">
-      <h1 className="text-4xl xs:text-5xl font-bold text-center tracking-tight">
-        Pricing
-      </h1>
-      <div className="mt-8 xs:mt-14 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-0">
+      <div className="text-center mb-8 xs:mb-14">
+        <h1 className="text-4xl xs:text-5xl font-bold tracking-tight">
+          Simple, Transparent Pricing
+        </h1>
+        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+          Choose the perfect plan for your business. Start free and upgrade as you grow.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-0">
         {plans.map((plan) => (
           <div
             key={plan.name}
@@ -75,7 +91,12 @@ const Pricing = () => {
               </Badge>
             )}
             <h3 className="text-lg font-medium">{plan.name}</h3>
-            <p className="mt-2 text-4xl font-bold">${plan.price}</p>
+            <div className="mt-2">
+              <span className="text-4xl font-bold">${plan.price}</span>
+              {plan.price > 0 && (
+                <span className="text-muted-foreground ml-1">/month</span>
+              )}
+            </div>
             <p className="mt-4 font-medium text-muted-foreground">
               {plan.description}
             </p>
