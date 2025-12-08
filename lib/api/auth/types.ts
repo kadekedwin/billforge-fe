@@ -1,4 +1,4 @@
-import type { User } from "../common-types";
+import type { User } from "../user/types";
 
 export interface RegisterRequest {
   name: string;

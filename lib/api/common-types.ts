@@ -12,12 +12,3 @@ export interface ApiErrorResponse {
 export interface MessageResponse {
   message: string;
 }
-export interface User {
-  id: number;
-  uuid: string;
-  name: string;
-  email: string;
-  image_size_bytes: number | null;
-  created_at: string;
-  updated_at: string;
-}

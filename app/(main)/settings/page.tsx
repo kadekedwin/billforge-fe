@@ -2,9 +2,15 @@
 
 import Link from 'next/link';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, ChevronRight } from 'lucide-react';
+import {FileText, ChevronRight, UserCircle} from 'lucide-react';
 
 const settingsCategories = [
+    {
+        title: 'Profile Settings',
+        description: 'Configure user profile and preferences',
+        icon: UserCircle,
+        href: '/profile'
+    },
     {
         title: 'Receipt Settings',
         description: 'Configure receipt templates and appearance',
