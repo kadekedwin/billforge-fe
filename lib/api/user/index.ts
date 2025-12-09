@@ -5,9 +5,9 @@ import type { User, UpdateUserRequest } from "./types";
 export type { User, UpdateUserRequest } from "./types";
 
 export async function getUser(): Promise<ApiResponse<User>> {
-  return apiClient.get<User>("/api/user");
+  return apiClient.get<User>("/api/users");
 }
 
 export async function updateUser(data: UpdateUserRequest): Promise<ApiResponse<User>> {
-  return apiClient.put<User>("/api/user", data);
+  return apiClient.put<User>("/api/users", data);
 }
