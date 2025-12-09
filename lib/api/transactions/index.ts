@@ -7,29 +7,29 @@ export type { Transaction, CreateTransactionRequest, UpdateTransactionRequest, T
 export async function getTransactions(
   params?: TransactionQueryParams
 ): Promise<ApiResponse<Transaction[]>> {
-  return apiClient.get<Transaction[]>("/transactions", { params });
+  return apiClient.get<Transaction[]>("/api/transactions", { params });
 }
 
 export async function getTransaction(id: string | number): Promise<ApiResponse<Transaction>> {
-  return apiClient.get<Transaction>(`/transactions/${id}`);
+  return apiClient.get<Transaction>(`/api/transactions/${id}`);
 }
 
 export async function createTransaction(
   data: CreateTransactionRequest
 ): Promise<ApiResponse<Transaction>> {
-  return apiClient.post<Transaction>("/transactions", data);
+  return apiClient.post<Transaction>("/api/transactions", data);
 }
 
 export async function updateTransaction(
   id: string | number,
   data: UpdateTransactionRequest
 ): Promise<ApiResponse<Transaction>> {
-  return apiClient.put<Transaction>(`/transactions/${id}`, data);
+  return apiClient.put<Transaction>(`/api/transactions/${id}`, data);
 }
 
 export async function deleteTransaction(
   id: string | number
 ): Promise<ApiResponse<MessageResponse>> {
-  return apiClient.delete<MessageResponse>(`/transactions/${id}`);
+  return apiClient.delete<MessageResponse>(`/api/transactions/${id}`);
 }
 
