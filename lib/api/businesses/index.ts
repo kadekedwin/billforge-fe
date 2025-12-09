@@ -1,5 +1,5 @@
 import { apiClient } from "../client";
-import type { ApiResponse, MessageResponse } from "../common-types";
+import type { ApiResponse, MessageResponse } from "../types";
 import type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "./types";
 
 export type { Business, CreateBusinessRequest, UpdateBusinessRequest } from "./types";
@@ -16,10 +16,7 @@ export async function createBusiness(data: CreateBusinessRequest): Promise<ApiRe
   return apiClient.post<Business>("/api/businesses", data);
 }
 
-export async function updateBusiness(
-  id: string | number,
-  data: UpdateBusinessRequest
-): Promise<ApiResponse<Business>> {
+export async function updateBusiness(id: string | number, data: UpdateBusinessRequest): Promise<ApiResponse<Business>> {
   return apiClient.put<Business>(`/api/businesses/${id}`, data);
 }
 

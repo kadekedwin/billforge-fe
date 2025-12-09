@@ -1,12 +1,12 @@
 import { apiClient } from "../client";
-import type { ApiResponse, MessageResponse } from "../common-types";
+import type { ApiResponse, MessageResponse } from "../types";
 import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "./types";
 
 export type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "./types";
 
 export async function getItemTaxes(businessUuid?: string): Promise<ApiResponse<ItemTax[]>> {
   const params = businessUuid ? { business_uuid: businessUuid } : undefined;
-  return apiClient.get<ItemTax[]>("/api/item-taxes", { params });
+  return apiClient.get<ItemTax[]>("/api/item-taxes", params);
 }
 
 export async function getItemTax(id: string | number): Promise<ApiResponse<ItemTax>> {
@@ -17,10 +17,7 @@ export async function createItemTax(data: CreateItemTaxRequest): Promise<ApiResp
   return apiClient.post<ItemTax>("/api/item-taxes", data);
 }
 
-export async function updateItemTax(
-  id: string | number,
-  data: UpdateItemTaxRequest
-): Promise<ApiResponse<ItemTax>> {
+export async function updateItemTax(id: string | number, data: UpdateItemTaxRequest): Promise<ApiResponse<ItemTax>> {
   return apiClient.put<ItemTax>(`/api/item-taxes/${id}`, data);
 }
 

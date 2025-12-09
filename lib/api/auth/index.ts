@@ -1,5 +1,5 @@
 import { apiClient } from "../client";
-import type { ApiResponse, MessageResponse } from "../common-types";
+import type { ApiResponse, MessageResponse } from "../types";
 import type { RegisterRequest, LoginRequest, AuthResponse } from "./types";
 
 export type { RegisterRequest, LoginRequest, AuthResponse } from "./types";
@@ -26,7 +26,6 @@ export async function login(data: LoginRequest): Promise<ApiResponse<AuthRespons
 
 export async function logout(): Promise<ApiResponse<MessageResponse>> {
   const response = await apiClient.post<MessageResponse>("/logout");
-
   apiClient.setToken(null);
 
   return response;
