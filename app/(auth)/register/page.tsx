@@ -17,14 +17,13 @@ import {
 } from "@/components/ui/card";
 import {register} from "@/lib/api/auth";
 import type {RegisterRequest} from "@/lib/api";
-import Image from "next/image";
 
 export default function RegisterPage() {
     const router = useRouter();
     const {setAuth} = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [formData, setFormData] = useState<RegisterRequest & { password_confirmation: string }>({
+    const [formData, setFormData] = useState<RegisterRequest>({
         name: "",
         email: "",
         password: "",
@@ -46,8 +45,7 @@ export default function RegisterPage() {
         }
 
         try {
-            const {password_confirmation: _password_confirmation, ...registerData} = formData;
-            const response = await register(registerData);
+            const response = await register(formData);
 
             if (response.success) {
                 setAuth(response.data.user, response.data.access_token);

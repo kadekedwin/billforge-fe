@@ -1,11 +1,11 @@
 import { apiClient } from "../client";
 import type { ApiResponse, MessageResponse } from "../types";
-import type { RegisterRequest, LoginRequest, AuthResponse } from "./types";
+import type { RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest } from "./types";
 
-export type { RegisterRequest, LoginRequest, AuthResponse } from "./types";
+export type { RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest } from "./types";
 
 export async function register(data: RegisterRequest): Promise<ApiResponse<AuthResponse>> {
-  const response = await apiClient.post<AuthResponse>("/register", data);
+  const response = await apiClient.post<AuthResponse>("/api/register", data);
 
   if (response.success && response.data.access_token) {
     apiClient.setToken(response.data.access_token);
@@ -15,7 +15,7 @@ export async function register(data: RegisterRequest): Promise<ApiResponse<AuthR
 }
 
 export async function login(data: LoginRequest): Promise<ApiResponse<AuthResponse>> {
-  const response = await apiClient.post<AuthResponse>("/login", data);
+  const response = await apiClient.post<AuthResponse>("/api/login", data);
 
   if (response.success && response.data.access_token) {
     apiClient.setToken(response.data.access_token);
@@ -25,10 +25,14 @@ export async function login(data: LoginRequest): Promise<ApiResponse<AuthRespons
 }
 
 export async function logout(): Promise<ApiResponse<MessageResponse>> {
-  const response = await apiClient.post<MessageResponse>("/logout");
+  const response = await apiClient.post<MessageResponse>("/api/logout");
   apiClient.setToken(null);
-
   return response;
+}
+
+
+export async function resetPassword(data: ResetPasswordRequest): Promise<ApiResponse<MessageResponse>> {
+  return apiClient.post<MessageResponse>("/api/reset-password", data);
 }
 
 export function isAuthenticated(): boolean {

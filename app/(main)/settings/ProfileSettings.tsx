@@ -10,7 +10,8 @@ import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar';
 import {uploadImage, getImageUrl, deleteImage} from '@/lib/images/operations';
 import {getFileSizeBytes} from '@/lib/images/utils';
 import {Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock} from 'lucide-react';
-import {getUser, updateUser, updatePassword, User} from '@/lib/api/user';
+import {getUser, updateUser, User} from '@/lib/api/user';
+import {resetPassword} from "@/lib/api/auth";
 import {useAuth} from "@/contexts/auth-context";
 
 export default function ProfileSettings() {
@@ -189,7 +190,7 @@ export default function ProfileSettings() {
         setPasswordSuccess(null);
 
         try {
-            const response = await updatePassword({
+            const response = await resetPassword({
                 current_password: passwordData.current_password,
                 password: passwordData.password,
                 password_confirmation: passwordData.password_confirmation,
