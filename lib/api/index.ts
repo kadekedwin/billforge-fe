@@ -29,4 +29,4 @@ export * as paymentMethods from "./payment-methods";
 export type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequest, PaymentMethodQueryParams } from "./payment-methods";
 
 export * as user from "./user";
-export type { User, UpdateUserRequest, UpdatePasswordRequest } from "./user";
+export type { User, UpdateUserRequest } from "./user";
