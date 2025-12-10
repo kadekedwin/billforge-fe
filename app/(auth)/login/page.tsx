@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import {login} from "@/lib/api/auth";
 import type {LoginRequest} from "@/lib/api";
+import {ApiError} from "@/lib/api/errors";
 import Image from "next/image";
 
 export default function LoginPage() {
@@ -38,37 +39,26 @@ export default function LoginPage() {
 
         try {
             const response = await login(formData);
-
-            if (response.success) {
-                setAuth(response.data.user, response.data.access_token);
-                if (!response.data.user.email_verified_at) {
-                    router.push("/verify-email");
-                } else {
-                    router.push("/dashboard");
-                }
+            setAuth(response.data.user, response.data.access_token);
+            if (!response.data.user.email_verified_at) {
+                router.push("/verify-email");
             } else {
-                const errorData = response as unknown as {
-                    success: false;
-                    message: string;
-                    errors?: Record<string, string[]>;
-                };
-                if (errorData.errors) {
-                    const errors: Record<string, string> = {};
-                    Object.keys(errorData.errors).forEach((key) => {
-                        if (errorData.errors) {
-                            errors[key] = errorData.errors[key][0];
-                        }
-                    });
-                    setFieldErrors(errors);
-                } else if (errorData.message) {
-                    setError(errorData.message);
-                } else {
-                    setError("Login failed. Please try again.");
-                }
+                router.push("/dashboard");
             }
         } catch (err) {
-            setError("An unexpected error occurred. Please try again.");
-            console.error("Login error:", err);
+            if (err instanceof ApiError) {
+                if (err.errors) {
+                    const errors: Record<string, string> = {};
+                    Object.keys(err.errors).forEach((key) => {
+                        errors[key] = err.errors![key][0];
+                    });
+                    setFieldErrors(errors);
+                } else {
+                    setError(err.message);
+                }
+            } else {
+                setError("An unexpected error occurred. Please try again.");
+            }
         } finally {
             setIsLoading(false);
         }

@@ -51,9 +51,10 @@ class ApiClient {
           }
         }
 
-        const message = error.response?.data?.message || error.message || "An error occurred";
         const statusCode = error.response?.status || 500;
-        const errors = error.response?.data?.errors;
+        const errorData = error.response?.data;
+        const message = errorData?.message || error.message || "An error occurred";
+        const errors = errorData?.errors;
 
         throw new ApiError(message, statusCode, errors);
       }

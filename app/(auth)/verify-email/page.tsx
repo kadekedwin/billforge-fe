@@ -22,6 +22,7 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { resendVerification, verifyEmail } from "@/lib/api/auth";
+import { ApiError } from "@/lib/api/errors";
 import { Mail, CheckCircle, XCircle, Loader2 } from "lucide-react";
 
 function VerifyEmailPageContent() {
@@ -56,27 +57,24 @@ function VerifyEmailPageContent() {
         setErrorMessage(null);
 
         try {
-            const response = await verifyEmail(
+            await verifyEmail(
                 userId,
                 verificationHash,
                 expiresParam || undefined,
                 signatureParam || undefined
             );
-
-            if (response.success) {
-                setVerificationStatus("success");
-                await refreshUser();
-                setTimeout(() => {
-                    router.push("/dashboard");
-                }, 2000);
-            } else {
-                setVerificationStatus("error");
-                setErrorMessage(response.message || "Verification failed. The link may be invalid or expired.");
-            }
+            setVerificationStatus("success");
+            await refreshUser();
+            setTimeout(() => {
+                router.push("/dashboard");
+            }, 2000);
         } catch (err) {
             setVerificationStatus("error");
-            setErrorMessage("An unexpected error occurred. Please try again.");
-            console.error("Verification error:", err);
+            if (err instanceof ApiError) {
+                setErrorMessage(err.message);
+            } else {
+                setErrorMessage("An unexpected error occurred. Please try again.");
+            }
         } finally {
             setIsVerifying(false);
         }
@@ -87,20 +85,14 @@ function VerifyEmailPageContent() {
         setResendMessage(null);
 
         try {
-            const response = await resendVerification();
-
-            if (response.success) {
-                setResendMessage("Verification email sent! Please check your inbox.");
-            } else {
-                const errorData = response as unknown as {
-                    success: false;
-                    message: string;
-                };
-                setResendMessage(errorData.message || "Failed to resend verification email.");
-            }
+            await resendVerification();
+            setResendMessage("Verification email sent! Please check your inbox.");
         } catch (err) {
-            setResendMessage("An unexpected error occurred. Please try again.");
-            console.error("Resend verification error:", err);
+            if (err instanceof ApiError) {
+                setResendMessage(err.message);
+            } else {
+                setResendMessage("An unexpected error occurred. Please try again.");
+            }
         } finally {
             setIsResending(false);
         }

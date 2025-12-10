@@ -1,4 +1,5 @@
 import { createPaymentMethod, updatePaymentMethod, deletePaymentMethod } from "@/lib/api/payment-methods";
+import { ApiError } from "@/lib/api/errors";
 import type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequest } from "@/lib/api";
 
 interface CreatePaymentMethodParams {
@@ -16,28 +17,18 @@ export async function handleCreatePaymentMethod({
             business_uuid: businessUuid,
         });
 
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-                errors?: Record<string, string[]>;
-            };
-
-            if (errorData.errors) {
+        return { success: true, paymentMethod: response.data };
+    } catch (err) {
+        if (err instanceof ApiError) {
+            if (err.errors) {
                 const errors: Record<string, string> = {};
-                Object.keys(errorData.errors).forEach((key) => {
-                    if (errorData.errors) {
-                        errors[key] = errorData.errors[key][0];
-                    }
+                Object.keys(err.errors).forEach((key) => {
+                    errors[key] = err.errors![key][0];
                 });
                 return { success: false, errors };
             }
-
-            return { success: false, error: errorData.message || "Failed to create payment method" };
+            return { success: false, error: err.message };
         }
-
-        return { success: true, paymentMethod: response.data };
-    } catch (err) {
         return { success: false, error: "An error occurred while creating payment method" };
     }
 }
@@ -61,46 +52,31 @@ export async function handleUpdatePaymentMethod({
 
         const response = await updatePaymentMethod(paymentMethod.uuid, updateData);
 
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-                errors?: Record<string, string[]>;
-            };
-
-            if (errorData.errors) {
+        return { success: true, paymentMethod: response.data };
+    } catch (err) {
+        if (err instanceof ApiError) {
+            if (err.errors) {
                 const errors: Record<string, string> = {};
-                Object.keys(errorData.errors).forEach((key) => {
-                    if (errorData.errors) {
-                        errors[key] = errorData.errors[key][0];
-                    }
+                Object.keys(err.errors).forEach((key) => {
+                    errors[key] = err.errors![key][0];
                 });
                 return { success: false, errors };
             }
-
-            return { success: false, error: errorData.message || "Failed to update payment method" };
+            return { success: false, error: err.message };
         }
-
-        return { success: true, paymentMethod: response.data };
-    } catch (err) {
         return { success: false, error: "An error occurred while updating payment method" };
     }
 }
 
 export async function handleDeletePaymentMethod(paymentMethod: PaymentMethod): Promise<{ success: boolean; error?: string }> {
     try {
-        const response = await deletePaymentMethod(paymentMethod.uuid);
-
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-            };
-            return { success: false, error: errorData.message || "Failed to delete payment method" };
-        }
+        await deletePaymentMethod(paymentMethod.uuid);
 
         return { success: true };
     } catch (err) {
+        if (err instanceof ApiError) {
+            return { success: false, error: err.message };
+        }
         return { success: false, error: "An error occurred while deleting payment method" };
     }
 }

@@ -1,4 +1,5 @@
 import { createItemTax, updateItemTax, deleteItemTax } from "@/lib/api/item-taxes";
+import { ApiError } from "@/lib/api/errors";
 import type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "@/lib/api";
 
 interface CreateItemTaxParams {
@@ -16,28 +17,18 @@ export async function handleCreateItemTax({
             business_uuid: businessUuid,
         });
 
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-                errors?: Record<string, string[]>;
-            };
-
-            if (errorData.errors) {
+        return { success: true, tax: response.data };
+    } catch (err) {
+        if (err instanceof ApiError) {
+            if (err.errors) {
                 const errors: Record<string, string> = {};
-                Object.keys(errorData.errors).forEach((key) => {
-                    if (errorData.errors) {
-                        errors[key] = errorData.errors[key][0];
-                    }
+                Object.keys(err.errors).forEach((key) => {
+                    errors[key] = err.errors![key][0];
                 });
                 return { success: false, errors };
             }
-
-            return { success: false, error: errorData.message || "Failed to create tax" };
+            return { success: false, error: err.message };
         }
-
-        return { success: true, tax: response.data };
-    } catch (err) {
         return { success: false, error: "An error occurred while creating tax" };
     }
 }
@@ -63,46 +54,31 @@ export async function handleUpdateItemTax({
 
         const response = await updateItemTax(tax.uuid, updateData);
 
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-                errors?: Record<string, string[]>;
-            };
-
-            if (errorData.errors) {
+        return { success: true, tax: response.data };
+    } catch (err) {
+        if (err instanceof ApiError) {
+            if (err.errors) {
                 const errors: Record<string, string> = {};
-                Object.keys(errorData.errors).forEach((key) => {
-                    if (errorData.errors) {
-                        errors[key] = errorData.errors[key][0];
-                    }
+                Object.keys(err.errors).forEach((key) => {
+                    errors[key] = err.errors![key][0];
                 });
                 return { success: false, errors };
             }
-
-            return { success: false, error: errorData.message || "Failed to update tax" };
+            return { success: false, error: err.message };
         }
-
-        return { success: true, tax: response.data };
-    } catch (err) {
         return { success: false, error: "An error occurred while updating tax" };
     }
 }
 
 export async function handleDeleteItemTax(tax: ItemTax): Promise<{ success: boolean; error?: string }> {
     try {
-        const response = await deleteItemTax(tax.uuid);
-
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-            };
-            return { success: false, error: errorData.message || "Failed to delete tax" };
-        }
+        await deleteItemTax(tax.uuid);
 
         return { success: true };
     } catch (err) {
+        if (err instanceof ApiError) {
+            return { success: false, error: err.message };
+        }
         return { success: false, error: "An error occurred while deleting tax" };
     }
 }

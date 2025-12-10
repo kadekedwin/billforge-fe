@@ -1,6 +1,7 @@
 import { createItem, updateItem, deleteItem } from "@/lib/api/items";
 import { uploadImage, deleteImage } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
+import { ApiError } from "@/lib/api/errors";
 import type { Item, CreateItemRequest, UpdateItemRequest } from "@/lib/api";
 
 interface CreateItemParams {
@@ -16,7 +17,6 @@ export async function handleCreateItem({
                                        }: CreateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
     try {
         let imageSizeBytes: number | null = null;
-        let createdItemUuid: string | null = null;
 
         const createData: CreateItemRequest = {
             ...formData,
@@ -25,28 +25,7 @@ export async function handleCreateItem({
         };
 
         const response = await createItem(createData);
-
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-                errors?: Record<string, string[]>;
-            };
-
-            if (errorData.errors) {
-                const errors: Record<string, string> = {};
-                Object.keys(errorData.errors).forEach((key) => {
-                    if (errorData.errors) {
-                        errors[key] = errorData.errors[key][0];
-                    }
-                });
-                return { success: false, errors };
-            }
-
-            return { success: false, error: errorData.message || "Failed to create item" };
-        }
-
-        createdItemUuid = response.data.uuid;
+        const createdItemUuid = response.data.uuid;
 
         if (selectedImage && createdItemUuid) {
             const uploadResult = await uploadImage({
@@ -64,6 +43,16 @@ export async function handleCreateItem({
 
         return { success: true, item: response.data };
     } catch (err) {
+        if (err instanceof ApiError) {
+            if (err.errors) {
+                const errors: Record<string, string> = {};
+                Object.keys(err.errors).forEach((key) => {
+                    errors[key] = err.errors![key][0];
+                });
+                return { success: false, errors };
+            }
+            return { success: false, error: err.message };
+        }
         return { success: false, error: "An error occurred while creating item" };
     }
 }
@@ -123,28 +112,18 @@ export async function handleUpdateItem({
 
         const response = await updateItem(item.uuid, updateData);
 
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-                errors?: Record<string, string[]>;
-            };
-
-            if (errorData.errors) {
+        return { success: true, item: response.data };
+    } catch (err) {
+        if (err instanceof ApiError) {
+            if (err.errors) {
                 const errors: Record<string, string> = {};
-                Object.keys(errorData.errors).forEach((key) => {
-                    if (errorData.errors) {
-                        errors[key] = errorData.errors[key][0];
-                    }
+                Object.keys(err.errors).forEach((key) => {
+                    errors[key] = err.errors![key][0];
                 });
                 return { success: false, errors };
             }
-
-            return { success: false, error: errorData.message || "Failed to update item" };
+            return { success: false, error: err.message };
         }
-
-        return { success: true, item: response.data };
-    } catch (err) {
         return { success: false, error: "An error occurred while updating item" };
     }
 }
@@ -158,18 +137,13 @@ export async function handleDeleteItem(item: Item): Promise<{ success: boolean; 
             });
         }
 
-        const response = await deleteItem(item.uuid);
-
-        if (!response.success) {
-            const errorData = response as unknown as {
-                success: false;
-                message: string;
-            };
-            return { success: false, error: errorData.message || "Failed to delete item" };
-        }
+        await deleteItem(item.uuid);
 
         return { success: true };
     } catch (err) {
+        if (err instanceof ApiError) {
+            return { success: false, error: err.message };
+        }
         return { success: false, error: "An error occurred while deleting item" };
     }
 }

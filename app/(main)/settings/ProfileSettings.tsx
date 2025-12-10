@@ -13,6 +13,7 @@ import {Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Loc
 import {getUser, updateUser, User} from '@/lib/api/user';
 import {resetPassword} from "@/lib/api/auth";
 import {useAuth} from "@/contexts/auth-context";
+import {ApiError} from "@/lib/api/errors";
 
 export default function ProfileSettings() {
     const router = useRouter();
@@ -44,27 +45,27 @@ export default function ProfileSettings() {
             setIsLoading(true);
             setError(null);
             const response = await getUser();
-            if (response.success) {
-                setUser(response.data);
-                setFormData({
-                    name: response.data.name,
-                    email: response.data.email,
-                });
+            setUser(response.data);
+            setFormData({
+                name: response.data.name,
+                email: response.data.email,
+            });
 
-                if (response.data.image_size_bytes) {
-                    const imageResult = await getImageUrl({
-                        folder: 'users',
-                        uuid: response.data.uuid,
-                    });
-                    if (imageResult.success && imageResult.url) {
-                        setAvatarUrl(imageResult.url);
-                    }
+            if (response.data.image_size_bytes) {
+                const imageResult = await getImageUrl({
+                    folder: 'users',
+                    uuid: response.data.uuid,
+                });
+                if (imageResult.success && imageResult.url) {
+                    setAvatarUrl(imageResult.url);
                 }
-            } else {
-                setError(response.message || 'Failed to load user data');
             }
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An error occurred while loading user data');
+            if (err instanceof ApiError) {
+                setError(err.message);
+            } else {
+                setError('An error occurred while loading user data');
+            }
         } finally {
             setIsLoading(false);
         }
@@ -144,24 +145,24 @@ export default function ProfileSettings() {
                 image_size_bytes: imageSizeBytes,
             });
 
-            if (response.success) {
-                setSuccess('Profile updated successfully!');
-                setUser(response.data);
-                setSelectedImage(null);
-                setImagePreview(null);
-                setImageDeleted(false);
+            setSuccess('Profile updated successfully!');
+            setUser(response.data);
+            setSelectedImage(null);
+            setImagePreview(null);
+            setImageDeleted(false);
 
-                if (token) {
-                    setAuth(response.data, token);
-                }
-
-                await loadUser();
-                router.refresh();
-            } else {
-                setError(response.message || 'Failed to update profile');
+            if (token) {
+                setAuth(response.data, token);
             }
+
+            await loadUser();
+            router.refresh();
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An error occurred while updating profile');
+            if (err instanceof ApiError) {
+                setError(err.message);
+            } else {
+                setError('An error occurred while updating profile');
+            }
         } finally {
             setIsSaving(false);
         }
@@ -190,24 +191,29 @@ export default function ProfileSettings() {
         setPasswordSuccess(null);
 
         try {
-            const response = await resetPassword({
+            await resetPassword({
                 current_password: passwordData.current_password,
                 password: passwordData.password,
                 password_confirmation: passwordData.password_confirmation,
             });
 
-            if (response.success) {
-                setPasswordSuccess('Password updated successfully!');
-                setPasswordData({
-                    current_password: '',
-                    password: '',
-                    password_confirmation: '',
-                });
-            } else {
-                setPasswordError(response.message || 'Failed to update password');
-            }
+            setPasswordSuccess('Password updated successfully!');
+            setPasswordData({
+                current_password: '',
+                password: '',
+                password_confirmation: '',
+            });
         } catch (err) {
-            setPasswordError(err instanceof Error ? err.message : 'An error occurred while updating password');
+            if (err instanceof ApiError) {
+                if (err.errors) {
+                    const errorMessages = Object.values(err.errors).flat();
+                    setPasswordError(errorMessages.join(', '));
+                } else {
+                    setPasswordError(err.message);
+                }
+            } else {
+                setPasswordError('An error occurred while updating password');
+            }
         } finally {
             setIsChangingPassword(false);
         }

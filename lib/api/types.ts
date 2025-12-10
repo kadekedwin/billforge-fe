@@ -1,14 +1,13 @@
 export interface ApiResponse<T> {
   success: boolean;
-  message: string;
+  message?: string;
   data: T;
 }
 
 export interface ApiErrorResponse {
   success: false;
-  message: string;
+  message?: string;
   errors?: Record<string, string[]>;
-  data?: unknown;
 }
 
 export interface MessageResponse {
