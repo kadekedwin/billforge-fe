@@ -10,11 +10,21 @@ interface ItemImageProps {
     item: Item;
 }
 
+const imageUrlCache = new Map<string, string>();
+
 export const ItemImage = memo(({ item }: ItemImageProps) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        const cacheKey = `${item.uuid}-${item.updated_at}`;
+
+        if (imageUrlCache.has(cacheKey)) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setImageUrl(imageUrlCache.get(cacheKey)!);
+            return;
+        }
+
         const loadImage = async () => {
             if (item.image_size_bytes) {
                 setLoading(true);
@@ -23,13 +33,14 @@ export const ItemImage = memo(({ item }: ItemImageProps) => {
                     uuid: item.uuid,
                 });
                 if (result.success && result.url) {
+                    imageUrlCache.set(cacheKey, result.url);
                     setImageUrl(result.url);
                 }
                 setLoading(false);
             }
         };
         loadImage();
-    }, [item.uuid, item.image_size_bytes]);
+    }, [item.uuid, item.updated_at]);
 
     if (loading) {
         return (

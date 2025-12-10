@@ -21,19 +21,34 @@ interface UserProfileProps {
     onNavigate?: () => void;
 }
 
+const imageUrlCache = new Map<string, string>();
+
 export function UserProfile({ onNavigate }: UserProfileProps) {
     const { user, removeAuth } = useAuth();
     const [userImageUrl, setUserImageUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        if (!user) {
+            setUserImageUrl(null);
+            return;
+        }
+
+        const cacheKey = `${user.uuid}-${user.updated_at}`;
+
+        if (imageUrlCache.has(cacheKey)) {
+            setUserImageUrl(imageUrlCache.get(cacheKey)!);
+            return;
+        }
+
         const loadUserImage = async () => {
-            if (user && user.image_size_bytes) {
+            if (user.image_size_bytes) {
                 const result = await getImageUrl({
                     folder: 'users',
                     uuid: user.uuid,
                 });
                 if (result.success && result.url) {
+                    imageUrlCache.set(cacheKey, result.url);
                     setUserImageUrl(result.url);
                 }
             } else {
@@ -42,7 +57,7 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
         };
 
         loadUserImage();
-    }, [user]);
+    }, [user?.uuid, user?.updated_at]);
 
     const handleLogout = async () => {
         try {

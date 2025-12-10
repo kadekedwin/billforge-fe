@@ -12,11 +12,21 @@ interface BusinessLogoProps {
     size?: "sm" | "lg";
 }
 
+const imageUrlCache = new Map<string, string>();
+
 export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        const cacheKey = `${business.uuid}-${business.updated_at}`;
+
+        if (imageUrlCache.has(cacheKey)) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setImageUrl(imageUrlCache.get(cacheKey)!);
+            return;
+        }
+
         const loadImage = async () => {
             if (business.image_size_bytes) {
                 setLoading(true);
@@ -25,6 +35,7 @@ export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) 
                     uuid: business.uuid,
                 });
                 if (result.success && result.url) {
+                    imageUrlCache.set(cacheKey, result.url);
                     setImageUrl(result.url);
                 }
                 setLoading(false);
