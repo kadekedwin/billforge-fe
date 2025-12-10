@@ -30,3 +30,7 @@ export interface PasswordResetRequest {
     password: string;
     password_confirmation: string;
 }
+
+export interface ChangeEmailRequest {
+    email: string;
+}

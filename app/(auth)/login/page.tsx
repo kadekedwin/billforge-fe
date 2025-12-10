@@ -41,7 +41,11 @@ export default function LoginPage() {
 
             if (response.success) {
                 setAuth(response.data.user, response.data.access_token);
-                router.push("/dashboard");
+                if (!response.data.user.email_verified_at) {
+                    router.push("/verify-email");
+                } else {
+                    router.push("/dashboard");
+                }
             } else {
                 const errorData = response as unknown as {
                     success: false;

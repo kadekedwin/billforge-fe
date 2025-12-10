@@ -3,6 +3,7 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import type {User} from "@/lib/api";
+import {getUser} from "@/lib/api/user";
 
 interface AuthContextType {
     user: User | null;
@@ -11,6 +12,7 @@ interface AuthContextType {
     isAuthenticated: boolean;
     setAuth: (user: User, token: string) => void;
     removeAuth: () => void;
+    refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -69,10 +71,21 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
 
-        // Clear cookie
         document.cookie = "token=; path=/; max-age=0";
 
         router.push("/login");
+    };
+
+    const refreshUser = async () => {
+        try {
+            const response = await getUser();
+            if (response.success) {
+                setUser(response.data);
+                localStorage.setItem("user", JSON.stringify(response.data));
+            }
+        } catch (error) {
+            console.error("Failed to refresh user:", error);
+        }
     };
 
     return (
@@ -84,6 +97,7 @@ export function AuthProvider({children}: { children: React.ReactNode }) {
                 isAuthenticated: !!token && !!user,
                 setAuth,
                 removeAuth,
+                refreshUser,
             }}
         >
             {children}

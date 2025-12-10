@@ -13,15 +13,17 @@ export default function DashboardLayout({
                                         }: {
     children: React.ReactNode;
 }) {
-    const {isAuthenticated, isLoading: isAuthLoading} = useAuth();
+    const {isAuthenticated, isLoading: isAuthLoading, user} = useAuth();
     const {businesses, isLoading: isBusinessLoading} = useBusiness();
     const router = useRouter();
 
     useEffect(() => {
         if (!isAuthLoading && !isAuthenticated) {
             router.push("/login");
+        } else if (!isAuthLoading && isAuthenticated && user && !user.email_verified_at) {
+            router.push("/verify-email");
         }
-    }, [isAuthenticated, isAuthLoading, router]);
+    }, [isAuthenticated, isAuthLoading, user, router]);
 
     if (isAuthLoading) {
         return (
