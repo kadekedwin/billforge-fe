@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { resendVerification, verifyEmail, changeEmail } from "@/lib/api/auth";
 import { Mail, CheckCircle, XCircle, Loader2 } from "lucide-react";
 
-export default function VerifyEmailPage() {
+function VerifyEmailPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { user, refreshUser, setAuth } = useAuth();
@@ -359,5 +359,15 @@ export default function VerifyEmailPage() {
                 </CardContent>
             </Card>
         </div>
+    );
+}
+
+export default function VerifyEmailPage() {
+    return (
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
+            <Loader2 className="h-16 w-16 animate-spin text-primary" />
+        </div>}>
+            <VerifyEmailPageContent />
+        </Suspense>
     );
 }
