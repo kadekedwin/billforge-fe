@@ -67,7 +67,7 @@ export function BusinessProvider({children}: { children: ReactNode }) {
     }, [])
 
     useEffect(() => {
-        if (pathname === '/login' || pathname === '/register' ||  pathname === '/verify-email' || pathname === '/forgot-password') {
+        if (pathname === '/' || pathname === '/login' || pathname === '/register' ||  pathname === '/verify-email' || pathname === '/forgot-password') {
             setIsLoading(false)
             return
         }
