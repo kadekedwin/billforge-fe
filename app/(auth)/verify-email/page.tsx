@@ -11,21 +11,26 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { resendVerification, verifyEmail, changeEmail } from "@/lib/api/auth";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { resendVerification, verifyEmail } from "@/lib/api/auth";
 import { Mail, CheckCircle, XCircle, Loader2 } from "lucide-react";
 
 function VerifyEmailPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const { user, refreshUser, setAuth } = useAuth();
+    const { user, refreshUser, removeAuth } = useAuth();
     const [isResending, setIsResending] = useState(false);
     const [isVerifying, setIsVerifying] = useState(false);
-    const [isChangingEmail, setIsChangingEmail] = useState(false);
-    const [showChangeEmail, setShowChangeEmail] = useState(false);
-    const [newEmail, setNewEmail] = useState("");
-    const [emailError, setEmailError] = useState<string | null>(null);
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const [resendMessage, setResendMessage] = useState<string | null>(null);
     const [verificationStatus, setVerificationStatus] = useState<"idle" | "success" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -101,42 +106,8 @@ function VerifyEmailPageContent() {
         }
     };
 
-    const handleChangeEmail = async () => {
-        if (!newEmail || !newEmail.includes("@")) {
-            setEmailError("Please enter a valid email address");
-            return;
-        }
-
-        setIsChangingEmail(true);
-        setEmailError(null);
-
-        try {
-            const response = await changeEmail({ email: newEmail });
-
-            if (response.success) {
-                setAuth(response.data.user, response.data.access_token);
-                await refreshUser();
-                setShowChangeEmail(false);
-                setNewEmail("");
-                setResendMessage("Email updated successfully! A new verification email has been sent.");
-            } else {
-                const errorData = response as unknown as {
-                    success: false;
-                    message: string;
-                    errors?: Record<string, string[]>;
-                };
-                if (errorData.errors?.email) {
-                    setEmailError(errorData.errors.email[0]);
-                } else {
-                    setEmailError(errorData.message || "Failed to change email.");
-                }
-            }
-        } catch (err) {
-            setEmailError("An unexpected error occurred. Please try again.");
-            console.error("Change email error:", err);
-        } finally {
-            setIsChangingEmail(false);
-        }
+    const handleChangeEmail = () => {
+        removeAuth();
     };
 
     if (user?.email_verified_at) {
@@ -194,67 +165,36 @@ function VerifyEmailPageContent() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        {!showChangeEmail ? (
-                            <>
-                                <Button onClick={handleResend} className="w-full" disabled={isResending}>
-                                    {isResending ? "Sending..." : "Resend Verification Email"}
-                                </Button>
-                                <Button
-                                    onClick={() => setShowChangeEmail(true)}
-                                    variant="outline"
-                                    className="w-full"
-                                >
-                                    Change Email Address
-                                </Button>
-                            </>
-                        ) : (
-                            <div className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="new-email-error">New Email Address</Label>
-                                    <Input
-                                        id="new-email-error"
-                                        type="email"
-                                        placeholder="newemail@example.com"
-                                        value={newEmail}
-                                        onChange={(e) => {
-                                            setNewEmail(e.target.value);
-                                            setEmailError(null);
-                                        }}
-                                        disabled={isChangingEmail}
-                                        className={emailError ? "border-destructive" : ""}
-                                    />
-                                    {emailError && (
-                                        <p className="text-sm text-destructive">{emailError}</p>
-                                    )}
-                                </div>
-                                <div className="flex gap-2">
-                                    <Button
-                                        onClick={handleChangeEmail}
-                                        className="flex-1"
-                                        disabled={isChangingEmail}
-                                    >
-                                        {isChangingEmail ? "Updating..." : "Update Email"}
-                                    </Button>
-                                    <Button
-                                        onClick={() => {
-                                            setShowChangeEmail(false);
-                                            setNewEmail("");
-                                            setEmailError(null);
-                                        }}
-                                        variant="outline"
-                                        disabled={isChangingEmail}
-                                    >
-                                        Cancel
-                                    </Button>
-                                </div>
-                            </div>
-                        )}
+                        <Button onClick={handleResend} className="w-full" disabled={isResending}>
+                            {isResending ? "Sending..." : "Resend Verification Email"}
+                        </Button>
+                        <Button
+                            onClick={() => setShowConfirmDialog(true)}
+                            variant="outline"
+                            className="w-full"
+                        >
+                            Change Email Address
+                        </Button>
                         {resendMessage && (
                             <div className="rounded-md bg-muted p-3 text-sm text-center">
                                 {resendMessage}
                             </div>
                         )}
                     </CardContent>
+                    <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Change Email Address?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    You will be logged out and redirected to the registration page to register with a new email address.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction onClick={handleChangeEmail}>Continue</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
                 </Card>
             </div>
         );
@@ -294,69 +234,36 @@ function VerifyEmailPageContent() {
                     <p className="text-sm text-muted-foreground text-center">
                         Please check your inbox and click the verification link to activate your account.
                     </p>
-
-                    {!showChangeEmail ? (
-                        <>
-                            <Button onClick={handleResend} className="w-full" disabled={isResending}>
-                                {isResending ? "Sending..." : "Resend Verification Email"}
-                            </Button>
-                            <Button
-                                onClick={() => setShowChangeEmail(true)}
-                                variant="outline"
-                                className="w-full"
-                            >
-                                Change Email Address
-                            </Button>
-                        </>
-                    ) : (
-                        <div className="space-y-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="new-email">New Email Address</Label>
-                                <Input
-                                    id="new-email"
-                                    type="email"
-                                    placeholder="newemail@example.com"
-                                    value={newEmail}
-                                    onChange={(e) => {
-                                        setNewEmail(e.target.value);
-                                        setEmailError(null);
-                                    }}
-                                    disabled={isChangingEmail}
-                                    className={emailError ? "border-destructive" : ""}
-                                />
-                                {emailError && (
-                                    <p className="text-sm text-destructive">{emailError}</p>
-                                )}
-                            </div>
-                            <div className="flex gap-2">
-                                <Button
-                                    onClick={handleChangeEmail}
-                                    className="flex-1"
-                                    disabled={isChangingEmail}
-                                >
-                                    {isChangingEmail ? "Updating..." : "Update Email"}
-                                </Button>
-                                <Button
-                                    onClick={() => {
-                                        setShowChangeEmail(false);
-                                        setNewEmail("");
-                                        setEmailError(null);
-                                    }}
-                                    variant="outline"
-                                    disabled={isChangingEmail}
-                                >
-                                    Cancel
-                                </Button>
-                            </div>
-                        </div>
-                    )}
-
+                    <Button onClick={handleResend} className="w-full" disabled={isResending}>
+                        {isResending ? "Sending..." : "Resend Verification Email"}
+                    </Button>
+                    <Button
+                        onClick={() => setShowConfirmDialog(true)}
+                        variant="outline"
+                        className="w-full"
+                    >
+                        Change Email Address
+                    </Button>
                     {resendMessage && (
                         <div className="rounded-md bg-muted p-3 text-sm text-center">
                             {resendMessage}
                         </div>
                     )}
                 </CardContent>
+                <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Change Email Address?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                You will be logged out and redirected to the registration page to register with a new email address.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleChangeEmail}>Continue</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </Card>
         </div>
     );
