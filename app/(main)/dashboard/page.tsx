@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { useBusiness } from "@/contexts/business-context";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
 import { getImageUrl } from "@/lib/images/operations";
+import { getItemCategories } from "@/lib/api/item-categories";
 import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import { ReceiptPopup } from "@/components/receipt-popup";
 import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
@@ -29,12 +30,16 @@ export default function DashboardPage() {
         taxes,
         discounts,
         transactions,
+        categories,
         isLoading,
         error,
         loadData,
     } = useDashboardData();
     const { cart, addToCart, removeFromCart, clearCart } = useCart();
 
+    const [selectedCategory, setSelectedCategory] = useState<string>("");
+    const [itemCategoryMap, setItemCategoryMap] = useState<Map<string, string[]>>(new Map());
+    const [isLoadingCategories, setIsLoadingCategories] = useState(false);
     const [isCheckout, setIsCheckout] = useState(false);
     const [selectedCustomer, setSelectedCustomer] = useState<string>("");
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>("");
@@ -49,6 +54,39 @@ export default function DashboardPage() {
     const [completedCustomerEmail, setCompletedCustomerEmail] = useState<string | null>(null);
     const [completedCustomerPhone, setCompletedCustomerPhone] = useState<string | null>(null);
     const [businessLogoUrl, setBusinessLogoUrl] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        const fetchItemCategories = async () => {
+            if (!selectedBusiness || items.length === 0) {
+                setItemCategoryMap(new Map());
+                return;
+            }
+
+            setIsLoadingCategories(true);
+            const businessItems = items.filter(item => item.business_uuid === selectedBusiness.uuid);
+            const categoryMap = new Map<string, string[]>();
+
+            await Promise.all(
+                businessItems.map(async (item) => {
+                    try {
+                        const response = await getItemCategories(item.uuid);
+                        if (response.success && response.data) {
+                            categoryMap.set(item.uuid, response.data.map(cat => cat.uuid));
+                        } else {
+                            categoryMap.set(item.uuid, []);
+                        }
+                    } catch (error) {
+                        categoryMap.set(item.uuid, []);
+                    }
+                })
+            );
+
+            setItemCategoryMap(categoryMap);
+            setIsLoadingCategories(false);
+        };
+
+        fetchItemCategories();
+    }, [items, selectedBusiness]);
 
     useEffect(() => {
         const fetchBusinessLogo = async () => {
@@ -129,7 +167,13 @@ export default function DashboardPage() {
     };
 
     const filteredItems = selectedBusiness
-        ? items.filter((item) => item.business_uuid === selectedBusiness.uuid)
+        ? items.filter((item) => {
+            if (item.business_uuid !== selectedBusiness.uuid) return false;
+            if (!selectedCategory) return true;
+
+            const itemCategories = itemCategoryMap.get(item.uuid) || [];
+            return itemCategories.includes(selectedCategory);
+        })
         : [];
 
     const businessCustomers = selectedBusiness
@@ -185,6 +229,10 @@ export default function DashboardPage() {
         );
     }
 
+    const businessCategories = selectedBusiness
+        ? categories.filter((cat) => cat.business_uuid === selectedBusiness.uuid)
+        : [];
+
     return (
         <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -192,6 +240,31 @@ export default function DashboardPage() {
                     <h1 className="text-2xl sm:text-3xl font-bold">New Transaction</h1>
                 </div>
             </div>
+
+            {businessCategories.length > 0 && (
+                <div className="flex items-center gap-2">
+                    <label htmlFor="category-filter" className="text-sm font-medium">
+                        Filter by Category:
+                    </label>
+                    <select
+                        id="category-filter"
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        disabled={isLoadingCategories}
+                        className="flex h-10 w-[200px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        <option value="">All Categories</option>
+                        {businessCategories.map((category) => (
+                            <option key={category.uuid} value={category.uuid}>
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+                    {isLoadingCategories && (
+                        <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                    )}
+                </div>
+            )}
 
             <ItemsGrid
                 items={filteredItems}

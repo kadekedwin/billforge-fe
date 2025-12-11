@@ -7,7 +7,8 @@ import { getPaymentMethods } from "@/lib/api/payment-methods";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { getTransactions } from "@/lib/api/transactions";
-import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction } from "@/lib/api";
+import { getCategories } from "@/lib/api/categories";
+import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction, Category } from "@/lib/api";
 
 interface UseDashboardDataResult {
     items: Item[];
@@ -16,6 +17,7 @@ interface UseDashboardDataResult {
     taxes: ItemTax[];
     discounts: ItemDiscount[];
     transactions: Transaction[];
+    categories: Category[];
     isLoading: boolean;
     error: string | null;
     loadData: () => Promise<void>;
@@ -28,6 +30,7 @@ export function useDashboardData(): UseDashboardDataResult {
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -42,6 +45,7 @@ export function useDashboardData(): UseDashboardDataResult {
                 taxesResponse,
                 discountsResponse,
                 transactionsResponse,
+                categoriesResponse,
             ] = await Promise.all([
                 getItems({ is_active: true }),
                 getCustomers(),
@@ -49,6 +53,7 @@ export function useDashboardData(): UseDashboardDataResult {
                 getItemTaxes(),
                 getItemDiscounts(),
                 getTransactions(),
+                getCategories(),
             ]);
 
             if (itemsResponse.success) {
@@ -80,6 +85,10 @@ export function useDashboardData(): UseDashboardDataResult {
             if (discountsResponse.success) {
                 setDiscounts(discountsResponse.data);
             }
+
+            if (categoriesResponse.success) {
+                setCategories(categoriesResponse.data);
+            }
         } catch (err) {
             setError(err instanceof Error ? err.message : "An error occurred");
         } finally {
@@ -98,6 +107,7 @@ export function useDashboardData(): UseDashboardDataResult {
         taxes,
         discounts,
         transactions,
+        categories,
         isLoading,
         error,
         loadData,
