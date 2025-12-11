@@ -20,7 +20,7 @@ import {
 
 export default function TransactionsPage() {
     const { selectedBusiness } = useBusiness();
-    const { includeLogo, footerMessage, qrcodeValue, template: receiptTemplate } = useReceiptTemplatePreference();
+    const { includeLogo, footerMessage, qrcodeValue, template: receiptTemplate } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
     const { transactions, customers, paymentMethods, isLoading, error } = useTransactionsData(selectedBusiness);
     const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
 

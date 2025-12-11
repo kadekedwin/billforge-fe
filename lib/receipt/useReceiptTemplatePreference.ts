@@ -1,87 +1,205 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ReceiptTemplateType } from '@/lib/receipt';
 import { receiptTemplates } from '@/lib/receipt/templates';
+import {
+    getReceiptData,
+    createReceiptData,
+    updateReceiptData,
+    type ReceiptData
+} from '@/lib/api/receipt-data';
 
-export function useReceiptTemplatePreference() {
-    const isValidTemplateType = (value: string | null): value is ReceiptTemplateType => {
-        return receiptTemplates.some(t => t.type === value);
-    };
+// Template ID mapping: API numeric ID to frontend string type
+const TEMPLATE_ID_MAP: Record<number, ReceiptTemplateType> = {
+    0: 'classic',
+    1: 'sans-serif',
+    2: 'modern-bold',
+};
 
-    const [template, setTemplate] = useState<ReceiptTemplateType>(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem('receiptTemplate');
-            if (isValidTemplateType(saved)) {
-                return saved;
+const TEMPLATE_TYPE_MAP: Record<ReceiptTemplateType, number> = {
+    'classic': 0,
+    'sans-serif': 1,
+    'modern-bold': 2,
+};
+
+interface UseReceiptTemplatePreferenceProps {
+    businessUuid: string | null;
+}
+
+export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplatePreferenceProps) {
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [receiptDataUuid, setReceiptDataUuid] = useState<string | null>(null);
+
+    const [template, setTemplate] = useState<ReceiptTemplateType>('classic');
+    const [includeLogo, setIncludeLogo] = useState<boolean>(false);
+    const [footerMessage, setFooterMessage] = useState<string>('');
+    const [qrcodeValue, setQrcodeValue] = useState<string>('');
+    const [transactionPrefix, setTransactionPrefix] = useState<string>('');
+    const [transactionNextNumber, setTransactionNextNumber] = useState<number>(1);
+
+    const loadReceiptData = useCallback(async () => {
+        if (!businessUuid) {
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            const response = await getReceiptData(businessUuid);
+
+            if (response.success && response.data) {
+        
+                const data = response.data;
+                setReceiptDataUuid(data.uuid);
+                setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
+                setIncludeLogo(data.include_image);
+                setFooterMessage(data.footer_message || '');
+                setQrcodeValue(data.qrcode_data || '');
+                setTransactionPrefix(data.transaction_prefix || '');
+                setTransactionNextNumber(data.transaction_next_number);
+            } else {
+        
+                const createResponse = await createReceiptData(businessUuid, {
+                    template_id: 0,
+                    include_image: false,
+                    footer_message: '',
+                    qrcode_data: '',
+                    transaction_prefix: 'INV',
+                    transaction_next_number: 1,
+                });
+
+                if (createResponse.success) {
+                    setReceiptDataUuid(createResponse.data.uuid);
+                    setTemplate('classic');
+                    setIncludeLogo(false);
+                    setFooterMessage('');
+                    setQrcodeValue('');
+                    setTransactionPrefix('INV');
+                    setTransactionNextNumber(1);
+                } else {
+                    setError('Failed to create receipt data');
+                }
             }
+        } catch (err) {
+            console.error('Error loading receipt data:', err);
+            setError('Failed to load receipt settings');
+        } finally {
+            setIsLoading(false);
         }
-        return 'classic';
-    });
-
-    const [includeLogo, setIncludeLogo] = useState<boolean>(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem('receiptIncludeLogo');
-            return saved === 'true';
-        }
-        return false;
-    });
-
-    const [footerMessage, setFooterMessage] = useState<string>(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem('receiptFooterMessage');
-            return saved || '';
-        }
-        return '';
-    });
-
-    const [qrcodeValue, setQrcodeValue] = useState<string>(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem('receiptQrcodeValue');
-            return saved || '';
-        }
-        return '';
-    });
-
-    const updateTemplate = (newTemplate: ReceiptTemplateType) => {
-        setTemplate(newTemplate);
-        localStorage.setItem('receiptTemplate', newTemplate);
-    };
-
-    const updateIncludeLogo = (value: boolean) => {
-        setIncludeLogo(value);
-        localStorage.setItem('receiptIncludeLogo', String(value));
-    };
-
-    const updateFooterMessage = (value: string) => {
-        setFooterMessage(value);
-        localStorage.setItem('receiptFooterMessage', value);
-    };
-
-    const updateQrcodeValue = (value: string) => {
-        setQrcodeValue(value);
-        localStorage.setItem('receiptQrcodeValue', value);
-    };
+    }, [businessUuid]);
 
     useEffect(() => {
-        const handleStorageChange = (e: StorageEvent) => {
-            if (e.key === 'receiptTemplate') {
-                const value = e.newValue;
-                if (isValidTemplateType(value)) {
-                    setTemplate(value);
-                }
-            } else if (e.key === 'receiptIncludeLogo') {
-                setIncludeLogo(e.newValue === 'true');
-            } else if (e.key === 'receiptFooterMessage') {
-                setFooterMessage(e.newValue || '');
-            } else if (e.key === 'receiptQrcodeValue') {
-                setQrcodeValue(e.newValue || '');
-            }
-        };
+        loadReceiptData();
+    }, [loadReceiptData]);
 
-        window.addEventListener('storage', handleStorageChange);
-        return () => window.removeEventListener('storage', handleStorageChange);
-    }, []);
+    const updateTemplate = async (newTemplate: ReceiptTemplateType) => {
+        if (!businessUuid) return;
 
-    return { template, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage, qrcodeValue, updateQrcodeValue };
+        setTemplate(newTemplate);
+
+        try {
+            await updateReceiptData(businessUuid, {
+                template_id: TEMPLATE_TYPE_MAP[newTemplate],
+            });
+        } catch (err) {
+            console.error('Error updating template:', err);
+            setError('Failed to update template');
+        }
+    };
+
+    const updateIncludeLogo = async (value: boolean) => {
+        if (!businessUuid) return;
+
+        setIncludeLogo(value);
+
+        try {
+            await updateReceiptData(businessUuid, {
+                include_image: value,
+            });
+        } catch (err) {
+            console.error('Error updating include logo:', err);
+            setError('Failed to update logo setting');
+        }
+    };
+
+    const updateFooterMessage = async (value: string) => {
+        if (!businessUuid) return;
+
+        setFooterMessage(value);
+
+        try {
+            await updateReceiptData(businessUuid, {
+                footer_message: value || null,
+            });
+        } catch (err) {
+            console.error('Error updating footer message:', err);
+            setError('Failed to update footer message');
+        }
+    };
+
+    const updateQrcodeValue = async (value: string) => {
+        if (!businessUuid) return;
+
+        setQrcodeValue(value);
+
+        try {
+            await updateReceiptData(businessUuid, {
+                qrcode_data: value || null,
+            });
+        } catch (err) {
+            console.error('Error updating QR code:', err);
+            setError('Failed to update QR code');
+        }
+    };
+
+    const updateTransactionPrefix = async (value: string) => {
+        if (!businessUuid) return;
+
+        setTransactionPrefix(value);
+
+        try {
+            await updateReceiptData(businessUuid, {
+                transaction_prefix: value || null,
+            });
+        } catch (err) {
+            console.error('Error updating transaction prefix:', err);
+            setError('Failed to update transaction prefix');
+        }
+    };
+
+    const updateTransactionNextNumber = async (value: number) => {
+        if (!businessUuid) return;
+
+        setTransactionNextNumber(value);
+
+        try {
+            await updateReceiptData(businessUuid, {
+                transaction_next_number: value,
+            });
+        } catch (err) {
+            console.error('Error updating transaction number:', err);
+            setError('Failed to update transaction number');
+        }
+    };
+
+    return {
+        isLoading,
+        error,
+        template,
+        updateTemplate,
+        includeLogo,
+        updateIncludeLogo,
+        footerMessage,
+        updateFooterMessage,
+        qrcodeValue,
+        updateQrcodeValue,
+        transactionPrefix,
+        updateTransactionPrefix,
+        transactionNextNumber,
+        updateTransactionNextNumber,
+    };
 }

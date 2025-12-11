@@ -23,7 +23,7 @@ import { getMonthlyTransactionCount, getTotalCartItems, getTotalCartAmount } fro
 
 export default function SalePage() {
     const { selectedBusiness } = useBusiness();
-    const { includeLogo, footerMessage, qrcodeValue } = useReceiptTemplatePreference();
+    const { includeLogo, footerMessage, qrcodeValue } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
     const {
         items,
         customers,

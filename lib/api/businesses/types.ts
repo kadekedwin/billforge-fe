@@ -6,6 +6,9 @@ export interface Business {
   address: string | null;
   phone: string | null;
   image_size_bytes: number | null;
+  currency: string | null;
+  language: string | null;
+  region: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -15,6 +18,9 @@ export interface CreateBusinessRequest {
   address?: string | null;
   phone?: string | null;
   image_size_bytes?: number | null;
+  currency?: string | null;
+  language?: string | null;
+  region?: string | null;
 }
 
 export interface UpdateBusinessRequest {
@@ -22,5 +28,8 @@ export interface UpdateBusinessRequest {
   address?: string | null;
   phone?: string | null;
   image_size_bytes?: number | null;
+  currency?: string | null;
+  language?: string | null;
+  region?: string | null;
 }
 

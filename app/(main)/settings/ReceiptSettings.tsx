@@ -7,8 +7,9 @@ import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { useReceiptTemplatePreference, ReceiptData, ReceiptTemplateType } from '@/lib/receipt';
 import { generateReceiptHTML } from '@/lib/receipt/templates';
-import { Check } from 'lucide-react';
+import { Check, Loader2 } from 'lucide-react';
 import { receiptTemplates } from '@/lib/receipt/templates';
+import { useBusiness } from '@/contexts/business-context';
 
 interface ReceiptTemplateCardProps {
     template: {
@@ -58,11 +59,10 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
     return (
         <button
             onClick={onSelect}
-            className={`relative flex-shrink-0 p-4 border-2 rounded-lg transition-all text-left ${
-                isSelected
+            className={`relative flex-shrink-0 p-4 border-2 rounded-lg transition-all text-left ${isSelected
                     ? 'border-blue-500 '
                     : 'border-gray-300 hover:border-gray-400'
-            }`}
+                }`}
             style={{ width: '320px' }}
         >
             {isSelected && (
@@ -141,10 +141,48 @@ const sampleReceipt: ReceiptData = {
 };
 
 export default function ReceiptSettings() {
-    const { template: selectedTemplate, updateTemplate, includeLogo, updateIncludeLogo, footerMessage, updateFooterMessage, qrcodeValue, updateQrcodeValue } = useReceiptTemplatePreference();
+    const { selectedBusiness } = useBusiness();
+    const {
+        isLoading,
+        error,
+        template: selectedTemplate,
+        updateTemplate,
+        includeLogo,
+        updateIncludeLogo,
+        footerMessage,
+        updateFooterMessage,
+        qrcodeValue,
+        updateQrcodeValue,
+        transactionPrefix,
+        updateTransactionPrefix,
+        transactionNextNumber,
+        updateTransactionNextNumber,
+    } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
+
+    if (!selectedBusiness) {
+        return (
+            <div className="flex h-64 items-center justify-center">
+                <p className="text-muted-foreground">Please select a business to configure receipt settings</p>
+            </div>
+        );
+    }
+
+    if (isLoading) {
+        return (
+            <div className="flex h-64 items-center justify-center">
+                <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-6">
+            {error && (
+                <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                    {error}
+                </div>
+            )}
+
             <Card>
                 <CardHeader>
                     <CardTitle>Receipt Options</CardTitle>
@@ -188,6 +226,37 @@ export default function ReceiptSettings() {
                             className="max-w-md"
                         />
                     </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="transaction-prefix" className="text-base">
+                            Transaction Prefix
+                        </Label>
+                        <Input
+                            id="transaction-prefix"
+                            placeholder="INV"
+                            value={transactionPrefix}
+                            onChange={(e) => updateTransactionPrefix(e.target.value)}
+                            maxLength={10}
+                            className="max-w-md"
+                        />
+                        <p className="text-xs text-muted-foreground">Prefix for transaction numbers (e.g., INV, RCP)</p>
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="transaction-number" className="text-base">
+                            Next Transaction Number
+                        </Label>
+                        <Input
+                            id="transaction-number"
+                            type="number"
+                            min="1"
+                            placeholder="1"
+                            value={transactionNextNumber}
+                            onChange={(e) => updateTransactionNextNumber(parseInt(e.target.value) || 1)}
+                            className="max-w-md"
+                        />
+                        <p className="text-xs text-muted-foreground">The next transaction number to use</p>
+                    </div>
                 </CardContent>
             </Card>
 
@@ -217,4 +286,3 @@ export default function ReceiptSettings() {
         </div>
     );
 }
-

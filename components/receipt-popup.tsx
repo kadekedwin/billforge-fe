@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     Dialog,
     DialogContent,
@@ -12,8 +12,9 @@ import { Button } from "@/components/ui/button";
 import { Download, Mail, MessageCircle, Loader2 } from "lucide-react";
 import { useReceiptGenerator } from "@/lib/receipt/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
+import { useBusiness } from "@/contexts/business-context";
 import type { ReceiptData } from "@/lib/receipt/types";
-import {generateReceiptHTML} from "@/lib/receipt/templates";
+import { generateReceiptHTML } from "@/lib/receipt/templates";
 
 interface ReceiptPopupProps {
     open: boolean;
@@ -34,7 +35,8 @@ export function ReceiptPopup({
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
     const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
-    const { template: receiptTemplate } = useReceiptTemplatePreference();
+    const { selectedBusiness } = useBusiness();
+    const { template: receiptTemplate } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
 
     const templateHTML = generateReceiptHTML(receiptData, receiptTemplate);
 

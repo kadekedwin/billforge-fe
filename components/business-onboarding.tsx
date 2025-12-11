@@ -22,6 +22,9 @@ export function BusinessOnboarding() {
     address: null,
     phone: null,
     image_size_bytes: null,
+    currency: null,
+    language: null,
+    region: null,
   })
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
@@ -208,6 +211,60 @@ export function BusinessOnboarding() {
             {formErrors.address && (
               <p className="text-sm text-destructive">{formErrors.address}</p>
             )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="currency">Currency (Optional)</Label>
+            <Input
+              id="currency"
+              name="currency"
+              placeholder="USD"
+              value={formData.currency || ''}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              maxLength={3}
+              className={formErrors.currency ? 'border-destructive' : ''}
+            />
+            {formErrors.currency && (
+              <p className="text-sm text-destructive">{formErrors.currency}</p>
+            )}
+            <p className="text-xs text-muted-foreground">ISO currency code (e.g., USD, EUR, GBP)</p>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="language">Language (Optional)</Label>
+            <Input
+              id="language"
+              name="language"
+              placeholder="en-US"
+              value={formData.language || ''}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              maxLength={5}
+              className={formErrors.language ? 'border-destructive' : ''}
+            />
+            {formErrors.language && (
+              <p className="text-sm text-destructive">{formErrors.language}</p>
+            )}
+            <p className="text-xs text-muted-foreground">Language code (e.g., en-US, fr-FR)</p>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="region">Region (Optional)</Label>
+            <Input
+              id="region"
+              name="region"
+              placeholder="US"
+              value={formData.region || ''}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              maxLength={5}
+              className={formErrors.region ? 'border-destructive' : ''}
+            />
+            {formErrors.region && (
+              <p className="text-sm text-destructive">{formErrors.region}</p>
+            )}
+            <p className="text-xs text-muted-foreground">Region/country code (e.g., US, FR, GB)</p>
           </div>
 
           <div className="space-y-2">
