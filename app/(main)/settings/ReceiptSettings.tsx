@@ -60,8 +60,8 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
         <button
             onClick={onSelect}
             className={`relative flex-shrink-0 p-4 border-2 rounded-lg transition-all text-left ${isSelected
-                    ? 'border-blue-500 '
-                    : 'border-gray-300 hover:border-gray-400'
+                ? 'border-blue-500 '
+                : 'border-gray-300 hover:border-gray-400'
                 }`}
             style={{ width: '320px' }}
         >
@@ -98,6 +98,7 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
 
 const sampleReceipt: ReceiptData = {
     receiptNumber: 'RCP-001',
+    transactionId: 'INV1001',
     date: '2025-12-07',
     time: '14:30:00',
     storeName: 'BillForge Store',

@@ -8,6 +8,7 @@ export interface ReceiptItem {
 
 export interface ReceiptData {
     receiptNumber: string;
+    transactionId?: string;
     date: string;
     time: string;
     cashierName?: string;

@@ -1,5 +1,6 @@
 import { createTransaction } from "@/lib/api/transactions";
 import { createTransactionItem } from "@/lib/api/transaction-items";
+import { getReceiptData, updateReceiptData } from "@/lib/api/receipt-data";
 import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction, TransactionItem } from "@/lib/api";
 import { calculateItemTax, calculateItemDiscount, calculateCartSummary } from "./cartUtils";
 
@@ -28,19 +29,34 @@ export interface CompleteTransactionResult {
 }
 
 export async function completeTransaction({
-                                              cart,
-                                              items,
-                                              taxes,
-                                              discounts,
-                                              businessUuid,
-                                              selectedCustomer,
-                                              selectedPaymentMethod,
-                                              notes,
-                                              customers,
-                                              paymentMethods,
-                                          }: CompleteTransactionParams): Promise<CompleteTransactionResult> {
+    cart,
+    items,
+    taxes,
+    discounts,
+    businessUuid,
+    selectedCustomer,
+    selectedPaymentMethod,
+    notes,
+    customers,
+    paymentMethods,
+}: CompleteTransactionParams): Promise<CompleteTransactionResult> {
     try {
         const summary = calculateCartSummary(cart, items, taxes, discounts);
+
+        let transactionId: string | null = null;
+        let receiptData: any = null;
+
+        try {
+            const receiptResponse = await getReceiptData(businessUuid);
+            if (receiptResponse.success && receiptResponse.data) {
+                receiptData = receiptResponse.data;
+                const prefix = receiptData.transaction_prefix || '';
+                const number = receiptData.transaction_next_number || 1;
+                transactionId = `${prefix}${number}`;
+            }
+        } catch (err) {
+            console.error('Error fetching receipt data for transaction ID:', err);
+        }
 
         const transactionData = {
             business_uuid: businessUuid,
@@ -51,6 +67,7 @@ export async function completeTransaction({
             discount_amount: summary.discountAmount,
             final_amount: summary.finalAmount,
             notes: notes || null,
+            transaction_id: transactionId,
         };
 
         const transactionResponse = await createTransaction(transactionData);
@@ -106,6 +123,17 @@ export async function completeTransaction({
                     created_at: new Date().toISOString(),
                     updated_at: new Date().toISOString(),
                 });
+            }
+        }
+
+        // Update receipt data transaction number after successful transaction
+        if (receiptData) {
+            try {
+                await updateReceiptData(businessUuid, {
+                    transaction_next_number: receiptData.transaction_next_number + 1
+                });
+            } catch (err) {
+                console.error('Error updating receipt data transaction number:', err);
             }
         }
 

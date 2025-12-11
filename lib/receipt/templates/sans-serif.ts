@@ -1,7 +1,7 @@
-import {ReceiptData} from "@/lib/receipt";
+import { ReceiptData } from "@/lib/receipt";
 
 export const generateSansSerifTemplate = (data: ReceiptData): string => {
-    return `
+  return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,6 +159,12 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
         <span>Receipt #:</span>
         <span>${data.receiptNumber}</span>
       </div>
+      ${data.transactionId ? `
+      <div class="receipt-info-row">
+        <span>Transaction ID:</span>
+        <span>${data.transactionId}</span>
+      </div>
+      ` : ''}
       <div class="receipt-info-row">
         <span>Date:</span>
         <span>${data.date}</span>

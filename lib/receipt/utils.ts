@@ -46,6 +46,7 @@ interface Transaction {
     customer_uuid: string | null;
     payment_method_uuid: string | null;
     notes: string | null;
+    transaction_id: string | null;
 }
 
 interface Business {
@@ -80,6 +81,7 @@ export const convertTransactionToReceiptData = (
 
     return {
         receiptNumber: generateReceiptNumber(),
+        transactionId: transaction.transaction_id || undefined,
         date: formatDate(transactionDate),
         time: formatTime(transactionDate),
         customerName: customerName || undefined,

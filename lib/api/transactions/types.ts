@@ -9,6 +9,7 @@ export interface Transaction {
   discount_amount: string;
   final_amount: string;
   notes: string | null;
+  transaction_id: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -22,6 +23,7 @@ export interface CreateTransactionRequest {
   discount_amount: number;
   final_amount: number;
   notes?: string | null;
+  transaction_id?: string | null;
 }
 
 export interface UpdateTransactionRequest {
@@ -33,6 +35,7 @@ export interface UpdateTransactionRequest {
   discount_amount?: number;
   final_amount?: number;
   notes?: string | null;
+  transaction_id?: string | null;
 }
 
 export interface TransactionQueryParams extends Record<string, string | number | boolean | undefined> {
