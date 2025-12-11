@@ -13,6 +13,14 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
 import { useAuth } from "@/contexts/auth-context";
 import { getImageUrl } from "@/lib/images/operations";
 import { logout } from "@/lib/api/auth";
@@ -27,6 +35,7 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
     const { user, removeAuth } = useAuth();
     const [userImageUrl, setUserImageUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
     useEffect(() => {
         if (!user) {
@@ -60,6 +69,7 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
     }, [user?.uuid, user?.updated_at]);
 
     const handleLogout = async () => {
+        setShowLogoutDialog(false);
         try {
             const response = await logout();
 
@@ -103,12 +113,38 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
                 <DropdownMenuContent align="end" className="w-56">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                    <DropdownMenuItem onClick={() => setShowLogoutDialog(true)} className="text-destructive">
                         <LogOut className="mr-2 h-4 w-4" />
                         <span>Log out</span>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
+
+            <Dialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Confirm Logout</DialogTitle>
+                        <DialogDescription>
+                            Are you sure you want to logout? You will need to sign in again to access your account.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button
+                            variant="outline"
+                            onClick={() => setShowLogoutDialog(false)}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            variant="destructive"
+                            onClick={handleLogout}
+                        >
+                            <LogOut className="mr-2 h-4 w-4" />
+                            Logout
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
