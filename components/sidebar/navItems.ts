@@ -7,6 +7,7 @@ import {
     Percent,
     Tag,
     Settings,
+    FolderOpen,
 } from "lucide-react";
 
 export const navItems = [
@@ -24,6 +25,11 @@ export const navItems = [
         title: "Items",
         href: "/items",
         icon: Package,
+    },
+    {
+        title: "Categories",
+        href: "/categories",
+        icon: FolderOpen,
     },
     {
         title: "Customers",

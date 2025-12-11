@@ -11,6 +11,8 @@ interface UseItemFormResult {
     imagePreview: string | null;
     existingImageUrl: string | null;
     imageDeleted: boolean;
+    selectedCategoryUuids: string[];
+    initialCategoryUuids: string[];
     setFormData: React.Dispatch<React.SetStateAction<Omit<CreateItemRequest, 'business_uuid'>>>;
     setFormErrors: React.Dispatch<React.SetStateAction<Record<string, string>>>;
     setSelectedImage: React.Dispatch<React.SetStateAction<File | null>>;
@@ -19,10 +21,11 @@ interface UseItemFormResult {
     setImageDeleted: React.Dispatch<React.SetStateAction<boolean>>;
     handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
     handleSwitchChange: (checked: boolean) => void;
+    handleCategoryChange: (categoryUuid: string) => void;
     handleImageChange: (e: React.ChangeEvent<HTMLInputElement>, onError: (error: string) => void) => void;
     handleRemoveImage: () => void;
     resetForm: () => void;
-    loadItemForEdit: (item: Item) => Promise<void>;
+    loadItemForEdit: (item: Item, categoryUuids: string[]) => Promise<void>;
 }
 
 const initialFormData: Omit<CreateItemRequest, 'business_uuid'> = {
@@ -43,6 +46,8 @@ export function useItemForm(): UseItemFormResult {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [existingImageUrl, setExistingImageUrl] = useState<string | null>(null);
     const [imageDeleted, setImageDeleted] = useState(false);
+    const [selectedCategoryUuids, setSelectedCategoryUuids] = useState<string[]>([]);
+    const [initialCategoryUuids, setInitialCategoryUuids] = useState<string[]>([]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -72,6 +77,15 @@ export function useItemForm(): UseItemFormResult {
 
     const handleSwitchChange = (checked: boolean) => {
         setFormData((prev) => ({ ...prev, is_active: checked }));
+    };
+
+    const handleCategoryChange = (categoryUuid: string) => {
+        setSelectedCategoryUuids((prev) => {
+            const isSelected = prev.includes(categoryUuid);
+            return isSelected
+                ? prev.filter(uuid => uuid !== categoryUuid)
+                : [...prev, categoryUuid];
+        });
     };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, onError: (error: string) => void) => {
@@ -112,9 +126,11 @@ export function useItemForm(): UseItemFormResult {
         setImagePreview(null);
         setExistingImageUrl(null);
         setImageDeleted(false);
+        setSelectedCategoryUuids([]);
+        setInitialCategoryUuids([]);
     };
 
-    const loadItemForEdit = async (item: Item) => {
+    const loadItemForEdit = async (item: Item, categoryUuids: string[]) => {
         setFormData({
             discount_uuid: item.discount_uuid,
             tax_uuid: item.tax_uuid,
@@ -128,6 +144,8 @@ export function useItemForm(): UseItemFormResult {
         setSelectedImage(null);
         setImagePreview(null);
         setImageDeleted(false);
+        setSelectedCategoryUuids(categoryUuids);
+        setInitialCategoryUuids(categoryUuids);
 
         if (item.image_size_bytes) {
             const imageResult = await getImageUrl({
@@ -152,6 +170,8 @@ export function useItemForm(): UseItemFormResult {
         imagePreview,
         existingImageUrl,
         imageDeleted,
+        selectedCategoryUuids,
+        initialCategoryUuids,
         setFormData,
         setFormErrors,
         setSelectedImage,
@@ -160,6 +180,7 @@ export function useItemForm(): UseItemFormResult {
         setImageDeleted,
         handleInputChange,
         handleSwitchChange,
+        handleCategoryChange,
         handleImageChange,
         handleRemoveImage,
         resetForm,

@@ -13,6 +13,12 @@ export type { Customer, CreateCustomerRequest, UpdateCustomerRequest, CustomerQu
 export * as items from "./items";
 export type { Item, CreateItemRequest, UpdateItemRequest, ItemQueryParams } from "./items";
 
+export * as categories from "./categories";
+export type { Category, CreateCategoryRequest, UpdateCategoryRequest, CategoryQueryParams } from "./categories";
+
+export * as itemCategories from "./item-categories";
+export type { AttachCategoryRequest } from "./item-categories";
+
 export * as itemTaxes from "./item-taxes";
 export type { ItemTax, CreateItemTaxRequest, UpdateItemTaxRequest } from "./item-taxes";
 

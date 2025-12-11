@@ -4,12 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 import { getItems } from "@/lib/api/items";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
-import type { Item, ItemTax, ItemDiscount, Business } from "@/lib/api";
+import { getCategories } from "@/lib/api/categories";
+import type { Item, ItemTax, ItemDiscount, Category, Business } from "@/lib/api";
 
 interface UseItemsDataResult {
     items: Item[];
     taxes: ItemTax[];
     discounts: ItemDiscount[];
+    categories: Category[];
     isLoading: boolean;
     error: string | null;
     setItems: React.Dispatch<React.SetStateAction<Item[]>>;
@@ -20,6 +22,7 @@ export function useItemsData(selectedBusiness: Business | null): UseItemsDataRes
     const [items, setItems] = useState<Item[]>([]);
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -29,10 +32,11 @@ export function useItemsData(selectedBusiness: Business | null): UseItemsDataRes
         try {
             setIsLoading(true);
             setError(null);
-            const [itemsResponse, taxesResponse, discountsResponse] = await Promise.all([
+            const [itemsResponse, taxesResponse, discountsResponse, categoriesResponse] = await Promise.all([
                 getItems(),
                 getItemTaxes(),
                 getItemDiscounts(),
+                getCategories({ business_uuid: selectedBusiness.uuid }),
             ]);
 
             if (itemsResponse.success) {
@@ -61,6 +65,10 @@ export function useItemsData(selectedBusiness: Business | null): UseItemsDataRes
                 );
                 setDiscounts(filteredDiscounts);
             }
+
+            if (categoriesResponse.success) {
+                setCategories(categoriesResponse.data);
+            }
         } catch (err) {
             setError("An error occurred while loading data");
             console.error("Error loading data:", err);
@@ -77,6 +85,7 @@ export function useItemsData(selectedBusiness: Business | null): UseItemsDataRes
         items,
         taxes,
         discounts,
+        categories,
         isLoading,
         error,
         setItems,

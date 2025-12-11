@@ -10,6 +10,7 @@ import {
 import { Plus } from "lucide-react";
 import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import type { Item } from "@/lib/api";
+import { getItemCategories } from "@/lib/api/item-categories";
 import { ItemsTable } from "./ItemsTable";
 import { ItemFormDialog } from "./ItemFormDialog";
 import { DeleteItemDialog } from "./DeleteItemDialog";
@@ -19,7 +20,7 @@ import { handleCreateItem, handleUpdateItem, handleDeleteItem } from "./itemOper
 
 export default function ItemsPage() {
     const { selectedBusiness, businesses } = useBusiness();
-    const { items, taxes, discounts, isLoading, error, setItems, setError } = useItemsData(selectedBusiness);
+    const { items, taxes, discounts, categories, isLoading, error, setItems, setError } = useItemsData(selectedBusiness);
     const {
         formData,
         formErrors,
@@ -27,9 +28,12 @@ export default function ItemsPage() {
         imagePreview,
         existingImageUrl,
         imageDeleted,
+        selectedCategoryUuids,
+        initialCategoryUuids,
         setFormErrors,
         handleInputChange,
         handleSwitchChange,
+        handleCategoryChange,
         handleImageChange,
         handleRemoveImage,
         resetForm,
@@ -69,11 +73,14 @@ export default function ItemsPage() {
                 selectedImage,
                 imageDeleted,
                 existingImageUrl,
+                selectedCategoryUuids,
+                initialCategoryUuids,
             })
             : await handleCreateItem({
                 formData,
                 businessUuid: selectedBusiness.uuid,
                 selectedImage,
+                categoryUuids: selectedCategoryUuids,
             });
 
         setIsUploadingImage(false);
@@ -128,7 +135,13 @@ export default function ItemsPage() {
 
     const handleEdit = async (item: Item) => {
         setEditingItem(item);
-        await loadItemForEdit(item);
+
+        const categoriesResponse = await getItemCategories(item.uuid);
+        const itemCategoryUuids = categoriesResponse.success && categoriesResponse.data
+            ? categoriesResponse.data.map(cat => cat.uuid)
+            : [];
+
+        await loadItemForEdit(item, itemCategoryUuids);
         setIsDialogOpen(true);
     };
 
@@ -171,11 +184,14 @@ export default function ItemsPage() {
                         error={error}
                         taxes={taxes}
                         discounts={discounts}
+                        categories={categories}
+                        selectedCategoryUuids={selectedCategoryUuids}
                         imagePreview={imagePreview}
                         isSubmitting={isSubmitting}
                         isUploadingImage={isUploadingImage}
                         onInputChange={handleInputChange}
                         onSwitchChange={handleSwitchChange}
+                        onCategoryChange={handleCategoryChange}
                         onImageChange={(e) => handleImageChange(e, setError)}
                         onRemoveImage={handleRemoveImage}
                         onSubmit={handleSubmit}

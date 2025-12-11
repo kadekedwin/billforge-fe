@@ -1,4 +1,5 @@
 import { createItem, updateItem, deleteItem } from "@/lib/api/items";
+import { attachCategoryToItem, detachCategoryFromItem } from "@/lib/api/item-categories";
 import { uploadImage, deleteImage } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
 import { ApiError } from "@/lib/api/errors";
@@ -8,12 +9,14 @@ interface CreateItemParams {
     formData: Omit<CreateItemRequest, 'business_uuid'>;
     businessUuid: string;
     selectedImage: File | null;
+    categoryUuids: string[];
 }
 
 export async function handleCreateItem({
                                            formData,
                                            businessUuid,
                                            selectedImage,
+                                           categoryUuids,
                                        }: CreateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
     try {
         let imageSizeBytes: number | null = null;
@@ -41,6 +44,12 @@ export async function handleCreateItem({
             }
         }
 
+        if (categoryUuids.length > 0 && createdItemUuid) {
+            for (const categoryUuid of categoryUuids) {
+                await attachCategoryToItem(createdItemUuid, { category_uuid: categoryUuid });
+            }
+        }
+
         return { success: true, item: response.data };
     } catch (err) {
         if (err instanceof ApiError) {
@@ -64,6 +73,8 @@ interface UpdateItemParams {
     selectedImage: File | null;
     imageDeleted: boolean;
     existingImageUrl: string | null;
+    selectedCategoryUuids: string[];
+    initialCategoryUuids: string[];
 }
 
 export async function handleUpdateItem({
@@ -73,6 +84,8 @@ export async function handleUpdateItem({
                                            selectedImage,
                                            imageDeleted,
                                            existingImageUrl,
+                                           selectedCategoryUuids,
+                                           initialCategoryUuids,
                                        }: UpdateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
     try {
         let imageSizeBytes: number | null = null;
@@ -111,6 +124,17 @@ export async function handleUpdateItem({
         };
 
         const response = await updateItem(item.uuid, updateData);
+
+        const categoriesToAttach = selectedCategoryUuids.filter(uuid => !initialCategoryUuids.includes(uuid));
+        const categoriesToDetach = initialCategoryUuids.filter(uuid => !selectedCategoryUuids.includes(uuid));
+
+        for (const categoryUuid of categoriesToAttach) {
+            await attachCategoryToItem(item.uuid, { category_uuid: categoryUuid });
+        }
+
+        for (const categoryUuid of categoriesToDetach) {
+            await detachCategoryFromItem(item.uuid, categoryUuid);
+        }
 
         return { success: true, item: response.data };
     } catch (err) {

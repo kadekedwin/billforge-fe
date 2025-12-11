@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
     Dialog,
     DialogContent,
@@ -15,7 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Loader2, X } from "lucide-react";
-import type { Item, CreateItemRequest, ItemTax, ItemDiscount } from "@/lib/api";
+import type { Item, CreateItemRequest, ItemTax, ItemDiscount, Category } from "@/lib/api";
 
 interface ItemFormDialogProps {
     open: boolean;
@@ -26,11 +27,14 @@ interface ItemFormDialogProps {
     error: string | null;
     taxes: ItemTax[];
     discounts: ItemDiscount[];
+    categories: Category[];
+    selectedCategoryUuids: string[];
     imagePreview: string | null;
     isSubmitting: boolean;
     isUploadingImage: boolean;
     onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
     onSwitchChange: (checked: boolean) => void;
+    onCategoryChange: (categoryUuid: string) => void;
     onImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onRemoveImage: () => void;
     onSubmit: (e: React.FormEvent) => void;
@@ -45,11 +49,14 @@ export function ItemFormDialog({
                                    error,
                                    taxes,
                                    discounts,
+                                   categories,
+                                   selectedCategoryUuids,
                                    imagePreview,
                                    isSubmitting,
                                    isUploadingImage,
                                    onInputChange,
                                    onSwitchChange,
+                                   onCategoryChange,
                                    onImageChange,
                                    onRemoveImage,
                                    onSubmit,
@@ -111,6 +118,37 @@ export function ItemFormDialog({
                                 </select>
                                 {formErrors.discount_uuid && (
                                     <p className="text-sm text-destructive">{formErrors.discount_uuid}</p>
+                                )}
+                            </div>
+                            <div className="space-y-2 col-span-2">
+                                <Label>Categories (Optional)</Label>
+                                <div className="max-h-[200px] overflow-y-auto border rounded-md p-3">
+                                    {categories.length === 0 ? (
+                                        <p className="text-sm text-muted-foreground">No categories available. Create categories first.</p>
+                                    ) : (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            {categories.map((category) => (
+                                                <div key={category.uuid} className="flex items-center space-x-2">
+                                                    <Checkbox
+                                                        id={`category-${category.uuid}`}
+                                                        checked={selectedCategoryUuids.includes(category.uuid)}
+                                                        onCheckedChange={() => onCategoryChange(category.uuid)}
+                                                        disabled={isSubmitting}
+                                                    />
+                                                    <Label
+                                                        htmlFor={`category-${category.uuid}`}
+                                                        className="text-sm font-normal cursor-pointer truncate"
+                                                        title={category.name}
+                                                    >
+                                                        {category.name}
+                                                    </Label>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                                {formErrors.category_uuids && (
+                                    <p className="text-sm text-destructive">{formErrors.category_uuids}</p>
                                 )}
                             </div>
                             <div className="space-y-2">
