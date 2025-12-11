@@ -1,16 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { UserCircle, FileText, Settings } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // Dynamically import the settings components
 const ProfileSettings = dynamic(() => import('./ProfileSettings'), { ssr: false });
 const ReceiptSettings = dynamic(() => import('./ReceiptSettings'), { ssr: false });
 const PreferencesSettings = dynamic(() => import('./PreferencesSettings'), { ssr: false });
-
-type SettingsTab = 'profile' | 'receipt' | 'preferences';
 
 const tabs = [
     {
@@ -31,46 +28,35 @@ const tabs = [
 ];
 
 export default function SettingsPage() {
-    const [activeTab, setActiveTab] = useState<SettingsTab>('profile');
-
     return (
         <div className="space-y-6">
             <div>
                 <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
             </div>
 
-            {/* Tab Selector */}
-            <div className="border-b">
-                <div className="flex space-x-1">
+            <Tabs defaultValue="profile">
+                <TabsList>
                     {tabs.map((tab) => {
                         const Icon = tab.icon;
-                        const isActive = activeTab === tab.id;
                         return (
-                            <Button
-                                key={tab.id}
-                                variant="ghost"
-                                onClick={() => setActiveTab(tab.id)}
-                                className={`relative rounded-none border-b-2 px-4 py-2 ${
-                                    isActive
-                                        ? 'border-primary text-primary'
-                                        : 'border-transparent text-muted-foreground hover:text-foreground'
-                                }`}
-                            >
+                            <TabsTrigger key={tab.id} value={tab.id}>
                                 <Icon className="mr-2 h-4 w-4" />
                                 {tab.label}
-                            </Button>
+                            </TabsTrigger>
                         );
                     })}
-                </div>
-            </div>
+                </TabsList>
 
-            {/* Tab Content */}
-            <div className="py-4">
-                {activeTab === 'profile' && <ProfileSettings />}
-                {activeTab === 'receipt' && <ReceiptSettings />}
-                {activeTab === 'preferences' && <PreferencesSettings />}
-            </div>
+                <TabsContent value="profile">
+                    <ProfileSettings />
+                </TabsContent>
+                <TabsContent value="receipt">
+                    <ReceiptSettings />
+                </TabsContent>
+                <TabsContent value="preferences">
+                    <PreferencesSettings />
+                </TabsContent>
+            </Tabs>
         </div>
     );
 }
-
