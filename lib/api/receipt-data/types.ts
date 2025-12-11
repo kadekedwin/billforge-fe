@@ -34,6 +34,6 @@ export interface UpdateReceiptDataRequest {
     transaction_next_number?: number;
 }
 
-export interface UpdateTransactionNumberRequest {
+export interface UpdateTransactionNextNumberRequest {
     transaction_next_number: number;
 }

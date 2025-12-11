@@ -4,14 +4,14 @@ import type {
     ReceiptData,
     CreateReceiptDataRequest,
     UpdateReceiptDataRequest,
-    UpdateTransactionNumberRequest
+    UpdateTransactionNextNumberRequest
 } from "./types";
 
 export type {
     ReceiptData,
     CreateReceiptDataRequest,
     UpdateReceiptDataRequest,
-    UpdateTransactionNumberRequest
+    UpdateTransactionNextNumberRequest
 } from "./types";
 
 export async function getReceiptData(businessUuid: string): Promise<ApiResponse<ReceiptData>> {
@@ -30,6 +30,6 @@ export async function deleteReceiptData(businessUuid: string): Promise<ApiRespon
     return apiClient.delete<MessageResponse>(`/api/businesses/${businessUuid}/receipt-data`);
 }
 
-export async function updateTransactionNumber(businessUuid: string, data: UpdateTransactionNumberRequest): Promise<ApiResponse<ReceiptData>> {
-    return apiClient.patch<ReceiptData>(`/api/businesses/${businessUuid}/receipt-data/transaction-number`, data);
+export async function updateTransactionNextNumber(businessUuid: string, data: UpdateTransactionNextNumberRequest): Promise<ApiResponse<ReceiptData>> {
+    return apiClient.patch<ReceiptData>(`/api/businesses/${businessUuid}/receipt-data/transaction-next-number`, data);
 }
