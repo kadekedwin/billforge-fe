@@ -27,10 +27,10 @@ interface BusinessDialogProps {
 }
 
 export function BusinessDialog({
-   open,
-   onOpenChange,
-   editingBusiness,
-   onSuccess,
+    open,
+    onOpenChange,
+    editingBusiness,
+    onSuccess,
 }: BusinessDialogProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -39,6 +39,9 @@ export function BusinessDialog({
         address: editingBusiness?.address || null,
         phone: editingBusiness?.phone || null,
         image_size_bytes: editingBusiness?.image_size_bytes || null,
+        currency: editingBusiness?.currency || null,
+        language: editingBusiness?.language || null,
+        region: editingBusiness?.region || null,
     });
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -56,6 +59,9 @@ export function BusinessDialog({
                     address: editingBusiness.address,
                     phone: editingBusiness.phone,
                     image_size_bytes: editingBusiness.image_size_bytes,
+                    currency: editingBusiness.currency,
+                    language: editingBusiness.language,
+                    region: editingBusiness.region,
                 });
 
                 // Load existing image
@@ -70,7 +76,7 @@ export function BusinessDialog({
                 }
             } else if (open && !editingBusiness) {
                 // Reset form for new business
-                setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
+                setFormData({ name: "", address: null, phone: null, image_size_bytes: null, currency: null, language: null, region: null });
                 setImagePreview(null);
                 setSelectedImage(null);
                 setImageDeleted(false);
@@ -82,7 +88,7 @@ export function BusinessDialog({
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const processedValue = (name === "address" || name === "phone") && value === "" ? null : value;
+        const processedValue = (name === "address" || name === "phone" || name === "currency" || name === "language" || name === "region") && value === "" ? null : value;
         setFormData((prev) => ({ ...prev, [name]: processedValue }));
         if (formErrors[name]) {
             setFormErrors((prev) => {
@@ -123,7 +129,7 @@ export function BusinessDialog({
 
     const handleClose = () => {
         onOpenChange(false);
-        setFormData({ name: "", address: null, phone: null, image_size_bytes: null });
+        setFormData({ name: "", address: null, phone: null, image_size_bytes: null, currency: null, language: null, region: null });
         setFormErrors({});
         setError(null);
         setSelectedImage(null);
@@ -252,7 +258,7 @@ export function BusinessDialog({
 
     return (
         <Dialog open={open} onOpenChange={handleClose}>
-            <DialogContent>
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                 <form onSubmit={handleSubmit}>
                     <DialogHeader>
                         <DialogTitle>{editingBusiness ? "Edit Business" : "Create New Business"}</DialogTitle>
@@ -311,6 +317,57 @@ export function BusinessDialog({
                             {formErrors.phone && (
                                 <p className="text-sm text-destructive">{formErrors.phone}</p>
                             )}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="currency">Currency (Optional)</Label>
+                            <Input
+                                id="currency"
+                                name="currency"
+                                placeholder="USD"
+                                value={formData.currency || ""}
+                                onChange={handleInputChange}
+                                disabled={isSubmitting}
+                                maxLength={3}
+                                className={formErrors.currency ? "border-destructive" : ""}
+                            />
+                            {formErrors.currency && (
+                                <p className="text-sm text-destructive">{formErrors.currency}</p>
+                            )}
+                            <p className="text-xs text-muted-foreground">ISO currency code (e.g., USD, EUR, GBP)</p>
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="language">Language (Optional)</Label>
+                            <Input
+                                id="language"
+                                name="language"
+                                placeholder="en-US"
+                                value={formData.language || ""}
+                                onChange={handleInputChange}
+                                disabled={isSubmitting}
+                                maxLength={5}
+                                className={formErrors.language ? "border-destructive" : ""}
+                            />
+                            {formErrors.language && (
+                                <p className="text-sm text-destructive">{formErrors.language}</p>
+                            )}
+                            <p className="text-xs text-muted-foreground">Language code (e.g., en-US, fr-FR)</p>
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="region">Region (Optional)</Label>
+                            <Input
+                                id="region"
+                                name="region"
+                                placeholder="US"
+                                value={formData.region || ""}
+                                onChange={handleInputChange}
+                                disabled={isSubmitting}
+                                maxLength={5}
+                                className={formErrors.region ? "border-destructive" : ""}
+                            />
+                            {formErrors.region && (
+                                <p className="text-sm text-destructive">{formErrors.region}</p>
+                            )}
+                            <p className="text-xs text-muted-foreground">Region/country code (e.g., US, FR, GB)</p>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="business-logo">Business Logo (Optional)</Label>
