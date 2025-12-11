@@ -193,8 +193,8 @@ export default function ProfileSettings() {
         try {
             await resetPassword({
                 current_password: passwordData.current_password,
-                password: passwordData.password,
-                password_confirmation: passwordData.password_confirmation,
+                new_password: passwordData.password,
+                new_password_confirmation: passwordData.password_confirmation,
             });
 
             setPasswordSuccess('Password updated successfully!');

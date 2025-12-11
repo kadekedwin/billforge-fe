@@ -18,19 +18,8 @@ export interface AuthResponse {
   token_type: string;
 }
 
-
 export interface ResetPasswordRequest {
   current_password: string;
-  password: string;
-  password_confirmation: string;
-}
-
-export interface PasswordResetRequest {
-    current_password: string;
-    password: string;
-    password_confirmation: string;
-}
-
-export interface ChangeEmailRequest {
-    email: string;
+  new_password: string;
+  new_password_confirmation: string;
 }

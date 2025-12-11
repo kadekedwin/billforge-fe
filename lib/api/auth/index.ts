@@ -1,8 +1,8 @@
 import {apiClient} from "../client";
 import type {ApiResponse, MessageResponse} from "../types";
-import type {RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest, ChangeEmailRequest} from "./types";
+import type {RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest} from "./types";
 
-export type {RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest, ChangeEmailRequest} from "./types";
+export type {RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest} from "./types";
 
 export async function register(data: RegisterRequest): Promise<ApiResponse<AuthResponse>> {
     const response = await apiClient.post<AuthResponse>("/api/register", data);
@@ -56,8 +56,4 @@ export async function verifyEmail(id: string, hash: string, expires?: string, si
     }
 
     return apiClient.get<MessageResponse>(url);
-}
-
-export async function changeEmail(data: ChangeEmailRequest): Promise<ApiResponse<AuthResponse>> {
-    return apiClient.put<AuthResponse>("/api/email/change", data);
 }
