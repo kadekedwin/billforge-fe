@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Loader2, Search } from "lucide-react";
 import { useBusiness } from "@/contexts/business-context";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
 import { getImageUrl } from "@/lib/images/operations";
@@ -38,6 +39,7 @@ export default function DashboardPage() {
     const { cart, addToCart, removeFromCart, clearCart } = useCart();
 
     const [selectedCategory, setSelectedCategory] = useState<string>("");
+    const [searchQuery, setSearchQuery] = useState<string>("");
     const [itemCategoryMap, setItemCategoryMap] = useState<Map<string, string[]>>(new Map());
     const [isLoadingCategories, setIsLoadingCategories] = useState(false);
     const [isCheckout, setIsCheckout] = useState(false);
@@ -169,10 +171,18 @@ export default function DashboardPage() {
     const filteredItems = selectedBusiness
         ? items.filter((item) => {
             if (item.business_uuid !== selectedBusiness.uuid) return false;
-            if (!selectedCategory) return true;
 
-            const itemCategories = itemCategoryMap.get(item.uuid) || [];
-            return itemCategories.includes(selectedCategory);
+            if (searchQuery) {
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
+                if (!matchesSearch) return false;
+            }
+
+            if (selectedCategory) {
+                const itemCategories = itemCategoryMap.get(item.uuid) || [];
+                if (!itemCategories.includes(selectedCategory)) return false;
+            }
+
+            return true;
         })
         : [];
 
@@ -241,30 +251,40 @@ export default function DashboardPage() {
                 </div>
             </div>
 
-            {businessCategories.length > 0 && (
-                <div className="flex items-center gap-2">
-                    <label htmlFor="category-filter" className="text-sm font-medium">
-                        Filter by Category:
-                    </label>
-                    <select
-                        id="category-filter"
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        disabled={isLoadingCategories}
-                        className="flex h-10 w-[200px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                        <option value="">All Categories</option>
-                        {businessCategories.map((category) => (
-                            <option key={category.uuid} value={category.uuid}>
-                                {category.name}
-                            </option>
-                        ))}
-                    </select>
-                    {isLoadingCategories && (
-                        <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
-                    )}
+            <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <Input
+                        type="text"
+                        placeholder="Search items..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-9"
+                    />
                 </div>
-            )}
+
+                {businessCategories.length > 0 && (
+                    <div className="flex items-center gap-2">
+                        <select
+                            id="category-filter"
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            disabled={isLoadingCategories}
+                            className="flex h-10 w-full sm:w-[200px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            <option value="">All Categories</option>
+                            {businessCategories.map((category) => (
+                                <option key={category.uuid} value={category.uuid}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                        {isLoadingCategories && (
+                            <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                        )}
+                    </div>
+                )}
+            </div>
 
             <ItemsGrid
                 items={filteredItems}
