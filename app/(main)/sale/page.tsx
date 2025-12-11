@@ -16,12 +16,12 @@ import type { Transaction, TransactionItem } from "@/lib/api";
 import { ItemsGrid } from "./ItemsGrid";
 import { CartSummary } from "./CartSummary";
 import { CheckoutView } from "./CheckoutView";
-import { useDashboardData } from "./useDashboardData";
+import { useSaleData } from "./useSaleData";
 import { useCart } from "./useCart";
 import { completeTransaction } from "./transactionHandler";
 import { getMonthlyTransactionCount, getTotalCartItems, getTotalCartAmount } from "./cartUtils";
 
-export default function DashboardPage() {
+export default function SalePage() {
     const { selectedBusiness } = useBusiness();
     const { includeLogo, footerMessage, qrcodeValue } = useReceiptTemplatePreference();
     const {
@@ -35,7 +35,7 @@ export default function DashboardPage() {
         isLoading,
         error,
         loadData,
-    } = useDashboardData();
+    } = useSaleData();
     const { cart, addToCart, removeFromCart, clearCart } = useCart();
 
     const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -247,7 +247,7 @@ export default function DashboardPage() {
         <div className="space-y-4">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-bold">New Transaction</h1>
+                    <h1 className="text-2xl sm:text-3xl font-bold">Sale</h1>
                 </div>
             </div>
 

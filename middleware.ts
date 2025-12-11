@@ -14,8 +14,8 @@ export function middleware(request: NextRequest) {
   }
 
   if (token && isPublicRoute) {
-    const dashboardUrl = new URL("/dashboard", request.url);
-    return NextResponse.redirect(dashboardUrl);
+    const saleUrl = new URL("/sale", request.url);
+    return NextResponse.redirect(saleUrl);
   }
 
   return NextResponse.next();

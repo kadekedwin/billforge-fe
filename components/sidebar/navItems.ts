@@ -1,5 +1,5 @@
 import {
-    LayoutDashboard,
+    ShoppingCart,
     FileText,
     Package,
     UserCircle,
@@ -12,9 +12,9 @@ import {
 
 export const navItems = [
     {
-        title: "Dashboard",
-        href: "/dashboard",
-        icon: LayoutDashboard,
+        title: "Sale",
+        href: "/sale",
+        icon: ShoppingCart,
     },
     {
         title: "Transactions",

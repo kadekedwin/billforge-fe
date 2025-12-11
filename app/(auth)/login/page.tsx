@@ -1,12 +1,12 @@
 "use client";
 
-import {useState} from "react";
-import {useRouter} from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {useAuth} from "@/contexts/auth-context";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Label} from "@/components/ui/label";
+import { useAuth } from "@/contexts/auth-context";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Card,
     CardContent,
@@ -15,14 +15,14 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import {login} from "@/lib/api/auth";
-import type {LoginRequest} from "@/lib/api";
-import {ApiError} from "@/lib/api/errors";
+import { login } from "@/lib/api/auth";
+import type { LoginRequest } from "@/lib/api";
+import { ApiError } from "@/lib/api/errors";
 import Image from "next/image";
 
 export default function LoginPage() {
     const router = useRouter();
-    const {setAuth} = useAuth();
+    const { setAuth } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<LoginRequest>({
@@ -43,7 +43,7 @@ export default function LoginPage() {
             if (!response.data.user.email_verified_at) {
                 router.push("/verify-email");
             } else {
-                router.push("/dashboard");
+                router.push("/sale");
             }
         } catch (err) {
             if (err instanceof ApiError) {
@@ -65,12 +65,12 @@ export default function LoginPage() {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target;
-        setFormData((prev) => ({...prev, [name]: value}));
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
         // Clear field error when user starts typing
         if (fieldErrors[name]) {
             setFieldErrors((prev) => {
-                const newErrors = {...prev};
+                const newErrors = { ...prev };
                 delete newErrors[name];
                 return newErrors;
             });

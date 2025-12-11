@@ -1,12 +1,12 @@
 "use client";
 
-import {useState} from "react";
-import {useRouter} from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {useAuth} from "@/contexts/auth-context";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Label} from "@/components/ui/label";
+import { useAuth } from "@/contexts/auth-context";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Card,
     CardContent,
@@ -15,13 +15,13 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import {register} from "@/lib/api/auth";
-import type {RegisterRequest} from "@/lib/api";
-import {ApiError} from "@/lib/api/errors";
+import { register } from "@/lib/api/auth";
+import type { RegisterRequest } from "@/lib/api";
+import { ApiError } from "@/lib/api/errors";
 
 export default function RegisterPage() {
     const router = useRouter();
-    const {setAuth} = useAuth();
+    const { setAuth } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<RegisterRequest>({
@@ -40,7 +40,7 @@ export default function RegisterPage() {
 
         // Client-side validation
         if (formData.password !== formData.password_confirmation) {
-            setFieldErrors({password_confirmation: "Passwords do not match"});
+            setFieldErrors({ password_confirmation: "Passwords do not match" });
             setIsLoading(false);
             return;
         }
@@ -51,7 +51,7 @@ export default function RegisterPage() {
             if (!response.data.user.email_verified_at) {
                 router.push("/verify-email");
             } else {
-                router.push("/dashboard");
+                router.push("/sale");
             }
         } catch (err) {
             if (err instanceof ApiError) {
@@ -73,12 +73,12 @@ export default function RegisterPage() {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target;
-        setFormData((prev) => ({...prev, [name]: value}));
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
         // Clear field error when user starts typing
         if (fieldErrors[name]) {
             setFieldErrors((prev) => {
-                const newErrors = {...prev};
+                const newErrors = { ...prev };
                 delete newErrors[name];
                 return newErrors;
             });

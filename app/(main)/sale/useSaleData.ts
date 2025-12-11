@@ -10,7 +10,7 @@ import { getTransactions } from "@/lib/api/transactions";
 import { getCategories } from "@/lib/api/categories";
 import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction, Category } from "@/lib/api";
 
-interface UseDashboardDataResult {
+interface UseSaleDataResult {
     items: Item[];
     customers: Customer[];
     paymentMethods: PaymentMethod[];
@@ -23,7 +23,7 @@ interface UseDashboardDataResult {
     loadData: () => Promise<void>;
 }
 
-export function useDashboardData(): UseDashboardDataResult {
+export function useSaleData(): UseSaleDataResult {
     const [items, setItems] = useState<Item[]>([]);
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);

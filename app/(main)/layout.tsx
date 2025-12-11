@@ -1,20 +1,20 @@
 "use client";
 
-import {useEffect} from "react";
-import {useRouter} from "next/navigation";
-import {Sidebar, MobileSidebar} from "@/components/sidebar/Sidebar";
-import {useAuth} from "@/contexts/auth-context";
-import {useBusiness} from "@/contexts/business-context";
-import {BusinessOnboarding} from "@/components/business-onboarding";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Sidebar, MobileSidebar } from "@/components/sidebar/Sidebar";
+import { useAuth } from "@/contexts/auth-context";
+import { useBusiness } from "@/contexts/business-context";
+import { BusinessOnboarding } from "@/components/business-onboarding";
 import ThemeToggle from "@/components/landing/theme-toggle";
 
-export default function DashboardLayout({
-                                            children,
-                                        }: {
+export default function MainLayout({
+    children,
+}: {
     children: React.ReactNode;
 }) {
-    const {isAuthenticated, isLoading: isAuthLoading, user} = useAuth();
-    const {businesses, isLoading: isBusinessLoading} = useBusiness();
+    const { isAuthenticated, isLoading: isAuthLoading, user } = useAuth();
+    const { businesses, isLoading: isBusinessLoading } = useBusiness();
     const router = useRouter();
 
     useEffect(() => {
@@ -52,20 +52,20 @@ export default function DashboardLayout({
     }
 
     if (businesses.length === 0) {
-        return <BusinessOnboarding/>;
+        return <BusinessOnboarding />;
     }
 
     return (
         <div className="flex h-screen overflow-hidden">
             {/* Desktop Sidebar */}
-            <Sidebar/>
+            <Sidebar />
 
             {/* Main Content */}
             <div className="flex flex-1 flex-col overflow-hidden">
                 {/* Mobile Header */}
                 <header className="flex h-14 items-center justify-between border-b px-3 lg:hidden">
                     <div className="flex items-center space-x-2">
-                        <MobileSidebar/>
+                        <MobileSidebar />
                         <span className="text-lg font-bold">BillForge</span>
                     </div>
                     <ThemeToggle />

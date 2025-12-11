@@ -66,7 +66,7 @@ function VerifyEmailPageContent() {
             setVerificationStatus("success");
             await refreshUser();
             setTimeout(() => {
-                router.push("/dashboard");
+                router.push("/sale");
             }, 2000);
         } catch (err) {
             setVerificationStatus("error");
@@ -116,8 +116,8 @@ function VerifyEmailPageContent() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="flex justify-center">
-                        <Button onClick={() => router.push("/dashboard")}>
-                            Go to Dashboard
+                        <Button onClick={() => router.push("/sale")}>
+                            Go to Sale
                         </Button>
                     </CardContent>
                 </Card>
@@ -135,7 +135,7 @@ function VerifyEmailPageContent() {
                         </div>
                         <CardTitle className="text-2xl font-bold">Email Verified!</CardTitle>
                         <CardDescription>
-                            Your email has been successfully verified. Redirecting to dashboard...
+                            Your email has been successfully verified. Redirecting to sale...
                         </CardDescription>
                     </CardHeader>
                 </Card>
