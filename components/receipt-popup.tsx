@@ -9,12 +9,14 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Download, Mail, MessageCircle, Loader2 } from "lucide-react";
+import { Download, Mail, MessageCircle, Loader2, Printer } from "lucide-react";
 import { useReceiptGenerator } from "@/lib/receipt/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
 import { useBusiness } from "@/contexts/business-context";
 import type { ReceiptData } from "@/lib/receipt/types";
 import { generateReceiptHTML } from "@/lib/receipt/templates";
+import { printThermalReceipt } from "@/lib/receipt/printClient";
+import { toast } from "sonner";
 
 interface ReceiptPopupProps {
     open: boolean;
@@ -34,6 +36,7 @@ export function ReceiptPopup({
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
+    const [isPrinting, setIsPrinting] = useState(false);
     const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
     const { selectedBusiness } = useBusiness();
     const { template: receiptTemplate } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
@@ -114,6 +117,23 @@ export function ReceiptPopup({
         }
     };
 
+    const handleThermalPrint = async () => {
+        try {
+            setIsPrinting(true);
+            const result = await printThermalReceipt(receiptData);
+            if (result.success) {
+                toast.success('Receipt printed successfully');
+            } else {
+                toast.error(result.message || 'Failed to print receipt');
+            }
+        } catch (err) {
+            console.error("Error printing receipt:", err);
+            toast.error('Failed to print receipt');
+        } finally {
+            setIsPrinting(false);
+        }
+    };
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
@@ -169,6 +189,20 @@ export function ReceiptPopup({
                                 Download Image
                             </Button>
                         </div>
+
+                        <Button
+                            onClick={handleThermalPrint}
+                            disabled={isPrinting}
+                            className="w-full"
+                            variant="secondary"
+                        >
+                            {isPrinting ? (
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            ) : (
+                                <Printer className="mr-2 h-4 w-4" />
+                            )}
+                            Print to Thermal Printer
+                        </Button>
 
                         {(customerEmail || customerPhone) && (
                             <div className="flex gap-2">
