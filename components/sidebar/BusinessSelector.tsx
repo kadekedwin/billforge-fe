@@ -25,11 +25,11 @@ interface BusinessSelectorProps {
 }
 
 export function BusinessSelector({
-     onNavigate,
-     onAddBusiness,
-     onEditBusiness,
-     onDeleteBusiness,
- }: BusinessSelectorProps) {
+    onNavigate,
+    onAddBusiness,
+    onEditBusiness,
+    onDeleteBusiness,
+}: BusinessSelectorProps) {
     const { selectedBusiness, businesses, setSelectedBusiness } = useBusiness();
 
     const handleAddBusiness = () => {
@@ -40,7 +40,7 @@ export function BusinessSelector({
         onAddBusiness();
     };
 
-    if (!selectedBusiness || businesses.length === 0) {
+    if (!selectedBusiness) {
         return null;
     }
 

@@ -14,7 +14,7 @@ export default function MainLayout({
     children: React.ReactNode;
 }) {
     const { isAuthenticated, isLoading: isAuthLoading, user } = useAuth();
-    const { businesses, isLoading: isBusinessLoading } = useBusiness();
+    const { businesses, isLoading: isBusinessLoading, selectedBusiness, setSelectedBusiness } = useBusiness();
     const router = useRouter();
 
     useEffect(() => {
@@ -24,6 +24,12 @@ export default function MainLayout({
             router.push("/verify-email");
         }
     }, [isAuthenticated, isAuthLoading, user, router]);
+
+    useEffect(() => {
+        if (!isBusinessLoading && businesses.length > 0 && !selectedBusiness) {
+            setSelectedBusiness(businesses[0]);
+        }
+    }, [isBusinessLoading, businesses, selectedBusiness, setSelectedBusiness]);
 
     if (isAuthLoading) {
         return (
@@ -40,7 +46,7 @@ export default function MainLayout({
         return null;
     }
 
-    if (isBusinessLoading && businesses.length === 0) {
+    if (isBusinessLoading) {
         return (
             <div className="flex h-screen items-center justify-center">
                 <div className="flex flex-col items-center">
@@ -57,12 +63,9 @@ export default function MainLayout({
 
     return (
         <div className="flex h-screen overflow-hidden">
-            {/* Desktop Sidebar */}
             <Sidebar />
 
-            {/* Main Content */}
             <div className="flex flex-1 flex-col overflow-hidden">
-                {/* Mobile Header */}
                 <header className="flex h-14 items-center justify-between border-b px-3 lg:hidden">
                     <div className="flex items-center space-x-2">
                         <MobileSidebar />
@@ -71,7 +74,6 @@ export default function MainLayout({
                     <ThemeToggle />
                 </header>
 
-                {/* Page Content */}
                 <main className="flex-1 overflow-y-auto bg-background p-3 sm:p-6">
                     {children}
                 </main>
