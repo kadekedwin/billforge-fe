@@ -1,8 +1,8 @@
-import {apiClient} from "../client";
-import type {ApiResponse, MessageResponse} from "../types";
-import type {RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest} from "./types";
+import { apiClient } from "../client";
+import type { ApiResponse, MessageResponse } from "../types";
+import type { RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest, ForgotPasswordRequest, ForgotPasswordResetRequest } from "./types";
 
-export type {RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest} from "./types";
+export type { RegisterRequest, LoginRequest, AuthResponse, ResetPasswordRequest, ForgotPasswordRequest, ForgotPasswordResetRequest } from "./types";
 
 export async function register(data: RegisterRequest): Promise<ApiResponse<AuthResponse>> {
     const response = await apiClient.post<AuthResponse>("/api/register", data);
@@ -32,6 +32,23 @@ export async function logout(): Promise<ApiResponse<MessageResponse>> {
 
 export async function resetPassword(data: ResetPasswordRequest): Promise<ApiResponse<MessageResponse>> {
     return apiClient.post<MessageResponse>("/api/reset-password", data);
+}
+
+export async function forgotPassword(data: ForgotPasswordRequest): Promise<ApiResponse<MessageResponse>> {
+    return apiClient.post<MessageResponse>("/api/forgot-password", data);
+}
+
+export async function forgotPasswordReset(data: ForgotPasswordResetRequest): Promise<ApiResponse<MessageResponse>> {
+    let url = "/api/reset-password";
+    const params = new URLSearchParams();
+    if (data.expires) params.append('expires', data.expires);
+    if (data.signature) params.append('signature', data.signature);
+    if (params.toString()) {
+        url += `?${params.toString()}`;
+    }
+
+    const { expires, signature, ...bodyData } = data;
+    return apiClient.post<MessageResponse>(url, bodyData);
 }
 
 export function isAuthenticated(): boolean {

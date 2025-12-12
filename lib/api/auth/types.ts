@@ -23,3 +23,16 @@ export interface ResetPasswordRequest {
   new_password: string;
   new_password_confirmation: string;
 }
+
+export interface ForgotPasswordRequest {
+  email: string;
+}
+
+export interface ForgotPasswordResetRequest {
+  token: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+  expires?: string;
+  signature?: string;
+}
