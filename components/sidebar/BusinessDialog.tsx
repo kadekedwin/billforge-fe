@@ -13,8 +13,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
+import { CURRENCIES, LANGUAGES, REGIONS } from "@/lib/data/locale-data";
 import { createBusiness, updateBusiness } from "@/lib/api/businesses";
 import { uploadImage, deleteImage, getImageUrl } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
@@ -88,8 +90,23 @@ export function BusinessDialog({
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const processedValue = (name === "address" || name === "phone" || name === "currency" || name === "language" || name === "region") && value === "" ? null : value;
+        const processedValue = (name === "address" || name === "phone") && value === "" ? null : value;
         setFormData((prev) => ({ ...prev, [name]: processedValue }));
+        if (formErrors[name]) {
+            setFormErrors((prev) => {
+                const newErrors = { ...prev };
+                delete newErrors[name];
+                return newErrors;
+            });
+        }
+    };
+
+    const handleSelectChange = (name: string, value: string) => {
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value || null,
+        }));
+
         if (formErrors[name]) {
             setFormErrors((prev) => {
                 const newErrors = { ...prev };
@@ -320,54 +337,69 @@ export function BusinessDialog({
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="currency">Currency (Optional)</Label>
-                            <Input
-                                id="currency"
-                                name="currency"
-                                placeholder="USD"
-                                value={formData.currency || ""}
-                                onChange={handleInputChange}
+                            <Select
+                                value={formData.currency || ''}
+                                onValueChange={(value) => handleSelectChange('currency', value)}
                                 disabled={isSubmitting}
-                                maxLength={3}
-                                className={formErrors.currency ? "border-destructive" : ""}
-                            />
+                            >
+                                <SelectTrigger className={formErrors.currency ? 'border-destructive' : ''}>
+                                    <SelectValue placeholder="Select currency" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {CURRENCIES.map((currency) => (
+                                        <SelectItem key={currency.value} value={currency.value}>
+                                            {currency.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                             {formErrors.currency && (
                                 <p className="text-sm text-destructive">{formErrors.currency}</p>
                             )}
-                            <p className="text-xs text-muted-foreground">ISO currency code (e.g., USD, EUR, GBP)</p>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="language">Language (Optional)</Label>
-                            <Input
-                                id="language"
-                                name="language"
-                                placeholder="en-US"
-                                value={formData.language || ""}
-                                onChange={handleInputChange}
+                            <Select
+                                value={formData.language || ''}
+                                onValueChange={(value) => handleSelectChange('language', value)}
                                 disabled={isSubmitting}
-                                maxLength={5}
-                                className={formErrors.language ? "border-destructive" : ""}
-                            />
+                            >
+                                <SelectTrigger className={formErrors.language ? 'border-destructive' : ''}>
+                                    <SelectValue placeholder="Select language" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {LANGUAGES.map((language) => (
+                                        <SelectItem key={language.value} value={language.value}>
+                                            {language.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                             {formErrors.language && (
                                 <p className="text-sm text-destructive">{formErrors.language}</p>
                             )}
-                            <p className="text-xs text-muted-foreground">Language code (e.g., en-US, fr-FR)</p>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="region">Region (Optional)</Label>
-                            <Input
-                                id="region"
-                                name="region"
-                                placeholder="US"
-                                value={formData.region || ""}
-                                onChange={handleInputChange}
+                            <Select
+                                value={formData.region || ''}
+                                onValueChange={(value) => handleSelectChange('region', value)}
                                 disabled={isSubmitting}
-                                maxLength={5}
-                                className={formErrors.region ? "border-destructive" : ""}
-                            />
+                            >
+                                <SelectTrigger className={formErrors.region ? 'border-destructive' : ''}>
+                                    <SelectValue placeholder="Select region" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {REGIONS.map((region) => (
+                                        <SelectItem key={region.value} value={region.value}>
+                                            {region.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                             {formErrors.region && (
                                 <p className="text-sm text-destructive">{formErrors.region}</p>
                             )}
-                            <p className="text-xs text-muted-foreground">Region/country code (e.g., US, FR, GB)</p>
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="business-logo">Business Logo (Optional)</Label>
