@@ -17,7 +17,6 @@ const Navbar = () => {
                 <Link href={"/"}>
                     <LogoText />
                 </Link>
-                ``
                 {/* Desktop Menu */}
                 <NavMenu className="hidden md:block" />
 
