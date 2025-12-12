@@ -79,7 +79,7 @@ export default function ForgotPasswordPage() {
                             Check your email
                         </CardTitle>
                         <CardDescription className="text-center">
-                            We've sent password reset instructions to <strong>{formData.email}</strong>
+                            We&apos;ve sent password reset instructions to <strong>{formData.email}</strong>
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -87,7 +87,7 @@ export default function ForgotPasswordPage() {
                             If an account exists with this email, you will receive a password reset link shortly.
                         </p>
                         <p className="text-sm text-muted-foreground text-center">
-                            Didn't receive the email? Check your spam folder or try again.
+                            Didn&apos;t receive the email? Check your spam folder or try again.
                         </p>
                     </CardContent>
                     <CardFooter className="flex flex-col space-y-4">
@@ -117,7 +117,7 @@ export default function ForgotPasswordPage() {
                         Forgot your password?
                     </CardTitle>
                     <CardDescription>
-                        Enter your email address and we'll send you a link to reset your password
+                        Enter your email address and we&apos;ll send you a link to reset your password
                     </CardDescription>
                 </CardHeader>
                 <form onSubmit={handleSubmit}>

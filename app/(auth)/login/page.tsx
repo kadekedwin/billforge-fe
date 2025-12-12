@@ -18,7 +18,6 @@ import {
 import { login } from "@/lib/api/auth";
 import type { LoginRequest } from "@/lib/api";
 import { ApiError } from "@/lib/api/errors";
-import Image from "next/image";
 
 export default function LoginPage() {
     const router = useRouter();

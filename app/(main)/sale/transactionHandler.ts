@@ -44,14 +44,14 @@ export async function completeTransaction({
         const summary = calculateCartSummary(cart, items, taxes, discounts);
 
         let transactionId: string | null = null;
-        let receiptData: any = null;
+        let receiptData: { transaction_prefix: string | null; transaction_next_number: number } | null = null;
 
         try {
             const receiptResponse = await getReceiptData(businessUuid);
             if (receiptResponse.success && receiptResponse.data) {
                 receiptData = receiptResponse.data;
-                const prefix = receiptData.transaction_prefix || '';
-                const number = receiptData.transaction_next_number || 1;
+                const prefix = receiptData?.transaction_prefix || '';
+                const number = receiptData?.transaction_next_number || 1;
                 transactionId = `${prefix}${number}`;
             }
         } catch (err) {
@@ -127,7 +127,7 @@ export async function completeTransaction({
         }
 
         // Update receipt data transaction number after successful transaction
-        if (receiptData) {
+        if (receiptData && receiptData.transaction_next_number !== undefined) {
             try {
                 await updateReceiptData(businessUuid, {
                     transaction_next_number: receiptData.transaction_next_number + 1

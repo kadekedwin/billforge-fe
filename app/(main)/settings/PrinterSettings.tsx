@@ -91,7 +91,7 @@ export default function PrinterSettings() {
         try {
             localStorage.setItem('printerConfig', JSON.stringify(config));
             toast.success('Printer configuration saved');
-        } catch (error) {
+        } catch {
             toast.error('Failed to save configuration');
         } finally {
             setIsSaving(false);
@@ -148,7 +148,7 @@ export default function PrinterSettings() {
                 toast.error(data.message || 'Test print failed');
                 setPrinterStatus('disconnected');
             }
-        } catch (error) {
+        } catch {
             toast.error('Failed to send test print');
             setPrinterStatus('disconnected');
         } finally {
@@ -173,7 +173,7 @@ export default function PrinterSettings() {
                 setPrinterStatus('disconnected');
                 toast.error('Printer is not connected');
             }
-        } catch (error) {
+        } catch {
             setPrinterStatus('unknown');
             toast.error('Failed to check printer status');
         } finally {
@@ -400,7 +400,7 @@ export default function PrinterSettings() {
                             <li>Use PC437_USA for standard English characters</li>
                             <li>Use PC850_MULTILINGUAL for European languages</li>
                             <li>Use WPC1252 for Western European characters</li>
-                            <li>Enable "Remove Special Characters" if seeing garbled text</li>
+                            <li>Enable &quot;Remove Special Characters&quot; if seeing garbled text</li>
                         </ul>
                     </div>
                 </CardContent>

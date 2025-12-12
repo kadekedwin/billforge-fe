@@ -11,6 +11,7 @@ interface PrinterConfig {
 }
 
 const getPrinterType = (type: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const types: Record<string, any> = {
         'EPSON': PrinterTypes.EPSON,
         'STAR': PrinterTypes.STAR,
@@ -33,6 +34,7 @@ export async function printThermalReceipt(data: ReceiptData, config?: PrinterCon
     const printer = new ThermalPrinter({
         type: getPrinterType(printerConfig.printerType),
         interface: printerConfig.printerPath,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         characterSet: printerConfig.characterSet as any,
         removeSpecialCharacters: printerConfig.removeSpecialCharacters,
         lineCharacter: printerConfig.lineCharacter,

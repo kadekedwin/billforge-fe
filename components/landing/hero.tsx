@@ -1,6 +1,5 @@
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
-import {ArrowUpRight, CirclePlay} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,7 +23,7 @@ const Hero = () => {
                             className="w-full sm:w-auto rounded-full text-base"
                         >
                             <Link href={"/login"} className="flex items-center space-x-3">Start Free Trial <ArrowUpRight
-                                className="h-5! w-5!"/></Link>
+                                className="h-5! w-5!" /></Link>
                         </Button>
                     </div>
                 </div>

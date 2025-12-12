@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -34,7 +33,6 @@ const imageUrlCache = new Map<string, string>();
 export function UserProfile({ onNavigate }: UserProfileProps) {
     const { user, removeAuth } = useAuth();
     const [userImageUrl, setUserImageUrl] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
     const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
     useEffect(() => {
@@ -76,11 +74,9 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
             if (response.success) {
                 // Successfully logged out
             } else {
-                setError("Logout error");
                 console.error("Logout error:", response.message);
             }
         } catch (err) {
-            setError("An unexpected error occurred. Please try again.");
             console.error("Logout error:", err);
         } finally {
             removeAuth();

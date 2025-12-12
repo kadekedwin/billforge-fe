@@ -46,7 +46,7 @@ function ConfirmAccountDeletionContent() {
             } else {
                 toast.error(response.message || 'Failed to delete account');
             }
-        } catch (error) {
+        } catch {
             toast.error('An error occurred. Please try again.');
         } finally {
             setIsSubmitting(false);

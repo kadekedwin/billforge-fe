@@ -78,7 +78,7 @@ export default function SalePage() {
                         } else {
                             categoryMap.set(item.uuid, []);
                         }
-                    } catch (error) {
+                    } catch {
                         categoryMap.set(item.uuid, []);
                     }
                 })
