@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -10,7 +10,7 @@ import { Loader2, AlertTriangle } from 'lucide-react';
 import { confirmAccountDeletion } from '@/lib/api/auth';
 import { toast } from 'sonner';
 
-export default function ConfirmAccountDeletionPage() {
+function ConfirmAccountDeletionContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -121,5 +121,23 @@ export default function ConfirmAccountDeletionPage() {
                 </CardContent>
             </Card>
         </div>
+    );
+}
+
+export default function ConfirmAccountDeletionPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex min-h-screen items-center justify-center p-4">
+                <Card className="w-full max-w-md">
+                    <CardContent className="pt-6">
+                        <div className="flex items-center justify-center">
+                            <Loader2 className="h-8 w-8 animate-spin" />
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        }>
+            <ConfirmAccountDeletionContent />
+        </Suspense>
     );
 }
