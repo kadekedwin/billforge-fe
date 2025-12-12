@@ -1,0 +1,915 @@
+{
+    "common": {
+        "loading": "Bezig met laden...",
+        "error": "Fout",
+        "success": "Succes",
+        "cancel": "Annuleren",
+        "save": "Opslaan",
+        "delete": "Verwijderen",
+        "edit": "Bewerken",
+        "create": "Maken",
+        "update": "Bijwerken",
+        "search": "Zoeken",
+        "filter": "Filter",
+        "close": "Sluiten",
+        "back": "Terug",
+        "next": "Volgende",
+        "previous": "Vorige",
+        "submit": "Indienen",
+        "confirm": "Bevestigen",
+        "yes": "Ja",
+        "no": "Nee"
+    },
+    "landing": {
+        "hero": {
+            "title": "Modern POS- en Factureringssysteem Gemakkelijk Gemaakt",
+            "description": "Transformeer je bedrijf met professionele bonnetjes, directe betaling en krachtige analytics. Ontworpen voor cafés, restaurants, winkels en kleine bedrijven overal ter wereld.",
+            "cta": "Gratis Proefperiode Starten"
+        },
+        "features": {
+            "title": "Alles Wat Je Nodig Hebt om Je Bedrijf te Beheren",
+            "description": "Krachtige functies ontworpen om je verkoop te stroomlijnen, klanten te beheren en je bedrijf efficiënt te laten groeien.",
+            "receipt": {
+                "title": "Professionele Bonnetjes",
+                "description": "Maak prachtige, aanpasbare bonnetjes met je logo, QR-codes en aangepaste berichten. Kies uit verschillende professionele sjablonen om je merk te versterken."
+            },
+            "checkout": {
+                "title": "Snelle Checkout-proces",
+                "description": "Versnellen je transacties met een intuïtieve POS-interface. Verwerk verkopen snel, accepteer meerdere betaalmethoden en bedien klanten efficiënter."
+            },
+            "customer": {
+                "title": "Klantenbeheer",
+                "description": "Bouw duurzame relaties met klantprofielen en aankoopgeschiedenis. Volg voorkeuren, uitgavenstijlen en bied aangepaste service aan vaste klanten."
+            },
+            "discount": {
+                "title": "Slimme Kortingen en Belastingen",
+                "description": "Beheer eenvoudig kortingen per percentage of vast bedrag en meerdere belastingtarieven. Pas promoties toe met enkele klikken op specifieke artikelen of hele transacties."
+            },
+            "analytics": {
+                "title": "Real-time Analytics",
+                "description": "Krijg onmiddellijke inzichten in je verkoopperformance. Volg dagelijkse inkomsten, bestsellers en transactietrends voor datagestuurde bedrijfsbeslissingen."
+            },
+            "cloud": {
+                "title": "Toegang van Overal",
+                "description": "Het cloudgebaseerde systeem werkt op alle apparaten - desktop, tablet of smartphone. Beheer je bedrijf overal met beveiligde real-time datasynchronisatie."
+            }
+        },
+        "nav": {
+            "features": "Functies",
+            "pricing": "Prijzen",
+            "faq": "Veelgestelde Vragen",
+            "login": "Inloggen",
+            "signup": "Registreren",
+            "signIn": "Inloggen",
+            "getStarted": "Aan de Slag",
+            "home": "Home",
+            "testimonials": "Getuigenissen",
+            "drawerTitle": "Navigatiemenu"
+        },
+        "faq": {
+            "title": "Veelgestelde Vragen",
+            "description": "Alles wat je moet weten over BillForge en hoe het je bedrijf kan helpen.",
+            "items": {
+                "item1": {
+                    "question": "Is BillForge echt gratis?",
+                    "answer": "Ja! Ons gratis plan bevat 1 bedrijf, 50 artikelen, 50 klanten, 50 transacties per maand en alle basisfuncties. Perfect voor kleine bedrijven die net beginnen. Upgrade naar Pro of Enterprise voor hogere limieten en geavanceerde functies."
+                },
+                "item2": {
+                    "question": "Wat is het verschil tussen de gratis, Pro en Enterprise plannen?",
+                    "answer": "Het gratis plan heeft basislimieten (1 bedrijf, 50 artikelen, 50 transacties/maand). Pro biedt 10 keer deze limieten (10 bedrijven, 500 artikelen, 500 transacties/maand). Enterprise biedt onbeperkte artikelen, klanten en transacties met geavanceerde functies zoals multi-user toegang en API-toegang."
+                },
+                "item3": {
+                    "question": "Kan ik mijn bonnetjes aanpassen?",
+                    "answer": "Absoluut! BillForge biedt meerdere bonnetjessjablonen met volledige aanpassingsopties. Voeg je bedrijfslogo, aangepaste voettekstberichten en QR-codes toe en kies uit verschillende professionele ontwerpen. Bonnetjes kunnen worden afgedrukt of digitaal naar klanten worden verzonden."
+                },
+                "item4": {
+                    "question": "Welke betaalmethoden kan ik accepteren?",
+                    "answer": "BillForge ondersteunt alle grote betaalmethoden, inclusief contant geld, creditcard/debetkaart, mobiele betalingen en digitale portemonnees. Het gratis plan staat maximaal 5 betaalmethoden toe, terwijl Pro en Enterprise onbeperkte betalingsopties bieden."
+                },
+                "item5": {
+                    "question": "Hoe beheer ik kortingen en belastingen?",
+                    "answer": "Ons platform bevat geïntegreerd kortings- en belastingbeheer. Maak kortingen per percentage of vast bedrag en pas deze toe op specifieke artikelen of hele transacties. Stel meerdere belastingtarieven in voor verschillende productcategorieën. Het gratis plan bevat 30 korting- en belastingconfiguraties."
+                },
+                "item6": {
+                    "question": "Zijn mijn bedrijfsgegevens veilig?",
+                    "answer": "Ja! Alle gegevens worden veilig in de cloud opgeslagen met versleuteling. We voeren regelmatige back-ups uit en gebruiken beveiligingsnormen van de industrie. Je transactiegeschiedenis, klantgegevens en bedrijfsgegevens zijn beschermd en alleen jij hebt toegang."
+                },
+                "item7": {
+                    "question": "Kan ik de aankoopgeschiedenis van klanten volgen?",
+                    "answer": "Ja! BillForge bevat klantenbeheerfuncties. Bewaar klantgegevens, bekijk aankoopgeschiedenis en bouw betere relaties met vaste klanten. Volg wat ze kopen, wanneer ze bezoeken en hun totale uitgaven om aangepaste service te bieden."
+                },
+                "item8": {
+                    "question": "Heb ik speciale hardware nodig?",
+                    "answer": "Geen speciale hardware nodig! BillForge werkt op elk apparaat met webbrowser - desktop, tablet of smartphone. Als je bonnetjes wilt afdrukken, kan je elke standaardprinter gebruiken. Het systeem is cloudgebaseerd, dus je kan het overal openen."
+                },
+                "item9": {
+                    "question": "Wat gebeurt er als ik mijn maandelijkse transactielimiet overschrijd?",
+                    "answer": "Met het gratis plan ben je beperkt tot 50 transacties per maand. Als je meer nodig hebt, kan je upgraden naar Pro (500 transacties/maand) of Enterprise (onbeperkt). Je gegevens worden nooit verwijderd, en je kan altijd eerdere transacties bekijken ongeacht je huidige plan."
+                },
+                "item10": {
+                    "question": "Hoe krijg ik ondersteuning als ik hulp nodig heb?",
+                    "answer": "We bieden emailondersteuning aan alle gebruikers. Pro en Enterprise-klanten krijgen prioriteitsondersteuning met snellere responstijden. Enterprise-klanten ontvangen ook 24/7-ondersteuning en een toegewezen accountmanager. Raadpleeg onze documentatie en tutorials voor snelle zelfhulpgidsen."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Eenvoudige en Transparante Prijzen",
+            "description": "Kies het perfecte plan voor je bedrijf. Begin gratis en upgrade naarmate je bedrijf groeit.",
+            "monthly": "/maand",
+            "mostPopular": "Meest Populair",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "description": "Perfect voor kleine bedrijven die net met digitale facturering beginnen.",
+                    "button": "Gratis Starten",
+                    "features": {
+                        "business": "1 Bedrijf",
+                        "items": "50 Artikelen",
+                        "customers": "50 Klanten",
+                        "transactions": "50 Transacties/maand",
+                        "paymentMethods": "5 Betaalmethoden",
+                        "discountsTaxes": "30 Kortingen en Belastingen",
+                        "templates": "Basis Bonnetjessjablonen",
+                        "storage": "Cloud Storage"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideaal voor groeiende bedrijven met meerdere locaties en hoger volume.",
+                    "button": "Pro Proef Starten",
+                    "features": {
+                        "business": "10 Bedrijven",
+                        "items": "500 Artikelen",
+                        "customers": "500 Klanten",
+                        "transactions": "500 Transacties/maand",
+                        "paymentMethods": "50 Betaalmethoden",
+                        "discountsTaxes": "300 Kortingen en Belastingen",
+                        "templates": "Premium Bonnetjessjablonen",
+                        "support": "Prioriteitsondersteuning",
+                        "analytics": "Geavanceerde Analytics",
+                        "branding": "Aangepaste Branding"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "Voor grote bedrijven die geavanceerde functies en toegewezen ondersteuning nodig hebben.",
+                    "button": "Verkoop Contacteren",
+                    "features": {
+                        "business": "Onbeperkte Bedrijven",
+                        "items": "Onbeperkte Artikelen",
+                        "customers": "Onbeperkte Klanten",
+                        "transactions": "Onbeperkte Transacties",
+                        "paymentMethods": "Onbeperkte Betaalmethoden",
+                        "discountsTaxes": "Onbeperkte Kortingen en Belastingen",
+                        "api": "API Toegang",
+                        "support": "24/7 Prioriteitsondersteuning"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "Getuigenissen",
+            "items": {
+                "item1": {
+                    "name": "Jan de Vries",
+                    "designation": "Caféeigenaar",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge heeft onze manier van transactiebeheer in ons café revolutionair veranderd. De bonnetjesaanpassing is geweldig en onze klanten houden ervan om digitale bonnetjes te ontvangen. We hebben papierkost met 80% gereduceerd en betalingen zijn nog nooit zo snel geweest!"
+                },
+                "item2": {
+                    "name": "Maria Jansen",
+                    "designation": "Winkelmanager",
+                    "company": "Jansen Warenhuis",
+                    "text": "Sinds ik BillForge gebruik ben winkelmanagement veel gemakkelijker geworden. Het interface is gemakkelijk te begrijpen en verkoopsrapporten zijn erg handig. Ik raad het sterk aan aan winkeliers!"
+                },
+                "item3": {
+                    "name": "Peter van den Berg",
+                    "designation": "Restauranteigenaar",
+                    "company": "Van den Berg Bistro",
+                    "text": "Het beheren van meerdere betaalmethoden was ooit een nachtmerrie. BillForge maakte het naadloos! De transactiegeschiedenis en klantenbeheerfuncties hebben onze relatie met vaste klanten verbeterd. Dit is ons beste POS-besluit tot nu toe!"
+                },
+                "item4": {
+                    "name": "Sophie Vermeulen",
+                    "designation": "Boutique-eigenaar",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "Het korting- en belastingbeheer van BillForge is precies wat we nodig hadden voor onze seizoenuitverkopen. Mooie merkbonnetjes maken onze klantervaring beter. Ons betalingsproces is nu professioneel en efficiënt!"
+                },
+                "item5": {
+                    "name": "Tom Bakker",
+                    "designation": "Bakkerij-eigenaar",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Drie maanden geleden zijn we overgegaan naar BillForge en we kijken niet meer om. Het artikelbeheersysteem houdt onze inventaris georganiseerd en bonnetjessjablonen zien er professioneel uit. Klantbetalingen zijn nu een genoegen, zelfs tijdens drukke ochtenduren!"
+                },
+                "item6": {
+                    "name": "Lisa de Boer",
+                    "designation": "Retail Manager",
+                    "company": "TechGadgets Plus",
+                    "text": "De transactietracering van BillForge gaf ons geweldige inzichten in onze verkooppatronen. De klantendatabase helpt ons aangepaste service te bieden, en QR-code bonnetjes zijn populair bij techvaardig klanten. Het is het volledige pakket!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "Contact",
+            "legal": {
+                "terms": "Voorwaarden",
+                "privacy": "Privacy"
+            },
+            "description": "Stroomlijn je facturaatieproces met intelligente factuurbeheer",
+            "copyright": "© 2025 BillForge. Alle rechten voorbehouden.",
+            "madeWith": "Gemaakt met ❤️ op Bali",
+            "links": {
+                "terms": "Servicevoorwaarden",
+                "privacy": "Privacybeleid"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Welkom Terug",
+            "description": "Log in op je BillForge-account",
+            "emailLabel": "E-mailadres",
+            "emailPlaceholder": "jouw@email.com",
+            "passwordLabel": "Wachtwoord",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Wachtwoord Vergeten?",
+            "submit": "Inloggen",
+            "submitting": "Bezig met Inloggen...",
+            "noAccount": "Heb je geen account?",
+            "signUp": "Maak er een",
+            "errorGeneric": "E-mail of wachtwoord is onjuist. Probeer opnieuw."
+        },
+        "register": {
+            "title": "Account Aanmaken",
+            "description": "Sluit je aan bij BillForge om je bedrijf te beheren",
+            "nameLabel": "Volledige Naam",
+            "namePlaceholder": "Jan Jansen",
+            "emailLabel": "E-mailadres",
+            "emailPlaceholder": "jouw@email.com",
+            "passwordLabel": "Wachtwoord",
+            "passwordPlaceholder": "Minimaal 8 tekens",
+            "confirmPasswordLabel": "Wachtwoord Bevestigen",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Door een account aan te maken, ga je akkoord met onze",
+            "terms": "Servicevoorwaarden",
+            "and": "en",
+            "privacy": "Privacybeleid",
+            "submit": "Account Aanmaken",
+            "submitting": "Account Wordt Aangemaakt...",
+            "hasAccount": "Heb je al een account?",
+            "signIn": "Log hier in",
+            "errorMatch": "Wachtwoorden stemmen niet overeen",
+            "errorGeneric": "Registratie is mislukt. Probeer opnieuw."
+        },
+        "forgotPassword": {
+            "title": "Wachtwoord Opnieuw Instellen",
+            "description": "Voer je e-mailadres in en we sturen je een link om je wachtwoord opnieuw in te stellen.",
+            "emailLabel": "E-mailadres",
+            "emailPlaceholder": "jouw@email.com",
+            "submit": "Resetlink Verzenden",
+            "submitting": "Bezig met Verzenden...",
+            "backToLogin": "Terug naar Inloggen",
+            "checkEmailTitle": "Controleer Je E-mail",
+            "checkEmailDescription": "We hebben instrukties voor het opnieuw instellen van het wachtwoord verzonden naar",
+            "checkEmailNote1": "Controleer je inbox voor de resetlink.",
+            "checkEmailNote2": "Als je de e-mail niet ziet, controleer je spammap.",
+            "tryAnotherEmail": "Probeer een ander e-mailadres",
+            "errorGeneric": "Er is een fout opgetreden. Probeer opnieuw."
+        },
+        "resetPassword": {
+            "title": "Nieuw Wachtwoord Maken",
+            "description": "Voer hieronder je nieuwe wachtwoord in.",
+            "emailLabel": "E-mailadres",
+            "emailPlaceholder": "jouw@email.com",
+            "newPasswordLabel": "Nieuw Wachtwoord",
+            "newPasswordPlaceholder": "Minimaal 8 tekens",
+            "passwordHint": "Moet minimaal 8 tekens bevatten",
+            "confirmPasswordLabel": "Wachtwoord Bevestigen",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Wachtwoord Opnieuw Instellen",
+            "submitting": "Wachtwoord Wordt Opnieuw Ingesteld...",
+            "backToLogin": "Terug naar Inloggen",
+            "successTitle": "Wachtwoord Opnieuw Ingesteld",
+            "successDescription": "Je wachtwoord is succesvol opnieuw ingesteld.",
+            "redirecting": "Bezig met Omleiden naar Inloggen...",
+            "goToLogin": "Ga naar Inloggen",
+            "errorGeneric": "Er is een fout opgetreden. Probeer opnieuw.",
+            "errorMatch": "Wachtwoorden stemmen niet overeen",
+            "errorLength": "Wachtwoord moet minimaal 8 tekens bevatten"
+        },
+        "verifyEmail": {
+            "title": "Controleer Je E-mail",
+            "description": "We hebben een bevestigingse-mail verzonden naar",
+            "instruction": "Controleer je inbox en klik op de bevestigingslink om je account te activeren.",
+            "resend": "Bevestigingse-mail Opnieuw Verzenden",
+            "resending": "Bezig met Verzenden...",
+            "changeEmail": "Gebruik een ander e-mailadres",
+            "verifyingTitle": "E-mail Wordt Geverifieerd...",
+            "verifyingDescription": "We verifiëren je e-mailadres. Een moment geduld.",
+            "successTitle": "E-mail Geverifieerd",
+            "successDescription": "Je e-mail is succesvol geverifieerd!",
+            "goToSale": "Ga naar Dashboard",
+            "alreadyVerifiedTitle": "Al Geverifieerd",
+            "alreadyVerifiedDescription": "Je e-mail is al geverifieerd. Je kan doorgaan.",
+            "failedTitle": "Verificatie Mislukt",
+            "failedDescription": "De verificatielink is verlopen of ongeldig.",
+            "resendSuccess": "Bevestigingse-mail verzonden! Controleer je inbox.",
+            "changeEmailTitle": "E-mailadres Wijzigen?",
+            "changeEmailDescription": "Je wordt afgelogd en doorgestuurd naar de registratiepagina om je in te schrijven met een nieuw e-mailadres.",
+            "cancel": "Annuleren",
+            "continue": "Doorgaan",
+            "errorGeneric": "Er is een fout opgetreden. Probeer opnieuw."
+        },
+        "confirmDeletion": {
+            "title": "Account Verwijderen",
+            "description": "Waarschuwing: Dit zal permanent verwijderd worden:",
+            "warningTitle": "Het verwijderen van je account zal resulteren in:",
+            "warningItem1": "Permanent verwijderen van alle je bedrijven",
+            "warningItem2": "Verwijdering van alle transactie- en verkooprecords",
+            "warningItem3": "Verwijdering van alle artikelen en inventaris",
+            "warningItem4": "Verwijdering van je profiel- en accountgegevens",
+            "warningReversal": "Deze actie kan niet ongedaan worden gemaakt.",
+            "inputLabel": "Typ BEVESTIGEN om je account te verwijderen",
+            "confirmWord": "BEVESTIGEN",
+            "inputLabelSuffix": "om door te gaan met verwijdering",
+            "inputPlaceholder": "Typ hier BEVESTIGEN",
+            "cancel": "Annuleren",
+            "delete": "Account Verwijderen",
+            "deleting": "Bezig met Verwijderen...",
+            "success": "Account succesvol verwijderd",
+            "errorGeneric": "Er is een fout opgetreden. Probeer opnieuw.",
+            "errorMatch": "Typ BEVESTIGEN exact",
+            "errorMissingToken": "Verzoek is ongeldig. Probeer opnieuw.",
+            "invalidLinkTitle": "Link is ongeldig of Verlopen",
+            "invalidLinkDescription": "Deze verwijderingslink is verlopen of ongeldig.",
+            "returnToSettings": "Terug naar Instellingen"
+        }
+    },
+    "business": {
+        "name": "Bedrijfsnaam",
+        "address": "Adres",
+        "phone": "Telefoonnummer",
+        "currency": "Valuta",
+        "language": "Taal",
+        "region": "Regio",
+        "create": "Bedrijf Maken",
+        "edit": "Bedrijf Bewerken",
+        "delete": "Bedrijf Verwijderen",
+        "select": "Bedrijf Selecteren",
+        "noBusiness": "Geen bedrijven gevonden",
+        "createFirst": "Maak je eerste bedrijf aan om te beginnen"
+    },
+    "validation": {
+        "required": "Dit veld is verplicht",
+        "email": "Voer een geldig e-mailadres in",
+        "minLength": "Moet minimaal {min} tekens bevatten",
+        "maxLength": "Kan maximaal {max} tekens bevatten",
+        "passwordMatch": "Wachtwoorden stemmen niet overeen",
+        "invalidFormat": "Ongeldig formaat"
+    },
+    "privacy": {
+        "title": "Privacybeleid",
+        "lastUpdated": "Laatst bijgewerkt: 8 december 2025",
+        "contactUs": "Contact"
+    },
+    "terms": {
+        "title": "Servicevoorwaarden",
+        "lastUpdated": "Laatst bijgewerkt: 8 december 2025",
+        "contactUs": "Contact"
+    },
+    "app": {
+        "sale": {
+            "title": "Verkoop",
+            "searchItems": "Zoek artikelen...",
+            "allCategories": "Alle Categorieën",
+            "checkout": "Uitchecken",
+            "total": "Totaal:",
+            "items": "Artikelen",
+            "noItems": "Geen artikelen gevonden",
+            "addToCart": "Toevoegen aan Winkelwagen",
+            "removeFromCart": "Verwijderen",
+            "error": "Fout",
+            "retry": "Opnieuw Proberen",
+            "loading": "Bezig met Laden...",
+            "selectBusiness": "Selecteer een bedrijf in de zijbalk om te beginnen",
+            "cartEmpty": "Je winkelwagen is leeg. Begin met het toevoegen van artikelen om door te gaan.",
+            "backToItems": "Terug naar Artikelen",
+            "reviewOrder": "Controleer je bestelling en voltooi de transactie",
+            "orderSummary": "Bestellingssamenvatting",
+            "item": "Artikel",
+            "quantity": "Hoeveelheid",
+            "price": "Prijs",
+            "tax": "Belasting:",
+            "discount": "Korting:",
+            "subtotal": "Subtotaal:",
+            "paymentSummary": "Betalingssamenvatting",
+            "processing": "Bezig met Verwerken...",
+            "completeTransaction": "Transactie Voltooien",
+            "transactionDetails": "Transactiegegevens",
+            "customer": "Klant (Optioneel)",
+            "selectCustomer": "Selecteer klant...",
+            "guestCustomer": "Gastklant",
+            "paymentMethod": "Betaalmethode (Optioneel)",
+            "paymentMethodsLoadError": "Kan betaalmethoden niet laden",
+            "created": "Gemaakt",
+            "selectPaymentMethod": "Selecteer betaalmethode...",
+            "cash": "Contant",
+            "notes": "Notities (Optioneel)",
+            "addNotes": "Voeg notities toe aan deze transactie...",
+            "outOfStock": "Niet in Stock",
+            "noItemsAvailable": "Geen artikelen beschikbaar",
+            "addItemsToInventory": "Voeg artikelen toe aan je inventaris om transacties te starten"
+        },
+        "items": {
+            "title": "Artikelen",
+            "addItem": "Artikel Toevoegen",
+            "editItem": "Artikel Bewerken",
+            "deleteItem": "Artikel Verwijderen",
+            "name": "Artikelnaam",
+            "price": "Prijs",
+            "sku": "SKU (Voorraadbeheereenheid)",
+            "category": "Categorie",
+            "description": "Beschrijving",
+            "noItems": "Geen artikelen gevonden",
+            "loading": "Bezig met Laden van Artikelen...",
+            "error": "Fout bij Laden van Artikelen",
+            "actions": "Acties",
+            "business": "Bedrijf",
+            "unknownBusiness": "Onbekend Bedrijf",
+            "addFirstItem": "Je Eerste Artikel Toevoegen",
+            "image": "Artikelafbeelding",
+            "status": "Status",
+            "created": "Aanmaakdatum",
+            "active": "Actief",
+            "inactive": "Inactief",
+            "createTitle": "Nieuw Artikel Maken",
+            "createDescription": "Voeg een nieuw product of service toe aan je inventaris",
+            "editTitle": "Artikel Bewerken",
+            "editDescription": "Werk artikelgegevens bij",
+            "taxOptional": "Belasting (Optioneel)",
+            "noTax": "Geen belasting",
+            "discountOptional": "Korting (Optioneel)",
+            "noDiscount": "Geen korting",
+            "categoriesOptional": "Categorieën (Optioneel)",
+            "noCategoriesAvailable": "Geen beschikbare categorieën. Maak eerst categorieën aan.",
+            "skuOptional": "SKU (Optioneel)",
+            "descriptionOptional": "Beschrijving (Optioneel)",
+            "itemImageOptional": "Artikelafbeelding (Optioneel)",
+            "supportedFormats": "Ondersteunde Formaten: JPG, JPEG, PNG, GIF, WEBP. Maximale Grootte: 1MB",
+            "uploading": "Bezig met Uploaden van Afbeelding...",
+            "update": "Artikel Bijwerken",
+            "create": "Artikel Maken",
+            "deleteTitle": "Artikel Verwijderen?",
+            "deleteDescription": "Dit zal {name} (SKU: {sku}) permanent verwijderen. Deze actie kan niet ongedaan worden gemaakt.",
+            "deleting": "Bezig met Verwijderen...",
+            "errorCreating": "Fout bij Maken van Artikel",
+            "errorUpdating": "Fout bij Bijwerken van Artikel",
+            "errorDeleting": "Fout bij Verwijderen van Artikel",
+            "uploadError": "Fout bij Uploaden van Afbeelding",
+            "deleteError": "Fout bij Verwijderen van Artikel",
+            "selectImageError": "Selecteer een afbeeldingsbestand",
+            "imageSizeError": "Afbeeldingsgrootte moet kleiner zijn dan 1MB",
+            "loadingError": "Er is een fout opgetreden bij het laden van gegevens",
+            "itemsLoadError": "Fout bij Laden van Artikelen",
+            "basePrice": "Basisprijs"
+        },
+        "customers": {
+            "title": "Klanten",
+            "addCustomer": "Klant Toevoegen",
+            "editCustomer": "Klant Bewerken",
+            "deleteCustomer": "Klant Verwijderen",
+            "name": "Klantnaam",
+            "email": "E-mail",
+            "phone": "Telefoonnummer",
+            "address": "Adres",
+            "noCustomers": "Geen klanten gevonden",
+            "loading": "Bezig met Laden van Klanten...",
+            "error": "Fout bij Laden van Klanten",
+            "actions": "Acties",
+            "addFirstCustomer": "Je Eerste Klant Toevoegen",
+            "editTitle": "Klant Bewerken",
+            "createTitle": "Nieuwe Klant Toevoegen",
+            "editDescription": "Werk klantgegevens bij",
+            "createDescription": "Voeg een nieuwe klant toe aan je database",
+            "customerName": "Volledige Naam",
+            "placeholderName": "Jan Jansen",
+            "emailOptional": "E-mail (Optioneel)",
+            "placeholderEmail": "jan@example.com",
+            "phoneOptional": "Telefoonnummer (Optioneel)",
+            "placeholderPhone": "+31612345678",
+            "addressOptional": "Adres (Optioneel)",
+            "placeholderAddress": "Hoofdstraat 123, Stad, Postcode",
+            "deleteTitle": "Klant Verwijderen?",
+            "deleting": "Bezig met Verwijderen...",
+            "errorCreating": "Fout bij Maken van Klant",
+            "errorUpdating": "Fout bij Bijwerken van Klant",
+            "errorDeleting": "Fout bij Verwijderen van Klant",
+            "deleteError": "Fout bij Verwijderen van Klant",
+            "customersLoadError": "Fout bij Laden van Klanten",
+            "loadingError": "Er is een fout opgetreden bij het laden van gegevens"
+        },
+        "transactions": {
+            "title": "Transacties",
+            "viewDetails": "Details Bekijken",
+            "date": "Datum",
+            "customer": "Klant",
+            "total": "Totaal",
+            "totalAmount": "Totaalbedrag",
+            "finalAmount": "Eindbedrag",
+            "discountAmount": "Kortingsbedrag:",
+            "taxAmount": "Belastingbedrag:",
+            "paymentMethod": "Betaalmethode",
+            "noTransactions": "Geen transacties gevonden",
+            "actions": "Acties",
+            "loading": "Bezig met Laden van Transacties...",
+            "error": "Fout bij Laden van Transacties",
+            "guestCustomer": "Gast",
+            "transactionDetails": "Transactiegegevens",
+            "viewInfo": "Bekijk volledige transactiegegevens",
+            "items": "Artikelen",
+            "noItems": "Geen artikelen gevonden",
+            "item": "Artikel",
+            "quantity": "Hoeveelheid",
+            "basePrice": "Basisprijs",
+            "tax": "Belasting",
+            "discount": "Korting",
+            "notes": "Notities",
+            "transactionId": "Transactie-ID",
+            "downloadPDF": "PDF Downloaden",
+            "downloadImage": "Afbeelding Downloaden",
+            "sendEmail": "Per E-mail Verzenden",
+            "sendWhatsApp": "Via WhatsApp Verzenden"
+        },
+        "settings": {
+            "title": "Instellingen",
+            "profile": "Profiel",
+            "business": "Bedrijf",
+            "receipt": "Bonnetjesinstellingen",
+            "preferences": "Voorkeuren",
+            "account": "Account",
+            "printer": "Printer",
+            "profileTab": {
+                "name": "Volledige Naam",
+                "email": "E-mailadres",
+                "currentPassword": "Huidige Wachtwoord",
+                "newPassword": "Nieuw Wachtwoord",
+                "confirmPassword": "Wachtwoord Bevestigen",
+                "changePassword": "Wachtwoord Wijzigen",
+                "updateProfile": "Profiel Bijwerken",
+                "deleteAccount": "Account Verwijderen",
+                "errorLoad": "Fout bij Laden van Profiel",
+                "imageSizeError": "Afbeeldingsgrootte moet kleiner zijn dan 1MB",
+                "successUpdate": "Profiel succesvol bijgewerkt",
+                "errorUpdate": "Fout bij Bijwerken van Profiel",
+                "errorFields": "Controleer alle velden",
+                "errorMatch": "Wachtwoorden stemmen niet overeen",
+                "errorLength": "Wachtwoord moet minimaal 8 tekens bevatten",
+                "successPassword": "Wachtwoord succesvol gewijzigd",
+                "errorPassword": "Huidige wachtwoord is onjuist",
+                "confirmDelete": "Accountverwijdering Bevestigen",
+                "sentDelete": "Bevestigingse-mail voor verwijdering verzonden",
+                "errorDelete": "Fout bij Verzenden van Verwijderingse-mail",
+                "profilePicture": "Profielfoto",
+                "profilePictureDescription": "Upload een profielfoto om je account aan te passen",
+                "uploadPhoto": "Foto Uploaden",
+                "delete": "Verwijderen",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Max 1MB",
+                "personalInfo": "Persoonlijke Informatie",
+                "fullName": "Volledige Naam",
+                "enterFullName": "Voer je volledige naam in",
+                "enterEmail": "Voer je e-mail in",
+                "emailNote": "E-mail kan niet worden gewijzigd",
+                "saving": "Bezig met Opslaan...",
+                "saveChanges": "Wijzigingen Opslaan",
+                "changePasswordDescription": "Werk je wachtwoord bij om je account veilig te houden",
+                "enterCurrentPassword": "Voer je huidige wachtwoord in",
+                "enterNewPassword": "Voer nieuw wachtwoord in (min 8 tekens)",
+                "confirmNewPassword": "Bevestig Nieuw Wachtwoord",
+                "enterConfirmNewPassword": "Bevestig je nieuwe wachtwoord",
+                "changingPassword": "Bezig met Wijzigen van Wachtwoord...",
+                "deleteAccountDescription": "Na verwijdering kunnen je account en alle gegevens niet meer worden hersteld",
+                "deleteWarning": "Waarschuwing: Deze actie kan niet ongedaan worden gemaakt",
+                "deleteConsequences": "Het verwijderen van je account zal resulteren in:",
+                "deleteItem1": "Permanent verwijderen van alle je bedrijven",
+                "deleteItem2": "Verwijdering van alle transacties en artikelen",
+                "deleteItem3": "Verwijdering van alle persoonlijke gegevens",
+                "deleteConfirmation": "Je ontvangt een bevestigingse-mail met een link om de verwijdering af te ronden.",
+                "sendingEmail": "Bezig met Verzenden van E-mail...",
+                "requestDeletion": "Accountverwijdering Aanvragen"
+            },
+            "receiptTab": {
+                "options": "Bonnetjesaanpassing",
+                "includeLogo": "Bedrijfslogo in Bonnetjes Opnemen",
+                "footerMessage": "Voettekstbericht",
+                "footerPlaceholder": "Bedankt voor je aankoop!",
+                "qrCode": "QR-codegegevens",
+                "qrPlaceholder": "Voer QR-codewaarde in (bijv. sociale mediaclink)",
+                "prefix": "Transactievoorvoegsel",
+                "prefixHelp": "Voorvoegsel voor transactienummers (bijv. INV, RCP)",
+                "nextNumber": "Volgende Transactienummer",
+                "nextNumberHelp": "Het volgende transactienummer dat moet worden gebruikt",
+                "template": "Bonnetjessjabloon",
+                "selectBusiness": "Selecteer een bedrijf om bonnetjesinstellingen in te stellen"
+            },
+            "printerTab": {
+                "selectPrinter": "Printer Selecteren",
+                "testPrint": "Afdruk Testen",
+                "printerSettings": "Printerinstellingen",
+                "toastSaved": "Printerinstellingen opgeslagen",
+                "toastSaveFailed": "Fout bij Opslaan van Printerinstellingen",
+                "toastSelectBusiness": "Selecteer eerst een bedrijf",
+                "toastTestSuccess": "Testafdruk succesvol verzonden",
+                "toastTestFailed": "Testafdruk Mislukt",
+                "toastTestError": "Er is een fout opgetreden bij het afdrukken",
+                "toastConnected": "Printer Verbonden",
+                "toastNotConnected": "Printer Niet Verbonden",
+                "toastCheckError": "Fout bij Controleren van Printerstatus",
+                "title": "Printerinstellingen",
+                "description": "Stel je ontvangsttprinterinstellingen in",
+                "printerType": "Printertype",
+                "selectType": "Selecteer Printertype",
+                "printerPath": "Printerpad",
+                "pathHelp": "Het pad naar je printerapparaat",
+                "characterSet": "Tekenset",
+                "selectCharset": "Selecteer Tekenset",
+                "lineCharacter": "Lijnkarakter",
+                "lineCharacterHelp": "Karakter gebruikt voor lijnscheiding",
+                "timeout": "Time-out (milliseconden)",
+                "timeoutHelp": "Time-out voor afdrukbewerking in milliseconden",
+                "removeSpecial": "Speciale Tekens Verwijderen",
+                "saveConfig": "Configuratie Opslaan",
+                "checkStatus": "Printerstatus Controleren",
+                "connected": "Verbonden",
+                "disconnected": "Niet Verbonden",
+                "connectedMessage": "Je printer is verbonden en klaar",
+                "disconnectedMessage": "Je printer is offline",
+                "troubleshooting": "Hulp bij Probleemoplossing"
+            },
+            "preferencesTab": {
+                "language": "Taal",
+                "currency": "Valuta",
+                "region": "Regio",
+                "timezone": "Tijdzone",
+                "title": "Uiterlijk en Lokalisatie",
+                "description": "Pas het uiterlijk en gedrag van BillForge aan",
+                "theme": "Thema",
+                "themeDescription": "Kies je voorkeur kleurenthema",
+                "light": "Licht",
+                "dark": "Donker",
+                "system": "Systeemstandaard"
+            }
+        },
+        "categories": {
+            "title": "Categorieën",
+            "addCategory": "Categorie Toevoegen",
+            "editCategory": "Categorie Bewerken",
+            "deleteCategory": "Categorie Verwijderen",
+            "name": "Categorienaam",
+            "noCategories": "Geen categorieën gevonden",
+            "loading": "Bezig met Laden van Categorieën...",
+            "error": "Fout bij Laden van Categorieën",
+            "actions": "Acties",
+            "addFirstCategory": "Je Eerste Categorie Toevoegen",
+            "created": "Aanmaakdatum",
+            "createTitle": "Nieuwe Categorie Maken",
+            "createDescription": "Voeg een nieuwe categorie toe om je artikelen te organiseren",
+            "editTitle": "Categorie Bewerken",
+            "editDescription": "Werk categoriegegevens bij",
+            "categoryName": "Categorienaam",
+            "placeholder": "bijv. Elektronica, Voedsel, Diensten",
+            "deleteTitle": "Categorie Verwijderen?",
+            "deleteDescription": "Dit zal de categorie '{name}' permanent verwijderen. Deze actie kan niet ongedaan worden gemaakt.",
+            "deleting": "Bezig met Verwijderen...",
+            "errorCreating": "Fout bij Maken van Categorie",
+            "errorUpdating": "Fout bij Bijwerken van Categorie",
+            "errorDeleting": "Fout bij Verwijderen van Categorie",
+            "deleteError": "Fout bij Verwijderen van Categorie",
+            "loadingError": "Er is een fout opgetreden bij het laden van gegevens",
+            "categoriesLoadError": "Fout bij Laden van Categorieën"
+        },
+        "paymentMethods": {
+            "title": "Betaalmethoden",
+            "addMethod": "Betaalmethode Toevoegen",
+            "editMethod": "Betaalmethode Bewerken",
+            "deleteMethod": "Betaalmethode Verwijderen",
+            "name": "Methodenaam",
+            "noMethods": "Geen betaalmethoden gevonden",
+            "loading": "Bezig met Laden van Betaalmethoden...",
+            "error": "Fout bij Laden van Betaalmethoden",
+            "actions": "Acties",
+            "addFirstMethod": "Je Eerste Betaalmethode Toevoegen",
+            "createTitle": "Betaalmethode Toevoegen",
+            "createDescription": "Voeg een nieuwe betaalmethode toe om betalingen te accepteren",
+            "editTitle": "Betaalmethode Bewerken",
+            "editDescription": "Werk gegevens van betaalmethode bij",
+            "deleteTitle": "Betaalmethode Verwijderen?",
+            "deleteDescription": "Dit zal '{name}' permanent verwijderen. Deze actie kan niet ongedaan worden gemaakt.",
+            "deleting": "Bezig met Verwijderen...",
+            "errorCreating": "Fout bij Maken van Betaalmethode",
+            "errorUpdating": "Fout bij Bijwerken van Betaalmethode",
+            "errorDeleting": "Fout bij Verwijderen van Betaalmethode",
+            "deleteError": "Fout bij Verwijderen van Betaalmethode",
+            "methodName": "Betaalmethodenaam",
+            "placeholderName": "bijv. Contant, Creditcard, Bankoverschrijving",
+            "created": "Aanmaakdatum",
+            "paymentMethodsLoadError": "Fout bij Laden van Betaalmethoden",
+            "loadingError": "Er is een fout opgetreden bij het laden van gegevens"
+        },
+        "itemTaxes": {
+            "title": "Belastingtarieven",
+            "addTax": "Belasting Toevoegen",
+            "editTax": "Belasting Bewerken",
+            "deleteTax": "Belasting Verwijderen",
+            "name": "Belastingnaam",
+            "rate": "Belastingtarief",
+            "noTaxes": "Geen belastingen ingesteld. Maak je eerste belastingconfiguratie aan.",
+            "loading": "Bezig met Laden van Belastingen...",
+            "error": "Fout bij Laden van Belastingen",
+            "actions": "Acties",
+            "createTitle": "Belastingtarief Toevoegen",
+            "createDescription": "Maak een nieuwe belastingconfiguratie aan",
+            "editTitle": "Belastingtarief Bewerken",
+            "editDescription": "Werk belastingtariefgegevens bij",
+            "deleteTitle": "Belasting Verwijderen?",
+            "deleteDescription": "Dit zal '{name}' permanent verwijderen. Deze actie kan niet ongedaan worden gemaakt.",
+            "deleting": "Bezig met Verwijderen...",
+            "errorCreating": "Fout bij Maken van Belasting",
+            "errorUpdating": "Fout bij Bijwerken van Belasting",
+            "errorDeleting": "Fout bij Verwijderen van Belasting",
+            "deleteError": "Fout bij Verwijderen van Belasting",
+            "taxName": "Belastingnaam",
+            "placeholderName": "bijv. BTW, Omzetbelasting",
+            "type": "Type",
+            "percentage": "Percentage",
+            "fixed": "Vast Bedrag",
+            "value": "Waarde",
+            "taxesLoadError": "Fout bij Laden van Belastingen",
+            "loadingError": "Er is een fout opgetreden bij het laden van gegevens"
+        },
+        "itemDiscounts": {
+            "title": "Kortingen",
+            "addDiscount": "Korting Toevoegen",
+            "editDiscount": "Korting Bewerken",
+            "deleteDiscount": "Korting Verwijderen",
+            "name": "Kortingnaam",
+            "type": "Type",
+            "value": "Waarde",
+            "noDiscounts": "Geen kortingen ingesteld. Maak je eerste korting aan.",
+            "loading": "Bezig met Laden van Kortingen...",
+            "error": "Fout bij Laden van Kortingen",
+            "actions": "Acties",
+            "createTitle": "Korting Toevoegen",
+            "createDescription": "Maak een nieuw kortingsaanbod aan",
+            "editTitle": "Korting Bewerken",
+            "editDescription": "Werk kortingsgegevens bij",
+            "deleteTitle": "Korting Verwijderen?",
+            "deleteDescription": "Dit zal '{name}' permanent verwijderen. Deze actie kan niet ongedaan worden gemaakt.",
+            "deleting": "Bezig met Verwijderen...",
+            "errorCreating": "Fout bij Maken van Korting",
+            "errorUpdating": "Fout bij Bijwerken van Korting",
+            "errorDeleting": "Fout bij Verwijderen van Korting",
+            "deleteError": "Fout bij Verwijderen van Korting",
+            "discountName": "Kortingnaam",
+            "placeholderName": "bijv. Vakantiekorting, Vroege-vogelkorting",
+            "percentage": "Percentage",
+            "fixed": "Vast Bedrag",
+            "discountsLoadError": "Fout bij Laden van Kortingen",
+            "loadingError": "Er is een fout opgetreden bij het laden van gegevens"
+        },
+        "sidebar": {
+            "sale": "Verkoop",
+            "transactions": "Transacties",
+            "items": "Artikelen",
+            "categories": "Categorieën",
+            "customers": "Klanten",
+            "paymentMethods": "Betaalmethoden",
+            "itemTaxes": "Belastingen",
+            "itemDiscounts": "Kortingen",
+            "settings": "Instellingen",
+            "businessSelector": {
+                "switchBusiness": "Bedrijf Wisselen",
+                "addBusiness": "Bedrijf Toevoegen",
+                "edit": "Bewerken",
+                "delete": "Verwijderen"
+            },
+            "userProfile": {
+                "myAccount": "Mijn Account",
+                "logout": "Afmelden",
+                "dialog": {
+                    "title": "Afmelden Bevestigen",
+                    "description": "Weet je zeker dat je je wilt afmelden? Je moet opnieuw inloggen om je account te openen.",
+                    "cancel": "Annuleren",
+                    "confirm": "Afmelden"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Nieuw Bedrijf Maken",
+                "editTitle": "Bedrijf Bewerken",
+                "createDescription": "Voeg een nieuwe bedrijfslocatie toe aan je account",
+                "editDescription": "Werk bedrijfsgegevens bij",
+                "nameLabel": "Bedrijfsnaam",
+                "namePlaceholder": "Je Bedrijfsnaam",
+                "addressLabel": "Adres (Optioneel)",
+                "addressPlaceholder": "Hoofdstraat 123, Stad, Land",
+                "phoneLabel": "Telefoonnummer (Optioneel)",
+                "phonePlaceholder": "+31612345678",
+                "currencyLabel": "Valuta (Optioneel)",
+                "currencyPlaceholder": "Selecteer Valuta",
+                "languageLabel": "Taal (Optioneel)",
+                "languagePlaceholder": "Selecteer Taal",
+                "regionLabel": "Regio (Optioneel)",
+                "regionPlaceholder": "Selecteer Regio",
+                "logoLabel": "Bedrijfslogo (Optioneel)",
+                "logoHelp": "Ondersteunde Formaten: JPG, JPEG, PNG, GIF, WEBP. Maximale Grootte: 1MB",
+                "uploading": "Bezig met Uploaden van Logo...",
+                "cancel": "Annuleren",
+                "create": "Maken",
+                "update": "Bijwerken",
+                "errorGeneric": "Fout bij Opslaan van Bedrijf",
+                "errorCreate": "Fout bij Maken van Bedrijf",
+                "errorUpdate": "Fout bij Bijwerken van Bedrijf",
+                "errorImageSize": "Afbeeldingsgrootte moet kleiner zijn dan 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Bedrijf Verwijderen",
+                "description": "Weet je zeker dat je '{name}' wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+                "cancel": "Annuleren",
+                "delete": "Verwijderen"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "Afbeeldingsgrootte moet kleiner zijn dan 1MB",
+                "updateFailed": "Bedrijfsupdate Mislukt",
+                "createFailed": "Bedrijfsaanmaak Mislukt",
+                "updateError": "Er is een fout opgetreden bij het bijwerken",
+                "createError": "Er is een fout opgetreden bij het maken"
+            },
+            "edit": "Bedrijf Bewerken",
+            "create": "Bedrijf Maken",
+            "description": {
+                "edit": "Werk bedrijfsgegevens bij",
+                "create": "Voeg een nieuw bedrijf toe aan je account"
+            },
+            "form": {
+                "name": {
+                    "label": "Bedrijfsnaam",
+                    "placeholder": "Je Bedrijfsnaam"
+                },
+                "address": {
+                    "label": "Adres (Optioneel)",
+                    "placeholder": "Hoofdstraat 123, Stad, Land"
+                },
+                "phone": {
+                    "label": "Telefoonnummer (Optioneel)",
+                    "placeholder": "+31612345678"
+                },
+                "currency": {
+                    "label": "Valuta (Optioneel)",
+                    "placeholder": "Selecteer Valuta"
+                },
+                "language": {
+                    "label": "Taal (Optioneel)",
+                    "placeholder": "Selecteer Taal"
+                },
+                "region": {
+                    "label": "Regio (Optioneel)",
+                    "placeholder": "Selecteer Regio"
+                },
+                "logo": {
+                    "label": "Bedrijfslogo (Optioneel)",
+                    "helper": "Ondersteunde Formaten: JPG, JPEG, PNG, GIF, WEBP. Max 1MB",
+                    "uploading": "Bezig met Uploaden..."
+                }
+            },
+            "buttons": {
+                "cancel": "Annuleren",
+                "update": "Bijwerken",
+                "create": "Maken"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Bedrijf Wisselen",
+            "edit": "Bewerken",
+            "delete": "Verwijderen",
+            "addBusiness": "Bedrijf Toevoegen"
+        },
+        "deleteBusinessDialog": {
+            "title": "Bedrijf Verwijderen",
+            "description": "Weet je het zeker? Dit kan niet ongedaan worden gemaakt.",
+            "cancel": "Annuleren",
+            "confirm": "Verwijderen"
+        },
+        "userProfile": {
+            "myAccount": "Mijn Account",
+            "logout": "Afmelden",
+            "dialog": {
+                "title": "Afmelden Bevestigen",
+                "description": "Weet je zeker dat je je wilt afmelden?",
+                "cancel": "Annuleren",
+                "confirm": "Afmelden"
+            }
+        }
+    }
+}

@@ -91,7 +91,7 @@ const Footer = () => {
             <div className="max-w-(--breakpoint-xl) mx-auto py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6">
                 {/* Copyright */}
                 <span className="text-muted-foreground text-center xs:text-start">
-                    &copy; {new Date().getFullYear()}{" "} <Link href="https://shadcnui-blocks.com" target="_blank"> Billforge</Link>. {t('landing.footer.copyright')}
+                    {t('landing.footer.copyright')}
                 </span>
                 {/*  */}
                 <span className="text-muted-foreground text-center xs:text-start">

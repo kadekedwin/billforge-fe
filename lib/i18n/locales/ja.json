@@ -1,1 +1,915 @@
-{}
+{
+    "common": {
+        "loading": "読み込み中...",
+        "error": "エラー",
+        "success": "成功",
+        "cancel": "キャンセル",
+        "save": "保存",
+        "delete": "削除",
+        "edit": "編集",
+        "create": "作成",
+        "update": "更新",
+        "search": "検索",
+        "filter": "フィルタ",
+        "close": "閉じる",
+        "back": "戻る",
+        "next": "次へ",
+        "previous": "前へ",
+        "submit": "送信",
+        "confirm": "確認",
+        "yes": "はい",
+        "no": "いいえ"
+    },
+    "landing": {
+        "hero": {
+            "title": "モダンなPOSと請求書システムをシンプルに",
+            "description": "プロフェッショナルな領収書、インスタント決済、強力な分析でビジネスを変革します。カフェ、レストラン、小売店、および世界中の小規模ビジネス向けに設計されています。",
+            "cta": "無料トライアルを開始"
+        },
+        "features": {
+            "title": "ビジネスを運営するために必要なすべて",
+            "description": "売上を合理化し、顧客を管理し、効率的にビジネスを成長させるために設計された強力な機能。",
+            "receipt": {
+                "title": "プロフェッショナルな領収書",
+                "description": "ロゴ、QRコード、カスタムメッセージを含む美しくカスタマイズ可能な領収書を作成します。複数のプロフェッショナルテンプレートから選択して、ブランドを強化します。"
+            },
+            "checkout": {
+                "title": "高速チェックアウトプロセス",
+                "description": "直感的なPOSインターフェースで取引を加速します。迅速に販売を処理し、複数の支払い方法を受け付け、顧客にもっと効率的にサービスを提供します。"
+            },
+            "customer": {
+                "title": "顧客管理",
+                "description": "顧客プロフィールと購入履歴で長期的な関係を構築します。好みや支出パターンを追跡し、常連客にパーソナライズされたサービスを提供します。"
+            },
+            "discount": {
+                "title": "スマートな割引と税金",
+                "description": "パーセンテージまたは固定金額の割引と複数の税率を簡単に管理します。特定の商品または全体の取引にプロモーションを数クリックで適用します。"
+            },
+            "analytics": {
+                "title": "リアルタイム分析",
+                "description": "販売パフォーマンスの即座の洞察を得ます。日次収益、ベストセラー、取引トレンドを追跡して、データに基づいたビジネス判断を下します。"
+            },
+            "cloud": {
+                "title": "どこからでもアクセス",
+                "description": "クラウドベースのシステムはすべてのデバイスで動作します - デスクトップ、タブレット、またはスマートフォン。安全なリアルタイムデータ同期で、どこからでもビジネスを管理します。"
+            }
+        },
+        "nav": {
+            "features": "機能",
+            "pricing": "価格",
+            "faq": "よくある質問",
+            "login": "ログイン",
+            "signup": "サインアップ",
+            "signIn": "ログイン",
+            "getStarted": "始める",
+            "home": "ホーム",
+            "testimonials": "体験談",
+            "drawerTitle": "ナビゲーションメニュー"
+        },
+        "faq": {
+            "title": "よくある質問",
+            "description": "BillForgeについて知る必要があるすべてと、ビジネスにどのように役立つかについて。",
+            "items": {
+                "item1": {
+                    "question": "BillForgeは本当に無料ですか?",
+                    "answer": "はい!無料プランには、1つのビジネス、50項目、50顧客、月50取引、およびすべての基本機能が含まれます。始めたばかりの小企業に最適です。より高い制限と高度な機能についてはProまたはEnterpriseにアップグレードしてください。"
+                },
+                "item2": {
+                    "question": "無料、Pro、Enterpriseプラン間の違いは何ですか?",
+                    "answer": "無料プランは基本的な制限があります(1ビジネス、50項目、50取引/月)。Proはこれらの制限の10倍を提供します(10ビジネス、500項目、500取引/月)。Enterpriseは無制限の項目、顧客、取引を提供し、マルチユーザーアクセスやAPIアクセスなどの高度な機能があります。"
+                },
+                "item3": {
+                    "question": "領収書をカスタマイズできますか?",
+                    "answer": "もちろんです!BillForgeは完全なカスタマイズオプションを備えた複数の領収書テンプレートを提供します。会社のロゴ、カスタムフッターメッセージ、QRコードを追加し、複数のプロフェッショナルデザインから選択します。領収書は印刷することも、顧客にデジタルで送信することもできます。"
+                },
+                "item4": {
+                    "question": "どの支払い方法を受け付けることができますか?",
+                    "answer": "BillForgeは、現金、クレジット/デビットカード、モバイル支払い、デジタルウォレットを含むすべての主要な支払い方法をサポートしています。無料プランでは最大5つの支払い方法が許可されていますが、ProおよびEnterpriseは無制限の支払いオプションを提供します。"
+                },
+                "item5": {
+                    "question": "割引と税金を管理するにはどうすればよいですか?",
+                    "answer": "当社のプラットフォームには統合された割引と税金管理が含まれています。パーセンテージまたは固定金額の割引を作成し、特定の項目または全体の取引に適用します。異なる製品カテゴリーのために複数の税率を設定します。無料プランには30の割引と税金の構成が含まれています。"
+                },
+                "item6": {
+                    "question": "ビジネスデータは安全ですか?",
+                    "answer": "はい!すべてのデータは暗号化を使用してクラウドで安全に保存されています。定期的なバックアップを実行し、業界標準のセキュリティプラクティスを使用しています。取引履歴、顧客情報、ビジネスデータは保護されており、あなただけがアクセスできます。"
+                },
+                "item7": {
+                    "question": "顧客の購入履歴を追跡できますか?",
+                    "answer": "はい!BillForgeには顧客管理機能が含まれています。顧客の詳細を保存し、購入履歴を確認し、常連客とのより良い関係を構築します。何を購入し、いつ訪問し、総支出を追跡して、パーソナライズされたサービスを提供します。"
+                },
+                "item8": {
+                    "question": "特別なハードウェアが必要ですか?",
+                    "answer": "特別なハードウェアは不要です!BillForgeはWebブラウザを備えたあらゆるデバイス(デスクトップ、タブレット、スマートフォン)で動作します。領収書を印刷したい場合は、任意の標準プリンタを使用できます。システムはクラウドベースなので、どこからでもアクセスできます。"
+                },
+                "item9": {
+                    "question": "月間取引制限を超えたらどうなりますか?",
+                    "answer": "無料プランでは、月50取引に制限されています。さらに必要な場合は、Pro(月500取引)またはEnterprise(無制限)にアップグレードできます。データは削除されることはなく、現在のプランに関わらずいつでも過去の取引を表示できます。"
+                },
+                "item10": {
+                    "question": "ヘルプが必要な場合、どのようにサポートを得ますか?",
+                    "answer": "すべてのユーザーにメールサポートを提供しています。ProおよびEnterpriseの顧客は、より高速な応答時間で優先サポートを受け取ります。Enterprise顧客は24/7サポートと専任のアカウントマネージャーも受け取ります。クイック自己サービスガイドについては、ドキュメントとチュートリアルを参照してください。"
+                }
+            }
+        },
+        "pricing": {
+            "title": "シンプルで透明な価格設定",
+            "description": "ビジネスに最適なプランを選択してください。無料で開始し、ビジネスが成長するにつれてアップグレードしてください。",
+            "monthly": "/月",
+            "mostPopular": "最も人気",
+            "plans": {
+                "free": {
+                    "name": "無料",
+                    "description": "デジタル請求を開始したばかりの小企業に最適。",
+                    "button": "無料で開始",
+                    "features": {
+                        "business": "1ビジネス",
+                        "items": "50項目",
+                        "customers": "50顧客",
+                        "transactions": "50取引/月",
+                        "paymentMethods": "5支払い方法",
+                        "discountsTaxes": "30割引と税金",
+                        "templates": "基本領収書テンプレート",
+                        "storage": "クラウドストレージ"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "複数の場所と高いボリュームを備えた成長中のビジネスに最適。",
+                    "button": "Proトライアルを開始",
+                    "features": {
+                        "business": "10ビジネス",
+                        "items": "500項目",
+                        "customers": "500顧客",
+                        "transactions": "500取引/月",
+                        "paymentMethods": "50支払い方法",
+                        "discountsTaxes": "300割引と税金",
+                        "templates": "プレミアム領収書テンプレート",
+                        "support": "優先サポート",
+                        "analytics": "高度な分析",
+                        "branding": "カスタムブランディング"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "高度な機能と専任サポートが必要な大企業向け。",
+                    "button": "営業に問い合わせ",
+                    "features": {
+                        "business": "無制限ビジネス",
+                        "items": "無制限項目",
+                        "customers": "無制限顧客",
+                        "transactions": "無制限取引",
+                        "paymentMethods": "無制限支払い方法",
+                        "discountsTaxes": "無制限割引と税金",
+                        "api": "APIアクセス",
+                        "support": "24/7優先サポート"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "体験談",
+            "items": {
+                "item1": {
+                    "name": "田中太郎",
+                    "designation": "カフェオーナー",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForgeはカフェでの取引管理方法に革命をもたらしました。領収書のカスタマイズは素晴らしく、お客様はデジタル領収書が大好きです。紙コストを80%削減し、支払いはこれまで以上に高速です!"
+                },
+                "item2": {
+                    "name": "佐藤花子",
+                    "designation": "店舗マネージャー",
+                    "company": "佐藤総合ストア",
+                    "text": "BillForgeを使い始めてから、店舗管理がはるかに簡単になりました。インターフェースは理解しやすく、売上レポートは非常に便利です。小売業者に強くお勧めします!"
+                },
+                "item3": {
+                    "name": "鈴木健太",
+                    "designation": "レストランオーナー",
+                    "company": "鈴木ビストロ",
+                    "text": "複数の支払い方法を処理することはかつての悪夢でした。BillForgeはそれをシームレスにしました!取引履歴と顧客管理機能により、常連客との関係が向上しました。これまでの最高のPOS決定です!"
+                },
+                "item4": {
+                    "name": "伊藤美咲",
+                    "designation": "ブティックオーナー",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "BillForgeの割引と税金管理はシーズンセールに必要なものそのものです。美しいブランド領収書を作成することで、顧客体験が向上しました。チェックアウトプロセスは現在、プロフェッショナルで効率的です!"
+                },
+                "item5": {
+                    "name": "高橋次郎",
+                    "designation": "ベーカリーオーナー",
+                    "company": "Sweet Treats Bakery",
+                    "text": "3ヶ月前にBillForgeに切り替えて以来、戻ることはありません。商品管理システムは在庫を整理したままにし、領収書テンプレートはプロフェッショナルに見えます。顧客支払いは現在、喜びであり、朝の忙しい時間でもそうです!"
+                },
+                "item6": {
+                    "name": "渡辺由美",
+                    "designation": "リテール マネージャー",
+                    "company": "TechGadgets Plus",
+                    "text": "BillForgeの取引追跡は、販売パターンについて素晴らしい洞察を提供しました。顧客データベースはパーソナライズされたサービスを提供するのに役立ち、QRコード領収書は技術に精通した顧客に好評です。完全なパッケージです!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "お問い合わせ",
+            "legal": {
+                "terms": "利用規約",
+                "privacy": "プライバシー"
+            },
+            "description": "インテリジェントな請求書管理でビジネスプロセスを合理化",
+            "copyright": "© 2025 BillForge。すべての権利予約。",
+            "madeWith": "バリで❤️とともに作成",
+            "links": {
+                "terms": "利用規約",
+                "privacy": "プライバシーポリシー"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "おかえりなさい",
+            "description": "BillForgeアカウントにログイン",
+            "emailLabel": "メールアドレス",
+            "emailPlaceholder": "your@email.com",
+            "passwordLabel": "パスワード",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "パスワードをお忘れですか?",
+            "submit": "ログイン",
+            "submitting": "ログイン中...",
+            "noAccount": "アカウントをお持ちですか?",
+            "signUp": "作成してください",
+            "errorGeneric": "メールまたはパスワードが正しくありません。もう一度お試しください。"
+        },
+        "register": {
+            "title": "アカウントを作成",
+            "description": "BillForgeに参加してビジネスを管理",
+            "nameLabel": "フルネーム",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "メールアドレス",
+            "emailPlaceholder": "your@email.com",
+            "passwordLabel": "パスワード",
+            "passwordPlaceholder": "8文字以上",
+            "confirmPasswordLabel": "パスワード確認",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "アカウントを作成すると、弊社の同意に同意したことになります",
+            "terms": "利用規約",
+            "and": "および",
+            "privacy": "プライバシーポリシー",
+            "submit": "アカウント作成",
+            "submitting": "アカウント作成中...",
+            "hasAccount": "既にアカウントをお持ちですか?",
+            "signIn": "ここでサインイン",
+            "errorMatch": "パスワードが一致しません",
+            "errorGeneric": "登録失敗。もう一度お試しください。"
+        },
+        "forgotPassword": {
+            "title": "パスワードをリセット",
+            "description": "メールアドレスを入力すると、パスワードをリセットするリンクを送信します。",
+            "emailLabel": "メールアドレス",
+            "emailPlaceholder": "your@email.com",
+            "submit": "リセットリンクを送信",
+            "submitting": "送信中...",
+            "backToLogin": "ログインに戻る",
+            "checkEmailTitle": "メールを確認",
+            "checkEmailDescription": "パスワードリセット指示を送信しました",
+            "checkEmailNote1": "リセットリンクについてはインボックスを確認してください。",
+            "checkEmailNote2": "メールが見つからない場合は、スパムフォルダを確認してください。",
+            "tryAnotherEmail": "別のメールを試してください",
+            "errorGeneric": "エラーが発生しました。もう一度お試しください。"
+        },
+        "resetPassword": {
+            "title": "新しいパスワードを作成",
+            "description": "以下に新しいパスワードを入力してください。",
+            "emailLabel": "メールアドレス",
+            "emailPlaceholder": "your@email.com",
+            "newPasswordLabel": "新しいパスワード",
+            "newPasswordPlaceholder": "8文字以上",
+            "passwordHint": "8文字以上である必要があります",
+            "confirmPasswordLabel": "パスワード確認",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "パスワードをリセット",
+            "submitting": "パスワードをリセット中...",
+            "backToLogin": "ログインに戻る",
+            "successTitle": "パスワードをリセット",
+            "successDescription": "パスワードが正常にリセットされました。",
+            "redirecting": "ログインにリダイレクト中...",
+            "goToLogin": "ログインに進む",
+            "errorGeneric": "エラーが発生しました。もう一度お試しください。",
+            "errorMatch": "パスワードが一致しません",
+            "errorLength": "パスワードは8文字以上である必要があります"
+        },
+        "verifyEmail": {
+            "title": "メールを確認",
+            "description": "確認メールを送信しました",
+            "instruction": "インボックスを確認し、確認リンクをクリックしてアカウントを有効化してください。",
+            "resend": "確認メールを再送信",
+            "resending": "送信中...",
+            "changeEmail": "別のメールアドレスを使用",
+            "verifyingTitle": "メール検証中...",
+            "verifyingDescription": "メールアドレスを検証中です。お待ちください。",
+            "successTitle": "メール確認済み",
+            "successDescription": "メールが正常に確認されました!",
+            "goToSale": "ダッシュボードに進む",
+            "alreadyVerifiedTitle": "既に確認済み",
+            "alreadyVerifiedDescription": "メールはすでに確認されています。続行できます。",
+            "failedTitle": "検証失敗",
+            "failedDescription": "検証リンクは期限切れまたは無効です。",
+            "resendSuccess": "確認メールを送信しました!インボックスを確認してください。",
+            "changeEmailTitle": "メールアドレスを変更しますか?",
+            "changeEmailDescription": "ログアウトされ、新しいメールアドレスでサインアップするための登録ページにリダイレクトされます。",
+            "cancel": "キャンセル",
+            "continue": "続行",
+            "errorGeneric": "エラーが発生しました。もう一度お試しください。"
+        },
+        "confirmDeletion": {
+            "title": "アカウント削除",
+            "description": "警告: これにより永続的に削除されます:",
+            "warningTitle": "アカウントの削除は以下をもたらします:",
+            "warningItem1": "すべてのビジネスを永続的に削除",
+            "warningItem2": "すべての取引と販売記録を削除",
+            "warningItem3": "すべての項目と在庫を削除",
+            "warningItem4": "プロフィールとアカウント情報を削除",
+            "warningReversal": "このアクションは元に戻せません。",
+            "inputLabel": "アカウントを削除するために「確認」と入力してください",
+            "confirmWord": "確認",
+            "inputLabelSuffix": "削除に進むため",
+            "inputPlaceholder": "ここに「確認」と入力",
+            "cancel": "キャンセル",
+            "delete": "アカウント削除",
+            "deleting": "削除中...",
+            "success": "アカウントが正常に削除されました",
+            "errorGeneric": "エラーが発生しました。もう一度お試しください。",
+            "errorMatch": "「確認」を正確に入力してください",
+            "errorMissingToken": "リクエストが無効です。もう一度お試しください。",
+            "invalidLinkTitle": "リンクが無効または期限切れ",
+            "invalidLinkDescription": "この削除リンクは期限切れまたは無効です。",
+            "returnToSettings": "設定に戻る"
+        }
+    },
+    "business": {
+        "name": "ビジネス名",
+        "address": "住所",
+        "phone": "電話番号",
+        "currency": "通貨",
+        "language": "言語",
+        "region": "地域",
+        "create": "ビジネス作成",
+        "edit": "ビジネス編集",
+        "delete": "ビジネス削除",
+        "select": "ビジネス選択",
+        "noBusiness": "ビジネスが見つかりません",
+        "createFirst": "開始するために最初のビジネスを作成してください"
+    },
+    "validation": {
+        "required": "このフィールドは必須です",
+        "email": "有効なメールアドレスを入力してください",
+        "minLength": "最低{min}文字である必要があります",
+        "maxLength": "最大{max}文字である必要があります",
+        "passwordMatch": "パスワードが一致しません",
+        "invalidFormat": "無効な形式"
+    },
+    "privacy": {
+        "title": "プライバシーポリシー",
+        "lastUpdated": "最終更新: 2025年12月8日",
+        "contactUs": "お問い合わせ"
+    },
+    "terms": {
+        "title": "利用規約",
+        "lastUpdated": "最終更新: 2025年12月8日",
+        "contactUs": "お問い合わせ"
+    },
+    "app": {
+        "sale": {
+            "title": "販売",
+            "searchItems": "商品を検索...",
+            "allCategories": "すべてのカテゴリー",
+            "checkout": "チェックアウト",
+            "total": "合計:",
+            "items": "商品",
+            "noItems": "商品が見つかりません",
+            "addToCart": "カートに追加",
+            "removeFromCart": "削除",
+            "error": "エラー",
+            "retry": "再試行",
+            "loading": "読み込み中...",
+            "selectBusiness": "開始するにはサイドバーからビジネスを選択してください",
+            "cartEmpty": "カートは空です。続行するには商品の追加を開始してください。",
+            "backToItems": "商品に戻る",
+            "reviewOrder": "注文を確認して取引を完了してください",
+            "orderSummary": "注文概要",
+            "item": "商品",
+            "quantity": "数量",
+            "price": "価格",
+            "tax": "税金:",
+            "discount": "割引:",
+            "subtotal": "小計:",
+            "paymentSummary": "支払い概要",
+            "processing": "処理中...",
+            "completeTransaction": "取引完了",
+            "transactionDetails": "取引詳細",
+            "customer": "顧客 (オプション)",
+            "selectCustomer": "顧客を選択...",
+            "guestCustomer": "ゲスト顧客",
+            "paymentMethod": "支払い方法 (オプション)",
+            "paymentMethodsLoadError": "支払い方法を読み込めません",
+            "created": "作成",
+            "selectPaymentMethod": "支払い方法を選択...",
+            "cash": "現金",
+            "notes": "メモ (オプション)",
+            "addNotes": "この取引にメモを追加...",
+            "outOfStock": "在庫切れ",
+            "noItemsAvailable": "利用可能な商品がありません",
+            "addItemsToInventory": "取引を開始するために在庫に商品を追加してください"
+        },
+        "items": {
+            "title": "商品",
+            "addItem": "商品追加",
+            "editItem": "商品編集",
+            "deleteItem": "商品削除",
+            "name": "商品名",
+            "price": "価格",
+            "sku": "SKU (在庫管理単位)",
+            "category": "カテゴリー",
+            "description": "説明",
+            "noItems": "商品が見つかりません",
+            "loading": "商品読み込み中...",
+            "error": "商品の読み込みエラー",
+            "actions": "アクション",
+            "business": "ビジネス",
+            "unknownBusiness": "不明なビジネス",
+            "addFirstItem": "最初の商品を追加",
+            "image": "商品画像",
+            "status": "ステータス",
+            "created": "作成日",
+            "active": "アクティブ",
+            "inactive": "非アクティブ",
+            "createTitle": "新しい商品を作成",
+            "createDescription": "在庫に新しい製品またはサービスを追加",
+            "editTitle": "商品編集",
+            "editDescription": "商品情報を更新",
+            "taxOptional": "税金 (オプション)",
+            "noTax": "税金なし",
+            "discountOptional": "割引 (オプション)",
+            "noDiscount": "割引なし",
+            "categoriesOptional": "カテゴリー (オプション)",
+            "noCategoriesAvailable": "利用可能なカテゴリーがありません。まずカテゴリーを作成してください。",
+            "skuOptional": "SKU (オプション)",
+            "descriptionOptional": "説明 (オプション)",
+            "itemImageOptional": "商品画像 (オプション)",
+            "supportedFormats": "サポート形式: JPG、JPEG、PNG、GIF、WEBP。最大サイズ: 1MB",
+            "uploading": "画像を読み込み中...",
+            "update": "商品更新",
+            "create": "商品作成",
+            "deleteTitle": "商品を削除しますか?",
+            "deleteDescription": "これにより{name} (SKU: {sku})が永続的に削除されます。このアクションは元に戻せません。",
+            "deleting": "削除中...",
+            "errorCreating": "商品の作成エラー",
+            "errorUpdating": "商品の更新エラー",
+            "errorDeleting": "商品の削除エラー",
+            "uploadError": "画像アップロードエラー",
+            "deleteError": "商品の削除エラー",
+            "selectImageError": "画像ファイルを選択してください",
+            "imageSizeError": "画像サイズは1MBより小さい必要があります",
+            "loadingError": "データの読み込み時にエラーが発生しました",
+            "itemsLoadError": "商品の読み込みエラー",
+            "basePrice": "基本価格"
+        },
+        "customers": {
+            "title": "顧客",
+            "addCustomer": "顧客追加",
+            "editCustomer": "顧客編集",
+            "deleteCustomer": "顧客削除",
+            "name": "顧客名",
+            "email": "メール",
+            "phone": "電話番号",
+            "address": "住所",
+            "noCustomers": "顧客が見つかりません",
+            "loading": "顧客読み込み中...",
+            "error": "顧客の読み込みエラー",
+            "actions": "アクション",
+            "addFirstCustomer": "最初の顧客を追加",
+            "editTitle": "顧客編集",
+            "createTitle": "新しい顧客を追加",
+            "editDescription": "顧客情報を更新",
+            "createDescription": "データベースに新しい顧客を追加",
+            "customerName": "フルネーム",
+            "placeholderName": "John Doe",
+            "emailOptional": "メール (オプション)",
+            "placeholderEmail": "john@example.com",
+            "phoneOptional": "電話番号 (オプション)",
+            "placeholderPhone": "+81312345678",
+            "addressOptional": "住所 (オプション)",
+            "placeholderAddress": "メインストリート123、市区町村、郵便番号",
+            "deleteTitle": "顧客を削除しますか?",
+            "deleting": "削除中...",
+            "errorCreating": "顧客の作成エラー",
+            "errorUpdating": "顧客の更新エラー",
+            "errorDeleting": "顧客の削除エラー",
+            "deleteError": "顧客の削除エラー",
+            "customersLoadError": "顧客の読み込みエラー",
+            "loadingError": "データの読み込み時にエラーが発生しました"
+        },
+        "transactions": {
+            "title": "取引",
+            "viewDetails": "詳細を表示",
+            "date": "日付",
+            "customer": "顧客",
+            "total": "合計",
+            "totalAmount": "合計金額",
+            "finalAmount": "最終金額",
+            "discountAmount": "割引金額:",
+            "taxAmount": "税金額:",
+            "paymentMethod": "支払い方法",
+            "noTransactions": "取引が見つかりません",
+            "actions": "アクション",
+            "loading": "取引読み込み中...",
+            "error": "取引の読み込みエラー",
+            "guestCustomer": "ゲスト",
+            "transactionDetails": "取引詳細",
+            "viewInfo": "完全な取引情報を表示",
+            "items": "商品",
+            "noItems": "商品が見つかりません",
+            "item": "商品",
+            "quantity": "数量",
+            "basePrice": "基本価格",
+            "tax": "税金",
+            "discount": "割引",
+            "notes": "メモ",
+            "transactionId": "取引ID",
+            "downloadPDF": "PDFをダウンロード",
+            "downloadImage": "画像をダウンロード",
+            "sendEmail": "メールで送信",
+            "sendWhatsApp": "WhatsAppで送信"
+        },
+        "settings": {
+            "title": "設定",
+            "profile": "プロフィール",
+            "business": "ビジネス",
+            "receipt": "領収書設定",
+            "preferences": "設定",
+            "account": "アカウント",
+            "printer": "プリンター",
+            "profileTab": {
+                "name": "フルネーム",
+                "email": "メールアドレス",
+                "currentPassword": "現在のパスワード",
+                "newPassword": "新しいパスワード",
+                "confirmPassword": "パスワード確認",
+                "changePassword": "パスワード変更",
+                "updateProfile": "プロフィール更新",
+                "deleteAccount": "アカウント削除",
+                "errorLoad": "プロフィール読み込みエラー",
+                "imageSizeError": "画像サイズは1MBより小さい必要があります",
+                "successUpdate": "プロフィールが正常に更新されました",
+                "errorUpdate": "プロフィール更新エラー",
+                "errorFields": "すべてのフィールドを確認してください",
+                "errorMatch": "パスワードが一致しません",
+                "errorLength": "パスワードは8文字以上である必要があります",
+                "successPassword": "パスワードが正常に変更されました",
+                "errorPassword": "現在のパスワードが正しくありません",
+                "confirmDelete": "アカウント削除を確認",
+                "sentDelete": "削除確認メールを送信しました",
+                "errorDelete": "削除メール送信エラー",
+                "profilePicture": "プロフィール写真",
+                "profilePictureDescription": "プロフィール写真をアップロードしてアカウントをカスタマイズ",
+                "uploadPhoto": "写真をアップロード",
+                "delete": "削除",
+                "imageRequirements": "JPG、PNG、GIF、WEBP。最大1MB",
+                "personalInfo": "個人情報",
+                "fullName": "フルネーム",
+                "enterFullName": "フルネームを入力してください",
+                "enterEmail": "メールを入力してください",
+                "emailNote": "メールは変更できません",
+                "saving": "保存中...",
+                "saveChanges": "変更を保存",
+                "changePasswordDescription": "アカウントを安全に保つためにパスワードを更新してください",
+                "enterCurrentPassword": "現在のパスワードを入力してください",
+                "enterNewPassword": "新しいパスワードを入力してください (最小8文字)",
+                "confirmNewPassword": "新しいパスワードを確認",
+                "enterConfirmNewPassword": "新しいパスワードを確認してください",
+                "changingPassword": "パスワード変更中...",
+                "deleteAccountDescription": "削除後、アカウントとすべてのデータは回復できません",
+                "deleteWarning": "警告: このアクションは元に戻せません",
+                "deleteConsequences": "アカウントの削除は以下をもたらします:",
+                "deleteItem1": "すべてのビジネスを永続的に削除",
+                "deleteItem2": "すべての取引と商品を削除",
+                "deleteItem3": "すべての個人データを削除",
+                "deleteConfirmation": "削除を完了するためのリンク付きの確認メールを受け取ります。",
+                "sendingEmail": "メール送信中...",
+                "requestDeletion": "アカウント削除をリクエスト"
+            },
+            "receiptTab": {
+                "options": "領収書カスタマイズ",
+                "includeLogo": "領収書にビジネスロゴを含める",
+                "footerMessage": "フッターメッセージ",
+                "footerPlaceholder": "ご購入ありがとうございました!",
+                "qrCode": "QRコードデータ",
+                "qrPlaceholder": "QRコード値を入力してください (例: ソーシャルメディアリンク)",
+                "prefix": "取引プリフィックス",
+                "prefixHelp": "取引番号のプリフィックス (例: INV、RCP)",
+                "nextNumber": "次の取引番号",
+                "nextNumberHelp": "使用する次の取引番号",
+                "template": "領収書テンプレート",
+                "selectBusiness": "領収書設定を構成するためにビジネスを選択してください"
+            },
+            "printerTab": {
+                "selectPrinter": "プリンターを選択",
+                "testPrint": "テスト印刷",
+                "printerSettings": "プリンター設定",
+                "toastSaved": "プリンター設定が保存されました",
+                "toastSaveFailed": "プリンター設定保存失敗",
+                "toastSelectBusiness": "最初にビジネスを選択してください",
+                "toastTestSuccess": "テスト印刷が正常に送信されました",
+                "toastTestFailed": "テスト印刷失敗",
+                "toastTestError": "テスト印刷中にエラーが発生しました",
+                "toastConnected": "プリンター接続済み",
+                "toastNotConnected": "プリンター未接続",
+                "toastCheckError": "プリンターステータス確認エラー",
+                "title": "プリンター設定",
+                "description": "領収書プリンター設定を構成してください",
+                "printerType": "プリンタータイプ",
+                "selectType": "プリンタータイプを選択",
+                "printerPath": "プリンターパス",
+                "pathHelp": "プリンターデバイスへのパス",
+                "characterSet": "文字セット",
+                "selectCharset": "文字セットを選択",
+                "lineCharacter": "ライン文字",
+                "lineCharacterHelp": "行区切りに使用される文字",
+                "timeout": "タイムアウト (ミリ秒)",
+                "timeoutHelp": "印刷操作のタイムアウト (ミリ秒)",
+                "removeSpecial": "特殊文字を削除",
+                "saveConfig": "設定を保存",
+                "checkStatus": "プリンターステータスを確認",
+                "connected": "接続済み",
+                "disconnected": "未接続",
+                "connectedMessage": "プリンターは接続されており準備ができています",
+                "disconnectedMessage": "プリンターはオフラインです",
+                "troubleshooting": "トラブルシューティングヘルプ"
+            },
+            "preferencesTab": {
+                "language": "言語",
+                "currency": "通貨",
+                "region": "地域",
+                "timezone": "タイムゾーン",
+                "title": "外観と地域化",
+                "description": "BillForgeの外観と動作をカスタマイズ",
+                "theme": "テーマ",
+                "themeDescription": "優先カラーテーマを選択",
+                "light": "ライト",
+                "dark": "ダーク",
+                "system": "システムデフォルト"
+            }
+        },
+        "categories": {
+            "title": "カテゴリー",
+            "addCategory": "カテゴリー追加",
+            "editCategory": "カテゴリー編集",
+            "deleteCategory": "カテゴリー削除",
+            "name": "カテゴリー名",
+            "noCategories": "カテゴリーが見つかりません",
+            "loading": "カテゴリー読み込み中...",
+            "error": "カテゴリー読み込みエラー",
+            "actions": "アクション",
+            "addFirstCategory": "最初のカテゴリーを追加",
+            "created": "作成日",
+            "createTitle": "新しいカテゴリーを作成",
+            "createDescription": "商品を整理するための新しいカテゴリーを追加",
+            "editTitle": "カテゴリー編集",
+            "editDescription": "カテゴリー情報を更新",
+            "categoryName": "カテゴリー名",
+            "placeholder": "例: 電子機器、食品、サービス",
+            "deleteTitle": "カテゴリーを削除しますか?",
+            "deleteDescription": "これにより'{name}'カテゴリーが永続的に削除されます。このアクションは元に戻せません。",
+            "deleting": "削除中...",
+            "errorCreating": "カテゴリー作成エラー",
+            "errorUpdating": "カテゴリー更新エラー",
+            "errorDeleting": "カテゴリー削除エラー",
+            "deleteError": "カテゴリー削除エラー",
+            "loadingError": "データ読み込み時にエラーが発生しました",
+            "categoriesLoadError": "カテゴリー読み込みエラー"
+        },
+        "paymentMethods": {
+            "title": "支払い方法",
+            "addMethod": "支払い方法追加",
+            "editMethod": "支払い方法編集",
+            "deleteMethod": "支払い方法削除",
+            "name": "方法名",
+            "noMethods": "支払い方法が見つかりません",
+            "loading": "支払い方法読み込み中...",
+            "error": "支払い方法読み込みエラー",
+            "actions": "アクション",
+            "addFirstMethod": "最初の支払い方法を追加",
+            "createTitle": "支払い方法を追加",
+            "createDescription": "支払いを受け付けるための新しい支払い方法を追加",
+            "editTitle": "支払い方法編集",
+            "editDescription": "支払い方法の詳細を更新",
+            "deleteTitle": "支払い方法を削除しますか?",
+            "deleteDescription": "これにより'{name}'が永続的に削除されます。このアクションは元に戻せません。",
+            "deleting": "削除中...",
+            "errorCreating": "支払い方法作成エラー",
+            "errorUpdating": "支払い方法更新エラー",
+            "errorDeleting": "支払い方法削除エラー",
+            "deleteError": "支払い方法削除エラー",
+            "methodName": "支払い方法名",
+            "placeholderName": "例: 現金、クレジットカード、銀行振込",
+            "created": "作成日",
+            "paymentMethodsLoadError": "支払い方法読み込みエラー",
+            "loadingError": "データ読み込み時にエラーが発生しました"
+        },
+        "itemTaxes": {
+            "title": "税率",
+            "addTax": "税金追加",
+            "editTax": "税金編集",
+            "deleteTax": "税金削除",
+            "name": "税金名",
+            "rate": "税率",
+            "noTaxes": "税金が構成されていません。最初の税金設定を作成してください。",
+            "loading": "税金読み込み中...",
+            "error": "税金読み込みエラー",
+            "actions": "アクション",
+            "createTitle": "税率を追加",
+            "createDescription": "新しい税金設定を作成",
+            "editTitle": "税率編集",
+            "editDescription": "税率の詳細を更新",
+            "deleteTitle": "税金を削除しますか?",
+            "deleteDescription": "これにより'{name}'が永続的に削除されます。このアクションは元に戻せません。",
+            "deleting": "削除中...",
+            "errorCreating": "税金作成エラー",
+            "errorUpdating": "税金更新エラー",
+            "errorDeleting": "税金削除エラー",
+            "deleteError": "税金削除エラー",
+            "taxName": "税金名",
+            "placeholderName": "例: 消費税、売上税",
+            "type": "タイプ",
+            "percentage": "パーセンテージ",
+            "fixed": "固定金額",
+            "value": "値",
+            "taxesLoadError": "税金読み込みエラー",
+            "loadingError": "データ読み込み時にエラーが発生しました"
+        },
+        "itemDiscounts": {
+            "title": "割引",
+            "addDiscount": "割引追加",
+            "editDiscount": "割引編集",
+            "deleteDiscount": "割引削除",
+            "name": "割引名",
+            "type": "タイプ",
+            "value": "値",
+            "noDiscounts": "割引が構成されていません。最初の割引を作成してください。",
+            "loading": "割引読み込み中...",
+            "error": "割引読み込みエラー",
+            "actions": "アクション",
+            "createTitle": "割引追加",
+            "createDescription": "新しい割引オファーを作成",
+            "editTitle": "割引編集",
+            "editDescription": "割引の詳細を更新",
+            "deleteTitle": "割引を削除しますか?",
+            "deleteDescription": "これにより'{name}'が永続的に削除されます。このアクションは元に戻せません。",
+            "deleting": "削除中...",
+            "errorCreating": "割引作成エラー",
+            "errorUpdating": "割引更新エラー",
+            "errorDeleting": "割引削除エラー",
+            "deleteError": "割引削除エラー",
+            "discountName": "割引名",
+            "placeholderName": "例: 休日割引、早期購入割引",
+            "percentage": "パーセンテージ",
+            "fixed": "固定金額",
+            "discountsLoadError": "割引読み込みエラー",
+            "loadingError": "データ読み込み時にエラーが発生しました"
+        },
+        "sidebar": {
+            "sale": "販売",
+            "transactions": "取引",
+            "items": "商品",
+            "categories": "カテゴリー",
+            "customers": "顧客",
+            "paymentMethods": "支払い方法",
+            "itemTaxes": "税金",
+            "itemDiscounts": "割引",
+            "settings": "設定",
+            "businessSelector": {
+                "switchBusiness": "ビジネス切り替え",
+                "addBusiness": "ビジネス追加",
+                "edit": "編集",
+                "delete": "削除"
+            },
+            "userProfile": {
+                "myAccount": "マイアカウント",
+                "logout": "ログアウト",
+                "dialog": {
+                    "title": "ログアウトを確認",
+                    "description": "ログアウトしますか?アカウントにアクセスするには再度ログインする必要があります。",
+                    "cancel": "キャンセル",
+                    "confirm": "ログアウト"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "新しいビジネスを作成",
+                "editTitle": "ビジネス編集",
+                "createDescription": "アカウントに新しいビジネス場所を追加",
+                "editDescription": "ビジネス情報を更新",
+                "nameLabel": "ビジネス名",
+                "namePlaceholder": "ビジネス名",
+                "addressLabel": "住所 (オプション)",
+                "addressPlaceholder": "メインストリート123、市区町村、国",
+                "phoneLabel": "電話番号 (オプション)",
+                "phonePlaceholder": "+81312345678",
+                "currencyLabel": "通貨 (オプション)",
+                "currencyPlaceholder": "通貨を選択",
+                "languageLabel": "言語 (オプション)",
+                "languagePlaceholder": "言語を選択",
+                "regionLabel": "地域 (オプション)",
+                "regionPlaceholder": "地域を選択",
+                "logoLabel": "ビジネスロゴ (オプション)",
+                "logoHelp": "サポート形式: JPG、JPEG、PNG、GIF、WEBP。最大サイズ: 1MB",
+                "uploading": "ロゴを読み込み中...",
+                "cancel": "キャンセル",
+                "create": "作成",
+                "update": "更新",
+                "errorGeneric": "ビジネス保存エラー",
+                "errorCreate": "ビジネス作成エラー",
+                "errorUpdate": "ビジネス更新エラー",
+                "errorImageSize": "画像サイズは1MBより小さい必要があります"
+            },
+            "deleteBusinessDialog": {
+                "title": "ビジネス削除",
+                "description": "'{name}'を削除してもよろしいですか?このアクションは元に戻せません。",
+                "cancel": "キャンセル",
+                "delete": "削除"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "画像サイズは1MBより小さい必要があります",
+                "updateFailed": "ビジネス更新失敗",
+                "createFailed": "ビジネス作成失敗",
+                "updateError": "更新中にエラーが発生しました",
+                "createError": "作成中にエラーが発生しました"
+            },
+            "edit": "ビジネス編集",
+            "create": "ビジネス作成",
+            "description": {
+                "edit": "ビジネス情報を更新",
+                "create": "アカウントに新しいビジネスを追加"
+            },
+            "form": {
+                "name": {
+                    "label": "ビジネス名",
+                    "placeholder": "ビジネス名"
+                },
+                "address": {
+                    "label": "住所 (オプション)",
+                    "placeholder": "メインストリート123、市区町村、国"
+                },
+                "phone": {
+                    "label": "電話番号 (オプション)",
+                    "placeholder": "+81312345678"
+                },
+                "currency": {
+                    "label": "通貨 (オプション)",
+                    "placeholder": "通貨を選択"
+                },
+                "language": {
+                    "label": "言語 (オプション)",
+                    "placeholder": "言語を選択"
+                },
+                "region": {
+                    "label": "地域 (オプション)",
+                    "placeholder": "地域を選択"
+                },
+                "logo": {
+                    "label": "ビジネスロゴ (オプション)",
+                    "helper": "サポート形式: JPG、JPEG、PNG、GIF、WEBP。最大1MB",
+                    "uploading": "読み込み中..."
+                }
+            },
+            "buttons": {
+                "cancel": "キャンセル",
+                "update": "更新",
+                "create": "作成"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "ビジネス切り替え",
+            "edit": "編集",
+            "delete": "削除",
+            "addBusiness": "ビジネス追加"
+        },
+        "deleteBusinessDialog": {
+            "title": "ビジネス削除",
+            "description": "確実ですか?これは元に戻せません。",
+            "cancel": "キャンセル",
+            "confirm": "削除"
+        },
+        "userProfile": {
+            "myAccount": "マイアカウント",
+            "logout": "ログアウト",
+            "dialog": {
+                "title": "ログアウトを確認",
+                "description": "ログアウトしますか?",
+                "cancel": "キャンセル",
+                "confirm": "ログアウト"
+            }
+        }
+    }
+}

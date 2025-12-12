@@ -30,21 +30,21 @@ export function CheckoutPaymentSummary({
             </CardHeader>
             <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                    <span>{t('app.sale.subtotal')}:</span>
+                    <span>{t('app.sale.subtotal')}</span>
                     <span className="font-medium">{currencySymbol}{summary.totalAmount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                    <span>{t('app.sale.tax')}:</span>
+                    <span>{t('app.sale.tax')}</span>
                     <span className="font-medium">{currencySymbol}{summary.taxAmount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                    <span>{t('app.sale.discount')}:</span>
+                    <span>{t('app.sale.discount')}</span>
                     <span className="font-medium text-green-600">
                         -{currencySymbol}{summary.discountAmount.toFixed(2)}
                     </span>
                 </div>
                 <div className="flex justify-between border-t pt-3 text-lg font-bold">
-                    <span>{t('app.sale.total')}:</span>
+                    <span>{t('app.sale.total')}</span>
                     <span className="text-primary">{currencySymbol}{summary.finalAmount.toFixed(2)}</span>
                 </div>
             </CardContent>

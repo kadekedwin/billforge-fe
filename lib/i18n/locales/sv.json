@@ -1,0 +1,915 @@
+{
+    "common": {
+        "loading": "Laddar...",
+        "error": "Fel",
+        "success": "Framgång",
+        "cancel": "Avbryt",
+        "save": "Spara",
+        "delete": "Ta bort",
+        "edit": "Redigera",
+        "create": "Skapa",
+        "update": "Uppdatera",
+        "search": "Sök",
+        "filter": "Filter",
+        "close": "Stäng",
+        "back": "Tillbaka",
+        "next": "Nästa",
+        "previous": "Föregående",
+        "submit": "Skicka",
+        "confirm": "Bekräfta",
+        "yes": "Ja",
+        "no": "Nej"
+    },
+    "landing": {
+        "hero": {
+            "title": "Modernt POS- och Faktureringssystem Enkelt Gjort",
+            "description": "Transformera din verksamhet med professionella kvitton, omedelbar betalning och kraftfull analys. Utformad för kaféer, restauranger, butiker och små företag över hela världen.",
+            "cta": "Starta Gratis Provperiod"
+        },
+        "features": {
+            "title": "Allt Du Behöver för att Driva Din Verksamhet",
+            "description": "Kraftfulla funktioner utformade för att effektivisera din försäljning, hantera kunder och få din verksamhet att växa effektivt.",
+            "receipt": {
+                "title": "Professionella Kvitton",
+                "description": "Skapa vackra, anpassningsbara kvitton med din logotyp, QR-koder och anpassade meddelanden. Välj från flera professionella mallar för att stärka ditt varumärke."
+            },
+            "checkout": {
+                "title": "Snabb Kassaprocess",
+                "description": "Accelerera dina transaktioner med ett intuitivt POS-gränssnitt. Bearbeta försäljning snabbt, acceptera flera betalningsmetoder och betjäna kunder mer effektivt."
+            },
+            "customer": {
+                "title": "Kundhantering",
+                "description": "Bygg varaktiga relationer med kundprofiler och köphistorik. Spåra preferenser, utgiftsmönster och erbjud personlig service till stamkunder."
+            },
+            "discount": {
+                "title": "Smarta Rabatter och Skatter",
+                "description": "Hantera enkelt procentsatser eller fasta rabatter och flera skattesatser. Tillämpa kampanjer på specifika varor eller hela transaktioner med bara några klick."
+            },
+            "analytics": {
+                "title": "Analys i Realtid",
+                "description": "Få omedelbar insikt om din försäljningsprestanda. Spåra daglig inkomst, bästsäljare och transaktionstrend för datadrivna affärsbeslut."
+            },
+            "cloud": {
+                "title": "Tillgång Överallt",
+                "description": "Det molnbaserade systemet fungerar på alla enheter - stationär dator, surfplatta eller smartphone. Hantera din verksamhet från var som helst med säker realtidssynkronisering."
+            }
+        },
+        "nav": {
+            "features": "Funktioner",
+            "pricing": "Priser",
+            "faq": "Vanliga Frågor",
+            "login": "Logga In",
+            "signup": "Registrera Dig",
+            "signIn": "Logga In",
+            "getStarted": "Kom Igång",
+            "home": "Hem",
+            "testimonials": "Testimonier",
+            "drawerTitle": "Navigationsmeny"
+        },
+        "faq": {
+            "title": "Vanliga Frågor",
+            "description": "Allt du behöver veta om BillForge och hur det kan hjälpa din verksamhet.",
+            "items": {
+                "item1": {
+                    "question": "Är BillForge verkligen gratis?",
+                    "answer": "Ja! Vår gratis plan inkluderar 1 verksamhet, 50 varor, 50 kunder, 50 transaktioner per månad och alla grundläggande funktioner. Perfekt för små företag som precis startar. Uppgradera till Pro eller Enterprise för högre gränser och avancerade funktioner."
+                },
+                "item2": {
+                    "question": "Vad är skillnaden mellan planerna Gratis, Pro och Enterprise?",
+                    "answer": "Gratis plan har grundläggande gränser (1 verksamhet, 50 varor, 50 transaktioner/månad). Pro erbjuder 10 gånger dessa gränser (10 verksamheter, 500 varor, 500 transaktioner/månad). Enterprise tillhandahåller obegränsade varor, kunder och transaktioner med avancerade funktioner som fleruser åtkomst och API-åtkomst."
+                },
+                "item3": {
+                    "question": "Kan jag anpassa mina kvitton?",
+                    "answer": "Absolut! BillForge erbjuder flera kvittonomallar med fullständiga anpassningsalternativ. Lägg till din företagslogotyp, anpassade sidfotmeddelanden, QR-koder och välj bland flera professionella designer. Kvitton kan skrivas ut eller skickas digitalt till kunder."
+                },
+                "item4": {
+                    "question": "Vilka betalningsmetoder kan jag acceptera?",
+                    "answer": "BillForge stöder alla större betalningsmetoder, inklusive kontanter, kredit-/betalkort, mobil betalningar och digitala plånböcker. Gratis plan tillåter upp till 5 betalningsmetoder, medan Pro och Enterprise erbjuder obegränsade betalningsalternativ."
+                },
+                "item5": {
+                    "question": "Hur hanterar jag rabatter och skatter?",
+                    "answer": "Vår plattform inkluderar integrerad rabatt- och skattehantering. Skapa procentsatser eller fasta rabatter och tillämpa dem på specifika varor eller hela transaktioner. Ställ in flera skattesatser för olika produktkategorier. Gratis plan inkluderar 30 rabatt- och skattekonfigurationer."
+                },
+                "item6": {
+                    "question": "Är mina affärsdata säkra?",
+                    "answer": "Ja! Alla data lagras säkert i molnet med kryptering. Vi utför regelbundna säkerhetskopior och använder branschstandarder för säkerhet. Din transaktionshistorik, kundinformation och affärsdata är skyddade och endast du kan komma åt dem."
+                },
+                "item7": {
+                    "question": "Kan jag spåra kunders köphistorik?",
+                    "answer": "Ja! BillForge inkluderar kundhanteringsfunktioner. Spara kundinformation, visa köphistorik och bygg bättre relationer med stamkunder. Spåra vad de köper, när de besöker och deras totala utgifter för att erbjuda personlig service."
+                },
+                "item8": {
+                    "question": "Behöver jag speciell maskinvara?",
+                    "answer": "Ingen speciell maskinvara behövs! BillForge fungerar på vilken enhet som helst med webbläsare - stationär dator, surfplatta eller smartphone. Om du vill skriva ut kvitton kan du använda vilken standardskrivare som helst. Systemet är molnbaserat, så du kan komma åt det var som helst."
+                },
+                "item9": {
+                    "question": "Vad händer om jag överskrider min månatliga transaktionsgräns?",
+                    "answer": "Med gratis plan är du begränsad till 50 transaktioner per månad. Om du behöver mer kan du uppgradera till Pro (500 transaktioner/månad) eller Enterprise (obegränsat). Dina data kommer aldrig att raderas och du kan alltid se tidigare transaktioner oavsett din nuvarande plan."
+                },
+                "item10": {
+                    "question": "Hur får jag support om jag behöver hjälp?",
+                    "answer": "Vi erbjuder e-poststöd till alla användare. Pro- och Enterprise-kunder får prioriteringsstöd med snabbare svarstider. Enterprise-kunder får även 24/7-support och en dedikerad kontoansvarig. Läs vår dokumentation och tutorials för snabba självhjälpsguider."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Enkla och Transparenta Priser",
+            "description": "Välj den perfekta planen för din verksamhet. Börja gratis och uppgradera när din verksamhet växer.",
+            "monthly": "/månad",
+            "mostPopular": "Mest Populär",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "description": "Perfekt för små företag som precis startar med digital fakturering.",
+                    "button": "Börja Gratis",
+                    "features": {
+                        "business": "1 Verksamhet",
+                        "items": "50 Varor",
+                        "customers": "50 Kunder",
+                        "transactions": "50 Transaktioner/månad",
+                        "paymentMethods": "5 Betalningsmetoder",
+                        "discountsTaxes": "30 Rabatter och Skatter",
+                        "templates": "Grundläggande Kvittonomallar",
+                        "storage": "Molnlagring"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Idealisk för växande verksamheter med flera platser och högre volym.",
+                    "button": "Starta Pro-provperiod",
+                    "features": {
+                        "business": "10 Verksamheter",
+                        "items": "500 Varor",
+                        "customers": "500 Kunder",
+                        "transactions": "500 Transaktioner/månad",
+                        "paymentMethods": "50 Betalningsmetoder",
+                        "discountsTaxes": "300 Rabatter och Skatter",
+                        "templates": "Premium Kvittonomallar",
+                        "support": "Prioriteringsstöd",
+                        "analytics": "Avancerad Analys",
+                        "branding": "Anpassad Varumärkesprofilering"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "För stora verksamheter som behöver avancerade funktioner och dedikerad support.",
+                    "button": "Kontakta Försäljning",
+                    "features": {
+                        "business": "Obegränsade Verksamheter",
+                        "items": "Obegränsade Varor",
+                        "customers": "Obegränsade Kunder",
+                        "transactions": "Obegränsade Transaktioner",
+                        "paymentMethods": "Obegränsade Betalningsmetoder",
+                        "discountsTaxes": "Obegränsade Rabatter och Skatter",
+                        "api": "API-åtkomst",
+                        "support": "24/7 Prioriteringsstöd"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "Testimonier",
+            "items": {
+                "item1": {
+                    "name": "Erik Andersson",
+                    "designation": "Caféägare",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge revolutionerade hur vi hanterar transaktioner på vår kafé. Kvittoanpassningen är utmärkt och våra kunder älskar att få digitala kvitton. Vi minskade papperskostnaderna med 80% och betalningar är aldrig varit så snabba!"
+                },
+                "item2": {
+                    "name": "Maria Bergström",
+                    "designation": "Butikschef",
+                    "company": "Bergströms Varuhus",
+                    "text": "Sedan jag började använda BillForge har butiksdriften blivit mycket enklare. Gränssnittet är lätt att förstå och försäljningsrapporter är mycket användbara. Jag rekommenderar det starkt till återförsäljare!"
+                },
+                "item3": {
+                    "name": "Per Lindström",
+                    "designation": "Restaurangägare",
+                    "company": "Lindströms Bistro",
+                    "text": "Att hantera flera betalningsmetoder var en dålig dröm. BillForge gjorde det sömlöst! Transaktionshistorik- och kundhanteringsfunktionerna förbättrade vår relation med stamkunder. Det här är det bästa POS-beslutet vi någonsin gjort!"
+                },
+                "item4": {
+                    "name": "Anna Svensson",
+                    "designation": "Butiksägare",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "BillForges rabatt- och skattehantering är exakt vad vi behövde för våra säsongsförsäljningar. Att skapa vackra varumärkeskvitton förbättrade kundupplevelsen. Vår betalningsprocess är nu professionell och effektiv!"
+                },
+                "item5": {
+                    "name": "Lars Nyström",
+                    "designation": "Bagerärgare",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Vi gick över till BillForge för tre månader sedan och tittar inte tillbaka. Varuhanteringssystemet håller vårt lager organiserat och kvittonomallarna ser professionella ut. Kundbetalningar är nu en glädje, även under stressiga morgontimmar!"
+                },
+                "item6": {
+                    "name": "Karin Eriksson",
+                    "designation": "Återförsäljningschef",
+                    "company": "TechGadgets Plus",
+                    "text": "BillForges transaktionsspårning gav oss fantastisk inblick i försäljningsmönster. Kunddatabasen hjälper oss ge personlig service, och QR-kvitton är populära bland teknikvetande kunder. Det är hela paketet!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "Kontakt",
+            "legal": {
+                "terms": "Villkor",
+                "privacy": "Sekretess"
+            },
+            "description": "Strömlinjeforma din fakturaprocess med intelligent fakturahantering",
+            "copyright": "© 2025 BillForge. Alla rättigheter förbehållna.",
+            "madeWith": "Gjord med ❤️ på Bali",
+            "links": {
+                "terms": "Villkor för Tjänster",
+                "privacy": "Sekretesspolicy"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Välkommen Tillbaka",
+            "description": "Logga in på ditt BillForge-konto",
+            "emailLabel": "E-postadress",
+            "emailPlaceholder": "din@epost.com",
+            "passwordLabel": "Lösenord",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Glömt Lösenordet?",
+            "submit": "Logga In",
+            "submitting": "Loggar in...",
+            "noAccount": "Har du inget konto?",
+            "signUp": "Skapa ett",
+            "errorGeneric": "E-post eller lösenord är felaktig. Försök igen."
+        },
+        "register": {
+            "title": "Skapa Konto",
+            "description": "Gå med i BillForge för att hantera din verksamhet",
+            "nameLabel": "Fullständigt Namn",
+            "namePlaceholder": "Erik Andersson",
+            "emailLabel": "E-postadress",
+            "emailPlaceholder": "din@epost.com",
+            "passwordLabel": "Lösenord",
+            "passwordPlaceholder": "Minst 8 tecken",
+            "confirmPasswordLabel": "Bekräfta Lösenord",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Genom att skapa ett konto godkänner du vår",
+            "terms": "Villkor för Tjänster",
+            "and": "och",
+            "privacy": "Sekretesspolicy",
+            "submit": "Skapa Konto",
+            "submitting": "Skapar konto...",
+            "hasAccount": "Har du redan ett konto?",
+            "signIn": "Logga in här",
+            "errorMatch": "Lösenorden matchar inte",
+            "errorGeneric": "Registrering misslyckades. Försök igen."
+        },
+        "forgotPassword": {
+            "title": "Återställ Lösenord",
+            "description": "Ange din e-postadress och vi skickar dig en länk för att återställa ditt lösenord.",
+            "emailLabel": "E-postadress",
+            "emailPlaceholder": "din@epost.com",
+            "submit": "Skicka Återställningslänk",
+            "submitting": "Skickar...",
+            "backToLogin": "Tillbaka till Inloggning",
+            "checkEmailTitle": "Kontrollera Din E-post",
+            "checkEmailDescription": "Vi har skickat instruktioner för återställning av lösenord till",
+            "checkEmailNote1": "Kontrollera din inkorg för återställningslänken.",
+            "checkEmailNote2": "Om du inte ser e-posten, kontrollera din skräpmapp.",
+            "tryAnotherEmail": "Försök med en annan e-postadress",
+            "errorGeneric": "Ett fel inträffade. Försök igen."
+        },
+        "resetPassword": {
+            "title": "Skapa Nytt Lösenord",
+            "description": "Ange ditt nya lösenord nedan.",
+            "emailLabel": "E-postadress",
+            "emailPlaceholder": "din@epost.com",
+            "newPasswordLabel": "Nytt Lösenord",
+            "newPasswordPlaceholder": "Minst 8 tecken",
+            "passwordHint": "Måste innehålla minst 8 tecken",
+            "confirmPasswordLabel": "Bekräfta Lösenord",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Återställ Lösenord",
+            "submitting": "Återställer lösenord...",
+            "backToLogin": "Tillbaka till Inloggning",
+            "successTitle": "Lösenord Återställt",
+            "successDescription": "Ditt lösenord har återställts.",
+            "redirecting": "Omdirigerar till inloggning...",
+            "goToLogin": "Gå till Inloggning",
+            "errorGeneric": "Ett fel inträffade. Försök igen.",
+            "errorMatch": "Lösenorden matchar inte",
+            "errorLength": "Lösenord måste innehålla minst 8 tecken"
+        },
+        "verifyEmail": {
+            "title": "Verifiera Din E-post",
+            "description": "Vi har skickat ett verifieringsmail till",
+            "instruction": "Kontrollera din inkorg och klicka på verifieringslänken för att aktivera ditt konto.",
+            "resend": "Skicka Verifieringsmejl Igen",
+            "resending": "Skickar...",
+            "changeEmail": "Använd en annan e-postadress",
+            "verifyingTitle": "Verifierar E-post...",
+            "verifyingDescription": "Vi verifierar din e-postadress. Vänta ett ögonblick.",
+            "successTitle": "E-post Verifierad",
+            "successDescription": "Din e-post har verifierats!",
+            "goToSale": "Gå till Kontrollpanel",
+            "alreadyVerifiedTitle": "Redan Verifierad",
+            "alreadyVerifiedDescription": "Din e-post är redan verifierad. Du kan fortsätta.",
+            "failedTitle": "Verifiering Misslyckades",
+            "failedDescription": "Verifieringslänken har gått ut eller är ogiltig.",
+            "resendSuccess": "Verifieringsmejl skickat! Kontrollera din inkorg.",
+            "changeEmailTitle": "Ändra E-postadress?",
+            "changeEmailDescription": "Du loggas ut och omdirigeras till registreringssidan för att registrera dig med en ny e-postadress.",
+            "cancel": "Avbryt",
+            "continue": "Fortsätt",
+            "errorGeneric": "Ett fel inträffade. Försök igen."
+        },
+        "confirmDeletion": {
+            "title": "Ta Bort Konto",
+            "description": "Varning: Det här kommer att raderas permanent:",
+            "warningTitle": "Att ta bort ditt konto resulterar i:",
+            "warningItem1": "Permanent borttagning av alla dina verksamheter",
+            "warningItem2": "Borttagning av alla transaktions- och försäljningsregister",
+            "warningItem3": "Borttagning av alla varor och lager",
+            "warningItem4": "Borttagning av din profil- och kontoinformation",
+            "warningReversal": "Den här åtgärden kan inte ångras.",
+            "inputLabel": "Skriv BEKRÄFTA för att ta bort ditt konto",
+            "confirmWord": "BEKRÄFTA",
+            "inputLabelSuffix": "för att fortsätta med borttagning",
+            "inputPlaceholder": "Skriv BEKRÄFTA här",
+            "cancel": "Avbryt",
+            "delete": "Ta Bort Konto",
+            "deleting": "Tar bort...",
+            "success": "Konto borttaget",
+            "errorGeneric": "Ett fel inträffade. Försök igen.",
+            "errorMatch": "Skriv BEKRÄFTA exakt",
+            "errorMissingToken": "Förfrågan är ogiltig. Försök igen.",
+            "invalidLinkTitle": "Länken är Ogiltig eller Utgången",
+            "invalidLinkDescription": "Den här borttagningslänken har gått ut eller är ogiltig.",
+            "returnToSettings": "Tillbaka till Inställningar"
+        }
+    },
+    "business": {
+        "name": "Namn på Verksamhet",
+        "address": "Adress",
+        "phone": "Telefonnummer",
+        "currency": "Valuta",
+        "language": "Språk",
+        "region": "Region",
+        "create": "Skapa Verksamhet",
+        "edit": "Redigera Verksamhet",
+        "delete": "Ta Bort Verksamhet",
+        "select": "Välj Verksamhet",
+        "noBusiness": "Inga verksamheter hittades",
+        "createFirst": "Skapa din första verksamhet för att börja"
+    },
+    "validation": {
+        "required": "Det här fältet är obligatoriskt",
+        "email": "Ange en giltig e-postadress",
+        "minLength": "Måste innehålla minst {min} tecken",
+        "maxLength": "Kan innehålla högst {max} tecken",
+        "passwordMatch": "Lösenorden matchar inte",
+        "invalidFormat": "Ogiltigt format"
+    },
+    "privacy": {
+        "title": "Sekretesspolicy",
+        "lastUpdated": "Senast uppdaterad: 8 december 2025",
+        "contactUs": "Kontakta Oss"
+    },
+    "terms": {
+        "title": "Villkor för Tjänster",
+        "lastUpdated": "Senast uppdaterad: 8 december 2025",
+        "contactUs": "Kontakta Oss"
+    },
+    "app": {
+        "sale": {
+            "title": "Försäljning",
+            "searchItems": "Sök varor...",
+            "allCategories": "Alla Kategorier",
+            "checkout": "Kassa",
+            "total": "Totalt:",
+            "items": "Varor",
+            "noItems": "Inga varor hittades",
+            "addToCart": "Lägg till i Varukorg",
+            "removeFromCart": "Ta Bort",
+            "error": "Fel",
+            "retry": "Försök Igen",
+            "loading": "Laddar...",
+            "selectBusiness": "Välj en verksamhet i sidofältet för att börja",
+            "cartEmpty": "Din varukorg är tom. Börja med att lägga till varor för att fortsätta.",
+            "backToItems": "Tillbaka till Varor",
+            "reviewOrder": "Granska din beställning och slutför transaktionen",
+            "orderSummary": "Beställningssammanfattning",
+            "item": "Vara",
+            "quantity": "Kvantitet",
+            "price": "Pris",
+            "tax": "Skatt:",
+            "discount": "Rabatt:",
+            "subtotal": "Delsumma:",
+            "paymentSummary": "Betalningssammanfattning",
+            "processing": "Bearbetar...",
+            "completeTransaction": "Slutför Transaktionen",
+            "transactionDetails": "Transaktionsdetaljer",
+            "customer": "Kund (Valfritt)",
+            "selectCustomer": "Välj kund...",
+            "guestCustomer": "Gästkund",
+            "paymentMethod": "Betalningsmetod (Valfritt)",
+            "paymentMethodsLoadError": "Kan inte ladda betalningsmetoder",
+            "created": "Skapad",
+            "selectPaymentMethod": "Välj betalningsmetod...",
+            "cash": "Kontanter",
+            "notes": "Anteckningar (Valfritt)",
+            "addNotes": "Lägg till anteckningar för denna transaktion...",
+            "outOfStock": "Slut i Lager",
+            "noItemsAvailable": "Inga varor tillgängliga",
+            "addItemsToInventory": "Lägg till varor i ditt lager för att börja skapa transaktioner"
+        },
+        "items": {
+            "title": "Varor",
+            "addItem": "Lägg till Vara",
+            "editItem": "Redigera Vara",
+            "deleteItem": "Ta Bort Vara",
+            "name": "Varunamn",
+            "price": "Pris",
+            "sku": "SKU (Lagerhanteringsenhet)",
+            "category": "Kategori",
+            "description": "Beskrivning",
+            "noItems": "Inga varor hittades",
+            "loading": "Laddar varor...",
+            "error": "Fel vid inläsning av varor",
+            "actions": "Åtgärder",
+            "business": "Verksamhet",
+            "unknownBusiness": "Okänd Verksamhet",
+            "addFirstItem": "Lägg till Din Första Vara",
+            "image": "Varuamage",
+            "status": "Status",
+            "created": "Skapandedatum",
+            "active": "Aktiv",
+            "inactive": "Inaktiv",
+            "createTitle": "Skapa Ny Vara",
+            "createDescription": "Lägg till en ny produkt eller tjänst i ditt lager",
+            "editTitle": "Redigera Vara",
+            "editDescription": "Uppdatera varoinformation",
+            "taxOptional": "Skatt (Valfritt)",
+            "noTax": "Ingen skatt",
+            "discountOptional": "Rabatt (Valfritt)",
+            "noDiscount": "Ingen rabatt",
+            "categoriesOptional": "Kategorier (Valfritt)",
+            "noCategoriesAvailable": "Inga kategorier tillgängliga. Skapa först kategorier.",
+            "skuOptional": "SKU (Valfritt)",
+            "descriptionOptional": "Beskrivning (Valfritt)",
+            "itemImageOptional": "Varubild (Valfritt)",
+            "supportedFormats": "Stödda Format: JPG, JPEG, PNG, GIF, WEBP. Största Storlek: 1MB",
+            "uploading": "Laddar upp bild...",
+            "update": "Uppdatera Vara",
+            "create": "Skapa Vara",
+            "deleteTitle": "Ta Bort Vara?",
+            "deleteDescription": "Detta tar bort {name} (SKU: {sku}) permanent. Den här åtgärden kan inte ångras.",
+            "deleting": "Tar bort...",
+            "errorCreating": "Fel vid skapande av vara",
+            "errorUpdating": "Fel vid uppdatering av vara",
+            "errorDeleting": "Fel vid borttagning av vara",
+            "uploadError": "Fel vid bilduppladdning",
+            "deleteError": "Fel vid borttagning av vara",
+            "selectImageError": "Välj en bildfil",
+            "imageSizeError": "Bildstorlek måste vara mindre än 1MB",
+            "loadingError": "Ett fel inträffade vid inläsning av data",
+            "itemsLoadError": "Fel vid inläsning av varor",
+            "basePrice": "Baspris"
+        },
+        "customers": {
+            "title": "Kunder",
+            "addCustomer": "Lägg till Kund",
+            "editCustomer": "Redigera Kund",
+            "deleteCustomer": "Ta Bort Kund",
+            "name": "Kundnamn",
+            "email": "E-post",
+            "phone": "Telefonnummer",
+            "address": "Adress",
+            "noCustomers": "Inga kunder hittades",
+            "loading": "Laddar kunder...",
+            "error": "Fel vid inläsning av kunder",
+            "actions": "Åtgärder",
+            "addFirstCustomer": "Lägg till Din Första Kund",
+            "editTitle": "Redigera Kund",
+            "createTitle": "Lägg till Ny Kund",
+            "editDescription": "Uppdatera kundinformation",
+            "createDescription": "Lägg till en ny kund i databasen",
+            "customerName": "Fullständigt Namn",
+            "placeholderName": "Erik Andersson",
+            "emailOptional": "E-post (Valfritt)",
+            "placeholderEmail": "erik@example.com",
+            "phoneOptional": "Telefonnummer (Valfritt)",
+            "placeholderPhone": "+46701234567",
+            "addressOptional": "Adress (Valfritt)",
+            "placeholderAddress": "Huvudgatan 123, Stad, Postnummer",
+            "deleteTitle": "Ta Bort Kund?",
+            "deleting": "Tar bort...",
+            "errorCreating": "Fel vid skapande av kund",
+            "errorUpdating": "Fel vid uppdatering av kund",
+            "errorDeleting": "Fel vid borttagning av kund",
+            "deleteError": "Fel vid borttagning av kund",
+            "customersLoadError": "Fel vid inläsning av kunder",
+            "loadingError": "Ett fel inträffade vid inläsning av data"
+        },
+        "transactions": {
+            "title": "Transaktioner",
+            "viewDetails": "Visa Detaljer",
+            "date": "Datum",
+            "customer": "Kund",
+            "total": "Totalt",
+            "totalAmount": "Totalt Belopp",
+            "finalAmount": "Slutligt Belopp",
+            "discountAmount": "Rabattbelopp:",
+            "taxAmount": "Skattebelopp:",
+            "paymentMethod": "Betalningsmetod",
+            "noTransactions": "Inga transaktioner hittades",
+            "actions": "Åtgärder",
+            "loading": "Laddar transaktioner...",
+            "error": "Fel vid inläsning av transaktioner",
+            "guestCustomer": "Gäst",
+            "transactionDetails": "Transaktionsdetaljer",
+            "viewInfo": "Visa fullständig transaktionsinformation",
+            "items": "Varor",
+            "noItems": "Inga varor hittades",
+            "item": "Vara",
+            "quantity": "Kvantitet",
+            "basePrice": "Baspris",
+            "tax": "Skatt",
+            "discount": "Rabatt",
+            "notes": "Anteckningar",
+            "transactionId": "Transaktions-ID",
+            "downloadPDF": "Hämta PDF",
+            "downloadImage": "Hämta Bild",
+            "sendEmail": "Skicka E-post",
+            "sendWhatsApp": "Skicka via WhatsApp"
+        },
+        "settings": {
+            "title": "Inställningar",
+            "profile": "Profil",
+            "business": "Verksamhet",
+            "receipt": "Kvittoinställningar",
+            "preferences": "Preferenser",
+            "account": "Konto",
+            "printer": "Skrivare",
+            "profileTab": {
+                "name": "Fullständigt Namn",
+                "email": "E-postadress",
+                "currentPassword": "Nuvarande Lösenord",
+                "newPassword": "Nytt Lösenord",
+                "confirmPassword": "Bekräfta Lösenord",
+                "changePassword": "Ändra Lösenord",
+                "updateProfile": "Uppdatera Profil",
+                "deleteAccount": "Ta Bort Konto",
+                "errorLoad": "Fel vid inläsning av profil",
+                "imageSizeError": "Bildstorlek måste vara mindre än 1MB",
+                "successUpdate": "Profilen uppdaterad",
+                "errorUpdate": "Fel vid profiluppdatering",
+                "errorFields": "Kontrollera alla fält",
+                "errorMatch": "Lösenorden matchar inte",
+                "errorLength": "Lösenord måste innehålla minst 8 tecken",
+                "successPassword": "Lösenord ändrat",
+                "errorPassword": "Nuvarande lösenord är felaktig",
+                "confirmDelete": "Bekräfta Kontoborttagning",
+                "sentDelete": "E-post om bekräftelse av borttagning skickad",
+                "errorDelete": "Fel vid skickning av borttagnings-e-post",
+                "profilePicture": "Profilbild",
+                "profilePictureDescription": "Ladda upp en profilbild för att anpassa ditt konto",
+                "uploadPhoto": "Ladda upp Foto",
+                "delete": "Ta Bort",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Max 1MB",
+                "personalInfo": "Personlig Information",
+                "fullName": "Fullständigt Namn",
+                "enterFullName": "Ange ditt fullständiga namn",
+                "enterEmail": "Ange din e-post",
+                "emailNote": "E-posten kan inte ändras",
+                "saving": "Sparar...",
+                "saveChanges": "Spara Ändringar",
+                "changePasswordDescription": "Uppdatera ditt lösenord för att skydda ditt konto",
+                "enterCurrentPassword": "Ange ditt nuvarande lösenord",
+                "enterNewPassword": "Ange nytt lösenord (min 8 tecken)",
+                "confirmNewPassword": "Bekräfta Nytt Lösenord",
+                "enterConfirmNewPassword": "Bekräfta ditt nya lösenord",
+                "changingPassword": "Ändrar lösenord...",
+                "deleteAccountDescription": "Efter borttagning kan ditt konto och all data inte återställas",
+                "deleteWarning": "Varning: Den här åtgärden kan inte ångras",
+                "deleteConsequences": "Att ta bort ditt konto resulterar i:",
+                "deleteItem1": "Permanent borttagning av alla dina verksamheter",
+                "deleteItem2": "Borttagning av alla transaktioner och varor",
+                "deleteItem3": "Borttagning av all din personliga information",
+                "deleteConfirmation": "Du får en bekräftelse-e-post med en länk för att slutföra borttagningen.",
+                "sendingEmail": "Skickar e-post...",
+                "requestDeletion": "Begär Kontoborttagning"
+            },
+            "receiptTab": {
+                "options": "Kvittoanpassning",
+                "includeLogo": "Inkludera Verksamhetslogotyp i Kvitton",
+                "footerMessage": "Sidfotmeddelande",
+                "footerPlaceholder": "Tack för ditt köp!",
+                "qrCode": "QR-koddata",
+                "qrPlaceholder": "Ange QR-kodvärde (t.ex. länk till sociala medier)",
+                "prefix": "Transaktionsprefix",
+                "prefixHelp": "Prefix för transaktionsnummer (t.ex. INV, RCP)",
+                "nextNumber": "Nästa Transaktionsnummer",
+                "nextNumberHelp": "Nästa transaktionsnummer som ska användas",
+                "template": "Kvittomall",
+                "selectBusiness": "Välj en verksamhet för att konfigurera kvittoinställningar"
+            },
+            "printerTab": {
+                "selectPrinter": "Välj Skrivare",
+                "testPrint": "Testutskrift",
+                "printerSettings": "Skrivarinställningar",
+                "toastSaved": "Skrivarinställningar sparade",
+                "toastSaveFailed": "Fel vid lagring av skrivarinställningar",
+                "toastSelectBusiness": "Välj först en verksamhet",
+                "toastTestSuccess": "Testutskrift skickad",
+                "toastTestFailed": "Testutskrift Misslyckades",
+                "toastTestError": "Ett fel inträffade vid utskrift",
+                "toastConnected": "Skrivare Ansluten",
+                "toastNotConnected": "Skrivare Ej Ansluten",
+                "toastCheckError": "Fel vid kontroll av skrivares status",
+                "title": "Skrivarinställning",
+                "description": "Konfigurera dina kvittoskriverinställningar",
+                "printerType": "Skrivertyp",
+                "selectType": "Välj Skrivertyp",
+                "printerPath": "Skrivarsökväg",
+                "pathHelp": "Sökvägen till din skriverenhet",
+                "characterSet": "Teckentabell",
+                "selectCharset": "Välj Teckentabell",
+                "lineCharacter": "Radtecken",
+                "lineCharacterHelp": "Tecken som används för raddelning",
+                "timeout": "Timeout (millisekunder)",
+                "timeoutHelp": "Timeout för utskriftsoperation i millisekunder",
+                "removeSpecial": "Ta Bort Specialtecken",
+                "saveConfig": "Spara Konfiguration",
+                "checkStatus": "Kontrollera Skrivares Status",
+                "connected": "Ansluten",
+                "disconnected": "Ej Ansluten",
+                "connectedMessage": "Din skrivare är ansluten och klar",
+                "disconnectedMessage": "Din skrivare är offline",
+                "troubleshooting": "Felsökningshjälp"
+            },
+            "preferencesTab": {
+                "language": "Språk",
+                "currency": "Valuta",
+                "region": "Region",
+                "timezone": "Tidszon",
+                "title": "Utseende och Lokalisering",
+                "description": "Anpassa BillForges utseende och beteende",
+                "theme": "Tema",
+                "themeDescription": "Välj ditt föredragna färgtema",
+                "light": "Ljust",
+                "dark": "Mörkt",
+                "system": "Systemstandard"
+            }
+        },
+        "categories": {
+            "title": "Kategorier",
+            "addCategory": "Lägg till Kategori",
+            "editCategory": "Redigera Kategori",
+            "deleteCategory": "Ta Bort Kategori",
+            "name": "Kategorinamn",
+            "noCategories": "Inga kategorier hittades",
+            "loading": "Laddar kategorier...",
+            "error": "Fel vid inläsning av kategorier",
+            "actions": "Åtgärder",
+            "addFirstCategory": "Lägg till Din Första Kategori",
+            "created": "Skapandedatum",
+            "createTitle": "Skapa Ny Kategori",
+            "createDescription": "Lägg till en ny kategori för att organisera dina varor",
+            "editTitle": "Redigera Kategori",
+            "editDescription": "Uppdatera kategoriinformation",
+            "categoryName": "Kategorinamn",
+            "placeholder": "t.ex. Elektronik, Livsmedel, Tjänster",
+            "deleteTitle": "Ta Bort Kategori?",
+            "deleteDescription": "Detta tar bort kategorin '{name}' permanent. Den här åtgärden kan inte ångras.",
+            "deleting": "Tar bort...",
+            "errorCreating": "Fel vid skapande av kategori",
+            "errorUpdating": "Fel vid uppdatering av kategori",
+            "errorDeleting": "Fel vid borttagning av kategori",
+            "deleteError": "Fel vid borttagning av kategori",
+            "loadingError": "Ett fel inträffade vid inläsning av data",
+            "categoriesLoadError": "Fel vid inläsning av kategorier"
+        },
+        "paymentMethods": {
+            "title": "Betalningsmetoder",
+            "addMethod": "Lägg till Betalningsmetod",
+            "editMethod": "Redigera Betalningsmetod",
+            "deleteMethod": "Ta Bort Betalningsmetod",
+            "name": "Metodnamn",
+            "noMethods": "Inga betalningsmetoder hittades",
+            "loading": "Laddar betalningsmetoder...",
+            "error": "Fel vid inläsning av betalningsmetoder",
+            "actions": "Åtgärder",
+            "addFirstMethod": "Lägg till Din Första Betalningsmetod",
+            "createTitle": "Lägg till Betalningsmetod",
+            "createDescription": "Lägg till en ny betalningsmetod för att acceptera betalningar",
+            "editTitle": "Redigera Betalningsmetod",
+            "editDescription": "Uppdatera betalningsmetodinformation",
+            "deleteTitle": "Ta Bort Betalningsmetod?",
+            "deleteDescription": "Detta tar bort '{name}' permanent. Den här åtgärden kan inte ångras.",
+            "deleting": "Tar bort...",
+            "errorCreating": "Fel vid skapande av betalningsmetod",
+            "errorUpdating": "Fel vid uppdatering av betalningsmetod",
+            "errorDeleting": "Fel vid borttagning av betalningsmetod",
+            "deleteError": "Fel vid borttagning av betalningsmetod",
+            "methodName": "Betalningsmetodnamn",
+            "placeholderName": "t.ex. Kontanter, Kreditkort, Banköverföring",
+            "created": "Skapandedatum",
+            "paymentMethodsLoadError": "Fel vid inläsning av betalningsmetoder",
+            "loadingError": "Ett fel inträffade vid inläsning av data"
+        },
+        "itemTaxes": {
+            "title": "Skattesatser",
+            "addTax": "Lägg till Skatt",
+            "editTax": "Redigera Skatt",
+            "deleteTax": "Ta Bort Skatt",
+            "name": "Skattenamn",
+            "rate": "Skattesats",
+            "noTaxes": "Inga skatter konfigurerade. Skapa din första skattekonfiguration.",
+            "loading": "Laddar skatter...",
+            "error": "Fel vid inläsning av skatter",
+            "actions": "Åtgärder",
+            "createTitle": "Lägg till Skattesats",
+            "createDescription": "Skapa en ny skattekonfiguration",
+            "editTitle": "Redigera Skattesats",
+            "editDescription": "Uppdatera skattesatsinformation",
+            "deleteTitle": "Ta Bort Skatt?",
+            "deleteDescription": "Detta tar bort '{name}' permanent. Den här åtgärden kan inte ångras.",
+            "deleting": "Tar bort...",
+            "errorCreating": "Fel vid skapande av skatt",
+            "errorUpdating": "Fel vid uppdatering av skatt",
+            "errorDeleting": "Fel vid borttagning av skatt",
+            "deleteError": "Fel vid borttagning av skatt",
+            "taxName": "Skattenamn",
+            "placeholderName": "t.ex. Moms, Försäljningsskatt",
+            "type": "Typ",
+            "percentage": "Procent",
+            "fixed": "Fixerat Belopp",
+            "value": "Värde",
+            "taxesLoadError": "Fel vid inläsning av skatter",
+            "loadingError": "Ett fel inträffade vid inläsning av data"
+        },
+        "itemDiscounts": {
+            "title": "Rabatter",
+            "addDiscount": "Lägg till Rabatt",
+            "editDiscount": "Redigera Rabatt",
+            "deleteDiscount": "Ta Bort Rabatt",
+            "name": "Rabattnamn",
+            "type": "Typ",
+            "value": "Värde",
+            "noDiscounts": "Inga rabatter konfigurerade. Skapa din första rabatt.",
+            "loading": "Laddar rabatter...",
+            "error": "Fel vid inläsning av rabatter",
+            "actions": "Åtgärder",
+            "createTitle": "Lägg till Rabatt",
+            "createDescription": "Skapa ett nytt rabatterbjudande",
+            "editTitle": "Redigera Rabatt",
+            "editDescription": "Uppdatera rabattinformation",
+            "deleteTitle": "Ta Bort Rabatt?",
+            "deleteDescription": "Detta tar bort '{name}' permanent. Den här åtgärden kan inte ångras.",
+            "deleting": "Tar bort...",
+            "errorCreating": "Fel vid skapande av rabatt",
+            "errorUpdating": "Fel vid uppdatering av rabatt",
+            "errorDeleting": "Fel vid borttagning av rabatt",
+            "deleteError": "Fel vid borttagning av rabatt",
+            "discountName": "Rabattnamn",
+            "placeholderName": "t.ex. Semesterrabatt, Tidig-fågel rabatt",
+            "percentage": "Procent",
+            "fixed": "Fixerat Belopp",
+            "discountsLoadError": "Fel vid inläsning av rabatter",
+            "loadingError": "Ett fel inträffade vid inläsning av data"
+        },
+        "sidebar": {
+            "sale": "Försäljning",
+            "transactions": "Transaktioner",
+            "items": "Varor",
+            "categories": "Kategorier",
+            "customers": "Kunder",
+            "paymentMethods": "Betalningsmetoder",
+            "itemTaxes": "Skatter",
+            "itemDiscounts": "Rabatter",
+            "settings": "Inställningar",
+            "businessSelector": {
+                "switchBusiness": "Byt Verksamhet",
+                "addBusiness": "Lägg till Verksamhet",
+                "edit": "Redigera",
+                "delete": "Ta Bort"
+            },
+            "userProfile": {
+                "myAccount": "Mitt Konto",
+                "logout": "Logga Ut",
+                "dialog": {
+                    "title": "Bekräfta Utloggning",
+                    "description": "Är du säker på att du vill logga ut? Du måste logga in igen för att komma åt ditt konto.",
+                    "cancel": "Avbryt",
+                    "confirm": "Logga Ut"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Skapa Ny Verksamhet",
+                "editTitle": "Redigera Verksamhet",
+                "createDescription": "Lägg till en ny verksamhetsplats i ditt konto",
+                "editDescription": "Uppdatera verksamhetsinformation",
+                "nameLabel": "Verksamhetsnamn",
+                "namePlaceholder": "Ditt Verksamhetsnamn",
+                "addressLabel": "Adress (Valfritt)",
+                "addressPlaceholder": "Huvudgatan 123, Stad, Land",
+                "phoneLabel": "Telefonnummer (Valfritt)",
+                "phonePlaceholder": "+46701234567",
+                "currencyLabel": "Valuta (Valfritt)",
+                "currencyPlaceholder": "Välj Valuta",
+                "languageLabel": "Språk (Valfritt)",
+                "languagePlaceholder": "Välj Språk",
+                "regionLabel": "Region (Valfritt)",
+                "regionPlaceholder": "Välj Region",
+                "logoLabel": "Verksamhetslogotyp (Valfritt)",
+                "logoHelp": "Stödda Format: JPG, JPEG, PNG, GIF, WEBP. Största Storlek: 1MB",
+                "uploading": "Laddar upp logotyp...",
+                "cancel": "Avbryt",
+                "create": "Skapa",
+                "update": "Uppdatera",
+                "errorGeneric": "Fel vid sparande av verksamhet",
+                "errorCreate": "Fel vid skapande av verksamhet",
+                "errorUpdate": "Fel vid uppdatering av verksamhet",
+                "errorImageSize": "Bildstorlek måste vara mindre än 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Ta Bort Verksamhet",
+                "description": "Är du säker på att du vill ta bort '{name}'? Den här åtgärden kan inte ångras.",
+                "cancel": "Avbryt",
+                "delete": "Ta Bort"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "Bildstorlek måste vara mindre än 1MB",
+                "updateFailed": "Verksamhetsuppdatering Misslyckades",
+                "createFailed": "Verksamhetsskapande Misslyckades",
+                "updateError": "Ett fel inträffade vid uppdatering",
+                "createError": "Ett fel inträffade vid skapande"
+            },
+            "edit": "Redigera Verksamhet",
+            "create": "Skapa Verksamhet",
+            "description": {
+                "edit": "Uppdatera verksamhetsinformation",
+                "create": "Lägg till en ny verksamhet i ditt konto"
+            },
+            "form": {
+                "name": {
+                    "label": "Verksamhetsnamn",
+                    "placeholder": "Ditt Verksamhetsnamn"
+                },
+                "address": {
+                    "label": "Adress (Valfritt)",
+                    "placeholder": "Huvudgatan 123, Stad, Land"
+                },
+                "phone": {
+                    "label": "Telefonnummer (Valfritt)",
+                    "placeholder": "+46701234567"
+                },
+                "currency": {
+                    "label": "Valuta (Valfritt)",
+                    "placeholder": "Välj Valuta"
+                },
+                "language": {
+                    "label": "Språk (Valfritt)",
+                    "placeholder": "Välj Språk"
+                },
+                "region": {
+                    "label": "Region (Valfritt)",
+                    "placeholder": "Välj Region"
+                },
+                "logo": {
+                    "label": "Verksamhetslogotyp (Valfritt)",
+                    "helper": "Stödda Format: JPG, JPEG, PNG, GIF, WEBP. Max 1MB",
+                    "uploading": "Laddar upp..."
+                }
+            },
+            "buttons": {
+                "cancel": "Avbryt",
+                "update": "Uppdatera",
+                "create": "Skapa"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Byt Verksamhet",
+            "edit": "Redigera",
+            "delete": "Ta Bort",
+            "addBusiness": "Lägg till Verksamhet"
+        },
+        "deleteBusinessDialog": {
+            "title": "Ta Bort Verksamhet",
+            "description": "Är du säker? Det kan inte ångras.",
+            "cancel": "Avbryt",
+            "confirm": "Ta Bort"
+        },
+        "userProfile": {
+            "myAccount": "Mitt Konto",
+            "logout": "Logga Ut",
+            "dialog": {
+                "title": "Bekräfta Utloggning",
+                "description": "Är du säker på att du vill logga ut?",
+                "cancel": "Avbryt",
+                "confirm": "Logga Ut"
+            }
+        }
+    }
+}

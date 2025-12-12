@@ -1,0 +1,915 @@
+{
+    "common": {
+        "loading": "Indlæser...",
+        "error": "Fejl",
+        "success": "Succes",
+        "cancel": "Annuller",
+        "save": "Gem",
+        "delete": "Slet",
+        "edit": "Rediger",
+        "create": "Opret",
+        "update": "Opdater",
+        "search": "Søg",
+        "filter": "Filtrér",
+        "close": "Luk",
+        "back": "Tilbage",
+        "next": "Næste",
+        "previous": "Forrige",
+        "submit": "Indsend",
+        "confirm": "Bekræft",
+        "yes": "Ja",
+        "no": "Nej"
+    },
+    "landing": {
+        "hero": {
+            "title": "Moderne POS & Fakturering Gjort Enkelt",
+            "description": "Transformér din virksomhed med professionelle kvitteringer, øjeblikkelig betaling og kraftig analyse. Designet til caféer, restauranter, detailbutikker og små virksomheder overalt.",
+            "cta": "Start Gratis Prøveperiode"
+        },
+        "features": {
+            "title": "Alt Du Har Brug for til at Drive Din Virksomhed",
+            "description": "Kraftfulde funktioner designet til at strømline dit salg, administrere kunder og vokse din virksomhed effektivt.",
+            "receipt": {
+                "title": "Professionelle Kvitteringer",
+                "description": "Opret smukke, tilpasselige kvitteringer med dit logo, QR-koder og tilpassede beskeder. Vælg fra flere professionelle skabeloner, der styrker dit brand."
+            },
+            "checkout": {
+                "title": "Hurtig Betalingsproces",
+                "description": "Fremskynde dine transaktioner med en intuitiv POS-grænseflade. Behandle salg hurtigt, acceptér flere betalingsmetoder og betjen dine kunder mere effektivt."
+            },
+            "customer": {
+                "title": "Kundehåndtering",
+                "description": "Byg langvarige relationer med kundeprofiler og købehistorik. Spor præferencer, udgiftsmønstre og giv personlig service til dine stamkunder."
+            },
+            "discount": {
+                "title": "Smart Rabatter & Afgifter",
+                "description": "Administrer procent- eller fastbeløbsrabatter og flere afgiftssatser med lethed. Anvend promoveringer på specifikke varer eller hele transaktioner med blot nogle få klik."
+            },
+            "analytics": {
+                "title": "Analyse i Realtid",
+                "description": "Få øjeblikkelig indsigt i dit salgspræstation. Spor daglig omsætning, bestsellere og transaktionstrends for at træffe datadrevne forretningsbeslutninger."
+            },
+            "cloud": {
+                "title": "Adgang Hvor Som Helst",
+                "description": "Cloudbaseret system fungerer på alle enheder - stationær computer, tablet eller smartphone. Administrér din virksomhed hvorfra som helst med sikker, realtids-datasynkronisering."
+            }
+        },
+        "nav": {
+            "features": "Funktioner",
+            "pricing": "Priser",
+            "faq": "Ofte Stillede Spørgsmål",
+            "login": "Log Ind",
+            "signup": "Tilmeld",
+            "signIn": "Log Ind",
+            "getStarted": "Kom i Gang",
+            "home": "Hjem",
+            "testimonials": "Anmeldelser",
+            "drawerTitle": "Navigationsmenu"
+        },
+        "faq": {
+            "title": "Ofte Stillede Spørgsmål",
+            "description": "Alt hvad du har brug for at vide om BillForge og hvordan det kan hjælpe din virksomhed.",
+            "items": {
+                "item1": {
+                    "question": "Er BillForge virkelig gratis?",
+                    "answer": "Ja! Vores gratis plan inkluderer 1 virksomhed, 50 produkter, 50 kunder, 50 transaktioner pr. måned og alle grundlæggende funktioner. Perfekt til små virksomheder, der lige starter. Opgrader til Pro eller Enterprise for højere grænser og avancerede funktioner."
+                },
+                "item2": {
+                    "question": "Hvad er forskellen mellem Gratis, Pro og Enterprise planerne?",
+                    "answer": "Gratis plan har grundlæggende grænser (1 virksomhed, 50 produkter, 50 transaktioner/måned). Pro tilbyder 10 gange disse grænser (10 virksomheder, 500 produkter, 500 transaktioner/måned). Enterprise giver ubegrænsede produkter, kunder og transaktioner med avancerede funktioner som multi-brugeradgang og API-adgang."
+                },
+                "item3": {
+                    "question": "Kan jeg tilpasse mine kvitteringer?",
+                    "answer": "Helt sikkert! BillForge tilbyder flere kvitteringsskabeloner med fulde tilpasningsmuligheder. Tilføj dit virksomhedslogo, tilpassede footermeddelelser, QR-koder og vælg fra forskellige professionelle designs. Kvitteringer kan printes eller sendes digitalt til kunder."
+                },
+                "item4": {
+                    "question": "Hvilke betalingsmetoder kan jeg acceptere?",
+                    "answer": "BillForge understøtter alle større betalingsmetoder, herunder kontant, kredit-/betalingskort, mobilbetalinger og digitale tegnebøger. Gratis plan tillader op til 5 betalingsmetoder, mens Pro og Enterprise tilbyder ubegrænsede betalingsmetoder."
+                },
+                "item5": {
+                    "question": "Hvordan administrerer jeg rabatter og afgifter?",
+                    "answer": "Vores platform inkluderer indbygget rabat- og afgiftshåndtering. Opret procent- eller fastbeløbsrabatter, anvend dem på specifikke varer eller hele transaktioner. Opsæt flere afgiftssatser for forskellige produktkategorier. Gratis plan inkluderer 30 rabat- og afgiftskonfigurationer."
+                },
+                "item6": {
+                    "question": "Er mine forretningsdata sikre?",
+                    "answer": "Ja! Alle data gemmes sikkert i skyen med kryptering. Vi udfører regelmæssige sikkerhedskopier og bruger standardiserede sikkerhedspraktikker. Dit transaktionshistorik, kundeoplysninger og forretningsdata er beskyttet og kan kun tilgås af dig."
+                },
+                "item7": {
+                    "question": "Kan jeg spore kundeindkøbshistorik?",
+                    "answer": "Ja! BillForge inkluderer kundehåndteringsfunktioner. Gem kundedetaljer, se købehistorik og opbyg bedre relationer med dine stamkunder. Spor hvad de køber, hvornår de besøger og deres samlede udgifter for at give personlig service."
+                },
+                "item8": {
+                    "question": "Har jeg brug for særligt hardware?",
+                    "answer": "Intet særligt hardware krævet! BillForge fungerer på alle enheder med en webbrowser - stationær computer, tablet eller smartphone. Hvis du vil printe kvitteringer, kan du bruge enhver standardprinter. Systemet er cloudbaseret, så du kan få adgang derfra hvor som helst."
+                },
+                "item9": {
+                    "question": "Hvad sker der, hvis jeg overskrider min månedlige transaktionsgrænse?",
+                    "answer": "På gratis plan er du begrænset til 50 transaktioner pr. måned. Hvis du har brug for flere, kan du opgradere til Pro (500 transaktioner/måned) eller Enterprise (ubegrænset). Dine data bliver aldrig slettet, og du kan altid se tidligere transaktioner uanset din nuværende plan."
+                },
+                "item10": {
+                    "question": "Hvordan får jeg support, hvis jeg har brug for hjælp?",
+                    "answer": "Vi tilbyder e-mailsupport til alle brugere. Pro og Enterprise-kunder får prioriteret support med hurtigere responstider. Enterprise-kunder modtager også 24/7 support og en dedikeret account manager. Tjek vores dokumentation og tutorials for hurtige selvhjælpsvejledninger."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Enkel, Transparent Prissætning",
+            "description": "Vælg den perfekte plan til din virksomhed. Start gratis og opgrader, efterhånden som din virksomhed vokser.",
+            "monthly": "/måned",
+            "mostPopular": "Mest Popular",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "description": "Perfekt til små virksomheder, der lige starter med digital fakturering.",
+                    "button": "Start Gratis",
+                    "features": {
+                        "business": "1 Virksomhed",
+                        "items": "50 Produkter",
+                        "customers": "50 Kunder",
+                        "transactions": "50 Transaktioner/måned",
+                        "paymentMethods": "5 Betalingsmetoder",
+                        "discountsTaxes": "30 Rabatter & Afgifter",
+                        "templates": "Basis Kvitteringsskabeloner",
+                        "storage": "Skystorage"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideel til voksende virksomheder med flere lokationer og højere volumen.",
+                    "button": "Start Pro Prøveperiode",
+                    "features": {
+                        "business": "10 Virksomheder",
+                        "items": "500 Produkter",
+                        "customers": "500 Kunder",
+                        "transactions": "500 Transaktioner/måned",
+                        "paymentMethods": "50 Betalingsmetoder",
+                        "discountsTaxes": "300 Rabatter & Afgifter",
+                        "templates": "Premium Kvitteringsskabeloner",
+                        "support": "Prioriteret Support",
+                        "analytics": "Avanceret Analyse",
+                        "branding": "Tilpasset Branding"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "For store virksomheder, der kræver avancerede funktioner og dedikeret support.",
+                    "button": "Kontakt Salg",
+                    "features": {
+                        "business": "Ubegrænsede Virksomheder",
+                        "items": "Ubegrænsede Produkter",
+                        "customers": "Ubegrænsede Kunder",
+                        "transactions": "Ubegrænsede Transaktioner",
+                        "paymentMethods": "Ubegrænsede Betalingsmetoder",
+                        "discountsTaxes": "Ubegrænsede Rabatter & Afgifter",
+                        "api": "API Adgang",
+                        "support": "24/7 Prioriteret Support"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "Anmeldelser",
+            "items": {
+                "item1": {
+                    "name": "Sarah Martinez",
+                    "designation": "Café Ejer",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge har revolutioneret, hvordan vi håndterer transaktioner på vores café. Kvitteringstilpasningen er fantastisk, og vores kunder elsker at modtage digitale kvitteringer. Vi har reduceret papiromkostninger med 80%, og betaling gik aldrig hurtigere!"
+                },
+                "item2": {
+                    "name": "Budi Santoso",
+                    "designation": "Butikschef",
+                    "company": "Warung Maju Jakarta",
+                    "text": "Siden jeg brugte BillForge er det blevet meget lettere at administrere butikken. Grænsefladen er let at forstå og salgsrapporter er meget hjælpsomme. Anbefales varmt til små og mellemstore virksomhedsejere!"
+                },
+                "item3": {
+                    "name": "Michael Chen",
+                    "designation": "Restaurant Ejer",
+                    "company": "Chen's Asian Bistro",
+                    "text": "At håndtere flere betalingsmetoder var engang et mareridt. BillForge gør det problemløst! Transaktionshistorik- og kundehåndteringsfunktionerne har hjulpet os med at opbygge bedre relationer med vores stamkunder. Bedste POS-beslutning vi nogensinde har taget!"
+                },
+                "item4": {
+                    "name": "Emma Thompson",
+                    "designation": "Butik Ejer",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "Rabat- og afgiftsstyringen i BillForge er præcis hvad vi havde brug for til vores saisonsalg. At skabe smukke, mærkede kvitteringer har forbedret vores kundeservice. Vores betalingsproces er nu professionel og effektiv!"
+                },
+                "item5": {
+                    "name": "James Wilson",
+                    "designation": "Bageri Ejer",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Vi skiftede til BillForge for tre måneder siden og har ikke set tilbage. Produkthåndteringssystemet holder vores lager organiseret, og kvitteringsskabelonerne ser professionelle ud. Kundebetaling er nu en leg, selv under vores travle morgenrusHour!"
+                },
+                "item6": {
+                    "name": "Lisa Rodriguez",
+                    "designation": "Detail Chef",
+                    "company": "TechGadgets Plus",
+                    "text": "BillForges transaktionssporing har givet os utrolige indsigter i vores salgsmønstre. Kundedatabasen hjælper os med at give personlig service, og QR-kode kvitteringer er et hit hos vores tech-savvy-kunder. Det er det komplette pakke!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "Kontakt",
+            "legal": {
+                "terms": "Vilkår",
+                "privacy": "Privatlivspolitik"
+            },
+            "description": "Strømline din fakturaproces med intelligent fakturaledelse",
+            "copyright": "© 2025 BillForge. Alle rettigheder forbeholdt.",
+            "madeWith": "Lavet med ❤️ på Bali",
+            "links": {
+                "terms": "Servicevilkår",
+                "privacy": "Privatlivspolitik"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Velkommen Tilbage",
+            "description": "Log ind på din BillForge-konto",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "passwordLabel": "Adgangskode",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Glemt adgangskode?",
+            "submit": "Log Ind",
+            "submitting": "Logger ind...",
+            "noAccount": "Har du ikke en konto?",
+            "signUp": "Opret en",
+            "errorGeneric": "E-mail eller adgangskode er forkert. Prøv igen."
+        },
+        "register": {
+            "title": "Opret Din Konto",
+            "description": "Deltag i BillForge for at administrere din virksomhed",
+            "nameLabel": "Fuldt Navn",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "passwordLabel": "Adgangskode",
+            "passwordPlaceholder": "Mindst 8 tegn",
+            "confirmPasswordLabel": "Bekræft Adgangskode",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Ved at oprette en konto accepterer du vores",
+            "terms": "Servicevilkår",
+            "and": "og",
+            "privacy": "Privatlivspolitik",
+            "submit": "Opret Konto",
+            "submitting": "Opretter konto...",
+            "hasAccount": "Har du allerede en konto?",
+            "signIn": "Log ind her",
+            "errorMatch": "Adgangskoderne stemmer ikke overens",
+            "errorGeneric": "Registrering mislykkedes. Prøv igen."
+        },
+        "forgotPassword": {
+            "title": "Nulstil Din Adgangskode",
+            "description": "Indtast din e-mailadresse, og vi sender dig et link til at nulstille din adgangskode.",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "submit": "Send Nulstillingslink",
+            "submitting": "Sender...",
+            "backToLogin": "Tilbage til login",
+            "checkEmailTitle": "Tjek Din E-mail",
+            "checkEmailDescription": "Vi har sendt adgangskodeomdirigeringsinstruktioner til",
+            "checkEmailNote1": "Tjek din indbakke for nulstillingslinkdet.",
+            "checkEmailNote2": "Hvis du ikke ser e-mailen, skal du tjekke din spammappe.",
+            "tryAnotherEmail": "Prøv en anden e-mail",
+            "errorGeneric": "Der opstod en fejl. Prøv igen."
+        },
+        "resetPassword": {
+            "title": "Opret Ny Adgangskode",
+            "description": "Indtast din nye adgangskode nedenfor.",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "newPasswordLabel": "Ny Adgangskode",
+            "newPasswordPlaceholder": "Mindst 8 tegn",
+            "passwordHint": "Skal være mindst 8 tegn",
+            "confirmPasswordLabel": "Bekræft Adgangskode",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Nulstil Adgangskode",
+            "submitting": "Nulstiller adgangskode...",
+            "backToLogin": "Tilbage til login",
+            "successTitle": "Adgangskode Nulstillet",
+            "successDescription": "Din adgangskode er blevet nulstillet med succes.",
+            "redirecting": "Omdirigerer til login...",
+            "goToLogin": "Gå til login",
+            "errorGeneric": "Der opstod en fejl. Prøv igen.",
+            "errorMatch": "Adgangskoderne stemmer ikke overens",
+            "errorLength": "Adgangskode skal være mindst 8 tegn"
+        },
+        "verifyEmail": {
+            "title": "Bekræft Din E-mail",
+            "description": "Vi sendte en bekræftelsesmail til",
+            "instruction": "Tjek venligst din indbakke og klik på bekræftelseslinkdet for at aktivere din konto.",
+            "resend": "Gensend Bekræftelsesmail",
+            "resending": "Sender...",
+            "changeEmail": "Brug en anden e-mailadresse",
+            "verifyingTitle": "Bekræfter E-mail...",
+            "verifyingDescription": "Vent venligst mens vi bekræfter din e-mailadresse.",
+            "successTitle": "E-mail Bekræftet",
+            "successDescription": "Din e-mail er blevet bekræftet med succes!",
+            "goToSale": "Gå til Dashboard",
+            "alreadyVerifiedTitle": "Allerede Bekræftet",
+            "alreadyVerifiedDescription": "Din e-mail er allerede bekræftet. Du kan fortsætte.",
+            "failedTitle": "Bekræftelse Mislykkedes",
+            "failedDescription": "Bekræftelseslinkdet er udløbet eller ugyldigt.",
+            "resendSuccess": "Bekræftelsesmail sendt! Tjek venligst din indbakke.",
+            "changeEmailTitle": "Skift E-mailadresse?",
+            "changeEmailDescription": "Du bliver logget ud og omdirigeret til tilmeldingssiden for at tilmelde dig med en ny e-mailadresse.",
+            "cancel": "Annuller",
+            "continue": "Fortsæt",
+            "errorGeneric": "Der opstod en fejl. Prøv igen."
+        },
+        "confirmDeletion": {
+            "title": "Slet Konto",
+            "description": "Advarsel: Dette vil permanent slette:",
+            "warningTitle": "Sletning af din konto vil fjerne:",
+            "warningItem1": "Alle dine virksomheder og forretningsdata",
+            "warningItem2": "Alle transaktions- og salgsposter",
+            "warningItem3": "Alle produkter og inventar",
+            "warningItem4": "Din profil og kontooplysninger",
+            "warningReversal": "Denne handling kan ikke fortrydes.",
+            "inputLabel": "Skriv BEKRÆFT for at slette din konto",
+            "confirmWord": "BEKRÆFT",
+            "inputLabelSuffix": "for at fortsætte med slettelse",
+            "inputPlaceholder": "Skriv BEKRÆFT her",
+            "cancel": "Annuller",
+            "delete": "Slet Konto",
+            "deleting": "Sletter...",
+            "success": "Konto slettet med succes",
+            "errorGeneric": "Der opstod en fejl. Prøv igen.",
+            "errorMatch": "Skriv BEKRÆFT præcis",
+            "errorMissingToken": "Ugyldig anmodning. Prøv igen.",
+            "invalidLinkTitle": "Ugyldigt eller Udløbet Link",
+            "invalidLinkDescription": "Dette sletningslink er udløbet eller ugyldigt.",
+            "returnToSettings": "Tilbage til Indstillinger"
+        }
+    },
+    "business": {
+        "name": "Virksomhedsnavn",
+        "address": "Adresse",
+        "phone": "Telefonnummer",
+        "currency": "Valuta",
+        "language": "Sprog",
+        "region": "Region",
+        "create": "Opret Virksomhed",
+        "edit": "Rediger Virksomhed",
+        "delete": "Slet Virksomhed",
+        "select": "Vælg Virksomhed",
+        "noBusiness": "Ingen virksomheder fundet",
+        "createFirst": "Opret din første virksomhed for at komme i gang"
+    },
+    "validation": {
+        "required": "Dette felt er påkrævet",
+        "email": "Indtast venligst en gyldig e-mailadresse",
+        "minLength": "Skal være mindst {min} tegn",
+        "maxLength": "Skal være højst {max} tegn",
+        "passwordMatch": "Adgangskoderne stemmer ikke overens",
+        "invalidFormat": "Ugyldigt format"
+    },
+    "privacy": {
+        "title": "Privatlivspolitik",
+        "lastUpdated": "Sidst opdateret: 8. december 2025",
+        "contactUs": "Kontakt Os"
+    },
+    "terms": {
+        "title": "Servicevilkår",
+        "lastUpdated": "Sidst opdateret: 8. december 2025",
+        "contactUs": "Kontakt Os"
+    },
+    "app": {
+        "sale": {
+            "title": "Salg",
+            "searchItems": "Søg efter produkter...",
+            "allCategories": "Alle Kategorier",
+            "checkout": "Betaling",
+            "total": "Total:",
+            "items": "Produkter",
+            "noItems": "Ingen produkter fundet",
+            "addToCart": "Tilføj til Kurv",
+            "removeFromCart": "Fjern",
+            "error": "Fejl",
+            "retry": "Prøv Igen",
+            "loading": "Indlæser...",
+            "selectBusiness": "Vælg venligst en virksomhed fra sidebjælken for at begynde",
+            "cartEmpty": "Din kurv er tom. Begynd at tilføje produkter for at fortsætte.",
+            "backToItems": "Tilbage til Produkter",
+            "reviewOrder": "Gennemgå din ordre og gennemfør transaktionen",
+            "orderSummary": "Ordreoversigt",
+            "item": "Produkt",
+            "quantity": "Mængde",
+            "price": "Pris",
+            "tax": "Afgift:",
+            "discount": "Rabat:",
+            "subtotal": "Subtotal:",
+            "paymentSummary": "Betalingsoversigt",
+            "processing": "Behandler...",
+            "completeTransaction": "Gennemfør Transaktion",
+            "transactionDetails": "Transaktionsdetaljer",
+            "customer": "Kunde (Valgfrit)",
+            "selectCustomer": "Vælg kunde...",
+            "guestCustomer": "Gæstkunde",
+            "paymentMethod": "Betalingsmetode (Valgfrit)",
+            "paymentMethodsLoadError": "Kunne ikke indlæse betalingsmetoder",
+            "created": "Oprettet",
+            "selectPaymentMethod": "Vælg betalingsmetode...",
+            "cash": "Kontant",
+            "notes": "Noter (Valgfrit)",
+            "addNotes": "Tilføj noter til denne transaktion...",
+            "outOfStock": "Ikke på lager",
+            "noItemsAvailable": "Ingen produkter tilgængelige",
+            "addItemsToInventory": "Tilføj produkter til dit lager for at begynde at oprette transaktioner"
+        },
+        "items": {
+            "title": "Produkter",
+            "addItem": "Tilføj Produkt",
+            "editItem": "Rediger Produkt",
+            "deleteItem": "Slet Produkt",
+            "name": "Produktnavn",
+            "price": "Pris",
+            "sku": "SKU (Lagerbevaringsenheder)",
+            "category": "Kategori",
+            "description": "Beskrivelse",
+            "noItems": "Ingen produkter fundet",
+            "loading": "Indlæser produkter...",
+            "error": "Fejl ved indlæsning af produkter",
+            "actions": "Handlinger",
+            "business": "Virksomhed",
+            "unknownBusiness": "Ukendt Virksomhed",
+            "addFirstItem": "Tilføj Dit Første Produkt",
+            "image": "Produktbillede",
+            "status": "Status",
+            "created": "Oprettelsesdato",
+            "active": "Aktiv",
+            "inactive": "Inaktiv",
+            "createTitle": "Opret Nyt Produkt",
+            "createDescription": "Tilføj et nyt produkt eller en ny service til dit lager",
+            "editTitle": "Rediger Produkt",
+            "editDescription": "Opdater produktinformationer",
+            "taxOptional": "Afgift (Valgfrit)",
+            "noTax": "Ingen afgift",
+            "discountOptional": "Rabat (Valgfrit)",
+            "noDiscount": "Ingen rabat",
+            "categoriesOptional": "Kategorier (Valgfrit)",
+            "noCategoriesAvailable": "Ingen kategorier tilgængelige. Opret kategorier først.",
+            "skuOptional": "SKU (Valgfrit)",
+            "descriptionOptional": "Beskrivelse (Valgfrit)",
+            "itemImageOptional": "Produktbillede (Valgfrit)",
+            "supportedFormats": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
+            "uploading": "Uploader billede...",
+            "update": "Opdater Produkt",
+            "create": "Opret Produkt",
+            "deleteTitle": "Slet Produkt?",
+            "deleteDescription": "Dette vil permanent slette {name} (SKU: {sku}). Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af produkt",
+            "errorUpdating": "Fejl ved opdatering af produkt",
+            "errorDeleting": "Fejl ved sletning af produkt",
+            "uploadError": "Fejl ved upload af billede",
+            "deleteError": "Fejl ved sletning af produkt",
+            "selectImageError": "Vælg venligst en billedfil",
+            "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
+            "loadingError": "Der opstod en fejl under indlæsning af data",
+            "itemsLoadError": "Fejl ved indlæsning af produkter",
+            "basePrice": "Basispris"
+        },
+        "customers": {
+            "title": "Kunder",
+            "addCustomer": "Tilføj Kunde",
+            "editCustomer": "Rediger Kunde",
+            "deleteCustomer": "Slet Kunde",
+            "name": "Kundenavn",
+            "email": "E-mail",
+            "phone": "Telefonnummer",
+            "address": "Adresse",
+            "noCustomers": "Ingen kunder fundet",
+            "loading": "Indlæser kunder...",
+            "error": "Fejl ved indlæsning af kunder",
+            "actions": "Handlinger",
+            "addFirstCustomer": "Tilføj Din Første Kunde",
+            "editTitle": "Rediger Kunde",
+            "createTitle": "Tilføj Ny Kunde",
+            "editDescription": "Opdater kundeoplysninger",
+            "createDescription": "Tilføj en ny kunde til din database",
+            "customerName": "Fuldt Navn",
+            "placeholderName": "John Doe",
+            "emailOptional": "E-mail (Valgfrit)",
+            "placeholderEmail": "john@example.com",
+            "phoneOptional": "Telefonnummer (Valgfrit)",
+            "placeholderPhone": "+4540123456",
+            "addressOptional": "Adresse (Valgfrit)",
+            "placeholderAddress": "Hovedgaden 123, By, Postnummer",
+            "deleteTitle": "Slet Kunde?",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af kunde",
+            "errorUpdating": "Fejl ved opdatering af kunde",
+            "errorDeleting": "Fejl ved sletning af kunde",
+            "deleteError": "Fejl ved sletning af kunde",
+            "customersLoadError": "Fejl ved indlæsning af kunder",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "transactions": {
+            "title": "Transaktioner",
+            "viewDetails": "Se Detaljer",
+            "date": "Dato",
+            "customer": "Kunde",
+            "total": "Total",
+            "totalAmount": "Samlet Beløb",
+            "finalAmount": "Endeligt Beløb",
+            "discountAmount": "Rabatbeløb:",
+            "taxAmount": "Afgiftsbeløb:",
+            "paymentMethod": "Betalingsmetode",
+            "noTransactions": "Ingen transaktioner fundet",
+            "actions": "Handlinger",
+            "loading": "Indlæser transaktioner...",
+            "error": "Fejl ved indlæsning af transaktioner",
+            "guestCustomer": "Gæst",
+            "transactionDetails": "Transaktionsdetaljer",
+            "viewInfo": "Se fuldstændig transaktionsinformation",
+            "items": "Produkter",
+            "noItems": "Ingen produkter fundet",
+            "item": "Produkt",
+            "quantity": "Mængde",
+            "basePrice": "Basispris",
+            "tax": "Afgift",
+            "discount": "Rabat",
+            "notes": "Noter",
+            "transactionId": "Transaktions-ID",
+            "downloadPDF": "Download PDF",
+            "downloadImage": "Download Billede",
+            "sendEmail": "Send til E-mail",
+            "sendWhatsApp": "Send via WhatsApp"
+        },
+        "settings": {
+            "title": "Indstillinger",
+            "profile": "Profil",
+            "business": "Virksomhed",
+            "receipt": "Kvitteringsindstillinger",
+            "preferences": "Præferencer",
+            "account": "Konto",
+            "printer": "Printer",
+            "profileTab": {
+                "name": "Fuldt Navn",
+                "email": "E-mailadresse",
+                "currentPassword": "Nuværende Adgangskode",
+                "newPassword": "Ny Adgangskode",
+                "confirmPassword": "Bekræft Adgangskode",
+                "changePassword": "Skift Adgangskode",
+                "updateProfile": "Opdater Profil",
+                "deleteAccount": "Slet Konto",
+                "errorLoad": "Fejl ved indlæsning af profil",
+                "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
+                "successUpdate": "Profilen blev opdateret med succes",
+                "errorUpdate": "Fejl ved opdatering af profil",
+                "errorFields": "Kontroller venligst alle felter",
+                "errorMatch": "Adgangskoderne stemmer ikke overens",
+                "errorLength": "Adgangskode skal være mindst 8 tegn",
+                "successPassword": "Adgangskode ændret med succes",
+                "errorPassword": "Nuværende adgangskode er forkert",
+                "confirmDelete": "Bekræft Sletning af Konto",
+                "sentDelete": "Bekræftelsesmail for sletning sendt",
+                "errorDelete": "Fejl ved sending af sletningsmail",
+                "profilePicture": "Profilbillede",
+                "profilePictureDescription": "Upload et profilbillede for at personalisere din konto",
+                "uploadPhoto": "Upload Foto",
+                "delete": "Slet",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Maks 1MB",
+                "personalInfo": "Personlige Oplysninger",
+                "fullName": "Fuldt Navn",
+                "enterFullName": "Indtast dit fulde navn",
+                "enterEmail": "Indtast din e-mail",
+                "emailNote": "E-mail kan ikke ændres",
+                "saving": "Gemmer...",
+                "saveChanges": "Gem Ændringer",
+                "changePasswordDescription": "Opdater din adgangskode for at holde din konto sikker",
+                "enterCurrentPassword": "Indtast nuværende adgangskode",
+                "enterNewPassword": "Indtast ny adgangskode (min 8 tegn)",
+                "confirmNewPassword": "Bekræft Ny Adgangskode",
+                "enterConfirmNewPassword": "Bekræft ny adgangskode",
+                "changingPassword": "Ændrer adgangskode...",
+                "deleteAccountDescription": "Efter sletning kan din konto og alle dine data ikke gendannes",
+                "deleteWarning": "Advarsel: Denne handling kan ikke fortrydes",
+                "deleteConsequences": "Sletning af din konto vil:",
+                "deleteItem1": "Permanent slette alle dine virksomheder",
+                "deleteItem2": "Fjerne alle transaktioner og produkter",
+                "deleteItem3": "Slette alle dine personlige data",
+                "deleteConfirmation": "Du vil modtage en bekræftelsesmail med et link til at gennemføre sletningen.",
+                "sendingEmail": "Sender e-mail...",
+                "requestDeletion": "Anmod Sletning af Konto"
+            },
+            "receiptTab": {
+                "options": "Tilpasning af Kvittering",
+                "includeLogo": "Inkludér Virksomhedslogo på Kvitteringer",
+                "footerMessage": "Fooder-besked",
+                "footerPlaceholder": "Tak for dit køb!",
+                "qrCode": "QR-kodedata",
+                "qrPlaceholder": "Indtast QR-kodeværdi (f.eks. socialmedieprofil)",
+                "prefix": "Transaktionsbetegnelse",
+                "prefixHelp": "Betegnelse for transaktionsnumre (f.eks. INV, RCP)",
+                "nextNumber": "Næste Transaktionsnummer",
+                "nextNumberHelp": "Det næste transaktionsnummer der skal bruges",
+                "template": "Kvitteringsskabelon",
+                "selectBusiness": "Vælg venligst en virksomhed for at konfigurere kvitteringsindstillinger"
+            },
+            "printerTab": {
+                "selectPrinter": "Vælg Printer",
+                "testPrint": "Testudskrift",
+                "printerSettings": "Printerindstillinger",
+                "toastSaved": "Printerindstillinger gemt",
+                "toastSaveFailed": "Fejl ved gemning af printerindstillinger",
+                "toastSelectBusiness": "Vælg venligst en virksomhed først",
+                "toastTestSuccess": "Testudskrift sendt med succes",
+                "toastTestFailed": "Testudskrift mislykkedes",
+                "toastTestError": "Der opstod en fejl under testudskrifting",
+                "toastConnected": "Printer forbundet",
+                "toastNotConnected": "Printer ikke forbundet",
+                "toastCheckError": "Fejl ved kontrol af printerstatus",
+                "title": "Printerkonfiguration",
+                "description": "Konfigurér dine kvitteringsprinterindstillinger",
+                "printerType": "Printertype",
+                "selectType": "Vælg printertype",
+                "printerPath": "Printersti",
+                "pathHelp": "Sti til din printerenhed",
+                "characterSet": "Tegnsæt",
+                "selectCharset": "Vælg tegnsæt",
+                "lineCharacter": "Linjeteknit",
+                "lineCharacterHelh": "Tegnet brugt til linjeadskillelse",
+                "timeout": "Timeout (millisekunder)",
+                "timeoutHelp": "Timeout for udskriftshandling i millisekunder",
+                "removeSpecial": "Fjern Specialtegn",
+                "saveConfig": "Gem Konfiguration",
+                "checkStatus": "Kontroller Printerstatus",
+                "connected": "Forbundet",
+                "disconnected": "Afbrudt",
+                "connectedMessage": "Din printer er forbundet og klar",
+                "disconnectedMessage": "Din printer er offline",
+                "troubleshooting": "Fejlfindingshjælp"
+            },
+            "preferencesTab": {
+                "language": "Sprog",
+                "currency": "Valuta",
+                "region": "Region",
+                "timezone": "Tidszone",
+                "title": "Udseende & Lokalisering",
+                "description": "Tilpas udseendet og opførslen af BillForge",
+                "theme": "Tema",
+                "themeDescription": "Vælg dit foretrukne farvetema",
+                "light": "Lyst",
+                "dark": "Mørkt",
+                "system": "Systemstandard"
+            }
+        },
+        "categories": {
+            "title": "Kategorier",
+            "addCategory": "Tilføj Kategori",
+            "editCategory": "Rediger Kategori",
+            "deleteCategory": "Slet Kategori",
+            "name": "Kategorinavn",
+            "noCategories": "Ingen kategorier fundet",
+            "loading": "Indlæser kategorier...",
+            "error": "Fejl ved indlæsning af kategorier",
+            "actions": "Handlinger",
+            "addFirstCategory": "Tilføj Din Første Kategori",
+            "created": "Oprettelsesdato",
+            "createTitle": "Opret Ny Kategori",
+            "createDescription": "Tilføj en ny kategori for at organisere dine produkter",
+            "editTitle": "Rediger Kategori",
+            "editDescription": "Opdater kategorioplysninger",
+            "categoryName": "Kategorinavn",
+            "placeholder": "f.eks. Elektronik, Mad, Tjenester",
+            "deleteTitle": "Slet Kategori?",
+            "deleteDescription": "Dette vil permanent slette kategorien '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af kategori",
+            "errorUpdating": "Fejl ved opdatering af kategori",
+            "errorDeleting": "Fejl ved sletning af kategori",
+            "deleteError": "Fejl ved sletning af kategori",
+            "loadingError": "Der opstod en fejl under indlæsning af data",
+            "categoriesLoadError": "Fejl ved indlæsning af kategorier"
+        },
+        "paymentMethods": {
+            "title": "Betalingsmetoder",
+            "addMethod": "Tilføj Betalingsmetode",
+            "editMethod": "Rediger Betalingsmetode",
+            "deleteMethod": "Slet Betalingsmetode",
+            "name": "Metodenavn",
+            "noMethods": "Ingen betalingsmetoder fundet",
+            "loading": "Indlæser betalingsmetoder...",
+            "error": "Fejl ved indlæsning af betalingsmetoder",
+            "actions": "Handlinger",
+            "addFirstMethod": "Tilføj Din Første Betalingsmetode",
+            "createTitle": "Tilføj Betalingsmetode",
+            "createDescription": "Tilføj en ny betalingsmetode for at acceptere betalinger",
+            "editTitle": "Rediger Betalingsmetode",
+            "editDescription": "Opdater betalingsmetodedetaljer",
+            "deleteTitle": "Slet Betalingsmetode?",
+            "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af betalingsmetode",
+            "errorUpdating": "Fejl ved opdatering af betalingsmetode",
+            "errorDeleting": "Fejl ved sletning af betalingsmetode",
+            "deleteError": "Fejl ved sletning af betalingsmetode",
+            "methodName": "Betalingsmetodenavn",
+            "placeholderName": "f.eks. Kontant, Kreditkort, Bankoverførsel",
+            "created": "Oprettelsesdato",
+            "paymentMethodsLoadError": "Fejl ved indlæsning af betalingsmetoder",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "itemTaxes": {
+            "title": "Afgiftssatser",
+            "addTax": "Tilføj Afgift",
+            "editTax": "Rediger Afgift",
+            "deleteTax": "Slet Afgift",
+            "name": "Afgiftsnavn",
+            "rate": "Afgiftssats",
+            "noTaxes": "Ingen afgifter konfigureret. Opret din første afgiftskonfiguration.",
+            "loading": "Indlæser afgifter...",
+            "error": "Fejl ved indlæsning af afgifter",
+            "actions": "Handlinger",
+            "createTitle": "Tilføj Afgiftssats",
+            "createDescription": "Opret en ny afgiftskonfiguration",
+            "editTitle": "Rediger Afgiftssats",
+            "editDescription": "Opdater afgiftssatsdetaljer",
+            "deleteTitle": "Slet Afgift?",
+            "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af afgift",
+            "errorUpdating": "Fejl ved opdatering af afgift",
+            "errorDeleting": "Fejl ved sletning af afgift",
+            "deleteError": "Fejl ved sletning af afgift",
+            "taxName": "Afgiftsnavn",
+            "placeholderName": "f.eks. Moms, Salgsskat",
+            "type": "Type",
+            "percentage": "Procent",
+            "fixed": "Fast Beløb",
+            "value": "Værdi",
+            "taxesLoadError": "Fejl ved indlæsning af afgifter",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "itemDiscounts": {
+            "title": "Rabatter",
+            "addDiscount": "Tilføj Rabat",
+            "editDiscount": "Rediger Rabat",
+            "deleteDiscount": "Slet Rabat",
+            "name": "Rabatbetegnelse",
+            "type": "Type",
+            "value": "Værdi",
+            "noDiscounts": "Ingen rabatter konfigureret. Opret din første rabat.",
+            "loading": "Indlæser rabatter...",
+            "error": "Fejl ved indlæsning af rabatter",
+            "actions": "Handlinger",
+            "createTitle": "Tilføj Rabat",
+            "createDescription": "Opret et nyt rabattilbud",
+            "editTitle": "Rediger Rabat",
+            "editDescription": "Opdater rabatdetaljer",
+            "deleteTitle": "Slet Rabat?",
+            "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af rabat",
+            "errorUpdating": "Fejl ved opdatering af rabat",
+            "errorDeleting": "Fejl ved sletning af rabat",
+            "deleteError": "Fejl ved sletning af rabat",
+            "discountName": "Rabatbetegnelse",
+            "placeholderName": "f.eks. Ferierabat, Tidlig Fugl Rabat",
+            "percentage": "Procent",
+            "fixed": "Fast Beløb",
+            "discountsLoadError": "Fejl ved indlæsning af rabatter",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "sidebar": {
+            "sale": "Salg",
+            "transactions": "Transaktioner",
+            "items": "Produkter",
+            "categories": "Kategorier",
+            "customers": "Kunder",
+            "paymentMethods": "Betalingsmetoder",
+            "itemTaxes": "Afgifter",
+            "itemDiscounts": "Rabatter",
+            "settings": "Indstillinger",
+            "businessSelector": {
+                "switchBusiness": "Skift Virksomhed",
+                "addBusiness": "Tilføj Virksomhed",
+                "edit": "Rediger",
+                "delete": "Slet"
+            },
+            "userProfile": {
+                "myAccount": "Min Konto",
+                "logout": "Log Ud",
+                "dialog": {
+                    "title": "Bekræft Log Ud",
+                    "description": "Er du sikker på, at du vil logge ud? Du skal logge ind igen for at få adgang til din konto.",
+                    "cancel": "Annuller",
+                    "confirm": "Log Ud"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Opret Ny Virksomhed",
+                "editTitle": "Rediger Virksomhed",
+                "createDescription": "Tilføj en ny virksomhedslokation til din konto",
+                "editDescription": "Opdater dine virksomhedsoplysninger",
+                "nameLabel": "Virksomhedsnavn",
+                "namePlaceholder": "Dit Virksomhedsnavn",
+                "addressLabel": "Adresse (Valgfrit)",
+                "addressPlaceholder": "Hovedgaden 123, By, Land",
+                "phoneLabel": "Telefonnummer (Valgfrit)",
+                "phonePlaceholder": "+4540123456",
+                "currencyLabel": "Valuta (Valgfrit)",
+                "currencyPlaceholder": "Vælg valuta",
+                "languageLabel": "Sprog (Valgfrit)",
+                "languagePlaceholder": "Vælg sprog",
+                "regionLabel": "Region (Valgfrit)",
+                "regionPlaceholder": "Vælg region",
+                "logoLabel": "Virksomhedslogo (Valgfrit)",
+                "logoHelp": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
+                "uploading": "Uploader logo...",
+                "cancel": "Annuller",
+                "create": "Opret",
+                "update": "Opdater",
+                "errorGeneric": "Fejl ved gemning af virksomhed",
+                "errorCreate": "Fejl ved oprettelse af virksomhed",
+                "errorUpdate": "Fejl ved opdatering af virksomhed",
+                "errorImageSize": "Billeddestørrelsen skal være mindre end 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Slet Virksomhed",
+                "description": "Er du sikker på, at du vil slette '{name}'? Denne handling kan ikke fortrydes.",
+                "cancel": "Annuller",
+                "delete": "Slet"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "Billeddestørrelsen skal være mindre end 1MB",
+                "updateFailed": "Fejl ved opdatering af virksomhed",
+                "createFailed": "Fejl ved oprettelse af virksomhed",
+                "updateError": "En fejl opstod under opdateringen",
+                "createError": "En fejl opstod under oprettelsen"
+            },
+            "edit": "Rediger Virksomhed",
+            "create": "Opret Virksomhed",
+            "description": {
+                "edit": "Opdater dine virksomhedsoplysninger",
+                "create": "Tilføj en ny virksomhed til din konto"
+            },
+            "form": {
+                "name": {
+                    "label": "Virksomhedsnavn",
+                    "placeholder": "Dit Virksomhedsnavn"
+                },
+                "address": {
+                    "label": "Adresse (Valgfrit)",
+                    "placeholder": "Hovedgaden 123, By, Land"
+                },
+                "phone": {
+                    "label": "Telefonnummer (Valgfrit)",
+                    "placeholder": "+4540123456"
+                },
+                "currency": {
+                    "label": "Valuta (Valgfrit)",
+                    "placeholder": "Vælg valuta"
+                },
+                "language": {
+                    "label": "Sprog (Valgfrit)",
+                    "placeholder": "Vælg sprog"
+                },
+                "region": {
+                    "label": "Region (Valgfrit)",
+                    "placeholder": "Vælg region"
+                },
+                "logo": {
+                    "label": "Virksomhedslogo (Valgfrit)",
+                    "helper": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks 1MB",
+                    "uploading": "Uploader..."
+                }
+            },
+            "buttons": {
+                "cancel": "Annuller",
+                "update": "Opdater",
+                "create": "Opret"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Skift Virksomhed",
+            "edit": "Rediger",
+            "delete": "Slet",
+            "addBusiness": "Tilføj Virksomhed"
+        },
+        "deleteBusinessDialog": {
+            "title": "Slet Virksomhed",
+            "description": "Er du sikker? Dette kan ikke fortrydes.",
+            "cancel": "Annuller",
+            "confirm": "Slet"
+        },
+        "userProfile": {
+            "myAccount": "Min Konto",
+            "logout": "Log Ud",
+            "dialog": {
+                "title": "Bekræft Log Ud",
+                "description": "Er du sikker på, at du vil logge ud?",
+                "cancel": "Annuller",
+                "confirm": "Log Ud"
+            }
+        }
+    }
+}

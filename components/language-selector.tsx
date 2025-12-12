@@ -12,15 +12,23 @@ import { Globe } from "lucide-react";
 import { SupportedLocale } from "@/lib/i18n/locale-utils";
 
 const LANGUAGE_OPTIONS = [
-    { value: "en", label: "English" },
+    { value: "ar", label: "العربية" },
     { value: "id", label: "Bahasa Indonesia" },
+    { value: "da", label: "Dansk" },
+    { value: "de", label: "Deutsch" },
+    { value: "en", label: "English" },
     { value: "es", label: "Español" },
     { value: "fr", label: "Français" },
-    { value: "de", label: "Deutsch" },
+    { value: "it", label: "Italiano" },
+    { value: "nl", label: "Nederlands" },
+    { value: "no", label: "Norsk" },
+    { value: "pt", label: "Português" },
+    { value: "sv", label: "Svenska" },
+    { value: "ru", label: "Русский" },
+    { value: "ko", label: "한국어" },
     { value: "zh", label: "中文" },
     { value: "ja", label: "日本語" },
-    { value: "ko", label: "한국어" },
-    { value: "pt", label: "Português" },
+    { value: "hi", label: "हिन्दी" },
 ];
 
 export function LanguageSelector() {

@@ -1,1 +1,915 @@
-{}
+{
+    "common": {
+        "loading": "Wird geladen...",
+        "error": "Fehler",
+        "success": "Erfolg",
+        "cancel": "Abbrechen",
+        "save": "Speichern",
+        "delete": "Löschen",
+        "edit": "Bearbeiten",
+        "create": "Erstellen",
+        "update": "Aktualisieren",
+        "search": "Suchen",
+        "filter": "Filtern",
+        "close": "Schließen",
+        "back": "Zurück",
+        "next": "Weiter",
+        "previous": "Zurück",
+        "submit": "Senden",
+        "confirm": "Bestätigen",
+        "yes": "Ja",
+        "no": "Nein"
+    },
+    "landing": {
+        "hero": {
+            "title": "Modernes POS & Rechnungswesen leicht gemacht",
+            "description": "Transformieren Sie Ihr Geschäft mit professionellen Quittungen, sofortigem Checkout und leistungsstarken Analysen. Entwickelt für Cafés, Restaurants, Einzelhandelsgeschäfte und kleine Unternehmen überall.",
+            "cta": "Kostenlos testen"
+        },
+        "features": {
+            "title": "Alles, was Sie zum Betreiben Ihres Unternehmens benötigen",
+            "description": "Leistungsstarke Funktionen, die entwickelt wurden, um Ihre Verkäufe zu optimieren, Kunden zu verwalten und Ihr Geschäft effizient zu entwickeln.",
+            "receipt": {
+                "title": "Professionelle Quittungen",
+                "description": "Erstellen Sie schöne, anpassbare Quittungen mit Ihrem Logo, QR-Codes und benutzerdefinierten Nachrichten. Wählen Sie aus mehreren professionellen Vorlagen, die Ihre Marke stärken."
+            },
+            "checkout": {
+                "title": "Schneller Checkout-Prozess",
+                "description": "Beschleunigen Sie Ihre Transaktionen mit einer intuitiven POS-Schnittstelle. Verkaufen Sie schnell, akzeptieren Sie mehrere Zahlungsarten und bedienen Sie Ihre Kunden effizienter."
+            },
+            "customer": {
+                "title": "Kundenverwaltung",
+                "description": "Bauen Sie langfristige Beziehungen mit Kundenprofilen und Kaufhistorie auf. Verfolgen Sie Vorlieben, Ausgabemuster und bieten Sie personalisierten Service für Ihre Stammkunden."
+            },
+            "discount": {
+                "title": "Intelligente Rabatte & Steuern",
+                "description": "Verwalten Sie Prozent- oder Festbetrag-Rabatte und mehrere Steuersätze mühelos. Wenden Sie Aktionen auf bestimmte Artikel oder ganze Transaktionen mit wenigen Klicks an."
+            },
+            "analytics": {
+                "title": "Echtzeit-Analytik",
+                "description": "Erhalten Sie sofortige Einblicke in Ihre Verkaufsleistung. Verfolgen Sie tägliche Einnahmen, Bestseller und Transaktionstrends, um datengestützte Geschäftsentscheidungen zu treffen."
+            },
+            "cloud": {
+                "title": "Zugriff von überall",
+                "description": "Das cloudbasierte System funktioniert auf allen Geräten - Desktop, Tablet oder Smartphone. Verwalten Sie Ihr Geschäft von überall mit sicherer, Echtzeit-Datensynchronisierung."
+            }
+        },
+        "nav": {
+            "features": "Funktionen",
+            "pricing": "Preise",
+            "faq": "Häufig gestellte Fragen",
+            "login": "Anmelden",
+            "signup": "Registrieren",
+            "signIn": "Anmelden",
+            "getStarted": "Erste Schritte",
+            "home": "Startseite",
+            "testimonials": "Bewertungen",
+            "drawerTitle": "Navigationsmenü"
+        },
+        "faq": {
+            "title": "Häufig gestellte Fragen",
+            "description": "Alles, was Sie über BillForge wissen müssen und wie es Ihrem Geschäft helfen kann.",
+            "items": {
+                "item1": {
+                    "question": "Ist BillForge wirklich kostenlos?",
+                    "answer": "Ja! Unser kostenloses Plan umfasst 1 Unternehmen, 50 Artikel, 50 Kunden, 50 Transaktionen pro Monat und alle grundlegenden Funktionen. Perfekt für kleine Unternehmen, die gerade anfangen. Upgraden Sie auf Pro oder Enterprise für höhere Limits und erweiterte Funktionen."
+                },
+                "item2": {
+                    "question": "Was ist der Unterschied zwischen Free, Pro und Enterprise?",
+                    "answer": "Der kostenlose Plan hat grundlegende Limits (1 Unternehmen, 50 Artikel, 50 Transaktionen/Monat). Pro bietet das 10-fache dieser Limits (10 Unternehmen, 500 Artikel, 500 Transaktionen/Monat). Enterprise bietet unbegrenzte Artikel, Kunden und Transaktionen mit erweiterten Funktionen wie Multi-User-Zugriff und API-Zugriff."
+                },
+                "item3": {
+                    "question": "Kann ich meine Quittungen anpassen?",
+                    "answer": "Absolut! BillForge bietet mehrere Quittungsvorlagen mit vollständigen Anpassungsoptionen. Fügen Sie Ihr Unternehmenslogo, benutzerdefinierte Fußnoten, QR-Codes hinzu und wählen Sie aus verschiedenen professionellen Designs. Quittungen können gedruckt oder digital an Kunden versendet werden."
+                },
+                "item4": {
+                    "question": "Welche Zahlungsarten kann ich akzeptieren?",
+                    "answer": "BillForge unterstützt alle gängigen Zahlungsarten einschließlich Bargeld, Kredit-/Debitkarten, Mobiles Bezahlen und digitale Geldbörsen. Der kostenlose Plan erlaubt bis zu 5 Zahlungsarten, während Pro und Enterprise unbegrenzte Zahlungsoptionen bieten."
+                },
+                "item5": {
+                    "question": "Wie verwalte ich Rabatte und Steuern?",
+                    "answer": "Unsere Plattform verfügt über integrierte Rabatt- und Steuerverwaltung. Erstellen Sie Prozent- oder Festbetrag-Rabatte, wenden Sie sie auf bestimmte Artikel oder ganze Transaktionen an. Richten Sie mehrere Steuersätze für verschiedene Produktkategorien ein. Der kostenlose Plan umfasst 30 Rabatt- und Steuerkonfigurationen."
+                },
+                "item6": {
+                    "question": "Sind meine Geschäftsdaten sicher?",
+                    "answer": "Ja! Alle Daten werden verschlüsselt sicher in der Cloud gespeichert. Wir führen regelmäßige Sicherungen durch und verwenden Industriestandard-Sicherheitspraktiken. Ihre Transaktionshistorie, Kundeninformationen und Geschäftsdaten sind geschützt und nur für Sie zugänglich."
+                },
+                "item7": {
+                    "question": "Kann ich die Kaufhistorie von Kunden verfolgen?",
+                    "answer": "Ja! BillForge verfügt über Kundenverwaltungsfunktionen. Speichern Sie Kundendetails, sehen Sie die Kaufhistorie und bauen Sie bessere Beziehungen zu Ihren Stammkunden auf. Verfolgen Sie, was sie kaufen, wann sie besuchen und ihre Gesamtausgaben, um personalisierten Service zu bieten."
+                },
+                "item8": {
+                    "question": "Benötige ich spezielle Hardware?",
+                    "answer": "Keine spezielle Hardware erforderlich! BillForge funktioniert auf jedem Gerät mit Webbrowser - Desktop, Tablet oder Smartphone. Wenn Sie Quittungen drucken möchten, können Sie jeden Standard-Drucker verwenden. Das System ist cloudbasiert, sodass Sie von überall darauf zugreifen können."
+                },
+                "item9": {
+                    "question": "Was passiert, wenn ich mein monatliches Transaktionslimit überschreite?",
+                    "answer": "Im kostenlosen Plan sind Sie auf 50 Transaktionen pro Monat begrenzt. Wenn Sie mehr benötigen, können Sie auf Pro (500 Transaktionen/Monat) oder Enterprise (unbegrenzt) upgraden. Ihre Daten werden niemals gelöscht, und Sie können jederzeit frühere Transaktionen anzeigen, unabhängig von Ihrem aktuellen Plan."
+                },
+                "item10": {
+                    "question": "Wie erhalte ich Support, wenn ich Hilfe benötige?",
+                    "answer": "Wir bieten E-Mail-Support für alle Benutzer. Pro und Enterprise-Kunden erhalten prioritären Support mit schnelleren Reaktionszeiten. Enterprise-Kunden erhalten auch 24/7-Support und einen dedizierten Account Manager. Konsultieren Sie unsere Dokumentation und Tutorials für schnelle Selbstbedienungsleitfäden."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Einfache, transparente Preisgestaltung",
+            "description": "Wählen Sie den perfekten Plan für Ihr Geschäft. Kostenlos starten und upgraden, während Ihr Geschäft wächst.",
+            "monthly": "/Monat",
+            "mostPopular": "Am beliebtesten",
+            "plans": {
+                "free": {
+                    "name": "Kostenlos",
+                    "description": "Perfekt für kleine Unternehmen, die gerade mit digitalem Rechnungswesen anfangen.",
+                    "button": "Kostenlos starten",
+                    "features": {
+                        "business": "1 Unternehmen",
+                        "items": "50 Artikel",
+                        "customers": "50 Kunden",
+                        "transactions": "50 Transaktionen/Monat",
+                        "paymentMethods": "5 Zahlungsarten",
+                        "discountsTaxes": "30 Rabatte & Steuern",
+                        "templates": "Basis-Quittungsvorlagen",
+                        "storage": "Cloud-Speicher"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideal für wachsende Unternehmen mit mehreren Standorten und höherem Volumen.",
+                    "button": "Pro-Testversion starten",
+                    "features": {
+                        "business": "10 Unternehmen",
+                        "items": "500 Artikel",
+                        "customers": "500 Kunden",
+                        "transactions": "500 Transaktionen/Monat",
+                        "paymentMethods": "50 Zahlungsarten",
+                        "discountsTaxes": "300 Rabatte & Steuern",
+                        "templates": "Premium-Quittungsvorlagen",
+                        "support": "Prioritärer Support",
+                        "analytics": "Erweiterte Analytik",
+                        "branding": "Benutzerdefiniertes Branding"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "Für große Unternehmen, die erweiterte Funktionen und dedizierten Support benötigen.",
+                    "button": "Vertrieb kontaktieren",
+                    "features": {
+                        "business": "Unbegrenzte Unternehmen",
+                        "items": "Unbegrenzte Artikel",
+                        "customers": "Unbegrenzte Kunden",
+                        "transactions": "Unbegrenzte Transaktionen",
+                        "paymentMethods": "Unbegrenzte Zahlungsarten",
+                        "discountsTaxes": "Unbegrenzte Rabatte & Steuern",
+                        "api": "API-Zugriff",
+                        "support": "24/7 Prioritärer Support"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "Bewertungen",
+            "items": {
+                "item1": {
+                    "name": "Sarah Martinez",
+                    "designation": "Café-Inhaberin",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge hat revolutioniert, wie wir Transaktionen in unserem Café handhaben. Die Quittungsanpassung ist fantastisch, und unsere Kunden lieben digitale Quittungen. Wir haben unsere Papierkosten um 80% reduziert und Checkout ging noch nie schneller!"
+                },
+                "item2": {
+                    "name": "Budi Santoso",
+                    "designation": "Filialleiter",
+                    "company": "Warung Maju Jakarta",
+                    "text": "Seit ich BillForge nutze, ist die Verwaltung des Geschäfts viel einfacher. Die Schnittstelle ist leicht zu verstehen und die Verkaufsberichte sind sehr hilfreich. Sehr empfehlenswert für kleine und mittlere Unternehmer!"
+                },
+                "item3": {
+                    "name": "Michael Chen",
+                    "designation": "Restaurant-Inhaber",
+                    "company": "Chen's Asian Bistro",
+                    "text": "Mehrere Zahlungsarten zu handhaben war einmal ein Albtraum. BillForge macht es nahtlos! Die Transaktionsverlauf- und Kundenverwaltungsfunktionen haben uns geholfen, bessere Beziehungen zu unseren Stammkunden aufzubauen. Die beste POS-Entscheidung, die wir je getroffen haben!"
+                },
+                "item4": {
+                    "name": "Emma Thompson",
+                    "designation": "Boutique-Inhaberin",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "Die Rabatt- und Steuerverwaltung in BillForge ist genau das, was wir für unsere Saisonsaleverkäufe brauchten. Das Erstellen schöner, markengebundener Quittungen hat unser Kundenerlebnis verbessert. Unser Checkout-Prozess ist nun professionell und effizient!"
+                },
+                "item5": {
+                    "name": "James Wilson",
+                    "designation": "Bäckerei-Inhaber",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Wir sind vor drei Monaten zu BillForge gewechselt und schauen nicht zurück. Das Artikelverwaltungssystem hält unser Inventar organisiert, und die Quittungsvorlagen sehen professionell aus. Der Kundencheckout ist jetzt eine Freude, selbst in unseren hektischen Morgenstoßzeiten!"
+                },
+                "item6": {
+                    "name": "Lisa Rodriguez",
+                    "designation": "Einzelhandelsmanager",
+                    "company": "TechGadgets Plus",
+                    "text": "Die Transaktionsverfolgung von BillForge hat uns unglaubliche Einblicke in unsere Verkaufsmuster gegeben. Die Kundendatenbank hilft uns, personalisierten Service zu bieten, und QR-Code-Quittungen sind bei unseren Tech-savvy-Kunden beliebt. Es ist das Komplettpaket!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "Kontakt",
+            "legal": {
+                "terms": "Bedingungen",
+                "privacy": "Datenschutz"
+            },
+            "description": "Vereinfachen Sie Ihren Rechnungsprozess mit intelligenter Rechnungsverwaltung",
+            "copyright": "© 2025 BillForge. Alle Rechte vorbehalten.",
+            "madeWith": "Gemacht mit ❤️ auf Bali",
+            "links": {
+                "terms": "Servicebedingungen",
+                "privacy": "Datenschutzrichtlinie"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Willkommen zurück",
+            "description": "Melden Sie sich bei Ihrem BillForge-Konto an",
+            "emailLabel": "E-Mail-Adresse",
+            "emailPlaceholder": "ihre@email.com",
+            "passwordLabel": "Passwort",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Passwort vergessen?",
+            "submit": "Anmelden",
+            "submitting": "Wird angemeldet...",
+            "noAccount": "Haben Sie noch kein Konto?",
+            "signUp": "Erstellen Sie eines",
+            "errorGeneric": "E-Mail oder Passwort ist falsch. Bitte versuchen Sie es erneut."
+        },
+        "register": {
+            "title": "Erstellen Sie Ihr Konto",
+            "description": "Treten Sie BillForge bei, um Ihr Geschäft zu verwalten",
+            "nameLabel": "Vollständiger Name",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "E-Mail-Adresse",
+            "emailPlaceholder": "ihre@email.com",
+            "passwordLabel": "Passwort",
+            "passwordPlaceholder": "Mindestens 8 Zeichen",
+            "confirmPasswordLabel": "Passwort bestätigen",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Mit der Kontenerstellung stimmen Sie unseren zu",
+            "terms": "Servicebedingungen",
+            "and": "und",
+            "privacy": "Datenschutzrichtlinie",
+            "submit": "Konto erstellen",
+            "submitting": "Konto wird erstellt...",
+            "hasAccount": "Haben Sie bereits ein Konto?",
+            "signIn": "Melden Sie sich hier an",
+            "errorMatch": "Die Passwörter stimmen nicht überein",
+            "errorGeneric": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+        },
+        "forgotPassword": {
+            "title": "Passwort zurücksetzen",
+            "description": "Geben Sie Ihre E-Mail-Adresse ein, und wir senden Ihnen einen Link zum Zurücksetzen des Passworts.",
+            "emailLabel": "E-Mail-Adresse",
+            "emailPlaceholder": "ihre@email.com",
+            "submit": "Zurücksetzen-Link senden",
+            "submitting": "Wird gesendet...",
+            "backToLogin": "Zurück zur Anmeldung",
+            "checkEmailTitle": "Überprüfen Sie Ihre E-Mail",
+            "checkEmailDescription": "Wir haben Anweisungen zum Zurücksetzen des Passworts an gesendet",
+            "checkEmailNote1": "Überprüfen Sie Ihren Posteingang auf den Zurücksetzen-Link.",
+            "checkEmailNote2": "Wenn Sie die E-Mail nicht sehen, überprüfen Sie Ihren Spam-Ordner.",
+            "tryAnotherEmail": "Versuchen Sie eine andere E-Mail",
+            "errorGeneric": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+        },
+        "resetPassword": {
+            "title": "Neues Passwort erstellen",
+            "description": "Geben Sie unten Ihr neues Passwort ein.",
+            "emailLabel": "E-Mail-Adresse",
+            "emailPlaceholder": "ihre@email.com",
+            "newPasswordLabel": "Neues Passwort",
+            "newPasswordPlaceholder": "Mindestens 8 Zeichen",
+            "passwordHint": "Muss mindestens 8 Zeichen lang sein",
+            "confirmPasswordLabel": "Passwort bestätigen",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Passwort zurücksetzen",
+            "submitting": "Passwort wird zurückgesetzt...",
+            "backToLogin": "Zurück zur Anmeldung",
+            "successTitle": "Passwort zurückgesetzt",
+            "successDescription": "Ihr Passwort wurde erfolgreich zurückgesetzt.",
+            "redirecting": "Wird zur Anmeldung umgeleitet...",
+            "goToLogin": "Zur Anmeldung",
+            "errorGeneric": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+            "errorMatch": "Die Passwörter stimmen nicht überein",
+            "errorLength": "Passwort muss mindestens 8 Zeichen lang sein"
+        },
+        "verifyEmail": {
+            "title": "Überprüfen Sie Ihre E-Mail",
+            "description": "Wir haben eine Bestätigungs-E-Mail an gesendet",
+            "instruction": "Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Bestätigungslink, um Ihr Konto zu aktivieren.",
+            "resend": "Bestätigungs-E-Mail erneut senden",
+            "resending": "Wird gesendet...",
+            "changeEmail": "Verwenden Sie eine andere E-Mail-Adresse",
+            "verifyingTitle": "Überprüfe E-Mail...",
+            "verifyingDescription": "Bitte warten Sie, während wir Ihre E-Mail-Adresse überprüfen.",
+            "successTitle": "E-Mail überprüft",
+            "successDescription": "Ihre E-Mail wurde erfolgreich überprüft!",
+            "goToSale": "Zum Dashboard gehen",
+            "alreadyVerifiedTitle": "Bereits überprüft",
+            "alreadyVerifiedDescription": "Ihre E-Mail ist bereits überprüft. Sie können fortfahren.",
+            "failedTitle": "Überprüfung fehlgeschlagen",
+            "failedDescription": "Der Bestätigungslink ist abgelaufen oder ungültig.",
+            "resendSuccess": "Bestätigungs-E-Mail gesendet! Bitte überprüfen Sie Ihren Posteingang.",
+            "changeEmailTitle": "E-Mail-Adresse ändern?",
+            "changeEmailDescription": "Sie werden abgemeldet und zur Registrierungsseite weitergeleitet, um sich mit einer neuen E-Mail-Adresse anzumelden.",
+            "cancel": "Abbrechen",
+            "continue": "Fortfahren",
+            "errorGeneric": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+        },
+        "confirmDeletion": {
+            "title": "Konto löschen",
+            "description": "Warnung: Dies wird Folgendes dauerhaft löschen:",
+            "warningTitle": "Das Löschen Ihres Kontos führt dazu, dass:",
+            "warningItem1": "Alle Ihre Unternehmen und Geschäftsdaten gelöscht werden",
+            "warningItem2": "Alle Transaktions- und Verkaufsdatensätze entfernt werden",
+            "warningItem3": "Alle Artikel und Bestandsverwaltung gelöscht werden",
+            "warningItem4": "Ihr Profil und Ihre Kontoinformationen gelöscht werden",
+            "warningReversal": "Diese Aktion kann nicht rückgängig gemacht werden.",
+            "inputLabel": "Geben Sie BESTÄTIGEN ein, um Ihr Konto zu löschen",
+            "confirmWord": "BESTÄTIGEN",
+            "inputLabelSuffix": "um mit dem Löschen fortzufahren",
+            "inputPlaceholder": "Geben Sie BESTÄTIGEN ein",
+            "cancel": "Abbrechen",
+            "delete": "Konto löschen",
+            "deleting": "Wird gelöscht...",
+            "success": "Konto erfolgreich gelöscht",
+            "errorGeneric": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+            "errorMatch": "Geben Sie BESTÄTIGEN genau ein",
+            "errorMissingToken": "Ungültige Anforderung. Bitte versuchen Sie es erneut.",
+            "invalidLinkTitle": "Ungültiger oder abgelaufener Link",
+            "invalidLinkDescription": "Dieser Löschlink ist abgelaufen oder ungültig.",
+            "returnToSettings": "Zurück zu Einstellungen"
+        }
+    },
+    "business": {
+        "name": "Unternehmensname",
+        "address": "Adresse",
+        "phone": "Telefonnummer",
+        "currency": "Währung",
+        "language": "Sprache",
+        "region": "Region",
+        "create": "Unternehmen erstellen",
+        "edit": "Unternehmen bearbeiten",
+        "delete": "Unternehmen löschen",
+        "select": "Unternehmen auswählen",
+        "noBusiness": "Keine Unternehmen gefunden",
+        "createFirst": "Erstellen Sie Ihr erstes Unternehmen, um zu beginnen"
+    },
+    "validation": {
+        "required": "Dieses Feld ist erforderlich",
+        "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "minLength": "Muss mindestens {min} Zeichen lang sein",
+        "maxLength": "Darf höchstens {max} Zeichen lang sein",
+        "passwordMatch": "Die Passwörter stimmen nicht überein",
+        "invalidFormat": "Ungültiges Format"
+    },
+    "privacy": {
+        "title": "Datenschutzrichtlinie",
+        "lastUpdated": "Zuletzt aktualisiert: 8. Dezember 2025",
+        "contactUs": "Kontaktieren Sie uns"
+    },
+    "terms": {
+        "title": "Servicebedingungen",
+        "lastUpdated": "Zuletzt aktualisiert: 8. Dezember 2025",
+        "contactUs": "Kontaktieren Sie uns"
+    },
+    "app": {
+        "sale": {
+            "title": "Verkauf",
+            "searchItems": "Nach Artikeln suchen...",
+            "allCategories": "Alle Kategorien",
+            "checkout": "Kasse",
+            "total": "Gesamt:",
+            "items": "Artikel",
+            "noItems": "Keine Artikel gefunden",
+            "addToCart": "Zum Warenkorb hinzufügen",
+            "removeFromCart": "Entfernen",
+            "error": "Fehler",
+            "retry": "Erneut versuchen",
+            "loading": "Wird geladen...",
+            "selectBusiness": "Bitte wählen Sie ein Unternehmen aus der Seitenleiste aus, um zu beginnen",
+            "cartEmpty": "Ihr Warenkorb ist leer. Fügen Sie Artikel hinzu, um fortzufahren.",
+            "backToItems": "Zurück zu Artikeln",
+            "reviewOrder": "Überprüfen Sie Ihre Bestellung und schließen Sie die Transaktion ab",
+            "orderSummary": "Bestellübersicht",
+            "item": "Artikel",
+            "quantity": "Menge",
+            "price": "Preis",
+            "tax": "Steuer:",
+            "discount": "Rabatt:",
+            "subtotal": "Zwischensumme:",
+            "paymentSummary": "Zahlungsübersicht",
+            "processing": "Wird verarbeitet...",
+            "completeTransaction": "Transaktion abschließen",
+            "transactionDetails": "Transaktionsdetails",
+            "customer": "Kunde (optional)",
+            "selectCustomer": "Wählen Sie einen Kunden...",
+            "guestCustomer": "Gastkunde",
+            "paymentMethod": "Zahlungsart (optional)",
+            "paymentMethodsLoadError": "Fehler beim Laden von Zahlungsarten",
+            "created": "Erstellt",
+            "selectPaymentMethod": "Zahlungsart auswählen...",
+            "cash": "Bargeld",
+            "notes": "Notizen (optional)",
+            "addNotes": "Notizen zu dieser Transaktion hinzufügen...",
+            "outOfStock": "Nicht verfügbar",
+            "noItemsAvailable": "Keine Artikel verfügbar",
+            "addItemsToInventory": "Fügen Sie Artikel zu Ihrem Bestand hinzu, um Transaktionen zu erstellen"
+        },
+        "items": {
+            "title": "Artikel",
+            "addItem": "Artikel hinzufügen",
+            "editItem": "Artikel bearbeiten",
+            "deleteItem": "Artikel löschen",
+            "name": "Artikelname",
+            "price": "Preis",
+            "sku": "SKU (Lagerhaltungseinheit)",
+            "category": "Kategorie",
+            "description": "Beschreibung",
+            "noItems": "Keine Artikel gefunden",
+            "loading": "Artikel werden geladen...",
+            "error": "Fehler beim Laden von Artikeln",
+            "actions": "Aktionen",
+            "business": "Unternehmen",
+            "unknownBusiness": "Unbekanntes Unternehmen",
+            "addFirstItem": "Fügen Sie Ihren ersten Artikel hinzu",
+            "image": "Artikelbild",
+            "status": "Status",
+            "created": "Erstellungsdatum",
+            "active": "Aktiv",
+            "inactive": "Inaktiv",
+            "createTitle": "Neuen Artikel erstellen",
+            "createDescription": "Fügen Sie ein neues Produkt oder eine neue Dienstleistung zu Ihrem Bestand hinzu",
+            "editTitle": "Artikel bearbeiten",
+            "editDescription": "Artikelinformationen aktualisieren",
+            "taxOptional": "Steuer (optional)",
+            "noTax": "Keine Steuer",
+            "discountOptional": "Rabatt (optional)",
+            "noDiscount": "Kein Rabatt",
+            "categoriesOptional": "Kategorien (optional)",
+            "noCategoriesAvailable": "Keine Kategorien verfügbar. Erstellen Sie zuerst Kategorien.",
+            "skuOptional": "SKU (optional)",
+            "descriptionOptional": "Beschreibung (optional)",
+            "itemImageOptional": "Artikelbild (optional)",
+            "supportedFormats": "Unterstützte Formate: JPG, JPEG, PNG, GIF, WEBP. Max. Größe: 1MB",
+            "uploading": "Bild wird hochgeladen...",
+            "update": "Artikel aktualisieren",
+            "create": "Artikel erstellen",
+            "deleteTitle": "Artikel löschen?",
+            "deleteDescription": "Dies wird {name} (SKU: {sku}) dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+            "deleting": "Wird gelöscht...",
+            "errorCreating": "Fehler beim Erstellen des Artikels",
+            "errorUpdating": "Fehler beim Aktualisieren des Artikels",
+            "errorDeleting": "Fehler beim Löschen des Artikels",
+            "uploadError": "Fehler beim Hochladen des Bildes",
+            "deleteError": "Fehler beim Löschen des Artikels",
+            "selectImageError": "Bitte wählen Sie eine Bilddatei",
+            "imageSizeError": "Bildgröße muss kleiner als 1MB sein",
+            "loadingError": "Ein Fehler ist beim Laden der Daten aufgetreten",
+            "itemsLoadError": "Fehler beim Laden von Artikeln",
+            "basePrice": "Basispreis"
+        },
+        "customers": {
+            "title": "Kunden",
+            "addCustomer": "Kunde hinzufügen",
+            "editCustomer": "Kunde bearbeiten",
+            "deleteCustomer": "Kunde löschen",
+            "name": "Kundenname",
+            "email": "E-Mail",
+            "phone": "Telefonnummer",
+            "address": "Adresse",
+            "noCustomers": "Keine Kunden gefunden",
+            "loading": "Kunden werden geladen...",
+            "error": "Fehler beim Laden von Kunden",
+            "actions": "Aktionen",
+            "addFirstCustomer": "Fügen Sie Ihren ersten Kunden hinzu",
+            "editTitle": "Kunde bearbeiten",
+            "createTitle": "Neuen Kunden hinzufügen",
+            "editDescription": "Kundeninformationen aktualisieren",
+            "createDescription": "Fügen Sie einen neuen Kunden zu Ihrer Datenbank hinzu",
+            "customerName": "Vollständiger Name",
+            "placeholderName": "John Doe",
+            "emailOptional": "E-Mail (optional)",
+            "placeholderEmail": "john@example.com",
+            "phoneOptional": "Telefonnummer (optional)",
+            "placeholderPhone": "+49301234567",
+            "addressOptional": "Adresse (optional)",
+            "placeholderAddress": "Hauptstr. 123, Stadt, Postleitzahl",
+            "deleteTitle": "Kunde löschen?",
+            "deleting": "Wird gelöscht...",
+            "errorCreating": "Fehler beim Erstellen des Kunden",
+            "errorUpdating": "Fehler beim Aktualisieren des Kunden",
+            "errorDeleting": "Fehler beim Löschen des Kunden",
+            "deleteError": "Fehler beim Löschen des Kunden",
+            "customersLoadError": "Fehler beim Laden von Kunden",
+            "loadingError": "Ein Fehler ist beim Laden der Daten aufgetreten"
+        },
+        "transactions": {
+            "title": "Transaktionen",
+            "viewDetails": "Details anzeigen",
+            "date": "Datum",
+            "customer": "Kunde",
+            "total": "Gesamt",
+            "totalAmount": "Gesamtbetrag",
+            "finalAmount": "Endbetrag",
+            "discountAmount": "Rabattbetrag:",
+            "taxAmount": "Steuerbetrag:",
+            "paymentMethod": "Zahlungsart",
+            "noTransactions": "Keine Transaktionen gefunden",
+            "actions": "Aktionen",
+            "loading": "Transaktionen werden geladen...",
+            "error": "Fehler beim Laden von Transaktionen",
+            "guestCustomer": "Gast",
+            "transactionDetails": "Transaktionsdetails",
+            "viewInfo": "Zeigen Sie vollständige Transaktionsinformationen an",
+            "items": "Artikel",
+            "noItems": "Keine Artikel gefunden",
+            "item": "Artikel",
+            "quantity": "Menge",
+            "basePrice": "Basispreis",
+            "tax": "Steuer",
+            "discount": "Rabatt",
+            "notes": "Notizen",
+            "transactionId": "Transaktions-ID",
+            "downloadPDF": "PDF herunterladen",
+            "downloadImage": "Bild herunterladen",
+            "sendEmail": "Per E-Mail senden",
+            "sendWhatsApp": "Über WhatsApp senden"
+        },
+        "settings": {
+            "title": "Einstellungen",
+            "profile": "Profil",
+            "business": "Unternehmen",
+            "receipt": "Quittungseinstellungen",
+            "preferences": "Einstellungen",
+            "account": "Konto",
+            "printer": "Drucker",
+            "profileTab": {
+                "name": "Vollständiger Name",
+                "email": "E-Mail-Adresse",
+                "currentPassword": "Aktuelles Passwort",
+                "newPassword": "Neues Passwort",
+                "confirmPassword": "Passwort bestätigen",
+                "changePassword": "Passwort ändern",
+                "updateProfile": "Profil aktualisieren",
+                "deleteAccount": "Konto löschen",
+                "errorLoad": "Fehler beim Laden des Profils",
+                "imageSizeError": "Bildgröße muss kleiner als 1MB sein",
+                "successUpdate": "Profil erfolgreich aktualisiert",
+                "errorUpdate": "Fehler beim Aktualisieren des Profils",
+                "errorFields": "Bitte überprüfen Sie alle Felder",
+                "errorMatch": "Die Passwörter stimmen nicht überein",
+                "errorLength": "Passwort muss mindestens 8 Zeichen lang sein",
+                "successPassword": "Passwort erfolgreich geändert",
+                "errorPassword": "Aktuelles Passwort ist falsch",
+                "confirmDelete": "Kontolöschung bestätigen",
+                "sentDelete": "E-Mail zur Bestätigung der Löschung gesendet",
+                "errorDelete": "Fehler beim Senden der Lösch-E-Mail",
+                "profilePicture": "Profilbild",
+                "profilePictureDescription": "Laden Sie ein Profilbild hoch, um Ihr Konto zu personalisieren",
+                "uploadPhoto": "Foto hochladen",
+                "delete": "Löschen",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Max 1MB",
+                "personalInfo": "Persönliche Informationen",
+                "fullName": "Vollständiger Name",
+                "enterFullName": "Geben Sie Ihren vollständigen Namen ein",
+                "enterEmail": "Geben Sie Ihre E-Mail ein",
+                "emailNote": "E-Mail kann nicht geändert werden",
+                "saving": "Wird gespeichert...",
+                "saveChanges": "Änderungen speichern",
+                "changePasswordDescription": "Aktualisieren Sie Ihr Passwort, um Ihr Konto sicher zu halten",
+                "enterCurrentPassword": "Geben Sie das aktuelle Passwort ein",
+                "enterNewPassword": "Geben Sie das neue Passwort ein (mindestens 8 Zeichen)",
+                "confirmNewPassword": "Neues Passwort bestätigen",
+                "enterConfirmNewPassword": "Neues Passwort zur Bestätigung eingeben",
+                "changingPassword": "Passwort wird geändert...",
+                "deleteAccountDescription": "Nach dem Löschen können Ihr Konto und alle Daten nicht wiederhergestellt werden",
+                "deleteWarning": "Warnung: Diese Aktion kann nicht rückgängig gemacht werden",
+                "deleteConsequences": "Das Löschen Ihres Kontos führt zu:",
+                "deleteItem1": "Permanentes Löschen aller Ihrer Unternehmen",
+                "deleteItem2": "Entfernung aller Transaktionen und Artikel",
+                "deleteItem3": "Löschen aller Ihrer persönlichen Daten",
+                "deleteConfirmation": "Sie erhalten eine Bestätigungs-E-Mail mit einem Link, um die Löschung abzuschließen.",
+                "sendingEmail": "E-Mail wird gesendet...",
+                "requestDeletion": "Kontolöschung anfordern"
+            },
+            "receiptTab": {
+                "options": "Quittungsanpassung",
+                "includeLogo": "Unternehmenslogo auf Quittungen einfügen",
+                "footerMessage": "Fußzeilennachricht",
+                "footerPlaceholder": "Vielen Dank für Ihren Einkauf!",
+                "qrCode": "QR-Code-Daten",
+                "qrPlaceholder": "Geben Sie QR-Code-Wert ein (z.B. Social-Media-Link)",
+                "prefix": "Transaktionspräfix",
+                "prefixHelp": "Präfix für Transaktionsnummern (z.B. INV, RCP)",
+                "nextNumber": "Nächste Transaktionsnummer",
+                "nextNumberHelp": "Die nächste zu verwendende Transaktionsnummer",
+                "template": "Quittungsvorlage",
+                "selectBusiness": "Bitte wählen Sie ein Unternehmen aus, um Quittungseinstellungen zu konfigurieren"
+            },
+            "printerTab": {
+                "selectPrinter": "Drucker auswählen",
+                "testPrint": "Testdruck",
+                "printerSettings": "Druckereinstellungen",
+                "toastSaved": "Druckereinstellungen gespeichert",
+                "toastSaveFailed": "Fehler beim Speichern der Druckereinstellungen",
+                "toastSelectBusiness": "Bitte wählen Sie zuerst ein Unternehmen",
+                "toastTestSuccess": "Testdruck erfolgreich gesendet",
+                "toastTestFailed": "Testdruck fehlgeschlagen",
+                "toastTestError": "Ein Fehler ist beim Testdruck aufgetreten",
+                "toastConnected": "Drucker verbunden",
+                "toastNotConnected": "Drucker nicht verbunden",
+                "toastCheckError": "Fehler beim Überprüfen des Druckerstatus",
+                "title": "Druckerkonfiguration",
+                "description": "Konfigurieren Sie Ihre Quittungsdrucker-Einstellungen",
+                "printerType": "Druckertyp",
+                "selectType": "Wählen Sie den Druckertyp",
+                "printerPath": "Druckerpfad",
+                "pathHelp": "Pfad zu Ihrem Druckergerät",
+                "characterSet": "Zeichensatz",
+                "selectCharset": "Wählen Sie den Zeichensatz",
+                "lineCharacter": "Linienzeichen",
+                "lineCharacterHelp": "Zeichen für Zeilentrennung",
+                "timeout": "Timeout (Millisekunden)",
+                "timeoutHelp": "Timeout für Druckvorgänge in Millisekunden",
+                "removeSpecial": "Sonderzeichen entfernen",
+                "saveConfig": "Konfiguration speichern",
+                "checkStatus": "Druckerstatus überprüfen",
+                "connected": "Verbunden",
+                "disconnected": "Getrennt",
+                "connectedMessage": "Ihr Drucker ist verbunden und einsatzbereit",
+                "disconnectedMessage": "Ihr Drucker ist offline",
+                "troubleshooting": "Fehlerbehebungshilfe"
+            },
+            "preferencesTab": {
+                "language": "Sprache",
+                "currency": "Währung",
+                "region": "Region",
+                "timezone": "Zeitzone",
+                "title": "Erscheinungsbild & Lokalisierung",
+                "description": "Passen Sie das Erscheinungsbild und Verhalten von BillForge an",
+                "theme": "Design",
+                "themeDescription": "Wählen Sie Ihr bevorzugtes Farbdesign",
+                "light": "Hell",
+                "dark": "Dunkel",
+                "system": "Systemstandard"
+            }
+        },
+        "categories": {
+            "title": "Kategorien",
+            "addCategory": "Kategorie hinzufügen",
+            "editCategory": "Kategorie bearbeiten",
+            "deleteCategory": "Kategorie löschen",
+            "name": "Kategoriename",
+            "noCategories": "Keine Kategorien gefunden",
+            "loading": "Kategorien werden geladen...",
+            "error": "Fehler beim Laden von Kategorien",
+            "actions": "Aktionen",
+            "addFirstCategory": "Fügen Sie Ihre erste Kategorie hinzu",
+            "created": "Erstellungsdatum",
+            "createTitle": "Neue Kategorie erstellen",
+            "createDescription": "Fügen Sie eine neue Kategorie hinzu, um Ihre Artikel zu organisieren",
+            "editTitle": "Kategorie bearbeiten",
+            "editDescription": "Kategorieinformationen aktualisieren",
+            "categoryName": "Kategoriename",
+            "placeholder": "z.B. Elektronik, Lebensmittel, Dienstleistungen",
+            "deleteTitle": "Kategorie löschen?",
+            "deleteDescription": "Dies wird die Kategorie '{name}' dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+            "deleting": "Wird gelöscht...",
+            "errorCreating": "Fehler beim Erstellen der Kategorie",
+            "errorUpdating": "Fehler beim Aktualisieren der Kategorie",
+            "errorDeleting": "Fehler beim Löschen der Kategorie",
+            "deleteError": "Fehler beim Löschen der Kategorie",
+            "loadingError": "Ein Fehler ist beim Laden der Daten aufgetreten",
+            "categoriesLoadError": "Fehler beim Laden von Kategorien"
+        },
+        "paymentMethods": {
+            "title": "Zahlungsarten",
+            "addMethod": "Zahlungsart hinzufügen",
+            "editMethod": "Zahlungsart bearbeiten",
+            "deleteMethod": "Zahlungsart löschen",
+            "name": "Methodenname",
+            "noMethods": "Keine Zahlungsarten gefunden",
+            "loading": "Zahlungsarten werden geladen...",
+            "error": "Fehler beim Laden von Zahlungsarten",
+            "actions": "Aktionen",
+            "addFirstMethod": "Fügen Sie Ihre erste Zahlungsart hinzu",
+            "createTitle": "Zahlungsart hinzufügen",
+            "createDescription": "Fügen Sie eine neue Zahlungsart hinzu, um Zahlungen zu akzeptieren",
+            "editTitle": "Zahlungsart bearbeiten",
+            "editDescription": "Zahlungsart-Details aktualisieren",
+            "deleteTitle": "Zahlungsart löschen?",
+            "deleteDescription": "Dies wird '{name}' dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+            "deleting": "Wird gelöscht...",
+            "errorCreating": "Fehler beim Erstellen der Zahlungsart",
+            "errorUpdating": "Fehler beim Aktualisieren der Zahlungsart",
+            "errorDeleting": "Fehler beim Löschen der Zahlungsart",
+            "deleteError": "Fehler beim Löschen der Zahlungsart",
+            "methodName": "Zahlungsart-Name",
+            "placeholderName": "z.B. Bargeld, Kreditkarte, Banküberweisung",
+            "created": "Erstellungsdatum",
+            "paymentMethodsLoadError": "Fehler beim Laden von Zahlungsarten",
+            "loadingError": "Ein Fehler ist beim Laden der Daten aufgetreten"
+        },
+        "itemTaxes": {
+            "title": "Steuersätze",
+            "addTax": "Steuer hinzufügen",
+            "editTax": "Steuer bearbeiten",
+            "deleteTax": "Steuer löschen",
+            "name": "Steuername",
+            "rate": "Steuersatz",
+            "noTaxes": "Keine Steuern konfiguriert. Erstellen Sie Ihre erste Steuerkonfiguration.",
+            "loading": "Steuern werden geladen...",
+            "error": "Fehler beim Laden von Steuern",
+            "actions": "Aktionen",
+            "createTitle": "Steuersatz hinzufügen",
+            "createDescription": "Erstellen Sie eine neue Steuerkonfiguration",
+            "editTitle": "Steuersatz bearbeiten",
+            "editDescription": "Steuersatz-Details aktualisieren",
+            "deleteTitle": "Steuer löschen?",
+            "deleteDescription": "Dies wird '{name}' dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+            "deleting": "Wird gelöscht...",
+            "errorCreating": "Fehler beim Erstellen der Steuer",
+            "errorUpdating": "Fehler beim Aktualisieren der Steuer",
+            "errorDeleting": "Fehler beim Löschen der Steuer",
+            "deleteError": "Fehler beim Löschen der Steuer",
+            "taxName": "Steuername",
+            "placeholderName": "z.B. MwSt., Umsatzsteuer",
+            "type": "Typ",
+            "percentage": "Prozentsatz",
+            "fixed": "Festbetrag",
+            "value": "Wert",
+            "taxesLoadError": "Fehler beim Laden von Steuern",
+            "loadingError": "Ein Fehler ist beim Laden der Daten aufgetreten"
+        },
+        "itemDiscounts": {
+            "title": "Rabatte",
+            "addDiscount": "Rabatt hinzufügen",
+            "editDiscount": "Rabatt bearbeiten",
+            "deleteDiscount": "Rabatt löschen",
+            "name": "Rabattname",
+            "type": "Typ",
+            "value": "Wert",
+            "noDiscounts": "Keine Rabatte konfiguriert. Erstellen Sie Ihren ersten Rabatt.",
+            "loading": "Rabatte werden geladen...",
+            "error": "Fehler beim Laden von Rabatten",
+            "actions": "Aktionen",
+            "createTitle": "Rabatt hinzufügen",
+            "createDescription": "Erstellen Sie ein neues Rabattangebot",
+            "editTitle": "Rabatt bearbeiten",
+            "editDescription": "Rabatt-Details aktualisieren",
+            "deleteTitle": "Rabatt löschen?",
+            "deleteDescription": "Dies wird '{name}' dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+            "deleting": "Wird gelöscht...",
+            "errorCreating": "Fehler beim Erstellen des Rabatts",
+            "errorUpdating": "Fehler beim Aktualisieren des Rabatts",
+            "errorDeleting": "Fehler beim Löschen des Rabatts",
+            "deleteError": "Fehler beim Löschen des Rabatts",
+            "discountName": "Rabattname",
+            "placeholderName": "z.B. Ferienrabatt, Frühbucher-Rabatt",
+            "percentage": "Prozentsatz",
+            "fixed": "Festbetrag",
+            "discountsLoadError": "Fehler beim Laden von Rabatten",
+            "loadingError": "Ein Fehler ist beim Laden der Daten aufgetreten"
+        },
+        "sidebar": {
+            "sale": "Verkauf",
+            "transactions": "Transaktionen",
+            "items": "Artikel",
+            "categories": "Kategorien",
+            "customers": "Kunden",
+            "paymentMethods": "Zahlungsarten",
+            "itemTaxes": "Steuern",
+            "itemDiscounts": "Rabatte",
+            "settings": "Einstellungen",
+            "businessSelector": {
+                "switchBusiness": "Unternehmen wechseln",
+                "addBusiness": "Unternehmen hinzufügen",
+                "edit": "Bearbeiten",
+                "delete": "Löschen"
+            },
+            "userProfile": {
+                "myAccount": "Mein Konto",
+                "logout": "Abmelden",
+                "dialog": {
+                    "title": "Abmeldung bestätigen",
+                    "description": "Sind Sie sicher, dass Sie sich abmelden möchten? Sie müssen sich erneut anmelden, um auf Ihr Konto zuzugreifen.",
+                    "cancel": "Abbrechen",
+                    "confirm": "Abmelden"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Neues Unternehmen erstellen",
+                "editTitle": "Unternehmen bearbeiten",
+                "createDescription": "Fügen Sie einen neuen Geschäftsstandort zu Ihrem Konto hinzu",
+                "editDescription": "Aktualisieren Sie Ihre Geschäftsinformationen",
+                "nameLabel": "Unternehmensname",
+                "namePlaceholder": "Ihr Unternehmensname",
+                "addressLabel": "Adresse (optional)",
+                "addressPlaceholder": "Hauptstr. 123, Stadt, Land",
+                "phoneLabel": "Telefonnummer (optional)",
+                "phonePlaceholder": "+49301234567",
+                "currencyLabel": "Währung (optional)",
+                "currencyPlaceholder": "Wählen Sie die Währung",
+                "languageLabel": "Sprache (optional)",
+                "languagePlaceholder": "Wählen Sie die Sprache",
+                "regionLabel": "Region (optional)",
+                "regionPlaceholder": "Wählen Sie die Region",
+                "logoLabel": "Unternehmenslogo (optional)",
+                "logoHelp": "Unterstützte Formate: JPG, JPEG, PNG, GIF, WEBP. Max. Größe: 1MB",
+                "uploading": "Logo wird hochgeladen...",
+                "cancel": "Abbrechen",
+                "create": "Erstellen",
+                "update": "Aktualisieren",
+                "errorGeneric": "Fehler beim Speichern des Unternehmens",
+                "errorCreate": "Fehler beim Erstellen des Unternehmens",
+                "errorUpdate": "Fehler beim Aktualisieren des Unternehmens",
+                "errorImageSize": "Bildgröße muss kleiner als 1MB sein"
+            },
+            "deleteBusinessDialog": {
+                "title": "Unternehmen löschen",
+                "description": "Sind Sie sicher, dass Sie '{name}' löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+                "cancel": "Abbrechen",
+                "delete": "Löschen"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "Bildgröße muss kleiner als 1MB sein",
+                "updateFailed": "Fehler beim Aktualisieren des Unternehmens",
+                "createFailed": "Fehler beim Erstellen des Unternehmens",
+                "updateError": "Ein Fehler ist bei der Aktualisierung aufgetreten",
+                "createError": "Ein Fehler ist bei der Erstellung aufgetreten"
+            },
+            "edit": "Unternehmen bearbeiten",
+            "create": "Unternehmen erstellen",
+            "description": {
+                "edit": "Aktualisieren Sie Ihre Geschäftsinformationen",
+                "create": "Fügen Sie ein neues Unternehmen zu Ihrem Konto hinzu"
+            },
+            "form": {
+                "name": {
+                    "label": "Unternehmensname",
+                    "placeholder": "Ihr Unternehmensname"
+                },
+                "address": {
+                    "label": "Adresse (optional)",
+                    "placeholder": "Hauptstr. 123, Stadt, Land"
+                },
+                "phone": {
+                    "label": "Telefonnummer (optional)",
+                    "placeholder": "+49301234567"
+                },
+                "currency": {
+                    "label": "Währung (optional)",
+                    "placeholder": "Wählen Sie die Währung"
+                },
+                "language": {
+                    "label": "Sprache (optional)",
+                    "placeholder": "Wählen Sie die Sprache"
+                },
+                "region": {
+                    "label": "Region (optional)",
+                    "placeholder": "Wählen Sie die Region"
+                },
+                "logo": {
+                    "label": "Unternehmenslogo (optional)",
+                    "helper": "Unterstützte Formate: JPG, JPEG, PNG, GIF, WEBP. Max. 1MB",
+                    "uploading": "Wird hochgeladen..."
+                }
+            },
+            "buttons": {
+                "cancel": "Abbrechen",
+                "update": "Aktualisieren",
+                "create": "Erstellen"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Unternehmen wechseln",
+            "edit": "Bearbeiten",
+            "delete": "Löschen",
+            "addBusiness": "Unternehmen hinzufügen"
+        },
+        "deleteBusinessDialog": {
+            "title": "Unternehmen löschen",
+            "description": "Sind Sie sicher? Dies kann nicht rückgängig gemacht werden.",
+            "cancel": "Abbrechen",
+            "confirm": "Löschen"
+        },
+        "userProfile": {
+            "myAccount": "Mein Konto",
+            "logout": "Abmelden",
+            "dialog": {
+                "title": "Abmeldung bestätigen",
+                "description": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+                "cancel": "Abbrechen",
+                "confirm": "Abmelden"
+            }
+        }
+    }
+}

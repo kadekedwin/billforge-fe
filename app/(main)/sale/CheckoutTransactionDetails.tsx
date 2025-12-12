@@ -45,7 +45,7 @@ export function CheckoutTransactionDetails({
                         disabled={isSubmitting}
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        <option value="">{t('app.sale.selectCustomer')}...</option>
+                        <option value="">{t('app.sale.selectCustomer')}</option>
                         {customers.map((customer) => (
                             <option key={customer.uuid} value={customer.uuid}>
                                 {customer.name}
@@ -62,7 +62,7 @@ export function CheckoutTransactionDetails({
                         disabled={isSubmitting}
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        <option value="">{t('app.sale.selectPaymentMethod')}...</option>
+                        <option value="">{t('app.sale.selectPaymentMethod')}</option>
                         {paymentMethods.map((method) => (
                             <option key={method.uuid} value={method.uuid}>
                                 {method.name}

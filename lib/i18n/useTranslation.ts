@@ -9,6 +9,14 @@ import ja from "./locales/ja.json";
 import pt from "./locales/pt.json";
 import ko from "./locales/ko.json";
 import id from "./locales/id.json";
+import ar from "./locales/ar.json";
+import da from "./locales/da.json";
+import hi from "./locales/hi.json";
+import it from "./locales/it.json";
+import nl from "./locales/nl.json";
+import no from "./locales/no.json";
+import ru from "./locales/ru.json";
+import sv from "./locales/sv.json";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const translations: Record<string, any> = {
@@ -21,6 +29,14 @@ const translations: Record<string, any> = {
     pt,
     ko,
     id,
+    ar,
+    da,
+    hi,
+    it,
+    nl,
+    no,
+    ru,
+    sv,
 };
 
 type TranslationKey = string;

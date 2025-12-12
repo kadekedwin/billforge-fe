@@ -1,1 +1,915 @@
-{}
+{
+    "common": {
+        "loading": "Cargando...",
+        "error": "Error",
+        "success": "Éxito",
+        "cancel": "Cancelar",
+        "save": "Guardar",
+        "delete": "Eliminar",
+        "edit": "Editar",
+        "create": "Crear",
+        "update": "Actualizar",
+        "search": "Buscar",
+        "filter": "Filtrar",
+        "close": "Cerrar",
+        "back": "Atrás",
+        "next": "Siguiente",
+        "previous": "Anterior",
+        "submit": "Enviar",
+        "confirm": "Confirmar",
+        "yes": "Sí",
+        "no": "No"
+    },
+    "landing": {
+        "hero": {
+            "title": "Sistema POS y Facturación Moderno Hecho Simple",
+            "description": "Transforma tu negocio con recibos profesionales, pago instantáneo y análisis poderosos. Diseñado para cafés, restaurantes, tiendas minoristas y pequeños negocios en todas partes.",
+            "cta": "Comienza Prueba Gratuita"
+        },
+        "features": {
+            "title": "Todo lo que Necesitas para Dirigir tu Negocio",
+            "description": "Funciones poderosas diseñadas para agilizar tus ventas, gestionar clientes y hacer crecer tu negocio eficientemente.",
+            "receipt": {
+                "title": "Recibos Profesionales",
+                "description": "Crea recibos hermosos y personalizables con tu logo, códigos QR y mensajes personalizados. Elige entre múltiples plantillas profesionales que mejoren tu marca."
+            },
+            "checkout": {
+                "title": "Proceso de Pago Rápido",
+                "description": "Acelera tus transacciones con una interfaz POS intuitiva. Procesa ventas rápidamente, acepta múltiples métodos de pago y atiende a tus clientes de manera más eficiente."
+            },
+            "customer": {
+                "title": "Gestión de Clientes",
+                "description": "Construye relaciones duraderas con perfiles de clientes e historial de compras. Rastrea preferencias, patrones de gasto y brinda servicio personalizado a tus clientes habituales."
+            },
+            "discount": {
+                "title": "Descuentos e Impuestos Inteligentes",
+                "description": "Administra descuentos porcentuales o de monto fijo y múltiples tasas de impuestos con facilidad. Aplica promociones a artículos específicos o transacciones completas con solo unos pocos clics."
+            },
+            "analytics": {
+                "title": "Análisis en Tiempo Real",
+                "description": "Obtén información instantánea sobre el rendimiento de tus ventas. Rastrea ingresos diarios, artículos más vendidos y tendencias de transacciones para tomar decisiones comerciales basadas en datos."
+            },
+            "cloud": {
+                "title": "Acceso Desde Cualquier Lugar",
+                "description": "El sistema basado en la nube funciona en cualquier dispositivo: escritorio, tablet o smartphone. Administra tu negocio desde cualquier lugar con sincronización de datos segura y en tiempo real."
+            }
+        },
+        "nav": {
+            "features": "Funciones",
+            "pricing": "Precios",
+            "faq": "Preguntas Frecuentes",
+            "login": "Iniciar Sesión",
+            "signup": "Registrarse",
+            "signIn": "Iniciar Sesión",
+            "getStarted": "Comenzar",
+            "home": "Inicio",
+            "testimonials": "Testimonios",
+            "drawerTitle": "Menú de Navegación"
+        },
+        "faq": {
+            "title": "Preguntas Frecuentes",
+            "description": "Todo lo que necesitas saber sobre BillForge y cómo puede ayudar a tu negocio.",
+            "items": {
+                "item1": {
+                    "question": "¿BillForge es realmente gratuito?",
+                    "answer": "¡Sí! Nuestro plan gratuito incluye 1 negocio, 50 artículos, 50 clientes, 50 transacciones por mes y todas las funciones básicas. Perfecto para pequeños negocios que recién comienzan. Actualiza a Pro o Enterprise para límites más altos y funciones avanzadas."
+                },
+                "item2": {
+                    "question": "¿Cuál es la diferencia entre los planes Gratis, Pro y Enterprise?",
+                    "answer": "El plan Gratis tiene límites básicos (1 negocio, 50 artículos, 50 transacciones/mes). Pro ofrece 10 veces esos límites (10 negocios, 500 artículos, 500 transacciones/mes). Enterprise proporciona artículos, clientes y transacciones ilimitados con funciones avanzadas como acceso multiusuario y acceso API."
+                },
+                "item3": {
+                    "question": "¿Puedo personalizar mis recibos?",
+                    "answer": "¡Por supuesto! BillForge ofrece múltiples plantillas de recibos con opciones de personalización completas. Añade tu logo empresarial, mensajes de pie de página personalizados, códigos QR y elige entre varios diseños profesionales. Los recibos pueden imprimirse o enviarse digitalmente a los clientes."
+                },
+                "item4": {
+                    "question": "¿Qué métodos de pago puedo aceptar?",
+                    "answer": "BillForge admite todos los métodos de pago principales incluido efectivo, tarjetas de crédito/débito, pagos móviles y billeteras digitales. El plan gratuito permite hasta 5 métodos de pago, mientras que Pro y Enterprise ofrecen opciones de pago ilimitadas."
+                },
+                "item5": {
+                    "question": "¿Cómo administro descuentos e impuestos?",
+                    "answer": "Nuestra plataforma incluye gestión de descuentos e impuestos integrada. Crea descuentos porcentuales o de monto fijo, aplícalos a artículos específicos o transacciones completas. Establece múltiples tasas de impuestos para diferentes categorías de productos. El plan gratuito incluye 30 configuraciones de descuentos e impuestos."
+                },
+                "item6": {
+                    "question": "¿Son seguros mis datos comerciales?",
+                    "answer": "¡Sí! Todos los datos se almacenan de forma segura en la nube con encriptación. Realizamos copias de seguridad regulares y utilizamos prácticas de seguridad estándar de la industria. Tu historial de transacciones, información de clientes y datos comerciales están protegidos y solo tú puedes acceder a ellos."
+                },
+                "item7": {
+                    "question": "¿Puedo rastrear el historial de compras del cliente?",
+                    "answer": "¡Sí! BillForge incluye funciones de gestión de clientes. Almacena detalles de clientes, ve el historial de compras y construye mejores relaciones con tus clientes habituales. Rastrea qué compran, cuándo visitan y sus gastos totales para proporcionar servicio personalizado."
+                },
+                "item8": {
+                    "question": "¿Necesito hardware especial?",
+                    "answer": "¡No se requiere hardware especial! BillForge funciona en cualquier dispositivo con navegador web: escritorio, tablet o smartphone. Si deseas imprimir recibos, puedes usar cualquier impresora estándar. El sistema está basado en la nube, así que puedes acceder a él desde cualquier lugar."
+                },
+                "item9": {
+                    "question": "¿Qué sucede si supero mi límite de transacciones mensuales?",
+                    "answer": "En el plan gratuito, estás limitado a 50 transacciones por mes. Si necesitas más, puedes actualizar a Pro (500 transacciones/mes) o Enterprise (ilimitado). Tus datos nunca se eliminarán, y siempre puedes ver transacciones anteriores independientemente de tu plan actual."
+                },
+                "item10": {
+                    "question": "¿Cómo obtengo soporte si necesito ayuda?",
+                    "answer": "Ofrecemos soporte por correo electrónico para todos los usuarios. Los clientes Pro y Enterprise obtienen soporte prioritario con tiempos de respuesta más rápidos. Los clientes Enterprise también reciben soporte 24/7 y un gerente de cuenta dedicado. Consulta nuestra documentación y tutoriales para guías de autoayuda rápidas."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Precios Simples y Transparentes",
+            "description": "Elige el plan perfecto para tu negocio. Comienza gratis y actualiza a medida que crezca tu negocio.",
+            "monthly": "/mes",
+            "mostPopular": "Más Popular",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "description": "Perfecto para pequeños negocios que recién comienzan con facturación digital.",
+                    "button": "Comenzar Gratis",
+                    "features": {
+                        "business": "1 Negocio",
+                        "items": "50 Artículos",
+                        "customers": "50 Clientes",
+                        "transactions": "50 Transacciones/mes",
+                        "paymentMethods": "5 Métodos de Pago",
+                        "discountsTaxes": "30 Descuentos e Impuestos",
+                        "templates": "Plantillas de Recibos Básicas",
+                        "storage": "Almacenamiento en Nube"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideal para negocios en crecimiento con múltiples ubicaciones y mayor volumen.",
+                    "button": "Comenzar Prueba Pro",
+                    "features": {
+                        "business": "10 Negocios",
+                        "items": "500 Artículos",
+                        "customers": "500 Clientes",
+                        "transactions": "500 Transacciones/mes",
+                        "paymentMethods": "50 Métodos de Pago",
+                        "discountsTaxes": "300 Descuentos e Impuestos",
+                        "templates": "Plantillas de Recibos Premium",
+                        "support": "Soporte Prioritario",
+                        "analytics": "Análisis Avanzado",
+                        "branding": "Marca Personalizada"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "Para grandes negocios que requieren funciones avanzadas y soporte dedicado.",
+                    "button": "Contactar Ventas",
+                    "features": {
+                        "business": "Negocios Ilimitados",
+                        "items": "Artículos Ilimitados",
+                        "customers": "Clientes Ilimitados",
+                        "transactions": "Transacciones Ilimitadas",
+                        "paymentMethods": "Métodos de Pago Ilimitados",
+                        "discountsTaxes": "Descuentos e Impuestos Ilimitados",
+                        "api": "Acceso a API",
+                        "support": "Soporte Prioritario 24/7"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "Testimonios",
+            "items": {
+                "item1": {
+                    "name": "Sarah Martinez",
+                    "designation": "Dueña de Café",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge ha revolucionado cómo manejamos las transacciones en nuestro café. La personalización de recibos es fantástica, y a nuestros clientes les encantan los recibos digitales. ¡Hemos reducido los costos de papel en un 80% y el tiempo de pago nunca fue más rápido!"
+                },
+                "item2": {
+                    "name": "Budi Santoso",
+                    "designation": "Gerente de Tienda",
+                    "company": "Warung Maju Jakarta",
+                    "text": "Desde que uso BillForge, administrar la tienda se ha vuelto mucho más fácil. La interfaz es fácil de entender y los informes de ventas son muy útiles. ¡Lo recomiendo ampliamente para emprendedores de pequeños negocios!"
+                },
+                "item3": {
+                    "name": "Michael Chen",
+                    "designation": "Dueño de Restaurante",
+                    "company": "Chen's Asian Bistro",
+                    "text": "Manejar múltiples métodos de pago solía ser una pesadilla. ¡BillForge lo hace sin problemas! Las funciones de historial de transacciones y gestión de clientes nos han ayudado a construir mejores relaciones con nuestros clientes habituales. ¡La mejor decisión POS que hemos tomado!"
+                },
+                "item4": {
+                    "name": "Emma Thompson",
+                    "designation": "Dueña de Boutique",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "La gestión de descuentos e impuestos en BillForge es exactamente lo que necesitábamos para nuestras ventas estacionales. Crear recibos hermosos y con marca ha mejorado nuestra experiencia del cliente. ¡Nuestro proceso de pago es ahora profesional y eficiente!"
+                },
+                "item5": {
+                    "name": "James Wilson",
+                    "designation": "Dueño de Panadería",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Cambiamos a BillForge hace tres meses y no miraremos atrás. El sistema de gestión de artículos mantiene nuestro inventario organizado, y las plantillas de recibos se ven profesionales. ¡El pago del cliente ahora es fácil, incluso durante nuestras horas pico matutinas!"
+                },
+                "item6": {
+                    "name": "Lisa Rodriguez",
+                    "designation": "Gerente de Retail",
+                    "company": "TechGadgets Plus",
+                    "text": "El seguimiento de transacciones de BillForge nos ha dado información increíble sobre nuestros patrones de ventas. La base de datos de clientes nos ayuda a proporcionar servicio personalizado, y los recibos de código QR son un éxito con nuestros clientes expertos en tecnología. ¡Es el paquete completo!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "Contacto",
+            "legal": {
+                "terms": "Términos",
+                "privacy": "Privacidad"
+            },
+            "description": "Agiliza tu proceso de facturación con gestión inteligente de facturas",
+            "copyright": "© 2025 BillForge. Todos los derechos reservados.",
+            "madeWith": "Hecho con ❤️ en Bali",
+            "links": {
+                "terms": "Términos de Servicio",
+                "privacy": "Política de Privacidad"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Bienvenido de Vuelta",
+            "description": "Inicia sesión en tu cuenta de BillForge",
+            "emailLabel": "Dirección de Correo Electrónico",
+            "emailPlaceholder": "tu@email.com",
+            "passwordLabel": "Contraseña",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "¿Olvidaste tu contraseña?",
+            "submit": "Iniciar Sesión",
+            "submitting": "Iniciando sesión...",
+            "noAccount": "¿No tienes cuenta?",
+            "signUp": "Crea una",
+            "errorGeneric": "El correo electrónico o la contraseña son incorrectos. Intenta de nuevo."
+        },
+        "register": {
+            "title": "Crea tu Cuenta",
+            "description": "Únete a BillForge para administrar tu negocio",
+            "nameLabel": "Nombre Completo",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "Dirección de Correo Electrónico",
+            "emailPlaceholder": "tu@email.com",
+            "passwordLabel": "Contraseña",
+            "passwordPlaceholder": "Mínimo 8 caracteres",
+            "confirmPasswordLabel": "Confirmar Contraseña",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Al crear una cuenta, aceptas nuestros",
+            "terms": "Términos de Servicio",
+            "and": "y",
+            "privacy": "Política de Privacidad",
+            "submit": "Crear Cuenta",
+            "submitting": "Creando cuenta...",
+            "hasAccount": "¿Ya tienes cuenta?",
+            "signIn": "Inicia sesión aquí",
+            "errorMatch": "Las contraseñas no coinciden",
+            "errorGeneric": "El registro falló. Intenta de nuevo."
+        },
+        "forgotPassword": {
+            "title": "Restablecer tu Contraseña",
+            "description": "Ingresa tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+            "emailLabel": "Dirección de Correo Electrónico",
+            "emailPlaceholder": "tu@email.com",
+            "submit": "Enviar Enlace de Restablecimiento",
+            "submitting": "Enviando...",
+            "backToLogin": "Volver a iniciar sesión",
+            "checkEmailTitle": "Verifica tu Correo Electrónico",
+            "checkEmailDescription": "Hemos enviado instrucciones para restablecer la contraseña a",
+            "checkEmailNote1": "Verifica tu bandeja de entrada para el enlace de restablecimiento.",
+            "checkEmailNote2": "Si no ves el correo electrónico, verifica tu carpeta de spam.",
+            "tryAnotherEmail": "Intenta otro correo electrónico",
+            "errorGeneric": "Ocurrió un error. Intenta de nuevo."
+        },
+        "resetPassword": {
+            "title": "Crear Nueva Contraseña",
+            "description": "Ingresa tu nueva contraseña a continuación.",
+            "emailLabel": "Dirección de Correo Electrónico",
+            "emailPlaceholder": "tu@email.com",
+            "newPasswordLabel": "Nueva Contraseña",
+            "newPasswordPlaceholder": "Mínimo 8 caracteres",
+            "passwordHint": "Debe tener al menos 8 caracteres",
+            "confirmPasswordLabel": "Confirmar Contraseña",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Restablecer Contraseña",
+            "submitting": "Restableciendo contraseña...",
+            "backToLogin": "Volver a iniciar sesión",
+            "successTitle": "Contraseña Restablecida",
+            "successDescription": "Tu contraseña ha sido restablecida exitosamente.",
+            "redirecting": "Redirigiendo a inicio de sesión...",
+            "goToLogin": "Ir a Inicio de Sesión",
+            "errorGeneric": "Ocurrió un error. Intenta de nuevo.",
+            "errorMatch": "Las contraseñas no coinciden",
+            "errorLength": "La contraseña debe tener al menos 8 caracteres"
+        },
+        "verifyEmail": {
+            "title": "Verifica tu Correo Electrónico",
+            "description": "Enviamos un correo de confirmación a",
+            "instruction": "Por favor verifica tu bandeja de entrada y haz clic en el enlace de confirmación para activar tu cuenta.",
+            "resend": "Reenviar Correo de Confirmación",
+            "resending": "Enviando...",
+            "changeEmail": "Usar una dirección de correo electrónico diferente",
+            "verifyingTitle": "Verificando Correo Electrónico...",
+            "verifyingDescription": "Por favor espera mientras verificamos tu dirección de correo electrónico.",
+            "successTitle": "Correo Electrónico Verificado",
+            "successDescription": "¡Tu correo electrónico ha sido verificado exitosamente!",
+            "goToSale": "Ir al Panel de Control",
+            "alreadyVerifiedTitle": "Ya Verificado",
+            "alreadyVerifiedDescription": "Tu correo electrónico ya ha sido verificado. Puedes continuar.",
+            "failedTitle": "Verificación Fallida",
+            "failedDescription": "El enlace de verificación ha expirado o no es válido.",
+            "resendSuccess": "¡Correo de confirmación enviado! Por favor verifica tu bandeja de entrada.",
+            "changeEmailTitle": "¿Cambiar Dirección de Correo Electrónico?",
+            "changeEmailDescription": "Se cerrará tu sesión y serás redirigido a la página de registro para registrarte con una nueva dirección de correo electrónico.",
+            "cancel": "Cancelar",
+            "continue": "Continuar",
+            "errorGeneric": "Ocurrió un error. Intenta de nuevo."
+        },
+        "confirmDeletion": {
+            "title": "Eliminar Cuenta",
+            "description": "Advertencia: Esto eliminará permanentemente:",
+            "warningTitle": "Eliminar tu cuenta resultará en:",
+            "warningItem1": "Eliminación permanente de todos tus negocios",
+            "warningItem2": "Eliminación de todos los registros de transacciones y ventas",
+            "warningItem3": "Eliminación de todos los artículos e inventario",
+            "warningItem4": "Eliminación de tu perfil e información de cuenta",
+            "warningReversal": "Esta acción no se puede deshacer.",
+            "inputLabel": "Escribe CONFIRMAR para eliminar tu cuenta",
+            "confirmWord": "CONFIRMAR",
+            "inputLabelSuffix": "para proceder con la eliminación",
+            "inputPlaceholder": "Escribe CONFIRMAR aquí",
+            "cancel": "Cancelar",
+            "delete": "Eliminar Cuenta",
+            "deleting": "Eliminando...",
+            "success": "Cuenta eliminada exitosamente",
+            "errorGeneric": "Ocurrió un error. Intenta de nuevo.",
+            "errorMatch": "Escribe CONFIRMAR exactamente",
+            "errorMissingToken": "Solicitud inválida. Intenta de nuevo.",
+            "invalidLinkTitle": "Enlace Inválido o Expirado",
+            "invalidLinkDescription": "Este enlace de eliminación ha expirado o no es válido.",
+            "returnToSettings": "Volver a Configuración"
+        }
+    },
+    "business": {
+        "name": "Nombre del Negocio",
+        "address": "Dirección",
+        "phone": "Número de Teléfono",
+        "currency": "Moneda",
+        "language": "Idioma",
+        "region": "Región",
+        "create": "Crear Negocio",
+        "edit": "Editar Negocio",
+        "delete": "Eliminar Negocio",
+        "select": "Seleccionar Negocio",
+        "noBusiness": "No se encontraron negocios",
+        "createFirst": "Crea tu primer negocio para comenzar"
+    },
+    "validation": {
+        "required": "Este campo es obligatorio",
+        "email": "Por favor ingresa una dirección de correo electrónico válida",
+        "minLength": "Debe tener al menos {min} caracteres",
+        "maxLength": "Debe tener como máximo {max} caracteres",
+        "passwordMatch": "Las contraseñas no coinciden",
+        "invalidFormat": "Formato inválido"
+    },
+    "privacy": {
+        "title": "Política de Privacidad",
+        "lastUpdated": "Última actualización: 8 de diciembre de 2025",
+        "contactUs": "Contáctanos"
+    },
+    "terms": {
+        "title": "Términos de Servicio",
+        "lastUpdated": "Última actualización: 8 de diciembre de 2025",
+        "contactUs": "Contáctanos"
+    },
+    "app": {
+        "sale": {
+            "title": "Venta",
+            "searchItems": "Buscar artículos...",
+            "allCategories": "Todas las Categorías",
+            "checkout": "Pagar",
+            "total": "Total:",
+            "items": "Artículos",
+            "noItems": "No se encontraron artículos",
+            "addToCart": "Agregar al Carrito",
+            "removeFromCart": "Eliminar",
+            "error": "Error",
+            "retry": "Reintentar",
+            "loading": "Cargando...",
+            "selectBusiness": "Por favor selecciona un negocio de la barra lateral para comenzar",
+            "cartEmpty": "Tu carrito está vacío. Comienza a agregar artículos para continuar.",
+            "backToItems": "Volver a Artículos",
+            "reviewOrder": "Revisa tu pedido y completa la transacción",
+            "orderSummary": "Resumen del Pedido",
+            "item": "Artículo",
+            "quantity": "Cantidad",
+            "price": "Precio",
+            "tax": "Impuesto:",
+            "discount": "Descuento:",
+            "subtotal": "Subtotal:",
+            "paymentSummary": "Resumen de Pago",
+            "processing": "Procesando...",
+            "completeTransaction": "Completar Transacción",
+            "transactionDetails": "Detalles de la Transacción",
+            "customer": "Cliente (Opcional)",
+            "selectCustomer": "Selecciona un cliente...",
+            "guestCustomer": "Cliente Invitado",
+            "paymentMethod": "Método de Pago (Opcional)",
+            "paymentMethodsLoadError": "No se pudieron cargar los métodos de pago",
+            "created": "Creado",
+            "selectPaymentMethod": "Selecciona un método de pago...",
+            "cash": "Efectivo",
+            "notes": "Notas (Opcional)",
+            "addNotes": "Agregar notas sobre esta transacción...",
+            "outOfStock": "Agotado",
+            "noItemsAvailable": "No hay artículos disponibles",
+            "addItemsToInventory": "Agrega artículos a tu inventario para comenzar a crear transacciones"
+        },
+        "items": {
+            "title": "Artículos",
+            "addItem": "Agregar Artículo",
+            "editItem": "Editar Artículo",
+            "deleteItem": "Eliminar Artículo",
+            "name": "Nombre del Artículo",
+            "price": "Precio",
+            "sku": "SKU (Unidad de Mantenimiento de Existencias)",
+            "category": "Categoría",
+            "description": "Descripción",
+            "noItems": "No se encontraron artículos",
+            "loading": "Cargando artículos...",
+            "error": "Error al cargar artículos",
+            "actions": "Acciones",
+            "business": "Negocio",
+            "unknownBusiness": "Negocio Desconocido",
+            "addFirstItem": "Agrega tu Primer Artículo",
+            "image": "Imagen del Artículo",
+            "status": "Estado",
+            "created": "Fecha de Creación",
+            "active": "Activo",
+            "inactive": "Inactivo",
+            "createTitle": "Crear Nuevo Artículo",
+            "createDescription": "Agrega un nuevo producto o servicio a tu inventario",
+            "editTitle": "Editar Artículo",
+            "editDescription": "Actualizar información del artículo",
+            "taxOptional": "Impuesto (Opcional)",
+            "noTax": "Sin impuesto",
+            "discountOptional": "Descuento (Opcional)",
+            "noDiscount": "Sin descuento",
+            "categoriesOptional": "Categorías (Opcional)",
+            "noCategoriesAvailable": "No hay categorías disponibles. Crea categorías primero.",
+            "skuOptional": "SKU (Opcional)",
+            "descriptionOptional": "Descripción (Opcional)",
+            "itemImageOptional": "Imagen del Artículo (Opcional)",
+            "supportedFormats": "Formatos admitidos: JPG, JPEG, PNG, GIF, WEBP. Tamaño máximo: 1MB",
+            "uploading": "Cargando imagen...",
+            "update": "Actualizar Artículo",
+            "create": "Crear Artículo",
+            "deleteTitle": "¿Eliminar Artículo?",
+            "deleteDescription": "Esto eliminará permanentemente {name} (SKU: {sku}). Esta acción no se puede deshacer.",
+            "deleting": "Eliminando...",
+            "errorCreating": "Error al crear artículo",
+            "errorUpdating": "Error al actualizar artículo",
+            "errorDeleting": "Error al eliminar artículo",
+            "uploadError": "Error al cargar imagen",
+            "deleteError": "Error al eliminar artículo",
+            "selectImageError": "Por favor selecciona un archivo de imagen",
+            "imageSizeError": "El tamaño de la imagen debe ser menor a 1MB",
+            "loadingError": "Ocurrió un error al cargar los datos",
+            "itemsLoadError": "Error al cargar artículos",
+            "basePrice": "Precio Base"
+        },
+        "customers": {
+            "title": "Clientes",
+            "addCustomer": "Agregar Cliente",
+            "editCustomer": "Editar Cliente",
+            "deleteCustomer": "Eliminar Cliente",
+            "name": "Nombre del Cliente",
+            "email": "Correo Electrónico",
+            "phone": "Número de Teléfono",
+            "address": "Dirección",
+            "noCustomers": "No se encontraron clientes",
+            "loading": "Cargando clientes...",
+            "error": "Error al cargar clientes",
+            "actions": "Acciones",
+            "addFirstCustomer": "Agrega tu Primer Cliente",
+            "editTitle": "Editar Cliente",
+            "createTitle": "Agregar Nuevo Cliente",
+            "editDescription": "Actualizar información del cliente",
+            "createDescription": "Agrega un nuevo cliente a tu base de datos",
+            "customerName": "Nombre Completo",
+            "placeholderName": "John Doe",
+            "emailOptional": "Correo Electrónico (Opcional)",
+            "placeholderEmail": "john@example.com",
+            "phoneOptional": "Número de Teléfono (Opcional)",
+            "placeholderPhone": "+34912345678",
+            "addressOptional": "Dirección (Opcional)",
+            "placeholderAddress": "Calle Principal 123, Ciudad, Código Postal",
+            "deleteTitle": "¿Eliminar Cliente?",
+            "deleting": "Eliminando...",
+            "errorCreating": "Error al crear cliente",
+            "errorUpdating": "Error al actualizar cliente",
+            "errorDeleting": "Error al eliminar cliente",
+            "deleteError": "Error al eliminar cliente",
+            "customersLoadError": "Error al cargar clientes",
+            "loadingError": "Ocurrió un error al cargar los datos"
+        },
+        "transactions": {
+            "title": "Transacciones",
+            "viewDetails": "Ver Detalles",
+            "date": "Fecha",
+            "customer": "Cliente",
+            "total": "Total",
+            "totalAmount": "Monto Total",
+            "finalAmount": "Monto Final",
+            "discountAmount": "Monto del Descuento:",
+            "taxAmount": "Monto del Impuesto:",
+            "paymentMethod": "Método de Pago",
+            "noTransactions": "No se encontraron transacciones",
+            "actions": "Acciones",
+            "loading": "Cargando transacciones...",
+            "error": "Error al cargar transacciones",
+            "guestCustomer": "Invitado",
+            "transactionDetails": "Detalles de la Transacción",
+            "viewInfo": "Ver información completa de la transacción",
+            "items": "Artículos",
+            "noItems": "No se encontraron artículos",
+            "item": "Artículo",
+            "quantity": "Cantidad",
+            "basePrice": "Precio Base",
+            "tax": "Impuesto",
+            "discount": "Descuento",
+            "notes": "Notas",
+            "transactionId": "ID de Transacción",
+            "downloadPDF": "Descargar PDF",
+            "downloadImage": "Descargar Imagen",
+            "sendEmail": "Enviar por Correo Electrónico",
+            "sendWhatsApp": "Enviar por WhatsApp"
+        },
+        "settings": {
+            "title": "Configuración",
+            "profile": "Perfil",
+            "business": "Negocio",
+            "receipt": "Configuración de Recibos",
+            "preferences": "Preferencias",
+            "account": "Cuenta",
+            "printer": "Impresora",
+            "profileTab": {
+                "name": "Nombre Completo",
+                "email": "Dirección de Correo Electrónico",
+                "currentPassword": "Contraseña Actual",
+                "newPassword": "Nueva Contraseña",
+                "confirmPassword": "Confirmar Contraseña",
+                "changePassword": "Cambiar Contraseña",
+                "updateProfile": "Actualizar Perfil",
+                "deleteAccount": "Eliminar Cuenta",
+                "errorLoad": "Error al cargar perfil",
+                "imageSizeError": "El tamaño de la imagen debe ser menor a 1MB",
+                "successUpdate": "Perfil actualizado exitosamente",
+                "errorUpdate": "Error al actualizar perfil",
+                "errorFields": "Por favor verifica todos los campos",
+                "errorMatch": "Las contraseñas no coinciden",
+                "errorLength": "La contraseña debe tener al menos 8 caracteres",
+                "successPassword": "Contraseña cambiada exitosamente",
+                "errorPassword": "La contraseña actual es incorrecta",
+                "confirmDelete": "Confirmar Eliminación de Cuenta",
+                "sentDelete": "Correo de confirmación de eliminación enviado",
+                "errorDelete": "Error al enviar correo de eliminación",
+                "profilePicture": "Foto de Perfil",
+                "profilePictureDescription": "Carga una foto de perfil para personalizar tu cuenta",
+                "uploadPhoto": "Cargar Foto",
+                "delete": "Eliminar",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Máx 1MB",
+                "personalInfo": "Información Personal",
+                "fullName": "Nombre Completo",
+                "enterFullName": "Ingresa tu nombre completo",
+                "enterEmail": "Ingresa tu correo electrónico",
+                "emailNote": "El correo electrónico no se puede cambiar",
+                "saving": "Guardando...",
+                "saveChanges": "Guardar Cambios",
+                "changePasswordDescription": "Actualiza tu contraseña para mantener tu cuenta segura",
+                "enterCurrentPassword": "Ingresa la contraseña actual",
+                "enterNewPassword": "Ingresa la nueva contraseña (mínimo 8 caracteres)",
+                "confirmNewPassword": "Confirmar Nueva Contraseña",
+                "enterConfirmNewPassword": "Confirma la nueva contraseña",
+                "changingPassword": "Cambiando contraseña...",
+                "deleteAccountDescription": "Una vez eliminada, tu cuenta y todos tus datos no se pueden recuperar",
+                "deleteWarning": "Advertencia: Esta acción no se puede deshacer",
+                "deleteConsequences": "Eliminar tu cuenta resultará en:",
+                "deleteItem1": "Eliminación permanente de todos tus negocios",
+                "deleteItem2": "Eliminación de todas las transacciones y artículos",
+                "deleteItem3": "Eliminación de todos tus datos personales",
+                "deleteConfirmation": "Recibirás un correo de confirmación con un enlace para completar la eliminación.",
+                "sendingEmail": "Enviando correo electrónico...",
+                "requestDeletion": "Solicitar Eliminación de Cuenta"
+            },
+            "receiptTab": {
+                "options": "Personalización de Recibos",
+                "includeLogo": "Incluir Logo del Negocio en Recibos",
+                "footerMessage": "Mensaje de Pie de Página",
+                "footerPlaceholder": "¡Gracias por tu compra!",
+                "qrCode": "Datos del Código QR",
+                "qrPlaceholder": "Ingresa el valor del código QR (ej. enlace de redes sociales)",
+                "prefix": "Prefijo de Transacción",
+                "prefixHelp": "Prefijo para números de transacción (ej. INV, RCP)",
+                "nextNumber": "Siguiente Número de Transacción",
+                "nextNumberHelp": "El siguiente número de transacción a usar",
+                "template": "Plantilla de Recibo",
+                "selectBusiness": "Por favor selecciona un negocio para configurar la configuración de recibos"
+            },
+            "printerTab": {
+                "selectPrinter": "Seleccionar Impresora",
+                "testPrint": "Impresión de Prueba",
+                "printerSettings": "Configuración de Impresora",
+                "toastSaved": "Configuración de impresora guardada",
+                "toastSaveFailed": "Error al guardar la configuración de impresora",
+                "toastSelectBusiness": "Por favor selecciona un negocio primero",
+                "toastTestSuccess": "Impresión de prueba enviada exitosamente",
+                "toastTestFailed": "La impresión de prueba falló",
+                "toastTestError": "Ocurrió un error durante la impresión de prueba",
+                "toastConnected": "Impresora conectada",
+                "toastNotConnected": "Impresora no conectada",
+                "toastCheckError": "Error al verificar el estado de la impresora",
+                "title": "Configuración de Impresora",
+                "description": "Configura la configuración de tu impresora de recibos",
+                "printerType": "Tipo de Impresora",
+                "selectType": "Selecciona el tipo de impresora",
+                "printerPath": "Ruta de Impresora",
+                "pathHelp": "Ruta al dispositivo de tu impresora",
+                "characterSet": "Conjunto de Caracteres",
+                "selectCharset": "Selecciona el conjunto de caracteres",
+                "lineCharacter": "Carácter de Línea",
+                "lineCharacterHelp": "Carácter usado para separación de líneas",
+                "timeout": "Tiempo de Espera (milisegundos)",
+                "timeoutHelp": "Tiempo de espera para operación de impresión en milisegundos",
+                "removeSpecial": "Eliminar Caracteres Especiales",
+                "saveConfig": "Guardar Configuración",
+                "checkStatus": "Verificar Estado de Impresora",
+                "connected": "Conectada",
+                "disconnected": "Desconectada",
+                "connectedMessage": "Tu impresora está conectada y lista",
+                "disconnectedMessage": "Tu impresora está offline",
+                "troubleshooting": "Ayuda para Solucionar Problemas"
+            },
+            "preferencesTab": {
+                "language": "Idioma",
+                "currency": "Moneda",
+                "region": "Región",
+                "timezone": "Zona Horaria",
+                "title": "Apariencia y Localización",
+                "description": "Personaliza cómo se ve y se comporta BillForge",
+                "theme": "Tema",
+                "themeDescription": "Elige tu tema de color preferido",
+                "light": "Claro",
+                "dark": "Oscuro",
+                "system": "Sistema Predeterminado"
+            }
+        },
+        "categories": {
+            "title": "Categorías",
+            "addCategory": "Agregar Categoría",
+            "editCategory": "Editar Categoría",
+            "deleteCategory": "Eliminar Categoría",
+            "name": "Nombre de Categoría",
+            "noCategories": "No se encontraron categorías",
+            "loading": "Cargando categorías...",
+            "error": "Error al cargar categorías",
+            "actions": "Acciones",
+            "addFirstCategory": "Agrega tu Primera Categoría",
+            "created": "Fecha de Creación",
+            "createTitle": "Crear Nueva Categoría",
+            "createDescription": "Agrega una nueva categoría para organizar tus artículos",
+            "editTitle": "Editar Categoría",
+            "editDescription": "Actualizar información de categoría",
+            "categoryName": "Nombre de Categoría",
+            "placeholder": "ej. Electrónica, Alimentos, Servicios",
+            "deleteTitle": "¿Eliminar Categoría?",
+            "deleteDescription": "Esto eliminará permanentemente la categoría '{name}'. Esta acción no se puede deshacer.",
+            "deleting": "Eliminando...",
+            "errorCreating": "Error al crear categoría",
+            "errorUpdating": "Error al actualizar categoría",
+            "errorDeleting": "Error al eliminar categoría",
+            "deleteError": "Error al eliminar categoría",
+            "loadingError": "Ocurrió un error al cargar los datos",
+            "categoriesLoadError": "Error al cargar categorías"
+        },
+        "paymentMethods": {
+            "title": "Métodos de Pago",
+            "addMethod": "Agregar Método de Pago",
+            "editMethod": "Editar Método de Pago",
+            "deleteMethod": "Eliminar Método de Pago",
+            "name": "Nombre del Método",
+            "noMethods": "No se encontraron métodos de pago",
+            "loading": "Cargando métodos de pago...",
+            "error": "Error al cargar métodos de pago",
+            "actions": "Acciones",
+            "addFirstMethod": "Agrega tu Primer Método de Pago",
+            "createTitle": "Agregar Método de Pago",
+            "createDescription": "Agrega un nuevo método de pago para aceptar pagos",
+            "editTitle": "Editar Método de Pago",
+            "editDescription": "Actualizar detalles del método de pago",
+            "deleteTitle": "¿Eliminar Método de Pago?",
+            "deleteDescription": "Esto eliminará permanentemente '{name}'. Esta acción no se puede deshacer.",
+            "deleting": "Eliminando...",
+            "errorCreating": "Error al crear método de pago",
+            "errorUpdating": "Error al actualizar método de pago",
+            "errorDeleting": "Error al eliminar método de pago",
+            "deleteError": "Error al eliminar método de pago",
+            "methodName": "Nombre del Método de Pago",
+            "placeholderName": "ej. Efectivo, Tarjeta de Crédito, Transferencia Bancaria",
+            "created": "Fecha de Creación",
+            "paymentMethodsLoadError": "Error al cargar métodos de pago",
+            "loadingError": "Ocurrió un error al cargar los datos"
+        },
+        "itemTaxes": {
+            "title": "Tasas de Impuesto",
+            "addTax": "Agregar Impuesto",
+            "editTax": "Editar Impuesto",
+            "deleteTax": "Eliminar Impuesto",
+            "name": "Nombre del Impuesto",
+            "rate": "Tasa de Impuesto",
+            "noTaxes": "Sin impuestos configurados. Crea tu primera configuración de impuesto.",
+            "loading": "Cargando impuestos...",
+            "error": "Error al cargar impuestos",
+            "actions": "Acciones",
+            "createTitle": "Agregar Tasa de Impuesto",
+            "createDescription": "Crea una nueva configuración de impuesto",
+            "editTitle": "Editar Tasa de Impuesto",
+            "editDescription": "Actualizar detalles de la tasa de impuesto",
+            "deleteTitle": "¿Eliminar Impuesto?",
+            "deleteDescription": "Esto eliminará permanentemente '{name}'. Esta acción no se puede deshacer.",
+            "deleting": "Eliminando...",
+            "errorCreating": "Error al crear impuesto",
+            "errorUpdating": "Error al actualizar impuesto",
+            "errorDeleting": "Error al eliminar impuesto",
+            "deleteError": "Error al eliminar impuesto",
+            "taxName": "Nombre del Impuesto",
+            "placeholderName": "ej. IVA, Impuesto sobre Ventas",
+            "type": "Tipo",
+            "percentage": "Porcentaje",
+            "fixed": "Monto Fijo",
+            "value": "Valor",
+            "taxesLoadError": "Error al cargar impuestos",
+            "loadingError": "Ocurrió un error al cargar los datos"
+        },
+        "itemDiscounts": {
+            "title": "Descuentos",
+            "addDiscount": "Agregar Descuento",
+            "editDiscount": "Editar Descuento",
+            "deleteDiscount": "Eliminar Descuento",
+            "name": "Nombre del Descuento",
+            "type": "Tipo",
+            "value": "Valor",
+            "noDiscounts": "Sin descuentos configurados. Crea tu primer descuento.",
+            "loading": "Cargando descuentos...",
+            "error": "Error al cargar descuentos",
+            "actions": "Acciones",
+            "createTitle": "Agregar Descuento",
+            "createDescription": "Crea una nueva oferta de descuento",
+            "editTitle": "Editar Descuento",
+            "editDescription": "Actualizar detalles del descuento",
+            "deleteTitle": "¿Eliminar Descuento?",
+            "deleteDescription": "Esto eliminará permanentemente '{name}'. Esta acción no se puede deshacer.",
+            "deleting": "Eliminando...",
+            "errorCreating": "Error al crear descuento",
+            "errorUpdating": "Error al actualizar descuento",
+            "errorDeleting": "Error al eliminar descuento",
+            "deleteError": "Error al eliminar descuento",
+            "discountName": "Nombre del Descuento",
+            "placeholderName": "ej. Descuento de Vacaciones, Descuento de Comprador Temprano",
+            "percentage": "Porcentaje",
+            "fixed": "Monto Fijo",
+            "discountsLoadError": "Error al cargar descuentos",
+            "loadingError": "Ocurrió un error al cargar los datos"
+        },
+        "sidebar": {
+            "sale": "Venta",
+            "transactions": "Transacciones",
+            "items": "Artículos",
+            "categories": "Categorías",
+            "customers": "Clientes",
+            "paymentMethods": "Métodos de Pago",
+            "itemTaxes": "Impuestos",
+            "itemDiscounts": "Descuentos",
+            "settings": "Configuración",
+            "businessSelector": {
+                "switchBusiness": "Cambiar Negocio",
+                "addBusiness": "Agregar Negocio",
+                "edit": "Editar",
+                "delete": "Eliminar"
+            },
+            "userProfile": {
+                "myAccount": "Mi Cuenta",
+                "logout": "Cerrar Sesión",
+                "dialog": {
+                    "title": "Confirmar Cierre de Sesión",
+                    "description": "¿Estás seguro de que deseas cerrar sesión? Necesitarás iniciar sesión nuevamente para acceder a tu cuenta.",
+                    "cancel": "Cancelar",
+                    "confirm": "Cerrar Sesión"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Crear Nuevo Negocio",
+                "editTitle": "Editar Negocio",
+                "createDescription": "Agrega una nueva ubicación de negocio a tu cuenta",
+                "editDescription": "Actualiza la información de tu negocio",
+                "nameLabel": "Nombre del Negocio",
+                "namePlaceholder": "Tu Nombre de Negocio",
+                "addressLabel": "Dirección (Opcional)",
+                "addressPlaceholder": "Calle Principal 123, Ciudad, País",
+                "phoneLabel": "Número de Teléfono (Opcional)",
+                "phonePlaceholder": "+34912345678",
+                "currencyLabel": "Moneda (Opcional)",
+                "currencyPlaceholder": "Selecciona la moneda",
+                "languageLabel": "Idioma (Opcional)",
+                "languagePlaceholder": "Selecciona el idioma",
+                "regionLabel": "Región (Opcional)",
+                "regionPlaceholder": "Selecciona la región",
+                "logoLabel": "Logo del Negocio (Opcional)",
+                "logoHelp": "Formatos admitidos: JPG, JPEG, PNG, GIF, WEBP. Tamaño máximo: 1MB",
+                "uploading": "Cargando logo...",
+                "cancel": "Cancelar",
+                "create": "Crear",
+                "update": "Actualizar",
+                "errorGeneric": "Error al guardar negocio",
+                "errorCreate": "Error al crear negocio",
+                "errorUpdate": "Error al actualizar negocio",
+                "errorImageSize": "El tamaño de la imagen debe ser menor a 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Eliminar Negocio",
+                "description": "¿Estás seguro de que deseas eliminar '{name}'? Esta acción no se puede deshacer.",
+                "cancel": "Cancelar",
+                "delete": "Eliminar"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "El tamaño de la imagen debe ser menor a 1MB",
+                "updateFailed": "Error al actualizar negocio",
+                "createFailed": "Error al crear negocio",
+                "updateError": "Ocurrió un error durante la actualización",
+                "createError": "Ocurrió un error durante la creación"
+            },
+            "edit": "Editar Negocio",
+            "create": "Crear Negocio",
+            "description": {
+                "edit": "Actualiza la información de tu negocio",
+                "create": "Agrega un nuevo negocio a tu cuenta"
+            },
+            "form": {
+                "name": {
+                    "label": "Nombre del Negocio",
+                    "placeholder": "Tu Nombre de Negocio"
+                },
+                "address": {
+                    "label": "Dirección (Opcional)",
+                    "placeholder": "Calle Principal 123, Ciudad, País"
+                },
+                "phone": {
+                    "label": "Número de Teléfono (Opcional)",
+                    "placeholder": "+34912345678"
+                },
+                "currency": {
+                    "label": "Moneda (Opcional)",
+                    "placeholder": "Selecciona la moneda"
+                },
+                "language": {
+                    "label": "Idioma (Opcional)",
+                    "placeholder": "Selecciona el idioma"
+                },
+                "region": {
+                    "label": "Región (Opcional)",
+                    "placeholder": "Selecciona la región"
+                },
+                "logo": {
+                    "label": "Logo del Negocio (Opcional)",
+                    "helper": "Formatos admitidos: JPG, JPEG, PNG, GIF, WEBP. Máx 1MB",
+                    "uploading": "Cargando..."
+                }
+            },
+            "buttons": {
+                "cancel": "Cancelar",
+                "update": "Actualizar",
+                "create": "Crear"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Cambiar Negocio",
+            "edit": "Editar",
+            "delete": "Eliminar",
+            "addBusiness": "Agregar Negocio"
+        },
+        "deleteBusinessDialog": {
+            "title": "Eliminar Negocio",
+            "description": "¿Estás seguro? Esto no se puede deshacer.",
+            "cancel": "Cancelar",
+            "confirm": "Eliminar"
+        },
+        "userProfile": {
+            "myAccount": "Mi Cuenta",
+            "logout": "Cerrar Sesión",
+            "dialog": {
+                "title": "Confirmar Cierre de Sesión",
+                "description": "¿Estás seguro de que deseas cerrar sesión?",
+                "cancel": "Cancelar",
+                "confirm": "Cerrar Sesión"
+            }
+        }
+    }
+}
