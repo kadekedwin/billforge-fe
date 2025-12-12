@@ -35,7 +35,7 @@ export async function forgotPassword(data: ForgotPasswordRequest): Promise<ApiRe
 }
 
 export async function forgotPasswordReset(data: ForgotPasswordResetRequest): Promise<ApiResponse<MessageResponse>> {
-    let url = "/api/reset-password";
+    let url = "/api/forgot-password-reset";
     const params = new URLSearchParams();
     if (data.expires) params.append('expires', data.expires);
     if (data.signature) params.append('signature', data.signature);
