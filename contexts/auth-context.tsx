@@ -109,9 +109,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 }
             }
         } catch (error) {
+            if (error instanceof Error && 'statusCode' in error) {
+                const apiError = error as { statusCode: number };
+                if (apiError.statusCode === 401) {
+                    removeAuth();
+                    return;
+                }
+            }
             console.error("Failed to refresh user:", error);
         }
-    }, [token]);
+    }, [token, removeAuth]);
 
     const value = {
         user,

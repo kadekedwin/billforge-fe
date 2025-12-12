@@ -35,22 +35,6 @@ class ApiClient {
     this.axiosInstance.interceptors.response.use(
       (response) => response,
       (error: AxiosError<ApiErrorResponse>) => {
-        if (error.response?.status === 401) {
-          if (typeof window !== "undefined") {
-            const currentPath = window.location.pathname;
-            const isOnAuthPage =
-              currentPath === "/login" ||
-              currentPath === "/register" ||
-              currentPath.startsWith("/login") ||
-              currentPath.startsWith("/register");
-
-            if (!isOnAuthPage) {
-              this.clearToken();
-              window.location.href = "/login";
-            }
-          }
-        }
-
         const statusCode = error.response?.status || 500;
         const errorData = error.response?.data;
         const message = errorData?.message || error.message || "An error occurred";
