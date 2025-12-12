@@ -1,30 +1,26 @@
 'use client';
 
-import {useState, useEffect} from 'react';
-import {useRouter} from 'next/navigation';
-import {Button} from '@/components/ui/button';
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
-import {Input} from '@/components/ui/input';
-import {Label} from '@/components/ui/label';
-import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar';
-import {uploadImage, getImageUrl, deleteImage} from '@/lib/images/operations';
-import {getFileSizeBytes} from '@/lib/images/utils';
-import {Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock} from 'lucide-react';
-import {getUser, updateUser, User} from '@/lib/api/user';
-import {resetPassword} from "@/lib/api/auth";
-import {useAuth} from "@/contexts/auth-context";
-import {ApiError} from "@/lib/api/errors";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { uploadImage, getImageUrl, deleteImage } from '@/lib/images/operations';
+import { getFileSizeBytes } from '@/lib/images/utils';
+import { Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, KeyRound } from 'lucide-react';
+import { getUser, updateUser, User } from '@/lib/api/user';
+import { useAuth } from "@/contexts/auth-context";
+import { ApiError } from "@/lib/api/errors";
 
 export default function ProfileSettings() {
     const router = useRouter();
-    const {setAuth, token} = useAuth();
+    const { setAuth, token } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
-    const [isChangingPassword, setIsChangingPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
-    const [passwordError, setPasswordError] = useState<string | null>(null);
-    const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
     const [user, setUser] = useState<User | null>(null);
     const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -33,11 +29,6 @@ export default function ProfileSettings() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-    });
-    const [passwordData, setPasswordData] = useState({
-        current_password: '',
-        password: '',
-        password_confirmation: '',
     });
 
     const loadUser = async () => {
@@ -76,7 +67,7 @@ export default function ProfileSettings() {
     }, []);
 
     const handleInputChange = (field: string, value: string) => {
-        setFormData(prev => ({...prev, [field]: value}));
+        setFormData(prev => ({ ...prev, [field]: value }));
     };
 
     const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,57 +159,6 @@ export default function ProfileSettings() {
         }
     };
 
-    const handlePasswordChange = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        if (!passwordData.current_password || !passwordData.password || !passwordData.password_confirmation) {
-            setPasswordError('All fields are required');
-            return;
-        }
-
-        if (passwordData.password !== passwordData.password_confirmation) {
-            setPasswordError('New passwords do not match');
-            return;
-        }
-
-        if (passwordData.password.length < 8) {
-            setPasswordError('Password must be at least 8 characters');
-            return;
-        }
-
-        setIsChangingPassword(true);
-        setPasswordError(null);
-        setPasswordSuccess(null);
-
-        try {
-            await resetPassword({
-                current_password: passwordData.current_password,
-                new_password: passwordData.password,
-                new_password_confirmation: passwordData.password_confirmation,
-            });
-
-            setPasswordSuccess('Password updated successfully!');
-            setPasswordData({
-                current_password: '',
-                password: '',
-                password_confirmation: '',
-            });
-        } catch (err) {
-            if (err instanceof ApiError) {
-                if (err.errors) {
-                    const errorMessages = Object.values(err.errors).flat();
-                    setPasswordError(errorMessages.join(', '));
-                } else {
-                    setPasswordError(err.message);
-                }
-            } else {
-                setPasswordError('An error occurred while updating password');
-            }
-        } finally {
-            setIsChangingPassword(false);
-        }
-    };
-
     const getInitials = (name: string) => {
         return name
             .split(' ')
@@ -232,7 +172,7 @@ export default function ProfileSettings() {
         return (
             <div className="flex items-center justify-center py-12">
                 <div className="flex flex-col items-center">
-                    <Loader2 className="h-8 w-8 animate-spin text-primary"/>
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
                     <p className="mt-4 text-sm text-muted-foreground">Loading profile...</p>
                 </div>
             </div>
@@ -257,7 +197,7 @@ export default function ProfileSettings() {
 
             {success && (
                 <div className="rounded-md bg-green-50 p-3 text-sm text-green-600 flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4"/>
+                    <CheckCircle2 className="h-4 w-4" />
                     {success}
                 </div>
             )}
@@ -270,9 +210,9 @@ export default function ProfileSettings() {
                 <CardContent className="flex items-center gap-6">
                     <Avatar className="h-24 w-24">
                         {imagePreview ? (
-                            <AvatarImage src={imagePreview} alt={user.name}/>
+                            <AvatarImage src={imagePreview} alt={user.name} />
                         ) : !imageDeleted && avatarUrl ? (
-                            <AvatarImage src={avatarUrl} alt={user.name}/>
+                            <AvatarImage src={avatarUrl} alt={user.name} />
                         ) : null}
                         <AvatarFallback className="text-2xl">{getInitials(user.name)}</AvatarFallback>
                     </Avatar>
@@ -281,7 +221,7 @@ export default function ProfileSettings() {
                             <Label htmlFor="avatar-upload" className="cursor-pointer">
                                 <div
                                     className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
-                                    <Upload className="h-4 w-4"/>
+                                    <Upload className="h-4 w-4" />
                                     Upload Photo
                                 </div>
                             </Label>
@@ -297,7 +237,7 @@ export default function ProfileSettings() {
                                     variant="outline"
                                     onClick={handleDeleteAvatar}
                                 >
-                                    <Trash2 className="h-4 w-4 mr-2"/>
+                                    <Trash2 className="h-4 w-4 mr-2" />
                                     Delete
                                 </Button>
                             )}
@@ -316,7 +256,7 @@ export default function ProfileSettings() {
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
                         <Label htmlFor="name" className="flex items-center gap-2">
-                            <UserIcon className="h-4 w-4"/>
+                            <UserIcon className="h-4 w-4" />
                             Full Name
                         </Label>
                         <Input
@@ -329,7 +269,7 @@ export default function ProfileSettings() {
 
                     <div className="space-y-2">
                         <Label htmlFor="email" className="flex items-center gap-2">
-                            <Mail className="h-4 w-4"/>
+                            <Mail className="h-4 w-4" />
                             Email
                         </Label>
                         <Input
@@ -348,9 +288,9 @@ export default function ProfileSettings() {
             <div className="flex justify-end">
                 <Button onClick={handleSave} disabled={isSaving}>
                     {isSaving ? (
-                        <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
                     ) : (
-                        <Save className="h-4 w-4 mr-2"/>
+                        <Save className="h-4 w-4 mr-2" />
                     )}
                     {isSaving ? 'Saving...' : 'Save Changes'}
                 </Button>
@@ -358,77 +298,20 @@ export default function ProfileSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Change Password</CardTitle>
+                    <CardTitle>Password</CardTitle>
+                    <CardDescription>Reset your password using the forgot password flow</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    {passwordError && (
-                        <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">
-                            {passwordError}
-                        </div>
-                    )}
-
-                    {passwordSuccess && (
-                        <div className="rounded-md bg-green-50 p-3 text-sm text-green-600 flex items-center gap-2 mb-4">
-                            <CheckCircle2 className="h-4 w-4"/>
-                            {passwordSuccess}
-                        </div>
-                    )}
-
-                    <form onSubmit={handlePasswordChange} className="space-y-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="current_password" className="flex items-center gap-2">
-                                <Lock className="h-4 w-4"/>
-                                Current Password
-                            </Label>
-                            <Input
-                                id="current_password"
-                                type="password"
-                                value={passwordData.current_password}
-                                onChange={(e) => setPasswordData(prev => ({...prev, current_password: e.target.value}))}
-                                placeholder="Enter current password"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="password" className="flex items-center gap-2">
-                                <Lock className="h-4 w-4"/>
-                                New Password
-                            </Label>
-                            <Input
-                                id="password"
-                                type="password"
-                                value={passwordData.password}
-                                onChange={(e) => setPasswordData(prev => ({...prev, password: e.target.value}))}
-                                placeholder="Enter new password (min 8 characters)"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="password_confirmation" className="flex items-center gap-2">
-                                <Lock className="h-4 w-4"/>
-                                Confirm New Password
-                            </Label>
-                            <Input
-                                id="password_confirmation"
-                                type="password"
-                                value={passwordData.password_confirmation}
-                                onChange={(e) => setPasswordData(prev => ({...prev, password_confirmation: e.target.value}))}
-                                placeholder="Confirm new password"
-                            />
-                        </div>
-
-                        <Button type="submit" disabled={isChangingPassword}>
-                            {isChangingPassword ? (
-                                <Loader2 className="h-4 w-4 mr-2 animate-spin"/>
-                            ) : (
-                                <Lock className="h-4 w-4 mr-2"/>
-                            )}
-                            {isChangingPassword ? 'Changing Password...' : 'Change Password'}
-                        </Button>
-                    </form>
+                    <Button
+                        variant="outline"
+                        onClick={() => router.push('/forgot-password')}
+                        className="w-full sm:w-auto"
+                    >
+                        <KeyRound className="h-4 w-4 mr-2" />
+                        Reset Password
+                    </Button>
                 </CardContent>
             </Card>
         </div>
     );
 }
-

@@ -17,11 +17,13 @@ import {
 import { forgotPasswordReset } from "@/lib/api/auth";
 import type { ForgotPasswordResetRequest } from "@/lib/api";
 import { ApiError } from "@/lib/api/errors";
+import { CheckCircle2 } from "lucide-react";
 
 function ResetPasswordForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [isLoading, setIsLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<ForgotPasswordResetRequest>({
         token: "",
@@ -59,7 +61,6 @@ function ResetPasswordForm() {
         setError(null);
         setFieldErrors({});
 
-        // Client-side validation
         if (formData.password !== formData.password_confirmation) {
             setFieldErrors({ password_confirmation: "Passwords do not match" });
             setIsLoading(false);
@@ -74,7 +75,10 @@ function ResetPasswordForm() {
 
         try {
             await forgotPasswordReset(formData);
-            router.push("/login?reset=success");
+            setSuccess(true);
+            setTimeout(() => {
+                router.push("/login");
+            }, 2000);
         } catch (err) {
             if (err instanceof ApiError) {
                 if (err.errors) {
@@ -105,6 +109,36 @@ function ResetPasswordForm() {
             });
         }
     };
+
+    if (success) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+                <Card className="w-full max-w-md">
+                    <CardHeader className="space-y-1">
+                        <div className="flex justify-center mb-4">
+                            <CheckCircle2 className="h-12 w-12 text-green-500" />
+                        </div>
+                        <CardTitle className="text-2xl font-bold tracking-tight text-center">
+                            Password Reset Successful!
+                        </CardTitle>
+                        <CardDescription className="text-center">
+                            Your password has been successfully reset.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <p className="text-sm text-muted-foreground text-center">
+                            Redirecting you to the login page...
+                        </p>
+                    </CardContent>
+                    <CardFooter className="flex justify-center">
+                        <Link href="/login">
+                            <Button>Go to Login</Button>
+                        </Link>
+                    </CardFooter>
+                </Card>
+            </div>
+        );
+    }
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">

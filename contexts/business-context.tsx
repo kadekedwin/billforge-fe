@@ -1,122 +1,159 @@
-'use client'
+"use client";
 
-import React, {createContext, useContext, useState, useEffect, ReactNode, useCallback} from 'react'
-import {usePathname} from 'next/navigation'
-import {Business} from '@/lib/api/businesses/types'
-import {getBusinesses} from '@/lib/api/businesses'
-import {useAuth} from '@/contexts/auth-context'
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
+import type { Business } from "@/lib/api/businesses/types";
+import { getBusinesses } from "@/lib/api/businesses";
+import { useAuth } from "@/contexts/auth-context";
 
 interface BusinessContextType {
-    selectedBusiness: Business | null
-    businesses: Business[]
-    setSelectedBusiness: (business: Business | null) => void
-    refreshBusinesses: () => Promise<void>
-    isLoading: boolean
+    selectedBusiness: Business | null;
+    businesses: Business[];
+    setSelectedBusiness: (business: Business | null) => void;
+    refreshBusinesses: () => Promise<void>;
+    isLoading: boolean;
 }
 
-const BusinessContext = createContext<BusinessContextType | undefined>(undefined)
+const BusinessContext = createContext<BusinessContextType | undefined>(undefined);
 
-export function BusinessProvider({children}: { children: ReactNode }) {
-    const pathname = usePathname()
-    const { isAuthenticated, isLoading: authLoading } = useAuth()
-    const [selectedBusiness, setSelectedBusinessState] = useState<Business | null>(null)
-    const [businesses, setBusinesses] = useState<Business[]>([])
-    const [isLoading, setIsLoading] = useState(true)
+const STORAGE_KEY = "selectedBusinessUuid";
+
+const PUBLIC_ROUTES = [
+    "/",
+    "/login",
+    "/register",
+    "/verify-email",
+    "/forgot-password",
+    "/reset-password",
+    "/privacy",
+    "/terms",
+];
+
+export function BusinessProvider({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+    const { isAuthenticated, isLoading: authLoading } = useAuth();
+    const [selectedBusiness, setSelectedBusinessState] = useState<Business | null>(null);
+    const [businesses, setBusinesses] = useState<Business[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const isPublicRoute = useCallback(() => {
+        return PUBLIC_ROUTES.some(route => pathname.startsWith(route));
+    }, [pathname]);
+
+    const getSavedBusinessUuid = useCallback(() => {
+        if (typeof window === "undefined") return null;
+
+        try {
+            return localStorage.getItem(STORAGE_KEY);
+        } catch {
+            return null;
+        }
+    }, []);
+
+    const saveBusinessUuid = useCallback((uuid: string | null) => {
+        if (typeof window === "undefined") return;
+
+        try {
+            if (uuid) {
+                localStorage.setItem(STORAGE_KEY, uuid);
+            } else {
+                localStorage.removeItem(STORAGE_KEY);
+            }
+        } catch (error) {
+            console.error("Failed to save business UUID:", error);
+        }
+    }, []);
+
+    const selectBusiness = useCallback((businessList: Business[]) => {
+        if (businessList.length === 0) {
+            setSelectedBusinessState(null);
+            saveBusinessUuid(null);
+            return;
+        }
+
+        const savedUuid = getSavedBusinessUuid();
+        const savedBusiness = savedUuid
+            ? businessList.find(b => b.uuid === savedUuid)
+            : null;
+
+        const businessToSelect = savedBusiness || businessList[0];
+        setSelectedBusinessState(businessToSelect);
+        saveBusinessUuid(businessToSelect.uuid);
+    }, [getSavedBusinessUuid, saveBusinessUuid]);
 
     const fetchBusinesses = useCallback(async () => {
         if (typeof window === "undefined") {
-            setIsLoading(false)
-            return
+            setIsLoading(false);
+            return;
         }
 
         try {
-            setIsLoading(true)
-            const response = await getBusinesses()
+            setIsLoading(true);
+            const response = await getBusinesses();
 
             if (response.success && response.data) {
-                setBusinesses(response.data)
-
-                const savedBusinessUuid = localStorage.getItem('selectedBusinessUuid')
-                if (savedBusinessUuid) {
-                    const savedBusiness = response.data.find((b: Business) => b.uuid === savedBusinessUuid)
-                    if (savedBusiness) {
-                        setSelectedBusinessState(savedBusiness)
-                    } else if (response.data.length > 0) {
-                        setSelectedBusinessState(response.data[0])
-                        localStorage.setItem('selectedBusinessUuid', response.data[0].uuid)
-                    } else {
-                        setSelectedBusinessState(null)
-                        localStorage.removeItem('selectedBusinessUuid')
-                    }
-                } else if (response.data.length > 0) {
-                    setSelectedBusinessState(response.data[0])
-                    localStorage.setItem('selectedBusinessUuid', response.data[0].uuid)
-                } else {
-                    setSelectedBusinessState(null)
-                    localStorage.removeItem('selectedBusinessUuid')
-                }
+                setBusinesses(response.data);
+                selectBusiness(response.data);
             } else {
-                setBusinesses([])
+                setBusinesses([]);
+                setSelectedBusinessState(null);
+                saveBusinessUuid(null);
             }
         } catch (error) {
-            console.error('Failed to fetch businesses:', error)
-            setBusinesses([])
+            console.error("Failed to fetch businesses:", error);
+            setBusinesses([]);
+            setSelectedBusinessState(null);
+            saveBusinessUuid(null);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
-    }, [])
+    }, [selectBusiness, saveBusinessUuid]);
 
     useEffect(() => {
-        if (pathname === '/' || pathname === '/login' || pathname === '/register' ||  pathname === '/verify-email' || pathname === '/forgot-password' || pathname === '/reset-password') {
-            setIsLoading(false)
-            return
+        if (isPublicRoute()) {
+            setIsLoading(false);
+            return;
         }
 
         if (authLoading) {
-            return
+            return;
         }
 
         if (isAuthenticated) {
-            fetchBusinesses()
+            fetchBusinesses();
         } else {
-            setBusinesses([])
-            setSelectedBusinessState(null)
-            setIsLoading(false)
+            setBusinesses([]);
+            setSelectedBusinessState(null);
+            setIsLoading(false);
         }
-    }, [isAuthenticated, authLoading, pathname, fetchBusinesses])
+    }, [isAuthenticated, authLoading, isPublicRoute, fetchBusinesses]);
 
-    const setSelectedBusiness = (business: Business | null) => {
-        setSelectedBusinessState(business)
-        if (business) {
-            localStorage.setItem('selectedBusinessUuid', business.uuid)
-        } else {
-            localStorage.removeItem('selectedBusinessUuid')
-        }
-    }
+    const setSelectedBusiness = useCallback((business: Business | null) => {
+        setSelectedBusinessState(business);
+        saveBusinessUuid(business?.uuid || null);
+    }, [saveBusinessUuid]);
 
-    const refreshBusinesses = async () => {
-        await fetchBusinesses()
-    }
+    const refreshBusinesses = useCallback(async () => {
+        await fetchBusinesses();
+    }, [fetchBusinesses]);
 
-    return (
-        <BusinessContext.Provider
-            value={{
-                selectedBusiness,
-                businesses,
-                setSelectedBusiness,
-                refreshBusinesses,
-                isLoading,
-            }}
-        >
-            {children}
-        </BusinessContext.Provider>
-    )
+    const value = {
+        selectedBusiness,
+        businesses,
+        setSelectedBusiness,
+        refreshBusinesses,
+        isLoading,
+    };
+
+    return <BusinessContext.Provider value={value}>{children}</BusinessContext.Provider>;
 }
 
 export function useBusiness() {
-    const context = useContext(BusinessContext)
+    const context = useContext(BusinessContext);
+
     if (context === undefined) {
-        throw new Error('useBusiness must be used within a BusinessProvider')
+        throw new Error("useBusiness must be used within a BusinessProvider");
     }
-    return context
+
+    return context;
 }

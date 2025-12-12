@@ -1,9 +1,9 @@
 "use client";
 
-import {createContext, useContext, useEffect, useState} from "react";
-import {useRouter} from "next/navigation";
-import type {User} from "@/lib/api";
-import {getUser} from "@/lib/api/user";
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import type { User } from "@/lib/api";
+import { getUser } from "@/lib/api/user";
 
 interface AuthContextType {
     user: User | null;
@@ -17,99 +17,121 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({children}: { children: React.ReactNode }) {
+const STORAGE_KEYS = {
+    TOKEN: "token",
+    USER: "user",
+} as const;
+
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
 
-    const initializeAuthState = async () => {
-        if (typeof window === "undefined") {
-            setIsLoading(false)
-            return
-        }
+    const clearStorage = useCallback(() => {
+        if (typeof window === "undefined") return;
 
-        try {
-            const storedToken = localStorage.getItem("token");
-            const storedUser = localStorage.getItem("user");
-
-            if (storedToken && storedUser) {
-                try {
-                    const parsedUser = JSON.parse(storedUser);
-                    setToken(storedToken);
-                    setUser(parsedUser);
-                } catch (error) {
-                    console.error("Error parsing stored user:", error);
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("user");
-                }
-            }
-        } catch (error) {
-            console.error('Failed to initialize auth:', error)
-        } finally {
-            setIsLoading(false)
-        }
-    }
-
-    useEffect(() => {
-        initializeAuthState()
+        localStorage.removeItem(STORAGE_KEYS.TOKEN);
+        localStorage.removeItem(STORAGE_KEYS.USER);
+        document.cookie = `${STORAGE_KEYS.TOKEN}=; path=/; max-age=0`;
     }, []);
 
-    const setAuth = (newUser: User, newToken: string) => {
+    const saveToStorage = useCallback((newUser: User, newToken: string) => {
+        if (typeof window === "undefined") return;
+
+        try {
+            localStorage.setItem(STORAGE_KEYS.TOKEN, newToken);
+            localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(newUser));
+            document.cookie = `${STORAGE_KEYS.TOKEN}=${newToken}; path=/; max-age=${COOKIE_MAX_AGE}`;
+        } catch (error) {
+            console.error("Failed to save auth data:", error);
+        }
+    }, []);
+
+    const loadFromStorage = useCallback(() => {
+        if (typeof window === "undefined") return null;
+
+        try {
+            const storedToken = localStorage.getItem(STORAGE_KEYS.TOKEN);
+            const storedUser = localStorage.getItem(STORAGE_KEYS.USER);
+
+            if (!storedToken || !storedUser) return null;
+
+            const parsedUser = JSON.parse(storedUser);
+            return { user: parsedUser, token: storedToken };
+        } catch (error) {
+            console.error("Failed to load auth data:", error);
+            clearStorage();
+            return null;
+        }
+    }, [clearStorage]);
+
+    const initializeAuth = useCallback(async () => {
+        const authData = loadFromStorage();
+
+        if (authData) {
+            setUser(authData.user);
+            setToken(authData.token);
+        }
+
+        setIsLoading(false);
+    }, [loadFromStorage]);
+
+    useEffect(() => {
+        initializeAuth();
+    }, [initializeAuth]);
+
+    const setAuth = useCallback((newUser: User, newToken: string) => {
         setUser(newUser);
         setToken(newToken);
-        localStorage.setItem("token", newToken);
-        localStorage.setItem("user", JSON.stringify(newUser));
+        saveToStorage(newUser, newToken);
+    }, [saveToStorage]);
 
-        // Set cookie for middleware
-        document.cookie = `token=${newToken}; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
-    };
-
-    const removeAuth = () => {
+    const removeAuth = useCallback(() => {
         setUser(null);
         setToken(null);
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-
-        document.cookie = "token=; path=/; max-age=0";
-
+        clearStorage();
         router.push("/login");
-    };
+    }, [clearStorage, router]);
 
-    const refreshUser = async () => {
+    const refreshUser = useCallback(async () => {
+        if (!token) return;
+
         try {
             const response = await getUser();
-            if (response.success) {
+
+            if (response.success && response.data) {
                 setUser(response.data);
-                localStorage.setItem("user", JSON.stringify(response.data));
+                if (typeof window !== "undefined") {
+                    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(response.data));
+                }
             }
         } catch (error) {
             console.error("Failed to refresh user:", error);
         }
+    }, [token]);
+
+    const value = {
+        user,
+        token,
+        isLoading,
+        isAuthenticated: !!token && !!user,
+        setAuth,
+        removeAuth,
+        refreshUser,
     };
 
-    return (
-        <AuthContext.Provider
-            value={{
-                user,
-                token,
-                isLoading,
-                isAuthenticated: !!token && !!user,
-                setAuth,
-                removeAuth,
-                refreshUser,
-            }}
-        >
-            {children}
-        </AuthContext.Provider>
-    );
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
     const context = useContext(AuthContext);
+
     if (context === undefined) {
         throw new Error("useAuth must be used within an AuthProvider");
     }
+
     return context;
 }
-
