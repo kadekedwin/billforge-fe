@@ -11,6 +11,7 @@ import { getItemCategories } from "@/lib/api/item-categories";
 import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import { ReceiptPopup } from "@/components/receipt-popup";
 import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 import { toast } from "sonner";
 import type { Transaction, TransactionItem } from "@/lib/api";
 import { ItemsGrid } from "./ItemsGrid";
@@ -321,7 +322,8 @@ export default function SalePage() {
                         completedPaymentMethodName,
                         footerMessage || undefined,
                         businessLogoUrl,
-                        qrcodeValue || undefined
+                        qrcodeValue || undefined,
+                        getCurrencySymbol(selectedBusiness.currency)
                     )}
                     customerEmail={completedCustomerEmail}
                     customerPhone={completedCustomerPhone}

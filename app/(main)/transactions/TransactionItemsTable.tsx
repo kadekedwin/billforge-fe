@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/table";
 import { Loader2 } from "lucide-react";
 import type { TransactionItem } from "@/lib/api";
+import { useBusiness } from "@/contexts/business-context";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 
 interface TransactionItemsTableProps {
     items: TransactionItem[];
@@ -17,6 +19,9 @@ interface TransactionItemsTableProps {
 }
 
 export function TransactionItemsTable({ items, isLoading }: TransactionItemsTableProps) {
+    const { selectedBusiness } = useBusiness();
+    const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
     if (isLoading) {
         return (
             <div className="flex h-32 items-center justify-center">
@@ -59,11 +64,11 @@ export function TransactionItemsTable({ items, isLoading }: TransactionItemsTabl
                                 )}
                             </TableCell>
                             <TableCell>{item.quantity}</TableCell>
-                            <TableCell>${parseFloat(item.base_price).toFixed(2)}</TableCell>
-                            <TableCell>${parseFloat(item.tax_amount).toFixed(2)}</TableCell>
-                            <TableCell>-${parseFloat(item.discount_amount).toFixed(2)}</TableCell>
+                            <TableCell>{currencySymbol}{parseFloat(item.base_price).toFixed(2)}</TableCell>
+                            <TableCell>{currencySymbol}{parseFloat(item.tax_amount).toFixed(2)}</TableCell>
+                            <TableCell>-{currencySymbol}{parseFloat(item.discount_amount).toFixed(2)}</TableCell>
                             <TableCell className="font-semibold">
-                                ${parseFloat(item.total_price).toFixed(2)}
+                                {currencySymbol}{parseFloat(item.total_price).toFixed(2)}
                             </TableCell>
                         </TableRow>
                     ))}

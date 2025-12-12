@@ -1,6 +1,7 @@
 import { ReceiptData } from "@/lib/receipt";
 
 export const generateSansSerifTemplate = (data: ReceiptData): string => {
+  const currency = data.currencySymbol || '$';
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -191,10 +192,10 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
         <div class="item">
           <div class="item-header">
             <span class="item-name">${item.name}</span>
-            <span>$${item.total.toFixed(2)}</span>
+            <span>${currency}${item.total.toFixed(2)}</span>
           </div>
           <div class="item-details">
-            <span>${item.quantity} x $${item.price.toFixed(2)}</span>
+            <span>${item.quantity} x ${currency}${item.price.toFixed(2)}</span>
           </div>
         </div>
       `).join('')}
@@ -202,23 +203,23 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
     <div class="totals">
       <div class="total-row">
         <span>Subtotal:</span>
-        <span>$${data.subtotal.toFixed(2)}</span>
+        <span>${currency}${data.subtotal.toFixed(2)}</span>
       </div>
       ${data.discount ? `
       <div class="total-row">
         <span>Discount:</span>
-        <span>-$${data.discount.toFixed(2)}</span>
+        <span>-${currency}${data.discount.toFixed(2)}</span>
       </div>
       ` : ''}
       ${data.tax !== undefined ? `
       <div class="total-row">
         <span>Tax:</span>
-        <span>$${data.tax.toFixed(2)}</span>
+        <span>${currency}${data.tax.toFixed(2)}</span>
       </div>
       ` : ''}
       <div class="total-row grand-total">
         <span>TOTAL:</span>
-        <span>$${data.total.toFixed(2)}</span>
+        <span>${currency}${data.total.toFixed(2)}</span>
       </div>
     </div>
     <div class="payment">
@@ -229,13 +230,13 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
       ${data.paymentAmount ? `
       <div class="total-row">
         <span>Paid:</span>
-        <span>$${data.paymentAmount.toFixed(2)}</span>
+        <span>${currency}${data.paymentAmount.toFixed(2)}</span>
       </div>
       ` : ''}
       ${data.changeAmount ? `
       <div class="total-row">
         <span>Change:</span>
-        <span>$${data.changeAmount.toFixed(2)}</span>
+        <span>${currency}${data.changeAmount.toFixed(2)}</span>
       </div>
       ` : ''}
     </div>

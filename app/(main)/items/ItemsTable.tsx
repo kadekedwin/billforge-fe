@@ -13,6 +13,8 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Loader2, Pencil, Trash2 } from "lucide-react";
 import type { Item } from "@/lib/api";
 import { ItemImage } from "./ItemImage";
+import { useBusiness } from "@/contexts/business-context";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 
 interface ItemsTableProps {
     items: Item[];
@@ -25,14 +27,17 @@ interface ItemsTableProps {
 }
 
 export function ItemsTable({
-                               items,
-                               isLoading,
-                               deletingId,
-                               onEdit,
-                               onDelete,
-                               onAddFirst,
-                               getBusinessName,
-                           }: ItemsTableProps) {
+    items,
+    isLoading,
+    deletingId,
+    onEdit,
+    onDelete,
+    onAddFirst,
+    getBusinessName,
+}: ItemsTableProps) {
+    const { selectedBusiness } = useBusiness();
+    const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
     if (isLoading) {
         return (
             <div className="rounded-lg border bg-card">
@@ -81,7 +86,7 @@ export function ItemsTable({
                             <TableCell className="font-medium">{item.name}</TableCell>
                             <TableCell className="font-mono text-sm">{item.sku}</TableCell>
                             <TableCell>{getBusinessName(item.business_uuid)}</TableCell>
-                            <TableCell>${parseFloat(item.base_price).toFixed(2)}</TableCell>
+                            <TableCell>{currencySymbol}{parseFloat(item.base_price).toFixed(2)}</TableCell>
                             <TableCell>
                                 {item.is_active ? (
                                     <Badge variant="default" className="bg-green-500">Active</Badge>

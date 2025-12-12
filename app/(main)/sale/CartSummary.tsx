@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useBusiness } from "@/contexts/business-context";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 
 interface CartSummaryProps {
     totalItems: number;
@@ -9,6 +11,9 @@ interface CartSummaryProps {
 }
 
 export function CartSummary({ totalItems, totalAmount, onCheckout }: CartSummaryProps) {
+    const { selectedBusiness } = useBusiness();
+    const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
     if (totalItems === 0) {
         return null;
     }
@@ -24,7 +29,7 @@ export function CartSummary({ totalItems, totalAmount, onCheckout }: CartSummary
                 <div className="flex-1 sm:flex-none">
                     <p className="text-xs text-muted-foreground">Total</p>
                     <p className="text-lg sm:text-2xl font-bold text-primary">
-                        ${totalAmount.toFixed(2)}
+                        {currencySymbol}{totalAmount.toFixed(2)}
                     </p>
                 </div>
                 <Button

@@ -28,6 +28,7 @@ export interface ReceiptData {
     footer?: string;
     qrcode?: string;
     notes?: string;
+    currencySymbol?: string;
 }
 
 export type ReceiptTemplateType = 'classic' | 'sans-serif' | 'modern-bold';

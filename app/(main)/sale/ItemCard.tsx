@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Plus } from "lucide-react";
 import type { Item } from "@/lib/api";
 import { ItemImageCard } from "./ItemImageCard";
+import { useBusiness } from "@/contexts/business-context";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 
 interface ItemCardProps {
     item: Item;
@@ -15,6 +17,9 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item, quantity, onAdd, onRemove }: ItemCardProps) {
+    const { selectedBusiness } = useBusiness();
+    const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
     return (
         <Card className="py-0 group relative overflow-hidden transition-shadow hover:shadow-md">
             <CardHeader className="px-0">
@@ -40,7 +45,7 @@ export function ItemCard({ item, quantity, onAdd, onRemove }: ItemCardProps) {
                     </p>
                 )}
                 <p className="mt-1 text-lg font-bold text-primary">
-                    ${parseFloat(item.base_price).toFixed(2)}
+                    {currencySymbol}{parseFloat(item.base_price).toFixed(2)}
                 </p>
             </CardContent>
             <CardFooter className="px-4 pb-4">

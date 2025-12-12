@@ -10,6 +10,7 @@ import { generateReceiptHTML } from '@/lib/receipt/templates';
 import { Check, Loader2 } from 'lucide-react';
 import { receiptTemplates } from '@/lib/receipt/templates';
 import { useBusiness } from '@/contexts/business-context';
+import { getCurrencySymbol } from '@/lib/utils/currency';
 
 interface ReceiptTemplateCardProps {
     template: {
@@ -54,7 +55,13 @@ function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessa
         };
     }, [qrcodeValue, footerMessage, includeLogo]);
 
-    const templateHTML = generateReceiptHTML({ ...sampleReceipt, storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined, footer: footerMessage, qrcode: qrcodeValue }, template.type);
+    const templateHTML = generateReceiptHTML({
+        ...sampleReceipt,
+        storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
+        footer: footerMessage,
+        qrcode: qrcodeValue,
+        currencySymbol: sampleReceipt.currencySymbol
+    }, template.type);
 
     return (
         <button
@@ -159,6 +166,52 @@ export default function ReceiptSettings() {
         transactionNextNumber,
         updateTransactionNextNumber,
     } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
+
+    const sampleReceipt: ReceiptData = {
+        receiptNumber: 'RCP-001',
+        transactionId: 'INV1001',
+        date: '2025-12-07',
+        time: '14:30:00',
+        storeName: 'BillForge Store',
+        storeAddress: '123 Main Street, City, State 12345',
+        storePhone: '(555) 123-4567',
+        storeLogo: '/logoblack.png',
+        cashierName: 'John Doe',
+        customerName: 'Jane Smith',
+        items: [
+            {
+                id: '1',
+                name: 'Premium Coffee',
+                quantity: 2,
+                price: 4.99,
+                total: 9.98
+            },
+            {
+                id: '2',
+                name: 'Chocolate Croissant',
+                quantity: 1,
+                price: 3.50,
+                total: 3.50
+            },
+            {
+                id: '3',
+                name: 'Orange Juice',
+                quantity: 1,
+                price: 2.99,
+                total: 2.99
+            }
+        ],
+        subtotal: 16.47,
+        tax: 1.32,
+        discount: 1.50,
+        total: 16.29,
+        paymentMethod: 'Cash',
+        paymentAmount: 20.00,
+        changeAmount: 3.71,
+        footer: '',
+        notes: 'Please visit us again soon',
+        currencySymbol: getCurrencySymbol(selectedBusiness?.currency)
+    };
 
     if (!selectedBusiness) {
         return (

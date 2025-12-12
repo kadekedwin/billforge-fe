@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/table";
 import type { Item, ItemTax, ItemDiscount } from "@/lib/api";
 import { calculateItemTax, calculateItemDiscount } from "./cartUtils";
+import { useBusiness } from "@/contexts/business-context";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 
 interface CheckoutOrderSummaryProps {
     cart: Map<string, number>;
@@ -20,11 +22,14 @@ interface CheckoutOrderSummaryProps {
 }
 
 export function CheckoutOrderSummary({
-                                         cart,
-                                         items,
-                                         taxes,
-                                         discounts,
-                                     }: CheckoutOrderSummaryProps) {
+    cart,
+    items,
+    taxes,
+    discounts,
+}: CheckoutOrderSummaryProps) {
+    const { selectedBusiness } = useBusiness();
+    const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
     return (
         <Card>
             <CardHeader>
@@ -54,11 +59,11 @@ export function CheckoutOrderSummary({
                                 <TableRow key={itemUuid}>
                                     <TableCell className="font-medium">{item.name}</TableCell>
                                     <TableCell>{qty}</TableCell>
-                                    <TableCell>${basePrice.toFixed(2)}</TableCell>
-                                    <TableCell>${tax.toFixed(2)}</TableCell>
-                                    <TableCell>-${discount.toFixed(2)}</TableCell>
+                                    <TableCell>{currencySymbol}{basePrice.toFixed(2)}</TableCell>
+                                    <TableCell>{currencySymbol}{tax.toFixed(2)}</TableCell>
+                                    <TableCell>-{currencySymbol}{discount.toFixed(2)}</TableCell>
                                     <TableCell className="text-right font-semibold">
-                                        ${total.toFixed(2)}
+                                        {currencySymbol}{total.toFixed(2)}
                                     </TableCell>
                                 </TableRow>
                             );

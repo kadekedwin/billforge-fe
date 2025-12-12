@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/table";
 import { Eye, Loader2 } from "lucide-react";
 import type { Transaction } from "@/lib/api";
+import { useBusiness } from "@/contexts/business-context";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 
 interface TransactionsTableProps {
     transactions: Transaction[];
@@ -21,12 +23,15 @@ interface TransactionsTableProps {
 }
 
 export function TransactionsTable({
-                                      transactions,
-                                      isLoading,
-                                      onViewDetails,
-                                      getCustomerName,
-                                      getPaymentMethodName,
-                                  }: TransactionsTableProps) {
+    transactions,
+    isLoading,
+    onViewDetails,
+    getCustomerName,
+    getPaymentMethodName,
+}: TransactionsTableProps) {
+    const { selectedBusiness } = useBusiness();
+    const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
     if (isLoading) {
         return (
             <div className="rounded-lg border bg-card">
@@ -68,9 +73,9 @@ export function TransactionsTable({
                             </TableCell>
                             <TableCell>{getCustomerName(transaction.customer_uuid)}</TableCell>
                             <TableCell>{getPaymentMethodName(transaction.payment_method_uuid)}</TableCell>
-                            <TableCell>${parseFloat(transaction.total_amount).toFixed(2)}</TableCell>
+                            <TableCell>{currencySymbol}{parseFloat(transaction.total_amount).toFixed(2)}</TableCell>
                             <TableCell className="font-semibold">
-                                ${parseFloat(transaction.final_amount).toFixed(2)}
+                                {currencySymbol}{parseFloat(transaction.final_amount).toFixed(2)}
                             </TableCell>
                             <TableCell className="text-right">
                                 <Button

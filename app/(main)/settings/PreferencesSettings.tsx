@@ -53,29 +53,6 @@ export default function PreferencesSettings() {
                     </div>
                 </CardContent>
             </Card>
-
-            <Card>
-                <CardHeader>
-                    <CardTitle>Language & Region</CardTitle>
-                    <CardDescription>
-                        Set your language and regional preferences
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                        <Label className="text-base">Language</Label>
-                        <p className="text-sm text-muted-foreground">
-                            English (US) - Coming soon: More languages
-                        </p>
-                    </div>
-                    <div className="space-y-2">
-                        <Label className="text-base">Currency</Label>
-                        <p className="text-sm text-muted-foreground">
-                            USD ($) - Coming soon: Multi-currency support
-                        </p>
-                    </div>
-                </CardContent>
-            </Card>
         </div>
     );
 }

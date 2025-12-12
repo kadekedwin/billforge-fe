@@ -69,6 +69,7 @@ export const convertTransactionToReceiptData = (
     footer?: string,
     storeLogo?: string,
     qrcode?: string,
+    currencySymbol?: string,
 ): ReceiptData => {
     const receiptItems: ReceiptItem[] = items.map(item => ({
         id: item.uuid,
@@ -99,5 +100,6 @@ export const convertTransactionToReceiptData = (
         footer: footer,
         qrcode: qrcode || undefined,
         notes: transaction.notes || undefined,
+        currencySymbol: currencySymbol,
     };
 };
