@@ -46,7 +46,7 @@ export default function MainLayout({
         return null;
     }
 
-    if (isBusinessLoading) {
+    if (isBusinessLoading && selectedBusiness === null) {
         return (
             <div className="flex h-screen items-center justify-center">
                 <div className="flex flex-col items-center">
