@@ -11,7 +11,7 @@ import { uploadImage, getImageUrl, deleteImage } from '@/lib/images/operations';
 import { getFileSizeBytes } from '@/lib/images/utils';
 import { Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock } from 'lucide-react';
 import { getUser, updateUser, User } from '@/lib/api/user';
-import { changePassword } from '@/lib/api/auth';
+import { changePassword, requestAccountDeletion } from '@/lib/api/auth';
 import { useAuth } from "@/contexts/auth-context";
 import { ApiError } from "@/lib/api/errors";
 
@@ -39,6 +39,8 @@ export default function ProfileSettings() {
         new_password: '',
         new_password_confirmation: '',
     });
+    const [isDeletingAccount, setIsDeletingAccount] = useState(false);
+    const [deletionError, setDeletionError] = useState<string | null>(null);
 
     const loadUser = async () => {
         try {
@@ -212,6 +214,36 @@ export default function ProfileSettings() {
             }
         } finally {
             setIsChangingPassword(false);
+        }
+    };
+
+    const handleAccountDeletion = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!confirm('Are you sure you want to delete your account? A confirmation email will be sent to you.')) {
+            return;
+        }
+
+        setIsDeletingAccount(true);
+        setDeletionError(null);
+
+        try {
+            const response = await requestAccountDeletion({});
+
+            if (response.success) {
+                alert('A confirmation email has been sent. Please check your inbox and click the link to complete account deletion.');
+                router.push('/settings');
+            } else {
+                setDeletionError(response.message || 'Failed to request account deletion');
+            }
+        } catch (err) {
+            if (err instanceof ApiError) {
+                setDeletionError(err.message);
+            } else {
+                setDeletionError('An error occurred while requesting account deletion');
+            }
+        } finally {
+            setIsDeletingAccount(false);
         }
     };
 
@@ -421,6 +453,44 @@ export default function ProfileSettings() {
                                 <Lock className="h-4 w-4 mr-2" />
                             )}
                             {isChangingPassword ? 'Changing Password...' : 'Change Password'}
+                        </Button>
+                    </form>
+                </CardContent>
+            </Card>
+
+            <Card className="border-destructive">
+                <CardHeader>
+                    <CardTitle className="text-destructive">Delete Account</CardTitle>
+                    <CardDescription>
+                        Permanently delete your account and all associated data
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    {deletionError && (
+                        <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">
+                            {deletionError}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleAccountDeletion} className="space-y-4">
+                        <div className="rounded-lg bg-destructive/10 p-4 text-sm text-destructive">
+                            <p className="font-semibold mb-2">Warning: This action cannot be undone</p>
+                            <p>Deleting your account will:</p>
+                            <ul className="list-disc list-inside mt-2 space-y-1">
+                                <li>Permanently delete all your businesses</li>
+                                <li>Remove all transactions and items</li>
+                                <li>Delete all your personal data</li>
+                            </ul>
+                            <p className="mt-3">You will receive a confirmation email with a link to complete the deletion.</p>
+                        </div>
+
+                        <Button type="submit" variant="destructive" disabled={isDeletingAccount} className="w-full">
+                            {isDeletingAccount ? (
+                                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            ) : (
+                                <Trash2 className="h-4 w-4 mr-2" />
+                            )}
+                            {isDeletingAccount ? 'Sending Confirmation Email...' : 'Request Account Deletion'}
                         </Button>
                     </form>
                 </CardContent>

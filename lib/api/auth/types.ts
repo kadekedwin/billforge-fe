@@ -36,3 +36,14 @@ export interface ChangePasswordRequest {
   new_password: string;
   new_password_confirmation: string;
 }
+
+export interface AccountDeletionRequest {
+}
+
+export interface AccountDeletionConfirmRequest {
+  token: string;
+  email: string;
+  confirmation: string;
+  expires?: string;
+  signature?: string;
+}

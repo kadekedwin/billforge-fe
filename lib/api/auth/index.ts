@@ -1,8 +1,8 @@
 import { apiClient } from "../client";
 import type { ApiResponse, MessageResponse } from "../types";
-import type { RegisterRequest, LoginRequest, AuthResponse, ForgotPasswordRequest, ForgotPasswordResetRequest, ChangePasswordRequest } from "./types";
+import type { RegisterRequest, LoginRequest, AuthResponse, ForgotPasswordRequest, ForgotPasswordResetRequest, ChangePasswordRequest, AccountDeletionRequest, AccountDeletionConfirmRequest } from "./types";
 
-export type { RegisterRequest, LoginRequest, AuthResponse, ForgotPasswordRequest, ForgotPasswordResetRequest, ChangePasswordRequest } from "./types";
+export type { RegisterRequest, LoginRequest, AuthResponse, ForgotPasswordRequest, ForgotPasswordResetRequest, ChangePasswordRequest, AccountDeletionRequest, AccountDeletionConfirmRequest } from "./types";
 
 export async function register(data: RegisterRequest): Promise<ApiResponse<AuthResponse>> {
     const response = await apiClient.post<AuthResponse>("/api/register", data);
@@ -73,4 +73,27 @@ export async function verifyEmail(id: string, hash: string, expires?: string, si
     }
 
     return apiClient.get<MessageResponse>(url);
+}
+
+export async function requestAccountDeletion(data: AccountDeletionRequest): Promise<ApiResponse<MessageResponse>> {
+    return apiClient.post<MessageResponse>("/api/request-account-deletion", data);
+}
+
+export async function confirmAccountDeletion(data: AccountDeletionConfirmRequest): Promise<ApiResponse<MessageResponse>> {
+    let url = "/api/confirm-account-deletion";
+    const params = new URLSearchParams();
+    if (data.expires) params.append('expires', data.expires);
+    if (data.signature) params.append('signature', data.signature);
+    if (params.toString()) {
+        url += `?${params.toString()}`;
+    }
+
+    const { expires, signature, ...bodyData } = data;
+    const response = await apiClient.post<MessageResponse>(url, bodyData);
+
+    if (response.success) {
+        apiClient.setToken(null);
+    }
+
+    return response;
 }
