@@ -9,8 +9,9 @@ import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { uploadImage, getImageUrl, deleteImage } from '@/lib/images/operations';
 import { getFileSizeBytes } from '@/lib/images/utils';
-import { Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, KeyRound } from 'lucide-react';
+import { Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock } from 'lucide-react';
 import { getUser, updateUser, User } from '@/lib/api/user';
+import { changePassword } from '@/lib/api/auth';
 import { useAuth } from "@/contexts/auth-context";
 import { ApiError } from "@/lib/api/errors";
 
@@ -19,8 +20,11 @@ export default function ProfileSettings() {
     const { setAuth, token } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
+    const [isChangingPassword, setIsChangingPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
+    const [passwordError, setPasswordError] = useState<string | null>(null);
+    const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
     const [user, setUser] = useState<User | null>(null);
     const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -29,6 +33,11 @@ export default function ProfileSettings() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+    });
+    const [passwordData, setPasswordData] = useState({
+        current_password: '',
+        new_password: '',
+        new_password_confirmation: '',
     });
 
     const loadUser = async () => {
@@ -156,6 +165,53 @@ export default function ProfileSettings() {
             }
         } finally {
             setIsSaving(false);
+        }
+    };
+
+    const handlePasswordChange = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!passwordData.current_password || !passwordData.new_password || !passwordData.new_password_confirmation) {
+            setPasswordError('All fields are required');
+            return;
+        }
+
+        if (passwordData.new_password !== passwordData.new_password_confirmation) {
+            setPasswordError('New passwords do not match');
+            return;
+        }
+
+        if (passwordData.new_password.length < 8) {
+            setPasswordError('Password must be at least 8 characters');
+            return;
+        }
+
+        setIsChangingPassword(true);
+        setPasswordError(null);
+        setPasswordSuccess(null);
+
+        try {
+            await changePassword(passwordData);
+
+            setPasswordSuccess('Password changed successfully!');
+            setPasswordData({
+                current_password: '',
+                new_password: '',
+                new_password_confirmation: '',
+            });
+        } catch (err) {
+            if (err instanceof ApiError) {
+                if (err.errors) {
+                    const errorMessages = Object.values(err.errors).flat();
+                    setPasswordError(errorMessages.join(', '));
+                } else {
+                    setPasswordError(err.message);
+                }
+            } else {
+                setPasswordError('An error occurred while changing password');
+            }
+        } finally {
+            setIsChangingPassword(false);
         }
     };
 
@@ -298,18 +354,75 @@ export default function ProfileSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Password</CardTitle>
-                    <CardDescription>Reset your password using the forgot password flow</CardDescription>
+                    <CardTitle>Change Password</CardTitle>
+                    <CardDescription>Update your password to keep your account secure</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <Button
-                        variant="outline"
-                        onClick={() => router.push('/forgot-password')}
-                        className="w-full sm:w-auto"
-                    >
-                        <KeyRound className="h-4 w-4 mr-2" />
-                        Reset Password
-                    </Button>
+                    {passwordError && (
+                        <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">
+                            {passwordError}
+                        </div>
+                    )}
+
+                    {passwordSuccess && (
+                        <div className="rounded-md bg-green-50 p-3 text-sm text-green-600 flex items-center gap-2 mb-4">
+                            <CheckCircle2 className="h-4 w-4" />
+                            {passwordSuccess}
+                        </div>
+                    )}
+
+                    <form onSubmit={handlePasswordChange} className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="current_password" className="flex items-center gap-2">
+                                <Lock className="h-4 w-4" />
+                                Current Password
+                            </Label>
+                            <Input
+                                id="current_password"
+                                type="password"
+                                value={passwordData.current_password}
+                                onChange={(e) => setPasswordData(prev => ({ ...prev, current_password: e.target.value }))}
+                                placeholder="Enter current password"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="new_password" className="flex items-center gap-2">
+                                <Lock className="h-4 w-4" />
+                                New Password
+                            </Label>
+                            <Input
+                                id="new_password"
+                                type="password"
+                                value={passwordData.new_password}
+                                onChange={(e) => setPasswordData(prev => ({ ...prev, new_password: e.target.value }))}
+                                placeholder="Enter new password (min 8 characters)"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="new_password_confirmation" className="flex items-center gap-2">
+                                <Lock className="h-4 w-4" />
+                                Confirm New Password
+                            </Label>
+                            <Input
+                                id="new_password_confirmation"
+                                type="password"
+                                value={passwordData.new_password_confirmation}
+                                onChange={(e) => setPasswordData(prev => ({ ...prev, new_password_confirmation: e.target.value }))}
+                                placeholder="Confirm new password"
+                            />
+                        </div>
+
+                        <Button type="submit" disabled={isChangingPassword}>
+                            {isChangingPassword ? (
+                                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            ) : (
+                                <Lock className="h-4 w-4 mr-2" />
+                            )}
+                            {isChangingPassword ? 'Changing Password...' : 'Change Password'}
+                        </Button>
+                    </form>
                 </CardContent>
             </Card>
         </div>
