@@ -11,6 +11,7 @@ import { Loader2, Printer, CheckCircle2, AlertCircle, HelpCircle, Save } from 'l
 import { toast } from 'sonner';
 import { useBusiness } from '@/contexts/business-context';
 import { getCurrencySymbol } from '@/lib/utils/currency';
+import { useTranslation } from '@/lib/i18n/useTranslation';
 
 interface PrinterConfig {
     printerType: string;
@@ -67,7 +68,9 @@ const CHARACTER_SETS = [
     'KZ1048_KAZAKHSTAN',
 ];
 
+
 export default function PrinterSettings() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const [config, setConfig] = useState<PrinterConfig>(DEFAULT_CONFIG);
     const [isTesting, setIsTesting] = useState(false);
@@ -90,9 +93,9 @@ export default function PrinterSettings() {
         setIsSaving(true);
         try {
             localStorage.setItem('printerConfig', JSON.stringify(config));
-            toast.success('Printer configuration saved');
+            toast.success(t('app.settings.printerTab.toastSaved'));
         } catch {
-            toast.error('Failed to save configuration');
+            toast.error(t('app.settings.printerTab.toastSaveFailed'));
         } finally {
             setIsSaving(false);
         }
@@ -100,7 +103,7 @@ export default function PrinterSettings() {
 
     const handleTestPrint = async () => {
         if (!selectedBusiness) {
-            toast.error('Please select a business first');
+            toast.error(t('app.settings.printerTab.toastSelectBusiness'));
             return;
         }
 
@@ -142,14 +145,14 @@ export default function PrinterSettings() {
 
             const data = await response.json();
             if (data.success) {
-                toast.success('Test print successful!');
+                toast.success(t('app.settings.printerTab.toastTestSuccess'));
                 setPrinterStatus('connected');
             } else {
-                toast.error(data.message || 'Test print failed');
+                toast.error(data.message || t('app.settings.printerTab.toastTestFailed'));
                 setPrinterStatus('disconnected');
             }
         } catch {
-            toast.error('Failed to send test print');
+            toast.error(t('app.settings.printerTab.toastTestError'));
             setPrinterStatus('disconnected');
         } finally {
             setIsTesting(false);
@@ -168,14 +171,14 @@ export default function PrinterSettings() {
             const data = await response.json();
             if (data.connected) {
                 setPrinterStatus('connected');
-                toast.success('Printer is connected');
+                toast.success(t('app.settings.printerTab.toastConnected'));
             } else {
                 setPrinterStatus('disconnected');
-                toast.error('Printer is not connected');
+                toast.error(t('app.settings.printerTab.toastNotConnected'));
             }
         } catch {
             setPrinterStatus('unknown');
-            toast.error('Failed to check printer status');
+            toast.error(t('app.settings.printerTab.toastCheckError'));
         } finally {
             setIsCheckingStatus(false);
         }
@@ -185,21 +188,21 @@ export default function PrinterSettings() {
         <div className="space-y-6">
             <Card>
                 <CardHeader>
-                    <CardTitle>Printer Configuration</CardTitle>
+                    <CardTitle>{t('app.settings.printerTab.title')}</CardTitle>
                     <CardDescription>
-                        Configure your thermal printer connection and settings
+                        {t('app.settings.printerTab.description')}
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="printer-type">Printer Type</Label>
+                            <Label htmlFor="printer-type">{t('app.settings.printerTab.printerType')}</Label>
                             <Select
                                 value={config.printerType}
                                 onValueChange={(value) => setConfig({ ...config, printerType: value })}
                             >
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select printer type" />
+                                    <SelectValue placeholder={t('app.settings.printerTab.selectType')} />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {PRINTER_TYPES.map((type) => (
@@ -212,7 +215,7 @@ export default function PrinterSettings() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="printer-path">Printer Path</Label>
+                            <Label htmlFor="printer-path">{t('app.settings.printerTab.printerPath')}</Label>
                             <Input
                                 id="printer-path"
                                 value={config.printerPath}
@@ -220,18 +223,18 @@ export default function PrinterSettings() {
                                 placeholder="/dev/usb/lp0"
                             />
                             <p className="text-xs text-muted-foreground">
-                                Common: /dev/usb/lp0, COM1, tcp://192.168.1.100:9100
+                                {t('app.settings.printerTab.pathHelp')}
                             </p>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="character-set">Character Set</Label>
+                            <Label htmlFor="character-set">{t('app.settings.printerTab.characterSet')}</Label>
                             <Select
                                 value={config.characterSet}
                                 onValueChange={(value) => setConfig({ ...config, characterSet: value })}
                             >
                                 <SelectTrigger>
-                                    <SelectValue placeholder="Select character set" />
+                                    <SelectValue placeholder={t('app.settings.printerTab.selectCharset')} />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[200px]">
                                     {CHARACTER_SETS.map((charset) => (
@@ -244,7 +247,7 @@ export default function PrinterSettings() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="line-character">Line Character</Label>
+                            <Label htmlFor="line-character">{t('app.settings.printerTab.lineCharacter')}</Label>
                             <Input
                                 id="line-character"
                                 value={config.lineCharacter}
@@ -253,12 +256,12 @@ export default function PrinterSettings() {
                                 maxLength={1}
                             />
                             <p className="text-xs text-muted-foreground">
-                                Character used for drawing lines
+                                {t('app.settings.printerTab.lineCharacterHelp')}
                             </p>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="timeout">Timeout (ms)</Label>
+                            <Label htmlFor="timeout">{t('app.settings.printerTab.timeout')}</Label>
                             <Input
                                 id="timeout"
                                 type="number"
@@ -269,7 +272,7 @@ export default function PrinterSettings() {
                                 max="30000"
                             />
                             <p className="text-xs text-muted-foreground">
-                                Connection timeout in milliseconds
+                                {t('app.settings.printerTab.timeoutHelp')}
                             </p>
                         </div>
 
@@ -280,7 +283,7 @@ export default function PrinterSettings() {
                                 onCheckedChange={(checked) => setConfig({ ...config, removeSpecialCharacters: checked })}
                             />
                             <Label htmlFor="remove-special" className="cursor-pointer">
-                                Remove Special Characters
+                                {t('app.settings.printerTab.removeSpecial')}
                             </Label>
                         </div>
                     </div>
@@ -297,7 +300,7 @@ export default function PrinterSettings() {
                             ) : (
                                 <Save className="mr-2 h-4 w-4" />
                             )}
-                            Save Configuration
+                            {t('app.settings.printerTab.saveConfig')}
                         </Button>
                     </div>
 
@@ -313,7 +316,7 @@ export default function PrinterSettings() {
                             ) : (
                                 <Printer className="mr-2 h-4 w-4" />
                             )}
-                            Check Status
+                            {t('app.settings.printerTab.checkStatus')}
                         </Button>
                         <Button
                             onClick={handleTestPrint}
@@ -325,7 +328,7 @@ export default function PrinterSettings() {
                             ) : (
                                 <Printer className="mr-2 h-4 w-4" />
                             )}
-                            Test Print
+                            {t('app.settings.printerTab.testPrint')}
                         </Button>
                     </div>
 
@@ -339,12 +342,12 @@ export default function PrinterSettings() {
                                 )}
                                 <div>
                                     <h4 className={`font-semibold ${printerStatus === 'connected' ? 'text-green-900' : 'text-red-900'}`}>
-                                        {printerStatus === 'connected' ? 'Printer Connected' : 'Printer Disconnected'}
+                                        {printerStatus === 'connected' ? t('app.settings.printerTab.connected') : t('app.settings.printerTab.disconnected')}
                                     </h4>
                                     <p className={`text-sm ${printerStatus === 'connected' ? 'text-green-700' : 'text-red-700'}`}>
                                         {printerStatus === 'connected'
-                                            ? 'Your thermal printer is connected and ready to print.'
-                                            : 'Unable to connect to the thermal printer. Check troubleshooting guide below.'}
+                                            ? t('app.settings.printerTab.connectedMessage')
+                                            : t('app.settings.printerTab.disconnectedMessage')}
                                     </p>
                                 </div>
                             </div>
@@ -357,7 +360,7 @@ export default function PrinterSettings() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <HelpCircle className="h-5 w-5" />
-                        Troubleshooting Guide
+                        {t('app.settings.printerTab.troubleshooting')}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">

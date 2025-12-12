@@ -13,6 +13,7 @@ import type { Item, ItemTax, ItemDiscount } from "@/lib/api";
 import { calculateItemTax, calculateItemDiscount } from "./cartUtils";
 import { useBusiness } from "@/contexts/business-context";
 import { getCurrencySymbol } from "@/lib/utils/currency";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CheckoutOrderSummaryProps {
     cart: Map<string, number>;
@@ -27,24 +28,25 @@ export function CheckoutOrderSummary({
     taxes,
     discounts,
 }: CheckoutOrderSummaryProps) {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
 
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Order Summary</CardTitle>
+                <CardTitle>{t('app.sale.orderSummary')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Item</TableHead>
-                            <TableHead>Quantity</TableHead>
-                            <TableHead>Price</TableHead>
-                            <TableHead>Tax</TableHead>
-                            <TableHead>Discount</TableHead>
-                            <TableHead className="text-right">Total</TableHead>
+                            <TableHead>{t('app.sale.item')}</TableHead>
+                            <TableHead>{t('app.sale.quantity')}</TableHead>
+                            <TableHead>{t('app.sale.price')}</TableHead>
+                            <TableHead>{t('app.sale.tax')}</TableHead>
+                            <TableHead>{t('app.sale.discount')}</TableHead>
+                            <TableHead className="text-right">{t('app.sale.total')}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

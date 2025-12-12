@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getItemTaxes } from "@/lib/api/item-taxes";
 import type { ItemTax, Business } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseItemTaxesDataResult {
     taxes: ItemTax[];
@@ -14,6 +15,7 @@ interface UseItemTaxesDataResult {
 }
 
 export function useItemTaxesData(selectedBusiness: Business | null): UseItemTaxesDataResult {
+    const { t } = useTranslation();
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -36,10 +38,10 @@ export function useItemTaxesData(selectedBusiness: Business | null): UseItemTaxe
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load taxes");
+                setError(errorData.message || t('app.itemTaxes.taxesLoadError'));
             }
         } catch (err) {
-            setError("An error occurred while loading data");
+            setError(t('app.itemTaxes.loadingError'));
             console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);

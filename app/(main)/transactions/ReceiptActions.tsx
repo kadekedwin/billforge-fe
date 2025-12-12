@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Download, Mail, MessageCircle, Loader2 } from "lucide-react";
 import type { Customer } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ReceiptActionsProps {
     customer: Customer | null;
@@ -16,15 +17,16 @@ interface ReceiptActionsProps {
 }
 
 export function ReceiptActions({
-                                   customer,
-                                   receiptLoading,
-                                   isSendingEmail,
-                                   isSendingWhatsApp,
-                                   onDownloadPDF,
-                                   onDownloadImage,
-                                   onSendEmail,
-                                   onSendWhatsApp,
-                               }: ReceiptActionsProps) {
+    customer,
+    receiptLoading,
+    isSendingEmail,
+    isSendingWhatsApp,
+    onDownloadPDF,
+    onDownloadImage,
+    onSendEmail,
+    onSendWhatsApp,
+}: ReceiptActionsProps) {
+    const { t } = useTranslation();
     const hasEmail = !!customer?.email;
     const hasPhone = !!customer?.phone;
 
@@ -42,7 +44,7 @@ export function ReceiptActions({
                     ) : (
                         <Download className="mr-2 h-4 w-4" />
                     )}
-                    Download PDF
+                    {t('app.transactions.downloadPDF')}
                 </Button>
                 <Button
                     onClick={onDownloadImage}
@@ -55,7 +57,7 @@ export function ReceiptActions({
                     ) : (
                         <Download className="mr-2 h-4 w-4" />
                     )}
-                    Download Image
+                    {t('app.transactions.downloadImage')}
                 </Button>
             </div>
 
@@ -73,7 +75,7 @@ export function ReceiptActions({
                             ) : (
                                 <Mail className="mr-2 h-4 w-4" />
                             )}
-                            Send to Email
+                            {t('app.transactions.sendEmail')}
                         </Button>
                     )}
                     {hasPhone && (
@@ -88,7 +90,7 @@ export function ReceiptActions({
                             ) : (
                                 <MessageCircle className="mr-2 h-4 w-4" />
                             )}
-                            Send to WhatsApp
+                            {t('app.transactions.sendWhatsApp')}
                         </Button>
                     )}
                 </div>

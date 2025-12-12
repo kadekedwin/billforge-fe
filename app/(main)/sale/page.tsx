@@ -21,8 +21,10 @@ import { useSaleData } from "./useSaleData";
 import { useCart } from "./useCart";
 import { completeTransaction } from "./transactionHandler";
 import { getMonthlyTransactionCount, getTotalCartItems, getTotalCartAmount } from "./cartUtils";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function SalePage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { includeLogo, footerMessage, qrcodeValue } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
     const {
@@ -207,10 +209,10 @@ export default function SalePage() {
         return (
             <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
                 <div className="text-center">
-                    <p className="text-lg font-semibold text-destructive">Error</p>
+                    <p className="text-lg font-semibold text-destructive">{t('app.sale.error')}</p>
                     <p className="text-muted-foreground">{error}</p>
                     <Button onClick={loadData} className="mt-4">
-                        Retry
+                        {t('app.sale.retry')}
                     </Button>
                 </div>
             </div>
@@ -248,7 +250,7 @@ export default function SalePage() {
         <div className="space-y-4">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl sm:text-3xl font-bold">Sale</h1>
+                    <h1 className="text-2xl sm:text-3xl font-bold">{t('app.sale.title')}</h1>
                 </div>
             </div>
 
@@ -257,7 +259,7 @@ export default function SalePage() {
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <Input
                         type="text"
-                        placeholder="Search items..."
+                        placeholder={t('app.sale.searchItems')}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="pl-9"
@@ -273,7 +275,7 @@ export default function SalePage() {
                             disabled={isLoadingCategories}
                             className="flex h-10 w-full sm:w-[200px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                            <option value="">All Categories</option>
+                            <option value="">{t('app.sale.allCategories')}</option>
                             {businessCategories.map((category) => (
                                 <option key={category.uuid} value={category.uuid}>
                                     {category.name}

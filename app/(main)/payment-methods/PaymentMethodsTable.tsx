@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Plus, Loader2, Pencil, Trash2 } from "lucide-react";
 import type { PaymentMethod } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface PaymentMethodsTableProps {
     paymentMethods: PaymentMethod[];
@@ -23,13 +24,14 @@ interface PaymentMethodsTableProps {
 }
 
 export function PaymentMethodsTable({
-                                        paymentMethods,
-                                        isLoading,
-                                        deletingId,
-                                        onEdit,
-                                        onDelete,
-                                        onAddFirst,
-                                    }: PaymentMethodsTableProps) {
+    paymentMethods,
+    isLoading,
+    deletingId,
+    onEdit,
+    onDelete,
+    onAddFirst,
+}: PaymentMethodsTableProps) {
+    const { t } = useTranslation();
     if (isLoading) {
         return (
             <div className="rounded-lg border bg-card">
@@ -44,10 +46,10 @@ export function PaymentMethodsTable({
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 flex-col items-center justify-center space-y-4">
-                    <p className="text-lg text-muted-foreground">No payment methods found</p>
+                    <p className="text-lg text-muted-foreground">{t('app.paymentMethods.noMethods')}</p>
                     <Button onClick={onAddFirst}>
                         <Plus className="mr-2 h-4 w-4" />
-                        Add Your First Payment Method
+                        {t('app.paymentMethods.addFirstMethod')}
                     </Button>
                 </div>
             </div>
@@ -59,9 +61,9 @@ export function PaymentMethodsTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Payment Method</TableHead>
-                        <TableHead>Created</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableHead>{t('app.paymentMethods.title')}</TableHead>
+                        <TableHead>{t('app.paymentMethods.created')}</TableHead>
+                        <TableHead className="text-right">{t('app.paymentMethods.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Item, CreateItemRequest } from "@/lib/api";
 import { getImageUrl } from "@/lib/images/operations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseItemFormResult {
     formData: Omit<CreateItemRequest, 'business_uuid'>;
@@ -40,6 +41,7 @@ const initialFormData: Omit<CreateItemRequest, 'business_uuid'> = {
 };
 
 export function useItemForm(): UseItemFormResult {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState<Omit<CreateItemRequest, 'business_uuid'>>(initialFormData);
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -92,11 +94,11 @@ export function useItemForm(): UseItemFormResult {
         const file = e.target.files?.[0];
         if (file) {
             if (!file.type.startsWith('image/')) {
-                onError('Please select an image file');
+                onError(t('app.items.selectImageError'));
                 return;
             }
             if (file.size > 1048576) {
-                onError('Image size must be less than 1MB');
+                onError(t('app.items.imageSizeError'));
                 e.target.value = '';
                 return;
             }

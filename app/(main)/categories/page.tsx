@@ -13,8 +13,10 @@ import { DeleteCategoryDialog } from "./DeleteCategoryDialog";
 import { useCategoriesData } from "./useCategoriesData";
 import { useCategoryForm } from "./useCategoryForm";
 import { handleCreateCategory, handleUpdateCategory, handleDeleteCategory } from "./categoryOperations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function CategoriesPage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { categories, isLoading, error, setCategories, setError } = useCategoriesData(selectedBusiness);
     const {
@@ -45,10 +47,12 @@ export default function CategoriesPage() {
             ? await handleUpdateCategory({
                 category: editingCategory,
                 formData,
+                t,
             })
             : await handleCreateCategory({
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             });
 
         if (result.success && result.category) {
@@ -86,14 +90,14 @@ export default function CategoriesPage() {
         setDeletingId(categoryToDelete.id);
         setError(null);
 
-        const result = await handleDeleteCategory(categoryToDelete);
+        const result = await handleDeleteCategory(categoryToDelete, t);
 
         if (result.success) {
             setCategories((prev) => prev.filter((category) => category.uuid !== categoryToDelete.uuid));
             setIsDeleteDialogOpen(false);
             setCategoryToDelete(null);
         } else {
-            setError(result.error || "Failed to delete category");
+            setError(result.error || t('app.categories.deleteError'));
         }
 
         setDeletingId(null);
@@ -119,7 +123,7 @@ export default function CategoriesPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Categories</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.categories.title')}</h1>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
@@ -132,7 +136,7 @@ export default function CategoriesPage() {
                             }}
                         >
                             <Plus className="mr-2 h-4 w-4" />
-                            Add Category
+                            {t('app.categories.addCategory')}
                         </Button>
                     </DialogTrigger>
                     <CategoryFormDialog

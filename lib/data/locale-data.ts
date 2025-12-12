@@ -1,5 +1,6 @@
 export const CURRENCIES = [
     { value: "USD", label: "USD - US Dollar", symbol: "$" },
+    { value: "IDR", label: "IDR - Indonesian Rupiah", symbol: "Rp" },
     { value: "EUR", label: "EUR - Euro", symbol: "€" },
     { value: "GBP", label: "GBP - British Pound", symbol: "£" },
     { value: "JPY", label: "JPY - Japanese Yen", symbol: "¥" },
@@ -19,11 +20,11 @@ export const CURRENCIES = [
     { value: "ZAR", label: "ZAR - South African Rand", symbol: "R" },
     { value: "BRL", label: "BRL - Brazilian Real", symbol: "R$" },
     { value: "MYR", label: "MYR - Malaysian Ringgit", symbol: "RM" },
-    { value: "IDR", label: "IDR - Indonesian Rupiah", symbol: "Rp" },
 ];
 
 export const LANGUAGES = [
     { value: "en-US", label: "English (US)" },
+    { value: "id-ID", label: "Bahasa Indonesia" },
     { value: "en-GB", label: "English (UK)" },
     { value: "es-ES", label: "Spanish (Spain)" },
     { value: "es-MX", label: "Spanish (Mexico)" },

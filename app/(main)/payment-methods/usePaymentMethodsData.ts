@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getPaymentMethods } from "@/lib/api/payment-methods";
 import type { PaymentMethod, Business } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UsePaymentMethodsDataResult {
     paymentMethods: PaymentMethod[];
@@ -14,6 +15,7 @@ interface UsePaymentMethodsDataResult {
 }
 
 export function usePaymentMethodsData(selectedBusiness: Business | null): UsePaymentMethodsDataResult {
+    const { t } = useTranslation();
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -36,10 +38,10 @@ export function usePaymentMethodsData(selectedBusiness: Business | null): UsePay
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load payment methods");
+                setError(errorData.message || t('app.paymentMethods.paymentMethodsLoadError'));
             }
         } catch (err) {
-            setError("An error occurred while loading data");
+            setError(t('app.paymentMethods.loadingError'));
             console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);

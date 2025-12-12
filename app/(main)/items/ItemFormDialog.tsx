@@ -17,6 +17,7 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Loader2, X } from "lucide-react";
 import type { Item, CreateItemRequest, ItemTax, ItemDiscount, Category } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemFormDialogProps {
     open: boolean;
@@ -41,34 +42,35 @@ interface ItemFormDialogProps {
 }
 
 export function ItemFormDialog({
-                                   open,
-                                   onOpenChange,
-                                   editingItem,
-                                   formData,
-                                   formErrors,
-                                   error,
-                                   taxes,
-                                   discounts,
-                                   categories,
-                                   selectedCategoryUuids,
-                                   imagePreview,
-                                   isSubmitting,
-                                   isUploadingImage,
-                                   onInputChange,
-                                   onSwitchChange,
-                                   onCategoryChange,
-                                   onImageChange,
-                                   onRemoveImage,
-                                   onSubmit,
-                               }: ItemFormDialogProps) {
+    open,
+    onOpenChange,
+    editingItem,
+    formData,
+    formErrors,
+    error,
+    taxes,
+    discounts,
+    categories,
+    selectedCategoryUuids,
+    imagePreview,
+    isSubmitting,
+    isUploadingImage,
+    onInputChange,
+    onSwitchChange,
+    onCategoryChange,
+    onImageChange,
+    onRemoveImage,
+    onSubmit,
+}: ItemFormDialogProps) {
+    const { t } = useTranslation();
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                 <form onSubmit={onSubmit}>
                     <DialogHeader>
-                        <DialogTitle>{editingItem ? "Edit Item" : "Create New Item"}</DialogTitle>
+                        <DialogTitle>{editingItem ? t('app.items.editTitle') : t('app.items.createTitle')}</DialogTitle>
                         <DialogDescription>
-                            {editingItem ? "Update item information" : "Add a new product or service to your inventory"}
+                            {editingItem ? t('app.items.editDescription') : t('app.items.createDescription')}
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
@@ -79,7 +81,7 @@ export function ItemFormDialog({
                         )}
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="tax_uuid">Tax (Optional)</Label>
+                                <Label htmlFor="tax_uuid">{t('app.items.taxOptional')}</Label>
                                 <select
                                     id="tax_uuid"
                                     name="tax_uuid"
@@ -88,7 +90,7 @@ export function ItemFormDialog({
                                     disabled={isSubmitting}
                                     className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.tax_uuid ? "border-destructive" : ""}`}
                                 >
-                                    <option value="">No tax</option>
+                                    <option value="">{t('app.items.noTax')}</option>
                                     {taxes.map((tax) => (
                                         <option key={tax.uuid} value={tax.uuid}>
                                             {tax.name} ({tax.type === 'percentage' ? `${tax.value}%` : `$${tax.value}`})
@@ -100,7 +102,7 @@ export function ItemFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="discount_uuid">Discount (Optional)</Label>
+                                <Label htmlFor="discount_uuid">{t('app.items.discountOptional')}</Label>
                                 <select
                                     id="discount_uuid"
                                     name="discount_uuid"
@@ -109,7 +111,7 @@ export function ItemFormDialog({
                                     disabled={isSubmitting}
                                     className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.discount_uuid ? "border-destructive" : ""}`}
                                 >
-                                    <option value="">No discount</option>
+                                    <option value="">{t('app.items.noDiscount')}</option>
                                     {discounts.map((discount) => (
                                         <option key={discount.uuid} value={discount.uuid}>
                                             {discount.name} ({discount.type === 'percentage' ? `${discount.value}%` : `$${discount.value}`})
@@ -121,10 +123,10 @@ export function ItemFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2 col-span-2">
-                                <Label>Categories (Optional)</Label>
+                                <Label>{t('app.items.categoriesOptional')}</Label>
                                 <div className="max-h-[200px] overflow-y-auto border rounded-md p-3">
                                     {categories.length === 0 ? (
-                                        <p className="text-sm text-muted-foreground">No categories available. Create categories first.</p>
+                                        <p className="text-sm text-muted-foreground">{t('app.items.noCategoriesAvailable')}</p>
                                     ) : (
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                                             {categories.map((category) => (
@@ -152,7 +154,7 @@ export function ItemFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="name">Item Name</Label>
+                                <Label htmlFor="name">{t('app.items.name')}</Label>
                                 <Input
                                     id="name"
                                     name="name"
@@ -168,7 +170,7 @@ export function ItemFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="sku">SKU (Optional)</Label>
+                                <Label htmlFor="sku">{t('app.items.skuOptional')}</Label>
                                 <Input
                                     id="sku"
                                     name="sku"
@@ -183,7 +185,7 @@ export function ItemFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2 col-span-2">
-                                <Label htmlFor="description">Description (Optional)</Label>
+                                <Label htmlFor="description">{t('app.items.descriptionOptional')}</Label>
                                 <Textarea
                                     id="description"
                                     name="description"
@@ -199,7 +201,7 @@ export function ItemFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2 col-span-2">
-                                <Label htmlFor="image">Item Image (Optional)</Label>
+                                <Label htmlFor="image">{t('app.items.itemImageOptional')}</Label>
                                 <div className="flex items-center gap-4">
                                     {imagePreview && (
                                         <div className="relative">
@@ -230,19 +232,19 @@ export function ItemFormDialog({
                                             className="cursor-pointer"
                                         />
                                         <p className="text-xs text-muted-foreground mt-1">
-                                            Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB
+                                            {t('app.items.supportedFormats')}
                                         </p>
                                     </div>
                                 </div>
                                 {isUploadingImage && (
                                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                         <Loader2 className="h-4 w-4 animate-spin" />
-                                        Uploading image...
+                                        {t('app.items.uploading')}
                                     </div>
                                 )}
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="base_price">Base Price</Label>
+                                <Label htmlFor="base_price">{t('app.items.basePrice') || 'Base Price'}</Label>
                                 <Input
                                     id="base_price"
                                     name="base_price"
@@ -268,7 +270,7 @@ export function ItemFormDialog({
                                         onCheckedChange={onSwitchChange}
                                         disabled={isSubmitting}
                                     />
-                                    <Label htmlFor="is_active">Active</Label>
+                                    <Label htmlFor="is_active">{t('app.items.active')}</Label>
                                 </div>
                             </div>
                         </div>
@@ -280,11 +282,11 @@ export function ItemFormDialog({
                             onClick={() => onOpenChange(false)}
                             disabled={isSubmitting}
                         >
-                            Cancel
+                            {t('common.cancel')}
                         </Button>
                         <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            {editingItem ? "Update Item" : "Create Item"}
+                            {editingItem ? t('app.items.update') : t('app.items.create')}
                         </Button>
                     </DialogFooter>
                 </form>

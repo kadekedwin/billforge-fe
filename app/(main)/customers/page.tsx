@@ -13,8 +13,10 @@ import { DeleteCustomerDialog } from "./DeleteCustomerDialog";
 import { useCustomersData } from "./useCustomersData";
 import { useCustomerForm } from "./useCustomerForm";
 import { handleCreateCustomer, handleUpdateCustomer, handleDeleteCustomer } from "./customerOperations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function CustomersPage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { customers, isLoading, error, setCustomers, setError } = useCustomersData(selectedBusiness);
     const {
@@ -46,10 +48,12 @@ export default function CustomersPage() {
                 customer: editingCustomer,
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             })
             : await handleCreateCustomer({
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             });
 
         if (result.success && result.customer) {
@@ -87,14 +91,14 @@ export default function CustomersPage() {
         setDeletingId(customerToDelete.id);
         setError(null);
 
-        const result = await handleDeleteCustomer(customerToDelete);
+        const result = await handleDeleteCustomer(customerToDelete, t);
 
         if (result.success) {
             setCustomers((prev) => prev.filter((customer) => customer.uuid !== customerToDelete.uuid));
             setIsDeleteDialogOpen(false);
             setCustomerToDelete(null);
         } else {
-            setError(result.error || "Failed to delete customer");
+            setError(result.error || t('app.customers.deleteError'));
         }
 
         setDeletingId(null);
@@ -120,7 +124,7 @@ export default function CustomersPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Customers</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.customers.title')}</h1>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
@@ -133,7 +137,7 @@ export default function CustomersPage() {
                             }}
                         >
                             <Plus className="mr-2 h-4 w-4" />
-                            Add Customer
+                            {t('app.customers.addCustomer')}
                         </Button>
                     </DialogTrigger>
                     <CustomerFormDialog

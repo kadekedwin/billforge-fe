@@ -23,6 +23,7 @@ import {
 import { useAuth } from "@/contexts/auth-context";
 import { getImageUrl } from "@/lib/images/operations";
 import { logout } from "@/lib/api/auth";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UserProfileProps {
     onNavigate?: () => void;
@@ -31,6 +32,7 @@ interface UserProfileProps {
 const imageUrlCache = new Map<string, string>();
 
 export function UserProfile({ onNavigate }: UserProfileProps) {
+    const { t } = useTranslation();
     const { user, removeAuth } = useAuth();
     const [userImageUrl, setUserImageUrl] = useState<string | null>(null);
     const [showLogoutDialog, setShowLogoutDialog] = useState(false);
@@ -107,11 +109,11 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>{t('sidebar.userProfile.myAccount')}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => setShowLogoutDialog(true)} className="text-destructive">
                         <LogOut className="mr-2 h-4 w-4" />
-                        <span>Log out</span>
+                        <span>{t('sidebar.userProfile.logout')}</span>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -119,9 +121,9 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
             <Dialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Confirm Logout</DialogTitle>
+                        <DialogTitle>{t('sidebar.userProfile.dialog.title')}</DialogTitle>
                         <DialogDescription>
-                            Are you sure you want to logout? You will need to sign in again to access your account.
+                            {t('sidebar.userProfile.dialog.description')}
                         </DialogDescription>
                     </DialogHeader>
                     <DialogFooter>
@@ -129,14 +131,14 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
                             variant="outline"
                             onClick={() => setShowLogoutDialog(false)}
                         >
-                            Cancel
+                            {t('sidebar.userProfile.dialog.cancel')}
                         </Button>
                         <Button
                             variant="destructive"
                             onClick={handleLogout}
                         >
                             <LogOut className="mr-2 h-4 w-4" />
-                            Logout
+                            {t('sidebar.userProfile.dialog.confirm')}
                         </Button>
                     </DialogFooter>
                 </DialogContent>

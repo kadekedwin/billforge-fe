@@ -17,8 +17,10 @@ import {
     handleUpdateItemTax,
     handleDeleteItemTax,
 } from "./itemTaxOperations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function ItemTaxesPage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { taxes, isLoading, error, setTaxes, setError } = useItemTaxesData(selectedBusiness);
     const {
@@ -50,10 +52,12 @@ export default function ItemTaxesPage() {
                 tax: editingTax,
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             })
             : await handleCreateItemTax({
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             });
 
         if (result.success && result.tax) {
@@ -91,14 +95,14 @@ export default function ItemTaxesPage() {
         setDeletingId(taxToDelete.id);
         setError(null);
 
-        const result = await handleDeleteItemTax(taxToDelete);
+        const result = await handleDeleteItemTax(taxToDelete, t);
 
         if (result.success) {
             setTaxes((prev) => prev.filter((tax) => tax.uuid !== taxToDelete.uuid));
             setIsDeleteDialogOpen(false);
             setTaxToDelete(null);
         } else {
-            setError(result.error || "Failed to delete tax");
+            setError(result.error || t('app.itemTaxes.deleteError'));
         }
 
         setDeletingId(null);
@@ -124,7 +128,7 @@ export default function ItemTaxesPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Item Taxes</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.itemTaxes.title')}</h1>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
@@ -137,7 +141,7 @@ export default function ItemTaxesPage() {
                             }}
                         >
                             <Plus className="mr-2 h-4 w-4" />
-                            Add Tax
+                            {t('app.itemTaxes.addTax')}
                         </Button>
                     </DialogTrigger>
                     <ItemTaxFormDialog

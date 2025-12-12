@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Pencil, Trash2 } from "lucide-react";
 import type { ItemDiscount } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemDiscountsTableProps {
     discounts: ItemDiscount[];
@@ -22,12 +23,13 @@ interface ItemDiscountsTableProps {
 }
 
 export function ItemDiscountsTable({
-                                       discounts,
-                                       isLoading,
-                                       deletingId,
-                                       onEdit,
-                                       onDelete,
-                                   }: ItemDiscountsTableProps) {
+    discounts,
+    isLoading,
+    deletingId,
+    onEdit,
+    onDelete,
+}: ItemDiscountsTableProps) {
+    const { t } = useTranslation();
     if (isLoading) {
         return (
             <div className="flex items-center justify-center py-8">
@@ -39,7 +41,7 @@ export function ItemDiscountsTable({
     if (discounts.length === 0) {
         return (
             <div className="rounded-lg border border-dashed p-8 text-center">
-                <p className="text-muted-foreground">No discounts found. Create your first discount configuration.</p>
+                <p className="text-muted-foreground">{t('app.itemDiscounts.noDiscounts')}</p>
             </div>
         );
     }
@@ -49,10 +51,12 @@ export function ItemDiscountsTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Value</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableRow>
+                            <TableHead>{t('app.itemDiscounts.name')}</TableHead>
+                            <TableHead>{t('app.itemDiscounts.type')}</TableHead>
+                            <TableHead>{t('app.itemDiscounts.value')}</TableHead>
+                            <TableHead className="text-right">{t('app.itemDiscounts.actions')}</TableHead>
+                        </TableRow>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -61,7 +65,7 @@ export function ItemDiscountsTable({
                             <TableCell>{discount.name}</TableCell>
                             <TableCell>
                                 <Badge variant={discount.type === "percentage" ? "default" : "secondary"}>
-                                    {discount.type === "percentage" ? "Percentage" : "Fixed"}
+                                    {discount.type === "percentage" ? t('app.itemDiscounts.percentage') : t('app.itemDiscounts.fixed')}
                                 </Badge>
                             </TableCell>
                             <TableCell>

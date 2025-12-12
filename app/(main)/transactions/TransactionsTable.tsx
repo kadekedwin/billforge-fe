@@ -13,6 +13,7 @@ import { Eye, Loader2 } from "lucide-react";
 import type { Transaction } from "@/lib/api";
 import { useBusiness } from "@/contexts/business-context";
 import { getCurrencySymbol } from "@/lib/utils/currency";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface TransactionsTableProps {
     transactions: Transaction[];
@@ -29,6 +30,7 @@ export function TransactionsTable({
     getCustomerName,
     getPaymentMethodName,
 }: TransactionsTableProps) {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
 
@@ -46,7 +48,7 @@ export function TransactionsTable({
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 flex-col items-center justify-center space-y-4">
-                    <p className="text-lg text-muted-foreground">No transactions found</p>
+                    <p className="text-lg text-muted-foreground">{t('app.transactions.noTransactions')}</p>
                 </div>
             </div>
         );
@@ -57,12 +59,12 @@ export function TransactionsTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Date</TableHead>
-                        <TableHead>Customer</TableHead>
-                        <TableHead>Payment Method</TableHead>
-                        <TableHead>Total Amount</TableHead>
-                        <TableHead>Final Amount</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableHead>{t('app.transactions.date')}</TableHead>
+                        <TableHead>{t('app.transactions.customer')}</TableHead>
+                        <TableHead>{t('app.transactions.paymentMethod')}</TableHead>
+                        <TableHead>{t('app.transactions.totalAmount')}</TableHead>
+                        <TableHead>{t('app.transactions.finalAmount')}</TableHead>
+                        <TableHead className="text-right">{t('app.transactions.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>

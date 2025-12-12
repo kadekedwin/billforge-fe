@@ -16,6 +16,7 @@ import { Business } from "@/lib/api";
 import { BusinessLogo } from "./BusinessLogo";
 import { toast } from "sonner";
 import { LIMITS, getLimitMessage } from "@/lib/config/limits";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface BusinessSelectorProps {
     onNavigate?: () => void;
@@ -30,6 +31,7 @@ export function BusinessSelector({
     onEditBusiness,
     onDeleteBusiness,
 }: BusinessSelectorProps) {
+    const { t } = useTranslation();
     const { selectedBusiness, businesses, setSelectedBusiness } = useBusiness();
 
     const handleAddBusiness = () => {
@@ -60,7 +62,7 @@ export function BusinessSelector({
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-56">
-                    <DropdownMenuLabel>Switch Business</DropdownMenuLabel>
+                    <DropdownMenuLabel>{t('sidebar.businessSelector.switchBusiness')}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     {businesses.map((business) => (
                         <DropdownMenuItem
@@ -103,7 +105,7 @@ export function BusinessSelector({
                                             }}
                                         >
                                             <Pencil className="mr-2 h-4 w-4" />
-                                            <span>Edit</span>
+                                            <span>{t('sidebar.businessSelector.edit')}</span>
                                         </DropdownMenuItem>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem
@@ -114,7 +116,7 @@ export function BusinessSelector({
                                             className="text-destructive focus:text-destructive"
                                         >
                                             <Trash2 className="mr-2 h-4 w-4" />
-                                            <span>Delete</span>
+                                            <span>{t('sidebar.businessSelector.delete')}</span>
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -127,7 +129,7 @@ export function BusinessSelector({
                         className="cursor-pointer"
                     >
                         <Plus className="mr-2 h-4 w-4" />
-                        <span>Add Business</span>
+                        <span>{t('sidebar.businessSelector.addBusiness')}</span>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

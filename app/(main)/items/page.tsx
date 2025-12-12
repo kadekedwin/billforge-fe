@@ -17,8 +17,10 @@ import { DeleteItemDialog } from "./DeleteItemDialog";
 import { useItemsData } from "./useItemsData";
 import { useItemForm } from "./useItemForm";
 import { handleCreateItem, handleUpdateItem, handleDeleteItem } from "./itemOperations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function ItemsPage() {
+    const { t } = useTranslation();
     const { selectedBusiness, businesses } = useBusiness();
     const { items, taxes, discounts, categories, isLoading, error, setItems, setError } = useItemsData(selectedBusiness);
     const {
@@ -50,7 +52,7 @@ export default function ItemsPage() {
 
     const getBusinessName = (business_uuid: string) => {
         const business = businesses.find(b => b.uuid === business_uuid);
-        return business?.name || "Unknown Business";
+        return business?.name || t('app.items.unknownBusiness');
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -75,12 +77,14 @@ export default function ItemsPage() {
                 existingImageUrl,
                 selectedCategoryUuids,
                 initialCategoryUuids,
+                t,
             })
             : await handleCreateItem({
                 formData,
                 businessUuid: selectedBusiness.uuid,
                 selectedImage,
                 categoryUuids: selectedCategoryUuids,
+                t,
             });
 
         setIsUploadingImage(false);
@@ -120,14 +124,14 @@ export default function ItemsPage() {
         setDeletingId(itemToDelete.id);
         setError(null);
 
-        const result = await handleDeleteItem(itemToDelete);
+        const result = await handleDeleteItem(itemToDelete, t);
 
         if (result.success) {
             setItems((prev) => prev.filter((item) => item.uuid !== itemToDelete.uuid));
             setIsDeleteDialogOpen(false);
             setItemToDelete(null);
         } else {
-            setError(result.error || "Failed to delete item");
+            setError(result.error || t('app.items.deleteError'));
         }
 
         setDeletingId(null);
@@ -159,7 +163,7 @@ export default function ItemsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Items</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.items.title')}</h1>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
@@ -172,7 +176,7 @@ export default function ItemsPage() {
                             }}
                         >
                             <Plus className="mr-2 h-4 w-4" />
-                            Add Item
+                            {t('app.items.addItem')}
                         </Button>
                     </DialogTrigger>
                     <ItemFormDialog

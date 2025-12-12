@@ -11,6 +11,7 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import type { ItemDiscount } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeleteItemDiscountDialogProps {
     open: boolean;
@@ -20,25 +21,25 @@ interface DeleteItemDiscountDialogProps {
 }
 
 export function DeleteItemDiscountDialog({
-                                             open,
-                                             onOpenChange,
-                                             discount,
-                                             onConfirm,
-                                         }: DeleteItemDiscountDialogProps) {
+    open,
+    onOpenChange,
+    discount,
+    onConfirm,
+}: DeleteItemDiscountDialogProps) {
+    const { t } = useTranslation();
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('app.itemDiscounts.deleteTitle')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete the discount &quot;{discount?.name}&quot;.
-                        This action cannot be undone.
+                        {t('app.itemDiscounts.deleteDescription', { name: discount?.name || '' })}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
                     <AlertDialogAction onClick={onConfirm}>
-                        Delete
+                        {t('common.delete')}
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>

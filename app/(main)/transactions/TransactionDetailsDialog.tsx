@@ -12,6 +12,7 @@ import { TransactionDetailsInfo } from "./TransactionDetailsInfo";
 import { TransactionItemsTable } from "./TransactionItemsTable";
 import { TransactionSummary } from "./TransactionSummary";
 import { ReceiptActions } from "./ReceiptActions";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface TransactionDetailsDialogProps {
     open: boolean;
@@ -32,31 +33,32 @@ interface TransactionDetailsDialogProps {
 }
 
 export function TransactionDetailsDialog({
-                                             open,
-                                             onOpenChange,
-                                             transaction,
-                                             transactionItems,
-                                             isLoadingItems,
-                                             customer,
-                                             receiptLoading,
-                                             isSendingEmail,
-                                             isSendingWhatsApp,
-                                             getCustomerName,
-                                             getPaymentMethodName,
-                                             onDownloadPDF,
-                                             onDownloadImage,
-                                             onSendEmail,
-                                             onSendWhatsApp,
-                                         }: TransactionDetailsDialogProps) {
+    open,
+    onOpenChange,
+    transaction,
+    transactionItems,
+    isLoadingItems,
+    customer,
+    receiptLoading,
+    isSendingEmail,
+    isSendingWhatsApp,
+    getCustomerName,
+    getPaymentMethodName,
+    onDownloadPDF,
+    onDownloadImage,
+    onSendEmail,
+    onSendWhatsApp,
+}: TransactionDetailsDialogProps) {
+    const { t } = useTranslation();
     if (!transaction) return null;
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Transaction Details</DialogTitle>
+                    <DialogTitle>{t('app.transactions.transactionDetails')}</DialogTitle>
                     <DialogDescription>
-                        View complete transaction information
+                        {t('app.transactions.viewInfo')}
                     </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-6">
@@ -67,7 +69,7 @@ export function TransactionDetailsDialog({
                     />
 
                     <div className="space-y-2">
-                        <h3 className="text-lg font-semibold">Items</h3>
+                        <h3 className="text-lg font-semibold">{t('app.transactions.items')}</h3>
                         <TransactionItemsTable
                             items={transactionItems}
                             isLoading={isLoadingItems}

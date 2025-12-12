@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import type { Category, CreateCategoryRequest } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CategoryFormDialogProps {
     open: boolean;
@@ -27,24 +28,25 @@ interface CategoryFormDialogProps {
 }
 
 export function CategoryFormDialog({
-                                       open,
-                                       onOpenChange,
-                                       editingCategory,
-                                       formData,
-                                       formErrors,
-                                       error,
-                                       isSubmitting,
-                                       onInputChange,
-                                       onSubmit,
-                                   }: CategoryFormDialogProps) {
+    open,
+    onOpenChange,
+    editingCategory,
+    formData,
+    formErrors,
+    error,
+    isSubmitting,
+    onInputChange,
+    onSubmit,
+}: CategoryFormDialogProps) {
+    const { t } = useTranslation();
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent>
                 <form onSubmit={onSubmit}>
                     <DialogHeader>
-                        <DialogTitle>{editingCategory ? "Edit Category" : "Create New Category"}</DialogTitle>
+                        <DialogTitle>{editingCategory ? t('app.categories.editTitle') : t('app.categories.createTitle')}</DialogTitle>
                         <DialogDescription>
-                            {editingCategory ? "Update category information" : "Add a new category to organize your items"}
+                            {editingCategory ? t('app.categories.editDescription') : t('app.categories.createDescription')}
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
@@ -54,11 +56,11 @@ export function CategoryFormDialog({
                             </div>
                         )}
                         <div className="space-y-2">
-                            <Label htmlFor="name">Category Name</Label>
+                            <Label htmlFor="name">{t('app.categories.categoryName')}</Label>
                             <Input
                                 id="name"
                                 name="name"
-                                placeholder="Electronics, Food, Services, etc."
+                                placeholder={t('app.categories.placeholder')}
                                 value={formData.name}
                                 onChange={onInputChange}
                                 disabled={isSubmitting}
@@ -77,11 +79,11 @@ export function CategoryFormDialog({
                             onClick={() => onOpenChange(false)}
                             disabled={isSubmitting}
                         >
-                            Cancel
+                            {t('common.cancel')}
                         </Button>
                         <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            {editingCategory ? "Update Category" : "Create Category"}
+                            {editingCategory ? t('app.categories.editCategory') : t('app.categories.addCategory')}
                         </Button>
                     </DialogFooter>
                 </form>

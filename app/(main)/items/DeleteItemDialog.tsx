@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Loader2 } from "lucide-react";
 import type { Item } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeleteItemDialogProps {
     open: boolean;
@@ -22,24 +23,24 @@ interface DeleteItemDialogProps {
 }
 
 export function DeleteItemDialog({
-                                     open,
-                                     onOpenChange,
-                                     item,
-                                     isDeleting,
-                                     onConfirm,
-                                 }: DeleteItemDialogProps) {
+    open,
+    onOpenChange,
+    item,
+    isDeleting,
+    onConfirm,
+}: DeleteItemDialogProps) {
+    const { t } = useTranslation();
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('app.items.deleteTitle')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete <span className="font-semibold">{item?.name}</span> (SKU: {item?.sku}).
-                        This action cannot be undone.
+                        {t('app.items.deleteDescription', { name: item?.name || '', sku: item?.sku || '' })}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel disabled={isDeleting}>{t('common.cancel')}</AlertDialogCancel>
                     <AlertDialogAction
                         onClick={onConfirm}
                         disabled={isDeleting}
@@ -48,10 +49,10 @@ export function DeleteItemDialog({
                         {isDeleting ? (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Deleting...
+                                {t('app.items.deleting')}
                             </>
                         ) : (
-                            "Delete"
+                            t('common.delete')
                         )}
                     </AlertDialogAction>
                 </AlertDialogFooter>

@@ -6,6 +6,7 @@ import { getItemTaxes } from "@/lib/api/item-taxes";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
 import { getCategories } from "@/lib/api/categories";
 import type { Item, ItemTax, ItemDiscount, Category, Business } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseItemsDataResult {
     items: Item[];
@@ -19,6 +20,7 @@ interface UseItemsDataResult {
 }
 
 export function useItemsData(selectedBusiness: Business | null): UseItemsDataResult {
+    const { t } = useTranslation();
     const [items, setItems] = useState<Item[]>([]);
     const [taxes, setTaxes] = useState<ItemTax[]>([]);
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
@@ -49,7 +51,7 @@ export function useItemsData(selectedBusiness: Business | null): UseItemsDataRes
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load items");
+                setError(errorData.message || t('app.items.itemsLoadError'));
             }
 
             if (taxesResponse.success) {
@@ -70,7 +72,7 @@ export function useItemsData(selectedBusiness: Business | null): UseItemsDataRes
                 setCategories(categoriesResponse.data);
             }
         } catch (err) {
-            setError("An error occurred while loading data");
+            setError(t('app.items.loadingError'));
             console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);

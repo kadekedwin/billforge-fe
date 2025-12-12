@@ -12,6 +12,7 @@ import { Loader2 } from "lucide-react";
 import type { TransactionItem } from "@/lib/api";
 import { useBusiness } from "@/contexts/business-context";
 import { getCurrencySymbol } from "@/lib/utils/currency";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface TransactionItemsTableProps {
     items: TransactionItem[];
@@ -19,6 +20,7 @@ interface TransactionItemsTableProps {
 }
 
 export function TransactionItemsTable({ items, isLoading }: TransactionItemsTableProps) {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
 
@@ -31,7 +33,7 @@ export function TransactionItemsTable({ items, isLoading }: TransactionItemsTabl
     }
 
     if (items.length === 0) {
-        return <p className="text-sm text-muted-foreground">No items found</p>;
+        return <p className="text-sm text-muted-foreground">{t('app.transactions.noItems')}</p>;
     }
 
     return (
@@ -39,12 +41,12 @@ export function TransactionItemsTable({ items, isLoading }: TransactionItemsTabl
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Item</TableHead>
-                        <TableHead>Quantity</TableHead>
-                        <TableHead>Base Price</TableHead>
-                        <TableHead>Tax</TableHead>
-                        <TableHead>Discount</TableHead>
-                        <TableHead>Total</TableHead>
+                        <TableHead>{t('app.transactions.item')}</TableHead>
+                        <TableHead>{t('app.transactions.quantity')}</TableHead>
+                        <TableHead>{t('app.transactions.basePrice')}</TableHead>
+                        <TableHead>{t('app.transactions.tax')}</TableHead>
+                        <TableHead>{t('app.transactions.discount')}</TableHead>
+                        <TableHead>{t('app.transactions.total')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>

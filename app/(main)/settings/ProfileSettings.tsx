@@ -14,9 +14,11 @@ import { getUser, updateUser, User } from '@/lib/api/user';
 import { changePassword, requestAccountDeletion } from '@/lib/api/auth';
 import { useAuth } from "@/contexts/auth-context";
 import { ApiError } from "@/lib/api/errors";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function ProfileSettings() {
     const router = useRouter();
+    const { t } = useTranslation();
     const { setAuth, token } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
@@ -66,7 +68,7 @@ export default function ProfileSettings() {
             if (err instanceof ApiError) {
                 setError(err.message);
             } else {
-                setError('An error occurred while loading user data');
+                setError(t('app.settings.profileTab.errorLoad'));
             }
         } finally {
             setIsLoading(false);
@@ -87,7 +89,7 @@ export default function ProfileSettings() {
 
         const sizeInBytes = getFileSizeBytes(file);
         if (sizeInBytes > 1024 * 1024) {
-            setError('Image size must be less than 1MB');
+            setError(t('app.settings.profileTab.imageSizeError'));
             return;
         }
 
@@ -143,11 +145,10 @@ export default function ProfileSettings() {
             }
 
             const response = await updateUser({
-                name: formData.name,
                 image_size_bytes: imageSizeBytes,
             });
 
-            setSuccess('Profile updated successfully!');
+            setSuccess(t('app.settings.profileTab.successUpdate'));
             setUser(response.data);
             setSelectedImage(null);
             setImagePreview(null);
@@ -163,7 +164,7 @@ export default function ProfileSettings() {
             if (err instanceof ApiError) {
                 setError(err.message);
             } else {
-                setError('An error occurred while updating profile');
+                setError(t('app.settings.profileTab.errorUpdate'));
             }
         } finally {
             setIsSaving(false);
@@ -174,17 +175,17 @@ export default function ProfileSettings() {
         e.preventDefault();
 
         if (!passwordData.current_password || !passwordData.new_password || !passwordData.new_password_confirmation) {
-            setPasswordError('All fields are required');
+            setPasswordError(t('app.settings.profileTab.errorFields'));
             return;
         }
 
         if (passwordData.new_password !== passwordData.new_password_confirmation) {
-            setPasswordError('New passwords do not match');
+            setPasswordError(t('app.settings.profileTab.errorMatch'));
             return;
         }
 
         if (passwordData.new_password.length < 8) {
-            setPasswordError('Password must be at least 8 characters');
+            setPasswordError(t('app.settings.profileTab.errorLength'));
             return;
         }
 
@@ -195,7 +196,7 @@ export default function ProfileSettings() {
         try {
             await changePassword(passwordData);
 
-            setPasswordSuccess('Password changed successfully!');
+            setPasswordSuccess(t('app.settings.profileTab.successPassword'));
             setPasswordData({
                 current_password: '',
                 new_password: '',
@@ -210,7 +211,7 @@ export default function ProfileSettings() {
                     setPasswordError(err.message);
                 }
             } else {
-                setPasswordError('An error occurred while changing password');
+                setPasswordError(t('app.settings.profileTab.errorPassword'));
             }
         } finally {
             setIsChangingPassword(false);
@@ -220,7 +221,7 @@ export default function ProfileSettings() {
     const handleAccountDeletion = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!confirm('Are you sure you want to delete your account? A confirmation email will be sent to you.')) {
+        if (!confirm(t('app.settings.profileTab.confirmDelete'))) {
             return;
         }
 
@@ -231,7 +232,7 @@ export default function ProfileSettings() {
             const response = await requestAccountDeletion({});
 
             if (response.success) {
-                alert('A confirmation email has been sent. Please check your inbox and click the link to complete account deletion.');
+                alert(t('app.settings.profileTab.sentDelete'));
                 router.push('/settings');
             } else {
                 setDeletionError(response.message || 'Failed to request account deletion');
@@ -240,7 +241,7 @@ export default function ProfileSettings() {
             if (err instanceof ApiError) {
                 setDeletionError(err.message);
             } else {
-                setDeletionError('An error occurred while requesting account deletion');
+                setDeletionError(t('app.settings.profileTab.errorDelete'));
             }
         } finally {
             setIsDeletingAccount(false);
@@ -292,8 +293,8 @@ export default function ProfileSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Profile Picture</CardTitle>
-                    <CardDescription>Upload a profile picture to personalize your account</CardDescription>
+                    <CardTitle>{t('app.settings.profileTab.profilePicture')}</CardTitle>
+                    <CardDescription>{t('app.settings.profileTab.profilePictureDescription')}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex items-center gap-6">
                     <Avatar className="h-24 w-24">
@@ -310,7 +311,7 @@ export default function ProfileSettings() {
                                 <div
                                     className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
                                     <Upload className="h-4 w-4" />
-                                    Upload Photo
+                                    {t('app.settings.profileTab.uploadPhoto')}
                                 </div>
                             </Label>
                             <Input
@@ -326,12 +327,12 @@ export default function ProfileSettings() {
                                     onClick={handleDeleteAvatar}
                                 >
                                     <Trash2 className="h-4 w-4 mr-2" />
-                                    Delete
+                                    {t('app.settings.profileTab.delete')}
                                 </Button>
                             )}
                         </div>
                         <p className="text-sm text-muted-foreground mt-2">
-                            JPG, PNG or GIF. Max size 1MB.
+                            {t('app.settings.profileTab.imageRequirements')}
                         </p>
                     </div>
                 </CardContent>
@@ -339,36 +340,36 @@ export default function ProfileSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Personal Information</CardTitle>
+                    <CardTitle>{t('app.settings.profileTab.personalInfo')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
                         <Label htmlFor="name" className="flex items-center gap-2">
                             <UserIcon className="h-4 w-4" />
-                            Full Name
+                            {t('app.settings.profileTab.fullName')}
                         </Label>
                         <Input
                             id="name"
                             value={formData.name}
                             onChange={(e) => handleInputChange('name', e.target.value)}
-                            placeholder="Enter your full name"
+                            placeholder={t('app.settings.profileTab.enterFullName')}
                         />
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="email" className="flex items-center gap-2">
                             <Mail className="h-4 w-4" />
-                            Email
+                            {t('app.settings.profileTab.email')}
                         </Label>
                         <Input
                             id="email"
                             type="email"
                             value={formData.email}
-                            placeholder="Enter your email"
+                            placeholder={t('app.settings.profileTab.enterEmail')}
                             disabled
                             className="bg-muted cursor-not-allowed"
                         />
-                        <p className="text-xs text-muted-foreground">Email cannot be changed</p>
+                        <p className="text-xs text-muted-foreground">{t('app.settings.profileTab.emailNote')}</p>
                     </div>
                 </CardContent>
             </Card>
@@ -380,14 +381,14 @@ export default function ProfileSettings() {
                     ) : (
                         <Save className="h-4 w-4 mr-2" />
                     )}
-                    {isSaving ? 'Saving...' : 'Save Changes'}
+                    {isSaving ? t('app.settings.profileTab.saving') : t('app.settings.profileTab.saveChanges')}
                 </Button>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Change Password</CardTitle>
-                    <CardDescription>Update your password to keep your account secure</CardDescription>
+                    <CardTitle>{t('app.settings.profileTab.changePassword')}</CardTitle>
+                    <CardDescription>{t('app.settings.profileTab.changePasswordDescription')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     {passwordError && (
@@ -407,42 +408,42 @@ export default function ProfileSettings() {
                         <div className="space-y-2">
                             <Label htmlFor="current_password" className="flex items-center gap-2">
                                 <Lock className="h-4 w-4" />
-                                Current Password
+                                {t('app.settings.profileTab.currentPassword')}
                             </Label>
                             <Input
                                 id="current_password"
                                 type="password"
                                 value={passwordData.current_password}
                                 onChange={(e) => setPasswordData(prev => ({ ...prev, current_password: e.target.value }))}
-                                placeholder="Enter current password"
+                                placeholder={t('app.settings.profileTab.enterCurrentPassword')}
                             />
                         </div>
 
                         <div className="space-y-2">
                             <Label htmlFor="new_password" className="flex items-center gap-2">
                                 <Lock className="h-4 w-4" />
-                                New Password
+                                {t('app.settings.profileTab.newPassword')}
                             </Label>
                             <Input
                                 id="new_password"
                                 type="password"
                                 value={passwordData.new_password}
                                 onChange={(e) => setPasswordData(prev => ({ ...prev, new_password: e.target.value }))}
-                                placeholder="Enter new password (min 8 characters)"
+                                placeholder={t('app.settings.profileTab.enterNewPassword')}
                             />
                         </div>
 
                         <div className="space-y-2">
                             <Label htmlFor="new_password_confirmation" className="flex items-center gap-2">
                                 <Lock className="h-4 w-4" />
-                                Confirm New Password
+                                {t('app.settings.profileTab.confirmNewPassword')}
                             </Label>
                             <Input
                                 id="new_password_confirmation"
                                 type="password"
                                 value={passwordData.new_password_confirmation}
                                 onChange={(e) => setPasswordData(prev => ({ ...prev, new_password_confirmation: e.target.value }))}
-                                placeholder="Confirm new password"
+                                placeholder={t('app.settings.profileTab.enterConfirmNewPassword')}
                             />
                         </div>
 
@@ -452,7 +453,7 @@ export default function ProfileSettings() {
                             ) : (
                                 <Lock className="h-4 w-4 mr-2" />
                             )}
-                            {isChangingPassword ? 'Changing Password...' : 'Change Password'}
+                            {isChangingPassword ? t('app.settings.profileTab.changingPassword') : t('app.settings.profileTab.changePassword')}
                         </Button>
                     </form>
                 </CardContent>
@@ -460,9 +461,9 @@ export default function ProfileSettings() {
 
             <Card className="border-destructive">
                 <CardHeader>
-                    <CardTitle className="text-destructive">Delete Account</CardTitle>
+                    <CardTitle className="text-destructive">{t('app.settings.profileTab.deleteAccount')}</CardTitle>
                     <CardDescription>
-                        Permanently delete your account and all associated data
+                        {t('app.settings.profileTab.deleteAccountDescription')}
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -474,14 +475,14 @@ export default function ProfileSettings() {
 
                     <form onSubmit={handleAccountDeletion} className="space-y-4">
                         <div className="rounded-lg bg-destructive/10 p-4 text-sm text-destructive">
-                            <p className="font-semibold mb-2">Warning: This action cannot be undone</p>
-                            <p>Deleting your account will:</p>
+                            <p className="font-semibold mb-2">{t('app.settings.profileTab.deleteWarning')}</p>
+                            <p>{t('app.settings.profileTab.deleteConsequences')}</p>
                             <ul className="list-disc list-inside mt-2 space-y-1">
-                                <li>Permanently delete all your businesses</li>
-                                <li>Remove all transactions and items</li>
-                                <li>Delete all your personal data</li>
+                                <li>{t('app.settings.profileTab.deleteItem1')}</li>
+                                <li>{t('app.settings.profileTab.deleteItem2')}</li>
+                                <li>{t('app.settings.profileTab.deleteItem3')}</li>
                             </ul>
-                            <p className="mt-3">You will receive a confirmation email with a link to complete the deletion.</p>
+                            <p className="mt-3">{t('app.settings.profileTab.deleteConfirmation')}</p>
                         </div>
 
                         <Button type="submit" variant="destructive" disabled={isDeletingAccount} className="w-full">
@@ -490,7 +491,7 @@ export default function ProfileSettings() {
                             ) : (
                                 <Trash2 className="h-4 w-4 mr-2" />
                             )}
-                            {isDeletingAccount ? 'Sending Confirmation Email...' : 'Request Account Deletion'}
+                            {isDeletingAccount ? t('app.settings.profileTab.sendingEmail') : t('app.settings.profileTab.requestDeletion')}
                         </Button>
                     </form>
                 </CardContent>

@@ -1,41 +1,58 @@
-import {Separator} from "@/components/ui/separator";
+"use client";
+
+import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import {LogoText} from "@/components/icons/logoText";
+import { LogoText } from "@/components/icons/logoText";
 
 const footerSections = [
     {
-        title: "Contact",
+        key: 'contact',
         links: [
             {
-                title: "billforgeapp@gmail.com",
+                key: 'email',
                 href: "mailto:billforgeapp@gmail.com",
             },
             {
-                title: "Whatsapp",
+                key: 'whatsapp',
                 href: "#",
             },
             {
-                title: "Telegram",
+                key: 'telegram',
                 href: "#",
             },
         ],
     },
     {
-        title: "Legal",
+        key: 'legal',
         links: [
             {
-                title: "Terms of Service",
+                key: 'terms',
                 href: "/terms",
             },
             {
-                title: "Privacy Policy",
+                key: 'privacy',
                 href: "/privacy",
             },
         ],
     },
 ];
 
+import { useTranslation } from "@/lib/i18n/useTranslation";
+
 const Footer = () => {
+    const { t } = useTranslation();
+
+    const getLinkTitle = (key: string) => {
+        switch (key) {
+            case 'email': return "billforgeapp@gmail.com";
+            case 'whatsapp': return "Whatsapp";
+            case 'telegram': return "Telegram";
+            case 'terms': return t('landing.footer.links.terms');
+            case 'privacy': return t('landing.footer.links.privacy');
+            default: return key;
+        }
+    };
+
     return (
         <footer id="footer" className="mt-12 xs:mt-20 dark bg-background border-t">
             <div className="max-w-(--breakpoint-xl) mx-auto py-12 grid grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10 px-6">
@@ -43,21 +60,26 @@ const Footer = () => {
                     <LogoText color={"white"} />
 
                     <p className="mt-4 text-muted-foreground">
-                        Streamline your billing process with intelligent invoice management
+                        {t('landing.footer.description')}
                     </p>
                 </div>
 
-                {footerSections.map(({title, links}) => (
-                    <div key={title} className="xl:justify-self-end">
-                        <h6 className="font-semibold text-foreground">{title}</h6>
+                {footerSections.map(({ key, links }) => (
+                    <div key={key} className="xl:justify-self-end">
+                        <h6 className="font-semibold text-foreground">{t(`landing.footer.${key}`)}</h6>
                         <ul className="mt-6 space-y-4">
-                            {links.map(({title, href}) => (
-                                <li key={title}>
+                            {links.map(({ key: linkKey, href }) => (
+                                <li key={linkKey}>
                                     <Link
                                         href={href}
                                         className="text-muted-foreground hover:text-foreground"
                                     >
-                                        {title}
+                                        {key === 'contact' ? (
+                                            linkKey === 'email' ? 'billforgeapp@gmail.com' :
+                                                linkKey === 'whatsapp' ? 'Whatsapp' : 'Telegram'
+                                        ) : (
+                                            linkKey === 'terms' ? t('landing.footer.legal.terms') : t('landing.footer.legal.privacy')
+                                        )}
                                     </Link>
                                 </li>
                             ))}
@@ -65,15 +87,15 @@ const Footer = () => {
                     </div>
                 ))}
             </div>
-            <Separator/>
+            <Separator />
             <div className="max-w-(--breakpoint-xl) mx-auto py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6">
                 {/* Copyright */}
                 <span className="text-muted-foreground text-center xs:text-start">
-                    &copy; {new Date().getFullYear()}{" "} <Link href="https://shadcnui-blocks.com" target="_blank"> Billforge</Link>. All rights reserved.
+                    &copy; {new Date().getFullYear()}{" "} <Link href="https://shadcnui-blocks.com" target="_blank"> Billforge</Link>. {t('landing.footer.copyright')}
                 </span>
                 {/*  */}
                 <span className="text-muted-foreground text-center xs:text-start">
-                    Made with ❤️ in Bali
+                    {t('landing.footer.madeWith')}
                 </span>
             </div>
         </footer>

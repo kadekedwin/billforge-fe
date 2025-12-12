@@ -10,14 +10,16 @@ interface CreateItemParams {
     businessUuid: string;
     selectedImage: File | null;
     categoryUuids: string[];
+    t: (key: string) => string;
 }
 
 export async function handleCreateItem({
-                                           formData,
-                                           businessUuid,
-                                           selectedImage,
-                                           categoryUuids,
-                                       }: CreateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
+    formData,
+    businessUuid,
+    selectedImage,
+    categoryUuids,
+    t,
+}: CreateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
     try {
         let imageSizeBytes: number | null = null;
 
@@ -62,7 +64,7 @@ export async function handleCreateItem({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while creating item" };
+        return { success: false, error: t('app.items.errorCreating') };
     }
 }
 
@@ -75,18 +77,20 @@ interface UpdateItemParams {
     existingImageUrl: string | null;
     selectedCategoryUuids: string[];
     initialCategoryUuids: string[];
+    t: (key: string) => string;
 }
 
 export async function handleUpdateItem({
-                                           item,
-                                           formData,
-                                           businessUuid,
-                                           selectedImage,
-                                           imageDeleted,
-                                           existingImageUrl,
-                                           selectedCategoryUuids,
-                                           initialCategoryUuids,
-                                       }: UpdateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
+    item,
+    formData,
+    businessUuid,
+    selectedImage,
+    imageDeleted,
+    existingImageUrl,
+    selectedCategoryUuids,
+    initialCategoryUuids,
+    t,
+}: UpdateItemParams): Promise<{ success: boolean; item?: Item; error?: string; errors?: Record<string, string> }> {
     try {
         let imageSizeBytes: number | null = null;
 
@@ -98,7 +102,7 @@ export async function handleUpdateItem({
             });
 
             if (!uploadResult.success) {
-                return { success: false, error: uploadResult.error || 'Failed to upload image' };
+                return { success: false, error: uploadResult.error || t('app.items.uploadError') };
             }
             imageSizeBytes = getFileSizeBytes(selectedImage);
         } else if (imageDeleted) {
@@ -148,11 +152,11 @@ export async function handleUpdateItem({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while updating item" };
+        return { success: false, error: t('app.items.errorUpdating') };
     }
 }
 
-export async function handleDeleteItem(item: Item): Promise<{ success: boolean; error?: string }> {
+export async function handleDeleteItem(item: Item, t: (key: string) => string): Promise<{ success: boolean; error?: string }> {
     try {
         if (item.image_size_bytes) {
             await deleteImage({
@@ -168,6 +172,6 @@ export async function handleDeleteItem(item: Item): Promise<{ success: boolean; 
         if (err instanceof ApiError) {
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while deleting item" };
+        return { success: false, error: t('app.items.errorDeleting') };
     }
 }

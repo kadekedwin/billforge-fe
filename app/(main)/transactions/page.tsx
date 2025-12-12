@@ -17,8 +17,10 @@ import {
     handleSendEmail,
     handleSendWhatsApp,
 } from "./receiptHandlers";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function TransactionsPage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { includeLogo, footerMessage, qrcodeValue, template: receiptTemplate } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
     const { transactions, customers, paymentMethods, isLoading, error } = useTransactionsData(selectedBusiness);
@@ -169,7 +171,7 @@ export default function TransactionsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Transactions</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.transactions.title')}</h1>
                 </div>
             </div>
 

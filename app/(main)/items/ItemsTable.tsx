@@ -15,6 +15,7 @@ import type { Item } from "@/lib/api";
 import { ItemImage } from "./ItemImage";
 import { useBusiness } from "@/contexts/business-context";
 import { getCurrencySymbol } from "@/lib/utils/currency";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemsTableProps {
     items: Item[];
@@ -35,6 +36,7 @@ export function ItemsTable({
     onAddFirst,
     getBusinessName,
 }: ItemsTableProps) {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
 
@@ -52,10 +54,10 @@ export function ItemsTable({
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 flex-col items-center justify-center space-y-4">
-                    <p className="text-lg text-muted-foreground">No items found</p>
+                    <p className="text-lg text-muted-foreground">{t('app.items.noItems')}</p>
                     <Button onClick={onAddFirst}>
                         <Plus className="mr-2 h-4 w-4" />
-                        Add Your First Item
+                        {t('app.items.addFirstItem')}
                     </Button>
                 </div>
             </div>
@@ -67,14 +69,14 @@ export function ItemsTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Image</TableHead>
-                        <TableHead>Name</TableHead>
-                        <TableHead>SKU</TableHead>
-                        <TableHead>Business</TableHead>
-                        <TableHead>Price</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Created</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableHead>{t('app.items.image')}</TableHead>
+                        <TableHead>{t('app.items.name')}</TableHead>
+                        <TableHead>{t('app.items.sku') || 'SKU'}</TableHead>
+                        <TableHead>{t('app.items.business')}</TableHead>
+                        <TableHead>{t('app.items.price')}</TableHead>
+                        <TableHead>{t('app.items.status')}</TableHead>
+                        <TableHead>{t('app.items.created')}</TableHead>
+                        <TableHead className="text-right">{t('app.items.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -89,9 +91,9 @@ export function ItemsTable({
                             <TableCell>{currencySymbol}{parseFloat(item.base_price).toFixed(2)}</TableCell>
                             <TableCell>
                                 {item.is_active ? (
-                                    <Badge variant="default" className="bg-green-500">Active</Badge>
+                                    <Badge variant="default" className="bg-green-500">{t('app.items.active')}</Badge>
                                 ) : (
-                                    <Badge variant="secondary">Inactive</Badge>
+                                    <Badge variant="secondary">{t('app.items.inactive')}</Badge>
                                 )}
                             </TableCell>
                             <TableCell>

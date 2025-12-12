@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Pencil, Trash2 } from "lucide-react";
 import type { ItemTax } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemTaxesTableProps {
     taxes: ItemTax[];
@@ -22,12 +23,13 @@ interface ItemTaxesTableProps {
 }
 
 export function ItemTaxesTable({
-                                   taxes,
-                                   isLoading,
-                                   deletingId,
-                                   onEdit,
-                                   onDelete,
-                               }: ItemTaxesTableProps) {
+    taxes,
+    isLoading,
+    deletingId,
+    onEdit,
+    onDelete,
+}: ItemTaxesTableProps) {
+    const { t } = useTranslation();
     if (isLoading) {
         return (
             <div className="flex items-center justify-center py-8">
@@ -39,7 +41,7 @@ export function ItemTaxesTable({
     if (taxes.length === 0) {
         return (
             <div className="rounded-lg border border-dashed p-8 text-center">
-                <p className="text-muted-foreground">No taxes found. Create your first tax configuration.</p>
+                <p className="text-muted-foreground">{t('app.itemTaxes.noTaxes')}</p>
             </div>
         );
     }
@@ -49,10 +51,12 @@ export function ItemTaxesTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Value</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableRow>
+                            <TableHead>{t('app.itemTaxes.name')}</TableHead>
+                            <TableHead>{t('app.itemTaxes.type')}</TableHead>
+                            <TableHead>{t('app.itemTaxes.value')}</TableHead>
+                            <TableHead className="text-right">{t('app.itemTaxes.actions')}</TableHead>
+                        </TableRow>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -61,7 +65,7 @@ export function ItemTaxesTable({
                             <TableCell>{tax.name}</TableCell>
                             <TableCell>
                                 <Badge variant={tax.type === "percentage" ? "default" : "secondary"}>
-                                    {tax.type === "percentage" ? "Percentage" : "Fixed"}
+                                    {tax.type === "percentage" ? t('app.itemTaxes.percentage') : t('app.itemTaxes.fixed')}
                                 </Badge>
                             </TableCell>
                             <TableCell>

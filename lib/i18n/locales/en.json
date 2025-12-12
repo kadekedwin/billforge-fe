@@ -1,0 +1,714 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "cancel": "Cancel",
+        "save": "Save",
+        "delete": "Delete",
+        "edit": "Edit",
+        "create": "Create",
+        "update": "Update",
+        "search": "Search",
+        "filter": "Filter",
+        "close": "Close",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "submit": "Submit",
+        "confirm": "Confirm",
+        "yes": "Yes",
+        "no": "No"
+    },
+    "landing": {
+        "hero": {
+            "title": "Modern POS & Billing Made Simple",
+            "description": "Transform your business with professional receipts, instant checkout, and powerful analytics. Built for cafes, restaurants, retail stores, and small businesses everywhere.",
+            "cta": "Start Free Trial"
+        },
+        "features": {
+            "title": "Everything You Need to Run Your Business",
+            "description": "Powerful features designed to streamline your sales, manage customers, and grow your business efficiently.",
+            "receipt": {
+                "title": "Professional Receipts",
+                "description": "Create beautiful, customizable receipts with your logo, QR codes, and custom messages. Choose from multiple templates that look professional and boost your brand image."
+            },
+            "checkout": {
+                "title": "Fast Checkout Process",
+                "description": "Speed up your transactions with an intuitive POS interface. Process sales quickly, accept multiple payment methods, and get your customers on their way faster."
+            },
+            "customer": {
+                "title": "Customer Management",
+                "description": "Build lasting relationships with customer profiles and purchase history. Track preferences, spending patterns, and provide personalized service to your regulars."
+            },
+            "discount": {
+                "title": "Smart Discounts & Taxes",
+                "description": "Easily manage percentage or fixed discounts and multiple tax rates. Apply promotions to specific items or entire transactions with just a few clicks."
+            },
+            "analytics": {
+                "title": "Real-time Analytics",
+                "description": "Get instant insights into your sales performance. Track daily revenue, best-selling items, and transaction trends to make data-driven business decisions."
+            },
+            "cloud": {
+                "title": "Access Anywhere",
+                "description": "Cloud-based system works on any device - desktop, tablet, or smartphone. Manage your business from anywhere with secure, real-time data synchronization."
+            }
+        },
+        "nav": {
+            "features": "Features",
+            "pricing": "Pricing",
+            "faq": "FAQ",
+            "login": "Login",
+            "signup": "Sign Up",
+            "signIn": "Sign In",
+            "getStarted": "Get Started",
+            "home": "Home",
+            "testimonials": "Testimonials",
+            "drawerTitle": "Navigation Drawer"
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "description": "Everything you need to know about BillForge and how it can help your business.",
+            "items": {
+                "item1": {
+                    "question": "Is BillForge really free to use?",
+                    "answer": "Yes! Our Free plan includes 1 business, 50 items, 50 customers, 50 transactions per month, and all basic features. Perfect for small businesses getting started. Upgrade to Pro or Enterprise for higher limits and advanced features."
+                },
+                "item2": {
+                    "question": "What's the difference between Free, Pro, and Enterprise plans?",
+                    "answer": "Free plan has basic limits (1 business, 50 items, 50 transactions/month). Pro offers 10x those limits (10 businesses, 500 items, 500 transactions/month). Enterprise provides unlimited items, customers, and transactions with advanced features like multi-user access and API access."
+                },
+                "item3": {
+                    "question": "Can I customize my receipts?",
+                    "answer": "Absolutely! BillForge offers multiple receipt templates with full customization options. Add your business logo, custom footer messages, QR codes, and choose from various professional designs. Receipts can be printed or sent digitally to customers."
+                },
+                "item4": {
+                    "question": "What payment methods can I accept?",
+                    "answer": "BillForge supports all major payment methods including cash, credit/debit cards, mobile payments, and digital wallets. The Free plan allows up to 5 payment methods, while Pro and Enterprise offer unlimited payment method options."
+                },
+                "item5": {
+                    "question": "How do I manage discounts and taxes?",
+                    "answer": "Our platform includes built-in discount and tax management. Create percentage or fixed-amount discounts, apply them to specific items or entire transactions. Set up multiple tax rates for different product categories. Free plan includes 30 discount and tax configurations."
+                },
+                "item6": {
+                    "question": "Is my business data secure?",
+                    "answer": "Yes! All data is securely stored in the cloud with encryption. We perform regular backups and use industry-standard security practices. Your transaction history, customer information, and business data are protected and accessible only to you."
+                },
+                "item7": {
+                    "question": "Can I track customer purchase history?",
+                    "answer": "Yes! BillForge includes customer management features. Store customer details, view purchase history, and build better relationships with your regulars. Track what they buy, when they visit, and their total spending to provide personalized service."
+                },
+                "item8": {
+                    "question": "Do I need any special hardware?",
+                    "answer": "No special hardware required! BillForge works on any device with a web browser - desktop, tablet, or smartphone. If you want to print receipts, you can use any standard printer. The system is cloud-based, so you can access it from anywhere."
+                },
+                "item9": {
+                    "question": "What happens if I exceed my monthly transaction limit?",
+                    "answer": "On the Free plan, you're limited to 50 transactions per month. If you need more, you can upgrade to Pro (500 transactions/month) or Enterprise (unlimited). Your data is never deleted, and you can always view past transactions regardless of your current plan."
+                },
+                "item10": {
+                    "question": "How can I get support if I need help?",
+                    "answer": "We offer email support for all users. Pro and Enterprise customers get priority support with faster response times. Enterprise customers also receive 24/7 support and a dedicated account manager. Check our documentation and tutorials for quick self-help guides."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Simple, Transparent Pricing",
+            "description": "Choose the perfect plan for your business. Start free and upgrade as you grow.",
+            "monthly": "/month",
+            "mostPopular": "Most Popular",
+            "plans": {
+                "free": {
+                    "name": "Free",
+                    "description": "Perfect for small businesses just getting started with digital billing.",
+                    "button": "Get Started Free",
+                    "features": {
+                        "business": "1 Business",
+                        "items": "50 Items",
+                        "customers": "50 Customers",
+                        "transactions": "50 Transactions/month",
+                        "paymentMethods": "5 Payment Methods",
+                        "discountsTaxes": "30 Discounts & Taxes",
+                        "templates": "Basic Receipt Templates",
+                        "storage": "Cloud Storage"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideal for growing businesses with multiple locations and higher volume.",
+                    "button": "Start Pro Trial",
+                    "features": {
+                        "business": "10 Businesses",
+                        "items": "500 Items",
+                        "customers": "500 Customers",
+                        "transactions": "500 Transactions/month",
+                        "paymentMethods": "50 Payment Methods",
+                        "discountsTaxes": "300 Discounts & Taxes",
+                        "templates": "Premium Receipt Templates",
+                        "support": "Priority Support",
+                        "analytics": "Advanced Analytics",
+                        "branding": "Custom Branding"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "For large businesses requiring advanced features and dedicated support.",
+                    "button": "Contact Sales",
+                    "features": {
+                        "business": "10 Businesses",
+                        "items": "Unlimited Items",
+                        "customers": "Unlimited Customers",
+                        "transactions": "Unlimited Transactions",
+                        "paymentMethods": "Unlimited Payment Methods",
+                        "discountsTaxes": "Unlimited Discounts & Taxes",
+                        "api": "API Access",
+                        "support": "24/7 Priority Support"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "Testimonials",
+            "items": {
+                "item1": {
+                    "name": "Sarah Martinez",
+                    "designation": "Cafe Owner",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge has revolutionized how we handle transactions at our cafe. The receipt customization is amazing, and our customers love getting digital receipts. We've cut our paper costs by 80% and checkout times have never been faster!"
+                },
+                "item2": {
+                    "name": "Budi Santoso",
+                    "designation": "Store Manager",
+                    "company": "Warung Maju Jakarta",
+                    "text": "Sejak menggunakan BillForge, mengelola warung jadi jauh lebih mudah. Interface-nya gampang dimengerti dan laporan penjualannya sangat membantu. Recommended banget buat pengusaha UMKM!"
+                },
+                "item3": {
+                    "name": "Michael Chen",
+                    "designation": "Restaurant Owner",
+                    "company": "Chen's Asian Bistro",
+                    "text": "Managing multiple payment methods used to be a nightmare. BillForge makes it seamless! The transaction history and customer management features have helped us build better relationships with our regulars. Best POS decision we've made!"
+                },
+                "item4": {
+                    "name": "Emma Thompson",
+                    "designation": "Boutique Owner",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "The discount and tax management in BillForge is exactly what we needed for our seasonal sales. Creating beautiful, branded receipts has elevated our customer experience. Our checkout process is now professional and efficient!"
+                },
+                "item5": {
+                    "name": "James Wilson",
+                    "designation": "Bakery Owner",
+                    "company": "Sweet Treats Bakery",
+                    "text": "We switched to BillForge three months ago and haven't looked back. The item management system keeps our inventory organized, and the receipt templates look professional. Customer checkout is now a breeze, even during our busy morning rush!"
+                },
+                "item6": {
+                    "name": "Lisa Rodriguez",
+                    "designation": "Retail Manager",
+                    "company": "TechGadgets Plus",
+                    "text": "BillForge's transaction tracking has given us incredible insights into our sales patterns. The customer database helps us provide personalized service, and the QR code receipts are a hit with our tech-savvy customers. It's the complete package!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "Contact",
+            "legal": "Legal",
+            "description": "Streamline your billing process with intelligent invoice management",
+            "copyright": "Billforge. All rights reserved.",
+            "madeWith": "Made with ❤️ in Bali"
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Sign in to your account",
+            "description": "Enter your email and password to access your account",
+            "emailLabel": "Email",
+            "emailPlaceholder": "name@example.com",
+            "passwordLabel": "Password",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Forgot password?",
+            "submit": "Sign in",
+            "submitting": "Signing in...",
+            "noAccount": "Don't have an account?",
+            "signUp": "Sign up",
+            "errorGeneric": "An unexpected error occurred. Please try again."
+        },
+        "register": {
+            "title": "Create an account",
+            "description": "Enter your information to create your account",
+            "nameLabel": "Name",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "Email",
+            "emailPlaceholder": "name@example.com",
+            "passwordLabel": "Password",
+            "passwordPlaceholder": "••••••••",
+            "confirmPasswordLabel": "Confirm Password",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "By creating an account, you agree to our",
+            "terms": "Terms of Service",
+            "and": "and",
+            "privacy": "Privacy Policy",
+            "submit": "Create account",
+            "submitting": "Creating account...",
+            "hasAccount": "Already have an account?",
+            "signIn": "Sign in",
+            "errorMatch": "Passwords do not match",
+            "errorGeneric": "An unexpected error occurred. Please try again."
+        },
+        "forgotPassword": {
+            "title": "Forgot your password?",
+            "description": "Enter your email address and we'll send you a link to reset your password",
+            "emailLabel": "Email",
+            "emailPlaceholder": "name@example.com",
+            "submit": "Send reset link",
+            "submitting": "Sending...",
+            "backToLogin": "Back to login",
+            "checkEmailTitle": "Check your email",
+            "checkEmailDescription": "We've sent password reset instructions to",
+            "checkEmailNote1": "If an account exists with this email, you will receive a password reset link shortly.",
+            "checkEmailNote2": "Didn't receive the email? Check your spam folder or try again.",
+            "tryAnotherEmail": "Try another email",
+            "errorGeneric": "An unexpected error occurred. Please try again."
+        },
+        "resetPassword": {
+            "title": "Reset your password",
+            "description": "Enter your email and choose a new password",
+            "emailLabel": "Email",
+            "emailPlaceholder": "name@example.com",
+            "newPasswordLabel": "New Password",
+            "newPasswordPlaceholder": "••••••••",
+            "passwordHint": "Must be at least 8 characters",
+            "confirmPasswordLabel": "Confirm Password",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Reset password",
+            "submitting": "Resetting password...",
+            "backToLogin": "Back to login",
+            "successTitle": "Password Reset Successful!",
+            "successDescription": "Your password has been successfully reset.",
+            "redirecting": "Redirecting you to the login page...",
+            "goToLogin": "Go to Login",
+            "errorGeneric": "An unexpected error occurred. Please try again.",
+            "errorMatch": "Passwords do not match",
+            "errorLength": "Password must be at least 8 characters"
+        },
+        "verifyEmail": {
+            "title": "Verify Your Email",
+            "description": "We sent a verification email to",
+            "instruction": "Please check your inbox and click the verification link to activate your account.",
+            "resend": "Resend Verification Email",
+            "resending": "Sending...",
+            "changeEmail": "Change Email Address",
+            "verifyingTitle": "Verifying Email...",
+            "verifyingDescription": "Please wait while we verify your email address.",
+            "successTitle": "Email Verified!",
+            "successDescription": "Your email has been successfully verified. Redirecting to sale...",
+            "goToSale": "Go to Sale",
+            "alreadyVerifiedTitle": "Email Already Verified",
+            "alreadyVerifiedDescription": "Your email address has already been verified.",
+            "failedTitle": "Verification Failed",
+            "failedDescription": "The verification link is invalid or has expired.",
+            "resendSuccess": "Verification email sent! Please check your inbox.",
+            "changeEmailTitle": "Change Email Address?",
+            "changeEmailDescription": "You will be logged out and redirected to the registration page to register with a new email address.",
+            "cancel": "Cancel",
+            "continue": "Continue",
+            "errorGeneric": "An unexpected error occurred. Please try again."
+        },
+        "confirmDeletion": {
+            "title": "Confirm Account Deletion",
+            "description": "This action is permanent and cannot be undone",
+            "warningTitle": "Warning: This will permanently delete:",
+            "warningItem1": "All your businesses and their data",
+            "warningItem2": "All transactions and sales records",
+            "warningItem3": "All items and inventory",
+            "warningItem4": "Your profile and account information",
+            "warningReversal": "This action cannot be reversed.",
+            "inputLabel": "Type",
+            "confirmWord": "CONFIRM",
+            "inputLabelSuffix": "to delete your account",
+            "inputPlaceholder": "Type CONFIRM here",
+            "cancel": "Cancel",
+            "delete": "Delete Account",
+            "deleting": "Deleting...",
+            "success": "Account deleted successfully",
+            "errorGeneric": "An error occurred. Please try again.",
+            "errorMatch": "Please type CONFIRM to proceed"
+        }
+    },
+    "business": {
+        "name": "Business Name",
+        "address": "Address",
+        "phone": "Phone",
+        "currency": "Currency",
+        "language": "Language",
+        "region": "Region",
+        "create": "Create Business",
+        "edit": "Edit Business",
+        "delete": "Delete Business",
+        "select": "Select Business",
+        "noBusiness": "No businesses found",
+        "createFirst": "Create your first business to get started"
+    },
+    "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email address",
+        "minLength": "Must be at least {min} characters",
+        "maxLength": "Must be at most {max} characters",
+        "passwordMatch": "Passwords do not match",
+        "invalidFormat": "Invalid format"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last updated: December 8, 2025",
+        "contactUs": "Contact Us"
+    },
+    "terms": {
+        "title": "Terms of Service",
+        "lastUpdated": "Last updated: December 8, 2025",
+        "contactUs": "Contact Us"
+    },
+    "app": {
+        "sale": {
+            "title": "Sale",
+            "searchItems": "Search items...",
+            "allCategories": "All Categories",
+            "checkout": "Checkout",
+            "total": "Total",
+            "items": "Items",
+            "noItems": "No items found",
+            "addToCart": "Add to Cart",
+            "removeFromCart": "Remove",
+            "error": "Error",
+            "retry": "Retry",
+            "loading": "Loading...",
+            "selectBusiness": "Please select a business from the sidebar",
+            "cartEmpty": "Your cart is empty",
+            "backToItems": "Back to Items",
+            "reviewOrder": "Review your order and complete the transaction",
+            "orderSummary": "Order Summary",
+            "item": "Item",
+            "quantity": "Quantity",
+            "price": "Price",
+            "tax": "Tax",
+            "discount": "Discount",
+            "subtotal": "Subtotal",
+            "paymentSummary": "Payment Summary",
+            "processing": "Processing...",
+            "completeTransaction": "Complete Transaction",
+            "transactionDetails": "Transaction Details",
+            "customer": "Customer",
+            "selectCustomer": "Select customer",
+            "guestCustomer": "Guest Customer",
+            "paymentMethod": "Payment Method",
+            "paymentMethodsLoadError": "Failed to load payment methods",
+            "created": "Created",
+            "selectPaymentMethod": "Select payment method",
+            "cash": "Cash",
+            "notes": "Notes",
+            "addNotes": "Add notes (optional)",
+            "outOfStock": "Out of stock",
+            "noItemsAvailable": "No items available",
+            "addItemsToInventory": "Add items to your inventory to start creating transactions"
+        },
+        "items": {
+            "title": "Items",
+            "addItem": "Add Item",
+            "editItem": "Edit Item",
+            "deleteItem": "Delete Item",
+            "name": "Name",
+            "price": "Price",
+            "sku": "SKU",
+            "category": "Category",
+            "description": "Description",
+            "noItems": "No items found",
+            "loading": "Loading items...",
+            "error": "Error loading items",
+            "actions": "Actions",
+            "business": "Business",
+            "unknownBusiness": "Unknown Business",
+            "addFirstItem": "Add Your First Item",
+            "image": "Image",
+            "status": "Status",
+            "created": "Created",
+            "active": "Active",
+            "inactive": "Inactive",
+            "createTitle": "Create New Item",
+            "createDescription": "Add a new product or service to your inventory",
+            "editTitle": "Edit Item",
+            "editDescription": "Update item information",
+            "taxOptional": "Tax (Optional)",
+            "noTax": "No tax",
+            "discountOptional": "Discount (Optional)",
+            "noDiscount": "No discount",
+            "categoriesOptional": "Categories (Optional)",
+            "noCategoriesAvailable": "No categories available. Create categories first.",
+            "skuOptional": "SKU (Optional)",
+            "descriptionOptional": "Description (Optional)",
+            "itemImageOptional": "Item Image (Optional)",
+            "supportedFormats": "Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB",
+            "uploading": "Uploading image...",
+            "update": "Update Item",
+            "create": "Create Item",
+            "deleteTitle": "Are you sure?",
+            "deleteDescription": "This will permanently delete {name} (SKU: {sku}). This action cannot be undone.",
+            "deleting": "Deleting...",
+            "errorCreating": "An error occurred while creating item",
+            "errorUpdating": "An error occurred while updating item",
+            "errorDeleting": "An error occurred while deleting item",
+            "uploadError": "Failed to upload image",
+            "deleteError": "Failed to delete item",
+            "selectImageError": "Please select an image file",
+            "imageSizeError": "Image size must be less than 1MB",
+            "loadingError": "An error occurred while loading data",
+            "itemsLoadError": "Failed to load items"
+        },
+        "customers": {
+            "title": "Customers",
+            "addCustomer": "Add Customer",
+            "editCustomer": "Edit Customer",
+            "deleteCustomer": "Delete Customer",
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone",
+            "address": "Address",
+            "noCustomers": "No customers found",
+            "loading": "Loading customers...",
+            "error": "Error loading customers",
+            "actions": "Actions",
+            "addFirstCustomer": "Add Your First Customer"
+        },
+        "transactions": {
+            "title": "Transactions",
+            "viewDetails": "View Details",
+            "date": "Date",
+            "customer": "Customer",
+            "total": "Total",
+            "totalAmount": "Total Amount",
+            "finalAmount": "Final Amount",
+            "discountAmount": "Discount Amount",
+            "taxAmount": "Tax Amount",
+            "paymentMethod": "Payment Method",
+            "noTransactions": "No transactions found",
+            "actions": "Actions",
+            "loading": "Loading transactions...",
+            "error": "Error loading transactions",
+            "guestCustomer": "Guest",
+            "transactionDetails": "Transaction Details",
+            "viewInfo": "View complete transaction information",
+            "items": "Items",
+            "noItems": "No items found",
+            "item": "Item",
+            "quantity": "Quantity",
+            "basePrice": "Base Price",
+            "tax": "Tax",
+            "discount": "Discount",
+            "notes": "Notes",
+            "transactionId": "Transaction ID",
+            "downloadPDF": "Download PDF",
+            "downloadImage": "Download Image",
+            "sendEmail": "Send to Email",
+            "sendWhatsApp": "Send to WhatsApp"
+        },
+        "settings": {
+            "title": "Settings",
+            "profile": "Profile",
+            "business": "Business",
+            "receipt": "Receipt Settings",
+            "preferences": "Preferences",
+            "account": "Account",
+            "printer": "Printer",
+            "profileTab": {
+                "name": "Name",
+                "email": "Email",
+                "currentPassword": "Current Password",
+                "newPassword": "New Password",
+                "confirmPassword": "Confirm Password",
+                "changePassword": "Change Password",
+                "updateProfile": "Update Profile",
+                "deleteAccount": "Delete Account"
+            },
+            "receiptTab": {
+                "options": "Receipt Options",
+                "includeLogo": "Include Business Logo",
+                "footerMessage": "Footer Message",
+                "footerPlaceholder": "Thank you for your business!",
+                "qrCode": "QR Code Data",
+                "qrPlaceholder": "Enter QR code value (e.g., Social Media)",
+                "prefix": "Transaction Prefix",
+                "prefixHelp": "Prefix for transaction numbers (e.g., INV, RCP)",
+                "nextNumber": "Next Transaction Number",
+                "nextNumberHelp": "The next transaction number to use",
+                "template": "Receipt Template",
+                "selectBusiness": "Please select a business to configure receipt settings"
+            },
+            "printerTab": {
+                "selectPrinter": "Select Printer",
+                "testPrint": "Test Print",
+                "printerSettings": "Printer Settings"
+            },
+            "preferencesTab": {
+                "language": "Language",
+                "currency": "Currency",
+                "region": "Region",
+                "timezone": "Timezone"
+            }
+        },
+        "categories": {
+            "title": "Categories",
+            "addCategory": "Add Category",
+            "editCategory": "Edit Category",
+            "deleteCategory": "Delete Category",
+            "name": "Name",
+            "noCategories": "No categories found",
+            "loading": "Loading categories...",
+            "error": "Error loading categories",
+            "actions": "Actions",
+            "addFirstCategory": "Add Your First Category",
+            "created": "Created",
+            "createTitle": "Create New Category",
+            "createDescription": "Add a new category to organize your items",
+            "editTitle": "Edit Category",
+            "editDescription": "Update category information",
+            "categoryName": "Category Name",
+            "placeholder": "Electronics, Food, Services, etc.",
+            "deleteTitle": "Are you sure?",
+            "deleteDescription": "This will permanently delete the category {name}. This action cannot be undone.",
+            "deleting": "Deleting...",
+            "errorCreating": "An error occurred while creating category",
+            "errorUpdating": "An error occurred while updating category",
+            "errorDeleting": "An error occurred while deleting category",
+            "deleteError": "Failed to delete category",
+            "loadingError": "An error occurred while loading data",
+            "categoriesLoadError": "Failed to load categories"
+        },
+        "paymentMethods": {
+            "title": "Payment Methods",
+            "addMethod": "Add Payment Method",
+            "editMethod": "Edit Payment Method",
+            "deleteMethod": "Delete Payment Method",
+            "name": "Name",
+            "noMethods": "No payment methods found",
+            "loading": "Loading payment methods...",
+            "error": "Error loading payment methods",
+            "actions": "Actions",
+            "addFirstMethod": "Add Your First Payment Method",
+            "createTitle": "Add Payment Method",
+            "createDescription": "Add a new payment method to accept payments",
+            "editTitle": "Edit Payment Method",
+            "editDescription": "Update payment method details",
+            "deleteTitle": "Are you sure?",
+            "deleteDescription": "This will permanently delete {name}. This action cannot be undone.",
+            "deleting": "Deleting...",
+            "errorCreating": "Error creating payment method",
+            "errorUpdating": "Error updating payment method",
+            "errorDeleting": "Error deleting payment method",
+            "deleteError": "Failed to delete payment method"
+        },
+        "itemTaxes": {
+            "title": "Item Taxes",
+            "addTax": "Add Tax",
+            "editTax": "Edit Tax",
+            "deleteTax": "Delete Tax",
+            "name": "Name",
+            "rate": "Rate",
+            "noTaxes": "No taxes found",
+            "loading": "Loading taxes...",
+            "error": "Error loading taxes",
+            "actions": "Actions",
+            "createTitle": "Add Tax",
+            "createDescription": "Add a new tax rate",
+            "editTitle": "Edit Tax",
+            "editDescription": "Update tax rate details",
+            "deleteTitle": "Are you sure?",
+            "deleteDescription": "This will permanently delete {name}. This action cannot be undone.",
+            "deleting": "Deleting...",
+            "errorCreating": "Error creating tax",
+            "errorUpdating": "Error updating tax",
+            "errorDeleting": "Error deleting tax",
+            "deleteError": "Failed to delete tax"
+        },
+        "itemDiscounts": {
+            "title": "Item Discounts",
+            "addDiscount": "Add Discount",
+            "editDiscount": "Edit Discount",
+            "deleteDiscount": "Delete Discount",
+            "name": "Name",
+            "type": "Type",
+            "value": "Value",
+            "noDiscounts": "No discounts found",
+            "loading": "Loading discounts...",
+            "error": "Error loading discounts",
+            "actions": "Actions",
+            "createTitle": "Add Discount",
+            "createDescription": "Add a new discount",
+            "editTitle": "Edit Discount",
+            "editDescription": "Update discount details",
+            "deleteTitle": "Are you sure?",
+            "deleteDescription": "This will permanently delete {name}. This action cannot be undone.",
+            "deleting": "Deleting...",
+            "errorCreating": "Error creating discount",
+            "errorUpdating": "Error updating discount",
+            "errorDeleting": "Error deleting discount",
+            "deleteError": "Failed to delete discount"
+        },
+        "sidebar": {
+            "sale": "Sale",
+            "transactions": "Transactions",
+            "items": "Items",
+            "categories": "Categories",
+            "customers": "Customers",
+            "paymentMethods": "Payment Methods",
+            "itemTaxes": "Item Taxes",
+            "itemDiscounts": "Item Discounts",
+            "settings": "Settings",
+            "businessSelector": {
+                "switchBusiness": "Switch Business",
+                "addBusiness": "Add Business",
+                "edit": "Edit",
+                "delete": "Delete"
+            },
+            "userProfile": {
+                "myAccount": "My Account",
+                "logout": "Log out",
+                "dialog": {
+                    "title": "Confirm Logout",
+                    "description": "Are you sure you want to logout? You will need to sign in again to access your account.",
+                    "cancel": "Cancel",
+                    "confirm": "Logout"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Create New Business",
+                "editTitle": "Edit Business",
+                "createDescription": "Add a new business location to your account",
+                "editDescription": "Update business information",
+                "nameLabel": "Business Name",
+                "namePlaceholder": "Business name",
+                "addressLabel": "Address (Optional)",
+                "addressPlaceholder": "123 Main St, City, Country",
+                "phoneLabel": "Phone Number (Optional)",
+                "phonePlaceholder": "+1234567890",
+                "currencyLabel": "Currency (Optional)",
+                "currencyPlaceholder": "Select currency",
+                "languageLabel": "Language (Optional)",
+                "languagePlaceholder": "Select language",
+                "regionLabel": "Region (Optional)",
+                "regionPlaceholder": "Select region",
+                "logoLabel": "Business Logo (Optional)",
+                "logoHelp": "Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB",
+                "uploading": "Uploading logo...",
+                "cancel": "Cancel",
+                "create": "Create",
+                "update": "Update",
+                "errorGeneric": "An error occurred while saving business",
+                "errorCreate": "Failed to create business",
+                "errorUpdate": "Failed to update business",
+                "errorImageSize": "Image size must be less than 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Delete Business",
+                "description": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
+                "cancel": "Cancel",
+                "delete": "Delete"
+            }
+        }
+    }
+}

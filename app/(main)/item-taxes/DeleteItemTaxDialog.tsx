@@ -11,6 +11,7 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import type { ItemTax } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeleteItemTaxDialogProps {
     open: boolean;
@@ -20,25 +21,25 @@ interface DeleteItemTaxDialogProps {
 }
 
 export function DeleteItemTaxDialog({
-                                        open,
-                                        onOpenChange,
-                                        tax,
-                                        onConfirm,
-                                    }: DeleteItemTaxDialogProps) {
+    open,
+    onOpenChange,
+    tax,
+    onConfirm,
+}: DeleteItemTaxDialogProps) {
+    const { t } = useTranslation();
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('app.itemTaxes.deleteTitle')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete the tax &quot;{tax?.name}&quot;.
-                        This action cannot be undone.
+                        {t('app.itemTaxes.deleteDescription', { name: tax?.name || '' })}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
                     <AlertDialogAction onClick={onConfirm}>
-                        Delete
+                        {t('common.delete')}
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>

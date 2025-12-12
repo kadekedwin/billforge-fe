@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import {
     Card,
     CardContent,
@@ -22,6 +23,7 @@ import { CheckCircle2 } from "lucide-react";
 function ResetPasswordForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const { t } = useTranslation();
     const [isLoading, setIsLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -62,13 +64,13 @@ function ResetPasswordForm() {
         setFieldErrors({});
 
         if (formData.password !== formData.password_confirmation) {
-            setFieldErrors({ password_confirmation: "Passwords do not match" });
+            setFieldErrors({ password_confirmation: t("auth.resetPassword.errorMatch") });
             setIsLoading(false);
             return;
         }
 
         if (formData.password.length < 8) {
-            setFieldErrors({ password: "Password must be at least 8 characters" });
+            setFieldErrors({ password: t("auth.resetPassword.errorLength") });
             setIsLoading(false);
             return;
         }
@@ -91,7 +93,7 @@ function ResetPasswordForm() {
                     setError(err.message);
                 }
             } else {
-                setError("An unexpected error occurred. Please try again.");
+                setError(t("auth.resetPassword.errorGeneric"));
             }
         } finally {
             setIsLoading(false);
@@ -112,139 +114,133 @@ function ResetPasswordForm() {
 
     if (success) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
-                <Card className="w-full max-w-md">
-                    <CardHeader className="space-y-1">
-                        <div className="flex justify-center mb-4">
-                            <CheckCircle2 className="h-12 w-12 text-green-500" />
-                        </div>
-                        <CardTitle className="text-2xl font-bold tracking-tight text-center">
-                            Password Reset Successful!
-                        </CardTitle>
-                        <CardDescription className="text-center">
-                            Your password has been successfully reset.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                        <p className="text-sm text-muted-foreground text-center">
-                            Redirecting you to the login page...
-                        </p>
-                    </CardContent>
-                    <CardFooter className="flex justify-center">
-                        <Link href="/login">
-                            <Button>Go to Login</Button>
-                        </Link>
-                    </CardFooter>
-                </Card>
-            </div>
+            <Card className="w-full max-w-md">
+                <CardHeader className="space-y-1">
+                    <div className="flex justify-center mb-4">
+                        <CheckCircle2 className="h-12 w-12 text-green-500" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold tracking-tight text-center">
+                        {t("auth.resetPassword.successTitle")}
+                    </CardTitle>
+                    <CardDescription className="text-center">
+                        {t("auth.resetPassword.successDescription")}
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <p className="text-sm text-muted-foreground text-center">
+                        {t("auth.resetPassword.redirecting")}
+                    </p>
+                </CardContent>
+                <CardFooter className="flex justify-center">
+                    <Link href="/login">
+                        <Button>{t("auth.resetPassword.goToLogin")}</Button>
+                    </Link>
+                </CardFooter>
+            </Card>
         );
     }
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
-            <Card className="w-full max-w-md">
-                <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl font-bold tracking-tight">
-                        Reset your password
-                    </CardTitle>
-                    <CardDescription>
-                        Enter your email and choose a new password
-                    </CardDescription>
-                </CardHeader>
-                <form onSubmit={handleSubmit}>
-                    <CardContent className="space-y-4">
-                        {error && (
-                            <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-                                {error}
-                            </div>
-                        )}
-
-                        <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="name@example.com"
-                                value={formData.email}
-                                onChange={handleChange}
-                                disabled={isLoading}
-                                required
-                                className={fieldErrors.email ? "border-destructive" : ""}
-                            />
-                            {fieldErrors.email && (
-                                <p className="text-sm text-destructive">{fieldErrors.email}</p>
-                            )}
+        <Card className="w-full max-w-md">
+            <CardHeader className="space-y-1">
+                <CardTitle className="text-2xl font-bold tracking-tight">
+                    {t("auth.resetPassword.title")}
+                </CardTitle>
+                <CardDescription>
+                    {t("auth.resetPassword.description")}
+                </CardDescription>
+            </CardHeader>
+            <form onSubmit={handleSubmit}>
+                <CardContent className="space-y-4">
+                    {error && (
+                        <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                            {error}
                         </div>
+                    )}
 
-                        <div className="space-y-2">
-                            <Label htmlFor="password">New Password</Label>
-                            <Input
-                                id="password"
-                                name="password"
-                                type="password"
-                                placeholder="••••••••"
-                                value={formData.password}
-                                onChange={handleChange}
-                                disabled={isLoading}
-                                required
-                                minLength={8}
-                                className={fieldErrors.password ? "border-destructive" : ""}
-                            />
-                            {fieldErrors.password && (
-                                <p className="text-sm text-destructive">{fieldErrors.password}</p>
-                            )}
-                            <p className="text-xs text-muted-foreground">
-                                Must be at least 8 characters
-                            </p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="password_confirmation">Confirm Password</Label>
-                            <Input
-                                id="password_confirmation"
-                                name="password_confirmation"
-                                type="password"
-                                placeholder="••••••••"
-                                value={formData.password_confirmation}
-                                onChange={handleChange}
-                                disabled={isLoading}
-                                required
-                                className={fieldErrors.password_confirmation ? "border-destructive" : ""}
-                            />
-                            {fieldErrors.password_confirmation && (
-                                <p className="text-sm text-destructive">
-                                    {fieldErrors.password_confirmation}
-                                </p>
-                            )}
-                        </div>
-                    </CardContent>
-                    <CardFooter className="flex flex-col space-y-4 mt-4">
-                        <Button
-                            type="submit"
-                            className="w-full"
+                    <div className="space-y-2">
+                        <Label htmlFor="email">{t("auth.resetPassword.emailLabel")}</Label>
+                        <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder={t("auth.resetPassword.emailPlaceholder")}
+                            value={formData.email}
+                            onChange={handleChange}
                             disabled={isLoading}
-                        >
-                            {isLoading ? "Resetting password..." : "Reset password"}
+                            required
+                            className={fieldErrors.email ? "border-destructive" : ""}
+                        />
+                        {fieldErrors.email && (
+                            <p className="text-sm text-destructive">{fieldErrors.email}</p>
+                        )}
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="password">{t("auth.resetPassword.newPasswordLabel")}</Label>
+                        <Input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder={t("auth.resetPassword.newPasswordPlaceholder")}
+                            value={formData.password}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                            required
+                            minLength={8}
+                            className={fieldErrors.password ? "border-destructive" : ""}
+                        />
+                        {fieldErrors.password && (
+                            <p className="text-sm text-destructive">{fieldErrors.password}</p>
+                        )}
+                        <p className="text-xs text-muted-foreground">
+                            {t("auth.resetPassword.passwordHint")}
+                        </p>
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="password_confirmation">{t("auth.resetPassword.confirmPasswordLabel")}</Label>
+                        <Input
+                            id="password_confirmation"
+                            name="password_confirmation"
+                            type="password"
+                            placeholder={t("auth.resetPassword.confirmPasswordPlaceholder")}
+                            value={formData.password_confirmation}
+                            onChange={handleChange}
+                            disabled={isLoading}
+                            required
+                            className={fieldErrors.password_confirmation ? "border-destructive" : ""}
+                        />
+                        {fieldErrors.password_confirmation && (
+                            <p className="text-sm text-destructive">
+                                {fieldErrors.password_confirmation}
+                            </p>
+                        )}
+                    </div>
+                </CardContent>
+                <CardFooter className="flex flex-col space-y-4 mt-4">
+                    <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? t("auth.resetPassword.submitting") : t("auth.resetPassword.submit")}
+                    </Button>
+                    <Link href="/login" className="w-full">
+                        <Button variant="ghost" className="w-full">
+                            {t("auth.resetPassword.backToLogin")}
                         </Button>
-                        <Link href="/login" className="w-full">
-                            <Button variant="ghost" className="w-full">
-                                Back to login
-                            </Button>
-                        </Link>
-                    </CardFooter>
-                </form>
-            </Card>
-        </div>
+                    </Link>
+                </CardFooter>
+            </form>
+        </Card>
     );
 }
 
 export default function ResetPasswordPage() {
     return (
         <Suspense fallback={
-            <div className="flex min-h-screen items-center justify-center">
-                <div className="text-muted-foreground">Loading...</div>
-            </div>
+            <div className="text-muted-foreground">Loading...</div>
         }>
             <ResetPasswordForm />
         </Suspense>

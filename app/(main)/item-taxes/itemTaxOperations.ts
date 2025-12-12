@@ -8,9 +8,10 @@ interface CreateItemTaxParams {
 }
 
 export async function handleCreateItemTax({
-                                              formData,
-                                              businessUuid,
-                                          }: CreateItemTaxParams): Promise<{ success: boolean; tax?: ItemTax; error?: string; errors?: Record<string, string> }> {
+    formData,
+    businessUuid,
+    t,
+}: CreateItemTaxParams & { t: (key: string) => string }): Promise<{ success: boolean; tax?: ItemTax; error?: string; errors?: Record<string, string> }> {
     try {
         const response = await createItemTax({
             ...formData,
@@ -29,7 +30,7 @@ export async function handleCreateItemTax({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while creating tax" };
+        return { success: false, error: t('app.itemTaxes.errorCreating') };
     }
 }
 
@@ -40,10 +41,11 @@ interface UpdateItemTaxParams {
 }
 
 export async function handleUpdateItemTax({
-                                              tax,
-                                              formData,
-                                              businessUuid,
-                                          }: UpdateItemTaxParams): Promise<{ success: boolean; tax?: ItemTax; error?: string; errors?: Record<string, string> }> {
+    tax,
+    formData,
+    businessUuid,
+    t,
+}: UpdateItemTaxParams & { t: (key: string) => string }): Promise<{ success: boolean; tax?: ItemTax; error?: string; errors?: Record<string, string> }> {
     try {
         const updateData: UpdateItemTaxRequest = {
             business_uuid: businessUuid,
@@ -66,11 +68,11 @@ export async function handleUpdateItemTax({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while updating tax" };
+        return { success: false, error: t('app.itemTaxes.errorUpdating') };
     }
 }
 
-export async function handleDeleteItemTax(tax: ItemTax): Promise<{ success: boolean; error?: string }> {
+export async function handleDeleteItemTax(tax: ItemTax, t: (key: string) => string): Promise<{ success: boolean; error?: string }> {
     try {
         await deleteItemTax(tax.uuid);
 
@@ -79,6 +81,6 @@ export async function handleDeleteItemTax(tax: ItemTax): Promise<{ success: bool
         if (err instanceof ApiError) {
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while deleting tax" };
+        return { success: false, error: t('app.itemTaxes.errorDeleting') };
     }
 }

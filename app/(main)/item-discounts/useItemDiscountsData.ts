@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getItemDiscounts } from "@/lib/api/item-discounts";
 import type { ItemDiscount, Business } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseItemDiscountsDataResult {
     discounts: ItemDiscount[];
@@ -14,6 +15,7 @@ interface UseItemDiscountsDataResult {
 }
 
 export function useItemDiscountsData(selectedBusiness: Business | null): UseItemDiscountsDataResult {
+    const { t } = useTranslation();
     const [discounts, setDiscounts] = useState<ItemDiscount[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -36,10 +38,10 @@ export function useItemDiscountsData(selectedBusiness: Business | null): UseItem
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load discounts");
+                setError(errorData.message || t('app.itemDiscounts.discountsLoadError'));
             }
         } catch (err) {
-            setError("An error occurred while loading data");
+            setError(t('app.itemDiscounts.loadingError'));
             console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);

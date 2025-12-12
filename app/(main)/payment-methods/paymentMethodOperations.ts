@@ -5,12 +5,14 @@ import type { PaymentMethod, CreatePaymentMethodRequest, UpdatePaymentMethodRequ
 interface CreatePaymentMethodParams {
     formData: Omit<CreatePaymentMethodRequest, 'business_uuid'>;
     businessUuid: string;
+    t: (key: string) => string;
 }
 
 export async function handleCreatePaymentMethod({
-                                                    formData,
-                                                    businessUuid,
-                                                }: CreatePaymentMethodParams): Promise<{ success: boolean; paymentMethod?: PaymentMethod; error?: string; errors?: Record<string, string> }> {
+    formData,
+    businessUuid,
+    t,
+}: CreatePaymentMethodParams): Promise<{ success: boolean; paymentMethod?: PaymentMethod; error?: string; errors?: Record<string, string> }> {
     try {
         const response = await createPaymentMethod({
             ...formData,
@@ -29,7 +31,7 @@ export async function handleCreatePaymentMethod({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while creating payment method" };
+        return { success: false, error: t('app.paymentMethods.errorCreating') };
     }
 }
 
@@ -37,13 +39,15 @@ interface UpdatePaymentMethodParams {
     paymentMethod: PaymentMethod;
     formData: Omit<CreatePaymentMethodRequest, 'business_uuid'>;
     businessUuid: string;
+    t: (key: string) => string;
 }
 
 export async function handleUpdatePaymentMethod({
-                                                    paymentMethod,
-                                                    formData,
-                                                    businessUuid,
-                                                }: UpdatePaymentMethodParams): Promise<{ success: boolean; paymentMethod?: PaymentMethod; error?: string; errors?: Record<string, string> }> {
+    paymentMethod,
+    formData,
+    businessUuid,
+    t,
+}: UpdatePaymentMethodParams): Promise<{ success: boolean; paymentMethod?: PaymentMethod; error?: string; errors?: Record<string, string> }> {
     try {
         const updateData: UpdatePaymentMethodRequest = {
             business_uuid: businessUuid,
@@ -64,11 +68,11 @@ export async function handleUpdatePaymentMethod({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while updating payment method" };
+        return { success: false, error: t('app.paymentMethods.errorUpdating') };
     }
 }
 
-export async function handleDeletePaymentMethod(paymentMethod: PaymentMethod): Promise<{ success: boolean; error?: string }> {
+export async function handleDeletePaymentMethod(paymentMethod: PaymentMethod, t: (key: string) => string): Promise<{ success: boolean; error?: string }> {
     try {
         await deletePaymentMethod(paymentMethod.uuid);
 
@@ -77,6 +81,6 @@ export async function handleDeletePaymentMethod(paymentMethod: PaymentMethod): P
         if (err instanceof ApiError) {
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while deleting payment method" };
+        return { success: false, error: t('app.paymentMethods.errorDeleting') };
     }
 }

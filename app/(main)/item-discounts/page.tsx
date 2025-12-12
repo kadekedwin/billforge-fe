@@ -13,8 +13,10 @@ import { DeleteItemDiscountDialog } from "./DeleteItemDiscountDialog";
 import { useItemDiscountsData } from "./useItemDiscountsData";
 import { useItemDiscountForm } from "./useItemDiscountForm";
 import { handleCreateItemDiscount, handleUpdateItemDiscount, handleDeleteItemDiscount } from "./itemDiscountOperations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function ItemDiscountsPage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { discounts, isLoading, error, setDiscounts, setError } = useItemDiscountsData(selectedBusiness);
     const {
@@ -46,10 +48,12 @@ export default function ItemDiscountsPage() {
                 discount: editingDiscount,
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             })
             : await handleCreateItemDiscount({
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             });
 
         if (result.success && result.discount) {
@@ -87,14 +91,14 @@ export default function ItemDiscountsPage() {
         setDeletingId(discountToDelete.id);
         setError(null);
 
-        const result = await handleDeleteItemDiscount(discountToDelete);
+        const result = await handleDeleteItemDiscount(discountToDelete, t);
 
         if (result.success) {
             setDiscounts((prev) => prev.filter((discount) => discount.uuid !== discountToDelete.uuid));
             setIsDeleteDialogOpen(false);
             setDiscountToDelete(null);
         } else {
-            setError(result.error || "Failed to delete discount");
+            setError(result.error || t('app.itemDiscounts.deleteError'));
         }
 
         setDeletingId(null);
@@ -119,7 +123,7 @@ export default function ItemDiscountsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Item Discounts</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.itemDiscounts.title')}</h1>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
@@ -132,7 +136,7 @@ export default function ItemDiscountsPage() {
                             }}
                         >
                             <Plus className="mr-2 h-4 w-4" />
-                            Add Discount
+                            {t('app.itemDiscounts.addDiscount')}
                         </Button>
                     </DialogTrigger>
                     <ItemDiscountFormDialog

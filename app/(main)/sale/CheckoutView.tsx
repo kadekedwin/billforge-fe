@@ -7,6 +7,7 @@ import { CheckoutOrderSummary } from "./CheckoutOrderSummary";
 import { CheckoutTransactionDetails } from "./CheckoutTransactionDetails";
 import { CheckoutPaymentSummary } from "./CheckoutPaymentSummary";
 import { calculateCartSummary } from "./cartUtils";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CheckoutViewProps {
     cart: Map<string, number>;
@@ -28,23 +29,24 @@ interface CheckoutViewProps {
 }
 
 export function CheckoutView({
-                                 cart,
-                                 items,
-                                 customers,
-                                 paymentMethods,
-                                 taxes,
-                                 discounts,
-                                 selectedCustomer,
-                                 selectedPaymentMethod,
-                                 notes,
-                                 isSubmitting,
-                                 error,
-                                 onBack,
-                                 onCustomerChange,
-                                 onPaymentMethodChange,
-                                 onNotesChange,
-                                 onComplete,
-                             }: CheckoutViewProps) {
+    cart,
+    items,
+    customers,
+    paymentMethods,
+    taxes,
+    discounts,
+    selectedCustomer,
+    selectedPaymentMethod,
+    notes,
+    isSubmitting,
+    error,
+    onBack,
+    onCustomerChange,
+    onPaymentMethodChange,
+    onNotesChange,
+    onComplete,
+}: CheckoutViewProps) {
+    const { t } = useTranslation();
     const summary = calculateCartSummary(cart, items, taxes, discounts);
 
     return (
@@ -56,11 +58,11 @@ export function CheckoutView({
                     className="mb-4"
                 >
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Items
+                    {t('app.sale.backToItems')}
                 </Button>
-                <h1 className="text-3xl font-bold">Checkout</h1>
+                <h1 className="text-3xl font-bold">{t('app.sale.checkout')}</h1>
                 <p className="text-muted-foreground">
-                    Review your order and complete the transaction
+                    {t('app.sale.reviewOrder')}
                 </p>
             </div>
 

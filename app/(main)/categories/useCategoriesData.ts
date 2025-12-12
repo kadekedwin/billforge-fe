@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getCategories } from "@/lib/api/categories";
 import type { Category, Business } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseCategoriesDataResult {
     categories: Category[];
@@ -14,6 +15,7 @@ interface UseCategoriesDataResult {
 }
 
 export function useCategoriesData(selectedBusiness: Business | null): UseCategoriesDataResult {
+    const { t } = useTranslation();
     const [categories, setCategories] = useState<Category[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -33,10 +35,10 @@ export function useCategoriesData(selectedBusiness: Business | null): UseCategor
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load categories");
+                setError(errorData.message || t('app.categories.categoriesLoadError'));
             }
         } catch (err) {
-            setError("An error occurred while loading data");
+            setError(t('app.categories.loadingError'));
             console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);

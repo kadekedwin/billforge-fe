@@ -17,8 +17,10 @@ import {
     handleUpdatePaymentMethod,
     handleDeletePaymentMethod,
 } from "./paymentMethodOperations";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function PaymentMethodsPage() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const { paymentMethods, isLoading, error, setPaymentMethods, setError } = usePaymentMethodsData(selectedBusiness);
     const {
@@ -50,10 +52,12 @@ export default function PaymentMethodsPage() {
                 paymentMethod: editingPaymentMethod,
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             })
             : await handleCreatePaymentMethod({
                 formData,
                 businessUuid: selectedBusiness.uuid,
+                t,
             });
 
         if (result.success && result.paymentMethod) {
@@ -91,14 +95,14 @@ export default function PaymentMethodsPage() {
         setDeletingId(paymentMethodToDelete.id);
         setError(null);
 
-        const result = await handleDeletePaymentMethod(paymentMethodToDelete);
+        const result = await handleDeletePaymentMethod(paymentMethodToDelete, t);
 
         if (result.success) {
             setPaymentMethods((prev) => prev.filter((pm) => pm.uuid !== paymentMethodToDelete.uuid));
             setIsDeleteDialogOpen(false);
             setPaymentMethodToDelete(null);
         } else {
-            setError(result.error || "Failed to delete payment method");
+            setError(result.error || t('app.paymentMethods.deleteError'));
         }
 
         setDeletingId(null);
@@ -124,7 +128,7 @@ export default function PaymentMethodsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Payment Methods</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">{t('app.paymentMethods.title')}</h1>
                 </div>
                 <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
                     <DialogTrigger asChild>
@@ -137,7 +141,7 @@ export default function PaymentMethodsPage() {
                             }}
                         >
                             <Plus className="mr-2 h-4 w-4" />
-                            Add Payment Method
+                            {t('app.paymentMethods.addMethod')}
                         </Button>
                     </DialogTrigger>
                     <PaymentMethodFormDialog

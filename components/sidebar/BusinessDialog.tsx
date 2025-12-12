@@ -20,6 +20,7 @@ import { CURRENCIES, LANGUAGES, REGIONS } from "@/lib/data/locale-data";
 import { createBusiness, updateBusiness } from "@/lib/api/businesses";
 import { uploadImage, deleteImage, getImageUrl } from "@/lib/images/operations";
 import { getFileSizeBytes } from "@/lib/images/utils";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface BusinessDialogProps {
     open: boolean;
@@ -34,6 +35,7 @@ export function BusinessDialog({
     editingBusiness,
     onSuccess,
 }: BusinessDialogProps) {
+    const { t } = useTranslation();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<CreateBusinessRequest>({
@@ -120,7 +122,7 @@ export function BusinessDialog({
         const file = e.target.files?.[0];
         if (file) {
             if (file.size > 1048576) {
-                setError('Image size must be less than 1MB');
+                setError(t('sidebar.businessDialog.errors.imageSize'));
                 e.target.value = '';
                 return;
             }
@@ -213,7 +215,7 @@ export function BusinessDialog({
                     } else if (errorData.message) {
                         setError(errorData.message);
                     } else {
-                        setError("Failed to update business");
+                        setError(t('sidebar.businessDialog.errors.updateFailed'));
                     }
                 }
             } else {
@@ -261,12 +263,12 @@ export function BusinessDialog({
                     } else if (errorData.message) {
                         setError(errorData.message);
                     } else {
-                        setError("Failed to create business");
+                        setError(t('sidebar.businessDialog.errors.createFailed'));
                     }
                 }
             }
         } catch (err) {
-            setError(editingBusiness ? "An error occurred while updating business" : "An error occurred while creating business");
+            setError(editingBusiness ? t('sidebar.businessDialog.errors.updateError') : t('sidebar.businessDialog.errors.createError'));
             console.error("Error saving business:", err);
         } finally {
             setIsSubmitting(false);
@@ -278,9 +280,9 @@ export function BusinessDialog({
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                 <form onSubmit={handleSubmit}>
                     <DialogHeader>
-                        <DialogTitle>{editingBusiness ? "Edit Business" : "Create New Business"}</DialogTitle>
+                        <DialogTitle>{editingBusiness ? t('sidebar.businessDialog.edit') : t('sidebar.businessDialog.create')}</DialogTitle>
                         <DialogDescription>
-                            {editingBusiness ? "Update business information" : "Add a new business location to your account"}
+                            {editingBusiness ? t('sidebar.businessDialog.description.edit') : t('sidebar.businessDialog.description.create')}
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
@@ -290,11 +292,11 @@ export function BusinessDialog({
                             </div>
                         )}
                         <div className="space-y-2">
-                            <Label htmlFor="name">Business Name</Label>
+                            <Label htmlFor="name">{t('sidebar.businessDialog.form.name.label')}</Label>
                             <Input
                                 id="name"
                                 name="name"
-                                placeholder="Business name"
+                                placeholder={t('sidebar.businessDialog.form.name.placeholder')}
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
@@ -306,11 +308,11 @@ export function BusinessDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="address">Address (Optional)</Label>
+                            <Label htmlFor="address">{t('sidebar.businessDialog.form.address.label')}</Label>
                             <Input
                                 id="address"
                                 name="address"
-                                placeholder="123 Main St, City, Country"
+                                placeholder={t('sidebar.businessDialog.form.address.placeholder')}
                                 value={formData.address || ""}
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
@@ -321,11 +323,11 @@ export function BusinessDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="phone">Phone Number (Optional)</Label>
+                            <Label htmlFor="phone">{t('sidebar.businessDialog.form.phone.label')}</Label>
                             <Input
                                 id="phone"
                                 name="phone"
-                                placeholder="+1234567890"
+                                placeholder={t('sidebar.businessDialog.form.phone.placeholder')}
                                 value={formData.phone || ""}
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
@@ -336,14 +338,14 @@ export function BusinessDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="currency">Currency (Optional)</Label>
+                            <Label htmlFor="currency">{t('sidebar.businessDialog.form.currency.label')}</Label>
                             <Select
                                 value={formData.currency || ''}
                                 onValueChange={(value) => handleSelectChange('currency', value)}
                                 disabled={isSubmitting}
                             >
                                 <SelectTrigger className={formErrors.currency ? 'border-destructive' : ''}>
-                                    <SelectValue placeholder="Select currency" />
+                                    <SelectValue placeholder={t('sidebar.businessDialog.form.currency.placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {CURRENCIES.map((currency) => (
@@ -358,14 +360,14 @@ export function BusinessDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="language">Language (Optional)</Label>
+                            <Label htmlFor="language">{t('sidebar.businessDialog.form.language.label')}</Label>
                             <Select
                                 value={formData.language || ''}
                                 onValueChange={(value) => handleSelectChange('language', value)}
                                 disabled={isSubmitting}
                             >
                                 <SelectTrigger className={formErrors.language ? 'border-destructive' : ''}>
-                                    <SelectValue placeholder="Select language" />
+                                    <SelectValue placeholder={t('sidebar.businessDialog.form.language.placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {LANGUAGES.map((language) => (
@@ -380,14 +382,14 @@ export function BusinessDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="region">Region (Optional)</Label>
+                            <Label htmlFor="region">{t('sidebar.businessDialog.form.region.label')}</Label>
                             <Select
                                 value={formData.region || ''}
                                 onValueChange={(value) => handleSelectChange('region', value)}
                                 disabled={isSubmitting}
                             >
                                 <SelectTrigger className={formErrors.region ? 'border-destructive' : ''}>
-                                    <SelectValue placeholder="Select region" />
+                                    <SelectValue placeholder={t('sidebar.businessDialog.form.region.placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {REGIONS.map((region) => (
@@ -402,7 +404,7 @@ export function BusinessDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="business-logo">Business Logo (Optional)</Label>
+                            <Label htmlFor="business-logo">{t('sidebar.businessDialog.form.logo.label')}</Label>
                             <div className="flex items-start gap-4">
                                 {imagePreview && (
                                     <div className="relative">
@@ -433,14 +435,14 @@ export function BusinessDialog({
                                         className="cursor-pointer"
                                     />
                                     <p className="text-xs text-muted-foreground mt-1">
-                                        Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB
+                                        {t('sidebar.businessDialog.form.logo.helper')}
                                     </p>
                                 </div>
                             </div>
                             {isUploadingImage && (
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <Loader2 className="h-4 w-4 animate-spin" />
-                                    Uploading logo...
+                                    {t('sidebar.businessDialog.form.logo.uploading')}
                                 </div>
                             )}
                         </div>
@@ -452,11 +454,11 @@ export function BusinessDialog({
                             onClick={handleClose}
                             disabled={isSubmitting}
                         >
-                            Cancel
+                            {t('sidebar.businessDialog.buttons.cancel')}
                         </Button>
                         <Button type="submit" disabled={isSubmitting || isUploadingImage}>
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            {editingBusiness ? "Update" : "Create"}
+                            {editingBusiness ? t('sidebar.businessDialog.buttons.update') : t('sidebar.businessDialog.buttons.create')}
                         </Button>
                     </DialogFooter>
                 </form>

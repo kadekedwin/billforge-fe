@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,11 +12,14 @@ import { Menu } from "lucide-react";
 import { LogoText } from "../../icons/logoText";
 import { NavMenu } from "./nav-menu";
 
+import { useTranslation } from "@/lib/i18n/useTranslation";
+
 export const NavigationSheet = () => {
+  const { t } = useTranslation();
   return (
     <Sheet>
       <VisuallyHiddenPrimitive>
-        <SheetTitle>Navigation Drawer</SheetTitle>
+        <SheetTitle>{t('landing.nav.drawerTitle')}</SheetTitle>
       </VisuallyHiddenPrimitive>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon">
@@ -27,9 +32,9 @@ export const NavigationSheet = () => {
 
         <div className="mt-8 space-y-4">
           <Button variant="outline" className="w-full sm:hidden">
-            Sign In
+            {t('landing.nav.signIn')}
           </Button>
-          <Button className="w-full xs:hidden">Get Started</Button>
+          <Button className="w-full xs:hidden">{t('landing.nav.getStarted')}</Button>
         </div>
       </SheetContent>
     </Sheet>

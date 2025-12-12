@@ -11,6 +11,7 @@ import { Check, Loader2 } from 'lucide-react';
 import { receiptTemplates } from '@/lib/receipt/templates';
 import { useBusiness } from '@/contexts/business-context';
 import { getCurrencySymbol } from '@/lib/utils/currency';
+import { useTranslation } from '@/lib/i18n/useTranslation';
 
 interface ReceiptTemplateCardProps {
     template: {
@@ -149,6 +150,7 @@ const sampleReceipt: ReceiptData = {
 };
 
 export default function ReceiptSettings() {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const {
         isLoading,
@@ -216,7 +218,7 @@ export default function ReceiptSettings() {
     if (!selectedBusiness) {
         return (
             <div className="flex h-64 items-center justify-center">
-                <p className="text-muted-foreground">Please select a business to configure receipt settings</p>
+                <p className="text-muted-foreground">{t('app.settings.receiptTab.selectBusiness')}</p>
             </div>
         );
     }
@@ -250,18 +252,18 @@ export default function ReceiptSettings() {
                         />
                         <div className="space-y-0.5">
                             <Label htmlFor="include-logo" className="text-base">
-                                Include Business Logo
+                                {t('app.settings.receiptTab.includeLogo')}
                             </Label>
                         </div>
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="footer-message" className="text-base">
-                            Footer Message
+                            {t('app.settings.receiptTab.footerMessage')}
                         </Label>
                         <Input
                             id="footer-message"
-                            placeholder="Thank you for your business!"
+                            placeholder={t('app.settings.receiptTab.footerPlaceholder')}
                             value={footerMessage}
                             onChange={(e) => updateFooterMessage(e.target.value)}
                             className="max-w-md"
@@ -270,11 +272,11 @@ export default function ReceiptSettings() {
 
                     <div className="space-y-2">
                         <Label htmlFor="qrcode-value" className="text-base">
-                            QR Code Data
+                            {t('app.settings.receiptTab.qrCode')}
                         </Label>
                         <Input
                             id="qrcode-value"
-                            placeholder="Enter QR code value (e.g., Social Media)"
+                            placeholder={t('app.settings.receiptTab.qrPlaceholder')}
                             value={qrcodeValue}
                             onChange={(e) => updateQrcodeValue(e.target.value)}
                             className="max-w-md"
@@ -283,7 +285,7 @@ export default function ReceiptSettings() {
 
                     <div className="space-y-2">
                         <Label htmlFor="transaction-prefix" className="text-base">
-                            Transaction Prefix
+                            {t('app.settings.receiptTab.prefix')}
                         </Label>
                         <Input
                             id="transaction-prefix"
@@ -293,12 +295,12 @@ export default function ReceiptSettings() {
                             maxLength={10}
                             className="max-w-md"
                         />
-                        <p className="text-xs text-muted-foreground">Prefix for transaction numbers (e.g., INV, RCP)</p>
+                        <p className="text-xs text-muted-foreground">{t('app.settings.receiptTab.prefixHelp')}</p>
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="transaction-number" className="text-base">
-                            Next Transaction Number
+                            {t('app.settings.receiptTab.nextNumber')}
                         </Label>
                         <Input
                             id="transaction-number"
@@ -309,14 +311,14 @@ export default function ReceiptSettings() {
                             onChange={(e) => updateTransactionNextNumber(parseInt(e.target.value) || 1)}
                             className="max-w-md"
                         />
-                        <p className="text-xs text-muted-foreground">The next transaction number to use</p>
+                        <p className="text-xs text-muted-foreground">{t('app.settings.receiptTab.nextNumberHelp')}</p>
                     </div>
                 </CardContent>
             </Card>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Receipt Template</CardTitle>
+                    <CardTitle>{t('app.settings.receiptTab.template')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto pb-4">

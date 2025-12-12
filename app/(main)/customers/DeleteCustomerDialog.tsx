@@ -10,8 +10,9 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import {Loader2} from "lucide-react";
-import type {Customer} from "@/lib/api";
+import { Loader2 } from "lucide-react";
+import type { Customer } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeleteCustomerDialogProps {
     open: boolean;
@@ -22,24 +23,24 @@ interface DeleteCustomerDialogProps {
 }
 
 export function DeleteCustomerDialog({
-                                         open,
-                                         onOpenChange,
-                                         customer,
-                                         isDeleting,
-                                         onConfirm,
-                                     }: DeleteCustomerDialogProps) {
+    open,
+    onOpenChange,
+    customer,
+    isDeleting,
+    onConfirm,
+}: DeleteCustomerDialogProps) {
+    const { t } = useTranslation();
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('app.customers.deleteTitle')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete <span className="font-semibold">{customer?.name}</span>.
-                        This action cannot be undone.
+                        {t('app.customers.deleteDescription', { name: customer?.name || '' })}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel disabled={isDeleting}>{t('common.cancel')}</AlertDialogCancel>
                     <AlertDialogAction
                         onClick={onConfirm}
                         disabled={isDeleting}
@@ -47,11 +48,11 @@ export function DeleteCustomerDialog({
                     >
                         {isDeleting ? (
                             <>
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
-                                Deleting...
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                {t('app.customers.deleting')}
                             </>
                         ) : (
-                            "Delete"
+                            t('common.delete')
                         )}
                     </AlertDialogAction>
                 </AlertDialogFooter>

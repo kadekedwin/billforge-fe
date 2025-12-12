@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -29,6 +30,7 @@ function VerifyEmailPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { user, refreshUser, removeAuth } = useAuth();
+    const { t } = useTranslation();
     const [isResending, setIsResending] = useState(false);
     const [isVerifying, setIsVerifying] = useState(false);
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
@@ -45,6 +47,7 @@ function VerifyEmailPageContent() {
         if (id && hash && !isVerifying && verificationStatus === "idle") {
             handleVerification(id, hash, expires, signature);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id, hash, expires, signature]);
 
     const handleVerification = async (
@@ -73,7 +76,7 @@ function VerifyEmailPageContent() {
             if (err instanceof ApiError) {
                 setErrorMessage(err.message);
             } else {
-                setErrorMessage("An unexpected error occurred. Please try again.");
+                setErrorMessage(t("auth.verifyEmail.errorGeneric"));
             }
         } finally {
             setIsVerifying(false);
@@ -86,12 +89,12 @@ function VerifyEmailPageContent() {
 
         try {
             await resendVerification();
-            setResendMessage("Verification email sent! Please check your inbox.");
+            setResendMessage(t("auth.verifyEmail.resendSuccess"));
         } catch (err) {
             if (err instanceof ApiError) {
                 setResendMessage(err.message);
             } else {
-                setResendMessage("An unexpected error occurred. Please try again.");
+                setResendMessage(t("auth.verifyEmail.errorGeneric"));
             }
         } finally {
             setIsResending(false);
@@ -104,137 +107,63 @@ function VerifyEmailPageContent() {
 
     if (user?.email_verified_at) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-                <Card className="w-full max-w-md">
-                    <CardHeader className="space-y-1 text-center">
-                        <div className="flex justify-center mb-4">
-                            <CheckCircle className="h-16 w-16 text-green-500" />
-                        </div>
-                        <CardTitle className="text-2xl font-bold">Email Already Verified</CardTitle>
-                        <CardDescription>
-                            Your email address has already been verified.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex justify-center">
-                        <Button onClick={() => router.push("/sale")}>
-                            Go to Sale
-                        </Button>
-                    </CardContent>
-                </Card>
-            </div>
+            <Card className="w-full max-w-md">
+                <CardHeader className="space-y-1 text-center">
+                    <div className="flex justify-center mb-4">
+                        <CheckCircle className="h-16 w-16 text-green-500" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold">{t("auth.verifyEmail.alreadyVerifiedTitle")}</CardTitle>
+                    <CardDescription>
+                        {t("auth.verifyEmail.alreadyVerifiedDescription")}
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="flex justify-center">
+                    <Button onClick={() => router.push("/sale")}>
+                        {t("auth.verifyEmail.goToSale")}
+                    </Button>
+                </CardContent>
+            </Card>
         );
     }
 
     if (verificationStatus === "success") {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-                <Card className="w-full max-w-md">
-                    <CardHeader className="space-y-1 text-center">
-                        <div className="flex justify-center mb-4">
-                            <CheckCircle className="h-16 w-16 text-green-500" />
-                        </div>
-                        <CardTitle className="text-2xl font-bold">Email Verified!</CardTitle>
-                        <CardDescription>
-                            Your email has been successfully verified. Redirecting to sale...
-                        </CardDescription>
-                    </CardHeader>
-                </Card>
-            </div>
+            <Card className="w-full max-w-md">
+                <CardHeader className="space-y-1 text-center">
+                    <div className="flex justify-center mb-4">
+                        <CheckCircle className="h-16 w-16 text-green-500" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold">{t("auth.verifyEmail.successTitle")}</CardTitle>
+                    <CardDescription>
+                        {t("auth.verifyEmail.successDescription")}
+                    </CardDescription>
+                </CardHeader>
+            </Card>
         );
     }
 
     if (verificationStatus === "error") {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-                <Card className="w-full max-w-md">
-                    <CardHeader className="space-y-1 text-center">
-                        <div className="flex justify-center mb-4">
-                            <XCircle className="h-16 w-16 text-destructive" />
-                        </div>
-                        <CardTitle className="text-2xl font-bold">Verification Failed</CardTitle>
-                        <CardDescription>
-                            {errorMessage || "The verification link is invalid or has expired."}
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                        <Button onClick={handleResend} className="w-full" disabled={isResending}>
-                            {isResending ? "Sending..." : "Resend Verification Email"}
-                        </Button>
-                        <Button
-                            onClick={() => setShowConfirmDialog(true)}
-                            variant="outline"
-                            className="w-full"
-                        >
-                            Change Email Address
-                        </Button>
-                        {resendMessage && (
-                            <div className="rounded-md bg-muted p-3 text-sm text-center">
-                                {resendMessage}
-                            </div>
-                        )}
-                    </CardContent>
-                    <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-                        <AlertDialogContent>
-                            <AlertDialogHeader>
-                                <AlertDialogTitle>Change Email Address?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    You will be logged out and redirected to the registration page to register with a new email address.
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={handleChangeEmail}>Continue</AlertDialogAction>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
-                </Card>
-            </div>
-        );
-    }
-
-    if (isVerifying) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-                <Card className="w-full max-w-md">
-                    <CardHeader className="space-y-1 text-center">
-                        <div className="flex justify-center mb-4">
-                            <Loader2 className="h-16 w-16 animate-spin text-primary" />
-                        </div>
-                        <CardTitle className="text-2xl font-bold">Verifying Email...</CardTitle>
-                        <CardDescription>
-                            Please wait while we verify your email address.
-                        </CardDescription>
-                    </CardHeader>
-                </Card>
-            </div>
-        );
-    }
-
-    return (
-        <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
             <Card className="w-full max-w-md">
                 <CardHeader className="space-y-1 text-center">
                     <div className="flex justify-center mb-4">
-                        <Mail className="h-16 w-16 text-primary" />
+                        <XCircle className="h-16 w-16 text-destructive" />
                     </div>
-                    <CardTitle className="text-2xl font-bold">Verify Your Email</CardTitle>
+                    <CardTitle className="text-2xl font-bold">{t("auth.verifyEmail.failedTitle")}</CardTitle>
                     <CardDescription>
-                        We sent a verification email to <strong>{user?.email}</strong>
+                        {errorMessage || t("auth.verifyEmail.failedDescription")}
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground text-center">
-                        Please check your inbox and click the verification link to activate your account.
-                    </p>
                     <Button onClick={handleResend} className="w-full" disabled={isResending}>
-                        {isResending ? "Sending..." : "Resend Verification Email"}
+                        {isResending ? t("auth.verifyEmail.resending") : t("auth.verifyEmail.resend")}
                     </Button>
                     <Button
                         onClick={() => setShowConfirmDialog(true)}
                         variant="outline"
                         className="w-full"
                     >
-                        Change Email Address
+                        {t("auth.verifyEmail.changeEmail")}
                     </Button>
                     {resendMessage && (
                         <div className="rounded-md bg-muted p-3 text-sm text-center">
@@ -245,25 +174,89 @@ function VerifyEmailPageContent() {
                 <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
                     <AlertDialogContent>
                         <AlertDialogHeader>
-                            <AlertDialogTitle>Change Email Address?</AlertDialogTitle>
+                            <AlertDialogTitle>{t("auth.verifyEmail.changeEmailTitle")}</AlertDialogTitle>
                             <AlertDialogDescription>
-                                You will be logged out and redirected to the registration page to register with a new email address.
+                                {t("auth.verifyEmail.changeEmailDescription")}
                             </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={handleChangeEmail}>Continue</AlertDialogAction>
+                            <AlertDialogCancel>{t("auth.verifyEmail.cancel")}</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleChangeEmail}>{t("auth.verifyEmail.continue")}</AlertDialogAction>
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialog>
             </Card>
-        </div>
+        );
+    }
+
+    if (isVerifying) {
+        return (
+            <Card className="w-full max-w-md">
+                <CardHeader className="space-y-1 text-center">
+                    <div className="flex justify-center mb-4">
+                        <Loader2 className="h-16 w-16 animate-spin text-primary" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold">{t("auth.verifyEmail.verifyingTitle")}</CardTitle>
+                    <CardDescription>
+                        {t("auth.verifyEmail.verifyingDescription")}
+                    </CardDescription>
+                </CardHeader>
+            </Card>
+        );
+    }
+
+    return (
+        <Card className="w-full max-w-md">
+            <CardHeader className="space-y-1 text-center">
+                <div className="flex justify-center mb-4">
+                    <Mail className="h-16 w-16 text-primary" />
+                </div>
+                <CardTitle className="text-2xl font-bold">{t("auth.verifyEmail.title")}</CardTitle>
+                <CardDescription>
+                    {t("auth.verifyEmail.description")} <strong>{user?.email}</strong>
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground text-center">
+                    {t("auth.verifyEmail.instruction")}
+                </p>
+                <Button onClick={handleResend} className="w-full" disabled={isResending}>
+                    {isResending ? t("auth.verifyEmail.resending") : t("auth.verifyEmail.resend")}
+                </Button>
+                <Button
+                    onClick={() => setShowConfirmDialog(true)}
+                    variant="outline"
+                    className="w-full"
+                >
+                    {t("auth.verifyEmail.changeEmail")}
+                </Button>
+                {resendMessage && (
+                    <div className="rounded-md bg-muted p-3 text-sm text-center">
+                        {resendMessage}
+                    </div>
+                )}
+            </CardContent>
+            <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>{t("auth.verifyEmail.changeEmailTitle")}</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            {t("auth.verifyEmail.changeEmailDescription")}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>{t("auth.verifyEmail.cancel")}</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleChangeEmail}>{t("auth.verifyEmail.continue")}</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+        </Card>
     );
 }
 
 export default function VerifyEmailPage() {
     return (
-        <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
+        <Suspense fallback={<div className="flex h-screen items-center justify-center">
             <Loader2 className="h-16 w-16 animate-spin text-primary" />
         </div>}>
             <VerifyEmailPageContent />

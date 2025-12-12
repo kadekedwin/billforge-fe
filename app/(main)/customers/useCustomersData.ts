@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { getCustomers } from "@/lib/api/customers";
 import type { Customer, Business } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseCustomersDataResult {
     customers: Customer[];
@@ -14,6 +15,7 @@ interface UseCustomersDataResult {
 }
 
 export function useCustomersData(selectedBusiness: Business | null): UseCustomersDataResult {
+    const { t } = useTranslation();
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -36,10 +38,10 @@ export function useCustomersData(selectedBusiness: Business | null): UseCustomer
                     success: false;
                     message: string;
                 };
-                setError(errorData.message || "Failed to load customers");
+                setError(errorData.message || t('app.customers.customersLoadError'));
             }
         } catch (err) {
-            setError("An error occurred while loading data");
+            setError(t('app.customers.loadingError'));
             console.error("Error loading data:", err);
         } finally {
             setIsLoading(false);

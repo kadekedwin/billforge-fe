@@ -1,9 +1,10 @@
 "use client";
 
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {Label} from "@/components/ui/label";
-import {Textarea} from "@/components/ui/textarea";
-import type {Customer, PaymentMethod} from "@/lib/api";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import type { Customer, PaymentMethod } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CheckoutTransactionDetailsProps {
     customers: Customer[];
@@ -18,24 +19,25 @@ interface CheckoutTransactionDetailsProps {
 }
 
 export function CheckoutTransactionDetails({
-                                               customers,
-                                               paymentMethods,
-                                               selectedCustomer,
-                                               selectedPaymentMethod,
-                                               notes,
-                                               isSubmitting,
-                                               onCustomerChange,
-                                               onPaymentMethodChange,
-                                               onNotesChange,
-                                           }: CheckoutTransactionDetailsProps) {
+    customers,
+    paymentMethods,
+    selectedCustomer,
+    selectedPaymentMethod,
+    notes,
+    isSubmitting,
+    onCustomerChange,
+    onPaymentMethodChange,
+    onNotesChange,
+}: CheckoutTransactionDetailsProps) {
+    const { t } = useTranslation();
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Transaction Details</CardTitle>
+                <CardTitle>{t('app.sale.transactionDetails')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="space-y-2">
-                    <Label htmlFor="customer">Customer (Optional)</Label>
+                    <Label htmlFor="customer">{t('app.sale.customer')} (Optional)</Label>
                     <select
                         id="customer"
                         value={selectedCustomer}
@@ -43,7 +45,7 @@ export function CheckoutTransactionDetails({
                         disabled={isSubmitting}
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        <option value="">Select customer...</option>
+                        <option value="">{t('app.sale.selectCustomer')}...</option>
                         {customers.map((customer) => (
                             <option key={customer.uuid} value={customer.uuid}>
                                 {customer.name}
@@ -52,7 +54,7 @@ export function CheckoutTransactionDetails({
                     </select>
                 </div>
                 <div className="space-y-2">
-                    <Label htmlFor="paymentMethod">Payment Method (Optional)</Label>
+                    <Label htmlFor="paymentMethod">{t('app.sale.paymentMethod')} (Optional)</Label>
                     <select
                         id="paymentMethod"
                         value={selectedPaymentMethod}
@@ -60,7 +62,7 @@ export function CheckoutTransactionDetails({
                         disabled={isSubmitting}
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        <option value="">Select payment method...</option>
+                        <option value="">{t('app.sale.selectPaymentMethod')}...</option>
                         {paymentMethods.map((method) => (
                             <option key={method.uuid} value={method.uuid}>
                                 {method.name}
@@ -69,13 +71,13 @@ export function CheckoutTransactionDetails({
                     </select>
                 </div>
                 <div className="space-y-2">
-                    <Label htmlFor="notes">Notes (Optional)</Label>
+                    <Label htmlFor="notes">{t('app.sale.notes')} (Optional)</Label>
                     <Textarea
                         id="notes"
                         value={notes}
                         onChange={(e) => onNotesChange(e.target.value)}
                         disabled={isSubmitting}
-                        placeholder="Add any notes about this transaction..."
+                        placeholder={t('app.sale.addNotes')}
                         rows={3}
                     />
                 </div>

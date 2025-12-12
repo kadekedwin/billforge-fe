@@ -1,6 +1,6 @@
-import {createItemDiscount, updateItemDiscount, deleteItemDiscount} from "@/lib/api/item-discounts";
+import { createItemDiscount, updateItemDiscount, deleteItemDiscount } from "@/lib/api/item-discounts";
 import { ApiError } from "@/lib/api/errors";
-import type {ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest} from "@/lib/api";
+import type { ItemDiscount, CreateItemDiscountRequest, UpdateItemDiscountRequest } from "@/lib/api";
 
 interface CreateItemDiscountParams {
     formData: Omit<CreateItemDiscountRequest, 'business_uuid'>;
@@ -8,9 +8,10 @@ interface CreateItemDiscountParams {
 }
 
 export async function handleCreateItemDiscount({
-                                                   formData,
-                                                   businessUuid,
-                                               }: CreateItemDiscountParams): Promise<{
+    formData,
+    businessUuid,
+    t,
+}: CreateItemDiscountParams & { t: (key: string) => string }): Promise<{
     success: boolean;
     discount?: ItemDiscount;
     error?: string;
@@ -24,7 +25,7 @@ export async function handleCreateItemDiscount({
 
         const response = await createItemDiscount(createData);
 
-        return {success: true, discount: response.data};
+        return { success: true, discount: response.data };
     } catch (err) {
         if (err instanceof ApiError) {
             if (err.errors) {
@@ -32,11 +33,11 @@ export async function handleCreateItemDiscount({
                 Object.keys(err.errors).forEach((key) => {
                     errors[key] = err.errors![key][0];
                 });
-                return {success: false, errors};
+                return { success: false, errors };
             }
-            return {success: false, error: err.message};
+            return { success: false, error: err.message };
         }
-        return {success: false, error: "An error occurred while creating discount"};
+        return { success: false, error: t('app.itemDiscounts.errorCreating') };
     }
 }
 
@@ -47,10 +48,11 @@ interface UpdateItemDiscountParams {
 }
 
 export async function handleUpdateItemDiscount({
-                                                   discount,
-                                                   formData,
-                                                   businessUuid,
-                                               }: UpdateItemDiscountParams): Promise<{
+    discount,
+    formData,
+    businessUuid,
+    t,
+}: UpdateItemDiscountParams & { t: (key: string) => string }): Promise<{
     success: boolean;
     discount?: ItemDiscount;
     error?: string;
@@ -66,7 +68,7 @@ export async function handleUpdateItemDiscount({
 
         const response = await updateItemDiscount(discount.uuid, updateData);
 
-        return {success: true, discount: response.data};
+        return { success: true, discount: response.data };
     } catch (err) {
         if (err instanceof ApiError) {
             if (err.errors) {
@@ -74,23 +76,23 @@ export async function handleUpdateItemDiscount({
                 Object.keys(err.errors).forEach((key) => {
                     errors[key] = err.errors![key][0];
                 });
-                return {success: false, errors};
+                return { success: false, errors };
             }
-            return {success: false, error: err.message};
+            return { success: false, error: err.message };
         }
-        return {success: false, error: "An error occurred while updating discount"};
+        return { success: false, error: t('app.itemDiscounts.errorUpdating') };
     }
 }
 
-export async function handleDeleteItemDiscount(discount: ItemDiscount): Promise<{ success: boolean; error?: string }> {
+export async function handleDeleteItemDiscount(discount: ItemDiscount, t: (key: string) => string): Promise<{ success: boolean; error?: string }> {
     try {
         await deleteItemDiscount(discount.uuid);
 
-        return {success: true};
+        return { success: true };
     } catch (err) {
         if (err instanceof ApiError) {
-            return {success: false, error: err.message};
+            return { success: false, error: err.message };
         }
-        return {success: false, error: "An error occurred while deleting discount"};
+        return { success: false, error: t('app.itemDiscounts.errorDeleting') };
     }
 }

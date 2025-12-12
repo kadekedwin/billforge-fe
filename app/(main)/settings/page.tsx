@@ -9,35 +9,38 @@ const ProfileSettings = dynamic(() => import('./ProfileSettings'), { ssr: false 
 const ReceiptSettings = dynamic(() => import('./ReceiptSettings'), { ssr: false });
 const PreferencesSettings = dynamic(() => import('./PreferencesSettings'), { ssr: false });
 const PrinterSettings = dynamic(() => import('./PrinterSettings'), { ssr: false });
-
-const tabs = [
-    {
-        id: 'profile' as const,
-        label: 'Profile',
-        icon: UserCircle,
-    },
-    {
-        id: 'receipt' as const,
-        label: 'Receipt Settings',
-        icon: FileText,
-    },
-    {
-        id: 'printer' as const,
-        label: 'Printer',
-        icon: Printer,
-    },
-    {
-        id: 'preferences' as const,
-        label: 'Preferences',
-        icon: Settings,
-    },
-];
+import { useTranslation } from '@/lib/i18n/useTranslation';
 
 export default function SettingsPage() {
+    const { t } = useTranslation();
+
+    const tabs = [
+        {
+            id: 'profile' as const,
+            label: t('app.settings.profile'),
+            icon: UserCircle,
+        },
+        {
+            id: 'receipt' as const,
+            label: t('app.settings.receipt'),
+            icon: FileText,
+        },
+        {
+            id: 'printer' as const,
+            label: t('app.settings.printer'),
+            icon: Printer,
+        },
+        {
+            id: 'preferences' as const,
+            label: t('app.settings.preferences'),
+            icon: Settings,
+        },
+    ];
+
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
+                <h1 className="text-3xl font-bold tracking-tight">{t('app.settings.title')}</h1>
             </div>
 
             <Tabs defaultValue="profile">

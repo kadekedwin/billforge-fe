@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import type { Customer, CreateCustomerRequest } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CustomerFormDialogProps {
     open: boolean;
@@ -28,24 +29,25 @@ interface CustomerFormDialogProps {
 }
 
 export function CustomerFormDialog({
-                                       open,
-                                       onOpenChange,
-                                       editingCustomer,
-                                       formData,
-                                       formErrors,
-                                       error,
-                                       isSubmitting,
-                                       onInputChange,
-                                       onSubmit,
-                                   }: CustomerFormDialogProps) {
+    open,
+    onOpenChange,
+    editingCustomer,
+    formData,
+    formErrors,
+    error,
+    isSubmitting,
+    onInputChange,
+    onSubmit,
+}: CustomerFormDialogProps) {
+    const { t } = useTranslation();
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                 <form onSubmit={onSubmit}>
                     <DialogHeader>
-                        <DialogTitle>{editingCustomer ? "Edit Customer" : "Create New Customer"}</DialogTitle>
+                        <DialogTitle>{editingCustomer ? t('app.customers.editTitle') : t('app.customers.createTitle')}</DialogTitle>
                         <DialogDescription>
-                            {editingCustomer ? "Update customer information" : "Add a new customer to your business"}
+                            {editingCustomer ? t('app.customers.editDescription') : t('app.customers.createDescription')}
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
@@ -56,11 +58,11 @@ export function CustomerFormDialog({
                         )}
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2 col-span-2">
-                                <Label htmlFor="name">Customer Name</Label>
+                                <Label htmlFor="name">{t('app.customers.customerName')}</Label>
                                 <Input
                                     id="name"
                                     name="name"
-                                    placeholder="John Doe"
+                                    placeholder={t('app.customers.placeholderName')}
                                     value={formData.name}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -72,12 +74,12 @@ export function CustomerFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2 col-span-2">
-                                <Label htmlFor="email">Email (Optional)</Label>
+                                <Label htmlFor="email">{t('app.customers.emailOptional')}</Label>
                                 <Input
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="john@example.com"
+                                    placeholder={t('app.customers.placeholderEmail')}
                                     value={formData.email || ""}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -88,11 +90,11 @@ export function CustomerFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2 col-span-2">
-                                <Label htmlFor="phone">Phone (Optional)</Label>
+                                <Label htmlFor="phone">{t('app.customers.phoneOptional')}</Label>
                                 <Input
                                     id="phone"
                                     name="phone"
-                                    placeholder="+1234567890"
+                                    placeholder={t('app.customers.placeholderPhone')}
                                     value={formData.phone || ""}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -103,11 +105,11 @@ export function CustomerFormDialog({
                                 )}
                             </div>
                             <div className="space-y-2 col-span-2">
-                                <Label htmlFor="address">Address (Optional)</Label>
+                                <Label htmlFor="address">{t('app.customers.addressOptional')}</Label>
                                 <Textarea
                                     id="address"
                                     name="address"
-                                    placeholder="123 Main St, City, State, ZIP"
+                                    placeholder={t('app.customers.placeholderAddress')}
                                     value={formData.address || ""}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -127,11 +129,11 @@ export function CustomerFormDialog({
                             onClick={() => onOpenChange(false)}
                             disabled={isSubmitting}
                         >
-                            Cancel
+                            {t('common.cancel')}
                         </Button>
                         <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            {editingCustomer ? "Update Customer" : "Create Customer"}
+                            {editingCustomer ? t('app.customers.editCustomer') : t('app.customers.addCustomer')}
                         </Button>
                     </DialogFooter>
                 </form>

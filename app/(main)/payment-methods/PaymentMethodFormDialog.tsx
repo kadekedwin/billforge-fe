@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import type { PaymentMethod, CreatePaymentMethodRequest } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface PaymentMethodFormDialogProps {
     open: boolean;
@@ -27,28 +28,29 @@ interface PaymentMethodFormDialogProps {
 }
 
 export function PaymentMethodFormDialog({
-                                            open,
-                                            onOpenChange,
-                                            editingPaymentMethod,
-                                            formData,
-                                            formErrors,
-                                            error,
-                                            isSubmitting,
-                                            onInputChange,
-                                            onSubmit,
-                                        }: PaymentMethodFormDialogProps) {
+    open,
+    onOpenChange,
+    editingPaymentMethod,
+    formData,
+    formErrors,
+    error,
+    isSubmitting,
+    onInputChange,
+    onSubmit,
+}: PaymentMethodFormDialogProps) {
+    const { t } = useTranslation();
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
                 <form onSubmit={onSubmit}>
                     <DialogHeader>
                         <DialogTitle>
-                            {editingPaymentMethod ? "Edit Payment Method" : "Create New Payment Method"}
+                            {editingPaymentMethod ? t('app.paymentMethods.editTitle') : t('app.paymentMethods.createTitle')}
                         </DialogTitle>
                         <DialogDescription>
                             {editingPaymentMethod
-                                ? "Update payment method information"
-                                : "Add a new payment method"}
+                                ? t('app.paymentMethods.editDescription')
+                                : t('app.paymentMethods.createDescription')}
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
@@ -58,11 +60,11 @@ export function PaymentMethodFormDialog({
                             </div>
                         )}
                         <div className="space-y-2">
-                            <Label htmlFor="name">Payment Method Name</Label>
+                            <Label htmlFor="name">{t('app.paymentMethods.methodName')}</Label>
                             <Input
                                 id="name"
                                 name="name"
-                                placeholder="e.g., Cash, Credit Card, Bank Transfer"
+                                placeholder={t('app.paymentMethods.placeholderName')}
                                 value={formData.name}
                                 onChange={onInputChange}
                                 disabled={isSubmitting}
@@ -81,11 +83,11 @@ export function PaymentMethodFormDialog({
                             onClick={() => onOpenChange(false)}
                             disabled={isSubmitting}
                         >
-                            Cancel
+                            {t('common.cancel')}
                         </Button>
                         <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            {editingPaymentMethod ? "Update Payment Method" : "Create Payment Method"}
+                            {editingPaymentMethod ? t('app.paymentMethods.editMethod') : t('app.paymentMethods.addMethod')}
                         </Button>
                     </DialogFooter>
                 </form>

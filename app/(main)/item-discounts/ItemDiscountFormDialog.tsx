@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import type { ItemDiscount, CreateItemDiscountRequest } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemDiscountFormDialogProps {
     open: boolean;
@@ -27,25 +28,28 @@ interface ItemDiscountFormDialogProps {
 }
 
 export function ItemDiscountFormDialog({
-                                           open,
-                                           onOpenChange,
-                                           editingDiscount,
-                                           formData,
-                                           formErrors,
-                                           error,
-                                           isSubmitting,
-                                           onInputChange,
-                                           onSubmit,
-                                       }: ItemDiscountFormDialogProps) {
+    open,
+    onOpenChange,
+    editingDiscount,
+    formData,
+    formErrors,
+    error,
+    isSubmitting,
+    onInputChange,
+    onSubmit,
+}: ItemDiscountFormDialogProps) {
+    const { t } = useTranslation();
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-md">
                 <form onSubmit={onSubmit}>
                     <DialogHeader>
-                        <DialogTitle>{editingDiscount ? "Edit Discount" : "Create New Discount"}</DialogTitle>
-                        <DialogDescription>
-                            {editingDiscount ? "Update discount configuration" : "Add a new discount configuration"}
-                        </DialogDescription>
+                        <DialogHeader>
+                            <DialogTitle>{editingDiscount ? t('app.itemDiscounts.editTitle') : t('app.itemDiscounts.createTitle')}</DialogTitle>
+                            <DialogDescription>
+                                {editingDiscount ? t('app.itemDiscounts.editDescription') : t('app.itemDiscounts.createDescription')}
+                            </DialogDescription>
+                        </DialogHeader>
                     </DialogHeader>
                     <div className="space-y-4 py-4">
                         {error && (
@@ -54,11 +58,11 @@ export function ItemDiscountFormDialog({
                             </div>
                         )}
                         <div className="space-y-2">
-                            <Label htmlFor="name">Discount Name</Label>
+                            <Label htmlFor="name">{t('app.itemDiscounts.discountName')}</Label>
                             <Input
                                 id="name"
                                 name="name"
-                                placeholder="Holiday Sale, Early Bird..."
+                                placeholder={t('app.itemDiscounts.placeholderName')}
                                 value={formData.name}
                                 onChange={onInputChange}
                                 disabled={isSubmitting}
@@ -71,7 +75,7 @@ export function ItemDiscountFormDialog({
                             )}
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="type">Type</Label>
+                            <Label htmlFor="type">{t('app.itemDiscounts.type')}</Label>
                             <select
                                 id="type"
                                 name="type"
@@ -81,8 +85,8 @@ export function ItemDiscountFormDialog({
                                 required
                                 className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${formErrors.type ? "border-destructive" : ""}`}
                             >
-                                <option value="percentage">Percentage</option>
-                                <option value="fixed">Fixed Amount</option>
+                                <option value="percentage">{t('app.itemDiscounts.percentage')}</option>
+                                <option value="fixed">{t('app.itemDiscounts.fixed')}</option>
                             </select>
                             {formErrors.type && (
                                 <p className="text-sm text-destructive">{formErrors.type}</p>
@@ -90,7 +94,7 @@ export function ItemDiscountFormDialog({
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="value">
-                                Value {formData.type === "percentage" ? "(%)" : "($)"}
+                                {t('app.itemDiscounts.value')} {formData.type === "percentage" ? "(%)" : "($)"}
                             </Label>
                             <Input
                                 id="value"
@@ -117,11 +121,11 @@ export function ItemDiscountFormDialog({
                             onClick={() => onOpenChange(false)}
                             disabled={isSubmitting}
                         >
-                            Cancel
+                            {t('common.cancel')}
                         </Button>
                         <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            {editingDiscount ? "Update Discount" : "Create Discount"}
+                            {editingDiscount ? t('app.itemDiscounts.editTitle') : t('app.itemDiscounts.createTitle')}
                         </Button>
                     </DialogFooter>
                 </form>

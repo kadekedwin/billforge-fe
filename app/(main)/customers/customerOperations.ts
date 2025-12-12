@@ -5,12 +5,14 @@ import type { Customer, CreateCustomerRequest, UpdateCustomerRequest } from "@/l
 interface CreateCustomerParams {
     formData: Omit<CreateCustomerRequest, 'business_uuid'>;
     businessUuid: string;
+    t: (key: string) => string;
 }
 
 export async function handleCreateCustomer({
-                                               formData,
-                                               businessUuid,
-                                           }: CreateCustomerParams): Promise<{ success: boolean; customer?: Customer; error?: string; errors?: Record<string, string> }> {
+    formData,
+    businessUuid,
+    t,
+}: CreateCustomerParams): Promise<{ success: boolean; customer?: Customer; error?: string; errors?: Record<string, string> }> {
     try {
         const createData: CreateCustomerRequest = {
             ...formData,
@@ -31,7 +33,7 @@ export async function handleCreateCustomer({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while creating customer" };
+        return { success: false, error: t('app.customers.errorCreating') };
     }
 }
 
@@ -39,13 +41,15 @@ interface UpdateCustomerParams {
     customer: Customer;
     formData: Omit<CreateCustomerRequest, 'business_uuid'>;
     businessUuid: string;
+    t: (key: string) => string;
 }
 
 export async function handleUpdateCustomer({
-                                               customer,
-                                               formData,
-                                               businessUuid,
-                                           }: UpdateCustomerParams): Promise<{ success: boolean; customer?: Customer; error?: string; errors?: Record<string, string> }> {
+    customer,
+    formData,
+    businessUuid,
+    t,
+}: UpdateCustomerParams): Promise<{ success: boolean; customer?: Customer; error?: string; errors?: Record<string, string> }> {
     try {
         const updateData: UpdateCustomerRequest = {
             business_uuid: businessUuid,
@@ -69,11 +73,11 @@ export async function handleUpdateCustomer({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while updating customer" };
+        return { success: false, error: t('app.customers.errorUpdating') };
     }
 }
 
-export async function handleDeleteCustomer(customer: Customer): Promise<{ success: boolean; error?: string }> {
+export async function handleDeleteCustomer(customer: Customer, t: (key: string) => string): Promise<{ success: boolean; error?: string }> {
     try {
         await deleteCustomer(customer.uuid);
 
@@ -82,6 +86,6 @@ export async function handleDeleteCustomer(customer: Customer): Promise<{ succes
         if (err instanceof ApiError) {
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while deleting customer" };
+        return { success: false, error: t('app.customers.errorDeleting') };
     }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
     Table,
     TableBody,
@@ -9,8 +9,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import {Plus, Loader2, Pencil, Trash2} from "lucide-react";
-import type {Category} from "@/lib/api";
+import { Plus, Loader2, Pencil, Trash2 } from "lucide-react";
+import type { Category } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CategoriesTableProps {
     categories: Category[];
@@ -22,18 +23,19 @@ interface CategoriesTableProps {
 }
 
 export function CategoriesTable({
-                                   categories,
-                                   isLoading,
-                                   deletingId,
-                                   onEdit,
-                                   onDelete,
-                                   onAddFirst,
-                               }: CategoriesTableProps) {
+    categories,
+    isLoading,
+    deletingId,
+    onEdit,
+    onDelete,
+    onAddFirst,
+}: CategoriesTableProps) {
+    const { t } = useTranslation();
     if (isLoading) {
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 items-center justify-center">
-                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground"/>
+                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
                 </div>
             </div>
         );
@@ -43,10 +45,10 @@ export function CategoriesTable({
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 flex-col items-center justify-center space-y-4">
-                    <p className="text-lg text-muted-foreground">No categories found</p>
+                    <p className="text-lg text-muted-foreground">{t('app.categories.noCategories')}</p>
                     <Button onClick={onAddFirst}>
-                        <Plus className="mr-2 h-4 w-4"/>
-                        Add Your First Category
+                        <Plus className="mr-2 h-4 w-4" />
+                        {t('app.categories.addFirstCategory')}
                     </Button>
                 </div>
             </div>
@@ -58,9 +60,9 @@ export function CategoriesTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Created</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableHead>{t('app.categories.name')}</TableHead>
+                        <TableHead>{t('app.categories.created')}</TableHead>
+                        <TableHead className="text-right">{t('app.categories.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -77,7 +79,7 @@ export function CategoriesTable({
                                         size="icon"
                                         onClick={() => onEdit(category)}
                                     >
-                                        <Pencil className="h-4 w-4"/>
+                                        <Pencil className="h-4 w-4" />
                                     </Button>
                                     <Button
                                         variant="ghost"
@@ -86,9 +88,9 @@ export function CategoriesTable({
                                         disabled={deletingId === category.id}
                                     >
                                         {deletingId === category.id ? (
-                                            <Loader2 className="h-4 w-4 animate-spin"/>
+                                            <Loader2 className="h-4 w-4 animate-spin" />
                                         ) : (
-                                            <Trash2 className="h-4 w-4 text-destructive"/>
+                                            <Trash2 className="h-4 w-4 text-destructive" />
                                         )}
                                     </Button>
                                 </div>

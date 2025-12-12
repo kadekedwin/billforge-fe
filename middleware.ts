@@ -6,14 +6,16 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const publicRoutes = ["/login", "/register", "/forgot-password", "/forgot-password-reset", "/privacy", "/terms"];
+  const authOnlyRoutes = ["/login", "/register", "/forgot-password", "/forgot-password-reset"];
   const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route));
+  const isAuthOnlyRoute = authOnlyRoutes.some((route) => pathname.startsWith(route));
 
   if (!token && !isPublicRoute && pathname !== "/") {
     const loginUrl = new URL("/login", request.url);
     return NextResponse.redirect(loginUrl);
   }
 
-  if (token && isPublicRoute) {
+  if (token && isAuthOnlyRoute) {
     const saleUrl = new URL("/sale", request.url);
     return NextResponse.redirect(saleUrl);
   }

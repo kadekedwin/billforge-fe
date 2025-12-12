@@ -2,6 +2,7 @@
 
 import type { Item } from "@/lib/api";
 import { ItemCard } from "./ItemCard";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemsGridProps {
     items: Item[];
@@ -11,13 +12,14 @@ interface ItemsGridProps {
 }
 
 export function ItemsGrid({ items, cart, onAddToCart, onRemoveFromCart }: ItemsGridProps) {
+    const { t } = useTranslation();
     if (items.length === 0) {
         return (
             <div className="flex h-[400px] items-center justify-center rounded-lg border border-dashed">
                 <div className="text-center">
-                    <p className="text-lg font-semibold">No items available</p>
+                    <p className="text-lg font-semibold">{t('app.sale.noItemsAvailable')}</p>
                     <p className="text-muted-foreground">
-                        Add items to your inventory to start creating transactions
+                        {t('app.sale.addItemsToInventory')}
                     </p>
                 </div>
             </div>

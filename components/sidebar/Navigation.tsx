@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import {usePathname} from "next/navigation";
-import {cn} from "@/lib/utils";
-import {navItems} from "./navItems";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { navItems } from "./navItems";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface NavigationProps {
     onNavigate?: () => void;
 }
 
-export function Navigation({onNavigate}: NavigationProps) {
+export function Navigation({ onNavigate }: NavigationProps) {
     const pathname = usePathname();
+    const { t } = useTranslation();
 
     return (
         <nav className="flex-1 space-y-1 px-3 py-4">
@@ -30,8 +32,8 @@ export function Navigation({onNavigate}: NavigationProps) {
                                 : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                         )}
                     >
-                        <Icon className="h-5 w-5"/>
-                        <span>{item.title}</span>
+                        <Icon className="h-5 w-5" />
+                        <span>{t(item.translationKey)}</span>
                     </Link>
                 );
             })}

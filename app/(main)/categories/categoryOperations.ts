@@ -5,12 +5,14 @@ import type { Category, CreateCategoryRequest, UpdateCategoryRequest } from "@/l
 interface CreateCategoryParams {
     formData: Omit<CreateCategoryRequest, 'business_uuid'>;
     businessUuid: string;
+    t: (key: string) => string;
 }
 
 export async function handleCreateCategory({
-                                               formData,
-                                               businessUuid,
-                                           }: CreateCategoryParams): Promise<{ success: boolean; category?: Category; error?: string; errors?: Record<string, string> }> {
+    formData,
+    businessUuid,
+    t,
+}: CreateCategoryParams): Promise<{ success: boolean; category?: Category; error?: string; errors?: Record<string, string> }> {
     try {
         const createData: CreateCategoryRequest = {
             ...formData,
@@ -31,19 +33,21 @@ export async function handleCreateCategory({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while creating category" };
+        return { success: false, error: t('app.categories.errorCreating') };
     }
 }
 
 interface UpdateCategoryParams {
     category: Category;
     formData: Omit<CreateCategoryRequest, 'business_uuid'>;
+    t: (key: string) => string;
 }
 
 export async function handleUpdateCategory({
-                                               category,
-                                               formData,
-                                           }: UpdateCategoryParams): Promise<{ success: boolean; category?: Category; error?: string; errors?: Record<string, string> }> {
+    category,
+    formData,
+    t,
+}: UpdateCategoryParams): Promise<{ success: boolean; category?: Category; error?: string; errors?: Record<string, string> }> {
     try {
         const updateData: UpdateCategoryRequest = {
             name: formData.name,
@@ -63,11 +67,11 @@ export async function handleUpdateCategory({
             }
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while updating category" };
+        return { success: false, error: t('app.categories.errorUpdating') };
     }
 }
 
-export async function handleDeleteCategory(category: Category): Promise<{ success: boolean; error?: string }> {
+export async function handleDeleteCategory(category: Category, t: (key: string) => string): Promise<{ success: boolean; error?: string }> {
     try {
         await deleteCategory(category.uuid);
 
@@ -76,6 +80,6 @@ export async function handleDeleteCategory(category: Category): Promise<{ succes
         if (err instanceof ApiError) {
             return { success: false, error: err.message };
         }
-        return { success: false, error: "An error occurred while deleting category" };
+        return { success: false, error: t('app.categories.errorDeleting') };
     }
 }

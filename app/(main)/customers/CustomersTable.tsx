@@ -1,6 +1,6 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
     Table,
     TableBody,
@@ -9,8 +9,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import {Plus, Loader2, Pencil, Trash2} from "lucide-react";
-import type {Customer} from "@/lib/api";
+import { Plus, Loader2, Pencil, Trash2 } from "lucide-react";
+import type { Customer } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface CustomersTableProps {
     customers: Customer[];
@@ -22,18 +23,19 @@ interface CustomersTableProps {
 }
 
 export function CustomersTable({
-                                   customers,
-                                   isLoading,
-                                   deletingId,
-                                   onEdit,
-                                   onDelete,
-                                   onAddFirst,
-                               }: CustomersTableProps) {
+    customers,
+    isLoading,
+    deletingId,
+    onEdit,
+    onDelete,
+    onAddFirst,
+}: CustomersTableProps) {
+    const { t } = useTranslation();
     if (isLoading) {
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 items-center justify-center">
-                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground"/>
+                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
                 </div>
             </div>
         );
@@ -43,10 +45,10 @@ export function CustomersTable({
         return (
             <div className="rounded-lg border bg-card">
                 <div className="flex h-64 flex-col items-center justify-center space-y-4">
-                    <p className="text-lg text-muted-foreground">No customers found</p>
+                    <p className="text-lg text-muted-foreground">{t('app.customers.noCustomers')}</p>
                     <Button onClick={onAddFirst}>
-                        <Plus className="mr-2 h-4 w-4"/>
-                        Add Your First Customer
+                        <Plus className="mr-2 h-4 w-4" />
+                        {t('app.customers.addFirstCustomer')}
                     </Button>
                 </div>
             </div>
@@ -58,11 +60,11 @@ export function CustomersTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Email</TableHead>
-                        <TableHead>Phone</TableHead>
+                        <TableHead>{t('app.customers.name')}</TableHead>
+                        <TableHead>{t('app.customers.email')}</TableHead>
+                        <TableHead>{t('app.customers.phone')}</TableHead>
                         <TableHead>Created</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
+                        <TableHead className="text-right">{t('app.customers.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -81,7 +83,7 @@ export function CustomersTable({
                                         size="icon"
                                         onClick={() => onEdit(customer)}
                                     >
-                                        <Pencil className="h-4 w-4"/>
+                                        <Pencil className="h-4 w-4" />
                                     </Button>
                                     <Button
                                         variant="ghost"
@@ -90,9 +92,9 @@ export function CustomersTable({
                                         disabled={deletingId === customer.id}
                                     >
                                         {deletingId === customer.id ? (
-                                            <Loader2 className="h-4 w-4 animate-spin"/>
+                                            <Loader2 className="h-4 w-4 animate-spin" />
                                         ) : (
-                                            <Trash2 className="h-4 w-4 text-destructive"/>
+                                            <Trash2 className="h-4 w-4 text-destructive" />
                                         )}
                                     </Button>
                                 </div>

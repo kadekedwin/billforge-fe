@@ -8,6 +8,7 @@ import type { Item } from "@/lib/api";
 import { ItemImageCard } from "./ItemImageCard";
 import { useBusiness } from "@/contexts/business-context";
 import { getCurrencySymbol } from "@/lib/utils/currency";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ItemCardProps {
     item: Item;
@@ -17,6 +18,7 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item, quantity, onAdd, onRemove }: ItemCardProps) {
+    const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
 
@@ -78,7 +80,7 @@ export function ItemCard({ item, quantity, onAdd, onRemove }: ItemCardProps) {
                         size="sm"
                     >
                         <Plus className="mr-1 h-3 w-3" />
-                        Add
+                        {t('app.sale.addToCart')}
                     </Button>
                 )}
             </CardFooter>

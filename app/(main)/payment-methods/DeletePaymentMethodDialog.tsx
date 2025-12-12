@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Loader2 } from "lucide-react";
 import type { PaymentMethod } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeletePaymentMethodDialogProps {
     open: boolean;
@@ -22,25 +23,24 @@ interface DeletePaymentMethodDialogProps {
 }
 
 export function DeletePaymentMethodDialog({
-                                              open,
-                                              onOpenChange,
-                                              paymentMethod,
-                                              isDeleting,
-                                              onConfirm,
-                                          }: DeletePaymentMethodDialogProps) {
+    open,
+    onOpenChange,
+    paymentMethod,
+    isDeleting,
+    onConfirm,
+}: DeletePaymentMethodDialogProps) {
+    const { t } = useTranslation();
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('app.paymentMethods.deleteTitle')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete the payment method{" "}
-                        <span className="font-semibold">{paymentMethod?.name}</span>.
-                        This action cannot be undone.
+                        {t('app.paymentMethods.deleteDescription', { name: paymentMethod?.name || '' })}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel disabled={isDeleting}>{t('common.cancel')}</AlertDialogCancel>
                     <AlertDialogAction
                         onClick={onConfirm}
                         disabled={isDeleting}
@@ -49,10 +49,10 @@ export function DeletePaymentMethodDialog({
                         {isDeleting ? (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Deleting...
+                                {t('app.paymentMethods.deleting')}
                             </>
                         ) : (
-                            "Delete"
+                            t('common.delete')
                         )}
                     </AlertDialogAction>
                 </AlertDialogFooter>

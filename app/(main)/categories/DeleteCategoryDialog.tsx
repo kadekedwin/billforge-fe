@@ -10,8 +10,9 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import {Loader2} from "lucide-react";
-import type {Category} from "@/lib/api";
+import { Loader2 } from "lucide-react";
+import type { Category } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeleteCategoryDialogProps {
     open: boolean;
@@ -22,24 +23,24 @@ interface DeleteCategoryDialogProps {
 }
 
 export function DeleteCategoryDialog({
-                                         open,
-                                         onOpenChange,
-                                         category,
-                                         isDeleting,
-                                         onConfirm,
-                                     }: DeleteCategoryDialogProps) {
+    open,
+    onOpenChange,
+    category,
+    isDeleting,
+    onConfirm,
+}: DeleteCategoryDialogProps) {
+    const { t } = useTranslation();
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('app.categories.deleteTitle')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete the category <span className="font-semibold">{category?.name}</span>.
-                        This action cannot be undone.
+                        {t('app.categories.deleteDescription', { name: category?.name || '' })}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel disabled={isDeleting}>{t('common.cancel')}</AlertDialogCancel>
                     <AlertDialogAction
                         onClick={onConfirm}
                         disabled={isDeleting}
@@ -47,11 +48,11 @@ export function DeleteCategoryDialog({
                     >
                         {isDeleting ? (
                             <>
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
-                                Deleting...
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                {t('app.categories.deleting')}
                             </>
                         ) : (
-                            "Delete"
+                            t('common.delete')
                         )}
                     </AlertDialogAction>
                 </AlertDialogFooter>
