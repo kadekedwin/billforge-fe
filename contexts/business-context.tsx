@@ -37,7 +37,12 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
 
     const isPublicRoute = useCallback(() => {
-        return PUBLIC_ROUTES.some(route => pathname.startsWith(route));
+        return PUBLIC_ROUTES.some(route => {
+            if (route === "/") {
+                return pathname === "/";
+            }
+            return pathname.startsWith(route);
+        });
     }, [pathname]);
 
     const getSavedBusinessUuid = useCallback(() => {
