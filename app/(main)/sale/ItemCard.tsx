@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
 import type { Item } from "@/lib/api";
 import { ItemImageCard } from "./ItemImageCard";
@@ -15,12 +16,37 @@ interface ItemCardProps {
     quantity: number;
     onAdd: (itemUuid: string) => void;
     onRemove: (itemUuid: string) => void;
+    onSetQuantity: (itemUuid: string, quantity: number) => void;
 }
 
-export function ItemCard({ item, quantity, onAdd, onRemove }: ItemCardProps) {
+export function ItemCard({ item, quantity, onAdd, onRemove, onSetQuantity }: ItemCardProps) {
     const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
     const currencySymbol = getCurrencySymbol(selectedBusiness?.currency);
+
+    const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+
+        // Allow empty string for user to clear and type new value
+        if (value === '') {
+            return;
+        }
+
+        // Only allow positive integers
+        const numValue = parseInt(value, 10);
+        if (!isNaN(numValue) && numValue >= 0) {
+            onSetQuantity(item.uuid, numValue);
+        }
+    };
+
+    const handleQuantityBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+
+        // If empty or 0, remove from cart
+        if (value === '' || parseInt(value, 10) === 0) {
+            onSetQuantity(item.uuid, 0);
+        }
+    };
 
     return (
         <Card className="py-0 group relative overflow-hidden transition-shadow hover:shadow-md">
@@ -61,9 +87,14 @@ export function ItemCard({ item, quantity, onAdd, onRemove }: ItemCardProps) {
                         >
                             -
                         </Button>
-                        <span className="text-sm font-semibold">
-                            {quantity}
-                        </span>
+                        <Input
+                            type="number"
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                            onBlur={handleQuantityBlur}
+                            className="h-7 w-16 text-center text-sm font-semibold p-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            min="0"
+                        />
                         <Button
                             variant="outline"
                             size="sm"

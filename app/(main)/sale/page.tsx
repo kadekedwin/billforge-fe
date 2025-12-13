@@ -39,7 +39,7 @@ export default function SalePage() {
         error,
         loadData,
     } = useSaleData();
-    const { cart, addToCart, removeFromCart, clearCart } = useCart();
+    const { cart, addToCart, removeFromCart, setQuantity, clearCart } = useCart();
 
     const [selectedCategory, setSelectedCategory] = useState<string>("");
     const [searchQuery, setSearchQuery] = useState<string>("");
@@ -294,6 +294,7 @@ export default function SalePage() {
                 cart={cart}
                 onAddToCart={addToCart}
                 onRemoveFromCart={removeFromCart}
+                onSetQuantity={setQuantity}
             />
 
             <CartSummary

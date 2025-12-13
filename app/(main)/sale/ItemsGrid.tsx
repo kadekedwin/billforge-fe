@@ -9,9 +9,10 @@ interface ItemsGridProps {
     cart: Map<string, number>;
     onAddToCart: (itemUuid: string) => void;
     onRemoveFromCart: (itemUuid: string) => void;
+    onSetQuantity: (itemUuid: string, quantity: number) => void;
 }
 
-export function ItemsGrid({ items, cart, onAddToCart, onRemoveFromCart }: ItemsGridProps) {
+export function ItemsGrid({ items, cart, onAddToCart, onRemoveFromCart, onSetQuantity }: ItemsGridProps) {
     const { t } = useTranslation();
     if (items.length === 0) {
         return (
@@ -38,6 +39,7 @@ export function ItemsGrid({ items, cart, onAddToCart, onRemoveFromCart }: ItemsG
                         quantity={quantity}
                         onAdd={onAddToCart}
                         onRemove={onRemoveFromCart}
+                        onSetQuantity={onSetQuantity}
                     />
                 );
             })}
