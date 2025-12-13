@@ -370,12 +370,239 @@
     "privacy": {
         "title": "Kebijakan Privasi",
         "lastUpdated": "Terakhir diperbarui: 8 Desember 2025",
-        "contactUs": "Hubungi Kami"
+        "intro": {
+            "title": "Pendahuluan",
+            "content": "Di BillForge, kami menanggapi privasi Anda dengan serius. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, mengungkapkan, dan menjaga informasi Anda ketika Anda menggunakan layanan penagihan dan manajemen faktur kami. Harap baca kebijakan privasi ini dengan saksama. Jika Anda tidak setuju dengan ketentuan kebijakan privasi ini, harap jangan akses aplikasi."
+        },
+        "infoCollect": {
+            "title": "1. Informasi yang Kami Kumpulkan",
+            "personal": {
+                "title": "Informasi Pribadi",
+                "intro": "Kami mengumpulkan informasi yang Anda berikan secara langsung kepada kami, termasuk:",
+                "items": {
+                    "contact": "Nama dan informasi kontak (alamat email, nomor telepon)",
+                    "business": "Informasi bisnis (nama perusahaan, alamat, ID pajak)",
+                    "payment": "Informasi pembayaran (diproses secara aman melalui pemroses pembayaran pihak ketiga)",
+                    "credentials": "Kredensial akun (nama pengguna, kata sandi)"
+                }
+            },
+            "businessData": {
+                "title": "Data Bisnis",
+                "intro": "Ketika Anda menggunakan BillForge, kami mengumpulkan dan menyimpan:",
+                "items": {
+                    "customers": "Informasi pelanggan yang Anda masukkan",
+                    "invoices": "Data faktur dan transaksi",
+                    "items": "Katalog barang dan informasi harga",
+                    "tax": "Konfigurasi pajak dan diskon",
+                    "settings": "Pengaturan dan preferensi bisnis"
+                }
+            },
+            "auto": {
+                "title": "Informasi yang Dikumpulkan Secara Otomatis",
+                "intro": "Ketika Anda mengakses BillForge, kami secara otomatis mengumpulkan:",
+                "items": {
+                    "log": "Data log (alamat IP, jenis browser, sistem operasi)",
+                    "device": "Informasi perangkat",
+                    "usage": "Data penggunaan (halaman yang dikunjungi, fitur yang digunakan, waktu yang dihabiskan)",
+                    "cookies": "Cookie dan teknologi pelacakan serupa"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Bagaimana Kami Menggunakan Informasi Anda",
+            "intro": "Kami menggunakan informasi yang kami kumpulkan untuk:",
+            "items": {
+                "provide": "Menyediakan, memelihara, dan meningkatkan layanan kami",
+                "process": "Memproses transaksi Anda dan mengelola akun Anda",
+                "send": "Mengirim pemberitahuan teknis, pembaruan, dan pesan dukungan",
+                "respond": "Menanggapi komentar, pertanyaan, dan permintaan layanan pelanggan Anda",
+                "monitor": "Memantau dan menganalisis tren, penggunaan, dan aktivitas",
+                "detect": "Mendeteksi, mencegah, dan mengatasi masalah teknis dan aktivitas penipuan",
+                "personalize": "Mempersonalisasi dan meningkatkan pengalaman Anda",
+                "marketing": "Mengirim komunikasi pemasaran (dengan persetujuan Anda)"
+            }
+        },
+        "sharing": {
+            "title": "3. Berbagi dan Pengungkapan Informasi",
+            "intro": "Kami tidak menjual informasi pribadi Anda. Kami dapat membagikan informasi Anda dalam keadaan berikut:",
+            "items": {
+                "providers": "Dengan penyedia layanan yang melakukan layanan atas nama kami",
+                "legal": "Untuk mematuhi kewajiban hukum atau menanggapi permintaan hukum",
+                "protect": "Untuk melindungi hak, properti, dan keselamatan BillForge, pengguna kami, atau orang lain",
+                "merger": "Sehubungan dengan merger, penjualan, atau akuisisi seluruh atau sebagian perusahaan kami",
+                "consent": "Dengan persetujuan Anda atau atas arahan Anda"
+            }
+        },
+        "security": {
+            "title": "4. Keamanan Data",
+            "intro": "Kami menerapkan langkah-langkah teknis dan organisasi yang tepat untuk melindungi informasi Anda, termasuk:",
+            "items": {
+                "encryption": "Enkripsi data saat transit dan saat istirahat",
+                "assessments": "Penilaian dan pembaruan keamanan rutin",
+                "access": "Kontrol akses dan mekanisme otentikasi",
+                "datacenters": "Pusat data aman dengan langkah-langkah keamanan fisik",
+                "backups": "Pencadangan rutin dan prosedur pemulihan bencana"
+            },
+            "disclaimer": "Namun, tidak ada metode transmisi melalui internet atau penyimpanan elektronik yang 100% aman. Meskipun kami berusaha menggunakan cara yang dapat diterima secara komersial untuk melindungi informasi Anda, kami tidak dapat menjamin keamanannya secara mutlak."
+        },
+        "retention": {
+            "title": "5. Penyimpanan Data",
+            "content": "Kami menyimpan informasi Anda selama akun Anda aktif atau sesuai kebutuhan untuk menyediakan layanan kepada Anda. Kami akan menyimpan dan menggunakan informasi Anda jika diperlukan untuk mematuhi kewajiban hukum, menyelesaikan sengketa, dan menegakkan perjanjian kami. Anda dapat meminta penghapusan data Anda dengan menghubungi kami, tunduk pada persyaratan penyimpanan hukum tertentu."
+        },
+        "rights": {
+            "title": "6. Hak dan Pilihan Anda",
+            "intro": "Anda memiliki hak tertentu terkait informasi pribadi Anda:",
+            "items": {
+                "access": "Mengakses dan menerima salinan informasi pribadi Anda",
+                "correct": "Mengoreksi atau memperbarui informasi yang tidak akurat",
+                "delete": "Meminta penghapusan informasi Anda",
+                "object": "Menolak atau membatasi pemrosesan tertentu atas informasi Anda",
+                "export": "Mengekspor data Anda dalam format portabel",
+                "optout": "Memilih keluar dari komunikasi pemasaran",
+                "withdraw": "Menarik persetujuan jika kami mengandalkan persetujuan untuk memproses informasi Anda"
+            },
+            "exercise": "Untuk menggunakan hak-hak ini, silakan hubungi kami menggunakan informasi yang disediakan di akhir kebijakan ini."
+        },
+        "cookies": {
+            "title": "7. Cookie dan Teknologi Pelacakan",
+            "intro": "Kami menggunakan cookie dan teknologi pelacakan serupa untuk mengumpulkan dan melacak informasi tentang penggunaan BillForge oleh Anda. Jenis cookie yang kami gunakan meliputi:",
+            "items": {
+                "essential": "Cookie esensial: Diperlukan untuk pengoperasian layanan kami",
+                "preference": "Cookie preferensi: Mengingat pengaturan dan preferensi Anda",
+                "analytics": "Cookie analitik: Membantu kami memahami bagaimana Anda menggunakan layanan kami",
+                "marketing": "Cookie pemasaran: Melacak aktivitas Anda untuk mengirimkan iklan yang relevan"
+            },
+            "control": "Anda dapat mengontrol cookie melalui pengaturan browser Anda dan alat lainnya. Namun, menonaktifkan cookie tertentu dapat membatasi kemampuan Anda untuk menggunakan beberapa fitur BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Layanan Pihak Ketiga",
+            "intro": "BillForge dapat berisi tautan ke situs web pihak ketiga dan berintegrasi dengan layanan pihak ketiga. Kami tidak bertanggung jawab atas praktik privasi pihak ketiga ini. Kami mendorong Anda untuk membaca kebijakan privasi layanan pihak ketiga yang Anda gunakan.",
+            "services": "Layanan pihak ketiga yang mungkin kami gunakan meliputi pemroses pembayaran, penyedia analitik, dan penyedia infrastruktur cloud. Layanan ini memiliki kebijakan privasi mereka sendiri yang mengatur penggunaan informasi Anda."
+        },
+        "children": {
+            "title": "9. Privasi Anak-Anak",
+            "content": "BillForge tidak ditujukan untuk digunakan oleh anak-anak di bawah usia 18 tahun. Kami tidak secara sadar mengumpulkan informasi pribadi dari anak-anak di bawah 18 tahun. Jika kami mengetahui bahwa kami telah mengumpulkan informasi pribadi dari seorang anak di bawah 18 tahun, kami akan mengambil langkah-langkah untuk menghapus informasi tersebut."
+        },
+        "international": {
+            "title": "10. Transfer Data Internasional",
+            "content": "Informasi Anda dapat ditransfer ke dan dipelihara di server yang berlokasi di luar negara atau yurisdiksi Anda. Dengan menggunakan BillForge, Anda menyetujui transfer informasi Anda ke negara-negara yang mungkin memiliki undang-undang perlindungan data yang berbeda dari negara tempat tinggal Anda."
+        },
+        "changes": {
+            "title": "11. Perubahan pada Kebijakan Privasi Ini",
+            "content": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Kami akan memberi tahu Anda tentang perubahan materi apa pun dengan memposting Kebijakan Privasi baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\". Anda disarankan untuk meninjau Kebijakan Privasi ini secara berkala untuk setiap perubahan. Penggunaan BillForge yang berkelanjutan setelah modifikasi apa pun menunjukkan penerimaan Anda terhadap Kebijakan Privasi yang diperbarui."
+        },
+        "california": {
+            "title": "12. Hak Privasi California",
+            "intro": "Jika Anda adalah penduduk California, Anda memiliki hak tambahan berdasarkan California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Hak untuk mengetahui informasi pribadi apa yang dikumpulkan, digunakan, dibagikan, atau dijual",
+                "delete": "Hak untuk menghapus informasi pribadi",
+                "optout": "Hak untuk memilih keluar dari penjualan informasi pribadi (kami tidak menjual informasi pribadi)",
+                "nondiscrimination": "Hak untuk tidak mendiskriminasi karena menggunakan hak privasi Anda"
+            }
+        },
+        "gdpr": {
+            "title": "13. Hak GDPR (Pengguna Eropa)",
+            "intro": "Jika Anda berada di Area Ekonomi Eropa (EEA), Anda memiliki hak tambahan berdasarkan General Data Protection Regulation (GDPR):",
+            "items": {
+                "access": "Hak untuk mengakses data pribadi Anda",
+                "rectification": "Hak untuk perbaikan data yang tidak akurat",
+                "erasure": "Hak untuk penghapusan (hak untuk dilupakan)",
+                "restrict": "Hak untuk membatasi pemrosesan",
+                "portability": "Hak untuk portabilitas data",
+                "object": "Hak untuk menolak pemrosesan",
+                "complaint": "Hak untuk mengajukan keluhan kepada otoritas pengawas"
+            }
+        },
+        "contact": {
+            "title": "Hubungi Kami",
+            "description": "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini atau praktik data kami, silakan hubungi kami. Kami berkomitmen untuk bekerja sama dengan Anda untuk mendapatkan resolusi yang adil atas segala masalah privasi."
+        }
     },
     "terms": {
-        "title": "Syarat Layanan",
+        "title": "Ketentuan Layanan",
         "lastUpdated": "Terakhir diperbarui: 8 Desember 2025",
-        "contactUs": "Hubungi Kami"
+        "acceptance": {
+            "title": "1. Penerimaan Ketentuan",
+            "content": "Dengan mengakses dan menggunakan BillForge, Anda menerima dan setuju untuk terikat oleh ketentuan dan ketentuan perjanjian ini. Jika Anda tidak setuju untuk mematuhi hal-hal di atas, harap jangan gunakan layanan ini."
+        },
+        "license": {
+            "title": "2. Lisensi Penggunaan",
+            "intro": "Izin diberikan untuk mengakses dan menggunakan BillForge sementara untuk tujuan pribadi dan komersial. Ini adalah pemberian lisensi, bukan pengalihan hak milik, dan di bawah lisensi ini Anda tidak boleh:",
+            "items": {
+                "modify": "Memodifikasi atau menyalin materi",
+                "commercial": "Menggunakan materi untuk tujuan komersial tanpa berlangganan yang tepat",
+                "decompile": "Mencoba mendekompilasi atau merekayasa balik perangkat lunak apa pun yang terdapat di BillForge",
+                "remove": "Menghapus hak cipta atau notasi kepemilikan lainnya dari materi",
+                "transfer": "Mentransfer materi ke orang lain atau menyalin materi di server lain mana pun"
+            }
+        },
+        "account": {
+            "title": "3. Akun Pengguna",
+            "intro": "Untuk menggunakan fitur tertentu dari BillForge, Anda harus mendaftar akun. Anda setuju untuk:",
+            "items": {
+                "accurate": "Memberikan informasi yang akurat, terkini, dan lengkap selama pendaftaran",
+                "security": "Menjaga keamanan kata sandi dan akun Anda",
+                "notify": "Beri tahu kami segera tentang penggunaan tidak sah atas akun Anda",
+                "responsibility": "Menerima tanggung jawab atas semua aktivitas yang terjadi di bawah akun Anda"
+            }
+        },
+        "subscription": {
+            "title": "4. Langganan dan Pembayaran",
+            "intro": "BillForge menawarkan berbagai paket berlangganan. Dengan berlangganan, Anda setuju untuk:",
+            "items": {
+                "fees": "Membayar semua biaya yang terkait dengan paket berlangganan pilihan Anda",
+                "renewal": "Pembaruan otomatis langganan Anda kecuali dibatalkan",
+                "pricing": "Kemungkinan perubahan harga dengan pemberitahuan 30 hari sebelumnya",
+                "refunds": "Tidak ada pengembalian uang untuk bulan parsial atau layanan yang tidak digunakan"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Data dan Privasi",
+            "content": "Penggunaan BillForge oleh Anda juga diatur oleh Kebijakan Privasi kami. Harap tinjau",
+            "link": "Kebijakan Privasi",
+            "toUnderstand": "kami untuk memahami praktik kami."
+        },
+        "prohibited": {
+            "title": "6. Aktivitas yang Dilarang",
+            "intro": "Anda tidak boleh menggunakan BillForge untuk:",
+            "items": {
+                "laws": "Melanggar hukum atau peraturan apa pun",
+                "infringe": "Melanggar hak kekayaan intelektual",
+                "malware": "Mengirimkan virus, malware, atau kode berbahaya lainnya",
+                "unauthorized": "Mencoba mendapatkan akses tidak sah ke sistem kami",
+                "harass": "Melecehkan, menyalahgunakan, atau membahayakan pengguna lain",
+                "fraud": "Menggunakan layanan untuk tujuan penipuan"
+            }
+        },
+        "availability": {
+            "title": "7. Ketersediaan Layanan",
+            "content": "Kami berusaha untuk menjaga ketersediaan BillForge yang tinggi, tetapi kami tidak menjamin akses tanpa gangguan. Kami berhak untuk memodifikasi, menangguhkan, atau menghentikan bagian mana pun dari layanan dengan atau tanpa pemberitahuan. Kami tidak bertanggung jawab atas modifikasi, penangguhan, atau penghentian layanan."
+        },
+        "intellectual": {
+            "title": "8. Kekayaan Intelektual",
+            "content": "Semua konten yang disertakan di BillForge, seperti teks, grafik, logo, gambar, dan perangkat lunak, adalah milik BillForge atau pemasok kontennya dan dilindungi oleh undang-undang hak cipta internasional. Kompilasi semua konten di situs ini adalah milik eksklusif BillForge."
+        },
+        "liability": {
+            "title": "9. Batasan Tanggung Jawab",
+            "content": "Dalam hal apa pun BillForge atau pemasoknya tidak bertanggung jawab atas kerusakan apa pun (termasuk, tanpa batasan, kerusakan karena kehilangan data atau keuntungan, atau karena gangguan bisnis) yang timbul dari penggunaan atau ketidakmampuan untuk menggunakan BillForge, bahkan jika BillForge atau perwakilan resmi BillForge telah diberitahu secara lisan atau tertulis tentang kemungkinan kerusakan tersebut."
+        },
+        "termination": {
+            "title": "10. Penghentian",
+            "content": "Kami dapat mengakhiri atau menangguhkan akun dan akses Anda ke BillForge segera, tanpa pemberitahuan atau kewajiban sebelumnya, dengan alasan apa pun, termasuk jika Anda melanggar Ketentuan Layanan ini. Setelah penghentian, hak Anda untuk menggunakan layanan akan segera berakhir."
+        },
+        "changesTerms": {
+            "title": "11. Perubahan Ketentuan",
+            "content": "Kami berhak untuk mengubah ketentuan ini kapan saja. Kami akan memberi tahu pengguna tentang perubahan materi apa pun dengan memposting Ketentuan Layanan baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\". Penggunaan BillForge yang berkelanjutan setelah modifikasi tersebut merupakan pengakuan dan penerimaan Anda terhadap ketentuan yang dimodifikasi."
+        },
+        "governing": {
+            "title": "12. Hukum yang Mengatur",
+            "content": "Ketentuan ini akan diatur dan ditafsirkan sesuai dengan hukum yang berlaku, tanpa memperhatikan pertentangan ketentuan hukumnya. Kegagalan kami untuk menegakkan hak atau ketentuan apa pun dari ketentuan ini tidak akan dianggap sebagai pengabaian atas hak-hak tersebut."
+        },
+        "contact": {
+            "title": "Hubungi Kami",
+            "description": "Jika Anda memiliki pertanyaan tentang Ketentuan Layanan ini, silakan hubungi kami."
+        }
     },
     "app": {
         "sale": {

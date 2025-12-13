@@ -368,14 +368,241 @@
         "invalidFormat": "Format invalide"
     },
     "privacy": {
-        "title": "Politique de Confidentialité",
-        "lastUpdated": "Dernière mise à jour: 8 décembre 2025",
-        "contactUs": "Nous Contacter"
+        "title": "Politique de confidentialité",
+        "lastUpdated": "Dernière mise à jour : 8 décembre 2025",
+        "intro": {
+            "title": "Introduction",
+            "content": "Chez BillForge, nous prenons votre vie privée très au sérieux. Cette Politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre service de facturation et de gestion des factures. Veuillez lire attentivement cette politique de confidentialité. Si vous n'êtes pas d'accord avec les termes de cette politique de confidentialité, veuillez ne pas accéder à l'application."
+        },
+        "infoCollect": {
+            "title": "1. Informations que nous collectons",
+            "personal": {
+                "title": "Informations personnelles",
+                "intro": "Nous collectons les informations que vous nous fournissez directement, notamment :",
+                "items": {
+                    "contact": "Nom et coordonnées (adresse e-mail, numéro de téléphone)",
+                    "business": "Informations sur l'entreprise (nom de l'entreprise, adresse, numéro fiscal)",
+                    "payment": "Informations de paiement (traitées de manière sécurisée par des processeurs de paiement tiers)",
+                    "credentials": "Identifiants de compte (nom d'utilisateur, mot de passe)"
+                }
+            },
+            "businessData": {
+                "title": "Données commerciales",
+                "intro": "Lorsque vous utilisez BillForge, nous collectons et stockons :",
+                "items": {
+                    "customers": "Informations client que vous saisissez",
+                    "invoices": "Données de facturation et de transaction",
+                    "items": "Catalogues d'articles et informations sur les prix",
+                    "tax": "Configuration des taxes et remises",
+                    "settings": "Paramètres et préférences de l'entreprise"
+                }
+            },
+            "auto": {
+                "title": "Informations collectées automatiquement",
+                "intro": "Lorsque vous accédez à BillForge, nous collectons automatiquement :",
+                "items": {
+                    "log": "Données de journal (adresse IP, type de navigateur, système d'exploitation)",
+                    "device": "Informations sur l'appareil",
+                    "usage": "Données d'utilisation (pages visitées, fonctionnalités utilisées, temps passé)",
+                    "cookies": "Cookies et technologies de suivi similaires"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Comment nous utilisons vos informations",
+            "intro": "Nous utilisons les informations que nous collectons pour :",
+            "items": {
+                "provide": "Fournir, maintenir et améliorer nos services",
+                "process": "Traiter vos transactions et gérer votre compte",
+                "send": "Vous envoyer des avis techniques, des mises à jour et des messages d'assistance",
+                "respond": "Répondre à vos commentaires, questions et demandes de service client",
+                "monitor": "Surveiller et analyser les tendances, l'utilisation et les activités",
+                "detect": "Détecter, prévenir et résoudre les problèmes techniques et les activités frauduleuses",
+                "personalize": "Personnaliser et améliorer votre expérience",
+                "marketing": "Vous envoyer des communications marketing (avec votre consentement)"
+            }
+        },
+        "sharing": {
+            "title": "3. Partage et divulgation d'informations",
+            "intro": "Nous ne vendons pas vos informations personnelles. Nous pouvons partager vos informations dans les circonstances suivantes :",
+            "items": {
+                "providers": "Avec des prestataires de services qui effectuent des services en notre nom",
+                "legal": "Pour se conformer aux obligations légales ou répondre aux demandes légales",
+                "protect": "Pour protéger les droits, la propriété et la sécurité de BillForge, de nos utilisateurs ou d'autres",
+                "merger": "Dans le cadre d'une fusion, d'une vente ou d'une acquisition de tout ou partie de notre entreprise",
+                "consent": "Avec votre consentement ou selon vos instructions"
+            }
+        },
+        "security": {
+            "title": "4. Sécurité des données",
+            "intro": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations, notamment :",
+            "items": {
+                "encryption": "Chiffrement des données en transit et au repos",
+                "assessments": "Évaluations et mises à jour de sécurité régulières",
+                "access": "Contrôles d'accès et mécanismes d'authentification",
+                "datacenters": "Centres de données sécurisés avec des mesures de sécurité physique",
+                "backups": "Sauvegardes régulières et procédures de reprise après sinistre"
+            },
+            "disclaimer": "Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est sécurisée à 100 %. Bien que nous nous efforcions d'utiliser des moyens commercialement acceptables pour protéger vos informations, nous ne pouvons garantir leur sécurité absolue."
+        },
+        "retention": {
+            "title": "5. Conservation des données",
+            "content": "Nous conservons vos informations aussi longtemps que votre compte est actif ou selon les besoins pour vous fournir des services. Nous conserverons et utiliserons vos informations si nécessaire pour nous conformer aux obligations légales, résoudre les litiges et faire respecter nos accords. Vous pouvez demander la suppression de vos données en nous contactant, sous réserve de certaines exigences légales de conservation."
+        },
+        "rights": {
+            "title": "6. Vos droits et choix",
+            "intro": "Vous avez certains droits concernant vos informations personnelles :",
+            "items": {
+                "access": "Accéder et recevoir une copie de vos informations personnelles",
+                "correct": "Corriger ou mettre à jour des informations inexactes",
+                "delete": "Demander la suppression de vos informations",
+                "object": "S'opposer ou restreindre certains traitements de vos informations",
+                "export": "Exporter vos données dans un format portable",
+                "optout": "Se désabonner des communications marketing",
+                "withdraw": "Retirer le consentement lorsque nous comptons sur le consentement pour traiter vos informations"
+            },
+            "exercise": "Pour exercer ces droits, veuillez nous contacter en utilisant les informations fournies à la fin de cette politique."
+        },
+        "cookies": {
+            "title": "7. Cookies et technologies de suivi",
+            "intro": "Nous utilisons des cookies et des technologies de suivi similaires pour collecter et suivre des informations sur votre utilisation de BillForge. Les types de cookies que nous utilisons comprennent :",
+            "items": {
+                "essential": "Cookies essentiels : Requis pour le fonctionnement de notre service",
+                "preference": "Cookies de préférence : Mémorisent vos paramètres et préférences",
+                "analytics": "Cookies d'analyse : Nous aident à comprendre comment vous utilisez notre service",
+                "marketing": "Cookies marketing : Suivent votre activité pour diffuser des publicités pertinentes"
+            },
+            "control": "Vous pouvez contrôler les cookies via les paramètres de votre navigateur et d'autres outils. Cependant, la désactivation de certains cookies peut limiter votre capacité à utiliser certaines fonctionnalités de BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Services tiers",
+            "intro": "BillForge peut contenir des liens vers des sites web tiers et s'intègre à des services tiers. Nous ne sommes pas responsables des pratiques de confidentialité de ces tiers. Nous vous encourageons à lire les politiques de confidentialité de tout service tiers avec lequel vous interagissez.",
+            "services": "Les services tiers que nous pouvons utiliser incluent les processeurs de paiement, les fournisseurs d'analyse et les fournisseurs d'infrastructure cloud. Ces services ont leurs propres politiques de confidentialité régissant leur utilisation de vos informations."
+        },
+        "children": {
+            "title": "9. Confidentialité des enfants",
+            "content": "BillForge n'est pas destiné à être utilisé par des enfants de moins de 18 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants de moins de 18 ans. Si nous apprenons que nous avons collecté des informations personnelles auprès d'un enfant de moins de 18 ans, nous prendrons des mesures pour supprimer ces informations."
+        },
+        "international": {
+            "title": "10. Transferts internationaux de données",
+            "content": "Vos informations peuvent être transférées et conservées sur des serveurs situés en dehors de votre pays ou juridiction. En utilisant BillForge, vous consentez au transfert de vos informations vers des pays qui peuvent avoir des lois de protection des données différentes de celles de votre pays de résidence."
+        },
+        "changes": {
+            "title": "11. Modifications de cette politique de confidentialité",
+            "content": "Nous pouvons mettre à jour cette Politique de confidentialité de temps à autre. Nous vous informerons de tout changement important en publiant la nouvelle Politique de confidentialité sur cette page et en mettant à jour la date de \"Dernière mise à jour\". Il vous est conseillé de consulter cette Politique de confidentialité périodiquement pour tout changement. Votre utilisation continue de BillForge après toute modification indique votre acceptation de la Politique de confidentialité mise à jour."
+        },
+        "california": {
+            "title": "12. Droits de confidentialité en Californie",
+            "intro": "Si vous êtes résident de Californie, vous avez des droits supplémentaires en vertu du California Consumer Privacy Act (CCPA) :",
+            "items": {
+                "know": "Droit de savoir quelles informations personnelles sont collectées, utilisées, partagées ou vendues",
+                "delete": "Droit de supprimer les informations personnelles",
+                "optout": "Droit de refuser la vente d'informations personnelles (nous ne vendons pas d'informations personnelles)",
+                "nondiscrimination": "Droit à la non-discrimination pour l'exercice de vos droits de confidentialité"
+            }
+        },
+        "gdpr": {
+            "title": "13. Droits RGPD (Utilisateurs européens)",
+            "intro": "Si vous êtes situé dans l'Espace économique européen (EEE), vous avez des droits supplémentaires en vertu du Règlement général sur la protection des données (RGPD) :",
+            "items": {
+                "access": "Droit d'accéder à vos données personnelles",
+                "rectification": "Droit de rectification des données inexactes",
+                "erasure": "Droit à l'effacement (droit à l'oubli)",
+                "restrict": "Droit de limiter le traitement",
+                "portability": "Droit à la portabilité des données",
+                "object": "Droit de s'opposer au traitement",
+                "complaint": "Droit de déposer une plainte auprès d'une autorité de contrôle"
+            }
+        },
+        "contact": {
+            "title": "Nous contacter",
+            "description": "Si vous avez des questions concernant cette Politique de confidentialité ou nos pratiques en matière de données, veuillez nous contacter. Nous nous engageons à travailler avec vous pour obtenir une résolution équitable de toute préoccupation concernant la confidentialité."
+        }
     },
     "terms": {
-        "title": "Conditions de Service",
-        "lastUpdated": "Dernière mise à jour: 8 décembre 2025",
-        "contactUs": "Nous Contacter"
+        "title": "Conditions d'utilisation",
+        "lastUpdated": "Dernière mise à jour : 8 décembre 2025",
+        "acceptance": {
+            "title": "1. Acceptation des conditions",
+            "content": "En accédant et en utilisant BillForge, vous acceptez et consentez à être lié par les termes et dispositions de cet accord. Si vous n'acceptez pas de respecter ce qui précède, veuillez ne pas utiliser ce service."
+        },
+        "license": {
+            "title": "2. Licence d'utilisation",
+            "intro": "L'autorisation est accordée d'accéder et d'utiliser temporairement BillForge à des fins personnelles et commerciales. Il s'agit de l'octroi d'une licence, et non d'un transfert de titre, et en vertu de cette licence, vous ne pouvez pas :",
+            "items": {
+                "modify": "Modifier ou copier le matériel",
+                "commercial": "Utiliser le matériel à des fins commerciales sans abonnement approprié",
+                "decompile": "Tenter de décompiler ou de faire de l'ingénierie inverse sur tout logiciel contenu dans BillForge",
+                "remove": "Supprimer tout droit d'auteur ou autre mention de propriété du matériel",
+                "transfer": "Transférer le matériel à une autre personne ou copier le matériel sur un autre serveur"
+            }
+        },
+        "account": {
+            "title": "3. Compte utilisateur",
+            "intro": "Pour utiliser certaines fonctionnalités de BillForge, vous devez créer un compte. Vous acceptez de :",
+            "items": {
+                "accurate": "Fournir des informations exactes, actuelles et complètes lors de l'inscription",
+                "security": "Maintenir la sécurité de votre mot de passe et de votre compte",
+                "notify": "Nous informer immédiatement de toute utilisation non autorisée de votre compte",
+                "responsibility": "Accepter la responsabilité de toutes les activités qui se produisent sous votre compte"
+            }
+        },
+        "subscription": {
+            "title": "4. Abonnement et paiement",
+            "intro": "BillForge propose différents plans d'abonnement. En vous abonnant, vous acceptez :",
+            "items": {
+                "fees": "Payer tous les frais associés à votre plan d'abonnement choisi",
+                "renewal": "Renouvellement automatique de votre abonnement sauf annulation",
+                "pricing": "Changements possibles de prix avec un préavis de 30 jours",
+                "refunds": "Aucun remboursement pour les mois partiels ou les services non utilisés"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Données et confidentialité",
+            "content": "Votre utilisation de BillForge est également régie par notre Politique de confidentialité. Veuillez consulter notre",
+            "link": "Politique de confidentialité",
+            "toUnderstand": "pour comprendre nos pratiques."
+        },
+        "prohibited": {
+            "title": "6. Activités interdites",
+            "intro": "Vous ne pouvez pas utiliser BillForge pour :",
+            "items": {
+                "laws": "Violer toute loi ou réglementation",
+                "infringe": "Enfreindre les droits de propriété intellectuelle",
+                "malware": "Transmettre des virus, des logiciels malveillants ou tout autre code malveillant",
+                "unauthorized": "Tenter d'obtenir un accès non autorisé à nos systèmes",
+                "harass": "Harceler, abuser ou nuire à d'autres utilisateurs",
+                "fraud": "Utiliser le service à des fins frauduleuses"
+            }
+        },
+        "availability": {
+            "title": "7. Disponibilité du service",
+            "content": "Nous nous efforçons de maintenir une haute disponibilité de BillForge, mais nous ne garantissons pas un accès ininterrompu. Nous nous réservons le droit de modifier, suspendre ou interrompre toute partie du service avec ou sans préavis. Nous ne sommes pas responsables de toute modification, suspension ou interruption du service."
+        },
+        "intellectual": {
+            "title": "8. Propriété intellectuelle",
+            "content": "Tout le contenu inclus sur BillForge, tel que le texte, les graphiques, les logos, les images et les logiciels, est la propriété de BillForge ou de ses fournisseurs de contenu et est protégé par les lois internationales sur le droit d'auteur. La compilation de tout le contenu de ce site est la propriété exclusive de BillForge."
+        },
+        "liability": {
+            "title": "9. Limitation de responsabilité",
+            "content": "En aucun cas BillForge ou ses fournisseurs ne seront responsables de tout dommage (y compris, sans s'y limiter, les dommages pour perte de données ou de profit, ou en raison d'une interruption d'activité) découlant de l'utilisation ou de l'impossibilité d'utiliser BillForge, même si BillForge ou un représentant autorisé de BillForge a été informé oralement ou par écrit de la possibilité de tels dommages."
+        },
+        "termination": {
+            "title": "10. Résiliation",
+            "content": "Nous pouvons résilier ou suspendre votre compte et votre accès à BillForge immédiatement, sans préavis ni responsabilité, pour quelque raison que ce soit, y compris si vous enfreignez ces Conditions d'utilisation. Lors de la résiliation, votre droit d'utiliser le service cessera immédiatement."
+        },
+        "changesTerms": {
+            "title": "11. Modifications des conditions",
+            "content": "Nous nous réservons le droit de modifier ces conditions à tout moment. Nous informerons les utilisateurs de tout changement important en publiant les nouvelles Conditions d'utilisation sur cette page et en mettant à jour la date de \"Dernière mise à jour\". Votre utilisation continue de BillForge après de telles modifications constitue votre reconnaissance et votre acceptation des conditions modifiées."
+        },
+        "governing": {
+            "title": "12. Loi applicable",
+            "content": "Ces conditions seront régies et interprétées conformément aux lois applicables, sans tenir compte de ses dispositions relatives aux conflits de lois. Notre manquement à faire valoir tout droit ou disposition de ces conditions ne sera pas considéré comme une renonciation à ces droits."
+        },
+        "contact": {
+            "title": "Nous contacter",
+            "description": "Si vous avez des questions concernant ces Conditions d'utilisation, veuillez nous contacter."
+        }
     },
     "app": {
         "sale": {

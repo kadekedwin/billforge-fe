@@ -370,12 +370,239 @@
     "privacy": {
         "title": "Privacybeleid",
         "lastUpdated": "Laatst bijgewerkt: 8 december 2025",
-        "contactUs": "Contact"
+        "intro": {
+            "title": "Inleiding",
+            "content": "Bij BillForge nemen we uw privacy zeer serieus. Dit privacybeleid legt uit hoe we uw informatie verzamelen, gebruiken, openbaar maken en beschermen wanneer u onze facturerings- en factuurbeheerdienst gebruikt. Lees dit privacybeleid zorgvuldig door. Als u niet akkoord gaat met de voorwaarden van dit privacybeleid, gebruik de applicatie dan niet."
+        },
+        "infoCollect": {
+            "title": "1. Informatie die we verzamelen",
+            "personal": {
+                "title": "Persoonlijke Informatie",
+                "intro": "We verzamelen informatie die u rechtstreeks aan ons verstrekt, waaronder:",
+                "items": {
+                    "contact": "Naam en contactgegevens (e-mailadres, telefoonnummer)",
+                    "business": "Bedrijfsinformatie (bedrijfsnaam, adres, btw-nummer)",
+                    "payment": "Betalingsinformatie (veilig verwerkt door externe betalingsverwerkers)",
+                    "credentials": "Accountgegevens (gebruikersnaam, wachtwoord)"
+                }
+            },
+            "businessData": {
+                "title": "Bedrijfsgegevens",
+                "intro": "Wanneer u BillForge gebruikt, verzamelen en bewaren we:",
+                "items": {
+                    "customers": "Klantinformatie die u invoert",
+                    "invoices": "Factuur- en transactiegegevens",
+                    "items": "Artikelcatalogi en prijsinformatie",
+                    "tax": "Belasting- en kortingsconfiguraties",
+                    "settings": "Bedrijfsinstellingen en voorkeuren"
+                }
+            },
+            "auto": {
+                "title": "Automatisch verzamelde informatie",
+                "intro": "Wanneer u BillForge gebruikt, verzamelen we automatisch:",
+                "items": {
+                    "log": "Loggegevens (IP-adres, browsertype, besturingssysteem)",
+                    "device": "Apparaatinformatie",
+                    "usage": "Gebruiksgegevens (bezochte pagina's, gebruikte functies, bestede tijd)",
+                    "cookies": "Cookies en vergelijkbare volgtechnologieën"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Hoe we uw informatie gebruiken",
+            "intro": "We gebruiken de informatie die we verzamelen om:",
+            "items": {
+                "provide": "Onze diensten te leveren, te onderhouden en te verbeteren",
+                "process": "Uw transacties te verwerken en uw account te beheren",
+                "send": "U technische mededelingen, updates en ondersteuningsberichten te sturen",
+                "respond": "Te reageren op uw opmerkingen, vragen en verzoeken om klantenondersteuning",
+                "monitor": "Trends, gebruik en activiteiten te volgen en te analyseren",
+                "detect": "Technische problemen en frauduleuze activiteiten op te sporen, te voorkomen en aan te pakken",
+                "personalize": "Uw ervaring te personaliseren en te verbeteren",
+                "marketing": "U marketingcommunicatie te sturen (met uw toestemming)"
+            }
+        },
+        "sharing": {
+            "title": "3. Delen en openbaar maken van informatie",
+            "intro": "Wij verkopen uw persoonlijke informatie niet. We kunnen uw informatie delen in de volgende omstandigheden:",
+            "items": {
+                "providers": "Met dienstverleners die namens ons diensten uitvoeren",
+                "legal": "Om te voldoen aan wettelijke verplichtingen of te reageren op juridische verzoeken",
+                "protect": "Om de rechten, eigendommen en veiligheid van BillForge, onze gebruikers of anderen te beschermen",
+                "merger": "In verband met een fusie, verkoop of overname van ons bedrijf of een deel daarvan",
+                "consent": "Met uw toestemming of op uw aanwijzing"
+            }
+        },
+        "security": {
+            "title": "4. Gegevensbeveiliging",
+            "intro": "We implementeren passende technische en organisatorische maatregelen om uw informatie te beschermen, waaronder:",
+            "items": {
+                "encryption": "Versleuteling van gegevens tijdens verzending en in rust",
+                "assessments": "Regelmatige beveiligingsbeoordelingen en updates",
+                "access": "Toegangscontroles en authenticatiemechanismen",
+                "datacenters": "Veilige datacenters met fysieke beveiligingsmaatregelen",
+                "backups": "Regelmatige back-ups en procedures voor disaster recovery"
+            },
+            "disclaimer": "Echter, geen enkele methode van verzending via internet of elektronische opslag is 100% veilig. Hoewel we ernaar streven commercieel aanvaardbare middelen te gebruiken om uw informatie te beschermen, kunnen we de absolute veiligheid ervan niet garanderen."
+        },
+        "retention": {
+            "title": "5. Gegevensbewaring",
+            "content": "We bewaren uw informatie zolang uw account actief is of zolang als nodig is om u diensten te verlenen. We zullen uw informatie bewaren en gebruiken indien nodig om te voldoen aan wettelijke verplichtingen, geschillen op te lossen en onze overeenkomsten af te dwingen. U kunt verzoeken om verwijdering van uw gegevens door contact met ons op te nemen, onderhevig aan bepaalde wettelijke bewaarplichten."
+        },
+        "rights": {
+            "title": "6. Uw rechten en keuzes",
+            "intro": "U hebt bepaalde rechten met betrekking tot uw persoonlijke informatie:",
+            "items": {
+                "access": "Toegang krijgen tot en een kopie ontvangen van uw persoonlijke informatie",
+                "correct": "Onjuiste informatie corrigeren of bijwerken",
+                "delete": "Verwijdering van uw informatie aanvragen",
+                "object": "Bezwaar maken tegen of beperking van bepaalde verwerkingen van uw informatie",
+                "export": "Uw gegevens exporteren in een overdraagbaar formaat",
+                "optout": "Afmelden voor marketingcommunicatie",
+                "withdraw": "Toestemming intrekken waar we op toestemming vertrouwen om uw informatie te verwerken"
+            },
+            "exercise": "Om deze rechten uit te oefenen, neem dan contact met ons op via de informatie aan het einde van dit beleid."
+        },
+        "cookies": {
+            "title": "7. Cookies en volgtechnologieën",
+            "intro": "We gebruiken cookies en vergelijkbare volgtechnologieën om informatie te verzamelen en te volgen over uw gebruik van BillForge. De soorten cookies die we gebruiken zijn onder meer:",
+            "items": {
+                "essential": "Essentiële cookies: Vereist voor de werking van onze dienst",
+                "preference": "Voorkeurscookies: Onthouden uw instellingen en voorkeuren",
+                "analytics": "Analytische cookies: Helpen ons te begrijpen hoe u onze dienst gebruikt",
+                "marketing": "Marketingcookies: Volgen uw activiteit om relevante advertenties te leveren"
+            },
+            "control": "U kunt cookies beheren via uw browserinstellingen en andere tools. Het uitschakelen van bepaalde cookies kan echter uw vermogen beperken om sommige functies van BillForge te gebruiken."
+        },
+        "thirdParty": {
+            "title": "8. Diensten van derden",
+            "intro": "BillForge kan links bevatten naar websites van derden en integreren met diensten van derden. Wij zijn niet verantwoordelijk voor de privacypraktijken van deze derden. We moedigen u aan om de privacybeleidslijnen te lezen van diensten van derden waarmee u communiceert.",
+            "services": "Diensten van derden die we kunnen gebruiken, zijn onder meer betalingsverwerkers, analyseproviders en aanbieders van cloudinfrastructuur. Deze diensten hebben hun eigen privacybeleid dat hun gebruik van uw informatie regelt."
+        },
+        "children": {
+            "title": "9. Privacy van kinderen",
+            "content": "BillForge is niet bedoeld voor gebruik door kinderen jonger dan 18 jaar. We verzamelen niet bewust persoonlijke informatie van kinderen jonger dan 18 jaar. Als we ons ervan bewust worden dat we persoonlijke informatie hebben verzameld van een kind jonger dan 18 jaar, zullen we stappen ondernemen om die informatie te verwijderen."
+        },
+        "international": {
+            "title": "10. Internationale gegevensoverdrachten",
+            "content": "Uw informatie kan worden overgedragen naar en onderhouden op servers die zich buiten uw land of rechtsgebied bevinden. Door BillForge te gebruiken, stemt u in met de overdracht van uw informatie naar landen die mogelijk andere gegevensbeschermingswetten hebben dan uw land van verblijf."
+        },
+        "changes": {
+            "title": "11. Wijzigingen in dit privacybeleid",
+            "content": "We kunnen dit privacybeleid van tijd tot tijd bijwerken. We zullen u op de hoogte stellen van wezenlijke wijzigingen door het nieuwe privacybeleid op deze pagina te plaatsen en de datum \"Laatst bijgewerkt\" bij te werken. We raden u aan dit privacybeleid regelmatig te controleren op wijzigingen. Uw voortgezette gebruik van BillForge na wijzigingen geeft aan dat u het bijgewerkte privacybeleid accepteert."
+        },
+        "california": {
+            "title": "12. Privacyrechten in Californië",
+            "intro": "Als u in Californië woont, hebt u aanvullende rechten onder de California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Recht om te weten welke persoonlijke informatie wordt verzameld, gebruikt, gedeeld of verkocht",
+                "delete": "Recht om persoonlijke informatie te verwijderen",
+                "optout": "Recht om af te zien van de verkoop van persoonlijke informatie (wij verkopen geen persoonlijke informatie)",
+                "nondiscrimination": "Recht op niet-discriminatie voor het uitoefenen van uw privacyrechten"
+            }
+        },
+        "gdpr": {
+            "title": "13. AVG-rechten (Europese gebruikers)",
+            "intro": "Als u zich in de Europese Economische Ruimte (EER) bevindt, hebt u aanvullende rechten onder de Algemene Verordening Gegevensbescherming (AVG):",
+            "items": {
+                "access": "Recht op inzage in uw persoonsgegevens",
+                "rectification": "Recht op rectificatie van onjuiste gegevens",
+                "erasure": "Recht op gegevenswissing (recht om vergeten te worden)",
+                "restrict": "Recht op beperking van de verwerking",
+                "portability": "Recht op overdraagbaarheid van gegevens",
+                "object": "Recht van bezwaar tegen de verwerking",
+                "complaint": "Recht om een klacht in te dienen bij een toezichthoudende autoriteit"
+            }
+        },
+        "contact": {
+            "title": "Neem contact met ons op",
+            "description": "Als u vragen heeft over dit privacybeleid of onze gegevenspraktijken, neem dan contact met ons op. We doen er alles aan om met u samen te werken om een eerlijke oplossing te vinden voor eventuele privacyproblemen."
+        }
     },
     "terms": {
-        "title": "Servicevoorwaarden",
+        "title": "Algemene Voorwaarden",
         "lastUpdated": "Laatst bijgewerkt: 8 december 2025",
-        "contactUs": "Contact"
+        "acceptance": {
+            "title": "1. Acceptatie van voorwaarden",
+            "content": "Door toegang te krijgen tot en gebruik te maken van BillForge, accepteert u en gaat u ermee akkoord gebonden te zijn aan de voorwaarden en bepalingen van deze overeenkomst. Als u niet akkoord gaat met het bovenstaande, gebruik deze dienst dan niet."
+        },
+        "license": {
+            "title": "2. Gebruikslicentie",
+            "intro": "Er wordt toestemming verleend om tijdelijk toegang te krijgen tot en gebruik te maken van BillForge voor persoonlijke en commerciële doeleinden. Dit is de verlening van een licentie, geen overdracht van eigendom, en onder deze licentie mag u niet:",
+            "items": {
+                "modify": "De materialen wijzigen of kopiëren",
+                "commercial": "De materialen gebruiken voor commerciële doeleinden zonder het juiste abonnement",
+                "decompile": "Proberen software op BillForge te decompileren of reverse-engineeren",
+                "remove": "Auteursrecht- of andere eigendomsvermeldingen van de materialen verwijderen",
+                "transfer": "De materialen overdragen aan een andere persoon of de materialen \"spiegelen\" op een andere server"
+            }
+        },
+        "account": {
+            "title": "3. Gebruikersaccount",
+            "intro": "Om bepaalde functies van BillForge te gebruiken, moet u zich registreren voor een account. U stemt ermee in om:",
+            "items": {
+                "accurate": "Nauwkeurige, actuele en volledige informatie te verstrekken tijdens de registratie",
+                "security": "De veiligheid van uw wachtwoord en account te handhaven",
+                "notify": "Ons onmiddellijk op de hoogte te stellen van enig ongeautoriseerd gebruik van uw account",
+                "responsibility": "De verantwoordelijkheid te aanvaarden voor alle activiteiten die onder uw account plaatsvinden"
+            }
+        },
+        "subscription": {
+            "title": "4. Abonnement en betaling",
+            "intro": "BillForge biedt verschillende abonnementen aan. Door u te abonneren, gaat u ermee akkoord om:",
+            "items": {
+                "fees": "Alle kosten te betalen die verband houden met uw gekozen abonnement",
+                "renewal": "Automatische verlenging van uw abonnement tenzij geannuleerd",
+                "pricing": "Mogelijke wijzigingen in de prijzen met een opzegtermijn van 30 dagen",
+                "refunds": "Geen restituties voor gedeeltelijke maanden of ongebruikte diensten"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Gegevens en privacy",
+            "content": "Uw gebruik van BillForge valt ook onder ons privacybeleid. Lees ons",
+            "link": "Privacybeleid",
+            "toUnderstand": "om onze praktijken te begrijpen."
+        },
+        "prohibited": {
+            "title": "6. Verboden activiteiten",
+            "intro": "U mag BillForge niet gebruiken om:",
+            "items": {
+                "laws": "Wetten of regels te overtreden",
+                "infringe": "Inbreuk te maken op intellectuele eigendomsrechten",
+                "malware": "Virussen, malware of andere schadelijke code te verzenden",
+                "unauthorized": "Te proberen ongeoorloofde toegang te krijgen tot onze systemen",
+                "harass": "Andere gebruikers lastig te vallen, te misbruiken of te schaden",
+                "fraud": "De dienst te gebruiken voor frauduleuze doeleinden"
+            }
+        },
+        "availability": {
+            "title": "7. Beschikbaarheid van de dienst",
+            "content": "We streven ernaar om een hoge beschikbaarheid van BillForge te handhaven, maar we garanderen geen ononderbroken toegang. We behouden ons het recht voor om elk deel van de dienst met of zonder kennisgeving te wijzigen, op te schorten of stop te zetten. Wij zijn niet aansprakelijk voor enige wijziging, opschorting of stopzetting van de dienst."
+        },
+        "intellectual": {
+            "title": "8. Intellectueel eigendom",
+            "content": "Alle inhoud op BillForge, zoals tekst, afbeeldingen, logo's, beelden en software, is eigendom van BillForge of zijn leveranciers van inhoud en wordt beschermd door internationale auteursrechtwetten. De samenstelling van alle inhoud op deze site is het exclusieve eigendom van BillForge."
+        },
+        "liability": {
+            "title": "9. Beperking van aansprakelijkheid",
+            "content": "In geen geval zullen BillForge of zijn leveranciers aansprakelijk zijn voor enige schade (inclusief, zonder beperking, schade door verlies van gegevens of winst, of als gevolg van bedrijfsonderbreking) die voortvloeit uit het gebruik of het onvermogen om BillForge te gebruiken, zelfs als BillForge of een geautoriseerde vertegenwoordiger van BillForge mondeling of schriftelijk op de hoogte is gesteld van de mogelijkheid van dergelijke schade."
+        },
+        "termination": {
+            "title": "10. Beëindiging",
+            "content": "We kunnen uw account en toegang tot BillForge onmiddellijk beëindigen of opschorten, zonder voorafgaande kennisgeving of aansprakelijkheid, om welke reden dan ook, inclusief als u deze Algemene Voorwaarden schendt. Bij beëindiging vervalt uw recht om de dienst te gebruiken onmiddellijk."
+        },
+        "changesTerms": {
+            "title": "11. Wijzigingen in voorwaarden",
+            "content": "We behouden ons het recht voor om deze voorwaarden op elk moment te wijzigen. We zullen gebruikers op de hoogte stellen van wezenlijke wijzigingen door de nieuwe Algemene Voorwaarden op deze pagina te plaatsen en de datum \"Laatst bijgewerkt\" bij te werken. Uw voortgezette gebruik van BillForge na dergelijke wijzigingen vormt uw erkenning en acceptatie van de gewijzigde voorwaarden."
+        },
+        "governing": {
+            "title": "12. Toepasselijk recht",
+            "content": "Deze voorwaarden worden beheerst door en geïnterpreteerd in overeenstemming met de toepasselijke wetten, zonder rekening te houden met de bepalingen inzake wetsconflicten. Ons verzuim om enig recht of bepaling van deze voorwaarden af te dwingen, wordt niet beschouwd als een afstand van die rechten."
+        },
+        "contact": {
+            "title": "Neem contact met ons op",
+            "description": "Als u vragen heeft over deze Algemene Voorwaarden, neem dan contact met ons op."
+        }
     },
     "app": {
         "sale": {

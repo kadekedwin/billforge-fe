@@ -370,12 +370,239 @@
     "privacy": {
         "title": "Privacy Policy",
         "lastUpdated": "Last updated: December 8, 2025",
-        "contactUs": "Contact Us"
+        "intro": {
+            "title": "Introduction",
+            "content": "At BillForge, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our billing and invoice management service. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application."
+        },
+        "infoCollect": {
+            "title": "1. Information We Collect",
+            "personal": {
+                "title": "Personal Information",
+                "intro": "We collect information that you provide directly to us, including:",
+                "items": {
+                    "contact": "Name and contact information (email address, phone number)",
+                    "business": "Business information (company name, address, tax ID)",
+                    "payment": "Payment information (processed securely through third-party payment processors)",
+                    "credentials": "Account credentials (username, password)"
+                }
+            },
+            "businessData": {
+                "title": "Business Data",
+                "intro": "When you use BillForge, we collect and store:",
+                "items": {
+                    "customers": "Customer information you enter",
+                    "invoices": "Invoice and transaction data",
+                    "items": "Item catalogs and pricing information",
+                    "tax": "Tax and discount configurations",
+                    "settings": "Business settings and preferences"
+                }
+            },
+            "auto": {
+                "title": "Automatically Collected Information",
+                "intro": "When you access BillForge, we automatically collect:",
+                "items": {
+                    "log": "Log data (IP address, browser type, operating system)",
+                    "device": "Device information",
+                    "usage": "Usage data (pages visited, features used, time spent)",
+                    "cookies": "Cookies and similar tracking technologies"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. How We Use Your Information",
+            "intro": "We use the information we collect to:",
+            "items": {
+                "provide": "Provide, maintain, and improve our services",
+                "process": "Process your transactions and manage your account",
+                "send": "Send you technical notices, updates, and support messages",
+                "respond": "Respond to your comments, questions, and customer service requests",
+                "monitor": "Monitor and analyze trends, usage, and activities",
+                "detect": "Detect, prevent, and address technical issues and fraudulent activity",
+                "personalize": "Personalize and improve your experience",
+                "marketing": "Send you marketing communications (with your consent)"
+            }
+        },
+        "sharing": {
+            "title": "3. Information Sharing and Disclosure",
+            "intro": "We do not sell your personal information. We may share your information in the following circumstances:",
+            "items": {
+                "providers": "With service providers who perform services on our behalf",
+                "legal": "To comply with legal obligations or respond to legal requests",
+                "protect": "To protect the rights, property, and safety of BillForge, our users, or others",
+                "merger": "In connection with a merger, sale, or acquisition of all or part of our company",
+                "consent": "With your consent or at your direction"
+            }
+        },
+        "security": {
+            "title": "4. Data Security",
+            "intro": "We implement appropriate technical and organizational measures to protect your information, including:",
+            "items": {
+                "encryption": "Encryption of data in transit and at rest",
+                "assessments": "Regular security assessments and updates",
+                "access": "Access controls and authentication mechanisms",
+                "datacenters": "Secure data centers with physical security measures",
+                "backups": "Regular backups and disaster recovery procedures"
+            },
+            "disclaimer": "However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee its absolute security."
+        },
+        "retention": {
+            "title": "5. Data Retention",
+            "content": "We retain your information for as long as your account is active or as needed to provide you services. We will retain and use your information as necessary to comply with legal obligations, resolve disputes, and enforce our agreements. You may request deletion of your data by contacting us, subject to certain legal retention requirements."
+        },
+        "rights": {
+            "title": "6. Your Rights and Choices",
+            "intro": "You have certain rights regarding your personal information:",
+            "items": {
+                "access": "Access and receive a copy of your personal information",
+                "correct": "Correct or update inaccurate information",
+                "delete": "Request deletion of your information",
+                "object": "Object to or restrict certain processing of your information",
+                "export": "Export your data in a portable format",
+                "optout": "Opt-out of marketing communications",
+                "withdraw": "Withdraw consent where we rely on consent to process your information"
+            },
+            "exercise": "To exercise these rights, please contact us using the information provided at the end of this policy."
+        },
+        "cookies": {
+            "title": "7. Cookies and Tracking Technologies",
+            "intro": "We use cookies and similar tracking technologies to collect and track information about your use of BillForge. Types of cookies we use include:",
+            "items": {
+                "essential": "Essential cookies: Required for the operation of our service",
+                "preference": "Preference cookies: Remember your settings and preferences",
+                "analytics": "Analytics cookies: Help us understand how you use our service",
+                "marketing": "Marketing cookies: Track your activity to deliver relevant advertisements"
+            },
+            "control": "You can control cookies through your browser settings and other tools. However, disabling certain cookies may limit your ability to use some features of BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Third-Party Services",
+            "intro": "BillForge may contain links to third-party websites and integrates with third-party services. We are not responsible for the privacy practices of these third parties. We encourage you to read the privacy policies of any third-party services you interact with.",
+            "services": "Third-party services we may use include payment processors, analytics providers, and cloud infrastructure providers. These services have their own privacy policies governing their use of your information."
+        },
+        "children": {
+            "title": "9. Children's Privacy",
+            "content": "BillForge is not intended for use by children under the age of 18. We do not knowingly collect personal information from children under 18. If we become aware that we have collected personal information from a child under 18, we will take steps to delete that information."
+        },
+        "international": {
+            "title": "10. International Data Transfers",
+            "content": "Your information may be transferred to and maintained on servers located outside of your country or jurisdiction. By using BillForge, you consent to the transfer of your information to countries that may have different data protection laws than your country of residence."
+        },
+        "changes": {
+            "title": "11. Changes to This Privacy Policy",
+            "content": "We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date. You are advised to review this Privacy Policy periodically for any changes. Your continued use of BillForge after any modifications indicates your acceptance of the updated Privacy Policy."
+        },
+        "california": {
+            "title": "12. California Privacy Rights",
+            "intro": "If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Right to know what personal information is collected, used, shared, or sold",
+                "delete": "Right to delete personal information",
+                "optout": "Right to opt-out of the sale of personal information (we do not sell personal information)",
+                "nondiscrimination": "Right to non-discrimination for exercising your privacy rights"
+            }
+        },
+        "gdpr": {
+            "title": "13. GDPR Rights (European Users)",
+            "intro": "If you are located in the European Economic Area (EEA), you have additional rights under the General Data Protection Regulation (GDPR):",
+            "items": {
+                "access": "Right to access your personal data",
+                "rectification": "Right to rectification of inaccurate data",
+                "erasure": "Right to erasure (right to be forgotten)",
+                "restrict": "Right to restrict processing",
+                "portability": "Right to data portability",
+                "object": "Right to object to processing",
+                "complaint": "Right to lodge a complaint with a supervisory authority"
+            }
+        },
+        "contact": {
+            "title": "Contact Us",
+            "description": "If you have any questions about this Privacy Policy or our data practices, please contact us. We are committed to working with you to obtain a fair resolution of any privacy concerns."
+        }
     },
     "terms": {
         "title": "Terms of Service",
         "lastUpdated": "Last updated: December 8, 2025",
-        "contactUs": "Contact Us"
+        "acceptance": {
+            "title": "1. Acceptance of Terms",
+            "content": "By accessing and using BillForge, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+        },
+        "license": {
+            "title": "2. Use License",
+            "intro": "Permission is granted to temporarily access and use BillForge for personal and commercial purposes. This is the grant of a license, not a transfer of title, and under this license you may not:",
+            "items": {
+                "modify": "Modify or copy the materials",
+                "commercial": "Use the materials for any commercial purpose without proper subscription",
+                "decompile": "Attempt to decompile or reverse engineer any software contained on BillForge",
+                "remove": "Remove any copyright or other proprietary notations from the materials",
+                "transfer": "Transfer the materials to another person or mirror the materials on any other server"
+            }
+        },
+        "account": {
+            "title": "3. User Account",
+            "intro": "To use certain features of BillForge, you must register for an account. You agree to:",
+            "items": {
+                "accurate": "Provide accurate, current, and complete information during registration",
+                "security": "Maintain the security of your password and account",
+                "notify": "Notify us immediately of any unauthorized use of your account",
+                "responsibility": "Accept responsibility for all activities that occur under your account"
+            }
+        },
+        "subscription": {
+            "title": "4. Subscription and Payment",
+            "intro": "BillForge offers various subscription plans. By subscribing, you agree to:",
+            "items": {
+                "fees": "Pay all fees associated with your chosen subscription plan",
+                "renewal": "Automatic renewal of your subscription unless cancelled",
+                "pricing": "Possible changes in pricing with 30 days advance notice",
+                "refunds": "No refunds for partial months or unused services"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Data and Privacy",
+            "content": "Your use of BillForge is also governed by our Privacy Policy. Please review our",
+            "link": "Privacy Policy",
+            "toUnderstand": "to understand our practices."
+        },
+        "prohibited": {
+            "title": "6. Prohibited Activities",
+            "intro": "You may not use BillForge to:",
+            "items": {
+                "laws": "Violate any laws or regulations",
+                "infringe": "Infringe upon intellectual property rights",
+                "malware": "Transmit viruses, malware, or other malicious code",
+                "unauthorized": "Attempt to gain unauthorized access to our systems",
+                "harass": "Harass, abuse, or harm other users",
+                "fraud": "Use the service for fraudulent purposes"
+            }
+        },
+        "availability": {
+            "title": "7. Service Availability",
+            "content": "We strive to maintain high availability of BillForge, but we do not guarantee uninterrupted access. We reserve the right to modify, suspend, or discontinue any part of the service with or without notice. We are not liable for any modification, suspension, or discontinuance of the service."
+        },
+        "intellectual": {
+            "title": "8. Intellectual Property",
+            "content": "All content included on BillForge, such as text, graphics, logos, images, and software, is the property of BillForge or its content suppliers and is protected by international copyright laws. The compilation of all content on this site is the exclusive property of BillForge."
+        },
+        "liability": {
+            "title": "9. Limitation of Liability",
+            "content": "In no event shall BillForge or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use BillForge, even if BillForge or a BillForge authorized representative has been notified orally or in writing of the possibility of such damage."
+        },
+        "termination": {
+            "title": "10. Termination",
+            "content": "We may terminate or suspend your account and access to BillForge immediately, without prior notice or liability, for any reason, including if you breach these Terms of Service. Upon termination, your right to use the service will immediately cease."
+        },
+        "changesTerms": {
+            "title": "11. Changes to Terms",
+            "content": "We reserve the right to modify these terms at any time. We will notify users of any material changes by posting the new Terms of Service on this page and updating the \"Last updated\" date. Your continued use of BillForge after such modifications constitutes your acknowledgment and acceptance of the modified terms."
+        },
+        "governing": {
+            "title": "12. Governing Law",
+            "content": "These terms shall be governed and construed in accordance with applicable laws, without regard to its conflict of law provisions. Our failure to enforce any right or provision of these terms will not be considered a waiver of those rights."
+        },
+        "contact": {
+            "title": "Contact Us",
+            "description": "If you have any questions about these Terms of Service, please contact us."
+        }
     },
     "app": {
         "sale": {

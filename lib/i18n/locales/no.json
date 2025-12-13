@@ -368,14 +368,241 @@
         "invalidFormat": "Ugyldig format"
     },
     "privacy": {
-        "title": "Personvernmelding",
+        "title": "Personvernerklæring",
         "lastUpdated": "Sist oppdatert: 8. desember 2025",
-        "contactUs": "Kontakt Oss"
+        "intro": {
+            "title": "Introduksjon",
+            "content": "Hos BillForge tar vi personvernet ditt på alvor. Denne personvernerklæringen forklarer hvordan vi samler inn, bruker, utleverer og beskytter informasjonen din når du bruker vår fakturerings- og fakturahåndteringstjeneste. Vennligst les denne personvernerklæringen nøye. Hvis du ikke samtykker til vilkårene i denne personvernerklæringen, vennligst ikke bruk applikasjonen."
+        },
+        "infoCollect": {
+            "title": "1. Informasjon vi samler inn",
+            "personal": {
+                "title": "Personlig informasjon",
+                "intro": "Vi samler inn informasjon som du gir direkte til oss, inkludert:",
+                "items": {
+                    "contact": "Navn og kontaktinformasjon (e-postadresse, telefonnummer)",
+                    "business": "Bedriftsinformasjon (firmanavn, adresse, organisasjonsnummer)",
+                    "payment": "Betalingsinformasjon (behandles sikkert gjennom tredjepartsbetalingsbehandlere)",
+                    "credentials": "Kontoinformasjon (brukernavn, passord)"
+                }
+            },
+            "businessData": {
+                "title": "Bedriftsdata",
+                "intro": "Når du bruker BillForge, samler vi inn og lagrer:",
+                "items": {
+                    "customers": "Kundeinformasjon du legger inn",
+                    "invoices": "Faktura- og transaksjonsdata",
+                    "items": "Varekataloger og prisinformasjon",
+                    "tax": "Skatte- og rabattkonfigurasjoner",
+                    "settings": "Bedriftsinnstillinger og preferanser"
+                }
+            },
+            "auto": {
+                "title": "Automatisk innsamlet informasjon",
+                "intro": "Når du får tilgang til BillForge, samler vi automatisk inn:",
+                "items": {
+                    "log": "Loggdata (IP-adresse, nettlesertype, operativsystem)",
+                    "device": "Enhetsinformasjon",
+                    "usage": "Bruksdata (besøkte sider, funksjoner brukt, tid brukt)",
+                    "cookies": "Informasjonskapsler og lignende sporingsteknologier"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Hvordan vi bruker informasjonen din",
+            "intro": "Vi bruker informasjonen vi samler inn til å:",
+            "items": {
+                "provide": "Levere, vedlikeholde og forbedre våre tjenester",
+                "process": "Behandle dine transaksjoner og administrere din konto",
+                "send": "Sende deg tekniske varsler, oppdateringer og supportmeldinger",
+                "respond": "Svare på dine kommentarer, spørsmål og kundeservicehenvendelser",
+                "monitor": "Overvåke og analysere trender, bruk og aktiviteter",
+                "detect": "Oppdage, forhindre og håndtere tekniske problemer og svindelaktivitet",
+                "personalize": "Tilpasse og forbedre opplevelsen din",
+                "marketing": "Sende deg markedskommunikasjon (med ditt samtykke)"
+            }
+        },
+        "sharing": {
+            "title": "3. Deling og utlevering av informasjon",
+            "intro": "Vi selger ikke din personlige informasjon. Vi kan dele informasjonen din i følgende tilfeller:",
+            "items": {
+                "providers": "Med tjenesteleverandører som utfører tjenester på våre vegne",
+                "legal": "For å overholde juridiske forpliktelser eller svare på juridiske forespørsler",
+                "protect": "For å beskytte rettighetene, eiendommen og sikkerheten til BillForge, våre brukere eller andre",
+                "merger": "I forbindelse med fusjon, salg eller oppkjøp av hele eller deler av vårt selskap",
+                "consent": "Med ditt samtykke eller etter din instruks"
+            }
+        },
+        "security": {
+            "title": "4. Datasikkerhet",
+            "intro": "Vi implementerer passende tekniske og organisatoriske tiltak for å beskytte informasjonen din, inkludert:",
+            "items": {
+                "encryption": "Kryptering av data under overføring og lagring",
+                "assessments": "Regelmessige sikkerhetsvurderinger og oppdateringer",
+                "access": "Adgangskontroller og autentiseringsmekanismer",
+                "datacenters": "Sikre datasentre med fysiske sikkerhetstiltak",
+                "backups": "Regelmessige sikkerhetskopier og prosedyrer for gjenoppretting etter katastrofer"
+            },
+            "disclaimer": "Ingen overføringsmetode over internett eller elektronisk lagring er imidlertid 100 % sikker. Selv om vi tilstreber å bruke kommersielt akseptable midler for å beskytte informasjonen din, kan vi ikke garantere absolutt sikkerhet."
+        },
+        "retention": {
+            "title": "5. Datalagring",
+            "content": "Vi oppbevarer informasjonen din så lenge kontoen din er aktiv, eller etter behov for å levere tjenester til deg. Vi vil oppbevare og bruke informasjonen din etter behov for å overholde juridiske forpliktelser, løse tvister og håndheve avtalene våre. Du kan be om sletting av dine data ved å kontakte oss, med forbehold om visse juridiske lagringskrav."
+        },
+        "rights": {
+            "title": "6. Dine rettigheter og valg",
+            "intro": "Du har visse rettigheter angående din personlige informasjon:",
+            "items": {
+                "access": "Få tilgang til og motta en kopi av din personlige informasjon",
+                "correct": "Rette eller oppdatere unøyaktig informasjon",
+                "delete": "Be om sletting av informasjonen din",
+                "object": "Motsette deg eller begrense visse former for behandling av informasjonen din",
+                "export": "Eksportere dine data i et bærbart format",
+                "optout": "Velge bort markedskommunikasjon",
+                "withdraw": "Trekke tilbake samtykke der vi stoler på samtykke for å behandle informasjonen din"
+            },
+            "exercise": "For å utøve disse rettighetene, vennligst kontakt oss ved å bruke informasjonen gitt på slutten av denne erklæringen."
+        },
+        "cookies": {
+            "title": "7. Informasjonskapsler og sporingsteknologier",
+            "intro": "Vi bruker informasjonskapsler og lignende sporingsteknologier for å samle inn og spore informasjon om din bruk av BillForge. Typer informasjonskapsler vi bruker inkluderer:",
+            "items": {
+                "essential": "Nødvendige informasjonskapsler: Påkrevd for driften av tjenesten vår",
+                "preference": "Preferanse-informasjonskapsler: Husker dine innstillinger og preferanser",
+                "analytics": "Analyse-informasjonskapsler: Hjelper oss å forstå hvordan du bruker tjenesten vår",
+                "marketing": "Markedsførings-informasjonskapsler: Sporer din aktivitet for å levere relevante annonser"
+            },
+            "control": "Du kan kontrollere informasjonskapsler gjennom nettleserinnstillingene dine og andre verktøy. Deaktivering av visse informasjonskapsler kan imidlertid begrense din evne til å bruke noen funksjoner i BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Tredjepartstjenester",
+            "intro": "BillForge kan inneholde lenker til tredjeparts nettsteder og integreres med tredjepartstjenester. Vi er ikke ansvarlige for personvernpraksisen til disse tredjepartene. Vi oppfordrer deg til å lese personvernerklæringene til eventuelle tredjepartstjenester du samhandler med.",
+            "services": "Tredjepartstjenester vi kan bruke inkluderer betalingsbehandlere, analyseleverandører og skyinfrastrukturleverandører. Disse tjenestene har sine egne personvernerklæringer som styrer deres bruk av informasjonen din."
+        },
+        "children": {
+            "title": "9. Barns personvern",
+            "content": "BillForge er ikke beregnet for bruk av barn under 18 år. Vi samler ikke bevisst inn personlig informasjon fra barn under 18 år. Hvis vi blir oppmerksomme på at vi har samlet inn personlig informasjon fra et barn under 18 år, vil vi ta skritt for å slette denne informasjonen."
+        },
+        "international": {
+            "title": "10. Internasjonale dataoverføringer",
+            "content": "Informasjonen din kan overføres til og vedlikeholdes på servere som ligger utenfor ditt land eller jurisdiksjon. Ved å bruke BillForge samtykker du til overføring av informasjonen din til land som kan ha andre databeskyttelseslover enn ditt bostedsland."
+        },
+        "changes": {
+            "title": "11. Endringer i denne personvernerklæringen",
+            "content": "Vi kan oppdatere denne personvernerklæringen fra tid til annen. Vi vil varsle deg om vesentlige endringer ved å legge ut den nye personvernerklæringen på denne siden og oppdatere datoen \"Sist oppdatert\". Du rådes til å gjennomgå denne personvernerklæringen med jevne mellomrom for eventuelle endringer. Din fortsatte bruk av BillForge etter eventuelle endringer indikerer din aksept av den oppdaterte personvernerklæringen."
+        },
+        "california": {
+            "title": "12. California personvernrettigheter",
+            "intro": "Hvis du er bosatt i California, har du ytterligere rettigheter under California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Rett til å vite hvilken personlig informasjon som samles inn, brukes, deles eller selges",
+                "delete": "Rett til å slette personlig informasjon",
+                "optout": "Rett til å velge bort salg av personlig informasjon (vi selger ikke personlig informasjon)",
+                "nondiscrimination": "Rett til ikke-diskriminering for utøvelse av dine personvernrettigheter"
+            }
+        },
+        "gdpr": {
+            "title": "13. GDPR-rettigheter (europeiske brukere)",
+            "intro": "Hvis du befinner deg i EØS-området, har du ytterligere rettigheter under den generelle personvernforordningen (GDPR):",
+            "items": {
+                "access": "Rett til innsyn i dine personopplysninger",
+                "rectification": "Rett til retting av unøyaktige data",
+                "erasure": "Rett til sletting (retten til å bli glemt)",
+                "restrict": "Rett til begrensning av behandling",
+                "portability": "Rett til dataportabilitet",
+                "object": "Rett til å motsette seg behandling",
+                "complaint": "Rett til å klage til en tilsynsmyndighet"
+            }
+        },
+        "contact": {
+            "title": "Kontakt oss",
+            "description": "Hvis du har spørsmål om denne personvernerklæringen eller vår datapraksis, vennligst kontakt oss. Vi er forpliktet til å samarbeide med deg for å oppnå en rettferdig løsning på eventuelle personvernbekymringer."
+        }
     },
     "terms": {
         "title": "Tjenestevilkår",
         "lastUpdated": "Sist oppdatert: 8. desember 2025",
-        "contactUs": "Kontakt Oss"
+        "acceptance": {
+            "title": "1. Aksept av vilkår",
+            "content": "Ved å få tilgang til og bruke BillForge, aksepterer og samtykker du til å være bundet av vilkårene og bestemmelsene i denne avtalen. Hvis du ikke samtykker i å overholde det ovennevnte, vennligst ikke bruk denne tjenesten."
+        },
+        "license": {
+            "title": "2. Brukslisens",
+            "intro": "Tillatelse gis til midlertidig å få tilgang til og bruke BillForge for personlige og kommersielle formål. Dette er tildeling av en lisens, ikke en overføring av eiendomsrett, og under denne lisensen kan du ikke:",
+            "items": {
+                "modify": "Endre eller kopiere materialene",
+                "commercial": "Bruke materialene til kommersielle formål uten riktig abonnement",
+                "decompile": "Forsøke å dekompilere eller foreta reverse engineering av programvare som finnes på BillForge",
+                "remove": "Fjerne opphavsrettslige eller andre proprietære notasjoner fra materialene",
+                "transfer": "Overføre materialene til en annen person eller \"speile\" materialene på en annen server"
+            }
+        },
+        "account": {
+            "title": "3. Brukerkonto",
+            "intro": "For å bruke visse funksjoner i BillForge må du registrere en konto. Du samtykker i å:",
+            "items": {
+                "accurate": "Oppgi nøyaktig, oppdatert og fullstendig informasjon under registreringen",
+                "security": "Opprettholde sikkerheten til passordet og kontoen din",
+                "notify": "Varsle oss umiddelbart om uautorisert bruk av kontoen din",
+                "responsibility": "Akseptere ansvar for alle aktiviteter som skjer under kontoen din"
+            }
+        },
+        "subscription": {
+            "title": "4. Abonnement og betaling",
+            "intro": "BillForge tilbyr ulike abonnementsplaner. Ved å abonnere samtykker du i:",
+            "items": {
+                "fees": "Å betale alle gebyrer knyttet til din valgte abonnementsplan",
+                "renewal": "Automatisk fornyelse av abonnementet ditt med mindre det sies opp",
+                "pricing": "Mulige endringer i priser med 30 dagers varsel",
+                "refunds": "Ingen refusjon for delvise måneder eller ubrukte tjenester"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Data og personvern",
+            "content": "Din bruk av BillForge er også underlagt vår personvernerklæring. Vennligst gjennomgå vår",
+            "link": "Personvernerklæring",
+            "toUnderstand": "for å forstå vår praksis."
+        },
+        "prohibited": {
+            "title": "6. Forbudte aktiviteter",
+            "intro": "Du kan ikke bruke BillForge til å:",
+            "items": {
+                "laws": "Bryte lover eller forskrifter",
+                "infringe": "Krenke immaterielle rettigheter",
+                "malware": "Overføre virus, skadelig programvare eller annen ondsinnet kode",
+                "unauthorized": "Forsøke å få uautorisert tilgang til våre systemer",
+                "harass": "Trakassere, misbruke eller skade andre brukere",
+                "fraud": "Bruke tjenesten til svindelformål"
+            }
+        },
+        "availability": {
+            "title": "7. Tjenestens tilgjengelighet",
+            "content": "Vi tilstreber å opprettholde høy tilgjengelighet av BillForge, men vi garanterer ikke uavbrutt tilgang. Vi forbeholder oss retten til å endre, suspendere eller avbryte enhver del av tjenesten med eller uten varsel. Vi er ikke ansvarlige for endring, suspensjon eller avbrudd av tjenesten."
+        },
+        "intellectual": {
+            "title": "8. Immaterielle rettigheter",
+            "content": "Alt innhold som er inkludert på BillForge, for eksempel tekst, grafikk, logoer, bilder og programvare, tilhører BillForge eller dets innholdsleverandører og er beskyttet av internasjonale opphavsrettslover. Samlingen av alt innhold på dette nettstedet er BillForges eksklusive eiendom."
+        },
+        "liability": {
+            "title": "9. Ansvarsbegrensning",
+            "content": "Under ingen omstendigheter skal BillForge eller dets leverandører holdes ansvarlige for skader (inkludert, uten begrensning, skader for tap av data eller fortjeneste, eller på grunn av forretningsavbrudd) som oppstår som følge av brugen eller manglende evne til å bruke BillForge, selv om BillForge eller en autorisert representant for BillForge har blitt varslet muntlig eller skriftlig om muligheten for slik skade."
+        },
+        "termination": {
+            "title": "10. Oppsigelse",
+            "content": "Vi kan si opp eller suspendere kontoen din og tilgangen til BillForge umiddelbart, uten forvarsel eller ansvar, av hvilken som helst grunn, inkludert hvis du bryter disse tjenestevilkårene. Ved oppsigelse opphører din rett til å bruke tjenesten umiddelbart."
+        },
+        "changesTerms": {
+            "title": "11. Endringer i vilkår",
+            "content": "Vi forbeholder oss retten til å endre disse vilkårene når som helst. Vi vil varsle brukere om vesentlige endringer ved å legge ut de nye tjenestevilkårene på denne siden og oppdatere datoen \"Sist oppdatert\". Din fortsatte bruk av BillForge etter slike endringer utgjør din anerkjennelse og aksept av de endrede vilkårene."
+        },
+        "governing": {
+            "title": "12. Gjeldende lov",
+            "content": "Disse vilkårene skal styres og tolkes i samsvar med gjeldende lover, uten hensyn til lovkonfliktbestemmelser. Vår manglende håndhevelse av en rettighet eller bestemmelse i disse vilkårene vil ikke bli ansett som et frafall av disse rettighetene."
+        },
+        "contact": {
+            "title": "Kontakt oss",
+            "description": "Hvis du har spørgsmål om disse tjenestevilkårene, vennligst kontakt oss."
+        }
     },
     "app": {
         "sale": {

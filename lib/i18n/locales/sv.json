@@ -368,14 +368,241 @@
         "invalidFormat": "Ogiltigt format"
     },
     "privacy": {
-        "title": "Sekretesspolicy",
+        "title": "Integritetspolicy",
         "lastUpdated": "Senast uppdaterad: 8 december 2025",
-        "contactUs": "Kontakta Oss"
+        "intro": {
+            "title": "Introduktion",
+            "content": "På BillForge tar vi din integritet på allvar. Denna integritetspolicy förklarar hur vi samlar in, använder, lämnar ut och skyddar din information när du använder vår fakturerings- och fakturahanteringstjänst. Läs denna integritetspolicy noggrant. Om du inte godkänner villkoren i denna integritetspolicy, vänligen använd inte applikationen."
+        },
+        "infoCollect": {
+            "title": "1. Information vi samlar in",
+            "personal": {
+                "title": "Personlig information",
+                "intro": "Vi samlar in information som du tillhandahåller direkt till oss, inklusive:",
+                "items": {
+                    "contact": "Namn och kontaktinformation (e-postadress, telefonnummer)",
+                    "business": "Företagsinformation (företagsnamn, adress, organisationsnummer)",
+                    "payment": "Betalningsinformation (behandlas säkert genom tredje parts betalningsbehandlare)",
+                    "credentials": "Kontouppgifter (användarnamn, lösenord)"
+                }
+            },
+            "businessData": {
+                "title": "Företagsdata",
+                "intro": "När du använder BillForge samlar vi in och lagrar:",
+                "items": {
+                    "customers": "Kundinformation du anger",
+                    "invoices": "Faktura- och transaktionsdata",
+                    "items": "Varukataloger och prisinformation",
+                    "tax": "Skatte- och rabattkonfigurationer",
+                    "settings": "Företagsinställningar och preferenser"
+                }
+            },
+            "auto": {
+                "title": "Automatiskt insamlad information",
+                "intro": "När du besöker BillForge samlar vi automatiskt in:",
+                "items": {
+                    "log": "Loggdata (IP-adress, webbläsartyp, operativsystem)",
+                    "device": "Enhetsinformation",
+                    "usage": "Användningsdata (besökta sidor, använda funktioner, spenderad tid)",
+                    "cookies": "Cookies och liknande spårningstekniker"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Hur vi använder din information",
+            "intro": "Vi använder informationen vi samlar in för att:",
+            "items": {
+                "provide": "Tillhandahålla, underhålla och förbättra våra tjänster",
+                "process": "Behandla dina transaktioner och hantera ditt konto",
+                "send": "Skicka tekniska meddelanden, uppdateringar och supportmeddelanden",
+                "respond": "Svara på dina kommentarer, frågor och kundtjänstärenden",
+                "monitor": "Övervaka och analysera trender, användning och aktiviteter",
+                "detect": "Upptäcka, förhindra och hantera tekniska problem och bedräglig aktivitet",
+                "personalize": "Anpassa och förbättra din upplevelse",
+                "marketing": "Skicka marknadsföringskommunikation (med ditt samtycke)"
+            }
+        },
+        "sharing": {
+            "title": "3. Informationsdelning och utlämnande",
+            "intro": "Vi säljer inte din personliga information. Vi kan dela din information under följande omständigheter:",
+            "items": {
+                "providers": "Med tjänsteleverantörer som utför tjänster för vår räkning",
+                "legal": "För att följa lagliga skyldigheter eller svara på lagliga förfrågningar",
+                "protect": "För att skydda rättigheter, egendom och säkerhet för BillForge, våra användare eller andra",
+                "merger": "I samband med fusion, försäljning eller förvärv av hela eller delar av vårt företag",
+                "consent": "Med ditt samtycke eller enligt din anvisning"
+            }
+        },
+        "security": {
+            "title": "4. Datasäkerhet",
+            "intro": "Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda din information, inklusive:",
+            "items": {
+                "encryption": "Kryptering av data under överföring och lagring",
+                "assessments": "Regelbundna säkerhetsbedömningar och uppdateringar",
+                "access": "Åtkomstkontroller och autentiseringsmekanismer",
+                "datacenters": "Säkra datacenter med fysiska säkerhetsåtgärder",
+                "backups": "Regelbundna säkerhetskopior och rutiner för katastroföterställning"
+            },
+            "disclaimer": "Ingen metod för överföring över internet eller elektronisk lagring är dock 100 % säker. Även om vi strävar efter att använda kommersiellt acceptabla medel för att skydda din information, kan vi inte garantera absolut säkerhet."
+        },
+        "retention": {
+            "title": "5. Datalagring",
+            "content": "Vi behåller din information så länge ditt konto är aktivt eller vid behov för att tillhandahålla dig tjänster. Vi kommer att behålla och använda din information vid behov för att uppfylla lagliga skyldigheter, lösa tvister och upprätthålla våra avtal. Du kan begära radering av dina uppgifter genom att kontakta oss, med förbehåll för vissa lagliga lagringskrav."
+        },
+        "rights": {
+            "title": "6. Dina rättigheter och val",
+            "intro": "Du har vissa rättigheter gällande din personliga information:",
+            "items": {
+                "access": "Få tillgång till och ta emot en kopia av din personliga information",
+                "correct": "Korrigera eller uppdatera felaktig information",
+                "delete": "Begära radering av din information",
+                "object": "Invända mot eller begränsa viss behandling av din information",
+                "export": "Exportera dina data i ett portabelt format",
+                "optout": "Välja bort marknadsföringskommunikation",
+                "withdraw": "Återkalla samtycke där vi förlitar oss på samtycke för att behandla din information"
+            },
+            "exercise": "För att utöva dessa rättigheter, vänligen kontakta oss genom att använda informationen som finns i slutet av denna policy."
+        },
+        "cookies": {
+            "title": "7. Cookies och spårningstekniker",
+            "intro": "Vi använder cookies och liknande spårningstekniker för att samla in och spåra information om din användning av BillForge. Typer av cookies vi använder inkluderar:",
+            "items": {
+                "essential": "Nödvändiga cookies: Krävs för driften av vår tjänst",
+                "preference": "Preferenscookies: Kommer ihåg dina inställningar och preferenser",
+                "analytics": "Analyscookies: Hjälper oss att förstå hur du använder vår tjänst",
+                "marketing": "Marknadsföringscookies: Spårar din aktivitet för att leverera relevanta annonser"
+            },
+            "control": "Du kan styra cookies genom dina webbläsarinställningar och andra verktyg. Att inaktivera vissa cookies kan dock begränsa din möjlighet att använda vissa funktioner på BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Tredjepartstjänster",
+            "intro": "BillForge kan innehålla länkar till webbplatser från tredje part och integreras med tredjepartstjänster. Vi ansvarar inte för dessa tredje parters integritetspolicyer. Vi uppmanar dig att läsa integritetspolicyerna för alla tredjepartstjänster du interagerar med.",
+            "services": "Tredjepartstjänster vi kan använda inkluderar betalningsbehandlare, analysleverantörer och leverantörer av molninfrastruktur. Dessa tjänster har sina egna integritetspolicyer som styr deras användning av din information."
+        },
+        "children": {
+            "title": "9. Barns integritet",
+            "content": "BillForge är inte avsedd för användning av barn under 18 år. Vi samlar inte medvetet in personlig information från barn under 18 år. Om vi blir medvetna om att vi har samlat in personlig information från ett barn under 18 år, kommer vi att vidta åtgärder för att radera den informationen."
+        },
+        "international": {
+            "title": "10. Internationella dataöverföringar",
+            "content": "Din information kan överföras till och underhållas på servrar utanför ditt land eller jurisdiktion. Genom att använda BillForge samtycker du till överföring av din information till länder som kan ha andra dataskyddslagar än ditt hemland."
+        },
+        "changes": {
+            "title": "11. Ändringar i denna integritetspolicy",
+            "content": "Vi kan uppdatera denna integritetspolicy från tid till annan. Vi kommer att meddela dig om väsentliga ändringar genom att lägga upp den nya integritetspolicyn på denna sida och uppdatera datumet \"Senast uppdaterad\". Du uppmanas att granska denna integritetspolicy regelbundet för eventuella ändringar. Din fortsatta användning av BillForge efter eventuella ändringar innebär att du accepterar den uppdaterade integritetspolicyn."
+        },
+        "california": {
+            "title": "12. Kaliforniens integritetsrättigheter",
+            "intro": "Om du är bosatt i Kalifornien har du ytterligare rättigheter enligt California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Rätt att veta vilken personlig information som samlas in, används, delas eller säljs",
+                "delete": "Rätt att radera personlig information",
+                "optout": "Rätt att välja bort försäljning av personlig information (vi säljer inte personlig information)",
+                "nondiscrimination": "Rätt till icke-diskriminering för utövandet av dina integritetsrättigheter"
+            }
+        },
+        "gdpr": {
+            "title": "13. GDPR-rättigheter (europeiska användare)",
+            "intro": "Om du befinner dig i Europeiska ekonomiska samarbetsområdet (EES) har du ytterligare rättigheter enligt den allmänna dataskyddsförordningen (GDPR):",
+            "items": {
+                "access": "Rätt till tillgång till dina personuppgifter",
+                "rectification": "Rätt till rättelse av felaktiga uppgifter",
+                "erasure": "Rätt till radering (rätten att bli bortglömd)",
+                "restrict": "Rätt till begränsning av behandling",
+                "portability": "Rätt till dataportabilitet",
+                "object": "Rätt att invända mot behandling",
+                "complaint": "Rätt att lämna in klagomål till en tillsynsmyndighet"
+            }
+        },
+        "contact": {
+            "title": "Kontakta oss",
+            "description": "Om du har några frågor om denna integritetspolicy eller vår datapraxis, vänligen kontakta oss. Vi är fast beslutna att samarbeta med dig för att nå en rättvis lösning på eventuella integritetsproblem."
+        }
     },
     "terms": {
-        "title": "Villkor för Tjänster",
+        "title": "Användarvillkor",
         "lastUpdated": "Senast uppdaterad: 8 december 2025",
-        "contactUs": "Kontakta Oss"
+        "acceptance": {
+            "title": "1. Godkännande av villkor",
+            "content": "Genom att komma åt och använda BillForge godkänner och samtycker du till att vara bunden av villkoren och bestämmelserna i detta avtal. Om du inte samtycker till att följa ovanstående, vänligen använd inte denna tjänst."
+        },
+        "license": {
+            "title": "2. Användningslicens",
+            "intro": "Tillstånd beviljas att tillfälligt komma åt och använda BillForge för personliga och kommersiella syften. Detta är beviljandet av en licens, inte en överföring av äganderätt, och under denna licens får du inte:",
+            "items": {
+                "modify": "Ändra eller kopiera materialet",
+                "commercial": "Använda materialet för något kommersiellt syfte utan korrekt abonnemang",
+                "decompile": "Försöka dekompilera eller bakåtkompilera någon programvara som finns på BillForge",
+                "remove": "Ta bort upphovsrättsliga eller andra äganderättsliga beteckningar från materialet",
+                "transfer": "Överföra materialet till en annan person eller \"spegla\" materialet på någon annan server"
+            }
+        },
+        "account": {
+            "title": "3. Användarkonto",
+            "intro": "För att använda vissa funktioner på BillForge måste du registrera ett konto. Du samtycker till att:",
+            "items": {
+                "accurate": "Tillhandahålla korrekt, aktuell och fullständig information vid registreringen",
+                "security": "Upprätthålla säkerheten för ditt lösenord och konto",
+                "notify": "Meddela oss omedelbart om all obehörig användning av ditt konto",
+                "responsibility": "Acceptera ansvar för alla aktiviteter som sker under ditt konto"
+            }
+        },
+        "subscription": {
+            "title": "4. Prenumeration och betalning",
+            "intro": "BillForge erbjuder olika abonnemangsplaner. Genom att prenumerera samtycker du till:",
+            "items": {
+                "fees": "Att betala alla avgifter förknippade med din valda abonnemangsplan",
+                "renewal": "Automatisk förnyelse av ditt abonnemang om det inte sägs upp",
+                "pricing": "Möjliga prisändringar med 30 dagars varsel",
+                "refunds": "Inga återbetalningar för delvis använda månader eller oanvända tjänster"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Data och integritet",
+            "content": "Din användning av BillForge styrs också av vår integritetspolicy. Vänligen granska vår",
+            "link": "Integritetspolicy",
+            "toUnderstand": "för att förstå vår praxis."
+        },
+        "prohibited": {
+            "title": "6. Förbjudna aktiviteter",
+            "intro": "Du får inte använda BillForge för att:",
+            "items": {
+                "laws": "Bryta mot lagar eller förordningar",
+                "infringe": "Inkräkta på immateriella rättigheter",
+                "malware": "Överföra virus, skadlig kod eller annan illasinnad kod",
+                "unauthorized": "Försöka få obehörig åtkomst till våra system",
+                "harass": "Trakassera, missbruka eller skada andra användare",
+                "fraud": "Använda tjänsten för bedrägliga syften"
+            }
+        },
+        "availability": {
+            "title": "7. Tjänstens tillgänglighet",
+            "content": "Vi strävar efter att upprätthålla hög tillgänglighet för BillForge, men vi garanterar inte oavbruten åtkomst. Vi förbehåller oss rätten att ändra, stänga av eller avbryta någon del av tjänsten med eller utan meddelande. Vi är inte ansvariga för ändring, avstängning eller avbrott av tjänsten."
+        },
+        "intellectual": {
+            "title": "8. Immateriell egendom",
+            "content": "Allt innehåll på BillForge, såsom text, grafik, logotyper, bilder och programvara, tillhör BillForge eller dess innehållsleverantörer och skyddas av internationella upphovsrättslagar. Sammanställningen av allt innehåll på denna webbplats är BillForges exklusiva egendom."
+        },
+        "liability": {
+            "title": "9. Ansvarsbegränsning",
+            "content": "Under inga omständigheter ska BillForge eller dess leverantörer hållas ansvariga för några skador (inklusive, utan begränsning, skador för förlust av data eller vinst, eller på grund av affärsavbrott) som uppstår till följd av användningen eller oförmågan att använda BillForge, även om BillForge eller en auktoriserad representant för BillForge har meddelats muntligt eller skriftligt om möjligheten till sådan skada."
+        },
+        "termination": {
+            "title": "10. Uppsägning",
+            "content": "Vi kan säga upp eller stänga av ditt konto och åtkomst till BillForge omedelbart, utan föregående meddelande eller ansvar, av vilken anledning som helst, inklusive om du bryter mot dessa användarvillkor. Vid uppsägning upphör din rätt att använda tjänsten omedelbart."
+        },
+        "changesTerms": {
+            "title": "11. Ändringar i villkor",
+            "content": "Vi förbehåller oss rätten att ändra dessa villkor när som helst. Vi kommer att meddela användare om väsentliga ändringar genom att lägga upp de nya användarvillkoren på denna sida och uppdatera datumet \"Senast uppdaterad\". Din fortsatta användning av BillForge efter sådana ändringar utgör ditt erkännande och godkännande av de ändrade villkoren."
+        },
+        "governing": {
+            "title": "12. Gällande lag",
+            "content": "Dessa villkor ska styras och tolkas i enlighet med gällande lagar, utan hänsyn till dess lagvalskonflikter. Vår underlåtenhet att genomdriva någon rättighet eller bestämmelse i dessa villkor kommer inte att betraktas som ett avstående från dessa rättigheter."
+        },
+        "contact": {
+            "title": "Kontakta oss",
+            "description": "Om du har några frågor om dessa användarvillkor, vänligen kontakta oss."
+        }
     },
     "app": {
         "sale": {
