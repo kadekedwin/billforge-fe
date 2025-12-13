@@ -1139,6 +1139,65 @@
                 "cancel": "Batal",
                 "confirm": "Keluar"
             }
+        },
+        "reports": {
+            "title": "Laporan Penjualan",
+            "subtitle": "Lihat analisis dan wawasan penjualan yang komprehensif",
+            "dateRange": {
+                "title": "Rentang Tanggal",
+                "description": "Filter laporan berdasarkan rentang tanggal",
+                "startDate": "Tanggal Mulai",
+                "endDate": "Tanggal Akhir",
+                "applyFilter": "Terapkan Filter"
+            },
+            "summary": {
+                "totalSales": "Total Penjualan",
+                "transactions": "transaksi",
+                "averageTransaction": "Rata-rata Transaksi",
+                "perTransaction": "Per transaksi",
+                "itemsSold": "Item Terjual",
+                "totalUnits": "Total unit",
+                "totalTax": "Total Pajak",
+                "taxCollected": "Pajak terkumpul",
+                "totalDiscounts": "Total Diskon",
+                "discountsGiven": "Diskon diberikan"
+            },
+            "tabs": {
+                "byDate": "Berdasarkan Tanggal",
+                "byItem": "Berdasarkan Item",
+                "byCategory": "Berdasarkan Kategori",
+                "byPaymentMethod": "Berdasarkan Metode Pembayaran"
+            },
+            "byDate": {
+                "title": "Penjualan Berdasarkan Tanggal",
+                "description": "Rincian penjualan harian",
+                "date": "Tanggal",
+                "transactions": "Transaksi",
+                "totalAmount": "Total Jumlah"
+            },
+            "byItem": {
+                "title": "Penjualan Berdasarkan Item",
+                "description": "Item terlaris",
+                "itemName": "Nama Item",
+                "sku": "SKU",
+                "quantitySold": "Jumlah Terjual",
+                "totalRevenue": "Total Pendapatan"
+            },
+            "byCategory": {
+                "title": "Penjualan Berdasarkan Kategori",
+                "description": "Rincian kinerja kategori",
+                "category": "Kategori",
+                "quantitySold": "Jumlah Terjual",
+                "totalRevenue": "Total Pendapatan"
+            },
+            "byPaymentMethod": {
+                "title": "Penjualan Berdasarkan Metode Pembayaran",
+                "description": "Rincian metode pembayaran",
+                "paymentMethod": "Metode Pembayaran",
+                "transactions": "Transaksi",
+                "totalAmount": "Total Jumlah"
+            },
+            "noData": "Tidak ada data tersedia"
         }
     }
 }

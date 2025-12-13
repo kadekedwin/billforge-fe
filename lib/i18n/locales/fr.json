@@ -1139,6 +1139,65 @@
                 "cancel": "Annuler",
                 "confirm": "Déconnexion"
             }
+        },
+        "reports": {
+            "title": "Rapports de Ventes",
+            "subtitle": "Voir les analyses et aperçus complets des ventes",
+            "dateRange": {
+                "title": "Plage de Dates",
+                "description": "Filtrer les rapports par plage de dates",
+                "startDate": "Date de Début",
+                "endDate": "Date de Fin",
+                "applyFilter": "Appliquer le Filtre"
+            },
+            "summary": {
+                "totalSales": "Ventes Totales",
+                "transactions": "transactions",
+                "averageTransaction": "Transaction Moyenne",
+                "perTransaction": "Par transaction",
+                "itemsSold": "Articles Vendus",
+                "totalUnits": "Unités totales",
+                "totalTax": "Taxe Totale",
+                "taxCollected": "Taxe collectée",
+                "totalDiscounts": "Remises Totales",
+                "discountsGiven": "Remises accordées"
+            },
+            "tabs": {
+                "byDate": "Par Date",
+                "byItem": "Par Article",
+                "byCategory": "Par Catégorie",
+                "byPaymentMethod": "Par Méthode de Paiement"
+            },
+            "byDate": {
+                "title": "Ventes par Date",
+                "description": "Répartition quotidienne des ventes",
+                "date": "Date",
+                "transactions": "Transactions",
+                "totalAmount": "Montant Total"
+            },
+            "byItem": {
+                "title": "Ventes par Article",
+                "description": "Articles les plus vendus",
+                "itemName": "Nom de l'Article",
+                "sku": "SKU",
+                "quantitySold": "Quantité Vendue",
+                "totalRevenue": "Revenu Total"
+            },
+            "byCategory": {
+                "title": "Ventes par Catégorie",
+                "description": "Répartition des performances par catégorie",
+                "category": "Catégorie",
+                "quantitySold": "Quantité Vendue",
+                "totalRevenue": "Revenu Total"
+            },
+            "byPaymentMethod": {
+                "title": "Ventes par Méthode de Paiement",
+                "description": "Répartition par méthode de paiement",
+                "paymentMethod": "Méthode de Paiement",
+                "transactions": "Transactions",
+                "totalAmount": "Montant Total"
+            },
+            "noData": "Aucune donnée disponible"
         }
     }
 }

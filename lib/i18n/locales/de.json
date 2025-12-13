@@ -1139,6 +1139,65 @@
                 "cancel": "Abbrechen",
                 "confirm": "Abmelden"
             }
+        },
+        "reports": {
+            "title": "Verkaufsberichte",
+            "subtitle": "Umfassende Verkaufsanalysen und Einblicke anzeigen",
+            "dateRange": {
+                "title": "Datumsbereich",
+                "description": "Berichte nach Datumsbereich filtern",
+                "startDate": "Startdatum",
+                "endDate": "Enddatum",
+                "applyFilter": "Filter anwenden"
+            },
+            "summary": {
+                "totalSales": "Gesamtumsatz",
+                "transactions": "Transaktionen",
+                "averageTransaction": "Durchschnittstransaktion",
+                "perTransaction": "Pro Transaktion",
+                "itemsSold": "Verkaufte Artikel",
+                "totalUnits": "Gesamteinheiten",
+                "totalTax": "Gesamtsteuer",
+                "taxCollected": "Steuer erhoben",
+                "totalDiscounts": "Gesamtrabatte",
+                "discountsGiven": "Rabatte gewährt"
+            },
+            "tabs": {
+                "byDate": "Nach Datum",
+                "byItem": "Nach Artikel",
+                "byCategory": "Nach Kategorie",
+                "byPaymentMethod": "Nach Zahlungsmethode"
+            },
+            "byDate": {
+                "title": "Verkäufe nach Datum",
+                "description": "Tägliche Verkaufsaufschlüsselung",
+                "date": "Datum",
+                "transactions": "Transaktionen",
+                "totalAmount": "Gesamtbetrag"
+            },
+            "byItem": {
+                "title": "Verkäufe nach Artikel",
+                "description": "Meistverkaufte Artikel",
+                "itemName": "Artikelname",
+                "sku": "SKU",
+                "quantitySold": "Verkaufte Menge",
+                "totalRevenue": "Gesamtumsatz"
+            },
+            "byCategory": {
+                "title": "Verkäufe nach Kategorie",
+                "description": "Leistungsaufschlüsselung nach Kategorie",
+                "category": "Kategorie",
+                "quantitySold": "Verkaufte Menge",
+                "totalRevenue": "Gesamtumsatz"
+            },
+            "byPaymentMethod": {
+                "title": "Verkäufe nach Zahlungsmethode",
+                "description": "Aufschlüsselung nach Zahlungsmethode",
+                "paymentMethod": "Zahlungsmethode",
+                "transactions": "Transaktionen",
+                "totalAmount": "Gesamtbetrag"
+            },
+            "noData": "Keine Daten verfügbar"
         }
     }
 }

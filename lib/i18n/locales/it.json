@@ -1139,6 +1139,65 @@
                 "cancel": "Annulla",
                 "confirm": "Esci"
             }
+        },
+        "reports": {
+            "title": "Rapporti Vendite",
+            "subtitle": "Visualizza analisi e approfondimenti completi sulle vendite",
+            "dateRange": {
+                "title": "Intervallo Date",
+                "description": "Filtra i rapporti per intervallo di date",
+                "startDate": "Data Inizio",
+                "endDate": "Data Fine",
+                "applyFilter": "Applica Filtro"
+            },
+            "summary": {
+                "totalSales": "Vendite Totali",
+                "transactions": "transazioni",
+                "averageTransaction": "Transazione Media",
+                "perTransaction": "Per transazione",
+                "itemsSold": "Articoli Venduti",
+                "totalUnits": "Unità totali",
+                "totalTax": "Imposte Totali",
+                "taxCollected": "Imposte riscosse",
+                "totalDiscounts": "Sconti Totali",
+                "discountsGiven": "Sconti dati"
+            },
+            "tabs": {
+                "byDate": "Per Data",
+                "byItem": "Per Articolo",
+                "byCategory": "Per Categoria",
+                "byPaymentMethod": "Per Metodo di Pagamento"
+            },
+            "byDate": {
+                "title": "Vendite per Data",
+                "description": "Ripartizione giornaliera delle vendite",
+                "date": "Data",
+                "transactions": "Transazioni",
+                "totalAmount": "Importo Totale"
+            },
+            "byItem": {
+                "title": "Vendite per Articolo",
+                "description": "Articoli più venduti",
+                "itemName": "Nome Articolo",
+                "sku": "SKU",
+                "quantitySold": "Quantità Venduta",
+                "totalRevenue": "Ricavo Totale"
+            },
+            "byCategory": {
+                "title": "Vendite per Categoria",
+                "description": "Ripartizione prestazioni per categoria",
+                "category": "Categoria",
+                "quantitySold": "Quantità Venduta",
+                "totalRevenue": "Ricavo Totale"
+            },
+            "byPaymentMethod": {
+                "title": "Vendite per Metodo di Pagamento",
+                "description": "Ripartizione per metodo di pagamento",
+                "paymentMethod": "Metodo di Pagamento",
+                "transactions": "Transazioni",
+                "totalAmount": "Importo Totale"
+            },
+            "noData": "Nessun dato disponibile"
         }
     }
 }

@@ -1139,6 +1139,65 @@
                 "cancel": "Cancelar",
                 "confirm": "Cerrar Sesión"
             }
+        },
+        "reports": {
+            "title": "Informes de Ventas",
+            "subtitle": "Vea análisis e información detallada de ventas",
+            "dateRange": {
+                "title": "Rango de Fechas",
+                "description": "Filtrar informes por rango de fechas",
+                "startDate": "Fecha de Inicio",
+                "endDate": "Fecha de Fin",
+                "applyFilter": "Aplicar Filtro"
+            },
+            "summary": {
+                "totalSales": "Ventas Totales",
+                "transactions": "transacciones",
+                "averageTransaction": "Transacción Promedio",
+                "perTransaction": "Por transacción",
+                "itemsSold": "Artículos Vendidos",
+                "totalUnits": "Unidades totales",
+                "totalTax": "Impuesto Total",
+                "taxCollected": "Impuesto recaudado",
+                "totalDiscounts": "Descuentos Totales",
+                "discountsGiven": "Descuentos dados"
+            },
+            "tabs": {
+                "byDate": "Por Fecha",
+                "byItem": "Por Artículo",
+                "byCategory": "Por Categoría",
+                "byPaymentMethod": "Por Mtd. Pago"
+            },
+            "byDate": {
+                "title": "Ventas por Fecha",
+                "description": "Desglose diario de ventas",
+                "date": "Fecha",
+                "transactions": "Transacciones",
+                "totalAmount": "Monto Total"
+            },
+            "byItem": {
+                "title": "Ventas por Artículo",
+                "description": "Artículos más vendidos",
+                "itemName": "Nombre del Artículo",
+                "sku": "SKU",
+                "quantitySold": "Cantidad Vendida",
+                "totalRevenue": "Ingresos Totales"
+            },
+            "byCategory": {
+                "title": "Ventas por Categoría",
+                "description": "Desglose de rendimiento por categoría",
+                "category": "Categoría",
+                "quantitySold": "Cantidad Vendida",
+                "totalRevenue": "Ingresos Totales"
+            },
+            "byPaymentMethod": {
+                "title": "Ventas por Mtd. Pago",
+                "description": "Desglose por método de pago",
+                "paymentMethod": "Método de Pago",
+                "transactions": "Transacciones",
+                "totalAmount": "Monto Total"
+            },
+            "noData": "No hay datos disponibles"
         }
     }
 }

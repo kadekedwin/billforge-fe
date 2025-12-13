@@ -1139,6 +1139,65 @@
                 "cancel": "Cancelar",
                 "confirm": "Sair"
             }
+        },
+        "reports": {
+            "title": "Relatórios de Vendas",
+            "subtitle": "Ver análises e insights completos de vendas",
+            "dateRange": {
+                "title": "Intervalo de Datas",
+                "description": "Filtrar relatórios por intervalo de datas",
+                "startDate": "Data de Início",
+                "endDate": "Data de Término",
+                "applyFilter": "Aplicar Filtro"
+            },
+            "summary": {
+                "totalSales": "Vendas Totais",
+                "transactions": "transações",
+                "averageTransaction": "Transação Média",
+                "perTransaction": "Por transação",
+                "itemsSold": "Itens Vendidos",
+                "totalUnits": "Unidades totais",
+                "totalTax": "Imposto Total",
+                "taxCollected": "Imposto recolhido",
+                "totalDiscounts": "Descontos Totais",
+                "discountsGiven": "Descontos concedidos"
+            },
+            "tabs": {
+                "byDate": "Por Data",
+                "byItem": "Por Item",
+                "byCategory": "Por Categoria",
+                "byPaymentMethod": "Por Forma de Pagamento"
+            },
+            "byDate": {
+                "title": "Vendas por Data",
+                "description": "Detalhamento diário de vendas",
+                "date": "Data",
+                "transactions": "Transações",
+                "totalAmount": "Valor Total"
+            },
+            "byItem": {
+                "title": "Vendas por Item",
+                "description": "Itens mais vendidos",
+                "itemName": "Nome do Item",
+                "sku": "SKU",
+                "quantitySold": "Quantidade Vendida",
+                "totalRevenue": "Receita Total"
+            },
+            "byCategory": {
+                "title": "Vendas por Categoria",
+                "description": "Desempenho por categoria",
+                "category": "Categoria",
+                "quantitySold": "Quantidade Vendida",
+                "totalRevenue": "Receita Total"
+            },
+            "byPaymentMethod": {
+                "title": "Vendas por Forma de Pagamento",
+                "description": "Detalhamento por forma de pagamento",
+                "paymentMethod": "Forma de Pagamento",
+                "transactions": "Transações",
+                "totalAmount": "Valor Total"
+            },
+            "noData": "Nenhum dado disponível"
         }
     }
 }

@@ -1139,6 +1139,65 @@
                 "cancel": "إلغاء",
                 "confirm": "تسجيل الخروج"
             }
+        },
+        "reports": {
+            "title": "تقارير المبيعات",
+            "subtitle": "عرض تحليلات ورؤى المبيعات الشاملة",
+            "dateRange": {
+                "title": "نطاق التاريخ",
+                "description": "تصفية التقارير حسب نطاق التاريخ",
+                "startDate": "تاريخ البدء",
+                "endDate": "تاريخ الانتهاء",
+                "applyFilter": "تطبيق المرشح"
+            },
+            "summary": {
+                "totalSales": "إجمالي المبيعات",
+                "transactions": "معاملات",
+                "averageTransaction": "متوسط المعاملة",
+                "perTransaction": "لكل معاملة",
+                "itemsSold": "العناصر المباعة",
+                "totalUnits": "إجمالي الوحدات",
+                "totalTax": "إجمالي الضرائب",
+                "taxCollected": "الضرائب المحصلة",
+                "totalDiscounts": "إجمالي الخصومات",
+                "discountsGiven": "الخصومات الممنوحة"
+            },
+            "tabs": {
+                "byDate": "حسب التاريخ",
+                "byItem": "حسب العنصر",
+                "byCategory": "حسب الفئة",
+                "byPaymentMethod": "حسب طريقة الدفع"
+            },
+            "byDate": {
+                "title": "المبيعات حسب التاريخ",
+                "description": "تفصيل المبيعات اليومية",
+                "date": "التاريخ",
+                "transactions": "المعاملات",
+                "totalAmount": "إجمالي المبلغ"
+            },
+            "byItem": {
+                "title": "المبيعات حسب العنصر",
+                "description": "العناصر الأكثر مبيعًا",
+                "itemName": "اسم العنصر",
+                "sku": "SKU",
+                "quantitySold": "الكمية المباعة",
+                "totalRevenue": "إجمالي الإيرادات"
+            },
+            "byCategory": {
+                "title": "المبيعات حسب الفئة",
+                "description": "تفصيل الأداء حسب الفئة",
+                "category": "الفئة",
+                "quantitySold": "الكمية المباعة",
+                "totalRevenue": "إجمالي الإيرادات"
+            },
+            "byPaymentMethod": {
+                "title": "المبيعات حسب طريقة الدفع",
+                "description": "تفصيل حسب طريقة الدفع",
+                "paymentMethod": "طريقة الدفع",
+                "transactions": "المعاملات",
+                "totalAmount": "إجمالي المبلغ"
+            },
+            "noData": "لا تتوفر بيانات"
         }
     }
 }

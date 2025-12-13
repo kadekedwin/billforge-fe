@@ -1138,6 +1138,65 @@
                 "cancel": "キャンセル",
                 "confirm": "ログアウト"
             }
+        },
+        "reports": {
+            "title": "売上レポート",
+            "subtitle": "包括的な売上分析とインサイトを表示",
+            "dateRange": {
+                "title": "日付範囲",
+                "description": "日付範囲でレポートをフィルタリング",
+                "startDate": "開始日",
+                "endDate": "終了日",
+                "applyFilter": "フィルター適用"
+            },
+            "summary": {
+                "totalSales": "総売上",
+                "transactions": "取引",
+                "averageTransaction": "平均取引額",
+                "perTransaction": "取引あたり",
+                "itemsSold": "販売商品数",
+                "totalUnits": "総ユニット数",
+                "totalTax": "総税額",
+                "taxCollected": "徴収税額",
+                "totalDiscounts": "総割引額",
+                "discountsGiven": "付与割引"
+            },
+            "tabs": {
+                "byDate": "日付別",
+                "byItem": "商品別",
+                "byCategory": "カテゴリ別",
+                "byPaymentMethod": "支払方法別"
+            },
+            "byDate": {
+                "title": "日付別売上",
+                "description": "日次売上内訳",
+                "date": "日付",
+                "transactions": "取引数",
+                "totalAmount": "総額"
+            },
+            "byItem": {
+                "title": "商品別売上",
+                "description": "売れ筋商品",
+                "itemName": "商品名",
+                "sku": "SKU",
+                "quantitySold": "販売数量",
+                "totalRevenue": "総収益"
+            },
+            "byCategory": {
+                "title": "カテゴリ別売上",
+                "description": "カテゴリ別パフォーマンス内訳",
+                "category": "カテゴリ",
+                "quantitySold": "販売数量",
+                "totalRevenue": "総収益"
+            },
+            "byPaymentMethod": {
+                "title": "支払方法別売上",
+                "description": "支払方法別内訳",
+                "paymentMethod": "支払方法",
+                "transactions": "取引数",
+                "totalAmount": "総額"
+            },
+            "noData": "データなし"
         }
     }
 }

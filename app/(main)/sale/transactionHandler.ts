@@ -96,6 +96,7 @@ export async function completeTransaction({
 
                 const itemData = {
                     transaction_uuid: transaction.uuid,
+                    item_uuid: item.uuid,
                     name: item.name,
                     sku: item.sku || null,
                     description: item.description || null,
@@ -112,6 +113,7 @@ export async function completeTransaction({
                     id: 0,
                     uuid: `temp-${itemUuid}`,
                     transaction_uuid: transaction.uuid,
+                    item_uuid: item.uuid,
                     name: item.name,
                     sku: item.sku || null,
                     description: item.description || null,

@@ -8,6 +8,7 @@ import {
     Tag,
     Settings,
     FolderOpen,
+    BarChart3,
 } from "lucide-react";
 
 export const navItems = [
@@ -22,6 +23,12 @@ export const navItems = [
         href: "/transactions",
         icon: Receipt,
         translationKey: "app.sidebar.transactions" as const,
+    },
+    {
+        title: "Reports",
+        href: "/reports",
+        icon: BarChart3,
+        translationKey: "app.sidebar.reports" as const,
     },
     {
         title: "Items",

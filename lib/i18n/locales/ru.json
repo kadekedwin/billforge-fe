@@ -1139,6 +1139,65 @@
                 "cancel": "Отмена",
                 "confirm": "Выход"
             }
+        },
+        "reports": {
+            "title": "Отчеты о продажах",
+            "subtitle": "Просмотр комплексной аналитики продаж",
+            "dateRange": {
+                "title": "Диапазон дат",
+                "description": "Фильтр отчетов по диапазону дат",
+                "startDate": "Дата начала",
+                "endDate": "Дата окончания",
+                "applyFilter": "Применить фильтр"
+            },
+            "summary": {
+                "totalSales": "Общие продажи",
+                "transactions": "транзакции",
+                "averageTransaction": "Средняя транзакция",
+                "perTransaction": "За транзакцию",
+                "itemsSold": "Продано товаров",
+                "totalUnits": "Всего единиц",
+                "totalTax": "Общий налог",
+                "taxCollected": "Собрано налогов",
+                "totalDiscounts": "Общие скидки",
+                "discountsGiven": "Предоставленные скидки"
+            },
+            "tabs": {
+                "byDate": "По дате",
+                "byItem": "По товару",
+                "byCategory": "По категории",
+                "byPaymentMethod": "По способу оплаты"
+            },
+            "byDate": {
+                "title": "Продажи по дате",
+                "description": "Ежедневная разбивка продаж",
+                "date": "Дата",
+                "transactions": "Транзакции",
+                "totalAmount": "Общая сумма"
+            },
+            "byItem": {
+                "title": "Продажи по товару",
+                "description": "Самые продаваемые товары",
+                "itemName": "Название товара",
+                "sku": "Артикул",
+                "quantitySold": "Продано количество",
+                "totalRevenue": "Общая выручка"
+            },
+            "byCategory": {
+                "title": "Продажи по категории",
+                "description": "Разбивка эффективности по категориям",
+                "category": "Категория",
+                "quantitySold": "Продано количество",
+                "totalRevenue": "Общая выручка"
+            },
+            "byPaymentMethod": {
+                "title": "Продажи по способу оплаты",
+                "description": "Разбивка по способам оплаты",
+                "paymentMethod": "Способ оплаты",
+                "transactions": "Транзакции",
+                "totalAmount": "Общая сумма"
+            },
+            "noData": "Нет данных"
         }
     }
 }

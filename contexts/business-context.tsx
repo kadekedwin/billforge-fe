@@ -28,7 +28,8 @@ const BUSINESS_ROUTES = [
     "/payment-methods",
     "/item-taxes",
     "/item-discounts",
-    "/businesses"
+    "/businesses",
+    "/reports"
 ];
 
 export function BusinessProvider({ children }: { children: React.ReactNode }) {

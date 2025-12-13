@@ -1138,6 +1138,65 @@
                 "cancel": "取消",
                 "confirm": "登出"
             }
+        },
+        "reports": {
+            "title": "销售报告",
+            "subtitle": "查看全面的销售分析和见解",
+            "dateRange": {
+                "title": "日期范围",
+                "description": "按日期范围筛选报告",
+                "startDate": "开始日期",
+                "endDate": "结束日期",
+                "applyFilter": "应用筛选"
+            },
+            "summary": {
+                "totalSales": "总销售额",
+                "transactions": "笔交易",
+                "averageTransaction": "平均交易额",
+                "perTransaction": "每笔交易",
+                "itemsSold": "已售商品",
+                "totalUnits": "总单位",
+                "totalTax": "总税额",
+                "taxCollected": "已收税款",
+                "totalDiscounts": "总折扣",
+                "discountsGiven": "已给折扣"
+            },
+            "tabs": {
+                "byDate": "按日期",
+                "byItem": "按商品",
+                "byCategory": "按类别",
+                "byPaymentMethod": "按支付方式"
+            },
+            "byDate": {
+                "title": "按日期销售",
+                "description": "每日销售明细",
+                "date": "日期",
+                "transactions": "交易数",
+                "totalAmount": "总金额"
+            },
+            "byItem": {
+                "title": "按商品销售",
+                "description": "热销商品",
+                "itemName": "商品名称",
+                "sku": "SKU",
+                "quantitySold": "销售数量",
+                "totalRevenue": "总收入"
+            },
+            "byCategory": {
+                "title": "按类别销售",
+                "description": "按类别绩效明细",
+                "category": "类别",
+                "quantitySold": "销售数量",
+                "totalRevenue": "总收入"
+            },
+            "byPaymentMethod": {
+                "title": "按支付方式销售",
+                "description": "按支付方式明细",
+                "paymentMethod": "支付方式",
+                "transactions": "交易数",
+                "totalAmount": "总金额"
+            },
+            "noData": "暂无数据"
         }
     }
 }

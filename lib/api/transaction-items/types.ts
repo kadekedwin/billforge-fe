@@ -2,6 +2,7 @@ export interface TransactionItem {
   id: number;
   uuid: string;
   transaction_uuid: string;
+  item_uuid: string;
   name: string;
   sku: string | null;
   description: string | null;
@@ -16,6 +17,7 @@ export interface TransactionItem {
 
 export interface CreateTransactionItemRequest {
   transaction_uuid: string;
+  item_uuid: string;
   name: string;
   sku?: string | null;
   description?: string | null;
@@ -28,6 +30,7 @@ export interface CreateTransactionItemRequest {
 
 export interface UpdateTransactionItemRequest {
   transaction_uuid?: string;
+  item_uuid?: string;
   name?: string;
   sku?: string | null;
   description?: string | null;
@@ -40,5 +43,6 @@ export interface UpdateTransactionItemRequest {
 
 export interface TransactionItemQueryParams extends Record<string, string | number | boolean | undefined> {
   transaction_uuid?: string;
+  item_uuid?: string;
 }
 

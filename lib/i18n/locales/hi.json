@@ -1139,6 +1139,65 @@
                 "cancel": "रद्द करें",
                 "confirm": "लॉगआउट करें"
             }
+        },
+        "reports": {
+            "title": "बिक्री रिपोर्ट",
+            "subtitle": "व्यापक बिक्री विश्लेषण और अंतर्दृष्टि देखें",
+            "dateRange": {
+                "title": "दिनांक सीमा",
+                "description": "दिनांक सीमा के अनुसार रिपोर्ट फ़िल्टर करें",
+                "startDate": "आरंभ तिथि",
+                "endDate": "अंतिम तिथि",
+                "applyFilter": "फ़िल्टर लागू करें"
+            },
+            "summary": {
+                "totalSales": "कुल बिक्री",
+                "transactions": "लेनदेन",
+                "averageTransaction": "औसत लेनदेन",
+                "perTransaction": "प्रति लेनदेन",
+                "itemsSold": "बेची गई वस्तुएं",
+                "totalUnits": "कुल इकाइयाँ",
+                "totalTax": "कुल कर",
+                "taxCollected": "एकत्रित कर",
+                "totalDiscounts": "कुल छूट",
+                "discountsGiven": "दी गई छूट"
+            },
+            "tabs": {
+                "byDate": "दिनांक के अनुसार",
+                "byItem": "वस्तु के अनुसार",
+                "byCategory": "श्रेणी के अनुसार",
+                "byPaymentMethod": "भुगतान विधि के अनुसार"
+            },
+            "byDate": {
+                "title": "दिनांक के अनुसार बिक्री",
+                "description": "दैनिक बिक्री का विवरण",
+                "date": "दिनांक",
+                "transactions": "लेनदेन",
+                "totalAmount": "कुल राशि"
+            },
+            "byItem": {
+                "title": "वस्तु के अनुसार बिक्री",
+                "description": "सबसे ज्यादा बिकने वाली वस्तुएं",
+                "itemName": "वस्तु का नाम",
+                "sku": "SKU",
+                "quantitySold": "बेची गई मात्रा",
+                "totalRevenue": "कुल राजस्व"
+            },
+            "byCategory": {
+                "title": "श्रेणी के अनुसार बिक्री",
+                "description": "श्रेणी के अनुसार प्रदर्शन का विवरण",
+                "category": "श्रेणी",
+                "quantitySold": "बेची गई मात्रा",
+                "totalRevenue": "कुल राजस्व"
+            },
+            "byPaymentMethod": {
+                "title": "भुगतान विधि के अनुसार बिक्री",
+                "description": "भुगतान विधि के अनुसार विवरण",
+                "paymentMethod": "भुगतान विधि",
+                "transactions": "लेनदेन",
+                "totalAmount": "कुल राशि"
+            },
+            "noData": "कोई डेटा उपलब्ध नहीं"
         }
     }
 }

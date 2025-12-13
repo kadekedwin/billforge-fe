@@ -1139,6 +1139,65 @@
                 "cancel": "Annuller",
                 "confirm": "Log Ud"
             }
+        },
+        "reports": {
+            "title": "Salgsrapporter",
+            "subtitle": "Se omfattende salgsanalyser og indsigt",
+            "dateRange": {
+                "title": "Datointerval",
+                "description": "Filtrer rapporter efter datointerval",
+                "startDate": "Startdato",
+                "endDate": "Slutdato",
+                "applyFilter": "Anvend Filter"
+            },
+            "summary": {
+                "totalSales": "Samlet Salg",
+                "transactions": "transaktioner",
+                "averageTransaction": "Gennemsnitlig Transaktion",
+                "perTransaction": "Per transaktion",
+                "itemsSold": "Solgte Varer",
+                "totalUnits": "Samlede enheder",
+                "totalTax": "Samlet Skat",
+                "taxCollected": "Skat opkrævet",
+                "totalDiscounts": "Samlede Rabatter",
+                "discountsGiven": "Rabatter givet"
+            },
+            "tabs": {
+                "byDate": "Efter Dato",
+                "byItem": "Efter Vare",
+                "byCategory": "Efter Kategori",
+                "byPaymentMethod": "Efter Betalingsmetode"
+            },
+            "byDate": {
+                "title": "Salg efter Dato",
+                "description": "Daglig salgsfordeling",
+                "date": "Dato",
+                "transactions": "Transaktioner",
+                "totalAmount": "Samlet Beløb"
+            },
+            "byItem": {
+                "title": "Salg efter Vare",
+                "description": "Mest solgte varer",
+                "itemName": "Varenavn",
+                "sku": "Varenummer",
+                "quantitySold": "Antal Solgt",
+                "totalRevenue": "Samlet Omsætning"
+            },
+            "byCategory": {
+                "title": "Salg efter Kategori",
+                "description": "Præstationsfordeling efter kategori",
+                "category": "Kategori",
+                "quantitySold": "Antal Solgt",
+                "totalRevenue": "Samlet Omsætning"
+            },
+            "byPaymentMethod": {
+                "title": "Salg efter Betalingsmetode",
+                "description": "Fordeling efter betalingsmetode",
+                "paymentMethod": "Betalingsmetode",
+                "transactions": "Transaktioner",
+                "totalAmount": "Samlet Beløb"
+            },
+            "noData": "Ingen data tilgængelige"
         }
     }
 }

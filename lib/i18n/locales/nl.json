@@ -1139,6 +1139,65 @@
                 "cancel": "Annuleren",
                 "confirm": "Afmelden"
             }
+        },
+        "reports": {
+            "title": "Verkooprapporten",
+            "subtitle": "Bekijk uitgebreide verkoopanalyses en inzichten",
+            "dateRange": {
+                "title": "Datumbereik",
+                "description": "Rapporten filteren op datumbereik",
+                "startDate": "Startdatum",
+                "endDate": "Einddatum",
+                "applyFilter": "Filter toepassen"
+            },
+            "summary": {
+                "totalSales": "Totale Verkoop",
+                "transactions": "transacties",
+                "averageTransaction": "Gemiddelde Transactie",
+                "perTransaction": "Per transactie",
+                "itemsSold": "Verkochte Artikelen",
+                "totalUnits": "Totaal eenheden",
+                "totalTax": "Totale Belasting",
+                "taxCollected": "Belasting geïnd",
+                "totalDiscounts": "Totale Kortingen",
+                "discountsGiven": "Kortingen gegeven"
+            },
+            "tabs": {
+                "byDate": "Op Datum",
+                "byItem": "Op Artikel",
+                "byCategory": "Op Categorie",
+                "byPaymentMethod": "Op Betaalmethode"
+            },
+            "byDate": {
+                "title": "Verkoop op Datum",
+                "description": "Dagelijkse verkoopuitsplitsing",
+                "date": "Datum",
+                "transactions": "Transacties",
+                "totalAmount": "Totaal Bedrag"
+            },
+            "byItem": {
+                "title": "Verkoop op Artikel",
+                "description": "Best verkochte artikelen",
+                "itemName": "Artikelnaam",
+                "sku": "SKU",
+                "quantitySold": "Aantal Verkocht",
+                "totalRevenue": "Totale Omzet"
+            },
+            "byCategory": {
+                "title": "Verkoop op Categorie",
+                "description": "Prestatie-uitsplitsing per categorie",
+                "category": "Categorie",
+                "quantitySold": "Aantal Verkocht",
+                "totalRevenue": "Totale Omzet"
+            },
+            "byPaymentMethod": {
+                "title": "Verkoop op Betaalmethode",
+                "description": "Uitsplitsing per betaalmethode",
+                "paymentMethod": "Betaalmethode",
+                "transactions": "Transacties",
+                "totalAmount": "Totaal Bedrag"
+            },
+            "noData": "Geen gegevens beschikbaar"
         }
     }
 }

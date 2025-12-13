@@ -1139,6 +1139,65 @@
                 "cancel": "Avbryt",
                 "confirm": "Logg ut"
             }
+        },
+        "reports": {
+            "title": "Salgsrapporter",
+            "subtitle": "Se omfattende salgsanalyser og innsikt",
+            "dateRange": {
+                "title": "Datointervall",
+                "description": "Filtrer rapporter etter datointervall",
+                "startDate": "Startdato",
+                "endDate": "Sluttdato",
+                "applyFilter": "Bruk filter"
+            },
+            "summary": {
+                "totalSales": "Totalt Salg",
+                "transactions": "transaksjoner",
+                "averageTransaction": "Gjennomsnittlig Transaksjon",
+                "perTransaction": "Per transaksjon",
+                "itemsSold": "Solgte Varer",
+                "totalUnits": "Totale enheter",
+                "totalTax": "Total Skatt",
+                "taxCollected": "Skatt innkrevd",
+                "totalDiscounts": "Totale Rabatter",
+                "discountsGiven": "Rabatter gitt"
+            },
+            "tabs": {
+                "byDate": "Etter Dato",
+                "byItem": "Etter Vare",
+                "byCategory": "Etter Kategori",
+                "byPaymentMethod": "Etter Betalingsmetode"
+            },
+            "byDate": {
+                "title": "Salg etter Dato",
+                "description": "Daglig salgsfordeling",
+                "date": "Dato",
+                "transactions": "Transaksjoner",
+                "totalAmount": "Totalbeløp"
+            },
+            "byItem": {
+                "title": "Salg etter Vare",
+                "description": "Mest solgte varer",
+                "itemName": "Varenavn",
+                "sku": "SKU",
+                "quantitySold": "Antall Solgt",
+                "totalRevenue": "Total Inntekt"
+            },
+            "byCategory": {
+                "title": "Salg etter Kategori",
+                "description": "Ytelsesfordeling etter kategori",
+                "category": "Kategori",
+                "quantitySold": "Antall Solgt",
+                "totalRevenue": "Total Inntekt"
+            },
+            "byPaymentMethod": {
+                "title": "Salg etter Betalingsmetode",
+                "description": "Fordeling etter betalingsmetode",
+                "paymentMethod": "Betalingsmetode",
+                "transactions": "Transaksjoner",
+                "totalAmount": "Totalbeløp"
+            },
+            "noData": "Ingen data tilgjengelig"
         }
     }
 }

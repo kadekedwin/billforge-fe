@@ -1139,6 +1139,65 @@
                 "cancel": "취소",
                 "confirm": "로그아웃"
             }
+        },
+        "reports": {
+            "title": "판매 보고서",
+            "subtitle": "포괄적인 판매 분석 및 통계 보기",
+            "dateRange": {
+                "title": "날짜 범위",
+                "description": "날짜 범위로 보고서 필터링",
+                "startDate": "시작 날짜",
+                "endDate": "종료 날짜",
+                "applyFilter": "필터 적용"
+            },
+            "summary": {
+                "totalSales": "총 판매",
+                "transactions": "거래",
+                "averageTransaction": "평균 거래",
+                "perTransaction": "거래 당",
+                "itemsSold": "판매된 항목",
+                "totalUnits": "총 단위",
+                "totalTax": "총 세금",
+                "taxCollected": "징수된 세금",
+                "totalDiscounts": "총 할인",
+                "discountsGiven": "제공된 할인"
+            },
+            "tabs": {
+                "byDate": "날짜별",
+                "byItem": "항목별",
+                "byCategory": "카테고리별",
+                "byPaymentMethod": "결제 방법별"
+            },
+            "byDate": {
+                "title": "날짜별 판매",
+                "description": "일별 판매 내역",
+                "date": "날짜",
+                "transactions": "거래 수",
+                "totalAmount": "총 금액"
+            },
+            "byItem": {
+                "title": "항목별 판매",
+                "description": "베스트셀러 항목",
+                "itemName": "항목 이름",
+                "sku": "SKU",
+                "quantitySold": "판매 수량",
+                "totalRevenue": "총 수익"
+            },
+            "byCategory": {
+                "title": "카테고리별 판매",
+                "description": "카테고리 성과 분석",
+                "category": "카테고리",
+                "quantitySold": "판매 수량",
+                "totalRevenue": "총 수익"
+            },
+            "byPaymentMethod": {
+                "title": "결제 방법별 판매",
+                "description": "결제 방법 분석",
+                "paymentMethod": "결제 방법",
+                "transactions": "거래 수",
+                "totalAmount": "총 금액"
+            },
+            "noData": "데이터 없음"
         }
     }
 }

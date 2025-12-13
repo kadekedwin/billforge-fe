@@ -1139,6 +1139,65 @@
                 "cancel": "Avbryt",
                 "confirm": "Logga Ut"
             }
+        },
+        "reports": {
+            "title": "Försäljningsrapporter",
+            "subtitle": "Visa omfattande försäljningsanalys och insikter",
+            "dateRange": {
+                "title": "Datumintervall",
+                "description": "Filtrera rapporter efter datumintervall",
+                "startDate": "Startdatum",
+                "endDate": "Slutdatum",
+                "applyFilter": "Använd Filter"
+            },
+            "summary": {
+                "totalSales": "Total Försäljning",
+                "transactions": "transaktioner",
+                "averageTransaction": "Genomsnittlig Transaktion",
+                "perTransaction": "Per transaktion",
+                "itemsSold": "Sålda Artiklar",
+                "totalUnits": "Totala enheter",
+                "totalTax": "Total Skatt",
+                "taxCollected": "Skatt insamlad",
+                "totalDiscounts": "Totala Rabatter",
+                "discountsGiven": "Rabatter givna"
+            },
+            "tabs": {
+                "byDate": "Efter Datum",
+                "byItem": "Efter Artikel",
+                "byCategory": "Efter Kategori",
+                "byPaymentMethod": "Efter Betalningsmetod"
+            },
+            "byDate": {
+                "title": "Försäljning efter Datum",
+                "description": "Daglig försäljningsuppdelning",
+                "date": "Datum",
+                "transactions": "Transaktioner",
+                "totalAmount": "Totalt Belopp"
+            },
+            "byItem": {
+                "title": "Försäljning efter Artikel",
+                "description": "Mest sålda artiklar",
+                "itemName": "Artikelnamn",
+                "sku": "Artikelnr",
+                "quantitySold": "Antal Sålda",
+                "totalRevenue": "Total Intäkt"
+            },
+            "byCategory": {
+                "title": "Försäljning efter Kategori",
+                "description": "Prestandauppdelning efter kategori",
+                "category": "Kategori",
+                "quantitySold": "Antal Sålda",
+                "totalRevenue": "Total Intäkt"
+            },
+            "byPaymentMethod": {
+                "title": "Försäljning efter Betalningsmetod",
+                "description": "Uppdelning efter betalningsmetod",
+                "paymentMethod": "Betalningsmetod",
+                "transactions": "Transaktioner",
+                "totalAmount": "Totalt Belopp"
+            },
+            "noData": "Ingen data tillgänglig"
         }
     }
 }

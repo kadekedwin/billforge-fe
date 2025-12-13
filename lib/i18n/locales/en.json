@@ -1004,9 +1004,69 @@
             "discountsLoadError": "Failed to load discounts",
             "loadingError": "An error occurred while loading data"
         },
+        "reports": {
+            "title": "Sales Reports",
+            "subtitle": "View comprehensive sales analytics and insights",
+            "dateRange": {
+                "title": "Date Range",
+                "description": "Filter reports by date range",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "applyFilter": "Apply Filter"
+            },
+            "summary": {
+                "totalSales": "Total Sales",
+                "transactions": "transactions",
+                "averageTransaction": "Average Transaction",
+                "perTransaction": "Per transaction",
+                "itemsSold": "Items Sold",
+                "totalUnits": "Total units",
+                "totalTax": "Total Tax",
+                "taxCollected": "Tax collected",
+                "totalDiscounts": "Total Discounts",
+                "discountsGiven": "Discounts given"
+            },
+            "tabs": {
+                "byDate": "By Date",
+                "byItem": "By Item",
+                "byCategory": "By Category",
+                "byPaymentMethod": "By Payment Method"
+            },
+            "byDate": {
+                "title": "Sales by Date",
+                "description": "Daily sales breakdown",
+                "date": "Date",
+                "transactions": "Transactions",
+                "totalAmount": "Total Amount"
+            },
+            "byItem": {
+                "title": "Sales by Item",
+                "description": "Top selling items",
+                "itemName": "Item Name",
+                "sku": "SKU",
+                "quantitySold": "Quantity Sold",
+                "totalRevenue": "Total Revenue"
+            },
+            "byCategory": {
+                "title": "Sales by Category",
+                "description": "Category performance breakdown",
+                "category": "Category",
+                "quantitySold": "Quantity Sold",
+                "totalRevenue": "Total Revenue"
+            },
+            "byPaymentMethod": {
+                "title": "Sales by Payment Method",
+                "description": "Payment method breakdown",
+                "paymentMethod": "Payment Method",
+                "transactions": "Transactions",
+                "totalAmount": "Total Amount"
+            },
+            "noData": "No data available"
+        },
         "sidebar": {
             "sale": "Sale",
             "transactions": "Transactions",
+            "reports": "Reports",
             "items": "Items",
             "categories": "Categories",
             "customers": "Customers",
