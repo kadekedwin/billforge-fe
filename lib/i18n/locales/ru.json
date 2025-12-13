@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Язык",
+                "languageDescription": "Выберите предпочитаемый язык для интерфейса приложения.",
                 "currency": "Валюта",
                 "region": "Регион",
                 "timezone": "Часовой Пояс",

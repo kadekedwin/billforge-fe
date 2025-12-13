@@ -6,10 +6,16 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/i18n/useTranslation';
+import { useLocale } from '@/contexts/locale-context';
+import { APP_LANGUAGES } from '@/lib/data/locale-data';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function PreferencesSettings() {
     const { theme, setTheme } = useTheme();
     const { t } = useTranslation();
+    const { locale, setLocale } = useLocale();
+
+
 
     return (
         <div className="space-y-6">
@@ -21,6 +27,25 @@ export default function PreferencesSettings() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                    <div className="space-y-3">
+                        <Label className="text-base">{t('app.settings.preferencesTab.language')}</Label>
+                        <p className="text-sm text-muted-foreground">
+                            {t('app.settings.preferencesTab.languageDescription')}
+                        </p>
+                        <Select value={locale} onValueChange={(value) => setLocale(value as any)}>
+                            <SelectTrigger className="w-full max-w-xs">
+                                <SelectValue placeholder="Select language" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {APP_LANGUAGES.map((l) => (
+                                    <SelectItem key={l.value} value={l.value}>
+                                        {l.label}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+
                     <div className="space-y-3">
                         <Label className="text-base">{t('app.settings.preferencesTab.theme')}</Label>
                         <p className="text-sm text-muted-foreground">

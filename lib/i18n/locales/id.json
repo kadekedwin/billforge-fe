@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Bahasa",
+                "languageDescription": "Pilih bahasa pilihan Anda untuk antarmuka aplikasi.",
                 "currency": "Mata Uang",
                 "region": "Wilayah",
                 "timezone": "Zona Waktu",

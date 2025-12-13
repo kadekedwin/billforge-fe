@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "اللغة",
+                "languageDescription": "اختر لغتك المفضلة لواجهة التطبيق.",
                 "currency": "العملة",
                 "region": "المنطقة",
                 "timezone": "المنطقة الزمنية",

@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Lingua",
+                "languageDescription": "Scegli la tua lingua preferita per l'interfaccia dell'applicazione.",
                 "currency": "Valuta",
                 "region": "Regione",
                 "timezone": "Fuso Orario",

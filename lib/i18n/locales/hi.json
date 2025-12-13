@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "भाषा",
+                "languageDescription": "एप्लिकेशन इंटरफ़ेस के लिए अपनी पसंदीदा भाषा चुनें।",
                 "currency": "मुद्रा",
                 "region": "क्षेत्र",
                 "timezone": "समय क्षेत्र",

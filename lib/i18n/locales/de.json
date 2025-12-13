@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Sprache",
+                "languageDescription": "Wählen Sie Ihre bevorzugte Sprache für die Benutzeroberfläche.",
                 "currency": "Währung",
                 "region": "Region",
                 "timezone": "Zeitzone",

@@ -873,6 +873,7 @@
             },
             "preferencesTab": {
                 "language": "言語",
+                "languageDescription": "アプリケーションインターフェイスの優先言語を選択してください。",
                 "currency": "通貨",
                 "region": "地域",
                 "timezone": "タイムゾーン",

@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Språk",
+                "languageDescription": "Välj ditt föredragna språk för applikationsgränssnittet.",
                 "currency": "Valuta",
                 "region": "Region",
                 "timezone": "Tidszon",

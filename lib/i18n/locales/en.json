@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Language",
+                "languageDescription": "Choose your preferred language for the application interface.",
                 "currency": "Currency",
                 "region": "Region",
                 "timezone": "Timezone",

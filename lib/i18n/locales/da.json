@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Sprog",
+                "languageDescription": "Vælg dit foretrukne sprog til applikationsgrænsefladen.",
                 "currency": "Valuta",
                 "region": "Region",
                 "timezone": "Tidszone",

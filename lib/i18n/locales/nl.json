@@ -874,6 +874,7 @@
             },
             "preferencesTab": {
                 "language": "Taal",
+                "languageDescription": "Kies uw voorkeurstaal voor de applicatie-interface.",
                 "currency": "Valuta",
                 "region": "Regio",
                 "timezone": "Tijdzone",
