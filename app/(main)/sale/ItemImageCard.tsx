@@ -20,7 +20,6 @@ export const ItemImageCard = memo(({ item }: ItemImageCardProps) => {
         const cacheKey = `${item.uuid}-${item.updated_at}`;
 
         if (imageUrlCache.has(cacheKey)) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
             setImageUrl(imageUrlCache.get(cacheKey)!);
             return;
         }
@@ -40,6 +39,7 @@ export const ItemImageCard = memo(({ item }: ItemImageCardProps) => {
             }
         };
         loadImage();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [item.uuid, item.updated_at]);
 
     if (loading) {

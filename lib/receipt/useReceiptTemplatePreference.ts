@@ -2,12 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { ReceiptTemplateType } from '@/lib/receipt';
-import { receiptTemplates } from '@/lib/receipt/templates';
 import {
     getReceiptData,
     createReceiptData,
     updateReceiptData,
-    type ReceiptData
 } from '@/lib/api/receipt-data';
 
 // Template ID mapping: API numeric ID to frontend string type
@@ -30,7 +28,6 @@ interface UseReceiptTemplatePreferenceProps {
 export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplatePreferenceProps) {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [receiptDataUuid, setReceiptDataUuid] = useState<string | null>(null);
 
     const [template, setTemplate] = useState<ReceiptTemplateType>('classic');
     const [includeLogo, setIncludeLogo] = useState<boolean>(false);
@@ -52,9 +49,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
             const response = await getReceiptData(businessUuid);
 
             if (response.success && response.data) {
-        
+
                 const data = response.data;
-                setReceiptDataUuid(data.uuid);
                 setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
                 setIncludeLogo(data.include_image);
                 setFooterMessage(data.footer_message || '');
@@ -62,7 +58,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                 setTransactionPrefix(data.transaction_prefix || '');
                 setTransactionNextNumber(data.transaction_next_number);
             } else {
-        
+
                 const createResponse = await createReceiptData(businessUuid, {
                     template_id: 0,
                     include_image: false,
@@ -73,7 +69,6 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                 });
 
                 if (createResponse.success) {
-                    setReceiptDataUuid(createResponse.data.uuid);
                     setTemplate('classic');
                     setIncludeLogo(false);
                     setFooterMessage('');

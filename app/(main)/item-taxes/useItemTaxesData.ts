@@ -46,6 +46,7 @@ export function useItemTaxesData(selectedBusiness: Business | null): UseItemTaxe
         } finally {
             setIsLoading(false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedBusiness]);
 
     useEffect(() => {

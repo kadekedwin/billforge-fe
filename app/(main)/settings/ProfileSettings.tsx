@@ -77,6 +77,7 @@ export default function ProfileSettings() {
 
     useEffect(() => {
         loadUser();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleInputChange = (field: string, value: string) => {

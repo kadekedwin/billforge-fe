@@ -22,7 +22,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
             if (savedLocale && !selectedBusiness) {
                 const validLocale = getLocaleWithFallback(savedLocale);
                 if (validLocale !== locale) {
-                    // eslint-disable-next-line
+                    // eslint-disable-next-line react-hooks/set-state-in-effect
                     setLocaleState(validLocale);
                     document.documentElement.lang = validLocale;
                 }
@@ -34,7 +34,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
         if (selectedBusiness?.language && !manuallySet) {
             const newLocale = getLocaleWithFallback(selectedBusiness.language);
             if (newLocale !== locale) {
-                // eslint-disable-next-line
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setLocaleState(newLocale);
                 if (typeof document !== 'undefined') {
                     document.documentElement.lang = newLocale;
@@ -44,7 +44,6 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
             const savedLocale = typeof window !== 'undefined' ? localStorage.getItem('preferredLocale') : null;
             const newLocale = savedLocale ? getLocaleWithFallback(savedLocale) : 'en';
             if (newLocale !== locale) {
-                // eslint-disable-next-line
                 setLocaleState(newLocale);
                 if (typeof document !== 'undefined') {
                     document.documentElement.lang = newLocale;

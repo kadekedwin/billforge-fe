@@ -56,10 +56,6 @@ interface Business {
     phone: string | null;
 }
 
-interface Customer {
-    name: string;
-}
-
 export const convertTransactionToReceiptData = (
     transaction: Transaction,
     items: TransactionItem[],

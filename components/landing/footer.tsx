@@ -42,17 +42,6 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 const Footer = () => {
     const { t } = useTranslation();
 
-    const getLinkTitle = (key: string) => {
-        switch (key) {
-            case 'email': return "billforgeapp@gmail.com";
-            case 'whatsapp': return "Whatsapp";
-            case 'telegram': return "Telegram";
-            case 'terms': return t('landing.footer.links.terms');
-            case 'privacy': return t('landing.footer.links.privacy');
-            default: return key;
-        }
-    };
-
     return (
         <footer id="footer" className="mt-12 xs:mt-20 dark bg-background border-t">
             <div className="max-w-(--breakpoint-xl) mx-auto py-12 grid grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10 px-6">

@@ -22,7 +22,6 @@ export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) 
         const cacheKey = `${business.uuid}-${business.updated_at}`;
 
         if (imageUrlCache.has(cacheKey)) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
             setImageUrl(imageUrlCache.get(cacheKey)!);
             return;
         }
@@ -42,6 +41,7 @@ export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) 
             }
         };
         loadImage();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [business.uuid, business.image_size_bytes]);
 
     const sizeClasses = size === "lg" ? "h-8 w-8" : "h-4 w-4";

@@ -66,6 +66,7 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
         };
 
         loadUserImage();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user?.uuid, user?.updated_at]);
 
     const handleLogout = async () => {
