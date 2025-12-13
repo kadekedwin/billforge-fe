@@ -18,15 +18,17 @@ const BusinessContext = createContext<BusinessContextType | undefined>(undefined
 
 const STORAGE_KEY = "selectedBusinessUuid";
 
-const PUBLIC_ROUTES = [
-    "/",
-    "/login",
-    "/register",
-    "/verify-email",
-    "/forgot-password",
-    "/forgot-password-reset",
-    "/privacy",
-    "/terms",
+const BUSINESS_ROUTES = [
+    "/sale",
+    "/items",
+    "/categories",
+    "/settings",
+    "/transactions",
+    "/customers",
+    "/payment-methods",
+    "/item-taxes",
+    "/item-discounts",
+    "/businesses"
 ];
 
 export function BusinessProvider({ children }: { children: React.ReactNode }) {
@@ -36,13 +38,8 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
     const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const isPublicRoute = useCallback(() => {
-        return PUBLIC_ROUTES.some(route => {
-            if (route === "/") {
-                return pathname === "/";
-            }
-            return pathname.startsWith(route);
-        });
+    const isBusinessRoute = useCallback(() => {
+        return BUSINESS_ROUTES.some(route => pathname.startsWith(route));
     }, [pathname]);
 
     const getSavedBusinessUuid = useCallback(() => {
@@ -115,7 +112,7 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
     }, [selectBusiness, saveBusinessUuid]);
 
     useEffect(() => {
-        if (isPublicRoute()) {
+        if (!isBusinessRoute()) {
             setIsLoading(false);
             return;
         }
@@ -131,7 +128,7 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
             setSelectedBusinessState(null);
             setIsLoading(false);
         }
-    }, [isAuthenticated, authLoading, isPublicRoute, fetchBusinesses]);
+    }, [isAuthenticated, authLoading, isBusinessRoute, fetchBusinesses]);
 
     const setSelectedBusiness = useCallback((business: Business | null) => {
         setSelectedBusinessState(business);

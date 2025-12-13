@@ -43,6 +43,7 @@ export async function forgotPasswordReset(data: ForgotPasswordResetRequest): Pro
         url += `?${params.toString()}`;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { expires: _expires, signature: _signature, ...bodyData } = data;
     return apiClient.post<MessageResponse>(url, bodyData);
 }
@@ -103,6 +104,7 @@ export async function confirmAccountDeletion(data: AccountDeletionConfirmRequest
         url += `?${params.toString()}`;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { expires: _expires, signature: _signature, ...bodyData } = data;
     const response = await apiClient.post<MessageResponse>(url, bodyData);
 

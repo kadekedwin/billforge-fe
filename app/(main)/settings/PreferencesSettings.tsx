@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/lib/i18n/useTranslation';
+import { SupportedLocale } from '@/lib/i18n/locale-utils';
 import { useLocale } from '@/contexts/locale-context';
 import { APP_LANGUAGES } from '@/lib/data/locale-data';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -14,8 +15,6 @@ export default function PreferencesSettings() {
     const { theme, setTheme } = useTheme();
     const { t } = useTranslation();
     const { locale, setLocale } = useLocale();
-
-
 
     return (
         <div className="space-y-6">
@@ -32,7 +31,7 @@ export default function PreferencesSettings() {
                         <p className="text-sm text-muted-foreground">
                             {t('app.settings.preferencesTab.languageDescription')}
                         </p>
-                        <Select value={locale} onValueChange={(value) => setLocale(value as any)}>
+                        <Select value={locale} onValueChange={(value) => setLocale(value as SupportedLocale)}>
                             <SelectTrigger className="w-full max-w-xs">
                                 <SelectValue placeholder="Select language" />
                             </SelectTrigger>
