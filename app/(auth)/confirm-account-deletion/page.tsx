@@ -129,8 +129,12 @@ function ConfirmAccountDeletionContent() {
                     )}
 
                     <div className="space-y-2">
-                        <Label htmlFor="confirmation">
-                            {t("auth.confirmDeletion.inputLabel")} <strong>{t("auth.confirmDeletion.confirmWord")}</strong> {t("auth.confirmDeletion.inputLabelSuffix")}
+                        <Label htmlFor="confirmation" className="inline">
+                            <span>
+                                {t("auth.confirmDeletion.inputLabel")}{" "}
+                                <strong>{t("auth.confirmDeletion.confirmWord")}</strong>{" "}
+                                {t("auth.confirmDeletion.inputLabelSuffix")}
+                            </span>
                         </Label>
                         <Input
                             id="confirmation"
@@ -144,7 +148,7 @@ function ConfirmAccountDeletionContent() {
                         />
                     </div>
                 </CardContent>
-                <CardFooter className="flex flex-col space-y-4">
+                <CardFooter className="flex flex-col space-y-4 mt-4">
                     <Button
                         type="submit"
                         variant="destructive"

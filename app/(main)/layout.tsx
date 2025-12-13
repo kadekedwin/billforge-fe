@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Sidebar, MobileSidebar } from "@/components/sidebar/Sidebar";
 import { useAuth } from "@/contexts/auth-context";
@@ -13,17 +13,30 @@ export default function MainLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const { isAuthenticated, isLoading: isAuthLoading, user } = useAuth();
+    const { isAuthenticated, isLoading: isAuthLoading, user, refreshUser } = useAuth();
     const { businesses, isLoading: isBusinessLoading, selectedBusiness, setSelectedBusiness } = useBusiness();
     const router = useRouter();
+    const [hasRefreshedUser, setHasRefreshedUser] = useState(false);
 
     useEffect(() => {
+        const refreshUserData = async () => {
+            if (isAuthenticated && !isAuthLoading && !hasRefreshedUser) {
+                await refreshUser();
+                setHasRefreshedUser(true);
+            }
+        };
+        refreshUserData();
+    }, [isAuthenticated, isAuthLoading, hasRefreshedUser, refreshUser]);
+
+    useEffect(() => {
+        if (!hasRefreshedUser) return;
+
         if (!isAuthLoading && !isAuthenticated) {
             router.push("/login");
         } else if (!isAuthLoading && isAuthenticated && user && !user.email_verified_at) {
             router.push("/verify-email");
         }
-    }, [isAuthenticated, isAuthLoading, user, router]);
+    }, [isAuthenticated, isAuthLoading, user, router, hasRefreshedUser]);
 
     useEffect(() => {
         if (!isBusinessLoading && businesses.length > 0 && !selectedBusiness) {
