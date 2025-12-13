@@ -23,6 +23,7 @@ jobs:
 
       - name: Build Next.js app
         env:
+          NEXT_PUBLIC_BASE_URL: https://billforge.app
           NEXT_PUBLIC_API_BASE_URL: https://api.billforge.app
           NEXT_PUBLIC_R2_ENDPOINT: https://media.billforge.app
         run: npm run build
@@ -50,6 +51,7 @@ jobs:
 
             # Create .env file with environment variables
             cat > .env << EOF
+            NEXT_PUBLIC_BASE_URL=https://billforge.app
             NEXT_PUBLIC_API_BASE_URL=https://api.billforge.app
             NEXT_PUBLIC_R2_ENDPOINT=https://media.billforge.app
             R2_ACCOUNT_ID=${{ secrets.R2_ACCOUNT_ID }}

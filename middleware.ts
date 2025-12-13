@@ -5,12 +5,14 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
   const { pathname } = request.nextUrl;
 
+  const exactPublicRoutes = ["/", "/sitemap.xml", "/robots.txt", "/manifest.webmanifest"]
   const publicRoutes = ["/login", "/register", "/forgot-password", "/forgot-password-reset", "/privacy", "/terms"];
   const authOnlyRoutes = ["/login", "/register", "/forgot-password", "/forgot-password-reset"];
+  const isExactPublicRoute = exactPublicRoutes.some((route) => pathname === route);
   const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route));
   const isAuthOnlyRoute = authOnlyRoutes.some((route) => pathname.startsWith(route));
 
-  if (!token && !isPublicRoute && pathname !== "/") {
+  if (!token && !isExactPublicRoute && !isPublicRoute) {
     const loginUrl = new URL("/login", request.url);
     return NextResponse.redirect(loginUrl);
   }
