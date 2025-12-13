@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "Contatti",
-            "legal": {
+            "legal": "Legale",
+            "legalLinks": {
                 "terms": "Termini",
                 "privacy": "Privacy"
             },

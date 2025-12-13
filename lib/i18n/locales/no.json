@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "Kontakt",
-            "legal": {
+            "legal": "Juridisk",
+            "legalLinks": {
                 "terms": "Vilkår",
                 "privacy": "Personvern"
             },

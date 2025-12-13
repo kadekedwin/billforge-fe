@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "Hubungi Kami",
-            "legal": {
+            "legal": "Hukum",
+            "legalLinks": {
                 "terms": "Syarat",
                 "privacy": "Privasi"
             },

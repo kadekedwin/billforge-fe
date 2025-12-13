@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "संपर्क करें",
-            "legal": {
+            "legal": "कानूनी",
+            "legalLinks": {
                 "terms": "शर्तें",
                 "privacy": "गोपनीयता"
             },

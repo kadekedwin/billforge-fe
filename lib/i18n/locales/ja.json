@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "お問い合わせ",
-            "legal": {
+            "legal": "法的情報",
+            "legalLinks": {
                 "terms": "利用規約",
                 "privacy": "プライバシー"
             },

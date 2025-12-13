@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "联系",
-            "legal": {
+            "legal": "法律",
+            "legalLinks": {
                 "terms": "条款",
                 "privacy": "隐私"
             },

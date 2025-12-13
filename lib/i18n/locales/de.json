@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "Kontakt",
-            "legal": {
+            "legal": "Rechtliches",
+            "legalLinks": {
                 "terms": "Bedingungen",
                 "privacy": "Datenschutz"
             },

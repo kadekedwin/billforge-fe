@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "اتصل بنا",
-            "legal": {
+            "legal": "قانوني",
+            "legalLinks": {
                 "terms": "الشروط",
                 "privacy": "الخصوصية"
             },

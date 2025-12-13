@@ -78,7 +78,7 @@ const Footer = () => {
                                             linkKey === 'email' ? 'billforgeapp@gmail.com' :
                                                 linkKey === 'whatsapp' ? 'Whatsapp' : 'Telegram'
                                         ) : (
-                                            linkKey === 'terms' ? t('landing.footer.legal.terms') : t('landing.footer.legal.privacy')
+                                            linkKey === 'terms' ? t('landing.footer.legalLinks.terms') : t('landing.footer.legalLinks.privacy')
                                         )}
                                     </Link>
                                 </li>

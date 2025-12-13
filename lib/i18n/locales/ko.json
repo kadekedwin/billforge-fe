@@ -210,7 +210,8 @@
         },
         "footer": {
             "contact": "문의",
-            "legal": {
+            "legal": "법적 고지",
+            "legalLinks": {
                 "terms": "약관",
                 "privacy": "개인정보"
             },
