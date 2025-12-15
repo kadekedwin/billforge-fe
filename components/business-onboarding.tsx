@@ -14,8 +14,10 @@ import { uploadImage } from '@/lib/images/operations'
 import { getFileSizeBytes } from '@/lib/images/utils'
 import { CURRENCIES, LANGUAGES, REGIONS } from '@/lib/data/locale-data'
 import type { CreateBusinessRequest } from '@/lib/api'
+import { useTranslation } from '@/lib/i18n/useTranslation'
 
 export function BusinessOnboarding() {
+  const { t } = useTranslation()
   const { refreshBusinesses } = useBusiness()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -77,7 +79,7 @@ export function BusinessOnboarding() {
     if (file) {
       // Check file size (1MB = 1048576 bytes)
       if (file.size > 1048576) {
-        setError('Image size must be less than 1MB')
+        setError(t('app.settings.businessOnboarding.imageSizeError'))
         e.target.value = '' // Clear the input
         return
       }
@@ -149,11 +151,11 @@ export function BusinessOnboarding() {
         } else if (errorData.message) {
           setError(errorData.message)
         } else {
-          setError('Failed to create business')
+          setError(t('app.settings.businessOnboarding.createError'))
         }
       }
     } catch (err) {
-      setError('An error occurred while creating business')
+      setError(t('app.settings.businessOnboarding.genericError'))
       console.error('Error creating business:', err)
     } finally {
       setIsSubmitting(false)
@@ -167,9 +169,9 @@ export function BusinessOnboarding() {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
             <Building2 className="h-8 w-8 text-primary" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight">Welcome to BillForge</h1>
+          <h1 className="text-3xl font-bold tracking-tight">{t('app.settings.businessOnboarding.title')}</h1>
           <p className="mt-2 text-muted-foreground">
-            Get started by creating your first business
+            {t('app.settings.businessOnboarding.description')}
           </p>
         </div>
 
@@ -181,11 +183,11 @@ export function BusinessOnboarding() {
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="name">Business Name</Label>
+            <Label htmlFor="name">{t('app.settings.businessOnboarding.businessName')}</Label>
             <Input
               id="name"
               name="name"
-              placeholder="My Business"
+              placeholder={t('app.settings.businessOnboarding.businessNamePlaceholder')}
               value={formData.name}
               onChange={handleInputChange}
               disabled={isSubmitting}
@@ -198,11 +200,11 @@ export function BusinessOnboarding() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone (Optional)</Label>
+            <Label htmlFor="phone">{t('app.settings.businessOnboarding.phone')}</Label>
             <Input
               id="phone"
               name="phone"
-              placeholder="+1234567890"
+              placeholder={t('app.settings.businessOnboarding.phonePlaceholder')}
               value={formData.phone || ''}
               onChange={handleInputChange}
               disabled={isSubmitting}
@@ -214,11 +216,11 @@ export function BusinessOnboarding() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="address">Address (Optional)</Label>
+            <Label htmlFor="address">{t('app.settings.businessOnboarding.address')}</Label>
             <Textarea
               id="address"
               name="address"
-              placeholder="123 Main St, City, State, ZIP"
+              placeholder={t('app.settings.businessOnboarding.addressPlaceholder')}
               value={formData.address || ''}
               onChange={handleInputChange}
               disabled={isSubmitting}
@@ -231,14 +233,14 @@ export function BusinessOnboarding() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="currency">Currency (Optional)</Label>
+            <Label htmlFor="currency">{t('app.settings.businessOnboarding.currency')}</Label>
             <Select
               value={formData.currency || ''}
               onValueChange={(value) => handleSelectChange('currency', value)}
               disabled={isSubmitting}
             >
               <SelectTrigger className={formErrors.currency ? 'border-destructive' : ''}>
-                <SelectValue placeholder="Select currency" />
+                <SelectValue placeholder={t('app.settings.businessOnboarding.selectCurrency')} />
               </SelectTrigger>
               <SelectContent>
                 {CURRENCIES.map((currency) => (
@@ -254,14 +256,14 @@ export function BusinessOnboarding() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="language">Language (Optional)</Label>
+            <Label htmlFor="language">{t('app.settings.businessOnboarding.language')}</Label>
             <Select
               value={formData.language || ''}
               onValueChange={(value) => handleSelectChange('language', value)}
               disabled={isSubmitting}
             >
               <SelectTrigger className={formErrors.language ? 'border-destructive' : ''}>
-                <SelectValue placeholder="Select language" />
+                <SelectValue placeholder={t('app.settings.businessOnboarding.selectLanguage')} />
               </SelectTrigger>
               <SelectContent>
                 {LANGUAGES.map((language) => (
@@ -277,14 +279,14 @@ export function BusinessOnboarding() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="region">Region (Optional)</Label>
+            <Label htmlFor="region">{t('app.settings.businessOnboarding.region')}</Label>
             <Select
               value={formData.region || ''}
               onValueChange={(value) => handleSelectChange('region', value)}
               disabled={isSubmitting}
             >
               <SelectTrigger className={formErrors.region ? 'border-destructive' : ''}>
-                <SelectValue placeholder="Select region" />
+                <SelectValue placeholder={t('app.settings.businessOnboarding.selectRegion')} />
               </SelectTrigger>
               <SelectContent>
                 {REGIONS.map((region) => (
@@ -300,13 +302,13 @@ export function BusinessOnboarding() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="logo">Business Logo (Optional)</Label>
+            <Label htmlFor="logo">{t('app.settings.businessOnboarding.logo')}</Label>
             <div className="flex items-start gap-4">
               {imagePreview && (
                 <div className="relative">
                   <Avatar className="h-20 w-20">
-                    <AvatarImage src={imagePreview} alt="Business logo preview" />
-                    <AvatarFallback>Logo</AvatarFallback>
+                    <AvatarImage src={imagePreview} alt={t('app.settings.businessOnboarding.logoPreview')} />
+                    <AvatarFallback>{t('app.settings.businessOnboarding.logoFallback')}</AvatarFallback>
                   </Avatar>
                   <Button
                     type="button"
@@ -331,21 +333,21 @@ export function BusinessOnboarding() {
                   className="cursor-pointer"
                 />
                 <p className="text-xs text-muted-foreground mt-1">
-                  Supported formats: JPG, JPEG, PNG, GIF, WEBP. Max size: 1MB
+                  {t('app.settings.businessOnboarding.logoHelp')}
                 </p>
               </div>
             </div>
             {isUploadingImage && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Uploading logo...
+                {t('app.settings.businessOnboarding.uploadingLogo')}
               </div>
             )}
           </div>
 
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Create Business
+            {t('app.settings.businessOnboarding.createButton')}
           </Button>
         </form>
       </div>

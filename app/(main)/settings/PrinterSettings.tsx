@@ -248,7 +248,7 @@ export default function PrinterSettings() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-4">
-                        <Label>Connection Type</Label>
+                        <Label>{t('app.settings.printerTab.connectionType')}</Label>
                         <RadioGroup
                             value={settings.connectionType}
                             onValueChange={(value) => handleConnectionTypeChange(value as ConnectionType)}
@@ -262,8 +262,8 @@ export default function PrinterSettings() {
                                 >
                                     <Cable className="mb-3 h-6 w-6" />
                                     <div className="text-center">
-                                        <div className="font-semibold">Thermal (USB/Serial)</div>
-                                        <div className="text-xs text-muted-foreground mt-1">Direct connection</div>
+                                        <div className="font-semibold">{t('app.settings.printerTab.thermalUSB')}</div>
+                                        <div className="text-xs text-muted-foreground mt-1">{t('app.settings.printerTab.thermalUSBDesc')}</div>
                                     </div>
                                 </Label>
                             </div>
@@ -275,8 +275,8 @@ export default function PrinterSettings() {
                                 >
                                     <Wifi className="mb-3 h-6 w-6" />
                                     <div className="text-center">
-                                        <div className="font-semibold">Network</div>
-                                        <div className="text-xs text-muted-foreground mt-1">IP/Ethernet printer</div>
+                                        <div className="font-semibold">{t('app.settings.printerTab.network')}</div>
+                                        <div className="text-xs text-muted-foreground mt-1">{t('app.settings.printerTab.networkDesc')}</div>
                                     </div>
                                 </Label>
                             </div>
@@ -288,8 +288,8 @@ export default function PrinterSettings() {
                                 >
                                     <Bluetooth className="mb-3 h-6 w-6" />
                                     <div className="text-center">
-                                        <div className="font-semibold">Bluetooth</div>
-                                        <div className="text-xs text-muted-foreground mt-1">Wireless connection</div>
+                                        <div className="font-semibold">{t('app.settings.printerTab.bluetooth')}</div>
+                                        <div className="text-xs text-muted-foreground mt-1">{t('app.settings.printerTab.bluetoothDesc')}</div>
                                     </div>
                                 </Label>
                             </div>
@@ -301,10 +301,11 @@ export default function PrinterSettings() {
                             <div className="flex items-start gap-3">
                                 <Info className="h-5 w-5 text-blue-600 mt-0.5" />
                                 <div>
-                                    <h4 className="font-semibold text-blue-900">Coming Soon</h4>
+                                    <h4 className="font-semibold text-blue-900">{t('app.settings.printerTab.comingSoon')}</h4>
                                     <p className="text-sm text-blue-700">
-                                        {settings.connectionType === 'network' ? 'Network' : 'Bluetooth'} printing is not yet implemented.
-                                        You can configure the settings now, but printing functionality will be added in a future update.
+                                        {settings.connectionType === 'network'
+                                            ? t('app.settings.printerTab.networkComingSoon')
+                                            : t('app.settings.printerTab.bluetoothComingSoon')}
                                     </p>
                                 </div>
                             </div>
@@ -410,7 +411,7 @@ export default function PrinterSettings() {
                     {settings.connectionType === 'network' && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="ip-address">IP Address</Label>
+                                <Label htmlFor="ip-address">{t('app.settings.printerTab.ipAddress')}</Label>
                                 <Input
                                     id="ip-address"
                                     value={settings.config.ipAddress}
@@ -420,7 +421,7 @@ export default function PrinterSettings() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="port">Port</Label>
+                                <Label htmlFor="port">{t('app.settings.printerTab.port')}</Label>
                                 <Input
                                     id="port"
                                     type="number"
@@ -431,7 +432,7 @@ export default function PrinterSettings() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="protocol">Protocol</Label>
+                                <Label htmlFor="protocol">{t('app.settings.printerTab.protocol')}</Label>
                                 <Select
                                     value={settings.config.protocol}
                                     onValueChange={(value: 'raw' | 'ipp') => setSettings({ ...settings, config: { ...settings.config, protocol: value } })}
@@ -440,8 +441,8 @@ export default function PrinterSettings() {
                                         <SelectValue />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="raw">RAW (Port 9100)</SelectItem>
-                                        <SelectItem value="ipp">IPP (Internet Printing Protocol)</SelectItem>
+                                        <SelectItem value="raw">{t('app.settings.printerTab.rawProtocol')}</SelectItem>
+                                        <SelectItem value="ipp">{t('app.settings.printerTab.ippProtocol')}</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>
@@ -451,7 +452,7 @@ export default function PrinterSettings() {
                     {settings.connectionType === 'bluetooth' && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="device-name">Device Name</Label>
+                                <Label htmlFor="device-name">{t('app.settings.printerTab.deviceName')}</Label>
                                 <Input
                                     id="device-name"
                                     value={settings.config.deviceName}
@@ -461,7 +462,7 @@ export default function PrinterSettings() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="mac-address">MAC Address</Label>
+                                <Label htmlFor="mac-address">{t('app.settings.printerTab.macAddress')}</Label>
                                 <Input
                                     id="mac-address"
                                     value={settings.config.macAddress}
@@ -477,7 +478,7 @@ export default function PrinterSettings() {
                                     onCheckedChange={(checked) => setSettings({ ...settings, config: { ...settings.config, paired: checked } })}
                                 />
                                 <Label htmlFor="paired" className="cursor-pointer">
-                                    Device Paired
+                                    {t('app.settings.printerTab.devicePaired')}
                                 </Label>
                             </div>
                         </div>
@@ -564,45 +565,45 @@ export default function PrinterSettings() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div>
-                        <h4 className="font-semibold mb-2">Printer Not Detected</h4>
+                        <h4 className="font-semibold mb-2">{t('app.settings.printerTab.printerNotDetected')}</h4>
                         <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                            <li>Ensure the printer is powered on and connected via USB</li>
-                            <li>Check that the USB cable is properly connected</li>
-                            <li>Verify the printer path matches your system configuration</li>
-                            <li>On Linux: Check permissions with <code className="bg-muted px-1 rounded">ls -l /dev/usb/lp*</code></li>
-                            <li>On Windows: Use Device Manager to find the COM port</li>
+                            <li>{t('app.settings.printerTab.ensurePowered')}</li>
+                            <li>{t('app.settings.printerTab.checkUSB')}</li>
+                            <li>{t('app.settings.printerTab.verifyPath')}</li>
+                            <li>{t('app.settings.printerTab.linuxPermissions')} <code className="bg-muted px-1 rounded">ls -l /dev/usb/lp*</code></li>
+                            <li>{t('app.settings.printerTab.windowsDevice')}</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-semibold mb-2">Common Printer Paths</h4>
+                        <h4 className="font-semibold mb-2">{t('app.settings.printerTab.commonPaths')}</h4>
                         <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                            <li><strong>Linux:</strong> /dev/usb/lp0, /dev/usb/lp1</li>
-                            <li><strong>Windows:</strong> COM1, COM2, COM3</li>
-                            <li><strong>Network:</strong> tcp://192.168.1.100:9100</li>
+                            <li><strong>{t('app.settings.printerTab.linux')}:</strong> /dev/usb/lp0, /dev/usb/lp1</li>
+                            <li><strong>{t('app.settings.printerTab.windows')}:</strong> COM1, COM2, COM3</li>
+                            <li><strong>{t('app.settings.printerTab.network')}:</strong> tcp://192.168.1.100:9100</li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-semibold mb-2">Permission Issues (Linux)</h4>
+                        <h4 className="font-semibold mb-2">{t('app.settings.printerTab.permissionIssues')}</h4>
                         <p className="text-sm text-muted-foreground mb-2">
-                            If you get permission denied errors, add your user to the lp group:
+                            {t('app.settings.printerTab.permissionDesc')}
                         </p>
                         <code className="block bg-muted p-2 rounded text-sm">
                             sudo usermod -a -G lp $USER
                         </code>
                         <p className="text-xs text-muted-foreground mt-1">
-                            Log out and log back in for changes to take effect
+                            {t('app.settings.printerTab.logoutNote')}
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="font-semibold mb-2">Character Set Issues</h4>
+                        <h4 className="font-semibold mb-2">{t('app.settings.printerTab.charsetIssues')}</h4>
                         <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                            <li>Use PC437_USA for standard English characters</li>
-                            <li>Use PC850_MULTILINGUAL for European languages</li>
-                            <li>Use WPC1252 for Western European characters</li>
-                            <li>Enable &quot;Remove Special Characters&quot; if seeing garbled text</li>
+                            <li>{t('app.settings.printerTab.usePC437')}</li>
+                            <li>{t('app.settings.printerTab.usePC850')}</li>
+                            <li>{t('app.settings.printerTab.useWPC1252')}</li>
+                            <li>{t('app.settings.printerTab.enableRemove')}</li>
                         </ul>
                     </div>
                 </CardContent>

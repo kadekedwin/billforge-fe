@@ -1199,5 +1199,27 @@
             },
             "noData": "Tidak ada data tersedia"
         }
+    },
+    "printerTab": {
+        "title": "Printer",
+        "subtitle": "Kelola printer yang terhubung",
+        "scan": "Pindai perangkat",
+        "stopScan": "Hentikan pemindaian",
+        "noDevices": "Tidak ada perangkat ditemukan",
+        "connected": "Perangkat terhubung",
+        "available": "Perangkat tersedia"
+    },
+    "receiptPopup": {
+        "title": "Pengaturan Resi",
+        "autoPrint": "Cetak resi otomatis saat checkout",
+        "showPreview": "Tampilkan pratinjau sebelum mencetak"
+    },
+    "businessOnboarding": {
+        "welcome": "Selamat datang di BillForge",
+        "subtitle": "Mari siapkan bisnis Anda",
+        "businessName": "Nama Bisnis",
+        "currency": "Mata Uang",
+        "address": "Alamat",
+        "complete": "Selesaikan pengaturan"
     }
 }

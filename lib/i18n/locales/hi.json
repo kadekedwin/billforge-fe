@@ -2,6 +2,28 @@
     "common": {
         "loading": "लोड हो रहा है...",
         "error": "त्रुटि",
+        "printerTab": {
+            "title": "प्रिंटर",
+            "subtitle": "अपने कनेक्टेड प्रिंटर प्रबंधित करें",
+            "scan": "उपकरणों के लिए स्कैन करें",
+            "stopScan": "स्कैन करना बंद करें",
+            "noDevices": "कोई उपकरण नहीं मिला",
+            "connected": "कनेक्टेड उपकरण",
+            "available": "उपलब्ध उपकरण"
+        },
+        "receiptPopup": {
+            "title": "रसीद सेटिंग्स",
+            "autoPrint": "चेकआउट पर स्वचालित रसीद प्रिंट करें",
+            "showPreview": "प्रिंट करने से पहले पूर्वावलोकन दिखाएं"
+        },
+        "businessOnboarding": {
+            "welcome": "BillForge में आपका स्वागत है",
+            "subtitle": "आइए अपना व्यवसाय स्थापित करें",
+            "businessName": "व्यवसाय का नाम",
+            "currency": "मुद्रा",
+            "address": "पता",
+            "complete": "सेटअप पूरा करें"
+        },
         "success": "सफल",
         "cancel": "रद्द करें",
         "save": "सहेजें",

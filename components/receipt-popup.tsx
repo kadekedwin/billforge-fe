@@ -13,6 +13,7 @@ import { Download, Mail, MessageCircle, Loader2, Printer } from "lucide-react";
 import { useReceiptGenerator } from "@/lib/receipt/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt";
 import { useBusiness } from "@/contexts/business-context";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import type { ReceiptData } from "@/lib/receipt/types";
 import { generateReceiptHTML } from "@/lib/receipt/templates";
 import { printThermalReceipt } from "@/lib/receipt/printClient";
@@ -33,6 +34,7 @@ export function ReceiptPopup({
     customerEmail,
     customerPhone,
 }: ReceiptPopupProps) {
+    const { t } = useTranslation();
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
@@ -73,7 +75,7 @@ export function ReceiptPopup({
             await generatePDF(receiptData, undefined, receiptTemplate);
         } catch (err) {
             console.error("Error downloading PDF:", err);
-            alert("Failed to download receipt");
+            alert(t('app.settings.receiptPopup.failedDownload'));
         }
     };
 
@@ -82,7 +84,7 @@ export function ReceiptPopup({
             await generateImage(receiptData, { type: 'png' }, receiptTemplate);
         } catch (err) {
             console.error("Error downloading image:", err);
-            alert("Failed to download receipt image");
+            alert(t('app.settings.receiptPopup.failedDownloadImage'));
         }
     };
 
@@ -92,10 +94,10 @@ export function ReceiptPopup({
         try {
             setIsSendingEmail(true);
             console.log("Send receipt to email:", customerEmail);
-            alert(`Receipt will be sent to ${customerEmail}`);
+            alert(`${t('app.settings.receiptPopup.receiptWillBeSent')} ${customerEmail}`);
         } catch (err) {
             console.error("Error sending email:", err);
-            alert("Failed to send email");
+            alert(t('app.settings.receiptPopup.failedSendEmail'));
         } finally {
             setIsSendingEmail(false);
         }
@@ -111,7 +113,7 @@ export function ReceiptPopup({
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         } catch (err) {
             console.error("Error sending WhatsApp:", err);
-            alert("Failed to send WhatsApp message");
+            alert(t('app.settings.receiptPopup.failedSendWhatsApp'));
         } finally {
             setIsSendingWhatsApp(false);
         }
@@ -122,13 +124,13 @@ export function ReceiptPopup({
             setIsPrinting(true);
             const result = await printThermalReceipt(receiptData);
             if (result.success) {
-                toast.success('Receipt printed successfully');
+                toast.success(t('app.settings.receiptPopup.receiptPrintedSuccess'));
             } else {
-                toast.error(result.message || 'Failed to print receipt');
+                toast.error(result.message || t('app.settings.receiptPopup.receiptPrintedFailed'));
             }
         } catch (err) {
             console.error("Error printing receipt:", err);
-            toast.error('Failed to print receipt');
+            toast.error(t('app.settings.receiptPopup.receiptPrintedFailed'));
         } finally {
             setIsPrinting(false);
         }
@@ -138,9 +140,9 @@ export function ReceiptPopup({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Transaction Complete!</DialogTitle>
+                    <DialogTitle>{t('app.settings.receiptPopup.title')}</DialogTitle>
                     <DialogDescription>
-                        Your transaction has been successfully completed. Download or send the receipt.
+                        {t('app.settings.receiptPopup.description')}
                     </DialogDescription>
                 </DialogHeader>
 
@@ -173,7 +175,7 @@ export function ReceiptPopup({
                                 ) : (
                                     <Download className="mr-2 h-4 w-4" />
                                 )}
-                                Download PDF
+                                {t('app.settings.receiptPopup.downloadPDF')}
                             </Button>
                             <Button
                                 onClick={handleDownloadImage}
@@ -186,7 +188,7 @@ export function ReceiptPopup({
                                 ) : (
                                     <Download className="mr-2 h-4 w-4" />
                                 )}
-                                Download Image
+                                {t('app.settings.receiptPopup.downloadImage')}
                             </Button>
                         </div>
 
@@ -201,7 +203,7 @@ export function ReceiptPopup({
                             ) : (
                                 <Printer className="mr-2 h-4 w-4" />
                             )}
-                            Print to Thermal Printer
+                            {t('app.settings.receiptPopup.printThermal')}
                         </Button>
 
                         {(customerEmail || customerPhone) && (
@@ -218,7 +220,7 @@ export function ReceiptPopup({
                                         ) : (
                                             <Mail className="mr-2 h-4 w-4" />
                                         )}
-                                        Send to Email
+                                        {t('app.settings.receiptPopup.sendEmail')}
                                     </Button>
                                 )}
                                 {customerPhone && (
@@ -233,7 +235,7 @@ export function ReceiptPopup({
                                         ) : (
                                             <MessageCircle className="mr-2 h-4 w-4" />
                                         )}
-                                        Send to WhatsApp
+                                        {t('app.settings.receiptPopup.sendWhatsApp')}
                                     </Button>
                                 )}
                             </div>

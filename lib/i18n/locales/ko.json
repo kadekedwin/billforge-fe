@@ -1199,5 +1199,27 @@
             },
             "noData": "데이터 없음"
         }
+    },
+    "printerTab": {
+        "title": "프린터",
+        "subtitle": "연결된 프린터 관리",
+        "scan": "장치 스캔",
+        "stopScan": "스캔 중지",
+        "noDevices": "장치를 찾을 수 없음",
+        "connected": "연결된 장치",
+        "available": "사용 가능한 장치"
+    },
+    "receiptPopup": {
+        "title": "영수증 설정",
+        "autoPrint": "결제 시 영수증 자동 인쇄",
+        "showPreview": "인쇄 전 미리보기 표시"
+    },
+    "businessOnboarding": {
+        "welcome": "BillForge에 오신 것을 환영합니다",
+        "subtitle": "비즈니스를 설정해 봅시다",
+        "businessName": "비즈니스 이름",
+        "currency": "통화",
+        "address": "주소",
+        "complete": "설정 완료"
     }
 }

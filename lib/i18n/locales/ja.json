@@ -1,6 +1,28 @@
 {
     "common": {
         "loading": "読み込み中...",
+        "printerTab": {
+            "title": "プリンター",
+            "subtitle": "接続されたプリンターを管理",
+            "scan": "デバイスをスキャン",
+            "stopScan": "スキャンを停止",
+            "noDevices": "デバイスが見つかりません",
+            "connected": "接続されたデバイス",
+            "available": "利用可能なデバイス"
+        },
+        "receiptPopup": {
+            "title": "レシート設定",
+            "autoPrint": "チェックアウト時にレシートを自動印刷",
+            "showPreview": "印刷前にプレビューを表示"
+        },
+        "businessOnboarding": {
+            "welcome": "BillForgeへようこそ",
+            "subtitle": "ビジネスを設定しましょう",
+            "businessName": "ビジネス名",
+            "currency": "通貨",
+            "address": "住所",
+            "complete": "設定を完了"
+        },
         "error": "エラー",
         "success": "成功",
         "cancel": "キャンセル",
