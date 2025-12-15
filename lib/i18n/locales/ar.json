@@ -764,6 +764,9 @@
             "transactionId": "رقم المعاملة",
             "downloadPDF": "تحميل PDF",
             "downloadImage": "تحميل الصورة",
+            "printThermal": "طباعة على طابعة حرارية",
+            "printSuccess": "تم طباعة الإيصال بنجاح",
+            "printFailed": "فشل طباعة الإيصال",
             "sendEmail": "إرسال بالبريد الإلكتروني",
             "sendWhatsApp": "إرسال عبر واتس آب"
         },

@@ -764,6 +764,9 @@
             "transactionId": "ID Transazione",
             "downloadPDF": "Scarica PDF",
             "downloadImage": "Scarica Immagine",
+            "printThermal": "Stampa su Stampante Termica",
+            "printSuccess": "Ricevuta stampata con successo",
+            "printFailed": "Stampa della ricevuta non riuscita",
             "sendEmail": "Invia Email",
             "sendWhatsApp": "Invia tramite WhatsApp"
         },

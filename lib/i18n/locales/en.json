@@ -764,6 +764,9 @@
             "transactionId": "Transaction ID",
             "downloadPDF": "Download PDF",
             "downloadImage": "Download Image",
+            "printThermal": "Print to Thermal Printer",
+            "printSuccess": "Receipt printed successfully",
+            "printFailed": "Failed to print receipt",
             "sendEmail": "Send to Email",
             "sendWhatsApp": "Send via WhatsApp"
         },

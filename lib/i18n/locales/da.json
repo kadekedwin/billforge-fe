@@ -764,6 +764,9 @@
             "transactionId": "Transaktions-ID",
             "downloadPDF": "Download PDF",
             "downloadImage": "Download Billede",
+            "printThermal": "Udskriv på Termisk Printer",
+            "printSuccess": "Kvittering udskrevet med succes",
+            "printFailed": "Kunne ikke udskrive kvittering",
             "sendEmail": "Send til E-mail",
             "sendWhatsApp": "Send via WhatsApp"
         },

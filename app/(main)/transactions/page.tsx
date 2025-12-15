@@ -16,8 +16,10 @@ import {
     handleDownloadImage,
     handleSendEmail,
     handleSendWhatsApp,
+    handlePrintThermal,
 } from "./receiptHandlers";
 import { useTranslation } from "@/lib/i18n/useTranslation";
+import { toast } from "sonner";
 
 export default function TransactionsPage() {
     const { t } = useTranslation();
@@ -33,6 +35,7 @@ export default function TransactionsPage() {
     const [businessLogoUrl, setBusinessLogoUrl] = useState<string | undefined>(undefined);
     const [isSendingEmail, setIsSendingEmail] = useState(false);
     const [isSendingWhatsApp, setIsSendingWhatsApp] = useState(false);
+    const [isPrinting, setIsPrinting] = useState(false);
 
     useEffect(() => {
         const fetchBusinessLogo = async () => {
@@ -159,6 +162,40 @@ export default function TransactionsPage() {
         }
     };
 
+    const handlePrint = async () => {
+        if (!selectedTransaction || !selectedBusiness) return;
+
+        try {
+            setIsPrinting(true);
+            const customer = getCustomer(selectedTransaction.customer_uuid, customers);
+            const paymentMethodName = selectedTransaction.payment_method_uuid
+                ? getPaymentMethodName(selectedTransaction.payment_method_uuid, paymentMethods)
+                : "Cash";
+
+            const result = await handlePrintThermal({
+                transaction: selectedTransaction,
+                transactionItems,
+                business: selectedBusiness,
+                customer,
+                paymentMethodName,
+                footerMessage: footerMessage || undefined,
+                businessLogoUrl,
+                qrcodeValue: qrcodeValue || undefined,
+            });
+
+            if (result.success) {
+                toast.success(t('app.transactions.printSuccess'));
+            } else {
+                toast.error(result.message || t('app.transactions.printFailed'));
+            }
+        } catch (err) {
+            console.error("Error printing receipt:", err);
+            toast.error(t('app.transactions.printFailed'));
+        } finally {
+            setIsPrinting(false);
+        }
+    };
+
     const filteredTransactions = selectedBusiness
         ? transactions.filter((t) => t.business_uuid === selectedBusiness.uuid)
         : [];
@@ -199,12 +236,14 @@ export default function TransactionsPage() {
                 receiptLoading={receiptLoading}
                 isSendingEmail={isSendingEmail}
                 isSendingWhatsApp={isSendingWhatsApp}
+                isPrinting={isPrinting}
                 getCustomerName={(uuid) => getCustomerName(uuid, customers)}
                 getPaymentMethodName={(uuid) => getPaymentMethodName(uuid, paymentMethods)}
                 onDownloadPDF={handlePDFDownload}
                 onDownloadImage={handleImageDownload}
                 onSendEmail={handleEmailSend}
                 onSendWhatsApp={handleWhatsAppSend}
+                onPrint={handlePrint}
             />
         </div>
     );

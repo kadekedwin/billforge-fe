@@ -785,6 +785,9 @@
             "transactionId": "取引ID",
             "downloadPDF": "PDFをダウンロード",
             "downloadImage": "画像をダウンロード",
+            "printThermal": "Print to Thermal Printer",
+            "printSuccess": "Receipt printed successfully",
+            "printFailed": "Failed to print receipt",
             "sendEmail": "メールで送信",
             "sendWhatsApp": "WhatsAppで送信"
         },

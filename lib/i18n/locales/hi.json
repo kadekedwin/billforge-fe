@@ -786,6 +786,9 @@
             "transactionId": "लेनदेन ID",
             "downloadPDF": "PDF डाउनलोड करें",
             "downloadImage": "छवि डाउनलोड करें",
+            "printThermal": "Print to Thermal Printer",
+            "printSuccess": "Receipt printed successfully",
+            "printFailed": "Failed to print receipt",
             "sendEmail": "ईमेल भेजें",
             "sendWhatsApp": "WhatsApp के माध्यम से भेजें"
         },

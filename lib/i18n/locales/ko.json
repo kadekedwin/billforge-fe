@@ -764,6 +764,9 @@
             "transactionId": "거래 ID",
             "downloadPDF": "PDF 다운로드",
             "downloadImage": "이미지 다운로드",
+            "printThermal": "Print to Thermal Printer",
+            "printSuccess": "Receipt printed successfully",
+            "printFailed": "Failed to print receipt",
             "sendEmail": "이메일 전송",
             "sendWhatsApp": "WhatsApp으로 전송"
         },

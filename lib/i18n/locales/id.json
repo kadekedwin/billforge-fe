@@ -764,6 +764,9 @@
             "transactionId": "ID Transaksi",
             "downloadPDF": "Unduh PDF",
             "downloadImage": "Unduh Gambar",
+            "printThermal": "Cetak ke Printer Termal",
+            "printSuccess": "Resi berhasil dicetak",
+            "printFailed": "Gagal mencetak resi",
             "sendEmail": "Kirim ke Email",
             "sendWhatsApp": "Kirim via WhatsApp"
         },

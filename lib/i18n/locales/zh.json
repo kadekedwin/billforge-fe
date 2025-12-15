@@ -763,6 +763,9 @@
             "transactionId": "交易ID",
             "downloadPDF": "下载PDF",
             "downloadImage": "下载图像",
+            "printThermal": "使用热敏打印机打印",
+            "printSuccess": "收据打印成功",
+            "printFailed": "打印收据失败",
             "sendEmail": "发送电子邮件",
             "sendWhatsApp": "通过WhatsApp发送"
         },

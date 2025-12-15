@@ -764,6 +764,9 @@
             "transactionId": "Transaktions-ID",
             "downloadPDF": "Hämta PDF",
             "downloadImage": "Hämta Bild",
+            "printThermal": "Skriv ut på Termisk Skrivare",
+            "printSuccess": "Kvitto utskrivet framgångsrikt",
+            "printFailed": "Det gick inte att skriva ut kvitto",
             "sendEmail": "Skicka E-post",
             "sendWhatsApp": "Skicka via WhatsApp"
         },

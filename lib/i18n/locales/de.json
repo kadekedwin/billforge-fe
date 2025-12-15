@@ -764,6 +764,9 @@
             "transactionId": "Transaktions-ID",
             "downloadPDF": "PDF herunterladen",
             "downloadImage": "Bild herunterladen",
+            "printThermal": "Auf Thermodrucker drucken",
+            "printSuccess": "Beleg erfolgreich gedruckt",
+            "printFailed": "Drucken des Belegs fehlgeschlagen",
             "sendEmail": "Per E-Mail senden",
             "sendWhatsApp": "Über WhatsApp senden"
         },

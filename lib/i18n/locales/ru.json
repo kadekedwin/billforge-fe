@@ -764,6 +764,9 @@
             "transactionId": "ID Транзакции",
             "downloadPDF": "Загрузить PDF",
             "downloadImage": "Загрузить Изображение",
+            "printThermal": "Печать на Термопринтере",
+            "printSuccess": "Чек успешно распечатан",
+            "printFailed": "Не удалось распечатать чек",
             "sendEmail": "Отправить по Email",
             "sendWhatsApp": "Отправить через WhatsApp"
         },

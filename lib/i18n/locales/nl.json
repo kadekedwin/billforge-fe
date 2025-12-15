@@ -764,6 +764,9 @@
             "transactionId": "Transactie-ID",
             "downloadPDF": "PDF Downloaden",
             "downloadImage": "Afbeelding Downloaden",
+            "printThermal": "Afdrukken op Thermische Printer",
+            "printSuccess": "Bon succesvol afgedrukt",
+            "printFailed": "Afdrukken van bon mislukt",
             "sendEmail": "Per E-mail Verzenden",
             "sendWhatsApp": "Via WhatsApp Verzenden"
         },
