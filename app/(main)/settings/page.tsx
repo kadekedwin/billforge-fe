@@ -25,11 +25,11 @@ export default function SettingsPage() {
             label: t('app.settings.receipt'),
             icon: FileText,
         },
-        {
-            id: 'printer' as const,
-            label: t('app.settings.printer'),
-            icon: Printer,
-        },
+        // {
+        //     id: 'printer' as const,
+        //     label: t('app.settings.printer'),
+        //     icon: Printer,
+        // },
         {
             id: 'preferences' as const,
             label: t('app.settings.preferences'),

@@ -65,7 +65,7 @@ export function ReceiptActions({
                 </Button>
             </div>
 
-            <Button
+            {/* <Button
                 onClick={onPrint}
                 disabled={isPrinting}
                 className="w-full"
@@ -77,7 +77,7 @@ export function ReceiptActions({
                     <Printer className="mr-2 h-4 w-4" />
                 )}
                 {t('app.transactions.printThermal')}
-            </Button>
+            </Button> */}
 
             {(hasEmail || hasPhone) && (
                 <div className="flex gap-2">

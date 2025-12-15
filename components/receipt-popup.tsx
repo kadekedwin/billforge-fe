@@ -192,7 +192,7 @@ export function ReceiptPopup({
                             </Button>
                         </div>
 
-                        <Button
+                        {/* <Button
                             onClick={handleThermalPrint}
                             disabled={isPrinting}
                             className="w-full"
@@ -204,7 +204,7 @@ export function ReceiptPopup({
                                 <Printer className="mr-2 h-4 w-4" />
                             )}
                             {t('app.settings.receiptPopup.printThermal')}
-                        </Button>
+                        </Button> */}
 
                         {(customerEmail || customerPhone) && (
                             <div className="flex gap-2">
