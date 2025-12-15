@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { printThermalReceipt } from '@/lib/receipt/thermalPrinter';
-import { ReceiptData } from '@/lib/receipt/types';
-
-interface PrinterConfig {
-    printerType: string;
-    printerPath: string;
-    characterSet: string;
-    removeSpecialCharacters: boolean;
-    lineCharacter: string;
-    timeout: number;
-}
+import { printThermalReceipt, type PrinterConfig } from '@/lib/thermal-printer';
+import type { ReceiptData } from '@/lib/receipt/types';
 
 export async function POST(request: NextRequest) {
     try {

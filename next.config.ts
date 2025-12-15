@@ -13,7 +13,19 @@ const nextConfig: NextConfig = {
         serverActions: {
             bodySizeLimit: '1mb'
         }
-    }
+    },
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config.resolve.fallback = {
+                ...config.resolve.fallback,
+                fs: false,
+                net: false,
+                tls: false,
+                'node-thermal-printer': false,
+            };
+        }
+        return config;
+    },
 };
 
 export default nextConfig;

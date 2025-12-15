@@ -1,14 +1,6 @@
 import { ThermalPrinter, PrinterTypes } from 'node-thermal-printer';
-import { ReceiptData } from './types';
-
-interface PrinterConfig {
-    printerType: string;
-    printerPath: string;
-    characterSet: string;
-    removeSpecialCharacters: boolean;
-    lineCharacter: string;
-    timeout: number;
-}
+import { ReceiptData } from '@/lib/receipt/types';
+import { PrinterConfig } from './types';
 
 const getPrinterType = (type: string) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -7,28 +7,48 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { Loader2, Printer, CheckCircle2, AlertCircle, HelpCircle, Save } from 'lucide-react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Loader2, Printer, CheckCircle2, AlertCircle, HelpCircle, Save, Wifi, Bluetooth, Cable, Info } from 'lucide-react';
 import { toast } from 'sonner';
 import { useBusiness } from '@/contexts/business-context';
 import { getCurrencySymbol } from '@/lib/utils/currency';
 import { useTranslation } from '@/lib/i18n/useTranslation';
+import type {
+    PrinterSettings,
+    ThermalSettings,
+    NetworkSettings,
+    BluetoothSettings,
+    ConnectionType
+} from '@/lib/thermal-printer/types';
 
-interface PrinterConfig {
-    printerType: string;
-    printerPath: string;
-    characterSet: string;
-    removeSpecialCharacters: boolean;
-    lineCharacter: string;
-    timeout: number;
-}
+const DEFAULT_THERMAL_CONFIG: ThermalSettings = {
+    connectionType: 'thermal',
+    config: {
+        printerType: 'EPSON',
+        printerPath: '/dev/usb/lp0',
+        characterSet: 'PC437_USA',
+        removeSpecialCharacters: false,
+        lineCharacter: '-',
+        timeout: 5000,
+    }
+};
 
-const DEFAULT_CONFIG: PrinterConfig = {
-    printerType: 'EPSON',
-    printerPath: '/dev/usb/lp0',
-    characterSet: 'PC437_USA',
-    removeSpecialCharacters: false,
-    lineCharacter: '-',
-    timeout: 5000,
+const DEFAULT_NETWORK_CONFIG: NetworkSettings = {
+    connectionType: 'network',
+    config: {
+        ipAddress: '192.168.1.100',
+        port: 9100,
+        protocol: 'raw',
+    }
+};
+
+const DEFAULT_BLUETOOTH_CONFIG: BluetoothSettings = {
+    connectionType: 'bluetooth',
+    config: {
+        deviceName: '',
+        macAddress: '',
+        paired: false,
+    }
 };
 
 const PRINTER_TYPES = ['EPSON', 'STAR', 'TANCA', 'DARUMA'];
@@ -72,27 +92,50 @@ const CHARACTER_SETS = [
 export default function PrinterSettings() {
     const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
-    const [config, setConfig] = useState<PrinterConfig>(DEFAULT_CONFIG);
+    const [settings, setSettings] = useState<PrinterSettings>(DEFAULT_THERMAL_CONFIG);
     const [isTesting, setIsTesting] = useState(false);
     const [isCheckingStatus, setIsCheckingStatus] = useState(false);
     const [printerStatus, setPrinterStatus] = useState<'connected' | 'disconnected' | 'unknown'>('unknown');
     const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
-        const savedConfig = localStorage.getItem('printerConfig');
-        if (savedConfig) {
+        const savedSettings = localStorage.getItem('printerSettings');
+        if (savedSettings) {
             try {
-                setConfig(JSON.parse(savedConfig));
+                const parsed = JSON.parse(savedSettings);
+                if (parsed.connectionType) {
+                    setSettings(parsed);
+                } else {
+                    const migrated: ThermalSettings = {
+                        connectionType: 'thermal',
+                        config: parsed
+                    };
+                    setSettings(migrated);
+                }
             } catch (error) {
-                console.error('Failed to load printer config:', error);
+                console.error('Failed to load printer settings:', error);
             }
         }
     }, []);
 
+    const handleConnectionTypeChange = (type: ConnectionType) => {
+        switch (type) {
+            case 'thermal':
+                setSettings(DEFAULT_THERMAL_CONFIG);
+                break;
+            case 'network':
+                setSettings(DEFAULT_NETWORK_CONFIG);
+                break;
+            case 'bluetooth':
+                setSettings(DEFAULT_BLUETOOTH_CONFIG);
+                break;
+        }
+    };
+
     const handleSaveConfig = () => {
         setIsSaving(true);
         try {
-            localStorage.setItem('printerConfig', JSON.stringify(config));
+            localStorage.setItem('printerSettings', JSON.stringify(settings));
             toast.success(t('app.settings.printerTab.toastSaved'));
         } catch {
             toast.error(t('app.settings.printerTab.toastSaveFailed'));
@@ -104,6 +147,11 @@ export default function PrinterSettings() {
     const handleTestPrint = async () => {
         if (!selectedBusiness) {
             toast.error(t('app.settings.printerTab.toastSelectBusiness'));
+            return;
+        }
+
+        if (settings.connectionType !== 'thermal') {
+            toast.error('Only thermal printing is currently supported');
             return;
         }
 
@@ -139,7 +187,7 @@ export default function PrinterSettings() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     receiptData: testReceipt,
-                    printerConfig: config
+                    printerConfig: settings.config
                 }),
             });
 
@@ -160,12 +208,17 @@ export default function PrinterSettings() {
     };
 
     const handleCheckStatus = async () => {
+        if (settings.connectionType !== 'thermal') {
+            toast.error('Only thermal printing is currently supported');
+            return;
+        }
+
         setIsCheckingStatus(true);
         try {
             const response = await fetch('/api/printer-status', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ printerConfig: config }),
+                body: JSON.stringify({ printerConfig: settings.config }),
             });
 
             const data = await response.json();
@@ -193,100 +246,242 @@ export default function PrinterSettings() {
                         {t('app.settings.printerTab.description')}
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="printer-type">{t('app.settings.printerTab.printerType')}</Label>
-                            <Select
-                                value={config.printerType}
-                                onValueChange={(value) => setConfig({ ...config, printerType: value })}
-                            >
-                                <SelectTrigger>
-                                    <SelectValue placeholder={t('app.settings.printerTab.selectType')} />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {PRINTER_TYPES.map((type) => (
-                                        <SelectItem key={type} value={type}>
-                                            {type}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="printer-path">{t('app.settings.printerTab.printerPath')}</Label>
-                            <Input
-                                id="printer-path"
-                                value={config.printerPath}
-                                onChange={(e) => setConfig({ ...config, printerPath: e.target.value })}
-                                placeholder="/dev/usb/lp0"
-                            />
-                            <p className="text-xs text-muted-foreground">
-                                {t('app.settings.printerTab.pathHelp')}
-                            </p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="character-set">{t('app.settings.printerTab.characterSet')}</Label>
-                            <Select
-                                value={config.characterSet}
-                                onValueChange={(value) => setConfig({ ...config, characterSet: value })}
-                            >
-                                <SelectTrigger>
-                                    <SelectValue placeholder={t('app.settings.printerTab.selectCharset')} />
-                                </SelectTrigger>
-                                <SelectContent className="max-h-[200px]">
-                                    {CHARACTER_SETS.map((charset) => (
-                                        <SelectItem key={charset} value={charset}>
-                                            {charset}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="line-character">{t('app.settings.printerTab.lineCharacter')}</Label>
-                            <Input
-                                id="line-character"
-                                value={config.lineCharacter}
-                                onChange={(e) => setConfig({ ...config, lineCharacter: e.target.value })}
-                                placeholder="-"
-                                maxLength={1}
-                            />
-                            <p className="text-xs text-muted-foreground">
-                                {t('app.settings.printerTab.lineCharacterHelp')}
-                            </p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="timeout">{t('app.settings.printerTab.timeout')}</Label>
-                            <Input
-                                id="timeout"
-                                type="number"
-                                value={config.timeout}
-                                onChange={(e) => setConfig({ ...config, timeout: parseInt(e.target.value) || 5000 })}
-                                placeholder="5000"
-                                min="1000"
-                                max="30000"
-                            />
-                            <p className="text-xs text-muted-foreground">
-                                {t('app.settings.printerTab.timeoutHelp')}
-                            </p>
-                        </div>
-
-                        <div className="flex items-center space-x-2">
-                            <Switch
-                                id="remove-special"
-                                checked={config.removeSpecialCharacters}
-                                onCheckedChange={(checked) => setConfig({ ...config, removeSpecialCharacters: checked })}
-                            />
-                            <Label htmlFor="remove-special" className="cursor-pointer">
-                                {t('app.settings.printerTab.removeSpecial')}
-                            </Label>
-                        </div>
+                <CardContent className="space-y-6">
+                    <div className="space-y-4">
+                        <Label>Connection Type</Label>
+                        <RadioGroup
+                            value={settings.connectionType}
+                            onValueChange={(value) => handleConnectionTypeChange(value as ConnectionType)}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                        >
+                            <div>
+                                <RadioGroupItem value="thermal" id="thermal" className="peer sr-only" />
+                                <Label
+                                    htmlFor="thermal"
+                                    className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
+                                >
+                                    <Cable className="mb-3 h-6 w-6" />
+                                    <div className="text-center">
+                                        <div className="font-semibold">Thermal (USB/Serial)</div>
+                                        <div className="text-xs text-muted-foreground mt-1">Direct connection</div>
+                                    </div>
+                                </Label>
+                            </div>
+                            <div>
+                                <RadioGroupItem value="network" id="network" className="peer sr-only" />
+                                <Label
+                                    htmlFor="network"
+                                    className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
+                                >
+                                    <Wifi className="mb-3 h-6 w-6" />
+                                    <div className="text-center">
+                                        <div className="font-semibold">Network</div>
+                                        <div className="text-xs text-muted-foreground mt-1">IP/Ethernet printer</div>
+                                    </div>
+                                </Label>
+                            </div>
+                            <div>
+                                <RadioGroupItem value="bluetooth" id="bluetooth" className="peer sr-only" />
+                                <Label
+                                    htmlFor="bluetooth"
+                                    className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer"
+                                >
+                                    <Bluetooth className="mb-3 h-6 w-6" />
+                                    <div className="text-center">
+                                        <div className="font-semibold">Bluetooth</div>
+                                        <div className="text-xs text-muted-foreground mt-1">Wireless connection</div>
+                                    </div>
+                                </Label>
+                            </div>
+                        </RadioGroup>
                     </div>
+
+                    {settings.connectionType !== 'thermal' && (
+                        <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+                            <div className="flex items-start gap-3">
+                                <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+                                <div>
+                                    <h4 className="font-semibold text-blue-900">Coming Soon</h4>
+                                    <p className="text-sm text-blue-700">
+                                        {settings.connectionType === 'network' ? 'Network' : 'Bluetooth'} printing is not yet implemented.
+                                        You can configure the settings now, but printing functionality will be added in a future update.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {settings.connectionType === 'thermal' && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="printer-type">{t('app.settings.printerTab.printerType')}</Label>
+                                <Select
+                                    value={settings.config.printerType}
+                                    onValueChange={(value) => setSettings({ ...settings, config: { ...settings.config, printerType: value } })}
+                                >
+                                    <SelectTrigger>
+                                        <SelectValue placeholder={t('app.settings.printerTab.selectType')} />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {PRINTER_TYPES.map((type) => (
+                                            <SelectItem key={type} value={type}>
+                                                {type}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="printer-path">{t('app.settings.printerTab.printerPath')}</Label>
+                                <Input
+                                    id="printer-path"
+                                    value={settings.config.printerPath}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, printerPath: e.target.value } })}
+                                    placeholder="/dev/usb/lp0"
+                                />
+                                <p className="text-xs text-muted-foreground">
+                                    {t('app.settings.printerTab.pathHelp')}
+                                </p>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="character-set">{t('app.settings.printerTab.characterSet')}</Label>
+                                <Select
+                                    value={settings.config.characterSet}
+                                    onValueChange={(value) => setSettings({ ...settings, config: { ...settings.config, characterSet: value } })}
+                                >
+                                    <SelectTrigger>
+                                        <SelectValue placeholder={t('app.settings.printerTab.selectCharset')} />
+                                    </SelectTrigger>
+                                    <SelectContent className="max-h-[200px]">
+                                        {CHARACTER_SETS.map((charset) => (
+                                            <SelectItem key={charset} value={charset}>
+                                                {charset}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="line-character">{t('app.settings.printerTab.lineCharacter')}</Label>
+                                <Input
+                                    id="line-character"
+                                    value={settings.config.lineCharacter}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, lineCharacter: e.target.value } })}
+                                    placeholder="-"
+                                    maxLength={1}
+                                />
+                                <p className="text-xs text-muted-foreground">
+                                    {t('app.settings.printerTab.lineCharacterHelp')}
+                                </p>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="timeout">{t('app.settings.printerTab.timeout')}</Label>
+                                <Input
+                                    id="timeout"
+                                    type="number"
+                                    value={settings.config.timeout}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, timeout: parseInt(e.target.value) || 5000 } })}
+                                    placeholder="5000"
+                                    min="1000"
+                                    max="30000"
+                                />
+                                <p className="text-xs text-muted-foreground">
+                                    {t('app.settings.printerTab.timeoutHelp')}
+                                </p>
+                            </div>
+
+                            <div className="flex items-center space-x-2">
+                                <Switch
+                                    id="remove-special"
+                                    checked={settings.config.removeSpecialCharacters}
+                                    onCheckedChange={(checked) => setSettings({ ...settings, config: { ...settings.config, removeSpecialCharacters: checked } })}
+                                />
+                                <Label htmlFor="remove-special" className="cursor-pointer">
+                                    {t('app.settings.printerTab.removeSpecial')}
+                                </Label>
+                            </div>
+                        </div>
+                    )}
+
+                    {settings.connectionType === 'network' && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="ip-address">IP Address</Label>
+                                <Input
+                                    id="ip-address"
+                                    value={settings.config.ipAddress}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, ipAddress: e.target.value } })}
+                                    placeholder="192.168.1.100"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="port">Port</Label>
+                                <Input
+                                    id="port"
+                                    type="number"
+                                    value={settings.config.port}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, port: parseInt(e.target.value) || 9100 } })}
+                                    placeholder="9100"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="protocol">Protocol</Label>
+                                <Select
+                                    value={settings.config.protocol}
+                                    onValueChange={(value: 'raw' | 'ipp') => setSettings({ ...settings, config: { ...settings.config, protocol: value } })}
+                                >
+                                    <SelectTrigger>
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="raw">RAW (Port 9100)</SelectItem>
+                                        <SelectItem value="ipp">IPP (Internet Printing Protocol)</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+                    )}
+
+                    {settings.connectionType === 'bluetooth' && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="device-name">Device Name</Label>
+                                <Input
+                                    id="device-name"
+                                    value={settings.config.deviceName}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, deviceName: e.target.value } })}
+                                    placeholder="Bluetooth Printer"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="mac-address">MAC Address</Label>
+                                <Input
+                                    id="mac-address"
+                                    value={settings.config.macAddress}
+                                    onChange={(e) => setSettings({ ...settings, config: { ...settings.config, macAddress: e.target.value } })}
+                                    placeholder="00:11:22:33:44:55"
+                                />
+                            </div>
+
+                            <div className="flex items-center space-x-2">
+                                <Switch
+                                    id="paired"
+                                    checked={settings.config.paired}
+                                    onCheckedChange={(checked) => setSettings({ ...settings, config: { ...settings.config, paired: checked } })}
+                                />
+                                <Label htmlFor="paired" className="cursor-pointer">
+                                    Device Paired
+                                </Label>
+                            </div>
+                        </div>
+                    )}
 
                     <div className="flex gap-2 pt-4">
                         <Button
@@ -304,54 +499,58 @@ export default function PrinterSettings() {
                         </Button>
                     </div>
 
-                    <div className="flex gap-2">
-                        <Button
-                            onClick={handleCheckStatus}
-                            disabled={isCheckingStatus}
-                            variant="outline"
-                            className="flex-1"
-                        >
-                            {isCheckingStatus ? (
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            ) : (
-                                <Printer className="mr-2 h-4 w-4" />
-                            )}
-                            {t('app.settings.printerTab.checkStatus')}
-                        </Button>
-                        <Button
-                            onClick={handleTestPrint}
-                            disabled={isTesting}
-                            className="flex-1"
-                        >
-                            {isTesting ? (
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            ) : (
-                                <Printer className="mr-2 h-4 w-4" />
-                            )}
-                            {t('app.settings.printerTab.testPrint')}
-                        </Button>
-                    </div>
-
-                    {printerStatus !== 'unknown' && (
-                        <div className={`rounded-lg border p-4 ${printerStatus === 'connected' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
-                            <div className="flex items-start gap-3">
-                                {printerStatus === 'connected' ? (
-                                    <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5" />
-                                ) : (
-                                    <AlertCircle className="h-5 w-5 text-red-600 mt-0.5" />
-                                )}
-                                <div>
-                                    <h4 className={`font-semibold ${printerStatus === 'connected' ? 'text-green-900' : 'text-red-900'}`}>
-                                        {printerStatus === 'connected' ? t('app.settings.printerTab.connected') : t('app.settings.printerTab.disconnected')}
-                                    </h4>
-                                    <p className={`text-sm ${printerStatus === 'connected' ? 'text-green-700' : 'text-red-700'}`}>
-                                        {printerStatus === 'connected'
-                                            ? t('app.settings.printerTab.connectedMessage')
-                                            : t('app.settings.printerTab.disconnectedMessage')}
-                                    </p>
-                                </div>
+                    {settings.connectionType === 'thermal' && (
+                        <>
+                            <div className="flex gap-2">
+                                <Button
+                                    onClick={handleCheckStatus}
+                                    disabled={isCheckingStatus}
+                                    variant="outline"
+                                    className="flex-1"
+                                >
+                                    {isCheckingStatus ? (
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    ) : (
+                                        <Printer className="mr-2 h-4 w-4" />
+                                    )}
+                                    {t('app.settings.printerTab.checkStatus')}
+                                </Button>
+                                <Button
+                                    onClick={handleTestPrint}
+                                    disabled={isTesting}
+                                    className="flex-1"
+                                >
+                                    {isTesting ? (
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    ) : (
+                                        <Printer className="mr-2 h-4 w-4" />
+                                    )}
+                                    {t('app.settings.printerTab.testPrint')}
+                                </Button>
                             </div>
-                        </div>
+
+                            {printerStatus !== 'unknown' && (
+                                <div className={`rounded-lg border p-4 ${printerStatus === 'connected' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                                    <div className="flex items-start gap-3">
+                                        {printerStatus === 'connected' ? (
+                                            <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5" />
+                                        ) : (
+                                            <AlertCircle className="h-5 w-5 text-red-600 mt-0.5" />
+                                        )}
+                                        <div>
+                                            <h4 className={`font-semibold ${printerStatus === 'connected' ? 'text-green-900' : 'text-red-900'}`}>
+                                                {printerStatus === 'connected' ? t('app.settings.printerTab.connected') : t('app.settings.printerTab.disconnected')}
+                                            </h4>
+                                            <p className={`text-sm ${printerStatus === 'connected' ? 'text-green-700' : 'text-red-700'}`}>
+                                                {printerStatus === 'connected'
+                                                    ? t('app.settings.printerTab.connectedMessage')
+                                                    : t('app.settings.printerTab.disconnectedMessage')}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </>
                     )}
                 </CardContent>
             </Card>

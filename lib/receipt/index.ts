@@ -7,5 +7,3 @@ export type {
     ReceiptTemplate,
     ReceiptTemplateType
 } from './types';
-
-
