@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
             bodySizeLimit: '1mb'
         }
     },
+    turbopack: {},
     webpack: (config, { isServer }) => {
         if (!isServer) {
             config.resolve.fallback = {
