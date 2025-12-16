@@ -2,7 +2,7 @@ import type { Transaction, TransactionItem, Business, Customer } from "@/lib/api
 import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
 import { ReceiptData, ReceiptTemplateType } from "@/lib/receipt/types";
 import { PDFGeneratorOptions, ImageGeneratorOptions } from "@/lib/receipt";
-import { printThermalReceipt } from "@/lib/receipt/printClient";
+
 
 interface GenerateReceiptParams {
     transaction: Transaction;
@@ -89,30 +89,5 @@ export async function handleSendWhatsApp(
     } catch (err) {
         console.error("Error sending WhatsApp:", err);
         throw new Error("Failed to send WhatsApp message");
-    }
-}
-
-export async function handlePrintThermal(
-    params: GenerateReceiptParams
-): Promise<{ success: boolean; message: string }> {
-    try {
-        const receiptData = convertTransactionToReceiptData(
-            params.transaction,
-            params.transactionItems,
-            params.business,
-            params.customer?.name,
-            params.paymentMethodName,
-            params.footerMessage,
-            params.businessLogoUrl,
-            params.qrcodeValue
-        );
-
-        return await printThermalReceipt(receiptData);
-    } catch (err) {
-        console.error("Error printing receipt:", err);
-        return {
-            success: false,
-            message: err instanceof Error ? err.message : "Failed to print receipt"
-        };
     }
 }

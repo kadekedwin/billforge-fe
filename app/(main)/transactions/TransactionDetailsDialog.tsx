@@ -24,14 +24,14 @@ interface TransactionDetailsDialogProps {
     receiptLoading: boolean;
     isSendingEmail: boolean;
     isSendingWhatsApp: boolean;
-    isPrinting: boolean;
+
     getCustomerName: (customerUuid: string | null) => string;
     getPaymentMethodName: (paymentMethodUuid: string | null) => string;
     onDownloadPDF: () => void;
     onDownloadImage: () => void;
     onSendEmail: () => void;
     onSendWhatsApp: () => void;
-    onPrint: () => void;
+
 }
 
 export function TransactionDetailsDialog({
@@ -44,14 +44,14 @@ export function TransactionDetailsDialog({
     receiptLoading,
     isSendingEmail,
     isSendingWhatsApp,
-    isPrinting,
+
     getCustomerName,
     getPaymentMethodName,
     onDownloadPDF,
     onDownloadImage,
     onSendEmail,
     onSendWhatsApp,
-    onPrint,
+
 }: TransactionDetailsDialogProps) {
     const { t } = useTranslation();
     if (!transaction) return null;
@@ -87,12 +87,12 @@ export function TransactionDetailsDialog({
                         receiptLoading={receiptLoading}
                         isSendingEmail={isSendingEmail}
                         isSendingWhatsApp={isSendingWhatsApp}
-                        isPrinting={isPrinting}
+
                         onDownloadPDF={onDownloadPDF}
                         onDownloadImage={onDownloadImage}
                         onSendEmail={onSendEmail}
                         onSendWhatsApp={onSendWhatsApp}
-                        onPrint={onPrint}
+
                     />
                 </div>
             </DialogContent>

@@ -8,7 +8,6 @@ import {
     updateReceiptData,
 } from '@/lib/api/receipt-data';
 
-// Template ID mapping: API numeric ID to frontend string type
 const TEMPLATE_ID_MAP: Record<number, ReceiptTemplateType> = {
     0: 'classic',
     1: 'sans-serif',

@@ -1,1283 +1,1206 @@
 {
-    "common": {
-        "loading": "加载中...",
-        "error": "错误",
-        "success": "成功",
-        "cancel": "取消",
-        "save": "保存",
-        "delete": "删除",
-        "edit": "编辑",
-        "create": "创建",
-        "update": "更新",
-        "search": "搜索",
-        "filter": "筛选",
-        "close": "关闭",
-        "back": "返回",
-        "next": "下一个",
-        "previous": "上一个",
-        "submit": "提交",
-        "confirm": "确认",
-        "yes": "是",
-        "no": "否"
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "update": "更新",
+    "search": "搜索",
+    "filter": "筛选",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "submit": "提交",
+    "confirm": "确认",
+    "yes": "是",
+    "no": "否"
+  },
+  "landing": {
+    "hero": {
+      "title": "现代POS和计费系统轻松制作",
+      "description": "通过专业收据、即时支付和强大的分析转变您的业务。专为全球各地的咖啡馆、餐厅、商店和小型企业而设计。",
+      "cta": "开始免费试用"
     },
-    "landing": {
-        "hero": {
-            "title": "现代POS和计费系统轻松制作",
-            "description": "通过专业收据、即时支付和强大的分析转变您的业务。专为全球各地的咖啡馆、餐厅、商店和小型企业而设计。",
-            "cta": "开始免费试用"
+    "features": {
+      "title": "您需要的一切来管理您的业务",
+      "description": "强大的功能旨在简化销售、管理客户并让您的业务有效增长。",
+      "receipt": {
+        "title": "专业收据",
+        "description": "创建带有您的徽标、二维码和自定义消息的美观、可自定义的收据。从多个专业模板中选择以加强您的品牌。"
+      },
+      "checkout": {
+        "title": "快速结账流程",
+        "description": "通过直观的POS界面加速您的交易。快速处理销售、接受多种支付方式并更有效地为客户服务。"
+      },
+      "customer": {
+        "title": "客户管理",
+        "description": "通过客户档案和购买历史记录建立持久的关系。跟踪偏好、支出模式并为常客提供个性化服务。"
+      },
+      "discount": {
+        "title": "智能折扣和税款",
+        "description": "轻松管理百分比或固定折扣和多个税率。只需点击几下即可将促销应用于特定项目或整个交易。"
+      },
+      "analytics": {
+        "title": "实时分析",
+        "description": "获得关于您销售业绩的即时洞察。跟踪每日收入、畅销产品和交易趋势以做出数据驱动的业务决策。"
+      },
+      "cloud": {
+        "title": "随处访问",
+        "description": "基于云的系统在所有设备上运行 - 台式机、平板电脑或智能手机。通过安全的实时数据同步从任何地方管理您的业务。"
+      }
+    },
+    "nav": {
+      "features": "功能",
+      "pricing": "价格",
+      "faq": "常见问题",
+      "login": "登录",
+      "signup": "注册",
+      "signIn": "登录",
+      "getStarted": "开始使用",
+      "home": "首页",
+      "testimonials": "评价",
+      "drawerTitle": "导航菜单"
+    },
+    "faq": {
+      "title": "常见问题",
+      "description": "关于BillForge以及它如何帮助您的业务，您需要了解的一切。",
+      "items": {
+        "item1": {
+          "question": "BillForge真的免费吗？",
+          "answer": "是的！我们的免费计划包括1个业务、50个项目、50个客户、50个交易/月和所有基本功能。非常适合刚开始的小企业。升级到Pro或Enterprise以获得更高的限制和高级功能。"
         },
-        "features": {
-            "title": "您需要的一切来管理您的业务",
-            "description": "强大的功能旨在简化销售、管理客户并让您的业务有效增长。",
-            "receipt": {
-                "title": "专业收据",
-                "description": "创建带有您的徽标、二维码和自定义消息的美观、可自定义的收据。从多个专业模板中选择以加强您的品牌。"
-            },
-            "checkout": {
-                "title": "快速结账流程",
-                "description": "通过直观的POS界面加速您的交易。快速处理销售、接受多种支付方式并更有效地为客户服务。"
-            },
-            "customer": {
-                "title": "客户管理",
-                "description": "通过客户档案和购买历史记录建立持久的关系。跟踪偏好、支出模式并为常客提供个性化服务。"
-            },
-            "discount": {
-                "title": "智能折扣和税款",
-                "description": "轻松管理百分比或固定折扣和多个税率。只需点击几下即可将促销应用于特定项目或整个交易。"
-            },
-            "analytics": {
-                "title": "实时分析",
-                "description": "获得关于您销售业绩的即时洞察。跟踪每日收入、畅销产品和交易趋势以做出数据驱动的业务决策。"
-            },
-            "cloud": {
-                "title": "随处访问",
-                "description": "基于云的系统在所有设备上运行 - 台式机、平板电脑或智能手机。通过安全的实时数据同步从任何地方管理您的业务。"
-            }
+        "item2": {
+          "question": "免费、Pro和Enterprise计划之间有什么区别？",
+          "answer": "免费计划有基本限制（1个业务、50个项目、50个交易/月）。Pro提供这些限制的10倍（10个业务、500个项目、500个交易/月）。Enterprise提供无限的项目、客户和交易，以及多用户访问和API访问等高级功能。"
         },
-        "nav": {
-            "features": "功能",
-            "pricing": "价格",
-            "faq": "常见问题",
-            "login": "登录",
-            "signup": "注册",
-            "signIn": "登录",
-            "getStarted": "开始使用",
-            "home": "首页",
-            "testimonials": "评价",
-            "drawerTitle": "导航菜单"
+        "item3": {
+          "question": "我可以自定义我的收据吗？",
+          "answer": "当然可以！BillForge提供多个收据模板，具有完整的自定义选项。添加您的公司徽标、自定义页脚消息、二维码并从多个专业设计中选择。收据可以打印或以数字方式发送给客户。"
         },
-        "faq": {
-            "title": "常见问题",
-            "description": "关于BillForge以及它如何帮助您的业务，您需要了解的一切。",
-            "items": {
-                "item1": {
-                    "question": "BillForge真的免费吗？",
-                    "answer": "是的！我们的免费计划包括1个业务、50个项目、50个客户、50个交易/月和所有基本功能。非常适合刚开始的小企业。升级到Pro或Enterprise以获得更高的限制和高级功能。"
-                },
-                "item2": {
-                    "question": "免费、Pro和Enterprise计划之间有什么区别？",
-                    "answer": "免费计划有基本限制（1个业务、50个项目、50个交易/月）。Pro提供这些限制的10倍（10个业务、500个项目、500个交易/月）。Enterprise提供无限的项目、客户和交易，以及多用户访问和API访问等高级功能。"
-                },
-                "item3": {
-                    "question": "我可以自定义我的收据吗？",
-                    "answer": "当然可以！BillForge提供多个收据模板，具有完整的自定义选项。添加您的公司徽标、自定义页脚消息、二维码并从多个专业设计中选择。收据可以打印或以数字方式发送给客户。"
-                },
-                "item4": {
-                    "question": "我可以接受哪些付款方式？",
-                    "answer": "BillForge支持所有主要支付方式，包括现金、信用卡/借记卡、移动支付和数字钱包。免费计划允许最多5种支付方式，而Pro和Enterprise提供无限的支付选项。"
-                },
-                "item5": {
-                    "question": "我如何管理折扣和税款？",
-                    "answer": "我们的平台包括集成的折扣和税务管理。创建百分比或固定折扣并将其应用于特定项目或整个交易。为不同的产品类别设置多个税率。免费计划包括30个折扣和税务配置。"
-                },
-                "item6": {
-                    "question": "我的业务数据安全吗？",
-                    "answer": "是的！所有数据都通过加密安全存储在云中。我们执行定期备份并使用行业标准安全实践。您的交易历史、客户信息和业务数据受到保护，只有您可以访问。"
-                },
-                "item7": {
-                    "question": "我可以跟踪客户的购买历史吗？",
-                    "answer": "是的！BillForge包括客户管理功能。保存客户详细信息、查看购买历史记录并与常客建立更好的关系。跟踪他们购买的内容、何时访问和总支出以提供个性化服务。"
-                },
-                "item8": {
-                    "question": "我需要专门的硬件吗？",
-                    "answer": "不需要任何专门的硬件！BillForge在任何具有网络浏览器的设备上运行 - 台式机、平板电脑或智能手机。如果您想打印收据，可以使用任何标准打印机。该系统是基于云的，因此您可以从任何地方访问它。"
-                },
-                "item9": {
-                    "question": "如果我超过每月交易限制会怎样？",
-                    "answer": "使用免费计划，您每月限制50笔交易。如果您需要更多，可以升级到Pro（500笔交易/月）或Enterprise（无限）。您的数据永远不会被删除，无论您当前的计划如何，您始终可以查看之前的交易。"
-                },
-                "item10": {
-                    "question": "如果我需要帮助，我如何获得支持？",
-                    "answer": "我们为所有用户提供电子邮件支持。Pro和Enterprise客户获得优先支持，响应时间更快。Enterprise客户也获得24/7支持和专门的客户经理。请查阅我们的文档和教程以获取快速自助指南。"
-                }
-            }
+        "item4": {
+          "question": "我可以接受哪些付款方式？",
+          "answer": "BillForge支持所有主要支付方式，包括现金、信用卡/借记卡、移动支付和数字钱包。免费计划允许最多5种支付方式，而Pro和Enterprise提供无限的支付选项。"
         },
-        "pricing": {
-            "title": "简单透明的价格",
-            "description": "为您的业务选择完美的计划。免费开始，随着业务增长而升级。",
-            "monthly": "/月",
-            "mostPopular": "最受欢迎",
-            "plans": {
-                "free": {
-                    "name": "免费",
-                    "description": "适合刚开始进行数字计费的小企业。",
-                    "button": "免费开始",
-                    "features": {
-                        "business": "1个业务",
-                        "items": "50个项目",
-                        "customers": "50个客户",
-                        "transactions": "50个交易/月",
-                        "paymentMethods": "5种支付方式",
-                        "discountsTaxes": "30个折扣和税款",
-                        "templates": "基础收据模板",
-                        "storage": "云存储"
-                    }
-                },
-                "pro": {
-                    "name": "Pro",
-                    "description": "适合拥有多个位置和高成交量的成长中的业务。",
-                    "button": "开始Pro试用",
-                    "features": {
-                        "business": "10个业务",
-                        "items": "500个项目",
-                        "customers": "500个客户",
-                        "transactions": "500个交易/月",
-                        "paymentMethods": "50种支付方式",
-                        "discountsTaxes": "300个折扣和税款",
-                        "templates": "高级收据模板",
-                        "support": "优先支持",
-                        "analytics": "高级分析",
-                        "branding": "自定义品牌推广"
-                    }
-                },
-                "enterprise": {
-                    "name": "Enterprise",
-                    "description": "面向需要高级功能和专门支持的大型企业。",
-                    "button": "联系销售",
-                    "features": {
-                        "business": "无限业务",
-                        "items": "无限项目",
-                        "customers": "无限客户",
-                        "transactions": "无限交易",
-                        "paymentMethods": "无限支付方式",
-                        "discountsTaxes": "无限折扣和税款",
-                        "api": "API访问",
-                        "support": "24/7优先支持"
-                    }
-                }
-            }
+        "item5": {
+          "question": "我如何管理折扣和税款？",
+          "answer": "我们的平台包括集成的折扣和税务管理。创建百分比或固定折扣并将其应用于特定项目或整个交易。为不同的产品类别设置多个税率。免费计划包括30个折扣和税务配置。"
         },
-        "testimonials": {
-            "title": "评价",
-            "items": {
-                "item1": {
-                    "name": "王建",
-                    "designation": "咖啡馆老板",
-                    "company": "每日咖啡馆",
-                    "text": "BillForge彻底改变了我们在咖啡馆管理交易的方式。收据定制非常好，我们的客户喜欢收到数字收据。我们减少了80%的纸张成本，付款现在比以往任何时候都快！"
-                },
-                "item2": {
-                    "name": "李玲",
-                    "designation": "店铺经理",
-                    "company": "李氏百货",
-                    "text": "自从我开始使用BillForge以来，店铺管理变得容易得多。界面易于理解，销售报告非常有用。我强烈推荐给零售商！"
-                },
-                "item3": {
-                    "name": "张明",
-                    "designation": "餐厅老板",
-                    "company": "张氏小酒馆",
-                    "text": "管理多种支付方式曾经是一场噩梦。BillForge使其无缝衔接！交易历史和客户管理功能改善了我们与常客的关系。这是我们做过的最好的POS决定！"
-                },
-                "item4": {
-                    "name": "陈洋",
-                    "designation": "精品店老板",
-                    "company": "优雅时尚精品店",
-                    "text": "BillForge的折扣和税务管理正是我们季节性销售所需的。创建漂亮的品牌收据改善了客户体验。我们的支付流程现在专业高效！"
-                },
-                "item5": {
-                    "name": "刘梅",
-                    "designation": "面包店老板",
-                    "company": "甜蜜美食烘焙坊",
-                    "text": "三个月前我们转换到BillForge，再也没有回头。项目管理系统使我们的库存井井有条，收据模板看起来很专业。客户付款现在是一种乐趣，即使在繁忙的早晨时段！"
-                },
-                "item6": {
-                    "name": "杨慧",
-                    "designation": "零售经理",
-                    "company": "科技小工具加",
-                    "text": "BillForge的交易跟踪为我们提供了关于销售模式的惊人洞察。客户数据库帮助我们提供个性化服务，二维码收据在科技精明的客户中很受欢迎。这是完整的套餐！"
-                }
-            }
+        "item6": {
+          "question": "我的业务数据安全吗？",
+          "answer": "是的！所有数据都通过加密安全存储在云中。我们执行定期备份并使用行业标准安全实践。您的交易历史、客户信息和业务数据受到保护，只有您可以访问。"
         },
-        "footer": {
-            "contact": "联系",
-            "legal": "法律",
-            "legalLinks": {
-                "terms": "条款",
-                "privacy": "隐私"
-            },
-            "description": "通过智能发票管理简化您的计费流程",
-            "copyright": "© 2025 BillForge。版权所有。",
-            "madeWith": "用❤️在巴厘岛制作",
-            "links": {
-                "terms": "服务条款",
-                "privacy": "隐私政策"
-            }
+        "item7": {
+          "question": "我可以跟踪客户的购买历史吗？",
+          "answer": "是的！BillForge包括客户管理功能。保存客户详细信息、查看购买历史记录并与常客建立更好的关系。跟踪他们购买的内容、何时访问和总支出以提供个性化服务。"
+        },
+        "item8": {
+          "question": "我需要专门的硬件吗？",
+          "answer": "不需要任何专门的硬件！BillForge在任何具有网络浏览器的设备上运行 - 台式机、平板电脑或智能手机。如果您想打印收据，可以使用任何标准打印机。该系统是基于云的，因此您可以从任何地方访问它。"
+        },
+        "item9": {
+          "question": "如果我超过每月交易限制会怎样？",
+          "answer": "使用免费计划，您每月限制50笔交易。如果您需要更多，可以升级到Pro（500笔交易/月）或Enterprise（无限）。您的数据永远不会被删除，无论您当前的计划如何，您始终可以查看之前的交易。"
+        },
+        "item10": {
+          "question": "如果我需要帮助，我如何获得支持？",
+          "answer": "我们为所有用户提供电子邮件支持。Pro和Enterprise客户获得优先支持，响应时间更快。Enterprise客户也获得24/7支持和专门的客户经理。请查阅我们的文档和教程以获取快速自助指南。"
         }
+      }
     },
-    "auth": {
-        "login": {
-            "title": "欢迎回来",
-            "description": "登录您的BillForge帐户",
-            "emailLabel": "电子邮件地址",
-            "emailPlaceholder": "您的@email.com",
-            "passwordLabel": "密码",
-            "passwordPlaceholder": "••••••••",
-            "forgotPassword": "忘记密码？",
-            "submit": "登录",
-            "submitting": "正在登录...",
-            "noAccount": "没有账户？",
-            "signUp": "创建一个",
-            "errorGeneric": "电子邮件或密码不正确。请重试。"
+    "pricing": {
+      "title": "简单透明的价格",
+      "description": "为您的业务选择完美的计划。免费开始，随着业务增长而升级。",
+      "monthly": "/月",
+      "mostPopular": "最受欢迎",
+      "plans": {
+        "free": {
+          "name": "免费",
+          "description": "适合刚开始进行数字计费的小企业。",
+          "button": "免费开始",
+          "features": {
+            "business": "1个业务",
+            "items": "50个项目",
+            "customers": "50个客户",
+            "transactions": "50个交易/月",
+            "paymentMethods": "5种支付方式",
+            "discountsTaxes": "30个折扣和税款",
+            "templates": "基础收据模板",
+            "storage": "云存储"
+          }
         },
-        "register": {
-            "title": "创建帐户",
-            "description": "加入BillForge来管理您的业务",
-            "nameLabel": "全名",
-            "namePlaceholder": "王建",
-            "emailLabel": "电子邮件地址",
-            "emailPlaceholder": "您的@email.com",
-            "passwordLabel": "密码",
-            "passwordPlaceholder": "最少8个字符",
-            "confirmPasswordLabel": "确认密码",
-            "confirmPasswordPlaceholder": "••••••••",
-            "termsAgreement": "通过创建账户，您同意我们的",
-            "terms": "服务条款",
-            "and": "和",
-            "privacy": "隐私政策",
-            "submit": "创建帐户",
-            "submitting": "创建账户中...",
-            "hasAccount": "已经有帐户？",
-            "signIn": "在此登录",
-            "errorMatch": "密码不匹配",
-            "errorGeneric": "注册失败。请重试。"
+        "pro": {
+          "name": "Pro",
+          "description": "适合拥有多个位置和高成交量的成长中的业务。",
+          "button": "开始Pro试用",
+          "features": {
+            "business": "10个业务",
+            "items": "500个项目",
+            "customers": "500个客户",
+            "transactions": "500个交易/月",
+            "paymentMethods": "50种支付方式",
+            "discountsTaxes": "300个折扣和税款",
+            "templates": "高级收据模板",
+            "support": "优先支持",
+            "analytics": "高级分析",
+            "branding": "自定义品牌推广"
+          }
         },
-        "forgotPassword": {
-            "title": "重置密码",
-            "description": "输入您的电子邮件地址，我们将向您发送重置密码的链接。",
-            "emailLabel": "电子邮件地址",
-            "emailPlaceholder": "您的@email.com",
-            "submit": "发送重置链接",
-            "submitting": "发送中...",
-            "backToLogin": "返回登录",
-            "checkEmailTitle": "检查您的电子邮件",
-            "checkEmailDescription": "我们已向您发送密码重置说明",
-            "checkEmailNote1": "检查您的收件箱中的重置链接。",
-            "checkEmailNote2": "如果您没有看到电子邮件，请检查垃圾邮件文件夹。",
-            "tryAnotherEmail": "尝试另一个电子邮件",
-            "errorGeneric": "发生错误。请重试。"
-        },
-        "resetPassword": {
-            "title": "创建新密码",
-            "description": "在下方输入您的新密码。",
-            "emailLabel": "电子邮件地址",
-            "emailPlaceholder": "您的@email.com",
-            "newPasswordLabel": "新密码",
-            "newPasswordPlaceholder": "最少8个字符",
-            "passwordHint": "必须至少包含8个字符",
-            "confirmPasswordLabel": "确认密码",
-            "confirmPasswordPlaceholder": "••••••••",
-            "submit": "重置密码",
-            "submitting": "正在重置密码...",
-            "backToLogin": "返回登录",
-            "successTitle": "密码已重置",
-            "successDescription": "您的密码已成功重置。",
-            "redirecting": "重定向到登录...",
-            "goToLogin": "转到登录",
-            "errorGeneric": "发生错误。请重试。",
-            "errorMatch": "密码不匹配",
-            "errorLength": "密码必须至少包含8个字符"
-        },
-        "verifyEmail": {
-            "title": "验证您的电子邮件",
-            "description": "我们已向您发送验证电子邮件至",
-            "instruction": "检查您的收件箱并点击验证链接以激活您的帐户。",
-            "resend": "重新发送验证电子邮件",
-            "resending": "发送中...",
-            "changeEmail": "使用不同的电子邮件地址",
-            "verifyingTitle": "验证电子邮件中...",
-            "verifyingDescription": "我们正在验证您的电子邮件地址。请等待。",
-            "successTitle": "电子邮件已验证",
-            "successDescription": "您的电子邮件已成功验证！",
-            "goToSale": "转到仪表板",
-            "alreadyVerifiedTitle": "已验证",
-            "alreadyVerifiedDescription": "您的电子邮件已经过验证。您可以继续。",
-            "failedTitle": "验证失败",
-            "failedDescription": "验证链接已过期或无效。",
-            "resendSuccess": "验证电子邮件已发送！检查您的收件箱。",
-            "changeEmailTitle": "更改电子邮件地址？",
-            "changeEmailDescription": "您将被注销，并被重定向到注册页面以使用新的电子邮件地址进行注册。",
-            "cancel": "取消",
-            "continue": "继续",
-            "errorGeneric": "发生错误。请重试。"
-        },
-        "confirmDeletion": {
-            "title": "删除帐户",
-            "description": "警告：这将永久删除：",
-            "warningTitle": "删除您的帐户将导致：",
-            "warningItem1": "永久删除所有业务",
-            "warningItem2": "删除所有交易和销售记录",
-            "warningItem3": "删除所有项目和库存",
-            "warningItem4": "删除您的配置文件和帐户信息",
-            "warningReversal": "此操作无法撤消。",
-            "inputLabel": "输入确认以删除您的帐户",
-            "confirmWord": "确认",
-            "inputLabelSuffix": "继续删除",
-            "inputPlaceholder": "在此输入确认",
-            "cancel": "取消",
-            "delete": "删除帐户",
-            "deleting": "删除中...",
-            "success": "帐户已成功删除",
-            "errorGeneric": "发生错误。请重试。",
-            "errorMatch": "精确输入确认",
-            "errorMissingToken": "请求无效。请重试。",
-            "invalidLinkTitle": "链接无效或已过期",
-            "invalidLinkDescription": "此删除链接已过期或无效。",
-            "returnToSettings": "返回设置"
+        "enterprise": {
+          "name": "Enterprise",
+          "description": "面向需要高级功能和专门支持的大型企业。",
+          "button": "联系销售",
+          "features": {
+            "business": "无限业务",
+            "items": "无限项目",
+            "customers": "无限客户",
+            "transactions": "无限交易",
+            "paymentMethods": "无限支付方式",
+            "discountsTaxes": "无限折扣和税款",
+            "api": "API访问",
+            "support": "24/7优先支持"
+          }
         }
+      }
     },
-    "business": {
-        "name": "业务名称",
-        "address": "地址",
-        "phone": "电话号码",
-        "currency": "货币",
-        "language": "语言",
-        "region": "地区",
-        "create": "创建业务",
-        "edit": "编辑业务",
-        "delete": "删除业务",
-        "select": "选择业务",
-        "noBusiness": "未找到业务",
-        "createFirst": "创建您的第一个业务以开始"
-    },
-    "validation": {
-        "required": "此字段为必需",
-        "email": "输入有效的电子邮件地址",
-        "minLength": "必须至少包含{min}个字符",
-        "maxLength": "最多可以包含{max}个字符",
-        "passwordMatch": "密码不匹配",
-        "invalidFormat": "无效格式"
-    },
-    "privacy": {
-        "title": "隐私政策",
-        "lastUpdated": "最后更新：2025年12月8日",
-        "intro": {
-            "title": "介绍",
-            "content": "在 BillForge，我们非常重视您的隐私。本隐私政策说明了当您使用我们的计费和发票管理服务时，我们如何收集、使用、披露和保护您的信息。请仔细阅读本隐私政策。如果您不同意本隐私政策的条款，请不要访问该应用程序。"
+    "testimonials": {
+      "title": "评价",
+      "items": {
+        "item1": {
+          "name": "王建",
+          "designation": "咖啡馆老板",
+          "company": "每日咖啡馆",
+          "text": "BillForge彻底改变了我们在咖啡馆管理交易的方式。收据定制非常好，我们的客户喜欢收到数字收据。我们减少了80%的纸张成本，付款现在比以往任何时候都快！"
         },
-        "infoCollect": {
-            "title": "1. 我们收集的信息",
-            "personal": {
-                "title": "个人信息",
-                "intro": "我们收集您直接提供给我们的信息，包括：",
-                "items": {
-                    "contact": "姓名和联系方式（电子邮件地址，电话号码）",
-                    "business": "业务信息（公司名称，地址，税号）",
-                    "payment": "付款信息（通过第三方支付处理器安全处理）",
-                    "credentials": "帐户凭据（用户名，密码）"
-                }
-            },
-            "businessData": {
-                "title": "业务数据",
-                "intro": "当您使用 BillForge 时，我们会收集和存储：",
-                "items": {
-                    "customers": "您输入的客户信息",
-                    "invoices": "发票和交易数据",
-                    "items": "项目目录和定价信息",
-                    "tax": "税收和折扣配置",
-                    "settings": "业务设置和偏好"
-                }
-            },
-            "auto": {
-                "title": "自动收集的信息",
-                "intro": "当您访问 BillForge 时，我们会自动收集：",
-                "items": {
-                    "log": "日志数据（IP地址，浏览器类型，操作系统）",
-                    "device": "设备信息",
-                    "usage": "使用数据（访问的页面，使用的功能，花费的时间）",
-                    "cookies": "Cookies 和类似跟踪技术"
-                }
-            }
+        "item2": {
+          "name": "李玲",
+          "designation": "店铺经理",
+          "company": "李氏百货",
+          "text": "自从我开始使用BillForge以来，店铺管理变得容易得多。界面易于理解，销售报告非常有用。我强烈推荐给零售商！"
         },
-        "howWeUse": {
-            "title": "2. 我们如何使用您的信息",
-            "intro": "我们使用收集的信息来：",
-            "items": {
-                "provide": "提供、维护和改进我们的服务",
-                "process": "处理您的交易并管理您的帐户",
-                "send": "向您发送技术通知、更新和支持消息",
-                "respond": "回应您的评论、问题和客户服务请求",
-                "monitor": "监控和分析趋势、使用情况和活动",
-                "detect": "检测、预防和解决技术问题和欺诈活动",
-                "personalize": "个性化和改善您的体验",
-                "marketing": "向您发送营销通讯（经您同意）"
-            }
+        "item3": {
+          "name": "张明",
+          "designation": "餐厅老板",
+          "company": "张氏小酒馆",
+          "text": "管理多种支付方式曾经是一场噩梦。BillForge使其无缝衔接！交易历史和客户管理功能改善了我们与常客的关系。这是我们做过的最好的POS决定！"
         },
-        "sharing": {
-            "title": "3. 信息共享和披露",
-            "intro": "我们不会出售您的个人信息。 我们可能会在以下情况下分享您的信息：",
-            "items": {
-                "providers": "代表我们执行服务的服务提供商",
-                "legal": "为了遵守法律义务或回应法律请求",
-                "protect": "为了保护 BillForge、我们的用户或其他人的权利、财产和安全",
-                "merger": "与我们公司的全部或部分合并、出售或收购有关",
-                "consent": "经您同意或根据您的指示"
-            }
+        "item4": {
+          "name": "陈洋",
+          "designation": "精品店老板",
+          "company": "优雅时尚精品店",
+          "text": "BillForge的折扣和税务管理正是我们季节性销售所需的。创建漂亮的品牌收据改善了客户体验。我们的支付流程现在专业高效！"
         },
-        "security": {
-            "title": "4. 数据安全",
-            "intro": "我们采取适当的技术和组织措施来保护您的信息，包括：",
-            "items": {
-                "encryption": "传输中和静态数据的加密",
-                "assessments": "定期安全评估和更新",
-                "access": "访问控制和身份验证机制",
-                "datacenters": "具有物理安全措施的安全数据中心",
-                "backups": "定期备份和灾难恢复程序"
-            },
-            "disclaimer": "但是，没有任何通过互联网传输或电子存储的方法是 100% 安全的。 虽然我们要使用商业上可接受的手段来保护您的信息，但我们不能保证其绝对安全。"
+        "item5": {
+          "name": "刘梅",
+          "designation": "面包店老板",
+          "company": "甜蜜美食烘焙坊",
+          "text": "三个月前我们转换到BillForge，再也没有回头。项目管理系统使我们的库存井井有条，收据模板看起来很专业。客户付款现在是一种乐趣，即使在繁忙的早晨时段！"
         },
-        "retention": {
-            "title": "5. 数据保留",
-            "content": "只要您的帐户处于活动状态或为您提供服务所需，我们将保留您的信息。 我们将在必要时保留和使用您的信息，以遵守法律义务、解决争议和执行我们的协议。 您可以通过联系我们请求删除您的数据，但须遵守某些法律保留要求。"
-        },
-        "rights": {
-            "title": "6. 您的权利和选择",
-            "intro": "您对您的个人信息拥有某些权利：",
-            "items": {
-                "access": "访问并接收您的个人信息的副本",
-                "correct": "更正或更新不准确的信息",
-                "delete": "请求删除您的信息",
-                "object": "反对或限制对您信息的某些处理",
-                "export": "以便携式格式导出您的数据",
-                "optout": "选择退出营销通讯",
-                "withdraw": "在我们依赖同意处理您的信息时撤回同意"
-            }
-        },
-        "cookies": {
-            "title": "7. Cookies 和跟踪技术",
-            "intro": "我们使用 cookies 和类似跟踪技术来收集和跟踪有关您使用 BillForge 的信息。 我们使用的 cookies 类型包括：",
-            "items": {
-                "essential": "必要 Cookies：我们服务运行所必需的",
-                "preference": "偏好 Cookies：记住您的设置和偏好",
-                "analytics": "分析 Cookies：帮助我们了解您如何使用我们的服务",
-                "marketing": "营销 Cookies：跟踪您的活动以提供相关广告"
-            },
-            "control": "您可以通过浏览器设置和其他工具控制 cookies。 但是，禁用某些 cookies 可能会限制您使用 BillForge 的某些功能。"
-        },
-        "thirdParty": {
-            "title": "8. 第三方服务",
-            "intro": "BillForge 可能包含指向第三方网站的链接并与第三方服务集成。 我们不对这些第三方的隐私惯例负责。 我们鼓励您阅读您互动的任何第三方服务的隐私政策。",
-            "services": "我们可能使用的第三方服务包括支付处理器、分析提供商和云基础设施提供商。 这些服务有自己的隐私政策来管理它们对您信息的使用。"
-        },
-        "children": {
-            "title": "9. 儿童隐私",
-            "content": "BillForge 不适用于 18 岁以下的儿童。 我们不会故意收集 18 岁以下儿童的个人信息。 如果我们发现我们收集了 18 岁以下儿童的个人信息，我们将采取措施删除该信息。"
-        },
-        "international": {
-            "title": "10. 国际数据传输",
-            "content": "您的信息可能会被传输到并维护在您所在国家或司法管辖区之外的服务器上。 通过使用 BillForge，您同意将您的信息传输到可能具有与您居住国不同的数据保护法的国家。"
-        },
-        "changes": {
-            "title": "11. 本隐私政策的变更",
-            "content": "我们可能会不时更新本隐私政策。 我们将通过在此页面上发布新的隐私政策并更新“最后更新”日期来通知您任何重大变更。 建议您定期查看本隐私政策以了解任何变更。 您在任何修改后继续使用 BillForge 即表示您接受更新后的隐私政策。"
-        },
-        "california": {
-            "title": "12. 加州隐私权",
-            "intro": "如果您是加利福尼亚州居民，根据《加州消费者隐私法》（CCPA），您拥有额外的权利：",
-            "items": {
-                "know": "有权知道收集、使用、共享或出售了哪些个人信息",
-                "delete": "有权删除个人信息",
-                "optout": "有权选择不出售个人信息（我们不出售个人信息）",
-                "nondiscrimination": "行使隐私权不受歧视的权利"
-            }
-        },
-        "gdpr": {
-            "title": "13. GDPR 权利（欧洲用户）",
-            "intro": "如果您位于欧洲经济区（EEA），根据《通用数据保护条例》（GDPR），您拥有额外的权利：",
-            "items": {
-                "access": "访问您的个人数据的权利",
-                "rectification": "纠正不准确数据的权利",
-                "erasure": "删除权（被遗忘权）",
-                "restrict": "限制处理的权利",
-                "portability": "数据可携带权",
-                "object": "反对处理的权利",
-                "complaint": "向监管机构提出投诉的权利"
-            }
-        },
-        "contact": {
-            "title": "联系我们",
-            "description": "如果您对本隐私政策或我们的数据惯例有任何疑问，请联系我们。 我们致力于与您合作，公平解决任何隐私问题。"
+        "item6": {
+          "name": "杨慧",
+          "designation": "零售经理",
+          "company": "科技小工具加",
+          "text": "BillForge的交易跟踪为我们提供了关于销售模式的惊人洞察。客户数据库帮助我们提供个性化服务，二维码收据在科技精明的客户中很受欢迎。这是完整的套餐！"
         }
+      }
     },
-    "terms": {
-        "title": "服务条款",
-        "lastUpdated": "最后更新：2025年12月8日",
-        "acceptance": {
-            "title": "1. 接受条款",
-            "content": "通过访问和使用 BillForge，您接受并同意受本协议条款和规定的约束。 如果您不同意遵守上述规定，请不要使用此服务。"
-        },
-        "license": {
-            "title": "2. 使用许可",
-            "intro": "允许暂时访问和使用 BillForge 用于个人和商业目的。 這是许可的授予，而不是所有权的转让，根据此许可，您不得：",
-            "items": {
-                "modify": "修改或复制材料",
-                "commercial": "未经适当订阅将材料用于任何商业目的",
-                "decompile": "尝试反编译或逆向工程 BillForge 上包含的任何软件",
-                "remove": "从材料中删除任何版权或其他专有符号",
-                "transfer": "将材料转移给另一个人或在任何其他服务器上“镜像”材料"
-            }
-        },
-        "account": {
-            "title": "3. 用户帐户",
-            "intro": "要使用 BillForge 的某些功能，您必须注册一个帐户。 您同意：",
-            "items": {
-                "accurate": "在注册期间提供准确、最新和完整的信息",
-                "security": "维护您的密码和帐户的安全",
-                "notify": "如果不允许使用您的帐户，请立即通知我们",
-                "responsibility": "对在您的帐户下发生的所有活动承担责任"
-            }
-        },
-        "subscription": {
-            "title": "4. 订阅和付款",
-            "intro": "BillForge 提供各种订阅计划。 通过订阅，您同意：",
-            "items": {
-                "fees": "支付与其选择的订阅计划相关的所有费用",
-                "renewal": "除非取消，否则自动续订您的订阅",
-                "pricing": "价格可能在提前 30 天通知的情况下发生变化",
-                "refunds": "对于部分使用的月份或未使用的服务不予退款"
-            }
-        },
-        "dataPrivacy": {
-            "title": "5. 数据和隐私",
-            "content": "您对 BillForge 的使用也受我们的隐私政策管辖。 请查看我们的",
-            "link": "隐私政策",
-            "toUnderstand": "以了解我们的惯例。"
-        },
-        "prohibited": {
-            "title": "6. 禁止活动",
-            "intro": "您不得使用 BillForge 来：",
-            "items": {
-                "laws": "违反任何法律或法规",
-                "infringe": "侵犯知识产权",
-                "malware": "传播病毒、恶意软件或其他恶意代码",
-                "unauthorized": "尝试未经授权访问我们的系统",
-                "harass": "骚扰、虐待或伤害其他用户",
-                "fraud": "出于欺诈目的使用服务"
-            }
-        },
-        "availability": {
-            "title": "7. 服务可用性",
-            "content": "我们努力保持 BillForge 的高可用性，但我们不保证不间断的访问。 我们保留在有或没有通知的情况下修改、暂停或终止服务任何部分的权利。 我们不对服务的任何修改、暂停或终止负责。"
-        },
-        "intellectual": {
-            "title": "8. 知识产权",
-            "content": "BillForge 上包含的所有内容，例如文本、图形、徽标、图像和软件，均属于 BillForge 或其内容供应商的财产，并受国际版权法保护。 本网站上所有内容的汇编是 BillForge 的专有财产。"
-        },
-        "liability": {
-            "title": "9. 责任限制",
-            "content": "在任何情况下，BillForge 或其供应商均不对因使用或无法使用 BillForge 而引起的任何损害（包括但不限于数据或利润损失或业务中断造成的损害）负责，即使 BillForge 或 BillForge 授权代表已被口头或书面通知此类损害的可能性。"
-        },
-        "termination": {
-            "title": "10. 终止",
-            "content": "我们可以出于任何原因（包括如果您违反本服务条款）立即终止或暂停您的帐户和对 BillForge 的访问，恕不另行通知或承担责任。 终止后，您使用服务的权利将立即停止。"
-        },
-        "changesTerms": {
-            "title": "11. 条款变更",
-            "content": "我们保留随时修改这些条款的权利。 我们将通过在此页面上发布新的服务条款并更新“最后更新”日期来通知用户任何重大变更。 您在此类修改后继续使用 BillForge 构成您对修改后条款的确认和接受。"
-        },
-        "governing": {
-            "title": "12. 适用法律",
-            "content": "这些条款应受适用法律的管辖和解释，而不考虑其法律冲突规定。 我们未能执行这些条款的任何权利或规定将不被视为放弃这些权利。"
-        },
-        "contact": {
-            "title": "联系我们",
-            "description": "如果您对本服务条款有任何疑问，请联系我们。"
-        }
+    "footer": {
+      "contact": "联系",
+      "legal": "法律",
+      "legalLinks": {
+        "terms": "条款",
+        "privacy": "隐私"
+      },
+      "description": "通过智能发票管理简化您的计费流程",
+      "copyright": "© 2025 BillForge。版权所有。",
+      "madeWith": "用❤️在巴厘岛制作",
+      "links": {
+        "terms": "服务条款",
+        "privacy": "隐私政策"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "欢迎回来",
+      "description": "登录您的BillForge帐户",
+      "emailLabel": "电子邮件地址",
+      "emailPlaceholder": "您的@email.com",
+      "passwordLabel": "密码",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "忘记密码？",
+      "submit": "登录",
+      "submitting": "正在登录...",
+      "noAccount": "没有账户？",
+      "signUp": "创建一个",
+      "errorGeneric": "电子邮件或密码不正确。请重试。"
     },
-    "app": {
-        "sale": {
-            "title": "销售",
-            "searchItems": "搜索项目...",
-            "allCategories": "所有类别",
-            "checkout": "结账",
-            "total": "总计：",
-            "items": "项目",
-            "noItems": "未找到项目",
-            "addToCart": "添加到购物车",
-            "removeFromCart": "移除",
-            "error": "错误",
-            "retry": "重试",
-            "loading": "加载中...",
-            "selectBusiness": "在侧边栏中选择一个业务以开始",
-            "cartEmpty": "您的购物车是空的。开始添加项目以继续。",
-            "backToItems": "返回项目",
-            "reviewOrder": "检查您的订单并完成交易",
-            "orderSummary": "订单摘要",
-            "item": "项目",
-            "quantity": "数量",
-            "price": "价格",
-            "tax": "税：",
-            "discount": "折扣：",
-            "subtotal": "小计：",
-            "paymentSummary": "付款摘要",
-            "processing": "处理中...",
-            "completeTransaction": "完成交易",
-            "transactionDetails": "交易详情",
-            "customer": "客户（可选）",
-            "selectCustomer": "选择客户...",
-            "guestCustomer": "来宾客户",
-            "paymentMethod": "付款方式（可选）",
-            "paymentMethodsLoadError": "无法加载付款方式",
-            "created": "创建",
-            "selectPaymentMethod": "选择付款方式...",
-            "cash": "现金",
-            "notes": "笔记（可选）",
-            "addNotes": "为此交易添加笔记...",
-            "outOfStock": "缺货",
-            "noItemsAvailable": "没有可用项目",
-            "addItemsToInventory": "将项目添加到您的库存以开始创建交易"
-        },
+    "register": {
+      "title": "创建帐户",
+      "description": "加入BillForge来管理您的业务",
+      "nameLabel": "全名",
+      "namePlaceholder": "王建",
+      "emailLabel": "电子邮件地址",
+      "emailPlaceholder": "您的@email.com",
+      "passwordLabel": "密码",
+      "passwordPlaceholder": "最少8个字符",
+      "confirmPasswordLabel": "确认密码",
+      "confirmPasswordPlaceholder": "••••••••",
+      "termsAgreement": "通过创建账户，您同意我们的",
+      "terms": "服务条款",
+      "and": "和",
+      "privacy": "隐私政策",
+      "submit": "创建帐户",
+      "submitting": "创建账户中...",
+      "hasAccount": "已经有帐户？",
+      "signIn": "在此登录",
+      "errorMatch": "密码不匹配",
+      "errorGeneric": "注册失败。请重试。"
+    },
+    "forgotPassword": {
+      "title": "重置密码",
+      "description": "输入您的电子邮件地址，我们将向您发送重置密码的链接。",
+      "emailLabel": "电子邮件地址",
+      "emailPlaceholder": "您的@email.com",
+      "submit": "发送重置链接",
+      "submitting": "发送中...",
+      "backToLogin": "返回登录",
+      "checkEmailTitle": "检查您的电子邮件",
+      "checkEmailDescription": "我们已向您发送密码重置说明",
+      "checkEmailNote1": "检查您的收件箱中的重置链接。",
+      "checkEmailNote2": "如果您没有看到电子邮件，请检查垃圾邮件文件夹。",
+      "tryAnotherEmail": "尝试另一个电子邮件",
+      "errorGeneric": "发生错误。请重试。"
+    },
+    "resetPassword": {
+      "title": "创建新密码",
+      "description": "在下方输入您的新密码。",
+      "emailLabel": "电子邮件地址",
+      "emailPlaceholder": "您的@email.com",
+      "newPasswordLabel": "新密码",
+      "newPasswordPlaceholder": "最少8个字符",
+      "passwordHint": "必须至少包含8个字符",
+      "confirmPasswordLabel": "确认密码",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "重置密码",
+      "submitting": "正在重置密码...",
+      "backToLogin": "返回登录",
+      "successTitle": "密码已重置",
+      "successDescription": "您的密码已成功重置。",
+      "redirecting": "重定向到登录...",
+      "goToLogin": "转到登录",
+      "errorGeneric": "发生错误。请重试。",
+      "errorMatch": "密码不匹配",
+      "errorLength": "密码必须至少包含8个字符"
+    },
+    "verifyEmail": {
+      "title": "验证您的电子邮件",
+      "description": "我们已向您发送验证电子邮件至",
+      "instruction": "检查您的收件箱并点击验证链接以激活您的帐户。",
+      "resend": "重新发送验证电子邮件",
+      "resending": "发送中...",
+      "changeEmail": "使用不同的电子邮件地址",
+      "verifyingTitle": "验证电子邮件中...",
+      "verifyingDescription": "我们正在验证您的电子邮件地址。请等待。",
+      "successTitle": "电子邮件已验证",
+      "successDescription": "您的电子邮件已成功验证！",
+      "goToSale": "转到仪表板",
+      "alreadyVerifiedTitle": "已验证",
+      "alreadyVerifiedDescription": "您的电子邮件已经过验证。您可以继续。",
+      "failedTitle": "验证失败",
+      "failedDescription": "验证链接已过期或无效。",
+      "resendSuccess": "验证电子邮件已发送！检查您的收件箱。",
+      "changeEmailTitle": "更改电子邮件地址？",
+      "changeEmailDescription": "您将被注销，并被重定向到注册页面以使用新的电子邮件地址进行注册。",
+      "cancel": "取消",
+      "continue": "继续",
+      "errorGeneric": "发生错误。请重试。"
+    },
+    "confirmDeletion": {
+      "title": "删除帐户",
+      "description": "警告：这将永久删除：",
+      "warningTitle": "删除您的帐户将导致：",
+      "warningItem1": "永久删除所有业务",
+      "warningItem2": "删除所有交易和销售记录",
+      "warningItem3": "删除所有项目和库存",
+      "warningItem4": "删除您的配置文件和帐户信息",
+      "warningReversal": "此操作无法撤消。",
+      "inputLabel": "输入确认以删除您的帐户",
+      "confirmWord": "确认",
+      "inputLabelSuffix": "继续删除",
+      "inputPlaceholder": "在此输入确认",
+      "cancel": "取消",
+      "delete": "删除帐户",
+      "deleting": "删除中...",
+      "success": "帐户已成功删除",
+      "errorGeneric": "发生错误。请重试。",
+      "errorMatch": "精确输入确认",
+      "errorMissingToken": "请求无效。请重试。",
+      "invalidLinkTitle": "链接无效或已过期",
+      "invalidLinkDescription": "此删除链接已过期或无效。",
+      "returnToSettings": "返回设置"
+    }
+  },
+  "business": {
+    "name": "业务名称",
+    "address": "地址",
+    "phone": "电话号码",
+    "currency": "货币",
+    "language": "语言",
+    "region": "地区",
+    "create": "创建业务",
+    "edit": "编辑业务",
+    "delete": "删除业务",
+    "select": "选择业务",
+    "noBusiness": "未找到业务",
+    "createFirst": "创建您的第一个业务以开始"
+  },
+  "validation": {
+    "required": "此字段为必需",
+    "email": "输入有效的电子邮件地址",
+    "minLength": "必须至少包含{min}个字符",
+    "maxLength": "最多可以包含{max}个字符",
+    "passwordMatch": "密码不匹配",
+    "invalidFormat": "无效格式"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2025年12月8日",
+    "intro": {
+      "title": "介绍",
+      "content": "在 BillForge，我们非常重视您的隐私。本隐私政策说明了当您使用我们的计费和发票管理服务时，我们如何收集、使用、披露和保护您的信息。请仔细阅读本隐私政策。如果您不同意本隐私政策的条款，请不要访问该应用程序。"
+    },
+    "infoCollect": {
+      "title": "1. 我们收集的信息",
+      "personal": {
+        "title": "个人信息",
+        "intro": "我们收集您直接提供给我们的信息，包括：",
         "items": {
-            "title": "项目",
-            "addItem": "添加项目",
-            "editItem": "编辑项目",
-            "deleteItem": "删除项目",
-            "name": "项目名称",
-            "price": "价格",
-            "sku": "SKU（库存单位）",
-            "category": "类别",
-            "description": "描述",
-            "noItems": "未找到项目",
-            "loading": "加载项目中...",
-            "error": "加载项目时出错",
-            "actions": "操作",
-            "business": "业务",
-            "unknownBusiness": "未知业务",
-            "addFirstItem": "添加您的第一个项目",
-            "image": "项目图像",
-            "status": "状态",
-            "created": "创建日期",
-            "active": "活跃",
-            "inactive": "不活跃",
-            "createTitle": "创建新项目",
-            "createDescription": "将新产品或服务添加到您的库存",
-            "editTitle": "编辑项目",
-            "editDescription": "更新项目信息",
-            "taxOptional": "税（可选）",
-            "noTax": "无税",
-            "discountOptional": "折扣（可选）",
-            "noDiscount": "无折扣",
-            "categoriesOptional": "类别（可选）",
-            "noCategoriesAvailable": "没有可用的类别。首先创建类别。",
-            "skuOptional": "SKU（可选）",
-            "descriptionOptional": "描述（可选）",
-            "itemImageOptional": "项目图像（可选）",
-            "supportedFormats": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大尺寸：1MB",
-            "uploading": "上传图像中...",
-            "update": "更新项目",
-            "create": "创建项目",
-            "deleteTitle": "删除项目？",
-            "deleteDescription": "这将永久删除{name}（SKU：{sku}）。此操作无法撤消。",
-            "deleting": "删除中...",
-            "errorCreating": "创建项目时出错",
-            "errorUpdating": "更新项目时出错",
-            "errorDeleting": "删除项目时出错",
-            "uploadError": "图像上传错误",
-            "deleteError": "删除项目时出错",
-            "selectImageError": "选择图像文件",
-            "imageSizeError": "图像大小必须小于1MB",
-            "loadingError": "加载数据时出错",
-            "itemsLoadError": "加载项目时出错",
-            "basePrice": "基础价格"
-        },
-        "customers": {
-            "title": "客户",
-            "addCustomer": "添加客户",
-            "editCustomer": "编辑客户",
-            "deleteCustomer": "删除客户",
-            "name": "客户名称",
-            "email": "电子邮件",
-            "phone": "电话号码",
-            "address": "地址",
-            "noCustomers": "未找到客户",
-            "loading": "加载客户中...",
-            "error": "加载客户时出错",
-            "actions": "操作",
-            "addFirstCustomer": "添加您的第一个客户",
-            "editTitle": "编辑客户",
-            "createTitle": "添加新客户",
-            "editDescription": "更新客户信息",
-            "createDescription": "将新客户添加到您的数据库",
-            "customerName": "全名",
-            "placeholderName": "王建",
-            "emailOptional": "电子邮件（可选）",
-            "placeholderEmail": "wang@example.com",
-            "phoneOptional": "电话号码（可选）",
-            "placeholderPhone": "+8613812345678",
-            "addressOptional": "地址（可选）",
-            "placeholderAddress": "主街123号，城市，邮政编码",
-            "deleteTitle": "删除客户？",
-            "deleting": "删除中...",
-            "errorCreating": "创建客户时出错",
-            "errorUpdating": "更新客户时出错",
-            "errorDeleting": "删除客户时出错",
-            "deleteError": "删除客户时出错",
-            "customersLoadError": "加载客户时出错",
-            "loadingError": "加载数据时出错"
-        },
-        "transactions": {
-            "title": "交易",
-            "viewDetails": "查看详情",
-            "date": "日期",
-            "customer": "客户",
-            "total": "总计",
-            "totalAmount": "总金额",
-            "finalAmount": "最终金额",
-            "discountAmount": "折扣金额：",
-            "taxAmount": "税金：",
-            "paymentMethod": "付款方式",
-            "noTransactions": "未找到交易",
-            "actions": "操作",
-            "loading": "加载交易中...",
-            "error": "加载交易时出错",
-            "guestCustomer": "来宾",
-            "transactionDetails": "交易详情",
-            "viewInfo": "查看完整交易信息",
-            "items": "项目",
-            "noItems": "未找到项目",
-            "item": "项目",
-            "quantity": "数量",
-            "basePrice": "基础价格",
-            "tax": "税",
-            "discount": "折扣",
-            "notes": "笔记",
-            "transactionId": "交易ID",
-            "downloadPDF": "下载PDF",
-            "downloadImage": "下载图像",
-            "printThermal": "使用热敏打印机打印",
-            "printSuccess": "收据打印成功",
-            "printFailed": "打印收据失败",
-            "sendEmail": "发送电子邮件",
-            "sendWhatsApp": "通过WhatsApp发送"
-        },
-        "settings": {
-            "title": "设置",
-            "profile": "档案",
-            "business": "业务",
-            "receipt": "收据设置",
-            "preferences": "首选项",
-            "account": "账户",
-            "printer": "打印机",
-            "profileTab": {
-                "name": "全名",
-                "email": "电子邮件地址",
-                "currentPassword": "当前密码",
-                "newPassword": "新密码",
-                "confirmPassword": "确认密码",
-                "changePassword": "更改密码",
-                "updateProfile": "更新档案",
-                "deleteAccount": "删除帐户",
-                "errorLoad": "加载档案时出错",
-                "imageSizeError": "图像大小必须小于1MB",
-                "successUpdate": "档案已成功更新",
-                "errorUpdate": "更新档案时出错",
-                "errorFields": "检查所有字段",
-                "errorMatch": "密码不匹配",
-                "errorLength": "密码必须至少包含8个字符",
-                "successPassword": "密码已成功更改",
-                "errorPassword": "当前密码不正确",
-                "confirmDelete": "确认帐户删除",
-                "sentDelete": "已发送删除确认电子邮件",
-                "errorDelete": "发送删除电子邮件时出错",
-                "profilePicture": "个人资料图片",
-                "profilePictureDescription": "上传个人资料图片以自定义您的帐户",
-                "uploadPhoto": "上传照片",
-                "delete": "删除",
-                "imageRequirements": "JPG、PNG、GIF、WEBP。最大1MB",
-                "personalInfo": "个人信息",
-                "fullName": "全名",
-                "enterFullName": "输入您的全名",
-                "enterEmail": "输入您的电子邮件",
-                "emailNote": "电子邮件无法更改",
-                "saving": "保存中...",
-                "saveChanges": "保存更改",
-                "changePasswordDescription": "更新您的密码以保护您的帐户",
-                "enterCurrentPassword": "输入您当前的密码",
-                "enterNewPassword": "输入新密码（最少8个字符）",
-                "confirmNewPassword": "确认新密码",
-                "enterConfirmNewPassword": "确认您的新密码",
-                "changingPassword": "更改密码中...",
-                "deleteAccountDescription": "删除后，您的帐户和所有数据将无法恢复",
-                "deleteWarning": "警告：此操作无法撤消",
-                "deleteConsequences": "删除您的帐户将导致：",
-                "deleteItem1": "永久删除所有业务",
-                "deleteItem2": "删除所有交易和项目",
-                "deleteItem3": "删除所有个人数据",
-                "deleteConfirmation": "您将收到一封确认电子邮件，其中包含完成删除的链接。",
-                "sendingEmail": "发送电子邮件中...",
-                "requestDeletion": "请求帐户删除"
-            },
-            "receiptTab": {
-                "options": "收据自定义",
-                "includeLogo": "在收据中包括业务徽标",
-                "footerMessage": "页脚消息",
-                "footerPlaceholder": "感谢您的购买！",
-                "qrCode": "二维码数据",
-                "qrPlaceholder": "输入二维码值（例如社交媒体链接）",
-                "prefix": "交易前缀",
-                "prefixHelp": "交易编号的前缀（例如INV、RCP）",
-                "nextNumber": "下一个交易编号",
-                "nextNumberHelp": "要使用的下一个交易编号",
-                "template": "收据模板",
-                "selectBusiness": "选择一个业务来配置收据设置"
-            },
-            "printerTab": {
-                "selectPrinter": "选择打印机",
-                "testPrint": "测试打印",
-                "printerSettings": "打印机设置",
-                "toastSaved": "打印机设置已保存",
-                "toastSaveFailed": "保存打印机设置失败",
-                "toastSelectBusiness": "首先选择一个业务",
-                "toastTestSuccess": "测试打印已成功发送",
-                "toastTestFailed": "测试打印失败",
-                "toastTestError": "打印时发生错误",
-                "toastConnected": "打印机已连接",
-                "toastNotConnected": "打印机未连接",
-                "toastCheckError": "检查打印机状态时出错",
-                "title": "打印机设置",
-                "description": "配置您的收据打印机设置",
-                "printerType": "打印机类型",
-                "selectType": "选择打印机类型",
-                "printerPath": "打印机路径",
-                "pathHelp": "您的打印机设备的路径",
-                "characterSet": "字符集",
-                "selectCharset": "选择字符集",
-                "lineCharacter": "行字符",
-                "lineCharacterHelp": "用于行分隔的字符",
-                "timeout": "超时（毫秒）",
-                "timeoutHelp": "打印操作的超时（毫秒）",
-                "removeSpecial": "删除特殊字符",
-                "saveConfig": "保存配置",
-                "checkStatus": "检查打印机状态",
-                "connected": "已连接",
-                "disconnected": "未连接",
-                "connectedMessage": "您的打印机已连接并准备就绪",
-                "disconnectedMessage": "您的打印机处于离线状态",
-                "troubleshooting": "故障排除帮助",
-                "connectionType": "连接类型",
-                "thermalUSB": "热敏 (USB/串口)",
-                "thermalUSBDesc": "直接连接",
-                "network": "网络",
-                "networkDesc": "IP/以太网打印机",
-                "bluetooth": "蓝牙",
-                "bluetoothDesc": "无线连接",
-                "comingSoon": "即将推出",
-                "networkComingSoon": "网络打印即将通过",
-                "bluetoothComingSoon": "蓝牙打印即将推出",
-                "ipAddress": "IP 地址",
-                "port": "端口",
-                "protocol": "协议",
-                "rawProtocol": "RAW (端口 9100)",
-                "ippProtocol": "IPP (互联网打印协议)",
-                "deviceName": "设备名称",
-                "macAddress": "MAC 地址",
-                "devicePaired": "设备已配对",
-                "printerNotDetected": "未检测到打印机",
-                "ensurePowered": "确保打印机已开启并通过 USB 连接",
-                "checkUSB": "检查 USB 电缆是否连接牢固",
-                "verifyPath": "验证打印机路径是否与您的配置匹配",
-                "linuxPermissions": "在 Linux 上：检查权限",
-                "windowsDevice": "在 Windows 上：使用设备管理器查找 COM 端口",
-                "commonPaths": "常用打印机路径",
-                "linux": "Linux",
-                "windows": "Windows",
-                "permissionIssues": "权限问题 (Linux)",
-                "permissionDesc": "如果您收到权限错误，请将您的用户添加到 lp 组：",
-                "logoutNote": "注销并重新登录以应用更改",
-                "charsetIssues": "字符集问题",
-                "usePC437": "使用 PC437_USA 作为标准英语字符",
-                "usePC850": "使用 PC850_MULTILINGUAL 作为欧洲语言",
-                "useWPC1252": "使用 WPC1252 作为西欧字符",
-                "enableRemove": "如果看到乱码，请启用 \"删除特殊字符\"",
-                "onlyThermalSupported": "目前仅支持热敏打印"
-            },
-            "receiptPopup": {
-                "title": "交易完成！",
-                "description": "您的交易已成功完成。下载或发送收据。",
-                "downloadPDF": "下载 PDF",
-                "downloadImage": "下载图片",
-                "printThermal": "使用热敏打印机打印",
-                "sendEmail": "发送电子邮件",
-                "sendWhatsApp": "通过 WhatsApp 发送",
-                "receiptPreview": "收据预览",
-                "failedDownload": "下载收据失败",
-                "failedDownloadImage": "下载收据图片失败",
-                "receiptWillBeSent": "收据将发送至",
-                "failedSendEmail": "发送电子邮件失败",
-                "failedSendWhatsApp": "发送 WhatsApp 消息失败",
-                "receiptPrintedSuccess": "收据打印成功",
-                "receiptPrintedFailed": "打印收据失败"
-            },
-            "businessOnboarding": {
-                "title": "欢迎使用 BillForge",
-                "description": "开始创建您的第一个业务",
-                "businessName": "业务名称",
-                "businessNamePlaceholder": "我的业务",
-                "phone": "电话 (可选)",
-                "phonePlaceholder": "+8613812345678",
-                "address": "地址 (可选)",
-                "addressPlaceholder": "主街 123 号，城市，省份，邮编",
-                "currency": "货币 (可选)",
-                "selectCurrency": "选择货币",
-                "language": "语言 (可选)",
-                "selectLanguage": "选择语言",
-                "region": "地区 (可选)",
-                "selectRegion": "选择地区",
-                "logo": "业务徽标 (可选)",
-                "logoPreview": "业务徽标预览",
-                "logoFallback": "Logo",
-                "logoHelp": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大大小：1MB",
-                "uploadingLogo": "正在上传徽标...",
-                "createButton": "创建业务",
-                "imageSizeError": "图片大小必须小于 1MB",
-                "createError": "创建业务失败",
-                "genericError": "创建业务时发生错误"
-            },
-            "preferencesTab": {
-                "language": "语言",
-                "languageDescription": "选择应用程序界面的首选语言。",
-                "currency": "货币",
-                "region": "地区",
-                "timezone": "时区",
-                "title": "外观和本地化",
-                "description": "自定义BillForge的外观和行为",
-                "theme": "主题",
-                "themeDescription": "选择您首选的颜色主题",
-                "light": "浅色",
-                "dark": "深色",
-                "system": "系统默认"
-            }
-        },
-        "categories": {
-            "title": "类别",
-            "addCategory": "添加类别",
-            "editCategory": "编辑类别",
-            "deleteCategory": "删除类别",
-            "name": "类别名称",
-            "noCategories": "未找到类别",
-            "loading": "加载类别中...",
-            "error": "加载类别时出错",
-            "actions": "操作",
-            "addFirstCategory": "添加您的第一个类别",
-            "created": "创建日期",
-            "createTitle": "创建新类别",
-            "createDescription": "添加新类别以组织您的项目",
-            "editTitle": "编辑类别",
-            "editDescription": "更新类别信息",
-            "categoryName": "类别名称",
-            "placeholder": "例如：电子产品、食物、服务",
-            "deleteTitle": "删除类别？",
-            "deleteDescription": "这将永久删除类别'{name}'。此操作无法撤消。",
-            "deleting": "删除中...",
-            "errorCreating": "创建类别时出错",
-            "errorUpdating": "更新类别时出错",
-            "errorDeleting": "删除类别时出错",
-            "deleteError": "删除类别时出错",
-            "loadingError": "加载数据时出错",
-            "categoriesLoadError": "加载类别时出错"
-        },
-        "paymentMethods": {
-            "title": "付款方式",
-            "addMethod": "添加付款方式",
-            "editMethod": "编辑付款方式",
-            "deleteMethod": "删除付款方式",
-            "name": "方法名称",
-            "noMethods": "未找到付款方式",
-            "loading": "加载付款方式中...",
-            "error": "加载付款方式时出错",
-            "actions": "操作",
-            "addFirstMethod": "添加您的第一种付款方式",
-            "createTitle": "添加付款方式",
-            "createDescription": "添加新付款方式以接受付款",
-            "editTitle": "编辑付款方式",
-            "editDescription": "更新付款方式详情",
-            "deleteTitle": "删除付款方式？",
-            "deleteDescription": "这将永久删除'{name}'。此操作无法撤消。",
-            "deleting": "删除中...",
-            "errorCreating": "创建付款方式时出错",
-            "errorUpdating": "更新付款方式时出错",
-            "errorDeleting": "删除付款方式时出错",
-            "deleteError": "删除付款方式时出错",
-            "methodName": "付款方式名称",
-            "placeholderName": "例如：现金、信用卡、银行转账",
-            "created": "创建日期",
-            "paymentMethodsLoadError": "加载付款方式时出错",
-            "loadingError": "加载数据时出错"
-        },
-        "itemTaxes": {
-            "title": "税率",
-            "addTax": "添加税",
-            "editTax": "编辑税",
-            "deleteTax": "删除税",
-            "name": "税名",
-            "rate": "税率",
-            "noTaxes": "未配置任何税。创建您的第一个税配置。",
-            "loading": "加载税中...",
-            "error": "加载税时出错",
-            "actions": "操作",
-            "createTitle": "添加税率",
-            "createDescription": "创建新税配置",
-            "editTitle": "编辑税率",
-            "editDescription": "更新税率详情",
-            "deleteTitle": "删除税？",
-            "deleteDescription": "这将永久删除'{name}'。此操作无法撤消。",
-            "deleting": "删除中...",
-            "errorCreating": "创建税时出错",
-            "errorUpdating": "更新税时出错",
-            "errorDeleting": "删除税时出错",
-            "deleteError": "删除税时出错",
-            "taxName": "税名",
-            "placeholderName": "例如：增值税、销售税",
-            "type": "类型",
-            "percentage": "百分比",
-            "fixed": "固定金额",
-            "value": "值",
-            "taxesLoadError": "加载税时出错",
-            "loadingError": "加载数据时出错"
-        },
-        "itemDiscounts": {
-            "title": "折扣",
-            "addDiscount": "添加折扣",
-            "editDiscount": "编辑折扣",
-            "deleteDiscount": "删除折扣",
-            "name": "折扣名称",
-            "type": "类型",
-            "value": "值",
-            "noDiscounts": "未配置任何折扣。创建您的第一个折扣。",
-            "loading": "加载折扣中...",
-            "error": "加载折扣时出错",
-            "actions": "操作",
-            "createTitle": "添加折扣",
-            "createDescription": "创建新的折扣优惠",
-            "editTitle": "编辑折扣",
-            "editDescription": "更新折扣详情",
-            "deleteTitle": "删除折扣？",
-            "deleteDescription": "这将永久删除'{name}'。此操作无法撤消。",
-            "deleting": "删除中...",
-            "errorCreating": "创建折扣时出错",
-            "errorUpdating": "更新折扣时出错",
-            "errorDeleting": "删除折扣时出错",
-            "deleteError": "删除折扣时出错",
-            "discountName": "折扣名称",
-            "placeholderName": "例如：假期折扣、早鸟折扣",
-            "percentage": "百分比",
-            "fixed": "固定金额",
-            "discountsLoadError": "加载折扣时出错",
-            "loadingError": "加载数据时出错"
-        },
-        "sidebar": {
-            "sale": "销售",
-            "transactions": "交易",
-            "items": "项目",
-            "categories": "类别",
-            "customers": "客户",
-            "paymentMethods": "付款方式",
-            "itemTaxes": "税",
-            "itemDiscounts": "折扣",
-            "settings": "设置",
-            "businessSelector": {
-                "switchBusiness": "切换业务",
-                "addBusiness": "添加业务",
-                "edit": "编辑",
-                "delete": "删除"
-            },
-            "userProfile": {
-                "myAccount": "我的帐户",
-                "logout": "登出",
-                "dialog": {
-                    "title": "确认登出",
-                    "description": "您确定要登出吗？您需要重新登录才能访问您的帐户。",
-                    "cancel": "取消",
-                    "confirm": "登出"
-                }
-            },
-            "businessDialog": {
-                "createTitle": "创建新业务",
-                "editTitle": "编辑业务",
-                "createDescription": "向您的帐户添加新的业务位置",
-                "editDescription": "更新业务信息",
-                "nameLabel": "业务名称",
-                "namePlaceholder": "您的业务名称",
-                "addressLabel": "地址（可选）",
-                "addressPlaceholder": "主街123号，城市，国家",
-                "phoneLabel": "电话号码（可选）",
-                "phonePlaceholder": "+8613812345678",
-                "currencyLabel": "货币（可选）",
-                "currencyPlaceholder": "选择货币",
-                "languageLabel": "语言（可选）",
-                "languagePlaceholder": "选择语言",
-                "regionLabel": "地区（可选）",
-                "regionPlaceholder": "选择地区",
-                "logoLabel": "业务徽标（可选）",
-                "logoHelp": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大尺寸：1MB",
-                "uploading": "上传徽标中...",
-                "cancel": "取消",
-                "create": "创建",
-                "update": "更新",
-                "errorGeneric": "保存业务时出错",
-                "errorCreate": "创建业务时出错",
-                "errorUpdate": "更新业务时出错",
-                "errorImageSize": "图像大小必须小于1MB"
-            },
-            "deleteBusinessDialog": {
-                "title": "删除业务",
-                "description": "您确定要删除'{name}'吗？此操作无法撤消。",
-                "cancel": "取消",
-                "delete": "删除"
-            }
+          "contact": "姓名和联系方式（电子邮件地址，电话号码）",
+          "business": "业务信息（公司名称，地址，税号）",
+          "payment": "付款信息（通过第三方支付处理器安全处理）",
+          "credentials": "帐户凭据（用户名，密码）"
         }
+      },
+      "businessData": {
+        "title": "业务数据",
+        "intro": "当您使用 BillForge 时，我们会收集和存储：",
+        "items": {
+          "customers": "您输入的客户信息",
+          "invoices": "发票和交易数据",
+          "items": "项目目录和定价信息",
+          "tax": "税收和折扣配置",
+          "settings": "业务设置和偏好"
+        }
+      },
+      "auto": {
+        "title": "自动收集的信息",
+        "intro": "当您访问 BillForge 时，我们会自动收集：",
+        "items": {
+          "log": "日志数据（IP地址，浏览器类型，操作系统）",
+          "device": "设备信息",
+          "usage": "使用数据（访问的页面，使用的功能，花费的时间）",
+          "cookies": "Cookies 和类似跟踪技术"
+        }
+      }
+    },
+    "howWeUse": {
+      "title": "2. 我们如何使用您的信息",
+      "intro": "我们使用收集的信息来：",
+      "items": {
+        "provide": "提供、维护和改进我们的服务",
+        "process": "处理您的交易并管理您的帐户",
+        "send": "向您发送技术通知、更新和支持消息",
+        "respond": "回应您的评论、问题和客户服务请求",
+        "monitor": "监控和分析趋势、使用情况和活动",
+        "detect": "检测、预防和解决技术问题和欺诈活动",
+        "personalize": "个性化和改善您的体验",
+        "marketing": "向您发送营销通讯（经您同意）"
+      }
+    },
+    "sharing": {
+      "title": "3. 信息共享和披露",
+      "intro": "我们不会出售您的个人信息。 我们可能会在以下情况下分享您的信息：",
+      "items": {
+        "providers": "代表我们执行服务的服务提供商",
+        "legal": "为了遵守法律义务或回应法律请求",
+        "protect": "为了保护 BillForge、我们的用户或其他人的权利、财产和安全",
+        "merger": "与我们公司的全部或部分合并、出售或收购有关",
+        "consent": "经您同意或根据您的指示"
+      }
+    },
+    "security": {
+      "title": "4. 数据安全",
+      "intro": "我们采取适当的技术和组织措施来保护您的信息，包括：",
+      "items": {
+        "encryption": "传输中和静态数据的加密",
+        "assessments": "定期安全评估和更新",
+        "access": "访问控制和身份验证机制",
+        "datacenters": "具有物理安全措施的安全数据中心",
+        "backups": "定期备份和灾难恢复程序"
+      },
+      "disclaimer": "但是，没有任何通过互联网传输或电子存储的方法是 100% 安全的。 虽然我们要使用商业上可接受的手段来保护您的信息，但我们不能保证其绝对安全。"
+    },
+    "retention": {
+      "title": "5. 数据保留",
+      "content": "只要您的帐户处于活动状态或为您提供服务所需，我们将保留您的信息。 我们将在必要时保留和使用您的信息，以遵守法律义务、解决争议和执行我们的协议。 您可以通过联系我们请求删除您的数据，但须遵守某些法律保留要求。"
+    },
+    "rights": {
+      "title": "6. 您的权利和选择",
+      "intro": "您对您的个人信息拥有某些权利：",
+      "items": {
+        "access": "访问并接收您的个人信息的副本",
+        "correct": "更正或更新不准确的信息",
+        "delete": "请求删除您的信息",
+        "object": "反对或限制对您信息的某些处理",
+        "export": "以便携式格式导出您的数据",
+        "optout": "选择退出营销通讯",
+        "withdraw": "在我们依赖同意处理您的信息时撤回同意"
+      }
+    },
+    "cookies": {
+      "title": "7. Cookies 和跟踪技术",
+      "intro": "我们使用 cookies 和类似跟踪技术来收集和跟踪有关您使用 BillForge 的信息。 我们使用的 cookies 类型包括：",
+      "items": {
+        "essential": "必要 Cookies：我们服务运行所必需的",
+        "preference": "偏好 Cookies：记住您的设置和偏好",
+        "analytics": "分析 Cookies：帮助我们了解您如何使用我们的服务",
+        "marketing": "营销 Cookies：跟踪您的活动以提供相关广告"
+      },
+      "control": "您可以通过浏览器设置和其他工具控制 cookies。 但是，禁用某些 cookies 可能会限制您使用 BillForge 的某些功能。"
+    },
+    "thirdParty": {
+      "title": "8. 第三方服务",
+      "intro": "BillForge 可能包含指向第三方网站的链接并与第三方服务集成。 我们不对这些第三方的隐私惯例负责。 我们鼓励您阅读您互动的任何第三方服务的隐私政策。",
+      "services": "我们可能使用的第三方服务包括支付处理器、分析提供商和云基础设施提供商。 这些服务有自己的隐私政策来管理它们对您信息的使用。"
+    },
+    "children": {
+      "title": "9. 儿童隐私",
+      "content": "BillForge 不适用于 18 岁以下的儿童。 我们不会故意收集 18 岁以下儿童的个人信息。 如果我们发现我们收集了 18 岁以下儿童的个人信息，我们将采取措施删除该信息。"
+    },
+    "international": {
+      "title": "10. 国际数据传输",
+      "content": "您的信息可能会被传输到并维护在您所在国家或司法管辖区之外的服务器上。 通过使用 BillForge，您同意将您的信息传输到可能具有与您居住国不同的数据保护法的国家。"
+    },
+    "changes": {
+      "title": "11. 本隐私政策的变更",
+      "content": "我们可能会不时更新本隐私政策。 我们将通过在此页面上发布新的隐私政策并更新“最后更新”日期来通知您任何重大变更。 建议您定期查看本隐私政策以了解任何变更。 您在任何修改后继续使用 BillForge 即表示您接受更新后的隐私政策。"
+    },
+    "california": {
+      "title": "12. 加州隐私权",
+      "intro": "如果您是加利福尼亚州居民，根据《加州消费者隐私法》（CCPA），您拥有额外的权利：",
+      "items": {
+        "know": "有权知道收集、使用、共享或出售了哪些个人信息",
+        "delete": "有权删除个人信息",
+        "optout": "有权选择不出售个人信息（我们不出售个人信息）",
+        "nondiscrimination": "行使隐私权不受歧视的权利"
+      }
+    },
+    "gdpr": {
+      "title": "13. GDPR 权利（欧洲用户）",
+      "intro": "如果您位于欧洲经济区（EEA），根据《通用数据保护条例》（GDPR），您拥有额外的权利：",
+      "items": {
+        "access": "访问您的个人数据的权利",
+        "rectification": "纠正不准确数据的权利",
+        "erasure": "删除权（被遗忘权）",
+        "restrict": "限制处理的权利",
+        "portability": "数据可携带权",
+        "object": "反对处理的权利",
+        "complaint": "向监管机构提出投诉的权利"
+      }
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "如果您对本隐私政策或我们的数据惯例有任何疑问，请联系我们。 我们致力于与您合作，公平解决任何隐私问题。"
+    }
+  },
+  "terms": {
+    "title": "服务条款",
+    "lastUpdated": "最后更新：2025年12月8日",
+    "acceptance": {
+      "title": "1. 接受条款",
+      "content": "通过访问和使用 BillForge，您接受并同意受本协议条款和规定的约束。 如果您不同意遵守上述规定，请不要使用此服务。"
+    },
+    "license": {
+      "title": "2. 使用许可",
+      "intro": "允许暂时访问和使用 BillForge 用于个人和商业目的。 這是许可的授予，而不是所有权的转让，根据此许可，您不得：",
+      "items": {
+        "modify": "修改或复制材料",
+        "commercial": "未经适当订阅将材料用于任何商业目的",
+        "decompile": "尝试反编译或逆向工程 BillForge 上包含的任何软件",
+        "remove": "从材料中删除任何版权或其他专有符号",
+        "transfer": "将材料转移给另一个人或在任何其他服务器上“镜像”材料"
+      }
+    },
+    "account": {
+      "title": "3. 用户帐户",
+      "intro": "要使用 BillForge 的某些功能，您必须注册一个帐户。 您同意：",
+      "items": {
+        "accurate": "在注册期间提供准确、最新和完整的信息",
+        "security": "维护您的密码和帐户的安全",
+        "notify": "如果不允许使用您的帐户，请立即通知我们",
+        "responsibility": "对在您的帐户下发生的所有活动承担责任"
+      }
+    },
+    "subscription": {
+      "title": "4. 订阅和付款",
+      "intro": "BillForge 提供各种订阅计划。 通过订阅，您同意：",
+      "items": {
+        "fees": "支付与其选择的订阅计划相关的所有费用",
+        "renewal": "除非取消，否则自动续订您的订阅",
+        "pricing": "价格可能在提前 30 天通知的情况下发生变化",
+        "refunds": "对于部分使用的月份或未使用的服务不予退款"
+      }
+    },
+    "dataPrivacy": {
+      "title": "5. 数据和隐私",
+      "content": "您对 BillForge 的使用也受我们的隐私政策管辖。 请查看我们的",
+      "link": "隐私政策",
+      "toUnderstand": "以了解我们的惯例。"
+    },
+    "prohibited": {
+      "title": "6. 禁止活动",
+      "intro": "您不得使用 BillForge 来：",
+      "items": {
+        "laws": "违反任何法律或法规",
+        "infringe": "侵犯知识产权",
+        "malware": "传播病毒、恶意软件或其他恶意代码",
+        "unauthorized": "尝试未经授权访问我们的系统",
+        "harass": "骚扰、虐待或伤害其他用户",
+        "fraud": "出于欺诈目的使用服务"
+      }
+    },
+    "availability": {
+      "title": "7. 服务可用性",
+      "content": "我们努力保持 BillForge 的高可用性，但我们不保证不间断的访问。 我们保留在有或没有通知的情况下修改、暂停或终止服务任何部分的权利。 我们不对服务的任何修改、暂停或终止负责。"
+    },
+    "intellectual": {
+      "title": "8. 知识产权",
+      "content": "BillForge 上包含的所有内容，例如文本、图形、徽标、图像和软件，均属于 BillForge 或其内容供应商的财产，并受国际版权法保护。 本网站上所有内容的汇编是 BillForge 的专有财产。"
+    },
+    "liability": {
+      "title": "9. 责任限制",
+      "content": "在任何情况下，BillForge 或其供应商均不对因使用或无法使用 BillForge 而引起的任何损害（包括但不限于数据或利润损失或业务中断造成的损害）负责，即使 BillForge 或 BillForge 授权代表已被口头或书面通知此类损害的可能性。"
+    },
+    "termination": {
+      "title": "10. 终止",
+      "content": "我们可以出于任何原因（包括如果您违反本服务条款）立即终止或暂停您的帐户和对 BillForge 的访问，恕不另行通知或承担责任。 终止后，您使用服务的权利将立即停止。"
+    },
+    "changesTerms": {
+      "title": "11. 条款变更",
+      "content": "我们保留随时修改这些条款的权利。 我们将通过在此页面上发布新的服务条款并更新“最后更新”日期来通知用户任何重大变更。 您在此类修改后继续使用 BillForge 构成您对修改后条款的确认和接受。"
+    },
+    "governing": {
+      "title": "12. 适用法律",
+      "content": "这些条款应受适用法律的管辖和解释，而不考虑其法律冲突规定。 我们未能执行这些条款的任何权利或规定将不被视为放弃这些权利。"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "如果您对本服务条款有任何疑问，请联系我们。"
+    }
+  },
+  "app": {
+    "sale": {
+      "title": "销售",
+      "searchItems": "搜索项目...",
+      "allCategories": "所有类别",
+      "checkout": "结账",
+      "total": "总计：",
+      "items": "项目",
+      "noItems": "未找到项目",
+      "addToCart": "添加到购物车",
+      "removeFromCart": "移除",
+      "error": "错误",
+      "retry": "重试",
+      "loading": "加载中...",
+      "selectBusiness": "在侧边栏中选择一个业务以开始",
+      "cartEmpty": "您的购物车是空的。开始添加项目以继续。",
+      "backToItems": "返回项目",
+      "reviewOrder": "检查您的订单并完成交易",
+      "orderSummary": "订单摘要",
+      "item": "项目",
+      "quantity": "数量",
+      "price": "价格",
+      "tax": "税：",
+      "discount": "折扣：",
+      "subtotal": "小计：",
+      "paymentSummary": "付款摘要",
+      "processing": "处理中...",
+      "completeTransaction": "完成交易",
+      "transactionDetails": "交易详情",
+      "customer": "客户（可选）",
+      "selectCustomer": "选择客户...",
+      "guestCustomer": "来宾客户",
+      "paymentMethod": "付款方式（可选）",
+      "paymentMethodsLoadError": "无法加载付款方式",
+      "created": "创建",
+      "selectPaymentMethod": "选择付款方式...",
+      "cash": "现金",
+      "notes": "笔记（可选）",
+      "addNotes": "为此交易添加笔记...",
+      "outOfStock": "缺货",
+      "noItemsAvailable": "没有可用项目",
+      "addItemsToInventory": "将项目添加到您的库存以开始创建交易"
+    },
+    "items": {
+      "title": "项目",
+      "addItem": "添加项目",
+      "editItem": "编辑项目",
+      "deleteItem": "删除项目",
+      "name": "项目名称",
+      "price": "价格",
+      "sku": "SKU（库存单位）",
+      "category": "类别",
+      "description": "描述",
+      "noItems": "未找到项目",
+      "loading": "加载项目中...",
+      "error": "加载项目时出错",
+      "actions": "操作",
+      "business": "业务",
+      "unknownBusiness": "未知业务",
+      "addFirstItem": "添加您的第一个项目",
+      "image": "项目图像",
+      "status": "状态",
+      "created": "创建日期",
+      "active": "活跃",
+      "inactive": "不活跃",
+      "createTitle": "创建新项目",
+      "createDescription": "将新产品或服务添加到您的库存",
+      "editTitle": "编辑项目",
+      "editDescription": "更新项目信息",
+      "taxOptional": "税（可选）",
+      "noTax": "无税",
+      "discountOptional": "折扣（可选）",
+      "noDiscount": "无折扣",
+      "categoriesOptional": "类别（可选）",
+      "noCategoriesAvailable": "没有可用的类别。首先创建类别。",
+      "skuOptional": "SKU（可选）",
+      "descriptionOptional": "描述（可选）",
+      "itemImageOptional": "项目图像（可选）",
+      "supportedFormats": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大尺寸：1MB",
+      "uploading": "上传图像中...",
+      "update": "更新项目",
+      "create": "创建项目",
+      "deleteTitle": "删除项目？",
+      "deleteDescription": "这将永久删除{name}（SKU：{sku}）。此操作无法撤消。",
+      "deleting": "删除中...",
+      "errorCreating": "创建项目时出错",
+      "errorUpdating": "更新项目时出错",
+      "errorDeleting": "删除项目时出错",
+      "uploadError": "图像上传错误",
+      "deleteError": "删除项目时出错",
+      "selectImageError": "选择图像文件",
+      "imageSizeError": "图像大小必须小于1MB",
+      "loadingError": "加载数据时出错",
+      "itemsLoadError": "加载项目时出错",
+      "basePrice": "基础价格"
+    },
+    "customers": {
+      "title": "客户",
+      "addCustomer": "添加客户",
+      "editCustomer": "编辑客户",
+      "deleteCustomer": "删除客户",
+      "name": "客户名称",
+      "email": "电子邮件",
+      "phone": "电话号码",
+      "address": "地址",
+      "noCustomers": "未找到客户",
+      "loading": "加载客户中...",
+      "error": "加载客户时出错",
+      "actions": "操作",
+      "addFirstCustomer": "添加您的第一个客户",
+      "editTitle": "编辑客户",
+      "createTitle": "添加新客户",
+      "editDescription": "更新客户信息",
+      "createDescription": "将新客户添加到您的数据库",
+      "customerName": "全名",
+      "placeholderName": "王建",
+      "emailOptional": "电子邮件（可选）",
+      "placeholderEmail": "wang@example.com",
+      "phoneOptional": "电话号码（可选）",
+      "placeholderPhone": "+8613812345678",
+      "addressOptional": "地址（可选）",
+      "placeholderAddress": "主街123号，城市，邮政编码",
+      "deleteTitle": "删除客户？",
+      "deleting": "删除中...",
+      "errorCreating": "创建客户时出错",
+      "errorUpdating": "更新客户时出错",
+      "errorDeleting": "删除客户时出错",
+      "deleteError": "删除客户时出错",
+      "customersLoadError": "加载客户时出错",
+      "loadingError": "加载数据时出错"
+    },
+    "transactions": {
+      "title": "交易",
+      "viewDetails": "查看详情",
+      "date": "日期",
+      "customer": "客户",
+      "total": "总计",
+      "totalAmount": "总金额",
+      "finalAmount": "最终金额",
+      "discountAmount": "折扣金额：",
+      "taxAmount": "税金：",
+      "paymentMethod": "付款方式",
+      "noTransactions": "未找到交易",
+      "actions": "操作",
+      "loading": "加载交易中...",
+      "error": "加载交易时出错",
+      "guestCustomer": "来宾",
+      "transactionDetails": "交易详情",
+      "viewInfo": "查看完整交易信息",
+      "items": "项目",
+      "noItems": "未找到项目",
+      "item": "项目",
+      "quantity": "数量",
+      "basePrice": "基础价格",
+      "tax": "税",
+      "discount": "折扣",
+      "notes": "笔记",
+      "transactionId": "交易ID",
+      "downloadPDF": "下载PDF",
+      "downloadImage": "下载图像",
+      "sendEmail": "发送电子邮件",
+      "sendWhatsApp": "通过WhatsApp发送"
+    },
+    "settings": {
+      "title": "设置",
+      "profile": "档案",
+      "business": "业务",
+      "receipt": "收据设置",
+      "preferences": "首选项",
+      "account": "账户",
+      "profileTab": {
+        "name": "全名",
+        "email": "电子邮件地址",
+        "currentPassword": "当前密码",
+        "newPassword": "新密码",
+        "confirmPassword": "确认密码",
+        "changePassword": "更改密码",
+        "updateProfile": "更新档案",
+        "deleteAccount": "删除帐户",
+        "errorLoad": "加载档案时出错",
+        "imageSizeError": "图像大小必须小于1MB",
+        "successUpdate": "档案已成功更新",
+        "errorUpdate": "更新档案时出错",
+        "errorFields": "检查所有字段",
+        "errorMatch": "密码不匹配",
+        "errorLength": "密码必须至少包含8个字符",
+        "successPassword": "密码已成功更改",
+        "errorPassword": "当前密码不正确",
+        "confirmDelete": "确认帐户删除",
+        "sentDelete": "已发送删除确认电子邮件",
+        "errorDelete": "发送删除电子邮件时出错",
+        "profilePicture": "个人资料图片",
+        "profilePictureDescription": "上传个人资料图片以自定义您的帐户",
+        "uploadPhoto": "上传照片",
+        "delete": "删除",
+        "imageRequirements": "JPG、PNG、GIF、WEBP。最大1MB",
+        "personalInfo": "个人信息",
+        "fullName": "全名",
+        "enterFullName": "输入您的全名",
+        "enterEmail": "输入您的电子邮件",
+        "emailNote": "电子邮件无法更改",
+        "saving": "保存中...",
+        "saveChanges": "保存更改",
+        "changePasswordDescription": "更新您的密码以保护您的帐户",
+        "enterCurrentPassword": "输入您当前的密码",
+        "enterNewPassword": "输入新密码（最少8个字符）",
+        "confirmNewPassword": "确认新密码",
+        "enterConfirmNewPassword": "确认您的新密码",
+        "changingPassword": "更改密码中...",
+        "deleteAccountDescription": "删除后，您的帐户和所有数据将无法恢复",
+        "deleteWarning": "警告：此操作无法撤消",
+        "deleteConsequences": "删除您的帐户将导致：",
+        "deleteItem1": "永久删除所有业务",
+        "deleteItem2": "删除所有交易和项目",
+        "deleteItem3": "删除所有个人数据",
+        "deleteConfirmation": "您将收到一封确认电子邮件，其中包含完成删除的链接。",
+        "sendingEmail": "发送电子邮件中...",
+        "requestDeletion": "请求帐户删除"
+      },
+      "receiptTab": {
+        "options": "收据自定义",
+        "includeLogo": "在收据中包括业务徽标",
+        "footerMessage": "页脚消息",
+        "footerPlaceholder": "感谢您的购买！",
+        "qrCode": "二维码数据",
+        "qrPlaceholder": "输入二维码值（例如社交媒体链接）",
+        "prefix": "交易前缀",
+        "prefixHelp": "交易编号的前缀（例如INV、RCP）",
+        "nextNumber": "下一个交易编号",
+        "nextNumberHelp": "要使用的下一个交易编号",
+        "template": "收据模板",
+        "selectBusiness": "选择一个业务来配置收据设置"
+      },
+      "receiptPopup": {
+        "title": "交易完成！",
+        "description": "您的交易已成功完成。下载或发送收据。",
+        "downloadPDF": "下载 PDF",
+        "downloadImage": "下载图片",
+        "sendEmail": "发送电子邮件",
+        "sendWhatsApp": "通过 WhatsApp 发送",
+        "receiptPreview": "收据预览",
+        "failedDownload": "下载收据失败",
+        "failedDownloadImage": "下载收据图片失败",
+        "receiptWillBeSent": "收据将发送至",
+        "failedSendEmail": "发送电子邮件失败",
+        "failedSendWhatsApp": "发送 WhatsApp 消息失败"
+      },
+      "businessOnboarding": {
+        "title": "欢迎使用 BillForge",
+        "description": "开始创建您的第一个业务",
+        "businessName": "业务名称",
+        "businessNamePlaceholder": "我的业务",
+        "phone": "电话 (可选)",
+        "phonePlaceholder": "+8613812345678",
+        "address": "地址 (可选)",
+        "addressPlaceholder": "主街 123 号，城市，省份，邮编",
+        "currency": "货币 (可选)",
+        "selectCurrency": "选择货币",
+        "language": "语言 (可选)",
+        "selectLanguage": "选择语言",
+        "region": "地区 (可选)",
+        "selectRegion": "选择地区",
+        "logo": "业务徽标 (可选)",
+        "logoPreview": "业务徽标预览",
+        "logoFallback": "Logo",
+        "logoHelp": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大大小：1MB",
+        "uploadingLogo": "正在上传徽标...",
+        "createButton": "创建业务",
+        "imageSizeError": "图片大小必须小于 1MB",
+        "createError": "创建业务失败",
+        "genericError": "创建业务时发生错误"
+      },
+      "preferencesTab": {
+        "language": "语言",
+        "languageDescription": "选择应用程序界面的首选语言。",
+        "currency": "货币",
+        "region": "地区",
+        "timezone": "时区",
+        "title": "外观和本地化",
+        "description": "自定义BillForge的外观和行为",
+        "theme": "主题",
+        "themeDescription": "选择您首选的颜色主题",
+        "light": "浅色",
+        "dark": "深色",
+        "system": "系统默认"
+      }
+    },
+    "categories": {
+      "title": "类别",
+      "addCategory": "添加类别",
+      "editCategory": "编辑类别",
+      "deleteCategory": "删除类别",
+      "name": "类别名称",
+      "noCategories": "未找到类别",
+      "loading": "加载类别中...",
+      "error": "加载类别时出错",
+      "actions": "操作",
+      "addFirstCategory": "添加您的第一个类别",
+      "created": "创建日期",
+      "createTitle": "创建新类别",
+      "createDescription": "添加新类别以组织您的项目",
+      "editTitle": "编辑类别",
+      "editDescription": "更新类别信息",
+      "categoryName": "类别名称",
+      "placeholder": "例如：电子产品、食物、服务",
+      "deleteTitle": "删除类别？",
+      "deleteDescription": "这将永久删除类别'{name}'。此操作无法撤消。",
+      "deleting": "删除中...",
+      "errorCreating": "创建类别时出错",
+      "errorUpdating": "更新类别时出错",
+      "errorDeleting": "删除类别时出错",
+      "deleteError": "删除类别时出错",
+      "loadingError": "加载数据时出错",
+      "categoriesLoadError": "加载类别时出错"
+    },
+    "paymentMethods": {
+      "title": "付款方式",
+      "addMethod": "添加付款方式",
+      "editMethod": "编辑付款方式",
+      "deleteMethod": "删除付款方式",
+      "name": "方法名称",
+      "noMethods": "未找到付款方式",
+      "loading": "加载付款方式中...",
+      "error": "加载付款方式时出错",
+      "actions": "操作",
+      "addFirstMethod": "添加您的第一种付款方式",
+      "createTitle": "添加付款方式",
+      "createDescription": "添加新付款方式以接受付款",
+      "editTitle": "编辑付款方式",
+      "editDescription": "更新付款方式详情",
+      "deleteTitle": "删除付款方式？",
+      "deleteDescription": "这将永久删除'{name}'。此操作无法撤消。",
+      "deleting": "删除中...",
+      "errorCreating": "创建付款方式时出错",
+      "errorUpdating": "更新付款方式时出错",
+      "errorDeleting": "删除付款方式时出错",
+      "deleteError": "删除付款方式时出错",
+      "methodName": "付款方式名称",
+      "placeholderName": "例如：现金、信用卡、银行转账",
+      "created": "创建日期",
+      "paymentMethodsLoadError": "加载付款方式时出错",
+      "loadingError": "加载数据时出错"
+    },
+    "itemTaxes": {
+      "title": "税率",
+      "addTax": "添加税",
+      "editTax": "编辑税",
+      "deleteTax": "删除税",
+      "name": "税名",
+      "rate": "税率",
+      "noTaxes": "未配置任何税。创建您的第一个税配置。",
+      "loading": "加载税中...",
+      "error": "加载税时出错",
+      "actions": "操作",
+      "createTitle": "添加税率",
+      "createDescription": "创建新税配置",
+      "editTitle": "编辑税率",
+      "editDescription": "更新税率详情",
+      "deleteTitle": "删除税？",
+      "deleteDescription": "这将永久删除'{name}'。此操作无法撤消。",
+      "deleting": "删除中...",
+      "errorCreating": "创建税时出错",
+      "errorUpdating": "更新税时出错",
+      "errorDeleting": "删除税时出错",
+      "deleteError": "删除税时出错",
+      "taxName": "税名",
+      "placeholderName": "例如：增值税、销售税",
+      "type": "类型",
+      "percentage": "百分比",
+      "fixed": "固定金额",
+      "value": "值",
+      "taxesLoadError": "加载税时出错",
+      "loadingError": "加载数据时出错"
+    },
+    "itemDiscounts": {
+      "title": "折扣",
+      "addDiscount": "添加折扣",
+      "editDiscount": "编辑折扣",
+      "deleteDiscount": "删除折扣",
+      "name": "折扣名称",
+      "type": "类型",
+      "value": "值",
+      "noDiscounts": "未配置任何折扣。创建您的第一个折扣。",
+      "loading": "加载折扣中...",
+      "error": "加载折扣时出错",
+      "actions": "操作",
+      "createTitle": "添加折扣",
+      "createDescription": "创建新的折扣优惠",
+      "editTitle": "编辑折扣",
+      "editDescription": "更新折扣详情",
+      "deleteTitle": "删除折扣？",
+      "deleteDescription": "这将永久删除'{name}'。此操作无法撤消。",
+      "deleting": "删除中...",
+      "errorCreating": "创建折扣时出错",
+      "errorUpdating": "更新折扣时出错",
+      "errorDeleting": "删除折扣时出错",
+      "deleteError": "删除折扣时出错",
+      "discountName": "折扣名称",
+      "placeholderName": "例如：假期折扣、早鸟折扣",
+      "percentage": "百分比",
+      "fixed": "固定金额",
+      "discountsLoadError": "加载折扣时出错",
+      "loadingError": "加载数据时出错"
     },
     "sidebar": {
-        "businessDialog": {
-            "errors": {
-                "imageSize": "图像大小必须小于1MB",
-                "updateFailed": "业务更新失败",
-                "createFailed": "业务创建失败",
-                "updateError": "更新时出错",
-                "createError": "创建时出错"
-            },
-            "edit": "编辑业务",
-            "create": "创建业务",
-            "description": {
-                "edit": "更新业务信息",
-                "create": "向您的帐户添加新业务"
-            },
-            "form": {
-                "name": {
-                    "label": "业务名称",
-                    "placeholder": "您的业务名称"
-                },
-                "address": {
-                    "label": "地址（可选）",
-                    "placeholder": "主街123号，城市，国家"
-                },
-                "phone": {
-                    "label": "电话号码（可选）",
-                    "placeholder": "+8613812345678"
-                },
-                "currency": {
-                    "label": "货币（可选）",
-                    "placeholder": "选择货币"
-                },
-                "language": {
-                    "label": "语言（可选）",
-                    "placeholder": "选择语言"
-                },
-                "region": {
-                    "label": "地区（可选）",
-                    "placeholder": "选择地区"
-                },
-                "logo": {
-                    "label": "业务徽标（可选）",
-                    "helper": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大1MB",
-                    "uploading": "上传中..."
-                }
-            },
-            "buttons": {
-                "cancel": "取消",
-                "update": "更新",
-                "create": "创建"
-            }
-        },
-        "businessSelector": {
-            "switchBusiness": "切换业务",
-            "edit": "编辑",
-            "delete": "删除",
-            "addBusiness": "添加业务"
-        },
-        "deleteBusinessDialog": {
-            "title": "删除业务",
-            "description": "您确定吗？这无法撤消。",
-            "cancel": "取消",
-            "confirm": "删除"
-        },
-        "userProfile": {
-            "myAccount": "我的帐户",
-            "logout": "登出",
-            "dialog": {
-                "title": "确认登出",
-                "description": "您确定要登出吗？",
-                "cancel": "取消",
-                "confirm": "登出"
-            }
-        },
-        "reports": {
-            "title": "销售报告",
-            "subtitle": "查看全面的销售分析和见解",
-            "dateRange": {
-                "title": "日期范围",
-                "description": "按日期范围筛选报告",
-                "startDate": "开始日期",
-                "endDate": "结束日期",
-                "applyFilter": "应用筛选"
-            },
-            "summary": {
-                "totalSales": "总销售额",
-                "transactions": "笔交易",
-                "averageTransaction": "平均交易额",
-                "perTransaction": "每笔交易",
-                "itemsSold": "已售商品",
-                "totalUnits": "总单位",
-                "totalTax": "总税额",
-                "taxCollected": "已收税款",
-                "totalDiscounts": "总折扣",
-                "discountsGiven": "已给折扣"
-            },
-            "tabs": {
-                "byDate": "按日期",
-                "byItem": "按商品",
-                "byCategory": "按类别",
-                "byPaymentMethod": "按支付方式"
-            },
-            "byDate": {
-                "title": "按日期销售",
-                "description": "每日销售明细",
-                "date": "日期",
-                "transactions": "交易数",
-                "totalAmount": "总金额"
-            },
-            "byItem": {
-                "title": "按商品销售",
-                "description": "热销商品",
-                "itemName": "商品名称",
-                "sku": "SKU",
-                "quantitySold": "销售数量",
-                "totalRevenue": "总收入"
-            },
-            "byCategory": {
-                "title": "按类别销售",
-                "description": "按类别绩效明细",
-                "category": "类别",
-                "quantitySold": "销售数量",
-                "totalRevenue": "总收入"
-            },
-            "byPaymentMethod": {
-                "title": "按支付方式销售",
-                "description": "按支付方式明细",
-                "paymentMethod": "支付方式",
-                "transactions": "交易数",
-                "totalAmount": "总金额"
-            },
-            "noData": "暂无数据"
+      "sale": "销售",
+      "transactions": "交易",
+      "items": "项目",
+      "categories": "类别",
+      "customers": "客户",
+      "paymentMethods": "付款方式",
+      "itemTaxes": "税",
+      "itemDiscounts": "折扣",
+      "settings": "设置",
+      "businessSelector": {
+        "switchBusiness": "切换业务",
+        "addBusiness": "添加业务",
+        "edit": "编辑",
+        "delete": "删除"
+      },
+      "userProfile": {
+        "myAccount": "我的帐户",
+        "logout": "登出",
+        "dialog": {
+          "title": "确认登出",
+          "description": "您确定要登出吗？您需要重新登录才能访问您的帐户。",
+          "cancel": "取消",
+          "confirm": "登出"
         }
+      },
+      "businessDialog": {
+        "createTitle": "创建新业务",
+        "editTitle": "编辑业务",
+        "createDescription": "向您的帐户添加新的业务位置",
+        "editDescription": "更新业务信息",
+        "nameLabel": "业务名称",
+        "namePlaceholder": "您的业务名称",
+        "addressLabel": "地址（可选）",
+        "addressPlaceholder": "主街123号，城市，国家",
+        "phoneLabel": "电话号码（可选）",
+        "phonePlaceholder": "+8613812345678",
+        "currencyLabel": "货币（可选）",
+        "currencyPlaceholder": "选择货币",
+        "languageLabel": "语言（可选）",
+        "languagePlaceholder": "选择语言",
+        "regionLabel": "地区（可选）",
+        "regionPlaceholder": "选择地区",
+        "logoLabel": "业务徽标（可选）",
+        "logoHelp": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大尺寸：1MB",
+        "uploading": "上传徽标中...",
+        "cancel": "取消",
+        "create": "创建",
+        "update": "更新",
+        "errorGeneric": "保存业务时出错",
+        "errorCreate": "创建业务时出错",
+        "errorUpdate": "更新业务时出错",
+        "errorImageSize": "图像大小必须小于1MB"
+      },
+      "deleteBusinessDialog": {
+        "title": "删除业务",
+        "description": "您确定要删除'{name}'吗？此操作无法撤消。",
+        "cancel": "取消",
+        "delete": "删除"
+      }
     }
+  },
+  "sidebar": {
+    "businessDialog": {
+      "errors": {
+        "imageSize": "图像大小必须小于1MB",
+        "updateFailed": "业务更新失败",
+        "createFailed": "业务创建失败",
+        "updateError": "更新时出错",
+        "createError": "创建时出错"
+      },
+      "edit": "编辑业务",
+      "create": "创建业务",
+      "description": {
+        "edit": "更新业务信息",
+        "create": "向您的帐户添加新业务"
+      },
+      "form": {
+        "name": {
+          "label": "业务名称",
+          "placeholder": "您的业务名称"
+        },
+        "address": {
+          "label": "地址（可选）",
+          "placeholder": "主街123号，城市，国家"
+        },
+        "phone": {
+          "label": "电话号码（可选）",
+          "placeholder": "+8613812345678"
+        },
+        "currency": {
+          "label": "货币（可选）",
+          "placeholder": "选择货币"
+        },
+        "language": {
+          "label": "语言（可选）",
+          "placeholder": "选择语言"
+        },
+        "region": {
+          "label": "地区（可选）",
+          "placeholder": "选择地区"
+        },
+        "logo": {
+          "label": "业务徽标（可选）",
+          "helper": "支持的格式：JPG、JPEG、PNG、GIF、WEBP。最大1MB",
+          "uploading": "上传中..."
+        }
+      },
+      "buttons": {
+        "cancel": "取消",
+        "update": "更新",
+        "create": "创建"
+      }
+    },
+    "businessSelector": {
+      "switchBusiness": "切换业务",
+      "edit": "编辑",
+      "delete": "删除",
+      "addBusiness": "添加业务"
+    },
+    "deleteBusinessDialog": {
+      "title": "删除业务",
+      "description": "您确定吗？这无法撤消。",
+      "cancel": "取消",
+      "confirm": "删除"
+    },
+    "userProfile": {
+      "myAccount": "我的帐户",
+      "logout": "登出",
+      "dialog": {
+        "title": "确认登出",
+        "description": "您确定要登出吗？",
+        "cancel": "取消",
+        "confirm": "登出"
+      }
+    },
+    "reports": {
+      "title": "销售报告",
+      "subtitle": "查看全面的销售分析和见解",
+      "dateRange": {
+        "title": "日期范围",
+        "description": "按日期范围筛选报告",
+        "startDate": "开始日期",
+        "endDate": "结束日期",
+        "applyFilter": "应用筛选"
+      },
+      "summary": {
+        "totalSales": "总销售额",
+        "transactions": "笔交易",
+        "averageTransaction": "平均交易额",
+        "perTransaction": "每笔交易",
+        "itemsSold": "已售商品",
+        "totalUnits": "总单位",
+        "totalTax": "总税额",
+        "taxCollected": "已收税款",
+        "totalDiscounts": "总折扣",
+        "discountsGiven": "已给折扣"
+      },
+      "tabs": {
+        "byDate": "按日期",
+        "byItem": "按商品",
+        "byCategory": "按类别",
+        "byPaymentMethod": "按支付方式"
+      },
+      "byDate": {
+        "title": "按日期销售",
+        "description": "每日销售明细",
+        "date": "日期",
+        "transactions": "交易数",
+        "totalAmount": "总金额"
+      },
+      "byItem": {
+        "title": "按商品销售",
+        "description": "热销商品",
+        "itemName": "商品名称",
+        "sku": "SKU",
+        "quantitySold": "销售数量",
+        "totalRevenue": "总收入"
+      },
+      "byCategory": {
+        "title": "按类别销售",
+        "description": "按类别绩效明细",
+        "category": "类别",
+        "quantitySold": "销售数量",
+        "totalRevenue": "总收入"
+      },
+      "byPaymentMethod": {
+        "title": "按支付方式销售",
+        "description": "按支付方式明细",
+        "paymentMethod": "支付方式",
+        "transactions": "交易数",
+        "totalAmount": "总金额"
+      },
+      "noData": "暂无数据"
+    }
+  }
 }

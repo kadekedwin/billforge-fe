@@ -1,6 +1,6 @@
 'use client';
 
-import { UserCircle, FileText, Settings, Printer } from 'lucide-react';
+import { UserCircle, FileText, Settings } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const ProfileSettings = dynamic(() => import('./ProfileSettings'), { ssr: false });
 const ReceiptSettings = dynamic(() => import('./ReceiptSettings'), { ssr: false });
 const PreferencesSettings = dynamic(() => import('./PreferencesSettings'), { ssr: false });
-const PrinterSettings = dynamic(() => import('./PrinterSettings'), { ssr: false });
+
 import { useTranslation } from '@/lib/i18n/useTranslation';
 
 export default function SettingsPage() {
@@ -62,9 +62,7 @@ export default function SettingsPage() {
                 <TabsContent value="receipt">
                     <ReceiptSettings />
                 </TabsContent>
-                <TabsContent value="printer">
-                    <PrinterSettings />
-                </TabsContent>
+
                 <TabsContent value="preferences">
                     <PreferencesSettings />
                 </TabsContent>
