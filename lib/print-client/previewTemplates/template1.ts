@@ -8,8 +8,8 @@ export const generatePreviewTemplate1 = (data: ReceiptData): string => {
 <head>
   <meta charset="UTF-8">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
-    .receipt { max-width: 80mm; margin: 0 auto; background: white; padding: 10px; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: white; }
+    .receipt { max-width: 80mm; margin: 0; background: white; padding: 10px; border: none; }
     .center { text-align: center; }
     .bold { font-weight: bold; }
     .store-name { font-size: 16px; font-weight: bold; margin-bottom: 5px; }

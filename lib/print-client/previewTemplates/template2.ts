@@ -1,15 +1,15 @@
 import { ReceiptData } from "@/lib/receipt-generator";
 
 export const generatePreviewTemplate2 = (data: ReceiptData): string => {
-    const currency = data.currencySymbol || '$';
-    return `
+  const currency = data.currencySymbol || '$';
+  return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
-    .receipt { max-width: 80mm; margin: 0 auto; background: white; padding: 10px; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: white; }
+    .receipt { max-width: 80mm; margin: 0; background: white; padding: 10px; border: none; }
     .center { text-align: center; }
     .logo { width: 100%; height: auto; margin-bottom: 10px; }
     .store-name { font-size: 20px; font-weight: bold; margin-bottom: 5px; }
