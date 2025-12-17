@@ -73,7 +73,6 @@ export class PrintClientWebSocket {
 
     disconnect() {
         if (this.ws) {
-            // Clear handlers to avoid firing errors/close events during intentional disconnect
             this.ws.onopen = null;
             this.ws.onmessage = null;
             this.ws.onerror = null;
@@ -141,7 +140,7 @@ export class PrintClientWebSocket {
         }
     }
 
-    // API Methods
+
 
     async discover(ignoreUnknown: boolean = false): Promise<DiscoverResponse> {
         return new Promise((resolve, reject) => {
@@ -158,7 +157,6 @@ export class PrintClientWebSocket {
                     payload: { ignoreUnknown },
                 });
 
-                // Timeout after 30 seconds
                 setTimeout(() => {
                     this.off('discover_response', handler);
                     reject(new Error('Discover request timed out'));
@@ -185,7 +183,6 @@ export class PrintClientWebSocket {
                     payload: { deviceId },
                 });
 
-                // Timeout after 15 seconds
                 setTimeout(() => {
                     this.off('connect_response', handler);
                     reject(new Error('Connect request timed out'));
@@ -212,7 +209,6 @@ export class PrintClientWebSocket {
                     payload: { deviceId },
                 });
 
-                // Timeout after 10 seconds
                 setTimeout(() => {
                     this.off('disconnect_response', handler);
                     reject(new Error('Disconnect request timed out'));
@@ -239,7 +235,6 @@ export class PrintClientWebSocket {
                     payload: {},
                 });
 
-                // Timeout after 10 seconds
                 setTimeout(() => {
                     this.off('connected_devices_response', handler);
                     reject(new Error('Get connected devices request timed out'));
@@ -266,7 +261,6 @@ export class PrintClientWebSocket {
                     payload: { deviceId, data },
                 });
 
-                // Timeout after 10 seconds
                 setTimeout(() => {
                     this.off('send_data_response', handler);
                     reject(new Error('Send data request timed out'));
@@ -293,7 +287,6 @@ export class PrintClientWebSocket {
                     payload: {},
                 });
 
-                // Timeout after 10 seconds
                 setTimeout(() => {
                     this.off('devices_cleared', handler);
                     reject(new Error('Clear devices request timed out'));

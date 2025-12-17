@@ -27,15 +27,14 @@ export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
 
         const encoder = new EscPosEncoder();
 
-        // Select generator based on template ID
         switch (options.templateId) {
-            case 1: // Thermal Compact
+            case 1:
                 await generateThermalCompactCommands(data, encoder, options.settings);
                 break;
-            case 2: // Thermal Detailed
+            case 2:
                 await generateThermalDetailedCommands(data, encoder, options.settings);
                 break;
-            case 0: // Thermal Classic (default)
+            case 0:
             default:
                 await generateThermalClassicCommands(data, encoder, options.settings);
                 break;
