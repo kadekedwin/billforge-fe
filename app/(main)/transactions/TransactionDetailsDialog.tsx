@@ -22,11 +22,13 @@ interface TransactionDetailsDialogProps {
     isLoadingItems: boolean;
     customer: Customer | null;
     receiptLoading: boolean;
+    isPrinting?: boolean; // Optional to stay compatible if page doesn't pass it yet, but we will pass it
     isSendingEmail: boolean;
     isSendingWhatsApp: boolean;
 
     getCustomerName: (customerUuid: string | null) => string;
     getPaymentMethodName: (paymentMethodUuid: string | null) => string;
+    onPrint?: () => void; // Optional for now
     onDownloadPDF: () => void;
     onDownloadImage: () => void;
     onSendEmail: () => void;
@@ -42,11 +44,13 @@ export function TransactionDetailsDialog({
     isLoadingItems,
     customer,
     receiptLoading,
+    isPrinting = false,
     isSendingEmail,
     isSendingWhatsApp,
 
     getCustomerName,
     getPaymentMethodName,
+    onPrint,
     onDownloadPDF,
     onDownloadImage,
     onSendEmail,
@@ -85,9 +89,11 @@ export function TransactionDetailsDialog({
                     <ReceiptActions
                         customer={customer}
                         receiptLoading={receiptLoading}
+                        isPrinting={isPrinting}
                         isSendingEmail={isSendingEmail}
                         isSendingWhatsApp={isSendingWhatsApp}
 
+                        onPrint={onPrint || (() => { })}
                         onDownloadPDF={onDownloadPDF}
                         onDownloadImage={onDownloadImage}
                         onSendEmail={onSendEmail}

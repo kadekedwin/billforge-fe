@@ -19,7 +19,6 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 import type { ReceiptData } from "@/lib/receipt-generator";
 import { generateReceiptHTML } from "@/lib/receipt-generator";
 
-
 interface ReceiptPopupProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
