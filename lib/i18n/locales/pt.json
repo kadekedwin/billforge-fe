@@ -849,7 +849,8 @@
         "failedDownloadImage": "Falha ao baixar imagem do recibo",
         "receiptWillBeSent": "O recibo será enviado para",
         "failedSendEmail": "Falha ao enviar email",
-        "failedSendWhatsApp": "Falha ao enviar mensagem WhatsApp"
+        "failedSendWhatsApp": "Falha ao enviar mensagem WhatsApp",
+        "printReceipt": "Imprimir Recibo"
       },
       "businessOnboarding": {
         "title": "Bem-vindo à BillForge",
@@ -889,6 +890,14 @@
         "light": "Claro",
         "dark": "Escuro",
         "system": "Padrão do Sistema"
+      },
+      "printerTab": {
+        "encoding": "Codificação"
+      },
+      "printer": {
+        "noPrinterConnected": "Nenhuma Impressora Conectada",
+        "printSuccess": "Impressão Bem-sucedida",
+        "printFailed": "Falha na Impressão"
       }
     },
     "categories": {

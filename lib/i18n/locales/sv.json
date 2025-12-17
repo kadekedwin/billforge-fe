@@ -849,7 +849,8 @@
         "failedDownloadImage": "Det gick inte att ladda ner kvittobild",
         "receiptWillBeSent": "Kvittot kommer att skickas till",
         "failedSendEmail": "Det gick inte att skicka e-post",
-        "failedSendWhatsApp": "Det gick inte att skicka WhatsApp-meddelande"
+        "failedSendWhatsApp": "Det gick inte att skicka WhatsApp-meddelande",
+        "printReceipt": "Skriv ut Kvitto"
       },
       "businessOnboarding": {
         "title": "Välkommen till BillForge",
@@ -889,6 +890,14 @@
         "light": "Ljust",
         "dark": "Mörkt",
         "system": "Systemstandard"
+      },
+      "printerTab": {
+        "encoding": "Kodning"
+      },
+      "printer": {
+        "noPrinterConnected": "Ingen Skrivare Ansluten",
+        "printSuccess": "Utskrift Lyckades",
+        "printFailed": "Utskrift Misslyckades"
       }
     },
     "categories": {

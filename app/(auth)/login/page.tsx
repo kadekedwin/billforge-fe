@@ -68,7 +68,6 @@ export default function LoginPage() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
-        // Clear field error when user starts typing
         if (fieldErrors[name]) {
             setFieldErrors((prev) => {
                 const newErrors = { ...prev };

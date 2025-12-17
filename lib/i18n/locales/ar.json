@@ -849,7 +849,8 @@
         "failedDownloadImage": "فشل تحميل صورة الإيصال",
         "receiptWillBeSent": "سيتم إرسال الإيصال إلى",
         "failedSendEmail": "فشل إرسال البريد الإلكتروني",
-        "failedSendWhatsApp": "فشل إرسال رسالة واتساب"
+        "failedSendWhatsApp": "فشل إرسال رسالة واتساب",
+        "printReceipt": "طباعة الإيصال"
       },
       "businessOnboarding": {
         "title": "مرحبا بكم في BillForge",
@@ -889,6 +890,14 @@
         "light": "فاتح",
         "dark": "داكن",
         "system": "نظام البيئة"
+      },
+      "printerTab": {
+        "encoding": "الترميز"
+      },
+      "printer": {
+        "noPrinterConnected": "لا توجد طابعة متصلة",
+        "printSuccess": "نجحت الطباعة",
+        "printFailed": "فشلت الطباعة"
       }
     },
     "categories": {

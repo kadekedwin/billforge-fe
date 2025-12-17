@@ -849,7 +849,8 @@
         "failedDownloadImage": "Kunne ikke downloade kvitteringsbillede",
         "receiptWillBeSent": "Kvittering vil blive sendt til",
         "failedSendEmail": "Kunne ikke sende e-mail",
-        "failedSendWhatsApp": "Kunne ikke sende WhatsApp-besked"
+        "failedSendWhatsApp": "Kunne ikke sende WhatsApp-besked",
+        "printReceipt": "Udskriv Kvittering"
       },
       "businessOnboarding": {
         "title": "Velkommen til BillForge",
@@ -889,6 +890,14 @@
         "light": "Lyst",
         "dark": "Mørkt",
         "system": "Systemstandard"
+      },
+      "printerTab": {
+        "encoding": "Kodning"
+      },
+      "printer": {
+        "noPrinterConnected": "Ingen Printer Tilsluttet",
+        "printSuccess": "Udskrivning Lykkedes",
+        "printFailed": "Udskrivning Mislykkedes"
       }
     },
     "categories": {

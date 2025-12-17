@@ -849,7 +849,8 @@
         "failedDownloadImage": "Downloaden van bon-afbeelding mislukt",
         "receiptWillBeSent": "De bon wordt verzonden naar",
         "failedSendEmail": "Verzenden van e-mail mislukt",
-        "failedSendWhatsApp": "Verzenden van WhatsApp-bericht mislukt"
+        "failedSendWhatsApp": "Verzenden van WhatsApp-bericht mislukt",
+        "printReceipt": "Bon Afdrukken"
       },
       "businessOnboarding": {
         "title": "Welkom bij BillForge",
@@ -889,6 +890,14 @@
         "light": "Licht",
         "dark": "Donker",
         "system": "Systeemstandaard"
+      },
+      "printerTab": {
+        "encoding": "Codering"
+      },
+      "printer": {
+        "noPrinterConnected": "Geen Printer Verbonden",
+        "printSuccess": "Afdrukken Gelukt",
+        "printFailed": "Afdrukken Mislukt"
       }
     },
     "categories": {

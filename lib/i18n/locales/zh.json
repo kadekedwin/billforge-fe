@@ -848,7 +848,8 @@
         "failedDownloadImage": "下载收据图片失败",
         "receiptWillBeSent": "收据将发送至",
         "failedSendEmail": "发送电子邮件失败",
-        "failedSendWhatsApp": "发送 WhatsApp 消息失败"
+        "failedSendWhatsApp": "发送 WhatsApp 消息失败",
+        "printReceipt": "打印收据"
       },
       "businessOnboarding": {
         "title": "欢迎使用 BillForge",
@@ -888,6 +889,14 @@
         "light": "浅色",
         "dark": "深色",
         "system": "系统默认"
+      },
+      "printerTab": {
+        "encoding": "编码"
+      },
+      "printer": {
+        "noPrinterConnected": "未连接打印机",
+        "printSuccess": "打印成功",
+        "printFailed": "打印失败"
       }
     },
     "categories": {

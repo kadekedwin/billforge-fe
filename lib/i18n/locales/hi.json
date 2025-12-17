@@ -872,6 +872,17 @@
         "light": "हल्का",
         "dark": "गहरा",
         "system": "सिस्टम डिफ़ॉल्ट"
+      },
+      "printerTab": {
+        "encoding": "एन्कोडिंग"
+      },
+      "receiptPopup": {
+        "printReceipt": "रसीद प्रिंट करें"
+      },
+      "printer": {
+        "noPrinterConnected": "कोई प्रिंटर कनेक्ट नहीं है",
+        "printSuccess": "प्रिंट सफल",
+        "printFailed": "प्रिंट विफल"
       }
     },
     "categories": {

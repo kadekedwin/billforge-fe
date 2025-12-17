@@ -849,7 +849,8 @@
         "failedDownloadImage": "Не удалось скачать изображение чека",
         "receiptWillBeSent": "Чек будет отправлен на",
         "failedSendEmail": "Не удалось отправить email",
-        "failedSendWhatsApp": "Не удалось отправить сообщение WhatsApp"
+        "failedSendWhatsApp": "Не удалось отправить сообщение WhatsApp",
+        "printReceipt": "Печать Чека"
       },
       "businessOnboarding": {
         "title": "Добро пожаловать в BillForge",
@@ -889,6 +890,14 @@
         "light": "Светлый",
         "dark": "Темный",
         "system": "По Умолчанию в Системе"
+      },
+      "printerTab": {
+        "encoding": "Кодировка"
+      },
+      "printer": {
+        "noPrinterConnected": "Принтер Не Подключен",
+        "printSuccess": "Печать Успешна",
+        "printFailed": "Ошибка Печати"
       }
     },
     "categories": {

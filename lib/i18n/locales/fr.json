@@ -849,7 +849,8 @@
         "failedDownloadImage": "Échec du téléchargement de l'image du reçu",
         "receiptWillBeSent": "Le reçu sera envoyé à",
         "failedSendEmail": "Échec de l'envoi de l'email",
-        "failedSendWhatsApp": "Échec de l'envoi du message WhatsApp"
+        "failedSendWhatsApp": "Échec de l'envoi du message WhatsApp",
+        "printReceipt": "Imprimer le Reçu"
       },
       "businessOnboarding": {
         "title": "Bienvenue sur BillForge",
@@ -889,6 +890,14 @@
         "light": "Clair",
         "dark": "Foncé",
         "system": "Système par Défaut"
+      },
+      "printerTab": {
+        "encoding": "Encodage"
+      },
+      "printer": {
+        "noPrinterConnected": "Aucune Imprimante Connectée",
+        "printSuccess": "Impression Réussie",
+        "printFailed": "Échec de l'Impression"
       }
     },
     "categories": {

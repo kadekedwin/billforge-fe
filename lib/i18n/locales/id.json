@@ -850,6 +850,17 @@
         "light": "Terang",
         "dark": "Gelap",
         "system": "Default Sistem"
+      },
+      "printerTab": {
+        "encoding": "Encoding"
+      },
+      "receiptPopup": {
+        "printReceipt": "Cetak Struk"
+      },
+      "printer": {
+        "noPrinterConnected": "Tidak Ada Printer Terhubung",
+        "printSuccess": "Cetak Berhasil",
+        "printFailed": "Cetak Gagal"
       }
     },
     "categories": {

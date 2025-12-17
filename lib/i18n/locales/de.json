@@ -849,7 +849,8 @@
         "failedDownloadImage": "Belegbild konnte nicht heruntergeladen werden",
         "receiptWillBeSent": "Der Beleg wird gesendet an",
         "failedSendEmail": "E-Mail konnte nicht gesendet werden",
-        "failedSendWhatsApp": "WhatsApp-Nachricht konnte nicht gesendet werden"
+        "failedSendWhatsApp": "WhatsApp-Nachricht konnte nicht gesendet werden",
+        "printReceipt": "Beleg Drucken"
       },
       "businessOnboarding": {
         "title": "Willkommen bei BillForge",
@@ -889,6 +890,14 @@
         "light": "Hell",
         "dark": "Dunkel",
         "system": "Systemstandard"
+      },
+      "printerTab": {
+        "encoding": "Kodierung"
+      },
+      "printer": {
+        "noPrinterConnected": "Kein Drucker Verbunden",
+        "printSuccess": "Druck Erfolgreich",
+        "printFailed": "Druck Fehlgeschlagen"
       }
     },
     "categories": {

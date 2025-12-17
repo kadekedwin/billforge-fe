@@ -871,6 +871,17 @@
         "light": "ライト",
         "dark": "ダーク",
         "system": "システムデフォルト"
+      },
+      "printerTab": {
+        "encoding": "エンコーディング"
+      },
+      "receiptPopup": {
+        "printReceipt": "レシートを印刷"
+      },
+      "printer": {
+        "noPrinterConnected": "プリンターが接続されていません",
+        "printSuccess": "印刷成功",
+        "printFailed": "印刷失敗"
       }
     },
     "categories": {

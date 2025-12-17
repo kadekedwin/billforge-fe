@@ -850,6 +850,17 @@
         "light": "밝음",
         "dark": "어두움",
         "system": "시스템 기본값"
+      },
+      "printerTab": {
+        "encoding": "인코딩"
+      },
+      "receiptPopup": {
+        "printReceipt": "영수증 인쇄"
+      },
+      "printer": {
+        "noPrinterConnected": "연결된 프린터 없음",
+        "printSuccess": "인쇄 성공",
+        "printFailed": "인쇄 실패"
       }
     },
     "categories": {
