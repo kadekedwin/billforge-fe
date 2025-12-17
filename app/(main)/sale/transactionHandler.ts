@@ -1,6 +1,6 @@
 import { createTransaction } from "@/lib/api/transactions";
 import { createTransactionItem } from "@/lib/api/transaction-items";
-import { getReceiptData, updateReceiptData } from "@/lib/api/receipt-data";
+import { getReceiptSettings, updateReceiptSettings } from "@/lib/api/receipt-settings";
 import type { Item, Customer, PaymentMethod, ItemTax, ItemDiscount, Transaction, TransactionItem } from "@/lib/api";
 import { calculateItemTax, calculateItemDiscount, calculateCartSummary } from "./cartUtils";
 
@@ -47,7 +47,7 @@ export async function completeTransaction({
         let receiptData: { transaction_prefix: string | null; transaction_next_number: number } | null = null;
 
         try {
-            const receiptResponse = await getReceiptData(businessUuid);
+            const receiptResponse = await getReceiptSettings(businessUuid);
             if (receiptResponse.success && receiptResponse.data) {
                 receiptData = receiptResponse.data;
                 const prefix = receiptData?.transaction_prefix || '';
@@ -131,7 +131,7 @@ export async function completeTransaction({
         // Update receipt data transaction number after successful transaction
         if (receiptData && receiptData.transaction_next_number !== undefined) {
             try {
-                await updateReceiptData(businessUuid, {
+                await updateReceiptSettings(businessUuid, {
                     transaction_next_number: receiptData.transaction_next_number + 1
                 });
             } catch (err) {

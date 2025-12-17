@@ -1,7 +1,6 @@
-import { ReceiptData } from "@/lib/receipt";
+import { ReceiptData } from '@/lib/receipt-generator';
 
-export const generateClassicTemplate = (data: ReceiptData): string => {
-  const currency = data.currencySymbol || '$';
+export const generateModernBoldTemplate = (data: ReceiptData): string => {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +15,7 @@ export const generateClassicTemplate = (data: ReceiptData): string => {
       box-sizing: border-box;
     }
     body {
-      font-family: 'Courier New', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       background: white;
       padding: 0;
       margin: 0;
@@ -25,101 +24,131 @@ export const generateClassicTemplate = (data: ReceiptData): string => {
       max-width: 80mm;
       margin: 0;
       background: white;
-      padding: 10px;
+      padding: 15px;
       border: none;
     }
     .header {
       text-align: center;
-      border-bottom: 1px dashed #333;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
+      padding: 15px;
+      margin-bottom: 20px;
     }
     .store-logo {
       width: 60px;
       height: 60px;
-      margin: 10px   auto 20px;
+      margin: 0 auto 20px;
       display: block;
       object-fit: contain;
     }
-    .store-name {
-      font-size: 20px;
+    .logo-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-number {
+      font-size: 32px;
       font-weight: bold;
-      margin-bottom: 5px;
+      line-height: 1;
     }
     .store-info {
-      font-size: 12px;
+      font-size: 11px;
       color: #666;
       line-height: 1.4;
+      margin-top: 10px;
     }
     .receipt-info {
       font-size: 11px;
       margin-bottom: 15px;
-      border-bottom: 1px dashed #333;
-      padding-bottom: 10px;
+      padding: 10px 0;
+      border-top: 2px dashed #000;
+      border-bottom: 2px dashed #000;
     }
     .receipt-info-row {
       display: flex;
       justify-content: space-between;
       margin-bottom: 3px;
     }
+    .items-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px dashed #000;
+    }
     .items {
       margin-bottom: 15px;
-      border-bottom: 1px dashed #333;
-      padding-bottom: 10px;
     }
     .item {
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-    .item-header {
+      font-size: 13px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
-      margin-bottom: 2px;
+      align-items: flex-start;
     }
-    .item-name {
+    .item-left {
+      flex: 1;
+    }
+    .item-qty {
       font-weight: bold;
+      margin-right: 10px;
     }
-    .item-details {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #666;
-      padding-left: 10px;
+    .item-price {
+      font-weight: bold;
+      min-width: 70px;
+      text-align: right;
+    }
+    .items-sold {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0;
     }
     .totals {
-      font-size: 12px;
+      font-size: 13px;
+      border-top: 2px dashed #000;
+      padding-top: 15px;
       margin-bottom: 15px;
     }
     .total-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
-    .total-row.grand-total {
+    .total-row.subtotal {
       font-size: 16px;
       font-weight: bold;
-      border-top: 1px dashed #333;
-      padding-top: 8px;
-      margin-top: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+    .total-row.tax {
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 2px dashed #000;
+    }
+    .total-row.grand-total {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
     }
     .payment {
-      font-size: 12px;
+      font-size: 13px;
       margin-bottom: 15px;
-      border-bottom: 1px dashed #333;
-      padding-bottom: 10px;
+      padding-bottom: 15px;
+      border-bottom: 2px dashed #000;
+    }
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    .payment-row.tendered {
+      font-weight: bold;
+      margin-top: 10px;
     }
     .footer {
       text-align: center;
-      font-size: 11px;
-      color: #666;
-      margin-top: 15px;
-    }
-    .notes {
-      text-align: center;
-      font-size: 10px;
-      font-style: italic;
-      margin-top: 10px;
-      color: #999;
+      margin: 20px 0;
     }
     .qrcode-container {
       text-align: center;
@@ -147,7 +176,9 @@ export const generateClassicTemplate = (data: ReceiptData): string => {
   <div class="receipt">
     <div class="header">
       ${data.storeLogo ? `<img src="${data.storeLogo}" alt="${data.storeName}" class="store-logo" />` : ''}
-      <div class="store-name">${data.storeName}</div>
+      <div class="logo-section">
+        <div class="logo-number">${data.storeName}</div>
+      </div>
       ${data.storeAddress || data.storePhone ? `
       <div class="store-info">
         ${data.storeAddress ? `${data.storeAddress}<br>` : ''}
@@ -155,6 +186,7 @@ export const generateClassicTemplate = (data: ReceiptData): string => {
       </div>
       ` : ''}
     </div>
+    
     <div class="receipt-info">
       <div class="receipt-info-row">
         <span>Receipt #:</span>
@@ -187,66 +219,79 @@ export const generateClassicTemplate = (data: ReceiptData): string => {
       </div>
       ` : ''}
     </div>
+    
+    <div class="items-header">
+      <span>Qty  Description</span>
+      <span>Price</span>
+    </div>
+    
     <div class="items">
       ${data.items.map(item => `
         <div class="item">
-          <div class="item-header">
-            <span class="item-name">${item.name}</span>
-            <span>${currency}${item.total.toFixed(2)}</span>
+          <div class="item-left">
+            <span class="item-qty">${item.quantity}x</span>
+            <span>${item.name}</span>
           </div>
-          <div class="item-details">
-            <span>${item.quantity} x ${currency}${item.price.toFixed(2)}</span>
-          </div>
+          <div class="item-price">$${item.total.toFixed(2)}</div>
         </div>
       `).join('')}
+
     </div>
+    
+    <div class="items-sold">
+      ${data.items.length}x Items Sold
+    </div>
+    
     <div class="totals">
-      <div class="total-row">
+      <div class="total-row subtotal">
         <span>Subtotal:</span>
-        <span>${currency}${data.subtotal.toFixed(2)}</span>
+        <span>$${data.subtotal.toFixed(2)}</span>
       </div>
       ${data.discount ? `
       <div class="total-row">
         <span>Discount:</span>
-        <span>-${currency}${data.discount.toFixed(2)}</span>
+        <span>-$${data.discount.toFixed(2)}</span>
       </div>
       ` : ''}
       ${data.tax !== undefined ? `
-      <div class="total-row">
+      <div class="total-row tax">
         <span>Tax:</span>
-        <span>${currency}${data.tax.toFixed(2)}</span>
+        <span>$${data.tax.toFixed(2)}</span>
       </div>
       ` : ''}
       <div class="total-row grand-total">
-        <span>TOTAL:</span>
-        <span>${currency}${data.total.toFixed(2)}</span>
+        <span>Total:</span>
+        <span>$${data.total.toFixed(2)}</span>
       </div>
     </div>
+    
     <div class="payment">
-      <div class="total-row">
-        <span>Payment Method:</span>
-        <span>${data.paymentMethod}</span>
+      <div class="payment-row">
+        <span>${data.paymentMethod}:</span>
+        <span>$${data.total.toFixed(2)}</span>
       </div>
       ${data.paymentAmount ? `
-      <div class="total-row">
-        <span>Paid:</span>
-        <span>${currency}${data.paymentAmount.toFixed(2)}</span>
+      <div class="payment-row tendered">
+        <span>Tendered:</span>
+        <span>$${data.paymentAmount.toFixed(2)}</span>
       </div>
       ` : ''}
       ${data.changeAmount ? `
-      <div class="total-row">
+      <div class="payment-row">
         <span>Change:</span>
-        <span>${currency}${data.changeAmount.toFixed(2)}</span>
+        <span>$${data.changeAmount.toFixed(2)}</span>
       </div>
       ` : ''}
     </div>
+    
     ${data.footer ? `
     <div class="footer">
-      ${data.footer}
+      <div style="font-size: 11px; color: #666;">${data.footer}</div>
     </div>
     ` : ''}
+    
     ${data.notes ? `
-    <div class="notes">
+    <div style="text-align: center; font-size: 10px; font-style: italic; margin-top: 10px; color: #999;">
       ${data.notes}
     </div>
     ` : ''}

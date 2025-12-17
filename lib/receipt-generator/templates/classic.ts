@@ -1,6 +1,6 @@
-import { ReceiptData } from "@/lib/receipt";
+import { ReceiptData } from "@/lib/receipt-generator";
 
-export const generateSansSerifTemplate = (data: ReceiptData): string => {
+export const generateClassicTemplate = (data: ReceiptData): string => {
   const currency = data.currencySymbol || '$';
   return `
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
       box-sizing: border-box;
     }
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Courier New', monospace;
       background: white;
       padding: 0;
       margin: 0;
@@ -37,7 +37,7 @@ export const generateSansSerifTemplate = (data: ReceiptData): string => {
     .store-logo {
       width: 60px;
       height: 60px;
-      margin: 10px auto 20px;
+      margin: 10px   auto 20px;
       display: block;
       object-fit: contain;
     }

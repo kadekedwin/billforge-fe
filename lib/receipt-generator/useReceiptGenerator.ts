@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ReceiptData, ReceiptTemplateType } from '@/lib/receipt/types';
+import { ReceiptData, ReceiptTemplateType } from '@/lib/receipt-generator/types';
 
 export interface PDFGeneratorOptions {
     width?: string;

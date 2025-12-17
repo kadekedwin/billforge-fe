@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateReceiptImageBuffer } from '@/lib/receipt/imageGenerator';
-import type { ImageGeneratorOptions } from '@/lib/receipt/imageGenerator';
-import type { ReceiptData } from '@/lib/receipt/types';
+import { generateReceiptImageBuffer } from '@/lib/receipt-generator/imageGenerator';
+import type { ImageGeneratorOptions } from '@/lib/receipt-generator/imageGenerator';
+import type { ReceiptData } from '@/lib/receipt-generator';
 
 export async function POST(request: NextRequest) {
     try {

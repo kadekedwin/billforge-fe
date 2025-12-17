@@ -10,13 +10,12 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, MessageCircle, Loader2 } from "lucide-react";
-import { useReceiptGenerator } from "@/lib/receipt/useReceiptGenerator";
-import { useReceiptTemplatePreference } from "@/lib/receipt";
+import { useReceiptGenerator } from "@/lib/receipt-generator";
+import { useReceiptTemplatePreference } from "@/lib/receipt-settings";
 import { useBusiness } from "@/contexts/business-context";
 import { useTranslation } from "@/lib/i18n/useTranslation";
-import type { ReceiptData } from "@/lib/receipt/types";
-import { generateReceiptHTML } from "@/lib/receipt/templates";
-
+import type { ReceiptData } from "@/lib/receipt-generator";
+import { generateReceiptHTML } from "@/lib/receipt-generator";
 
 
 interface ReceiptPopupProps {

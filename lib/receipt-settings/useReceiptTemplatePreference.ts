@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { ReceiptTemplateType } from '@/lib/receipt';
+import { ReceiptTemplateType } from '@/lib/receipt-generator';
 import {
-    getReceiptData,
-    createReceiptData,
-    updateReceiptData,
-} from '@/lib/api/receipt-data';
+    getReceiptSettings,
+    createReceiptSettings,
+    updateReceiptSettings,
+} from '@/lib/api/receipt-settings';
 
 const TEMPLATE_ID_MAP: Record<number, ReceiptTemplateType> = {
     0: 'classic',
@@ -48,7 +48,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
             setError(null);
 
             try {
-                const response = await getReceiptData(businessUuid);
+                const response = await getReceiptSettings(businessUuid);
 
                 if (response.success && response.data) {
                     const data = response.data;
@@ -61,7 +61,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                 }
             } catch (err: any) {
                 if (err.statusCode === 404) {
-                    const createResponse = await createReceiptData(businessUuid, {
+                    const createResponse = await createReceiptSettings(businessUuid, {
                         template_id: 0,
                         include_image: false,
                         footer_message: '',
@@ -104,7 +104,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         setTemplate(newTemplate);
 
         try {
-            await updateReceiptData(businessUuid, {
+            await updateReceiptSettings(businessUuid, {
                 template_id: TEMPLATE_TYPE_MAP[newTemplate],
             });
         } catch (err) {
@@ -119,7 +119,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         setIncludeLogo(value);
 
         try {
-            await updateReceiptData(businessUuid, {
+            await updateReceiptSettings(businessUuid, {
                 include_image: value,
             });
         } catch (err) {
@@ -134,7 +134,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         setFooterMessage(value);
 
         try {
-            await updateReceiptData(businessUuid, {
+            await updateReceiptSettings(businessUuid, {
                 footer_message: value || null,
             });
         } catch (err) {
@@ -149,7 +149,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         setQrcodeValue(value);
 
         try {
-            await updateReceiptData(businessUuid, {
+            await updateReceiptSettings(businessUuid, {
                 qrcode_data: value || null,
             });
         } catch (err) {
@@ -164,7 +164,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         setTransactionPrefix(value);
 
         try {
-            await updateReceiptData(businessUuid, {
+            await updateReceiptSettings(businessUuid, {
                 transaction_prefix: value || null,
             });
         } catch (err) {
@@ -179,7 +179,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         setTransactionNextNumber(value);
 
         try {
-            await updateReceiptData(businessUuid, {
+            await updateReceiptSettings(businessUuid, {
                 transaction_next_number: value,
             });
         } catch (err) {

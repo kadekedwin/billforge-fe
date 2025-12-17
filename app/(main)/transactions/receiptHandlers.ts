@@ -1,7 +1,7 @@
 import type { Transaction, TransactionItem, Business, Customer } from "@/lib/api";
-import { convertTransactionToReceiptData } from "@/lib/receipt/utils";
-import { ReceiptData, ReceiptTemplateType } from "@/lib/receipt/types";
-import { PDFGeneratorOptions, ImageGeneratorOptions } from "@/lib/receipt";
+import { convertTransactionToReceiptData } from "@/lib/receipt-generator";
+import { ReceiptData, ReceiptTemplateType } from "@/lib/receipt-generator";
+import { PDFGeneratorOptions, ImageGeneratorOptions } from "@/lib/receipt-generator";
 
 
 interface GenerateReceiptParams {

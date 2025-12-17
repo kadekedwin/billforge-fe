@@ -8,11 +8,11 @@ import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Loader2, Wifi, WifiOff, Bluetooth, Trash2 } from 'lucide-react';
-import { PrintClientWebSocket } from '@/lib/websocket-print';
+import { PrintClientWebSocket } from '@/lib/print-client';
 import { BluetoothDevice, ConnectionStatus } from '@/types/printer';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import { useBusiness } from '@/contexts/business-context';
-import { usePrinterSettings } from '@/lib/printer/usePrinterSettings';
+import { usePrinterSettings } from '@/lib/printer-settings/usePrinterSettings';
 import {
     Select,
     SelectContent,

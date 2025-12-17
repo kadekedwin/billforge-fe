@@ -1,0 +1,1 @@
+export { useReceiptTemplatePreference } from './useReceiptTemplatePreference';

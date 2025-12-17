@@ -1,6 +1,6 @@
 import type { Business } from "../businesses/types";
 
-export interface ReceiptData {
+export interface ReceiptSettings {
     id: number;
     uuid: string;
     business_uuid: string;
@@ -15,7 +15,7 @@ export interface ReceiptData {
     business?: Business;
 }
 
-export interface CreateReceiptDataRequest {
+export interface CreateReceiptSettingsRequest {
     business_uuid: string;
     template_id?: number;
     qrcode_data?: string | null;
@@ -25,7 +25,7 @@ export interface CreateReceiptDataRequest {
     transaction_next_number?: number;
 }
 
-export interface UpdateReceiptDataRequest {
+export interface UpdateReceiptSettingsRequest {
     template_id?: number;
     qrcode_data?: string | null;
     footer_message?: string | null;
