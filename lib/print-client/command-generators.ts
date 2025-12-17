@@ -34,7 +34,7 @@ export const generateThermalClassicCommands = async (
             const bitmap = await imageUrlToBitmap(data.storeLogo, maxWidth);
             encoder.image(bitmap, maxWidth).newline();
         } catch (error) {
-            console.error('Failed to load logo:', error);
+            console.warn('Logo image could not be loaded, printing receipt without logo:', error instanceof Error ? error.message : error);
         }
     }
 
@@ -184,7 +184,7 @@ export const generateThermalDetailedCommands = async (
             const bitmap = await imageUrlToBitmap(data.storeLogo, maxWidth);
             encoder.image(bitmap, maxWidth).newline();
         } catch (error) {
-            console.error('Failed to load logo:', error);
+            console.warn('Logo image could not be loaded, printing receipt without logo:', error instanceof Error ? error.message : error);
         }
     }
 
@@ -251,6 +251,7 @@ export const generateThermalDetailedCommands = async (
         encoder.newline()
             .align('center')
             .qrcode(data.qrcode, 6)
+            .newline()
             .newline();
     }
 

@@ -1,7 +1,13 @@
 export async function imageUrlToBitmap(url: string, maxWidth: number = 384): Promise<number[]> {
     return new Promise((resolve, reject) => {
         const img = new Image();
-        img.crossOrigin = 'anonymous';
+
+        const isExternalUrl = url.startsWith('http://') || url.startsWith('https://');
+        const imageUrl = isExternalUrl ? `/api/image-proxy?url=${encodeURIComponent(url)}` : url;
+
+        if (isExternalUrl) {
+            img.crossOrigin = 'anonymous';
+        }
 
         img.onload = () => {
             const canvas = document.createElement('canvas');
@@ -33,7 +39,7 @@ export async function imageUrlToBitmap(url: string, maxWidth: number = 384): Pro
             reject(new Error('Failed to load image'));
         };
 
-        img.src = url;
+        img.src = imageUrl;
     });
 }
 

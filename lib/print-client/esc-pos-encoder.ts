@@ -53,6 +53,12 @@ export class EscPosEncoder {
         return this;
     }
 
+    delay(milliseconds: number) {
+        const duration = Math.min(255, Math.max(0, Math.floor(milliseconds)));
+        this.buffer.push(0x1B, 0x7E, 0x44, duration);
+        return this;
+    }
+
     qrcode(data: string, size: number = 6) {
         const dataLength = data.length;
         const pL = (dataLength + 3) % 256;
@@ -83,7 +89,16 @@ export class EscPosEncoder {
         const yH = Math.floor(height / 256);
 
         this.buffer.push(0x1D, 0x76, 0x30, 0x00, xL, xH, yL, yH);
-        this.buffer.push(...bitmap);
+
+        for (let line = 0; line < height; line++) {
+            const start = line * bytesPerLine;
+            const end = start + bytesPerLine;
+            this.buffer.push(...bitmap.slice(start, end));
+
+            if (line < height - 1) {
+                this.delay(10);
+            }
+        }
 
         return this;
     }
