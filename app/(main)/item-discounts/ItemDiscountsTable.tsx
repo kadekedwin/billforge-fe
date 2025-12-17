@@ -51,12 +51,10 @@ export function ItemDiscountsTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableRow>
-                            <TableHead>{t('app.itemDiscounts.name')}</TableHead>
-                            <TableHead>{t('app.itemDiscounts.type')}</TableHead>
-                            <TableHead>{t('app.itemDiscounts.value')}</TableHead>
-                            <TableHead className="text-right">{t('app.itemDiscounts.actions')}</TableHead>
-                        </TableRow>
+                        <TableHead>{t('app.itemDiscounts.name')}</TableHead>
+                        <TableHead>{t('app.itemDiscounts.type')}</TableHead>
+                        <TableHead>{t('app.itemDiscounts.value')}</TableHead>
+                        <TableHead className="text-right">{t('app.itemDiscounts.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
