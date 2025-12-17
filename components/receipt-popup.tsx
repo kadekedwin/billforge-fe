@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
     Dialog,
     DialogContent,
@@ -55,7 +55,8 @@ export function ReceiptPopup({
     const { printReceipt } = useReceiptPrint({ printClient });
     const {
         imageTemplate: receiptTemplate,
-        printTemplate
+        printTemplate,
+        refetch: refetchSettings
     } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
 
     const hasAutoPrintedRef = useRef(false);
@@ -75,17 +76,13 @@ export function ReceiptPopup({
         }
     }, [open]);
 
-    // Auto-print effect
     useEffect(() => {
-        if (open && autoPrint && printClient && !hasAutoPrintedRef.current) {
-            hasAutoPrintedRef.current = true;
-            // Small delay to ensure print client is ready
-            const timer = setTimeout(() => {
-                handlePrintReceipt();
-            }, 500);
-            return () => clearTimeout(timer);
+        if (open) {
+            refetchSettings();
         }
-    }, [open, autoPrint, printClient]);
+    }, [open, refetchSettings]);
+
+    // Moved auto-print effect below handlePrintReceipt
 
     const templateHTML = generateReceiptHTML(receiptData, receiptTemplate);
 
@@ -114,7 +111,7 @@ export function ReceiptPopup({
         };
     }, [open, receiptData]);
 
-    const handlePrintReceipt = async () => {
+    const handlePrintReceipt = useCallback(async () => {
         if (!printClient || !printClient.isConnected()) {
             import('sonner').then(({ toast }) => {
                 toast.error(t('app.settings.printer.noPrinterConnected'));
@@ -124,11 +121,6 @@ export function ReceiptPopup({
 
         try {
             setIsPrinting(true);
-            // Get print template ID - need to map the type string to ID if needed or updated hook
-            // The updated hook returns printTemplate type (e.g. 'thermal-classic')
-            // useReceiptPrint expects templateId number (0, 1, 2)
-            // I need a mapper here or update useReceiptPrint to accept string type
-
             const PRINT_TEMPLATE_TYPE_MAP: Record<string, number> = {
                 'thermal-classic': 0,
                 'thermal-compact': 1,
@@ -136,12 +128,6 @@ export function ReceiptPopup({
             };
 
             const templateId = PRINT_TEMPLATE_TYPE_MAP[printTemplate] ?? 0;
-
-            // Printer ID logic: currently useReceiptPrint needs printerId
-            // The user request says "print to the thermal printer bluetooth"
-            // I should get the connected printer ID from settings or discover it?
-            // Usually we might print to the *active* printer.
-            // Let's assume we print to the first connected device or managed printer
 
             const connectedDevices = await printClient.getConnectedDevices();
             if (connectedDevices.devices.length === 0) {
@@ -152,7 +138,6 @@ export function ReceiptPopup({
                 return;
             }
 
-            // For now, pick the first one
             const printerId = connectedDevices.devices[0].id;
 
             await printReceipt(receiptData, {
@@ -179,7 +164,19 @@ export function ReceiptPopup({
         } finally {
             setIsPrinting(false);
         }
-    };
+    }, [printClient, printTemplate, printReceipt, receiptData, paperWidthMm, charsPerLine, encoding, feedLines, cutEnabled, t]);
+
+    // Auto-print effect
+    useEffect(() => {
+        if (open && autoPrint && printClient && !hasAutoPrintedRef.current) {
+            // Small delay to ensure print client is ready and settings are loaded
+            const timer = setTimeout(() => {
+                hasAutoPrintedRef.current = true;
+                handlePrintReceipt();
+            }, 500);
+            return () => clearTimeout(timer);
+        }
+    }, [open, autoPrint, printClient, handlePrintReceipt]);
 
     const handleDownloadPDF = async () => {
         try {

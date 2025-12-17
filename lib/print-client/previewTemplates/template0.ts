@@ -43,7 +43,7 @@ export const generatePreviewTemplate0 = (data: ReceiptData): string => {
           <span class="item-name">${item.name}</span>
           <span>${currency}${item.total.toFixed(2)}</span>
         </div>
-        <div class="item-qty">${item.quantity} x ${currency}${item.price.toFixed(2)}</div>
+        <div class="item-qty" style="padding-left: 10px;">${item.quantity} x ${currency}${item.price.toFixed(2)}</div>
       </div>
     `).join('')}
     <div class="separator"></div>
@@ -56,7 +56,7 @@ export const generatePreviewTemplate0 = (data: ReceiptData): string => {
     ${data.paymentAmount ? `<div class="row"><span>Paid:</span><span>${currency}${data.paymentAmount.toFixed(2)}</span></div>` : ''}
     ${data.changeAmount ? `<div class="row"><span>Change:</span><span>${currency}${data.changeAmount.toFixed(2)}</span></div>` : ''}
     ${data.footer ? `<div class="center" style="margin-top: 10px; font-size: 11px;">${data.footer}</div>` : ''}
-    <div class="center" style="margin-top: 10px;">Thank You!</div>
+    ${data.notes ? `<div class="center" style="margin-top: 10px; font-size: 10px; color: #666;">${data.notes}</div>` : ''}
   </div>
 </body>
 </html>

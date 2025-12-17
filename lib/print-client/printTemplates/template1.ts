@@ -1,5 +1,6 @@
 import { ReceiptData } from "@/lib/receipt-generator";
 import { EscPosEncoder } from "../esc-pos-encoder";
+import { imageUrlToBitmap } from "../image-utils";
 import { PrinterSettings } from "./template0";
 
 const DEFAULT_SETTINGS: PrinterSettings = {
@@ -16,14 +17,27 @@ export const generatePrintTemplate1 = async (
     settings: PrinterSettings = DEFAULT_SETTINGS
 ) => {
     const currency = data.currencySymbol || '$';
+    const maxWidth = Math.floor((settings.paperWidthMm / 25.4) * 203);
 
     encoder.initialize().align('center');
+
+    if (data.storeLogo) {
+        try {
+            const { bitmap, width } = await imageUrlToBitmap(data.storeLogo, maxWidth);
+            encoder.image(bitmap, width).newline();
+        } catch (error) {
+            console.warn('Logo not loaded');
+        }
+    }
 
     encoder.bold(true).text(data.storeName).newline().bold(false);
     if (data.storePhone) {
         encoder.text(data.storePhone).newline();
     }
     encoder.text(`${data.date} ${data.time}`).newline();
+    if (data.transactionId) {
+        encoder.text(`Transaction: ${data.transactionId}`).newline();
+    }
 
     encoder.dashedLine(settings.charsPerLine).newline();
 
@@ -35,15 +49,17 @@ export const generatePrintTemplate1 = async (
 
     encoder.dashedLine(settings.charsPerLine).newline();
 
-    encoder.align('right');
-    encoder.text(`Subtotal: ${currency}${data.subtotal.toFixed(2)}`).newline();
+    encoder.align('left');
+    encoder.leftRight('Subtotal:', `${currency}${data.subtotal.toFixed(2)}`, settings.charsPerLine).newline();
     if (data.discount) {
-        encoder.text(`Discount: -${currency}${data.discount.toFixed(2)}`).newline();
+        encoder.leftRight('Discount:', `-${currency}${data.discount.toFixed(2)}`, settings.charsPerLine).newline();
     }
 
-    encoder.bold(true).size(1, 2).text(`TOTAL: ${currency}${data.total.toFixed(2)}`).newline().size(1, 1).bold(false);
+    encoder.bold(true).leftRight('TOTAL:', `${currency}${data.total.toFixed(2)}`, settings.charsPerLine).newline().bold(false);
 
-    encoder.newline().align('center').text('Thank You!').newline();
+    if (data.footer) {
+        encoder.newline().align('center').text(data.footer).newline();
+    }
 
     for (let i = 0; i < settings.feedLines; i++) {
         encoder.newline();

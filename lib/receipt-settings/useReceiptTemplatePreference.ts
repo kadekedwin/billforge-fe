@@ -237,5 +237,6 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         updateTransactionPrefix,
         transactionNextNumber,
         updateTransactionNextNumber,
+        refetch: loadReceiptData,
     };
 }

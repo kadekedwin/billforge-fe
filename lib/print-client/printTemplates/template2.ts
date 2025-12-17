@@ -72,7 +72,7 @@ export const generatePrintTemplate2 = async (
     if (data.tax !== undefined) {
         encoder.leftRight('Tax:', `${currency}${data.tax.toFixed(2)}`, settings.charsPerLine).newline();
     }
-    encoder.bold(true).size(1, 2).leftRight('TOTAL:', `${currency}${data.total.toFixed(2)}`, Math.floor(settings.charsPerLine / 2)).newline().size(1, 1).bold(false);
+    encoder.bold(true).leftRight('TOTAL:', `${currency}${data.total.toFixed(2)}`, settings.charsPerLine).newline().bold(false);
 
     encoder.dashedLine(settings.charsPerLine).newline();
 
@@ -87,8 +87,6 @@ export const generatePrintTemplate2 = async (
     if (data.footer) {
         encoder.newline().align('center').text(data.footer).newline();
     }
-
-    encoder.newline().align('center').text('Thank You for Your Business!').newline();
 
     for (let i = 0; i < settings.feedLines; i++) {
         encoder.newline();

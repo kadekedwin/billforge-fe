@@ -16,11 +16,11 @@ export const generatePreviewTemplate2 = (data: ReceiptData): string => {
     .store-info { font-size: 11px; margin-bottom: 5px; }
     .separator { border-bottom: 2px dashed #000; margin: 10px 0; }
     .thin-separator { border-bottom: 1px dashed #000; margin: 8px 0; }
-    .row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px; }
+    .row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px; width: 100%; }
     .item { margin-bottom: 10px; }
     .item-name { font-weight: bold; font-size: 12px; }
     .item-details { font-size: 11px; color: #666; margin-top: 2px; }
-    .total { font-size: 16px; font-weight: bold; margin-top: 8px; }
+    .total { font-size: 12px; font-weight: bold; margin-top: 8px; }
     .footer { font-size: 10px; margin-top: 10px; }
   </style>
 </head>
@@ -46,7 +46,7 @@ export const generatePreviewTemplate2 = (data: ReceiptData): string => {
           <span class="item-name">${item.name}</span>
           <span class="item-name">${currency}${item.total.toFixed(2)}</span>
         </div>
-        <div class="item-details">${item.quantity} x ${currency}${item.price.toFixed(2)}</div>
+        <div class="item-details" style="padding-left: 10px;">${item.quantity} x ${currency}${item.price.toFixed(2)}</div>
       </div>
     `).join('')}
     <div class="separator"></div>
@@ -59,7 +59,7 @@ export const generatePreviewTemplate2 = (data: ReceiptData): string => {
     ${data.paymentAmount ? `<div class="row"><span>Paid:</span><span>${currency}${data.paymentAmount.toFixed(2)}</span></div>` : ''}
     ${data.changeAmount ? `<div class="row"><span>Change:</span><span>${currency}${data.changeAmount.toFixed(2)}</span></div>` : ''}
     ${data.footer ? `<div class="center footer">${data.footer}</div>` : ''}
-    <div class="center" style="margin-top: 10px;">Thank You for Your Business!</div>
+    ${data.notes ? `<div class="center" style="margin-top: 10px; font-size: 10px; color: #666;">${data.notes}</div>` : ''}
   </div>
 </body>
 </html>
