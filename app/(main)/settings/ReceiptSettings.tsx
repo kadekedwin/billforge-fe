@@ -135,7 +135,7 @@ export default function ReceiptSettings() {
         storeName: 'BillForge Store',
         storeAddress: '123 Main Street, City, State 12345',
         storePhone: '(555) 123-4567',
-        storeLogo: '/logoblack.png',
+        storeLogo: '/logotext.png',
         cashierName: 'John Doe',
         customerName: 'Jane Smith',
         items: [

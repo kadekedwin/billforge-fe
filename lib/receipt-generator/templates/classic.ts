@@ -35,9 +35,9 @@ export const generateClassicTemplate = (data: ReceiptData): string => {
       margin-bottom: 15px;
     }
     .store-logo {
-      width: 60px;
-      height: 60px;
-      margin: 10px   auto 20px;
+      width: 100%;
+      height: auto;
+      margin: 10px auto 20px;
       display: block;
       object-fit: contain;
     }

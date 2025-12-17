@@ -33,8 +33,8 @@ export const generateModernBoldTemplate = (data: ReceiptData): string => {
       margin-bottom: 20px;
     }
     .store-logo {
-      width: 60px;
-      height: 60px;
+      width: 100%;
+      height: auto;
       margin: 0 auto 20px;
       display: block;
       object-fit: contain;
