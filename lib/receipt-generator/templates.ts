@@ -2,9 +2,7 @@ import { ReceiptData, ReceiptTemplate, ImageTemplateType, PrintTemplateType, Rec
 import { generateClassicTemplate } from './templates/classic';
 import { generateSansSerifTemplate } from './templates/sans-serif';
 import { generateModernBoldTemplate } from './templates/modern-bold';
-import { generateThermalClassicHTML } from './templates/thermal-classic';
-import { generateThermalCompactHTML } from './templates/thermal-compact';
-import { generateThermalDetailedHTML } from './templates/thermal-detailed';
+import { generatePreviewTemplate0, generatePreviewTemplate1, generatePreviewTemplate2 } from '@/lib/print-client/previewTemplates';
 
 export const imageTemplates: ReceiptTemplate[] = [
     {
@@ -29,22 +27,22 @@ export const imageTemplates: ReceiptTemplate[] = [
 
 export const printTemplates: ReceiptTemplate[] = [
     {
-        name: 'Thermal Classic',
+        name: 'Simple',
         type: 'thermal-classic',
-        description: 'Traditional thermal receipt layout',
-        generateHTML: generateThermalClassicHTML
+        description: 'Simple classic thermal receipt',
+        generateHTML: generatePreviewTemplate0
     },
     {
-        name: 'Thermal Compact',
+        name: 'Compact',
         type: 'thermal-compact',
-        description: 'Space-efficient thermal receipt',
-        generateHTML: generateThermalCompactHTML
+        description: 'Compact space-efficient thermal receipt',
+        generateHTML: generatePreviewTemplate1
     },
     {
-        name: 'Thermal Detailed',
+        name: 'Detailed',
         type: 'thermal-detailed',
         description: 'Detailed thermal receipt with full information',
-        generateHTML: generateThermalDetailedHTML
+        generateHTML: generatePreviewTemplate2
     }
 ];
 

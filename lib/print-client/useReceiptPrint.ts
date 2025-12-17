@@ -3,11 +3,11 @@ import { PrintClientWebSocket } from './websocket-print';
 import { ReceiptData } from '@/lib/receipt-generator';
 import { EscPosEncoder } from './esc-pos-encoder';
 import {
-    generateThermalClassicCommands,
-    generateThermalCompactCommands,
-    generateThermalDetailedCommands,
+    generatePrintTemplate0,
+    generatePrintTemplate1,
+    generatePrintTemplate2,
     PrinterSettings
-} from './command-generators';
+} from './printTemplates';
 
 interface UseReceiptPrintProps {
     printClient: PrintClientWebSocket | null;
@@ -29,14 +29,14 @@ export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
 
         switch (options.templateId) {
             case 1:
-                await generateThermalCompactCommands(data, encoder, options.settings);
+                await generatePrintTemplate1(data, encoder, options.settings);
                 break;
             case 2:
-                await generateThermalDetailedCommands(data, encoder, options.settings);
+                await generatePrintTemplate2(data, encoder, options.settings);
                 break;
             case 0:
             default:
-                await generateThermalClassicCommands(data, encoder, options.settings);
+                await generatePrintTemplate0(data, encoder, options.settings);
                 break;
         }
 
