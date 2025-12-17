@@ -892,9 +892,12 @@
         "system": "Predefinito Sistema"
       },
       "printerTab": {
-        "encoding": "Codifica"
+        "encoding": "Codifica",
+        "autoPrint": "Stampa Automatica Dopo Checkout",
+        "autoPrintDescription": "Stampa automaticamente le ricevute dopo aver completato una transazione"
       },
       "printer": {
+        "title": "Impostazioni Stampante",
         "noPrinterConnected": "Nessuna Stampante Connessa",
         "printSuccess": "Stampa Riuscita",
         "printFailed": "Stampa Fallita"

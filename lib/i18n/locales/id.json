@@ -852,12 +852,15 @@
         "system": "Default Sistem"
       },
       "printerTab": {
-        "encoding": "Encoding"
+        "encoding": "Encoding",
+        "autoPrint": "Cetak Otomatis Setelah Checkout",
+        "autoPrintDescription": "Cetak struk secara otomatis setelah menyelesaikan transaksi"
       },
       "receiptPopup": {
         "printReceipt": "Cetak Struk"
       },
       "printer": {
+        "title": "Pengaturan Printer",
         "noPrinterConnected": "Tidak Ada Printer Terhubung",
         "printSuccess": "Cetak Berhasil",
         "printFailed": "Cetak Gagal"

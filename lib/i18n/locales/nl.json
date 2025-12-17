@@ -892,9 +892,12 @@
         "system": "Systeemstandaard"
       },
       "printerTab": {
-        "encoding": "Codering"
+        "encoding": "Codering",
+        "autoPrint": "Automatisch Afdrukken Na Afrekenen",
+        "autoPrintDescription": "Bonnen automatisch afdrukken na het voltooien van een transactie"
       },
       "printer": {
+        "title": "Printerinstellingen",
         "noPrinterConnected": "Geen Printer Verbonden",
         "printSuccess": "Afdrukken Gelukt",
         "printFailed": "Afdrukken Mislukt"

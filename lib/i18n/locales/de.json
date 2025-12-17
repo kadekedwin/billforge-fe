@@ -892,9 +892,12 @@
         "system": "Systemstandard"
       },
       "printerTab": {
-        "encoding": "Kodierung"
+        "encoding": "Kodierung",
+        "autoPrint": "Automatischer Druck Nach Checkout",
+        "autoPrintDescription": "Belege nach Abschluss einer Transaktion automatisch drucken"
       },
       "printer": {
+        "title": "Druckereinstellungen",
         "noPrinterConnected": "Kein Drucker Verbunden",
         "printSuccess": "Druck Erfolgreich",
         "printFailed": "Druck Fehlgeschlagen"

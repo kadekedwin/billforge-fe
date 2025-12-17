@@ -891,9 +891,12 @@
         "system": "系统默认"
       },
       "printerTab": {
-        "encoding": "编码"
+        "encoding": "编码",
+        "autoPrint": "结账后自动打印",
+        "autoPrintDescription": "完成交易后自动打印收据"
       },
       "printer": {
+        "title": "打印机设置",
         "noPrinterConnected": "未连接打印机",
         "printSuccess": "打印成功",
         "printFailed": "打印失败"

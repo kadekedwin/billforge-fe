@@ -773,6 +773,7 @@
             "business": "Business",
             "receipt": "Receipt Settings",
             "printer": {
+                "title": "Printer Settings",
                 "noPrinterConnected": "No Printer Connected",
                 "printSuccess": "Print Success",
                 "printFailed": "Print Failed"
@@ -935,7 +936,9 @@
                 "charsPerLine": "Characters Per Line",
                 "feedLines": "Feed Lines After Print",
                 "autoCut": "Auto Cut Paper",
-                "encoding": "Encoding"
+                "encoding": "Encoding",
+                "autoPrint": "Auto Print After Checkout",
+                "autoPrintDescription": "Automatically print receipts after completing a transaction"
             }
         },
         "categories": {

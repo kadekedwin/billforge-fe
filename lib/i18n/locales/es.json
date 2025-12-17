@@ -892,9 +892,12 @@
         "system": "Sistema Predeterminado"
       },
       "printerTab": {
-        "encoding": "Codificación"
+        "encoding": "Codificación",
+        "autoPrint": "Impresión Automática Después del Pago",
+        "autoPrintDescription": "Imprimir recibos automáticamente después de completar una transacción"
       },
       "printer": {
+        "title": "Configuración de Impresora",
         "noPrinterConnected": "No Hay Impresora Conectada",
         "printSuccess": "Impresión Exitosa",
         "printFailed": "Impresión Fallida"

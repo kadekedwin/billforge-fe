@@ -874,12 +874,15 @@
         "system": "सिस्टम डिफ़ॉल्ट"
       },
       "printerTab": {
-        "encoding": "एन्कोडिंग"
+        "encoding": "एन्कोडिंग",
+        "autoPrint": "चेकआउट के बाद ऑटो प्रिंट",
+        "autoPrintDescription": "लेनदेन पूरा होने के बाद स्वचालित रूप से रसीद प्रिंट करें"
       },
       "receiptPopup": {
         "printReceipt": "रसीद प्रिंट करें"
       },
       "printer": {
+        "title": "प्रिंटर सेटिंग्स",
         "noPrinterConnected": "कोई प्रिंटर कनेक्ट नहीं है",
         "printSuccess": "प्रिंट सफल",
         "printFailed": "प्रिंट विफल"

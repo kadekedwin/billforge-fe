@@ -852,12 +852,15 @@
         "system": "시스템 기본값"
       },
       "printerTab": {
-        "encoding": "인코딩"
+        "encoding": "인코딩",
+        "autoPrint": "결제 후 자동 인쇄",
+        "autoPrintDescription": "거래 완료 후 자동으로 영수증 인쇄"
       },
       "receiptPopup": {
         "printReceipt": "영수증 인쇄"
       },
       "printer": {
+        "title": "프린터 설정",
         "noPrinterConnected": "연결된 프린터 없음",
         "printSuccess": "인쇄 성공",
         "printFailed": "인쇄 실패"

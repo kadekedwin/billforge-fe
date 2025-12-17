@@ -873,12 +873,15 @@
         "system": "システムデフォルト"
       },
       "printerTab": {
-        "encoding": "エンコーディング"
+        "encoding": "エンコーディング",
+        "autoPrint": "チェックアウト後の自動印刷",
+        "autoPrintDescription": "取引完了後に自動的にレシートを印刷"
       },
       "receiptPopup": {
         "printReceipt": "レシートを印刷"
       },
       "printer": {
+        "title": "プリンター設定",
         "noPrinterConnected": "プリンターが接続されていません",
         "printSuccess": "印刷成功",
         "printFailed": "印刷失敗"

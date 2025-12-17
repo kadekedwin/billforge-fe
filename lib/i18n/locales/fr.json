@@ -892,9 +892,12 @@
         "system": "Système par Défaut"
       },
       "printerTab": {
-        "encoding": "Encodage"
+        "encoding": "Encodage",
+        "autoPrint": "Impression Automatique Après Paiement",
+        "autoPrintDescription": "Imprimer automatiquement les reçus après avoir terminé une transaction"
       },
       "printer": {
+        "title": "Paramètres d'imprimante",
         "noPrinterConnected": "Aucune Imprimante Connectée",
         "printSuccess": "Impression Réussie",
         "printFailed": "Échec de l'Impression"

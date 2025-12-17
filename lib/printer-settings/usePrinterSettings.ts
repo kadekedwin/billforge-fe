@@ -21,6 +21,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
     const [encoding, setEncoding] = useState<string>('UTF-8');
     const [feedLines, setFeedLines] = useState<number>(3);
     const [cutEnabled, setCutEnabled] = useState<boolean>(true);
+    const [autoPrint, setAutoPrint] = useState<boolean>(false);
 
     const loadPrinterSettings = useCallback(async () => {
         if (!businessUuid || isLoadingRef.current) {
@@ -43,9 +44,9 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                     setEncoding(data.encoding);
                     setFeedLines(data.feed_lines || 3);
                     setCutEnabled(data.cut_enabled ?? true);
+                    setAutoPrint(data.auto_print ?? false);
                 }
             } catch (error: unknown) {
-                // Check if error is an object and has statusCode property
                 if (typeof error === 'object' && error !== null && 'statusCode' in error && (error as { statusCode: number }).statusCode === 404) {
                     const createResponse = await createPrinterSettings(businessUuid, {
                         paper_width_mm: 80,
@@ -53,6 +54,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                         encoding: 'UTF-8',
                         feed_lines: 3,
                         cut_enabled: true,
+                        auto_print: false,
                     });
 
                     if (createResponse.success && createResponse.data) {
@@ -62,6 +64,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                         setEncoding(data.encoding);
                         setFeedLines(data.feed_lines || 3);
                         setCutEnabled(data.cut_enabled ?? true);
+                        setAutoPrint(data.auto_print ?? false);
                     } else {
                         setError('Failed to create printer settings');
                     }
@@ -157,6 +160,21 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
         }
     };
 
+    const updateAutoPrint = async (value: boolean) => {
+        if (!businessUuid) return;
+
+        setAutoPrint(value);
+
+        try {
+            await updatePrinterSettings(businessUuid, {
+                auto_print: value,
+            });
+        } catch (err) {
+            console.error('Error updating auto print:', err);
+            setError('Failed to update auto print');
+        }
+    };
+
     return {
         isLoading,
         error,
@@ -170,5 +188,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
         updateFeedLines,
         cutEnabled,
         updateCutEnabled,
+        autoPrint,
+        updateAutoPrint,
     };
 }

@@ -6,6 +6,7 @@ export interface PrinterSettings {
     encoding: string;
     feed_lines: number | null;
     cut_enabled: boolean | null;
+    auto_print: boolean | null;
     created_at?: string;
     updated_at?: string;
 }
@@ -16,6 +17,7 @@ export interface CreatePrinterSettingsRequest {
     encoding: string;
     feed_lines?: number;
     cut_enabled?: boolean;
+    auto_print?: boolean;
 }
 
 export interface UpdatePrinterSettingsRequest {
@@ -24,4 +26,5 @@ export interface UpdatePrinterSettingsRequest {
     encoding?: string;
     feed_lines?: number;
     cut_enabled?: boolean;
+    auto_print?: boolean;
 }

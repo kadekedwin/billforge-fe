@@ -49,13 +49,16 @@ export function ReceiptPopup({
         charsPerLine,
         encoding,
         feedLines,
-        cutEnabled
+        cutEnabled,
+        autoPrint
     } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null });
     const { printReceipt } = useReceiptPrint({ printClient });
     const {
         imageTemplate: receiptTemplate,
         printTemplate
     } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
+
+    const hasAutoPrintedRef = useRef(false);
 
     useEffect(() => {
         if (open) {
@@ -64,12 +67,25 @@ export function ReceiptPopup({
                 console.error("Failed to connect to print client. Ensure the BillForge Print Client is running on port 42123.", err);
             });
             setPrintClient(client);
+            hasAutoPrintedRef.current = false;
 
             return () => {
                 client.disconnect();
             }
         }
     }, [open]);
+
+    // Auto-print effect
+    useEffect(() => {
+        if (open && autoPrint && printClient && !hasAutoPrintedRef.current) {
+            hasAutoPrintedRef.current = true;
+            // Small delay to ensure print client is ready
+            const timer = setTimeout(() => {
+                handlePrintReceipt();
+            }, 500);
+            return () => clearTimeout(timer);
+        }
+    }, [open, autoPrint, printClient]);
 
     const templateHTML = generateReceiptHTML(receiptData, receiptTemplate);
 

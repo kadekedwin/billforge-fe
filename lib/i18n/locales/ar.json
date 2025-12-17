@@ -892,9 +892,12 @@
         "system": "نظام البيئة"
       },
       "printerTab": {
-        "encoding": "الترميز"
+        "encoding": "الترميز",
+        "autoPrint": "الطباعة التلقائية بعد الدفع",
+        "autoPrintDescription": "طباعة الإيصالات تلقائيًا بعد إتمام المعاملة"
       },
       "printer": {
+        "title": "إعدادات الطابعة",
         "noPrinterConnected": "لا توجد طابعة متصلة",
         "printSuccess": "نجحت الطباعة",
         "printFailed": "فشلت الطباعة"

@@ -33,7 +33,7 @@ export default function SettingsPage() {
         },
         {
             id: 'printer' as const,
-            label: t('app.settings.printer'),
+            label: t('app.settings.printer.title'),
             icon: Printer,
         },
         {

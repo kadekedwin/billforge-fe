@@ -892,9 +892,12 @@
         "system": "Systemstandard"
       },
       "printerTab": {
-        "encoding": "Kodning"
+        "encoding": "Kodning",
+        "autoPrint": "Auto-udskriv Efter Betaling",
+        "autoPrintDescription": "Udskriv kvitteringer automatisk efter gennemførelse af en transaktion"
       },
       "printer": {
+        "title": "Printerindstillinger",
         "noPrinterConnected": "Ingen Printer Tilsluttet",
         "printSuccess": "Udskrivning Lykkedes",
         "printFailed": "Udskrivning Mislykkedes"

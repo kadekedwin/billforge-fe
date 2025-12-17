@@ -892,9 +892,12 @@
         "system": "Systemstandard"
       },
       "printerTab": {
-        "encoding": "Kodning"
+        "encoding": "Kodning",
+        "autoPrint": "Auto-utskrift Efter Betalning",
+        "autoPrintDescription": "Skriv ut kvitton automatiskt efter att ha slutfört en transaktion"
       },
       "printer": {
+        "title": "Skrivarinställningar",
         "noPrinterConnected": "Ingen Skrivare Ansluten",
         "printSuccess": "Utskrift Lyckades",
         "printFailed": "Utskrift Misslyckades"

@@ -45,6 +45,8 @@ export default function PrinterSettings() {
         updateFeedLines,
         cutEnabled,
         updateCutEnabled,
+        autoPrint,
+        updateAutoPrint,
     } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null });
 
     const handlePresetChange = (preset: '58mm' | '80mm') => {
@@ -133,6 +135,19 @@ export default function PrinterSettings() {
                                     onCheckedChange={(checked) => updateCutEnabled(checked)}
                                 />
                                 <Label>{t('app.settings.printerTab.autoCut')}</Label>
+                            </div>
+
+                            <div className="flex items-center justify-between space-x-2">
+                                <div className="space-y-0.5">
+                                    <Label>{t('app.settings.printerTab.autoPrint')}</Label>
+                                    <p className="text-sm text-muted-foreground">
+                                        {t('app.settings.printerTab.autoPrintDescription')}
+                                    </p>
+                                </div>
+                                <Switch
+                                    checked={autoPrint}
+                                    onCheckedChange={(checked) => updateAutoPrint(checked)}
+                                />
                             </div>
                         </div>
                     )}

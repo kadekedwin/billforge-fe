@@ -892,9 +892,12 @@
         "system": "По Умолчанию в Системе"
       },
       "printerTab": {
-        "encoding": "Кодировка"
+        "encoding": "Кодировка",
+        "autoPrint": "Автопечать После Оплаты",
+        "autoPrintDescription": "Автоматически печатать чеки после завершения транзакции"
       },
       "printer": {
+        "title": "Настройки Принтера",
         "noPrinterConnected": "Принтер Не Подключен",
         "printSuccess": "Печать Успешна",
         "printFailed": "Ошибка Печати"
