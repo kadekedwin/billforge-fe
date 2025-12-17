@@ -5,6 +5,7 @@ import { PrinterSettings } from "./template0";
 const DEFAULT_SETTINGS: PrinterSettings = {
     paperWidthMm: 80,
     charsPerLine: 48,
+    encoding: 'UTF-8',
     feedLines: 3,
     cutEnabled: true,
 };

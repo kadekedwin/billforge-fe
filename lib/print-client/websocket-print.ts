@@ -13,7 +13,7 @@ import {
     ConnectionStatus,
 } from '@/types/printer';
 
-type MessageHandler = (data: any) => void;
+type MessageHandler<T = unknown> = (data: T) => void;
 
 export class PrintClientWebSocket {
     private ws: WebSocket | null = null;
@@ -123,17 +123,17 @@ export class PrintClientWebSocket {
         }
     }
 
-    on(messageType: string, handler: MessageHandler) {
+    on<T = unknown>(messageType: string, handler: MessageHandler<T>) {
         if (!this.messageHandlers.has(messageType)) {
             this.messageHandlers.set(messageType, []);
         }
-        this.messageHandlers.get(messageType)!.push(handler);
+        this.messageHandlers.get(messageType)!.push(handler as MessageHandler);
     }
 
-    off(messageType: string, handler: MessageHandler) {
+    off<T = unknown>(messageType: string, handler: MessageHandler<T>) {
         const handlers = this.messageHandlers.get(messageType);
         if (handlers) {
-            const index = handlers.indexOf(handler);
+            const index = handlers.indexOf(handler as MessageHandler);
             if (index > -1) {
                 handlers.splice(index, 1);
             }

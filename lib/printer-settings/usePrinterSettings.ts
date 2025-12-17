@@ -44,8 +44,9 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                     setFeedLines(data.feed_lines || 3);
                     setCutEnabled(data.cut_enabled ?? true);
                 }
-            } catch (err: any) {
-                if (err.statusCode === 404) {
+            } catch (error: unknown) {
+                // Check if error is an object and has statusCode property
+                if (typeof error === 'object' && error !== null && 'statusCode' in error && (error as { statusCode: number }).statusCode === 404) {
                     const createResponse = await createPrinterSettings(businessUuid, {
                         paper_width_mm: 80,
                         chars_per_line: 48,
@@ -65,7 +66,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                         setError('Failed to create printer settings');
                     }
                 } else {
-                    throw err;
+                    throw error;
                 }
             }
         } catch (err) {

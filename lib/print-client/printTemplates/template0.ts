@@ -5,6 +5,7 @@ import { imageUrlToBitmap } from "../image-utils";
 export interface PrinterSettings {
     paperWidthMm: number;
     charsPerLine: number;
+    encoding: string;
     feedLines: number;
     cutEnabled: boolean;
 }
@@ -12,6 +13,7 @@ export interface PrinterSettings {
 const DEFAULT_SETTINGS: PrinterSettings = {
     paperWidthMm: 80,
     charsPerLine: 48,
+    encoding: 'UTF-8',
     feedLines: 3,
     cutEnabled: true,
 };

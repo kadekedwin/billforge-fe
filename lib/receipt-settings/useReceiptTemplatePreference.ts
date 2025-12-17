@@ -73,8 +73,9 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                     setTransactionPrefix(data.transaction_prefix || '');
                     setTransactionNextNumber(data.transaction_next_number);
                 }
-            } catch (err: any) {
-                if (err.statusCode === 404) {
+            } catch (error: unknown) {
+                // Type guard to check if error has statusCode property
+                if (typeof error === 'object' && error !== null && 'statusCode' in error && (error as { statusCode: number }).statusCode === 404) {
                     const createResponse = await createReceiptSettings(businessUuid, {
                         image_template_id: 0,
                         print_template_id: 0,
@@ -98,7 +99,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                         setError('Failed to create receipt data');
                     }
                 } else {
-                    throw err;
+                    throw error;
                 }
             }
         } catch (err) {
