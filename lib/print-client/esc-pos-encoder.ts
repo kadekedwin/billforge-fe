@@ -80,8 +80,8 @@ export class EscPosEncoder {
     }
 
     image(bitmap: number[], width: number) {
-        const height = bitmap.length / Math.ceil(width / 8);
         const bytesPerLine = Math.ceil(width / 8);
+        const height = Math.floor(bitmap.length / bytesPerLine);
 
         for (let y = 0; y < height; y += 24) {
             const sliceHeight = Math.min(24, height - y);

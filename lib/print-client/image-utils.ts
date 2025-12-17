@@ -1,4 +1,4 @@
-export async function imageUrlToBitmap(url: string, maxWidth: number = 384): Promise<number[]> {
+export async function imageUrlToBitmap(url: string, maxWidth: number = 384): Promise<{ bitmap: number[], width: number }> {
     return new Promise((resolve, reject) => {
         const img = new Image();
 
@@ -32,7 +32,7 @@ export async function imageUrlToBitmap(url: string, maxWidth: number = 384): Pro
             const imageData = ctx.getImageData(0, 0, width, height);
             const bitmap = convertToBitmap(imageData, width, height);
 
-            resolve(bitmap);
+            resolve({ bitmap, width });
         };
 
         img.onerror = () => {
