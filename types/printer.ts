@@ -27,7 +27,7 @@ export interface DisconnectPayload {
 
 export interface SendDataPayload {
     deviceId: string;
-    data: string;
+    data: string | number[];
 }
 
 export interface DiscoverResponse {

@@ -24,13 +24,16 @@ export class PrintClientWebSocket {
     private reconnectDelay = 2000;
     private statusCallback?: (status: ConnectionStatus) => void;
 
-    constructor(url: string = 'ws://localhost:42123') {
+    constructor(url: string = 'ws://127.0.0.1:42123') {
         this.url = url;
     }
 
     connect(): Promise<void> {
         return new Promise((resolve, reject) => {
             try {
+                if (this.ws) {
+                    this.disconnect();
+                }
                 this.updateStatus('connecting');
                 this.ws = new WebSocket(this.url);
 
@@ -70,6 +73,11 @@ export class PrintClientWebSocket {
 
     disconnect() {
         if (this.ws) {
+            // Clear handlers to avoid firing errors/close events during intentional disconnect
+            this.ws.onopen = null;
+            this.ws.onmessage = null;
+            this.ws.onerror = null;
+            this.ws.onclose = null;
             this.ws.close();
             this.ws = null;
         }
@@ -243,7 +251,7 @@ export class PrintClientWebSocket {
         });
     }
 
-    async sendData(deviceId: string, data: string): Promise<SendDataResponse> {
+    async sendData(deviceId: string, data: string | number[]): Promise<SendDataResponse> {
         return new Promise((resolve, reject) => {
             const handler = (responseData: SendDataResponse) => {
                 this.off('send_data_response', handler);
