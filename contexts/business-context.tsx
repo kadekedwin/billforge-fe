@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
-import { usePathname } from "next/navigation";
 import type { Business } from "@/lib/api/businesses/types";
 import { getBusinesses } from "@/lib/api/businesses";
 import { useAuth } from "@/contexts/auth-context";
@@ -18,30 +17,15 @@ const BusinessContext = createContext<BusinessContextType | undefined>(undefined
 
 const STORAGE_KEY = "selectedBusinessUuid";
 
-const BUSINESS_ROUTES = [
-    "/sale",
-    "/items",
-    "/categories",
-    "/settings",
-    "/transactions",
-    "/customers",
-    "/payment-methods",
-    "/item-taxes",
-    "/item-discounts",
-    "/businesses",
-    "/reports"
-];
+
 
 export function BusinessProvider({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
     const { isAuthenticated, isLoading: authLoading } = useAuth();
     const [selectedBusiness, setSelectedBusinessState] = useState<Business | null>(null);
     const [businesses, setBusinesses] = useState<Business[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const isBusinessRoute = useCallback(() => {
-        return BUSINESS_ROUTES.some(route => pathname.startsWith(route));
-    }, [pathname]);
+
 
     const getSavedBusinessUuid = useCallback(() => {
         if (typeof window === "undefined") return null;
@@ -112,24 +96,27 @@ export function BusinessProvider({ children }: { children: React.ReactNode }) {
         }
     }, [selectBusiness, saveBusinessUuid]);
 
-    useEffect(() => {
-        if (!isBusinessRoute()) {
-            setIsLoading(false);
-            return;
-        }
+    const [hasFetched, setHasFetched] = useState(false);
 
+    useEffect(() => {
         if (authLoading) {
             return;
         }
 
-        if (isAuthenticated) {
-            fetchBusinesses();
-        } else {
+        if (!isAuthenticated) {
             setBusinesses([]);
             setSelectedBusinessState(null);
             setIsLoading(false);
+            setHasFetched(false);
+            return;
         }
-    }, [isAuthenticated, authLoading, isBusinessRoute, fetchBusinesses]);
+
+        if (!hasFetched) {
+            fetchBusinesses().then(() => {
+                setHasFetched(true);
+            });
+        }
+    }, [isAuthenticated, authLoading, hasFetched, fetchBusinesses]);
 
     const setSelectedBusiness = useCallback((business: Business | null) => {
         setSelectedBusinessState(business);
