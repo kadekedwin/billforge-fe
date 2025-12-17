@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { ReceiptTemplateType } from '@/lib/receipt';
 import {
     getReceiptData,
@@ -27,6 +27,7 @@ interface UseReceiptTemplatePreferenceProps {
 export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplatePreferenceProps) {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const isLoadingRef = useRef(false);
 
     const [template, setTemplate] = useState<ReceiptTemplateType>('classic');
     const [includeLogo, setIncludeLogo] = useState<boolean>(false);
@@ -36,46 +37,52 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     const [transactionNextNumber, setTransactionNextNumber] = useState<number>(1);
 
     const loadReceiptData = useCallback(async () => {
-        if (!businessUuid) {
+        if (!businessUuid || isLoadingRef.current) {
             setIsLoading(false);
             return;
         }
 
         try {
+            isLoadingRef.current = true;
             setIsLoading(true);
             setError(null);
 
-            const response = await getReceiptData(businessUuid);
+            try {
+                const response = await getReceiptData(businessUuid);
 
-            if (response.success && response.data) {
+                if (response.success && response.data) {
+                    const data = response.data;
+                    setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
+                    setIncludeLogo(data.include_image);
+                    setFooterMessage(data.footer_message || '');
+                    setQrcodeValue(data.qrcode_data || '');
+                    setTransactionPrefix(data.transaction_prefix || '');
+                    setTransactionNextNumber(data.transaction_next_number);
+                }
+            } catch (err: any) {
+                if (err.statusCode === 404) {
+                    const createResponse = await createReceiptData(businessUuid, {
+                        template_id: 0,
+                        include_image: false,
+                        footer_message: '',
+                        qrcode_data: '',
+                        transaction_prefix: 'INV',
+                        transaction_next_number: 1,
+                    });
 
-                const data = response.data;
-                setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
-                setIncludeLogo(data.include_image);
-                setFooterMessage(data.footer_message || '');
-                setQrcodeValue(data.qrcode_data || '');
-                setTransactionPrefix(data.transaction_prefix || '');
-                setTransactionNextNumber(data.transaction_next_number);
-            } else {
-
-                const createResponse = await createReceiptData(businessUuid, {
-                    template_id: 0,
-                    include_image: false,
-                    footer_message: '',
-                    qrcode_data: '',
-                    transaction_prefix: 'INV',
-                    transaction_next_number: 1,
-                });
-
-                if (createResponse.success) {
-                    setTemplate('classic');
-                    setIncludeLogo(false);
-                    setFooterMessage('');
-                    setQrcodeValue('');
-                    setTransactionPrefix('INV');
-                    setTransactionNextNumber(1);
+                    if (createResponse.success && createResponse.data) {
+                        const data = createResponse.data;
+                        setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
+                        setIncludeLogo(data.include_image);
+                        setFooterMessage(data.footer_message || '');
+                        setQrcodeValue(data.qrcode_data || '');
+                        setTransactionPrefix(data.transaction_prefix || '');
+                        setTransactionNextNumber(data.transaction_next_number);
+                    } else {
+                        setError('Failed to create receipt data');
+                    }
                 } else {
-                    setError('Failed to create receipt data');
+                    throw err;
                 }
             }
         } catch (err) {
@@ -83,6 +90,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
             setError('Failed to load receipt settings');
         } finally {
             setIsLoading(false);
+            isLoadingRef.current = false;
         }
     }, [businessUuid]);
 

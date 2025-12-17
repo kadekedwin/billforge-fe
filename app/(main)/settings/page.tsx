@@ -21,6 +21,11 @@ export default function SettingsPage() {
             icon: UserCircle,
         },
         {
+            id: 'preferences' as const,
+            label: t('app.settings.preferences'),
+            icon: Settings,
+        },
+        {
             id: 'receipt' as const,
             label: t('app.settings.receipt'),
             icon: FileText,
@@ -29,11 +34,6 @@ export default function SettingsPage() {
             id: 'printer' as const,
             label: t('app.settings.printer'),
             icon: Printer,
-        },
-        {
-            id: 'preferences' as const,
-            label: t('app.settings.preferences'),
-            icon: Settings,
         },
     ];
 

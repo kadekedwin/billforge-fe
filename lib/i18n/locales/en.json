@@ -920,7 +920,16 @@
         "errorDiscover": "Failed to discover devices",
         "errorConnectDevice": "Failed to connect to device",
         "errorDisconnectDevice": "Failed to disconnect device",
-        "errorClear": "Failed to clear devices"
+        "errorClear": "Failed to clear devices",
+        "configurations": "Printer Configurations",
+        "configurationsDescription": "Configure your thermal printer settings",
+        "paperSize": "Paper Size Preset",
+        "selectPaperSize": "Select paper size",
+        "chars": "chars",
+        "paperWidth": "Paper Width (mm)",
+        "charsPerLine": "Characters Per Line",
+        "feedLines": "Feed Lines After Print",
+        "autoCut": "Auto Cut Paper"
       }
     },
     "categories": {
