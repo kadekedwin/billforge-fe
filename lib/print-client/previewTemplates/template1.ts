@@ -43,6 +43,7 @@ export const generatePreviewTemplate1 = (data: ReceiptData): string => {
     <div class="row total"><span>TOTAL:</span><span>${currency}${data.total.toFixed(2)}</span></div>
     ${data.footer ? `<div class="center footer">${data.footer}</div>` : ''}
     ${data.notes ? `<div class="center" style="margin-top: 10px; font-size: 10px; color: #666;">${data.notes}</div>` : ''}
+    ${data.qrcode ? `<div class="center" style="margin-top: 10px;"><img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(data.qrcode)}" alt="QR Code" style="width: 100px; height: 100px;" /></div>` : ''}
   </div>
 </body>
 </html>

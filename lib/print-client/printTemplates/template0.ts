@@ -92,6 +92,10 @@ export const generatePrintTemplate0 = async (
         encoder.newline().align('center').text(data.footer).newline();
     }
 
+    if (data.qrcode) {
+        encoder.newline().align('center').qrcode(data.qrcode, 4).newline();
+    }
+
     for (let i = 0; i < settings.feedLines; i++) {
         encoder.newline();
     }
