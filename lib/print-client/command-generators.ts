@@ -66,14 +66,13 @@ export const generateThermalClassicCommands = async (
         const qtyPrice = `${item.quantity}x @ ${item.price.toFixed(2)}`;
         const total = `${currency}${item.total.toFixed(2)}`;
 
-        encoder.align('right')
-            .text(`${qtyPrice}   ${total}`).newline();
+        encoder.leftRight(qtyPrice, total, settings.charsPerLine).newline();
     });
 
     encoder.text(separator).newline();
 
     const printTotalLine = (label: string, value: string) => {
-        encoder.align('right').text(`${label}: ${value}`).newline();
+        encoder.leftRight(label, value, settings.charsPerLine).newline();
     };
 
     printTotalLine('Subtotal', `${currency}${data.subtotal.toFixed(2)}`);
@@ -135,10 +134,7 @@ export const generateThermalCompactCommands = async (
     data.items.forEach(item => {
         const itemLine = `${item.quantity}x ${item.name}`;
         const priceLine = `${currency}${item.total.toFixed(2)}`;
-        const padding = Math.max(1, settings.charsPerLine - itemLine.length - priceLine.length);
-        encoder.align('left')
-            .text(itemLine + ' '.repeat(padding) + priceLine)
-            .newline();
+        encoder.leftRight(itemLine, priceLine, settings.charsPerLine).newline();
     });
 
     encoder.text(separator).newline();
@@ -231,8 +227,7 @@ export const generateThermalDetailedCommands = async (
         .bold(true).text('SUMMARY').bold(false).newline();
 
     const printLine = (label: string, value: string) => {
-        const padding = Math.max(1, settings.charsPerLine - label.length - value.length);
-        encoder.text(label + ' '.repeat(padding) + value).newline();
+        encoder.leftRight(label, value, settings.charsPerLine).newline();
     };
 
     printLine('Subtotal:', `${currency}${data.subtotal.toFixed(2)}`);

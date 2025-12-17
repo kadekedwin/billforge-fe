@@ -13,6 +13,12 @@ export class EscPosEncoder {
         return this;
     }
 
+    leftRight(left: string, right: string, width: number = 48) {
+        const padding = Math.max(1, width - left.length - right.length);
+        const content = left + ' '.repeat(padding) + right;
+        return this.text(content);
+    }
+
     newline() {
         this.buffer.push(0x0A);
         return this;
