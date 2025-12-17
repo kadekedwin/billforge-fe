@@ -42,7 +42,7 @@ export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) 
         };
         loadImage();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [business.uuid, business.image_size_bytes]);
+    }, [business.uuid, business.image_size_bytes, business.updated_at]);
 
     const sizeClasses = size === "lg" ? "h-8 w-8" : "h-4 w-4";
 
