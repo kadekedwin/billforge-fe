@@ -2,17 +2,37 @@ import { ReceiptData } from '@/lib/receipt-generator';
 import { EscPosEncoder } from './esc-pos-encoder';
 import { imageUrlToBitmap } from './image-utils';
 
-export const generateThermalClassicCommands = async (data: ReceiptData, encoder: EscPosEncoder) => {
+export interface PrinterSettings {
+    paperWidthMm: number;
+    charsPerLine: number;
+    encoding: string;
+    feedLines: number;
+    cutEnabled: boolean;
+}
+
+const DEFAULT_SETTINGS: PrinterSettings = {
+    paperWidthMm: 80,
+    charsPerLine: 48,
+    encoding: 'UTF-8',
+    feedLines: 3,
+    cutEnabled: true,
+};
+
+export const generateThermalClassicCommands = async (
+    data: ReceiptData,
+    encoder: EscPosEncoder,
+    settings: PrinterSettings = DEFAULT_SETTINGS
+) => {
     const currency = data.currencySymbol || '$';
+    const maxWidth = Math.floor((settings.paperWidthMm / 25.4) * 203);
 
     encoder.initialize()
         .align('center');
 
     if (data.storeLogo) {
         try {
-            const bitmap = await imageUrlToBitmap(data.storeLogo, 384);
-            const width = 384;
-            encoder.image(bitmap, width).newline();
+            const bitmap = await imageUrlToBitmap(data.storeLogo, maxWidth);
+            encoder.image(bitmap, maxWidth).newline();
         } catch (error) {
             console.error('Failed to load logo:', error);
         }
@@ -36,7 +56,8 @@ export const generateThermalClassicCommands = async (data: ReceiptData, encoder:
     if (data.cashierName) encoder.text(`Cashier: ${data.cashierName}`).newline();
     if (data.customerName) encoder.text(`Customer: ${data.customerName}`).newline();
 
-    encoder.text('-'.repeat(32)).newline(); // Separator for standard 58mm (approx 32 chars)
+    const separator = '-'.repeat(Math.min(settings.charsPerLine, 48));
+    encoder.text(separator).newline();
 
     // Items
     data.items.forEach(item => {
@@ -52,7 +73,7 @@ export const generateThermalClassicCommands = async (data: ReceiptData, encoder:
             .text(`${qtyPrice}   ${total}`).newline();
     });
 
-    encoder.text('-'.repeat(32)).newline();
+    encoder.text(separator).newline();
 
     // Totals
     const printTotalLine = (label: string, value: string) => {
@@ -68,7 +89,7 @@ export const generateThermalClassicCommands = async (data: ReceiptData, encoder:
         .align('right').text(`TOTAL: ${currency}${data.total.toFixed(2)}`).newline()
         .size(1, 1).bold(false);
 
-    encoder.text('-'.repeat(32)).newline();
+    encoder.text(separator).newline();
 
     encoder.align('center')
         .text(`Payment: ${data.paymentMethod}`).newline();
@@ -85,21 +106,31 @@ export const generateThermalClassicCommands = async (data: ReceiptData, encoder:
     }
 
     encoder.newline()
-        .text('Thank You!').newline()
-        .newline()
-        .newline()
-        .cut();
+        .text('Thank You!').newline();
+
+    for (let i = 0; i < settings.feedLines; i++) {
+        encoder.newline();
+    }
+
+    if (settings.cutEnabled) {
+        encoder.cut();
+    }
 };
 
-export const generateThermalCompactCommands = async (data: ReceiptData, encoder: EscPosEncoder) => {
+export const generateThermalCompactCommands = async (
+    data: ReceiptData,
+    encoder: EscPosEncoder,
+    settings: PrinterSettings = DEFAULT_SETTINGS
+) => {
     const currency = data.currencySymbol || '$';
+    const separator = '-'.repeat(Math.min(settings.charsPerLine, 48));
 
     encoder.initialize()
         .align('center')
         .bold(true).text(data.storeName).newline()
         .bold(false)
         .text(`${data.date} ${data.time}`).newline()
-        .text('-'.repeat(32)).newline();
+        .text(separator).newline();
 
     data.items.forEach(item => {
         encoder.align('left')
@@ -108,11 +139,22 @@ export const generateThermalCompactCommands = async (data: ReceiptData, encoder:
             .text(`${currency}${item.total.toFixed(2)}`).newline();
     });
 
-    encoder.text('-'.repeat(32)).newline();
+    encoder.text(separator).newline();
     encoder.align('right').bold(true).text(`TOTAL: ${currency}${data.total.toFixed(2)}`).newline();
-    encoder.cut();
+
+    for (let i = 0; i < settings.feedLines; i++) {
+        encoder.newline();
+    }
+
+    if (settings.cutEnabled) {
+        encoder.cut();
+    }
 };
 
-export const generateThermalDetailedCommands = async (data: ReceiptData, encoder: EscPosEncoder) => {
-    await generateThermalClassicCommands(data, encoder);
+export const generateThermalDetailedCommands = async (
+    data: ReceiptData,
+    encoder: EscPosEncoder,
+    settings: PrinterSettings = DEFAULT_SETTINGS
+) => {
+    await generateThermalClassicCommands(data, encoder, settings);
 };

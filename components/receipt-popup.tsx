@@ -44,7 +44,13 @@ export function ReceiptPopup({
     const { generatePDF, generateImage, loading: receiptLoading } = useReceiptGenerator();
     const { selectedBusiness } = useBusiness();
 
-    const { } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null }); // Removed printClient
+    const {
+        paperWidthMm,
+        charsPerLine,
+        encoding,
+        feedLines,
+        cutEnabled
+    } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null });
     const { printReceipt } = useReceiptPrint({ printClient });
     const {
         imageTemplate: receiptTemplate,
@@ -136,6 +142,13 @@ export function ReceiptPopup({
             await printReceipt(receiptData, {
                 printerId,
                 templateId,
+                settings: {
+                    paperWidthMm,
+                    charsPerLine,
+                    encoding,
+                    feedLines,
+                    cutEnabled
+                }
             });
 
             import('sonner').then(({ toast }) => {

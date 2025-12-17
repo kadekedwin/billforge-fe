@@ -5,7 +5,8 @@ import { EscPosEncoder } from './esc-pos-encoder';
 import {
     generateThermalClassicCommands,
     generateThermalCompactCommands,
-    generateThermalDetailedCommands
+    generateThermalDetailedCommands,
+    PrinterSettings
 } from './command-generators';
 
 interface UseReceiptPrintProps {
@@ -14,8 +15,8 @@ interface UseReceiptPrintProps {
 
 interface PrintOptions {
     printerId: string;
-    templateId: number; // print_template_id
-    settings?: any; // Future printer specific settings
+    templateId: number;
+    settings?: PrinterSettings;
 }
 
 export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
@@ -29,14 +30,14 @@ export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
         // Select generator based on template ID
         switch (options.templateId) {
             case 1: // Thermal Compact
-                await generateThermalCompactCommands(data, encoder);
+                await generateThermalCompactCommands(data, encoder, options.settings);
                 break;
             case 2: // Thermal Detailed
-                await generateThermalDetailedCommands(data, encoder);
+                await generateThermalDetailedCommands(data, encoder, options.settings);
                 break;
             case 0: // Thermal Classic (default)
             default:
-                await generateThermalClassicCommands(data, encoder);
+                await generateThermalClassicCommands(data, encoder, options.settings);
                 break;
         }
 

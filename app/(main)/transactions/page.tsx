@@ -32,7 +32,13 @@ export default function TransactionsPage() {
     const [isPrinting, setIsPrinting] = useState(false);
     const [printClient, setPrintClient] = useState<PrintClientWebSocket | null>(null);
 
-    const { } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null });
+    const {
+        paperWidthMm,
+        charsPerLine,
+        encoding,
+        feedLines,
+        cutEnabled
+    } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null });
     const { printReceipt } = useReceiptPrint({ printClient });
 
     useEffect(() => {
@@ -257,6 +263,13 @@ export default function TransactionsPage() {
             await printReceipt(receiptData, {
                 printerId,
                 templateId,
+                settings: {
+                    paperWidthMm,
+                    charsPerLine,
+                    encoding,
+                    feedLines,
+                    cutEnabled
+                }
             });
             toast.success(t('app.settings.printer.printSuccess'));
 
