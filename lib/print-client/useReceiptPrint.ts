@@ -29,14 +29,14 @@ export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
         // Select generator based on template ID
         switch (options.templateId) {
             case 1: // Thermal Compact
-                generateThermalCompactCommands(data, encoder);
+                await generateThermalCompactCommands(data, encoder);
                 break;
             case 2: // Thermal Detailed
-                generateThermalDetailedCommands(data, encoder);
+                await generateThermalDetailedCommands(data, encoder);
                 break;
             case 0: // Thermal Classic (default)
             default:
-                generateThermalClassicCommands(data, encoder);
+                await generateThermalClassicCommands(data, encoder);
                 break;
         }
 

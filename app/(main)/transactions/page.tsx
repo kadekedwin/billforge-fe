@@ -226,13 +226,15 @@ export default function TransactionsPage() {
                 discount: parseFloat(selectedTransaction.discount_amount),
                 total: parseFloat(selectedTransaction.final_amount),
                 paymentMethod: paymentMethodName,
-                cashierName: "Admin", // Placeholder or get from context if available
+                cashierName: "Admin",
                 customerName: customer ? customer.name : "Guest",
                 storeName: selectedBusiness.name,
                 storeAddress: selectedBusiness.address || "",
                 storePhone: selectedBusiness.phone || "",
                 currencySymbol: selectedBusiness.currency || "$",
                 footer: footerMessage || undefined,
+                qrcode: qrcodeValue || undefined,
+                storeLogo: businessLogoUrl,
             };
 
 

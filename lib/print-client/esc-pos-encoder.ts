@@ -51,6 +51,49 @@ export class EscPosEncoder {
         return this;
     }
 
+    qrcode(data: string, size: number = 6) {
+        // ESC/POS QR Code commands (GS ( k)
+        // Model 2, size, error correction level L
+
+        const dataLength = data.length;
+        const pL = (dataLength + 3) % 256;
+        const pH = Math.floor((dataLength + 3) / 256);
+
+        // Function 165: Store QR code data
+        this.buffer.push(0x1D, 0x28, 0x6B, pL, pH, 0x31, 0x50, 0x30);
+
+        // Add data
+        for (let i = 0; i < data.length; i++) {
+            this.buffer.push(data.charCodeAt(i));
+        }
+
+        // Function 167: Set QR code size (1-16)
+        this.buffer.push(0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x43, Math.min(16, Math.max(1, size)));
+
+        // Function 169: Set error correction level (48=L, 49=M, 50=Q, 51=H)
+        this.buffer.push(0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x45, 0x30);
+
+        // Function 180: Print QR code
+        this.buffer.push(0x1D, 0x28, 0x6B, 0x03, 0x00, 0x31, 0x51, 0x30);
+
+        return this;
+    }
+
+    image(bitmap: number[], width: number) {
+        const height = bitmap.length / Math.ceil(width / 8);
+        const bytesPerLine = Math.ceil(width / 8);
+
+        const xL = width % 256;
+        const xH = Math.floor(width / 256);
+        const yL = height % 256;
+        const yH = Math.floor(height / 256);
+
+        this.buffer.push(0x1D, 0x76, 0x30, 0x00, xL, xH, yL, yH);
+        this.buffer.push(...bitmap);
+
+        return this;
+    }
+
     cut() {
         this.buffer.push(0x1D, 0x56, 66, 0); // GS V B 0 (feeds paper then cuts)
         return this;

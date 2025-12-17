@@ -1,12 +1,24 @@
 import { ReceiptData } from '@/lib/receipt-generator';
 import { EscPosEncoder } from './esc-pos-encoder';
+import { imageUrlToBitmap } from './image-utils';
 
-export const generateThermalClassicCommands = (data: ReceiptData, encoder: EscPosEncoder) => {
+export const generateThermalClassicCommands = async (data: ReceiptData, encoder: EscPosEncoder) => {
     const currency = data.currencySymbol || '$';
 
     encoder.initialize()
-        .align('center')
-        .bold(true).size(2, 2).text(data.storeName).newline()
+        .align('center');
+
+    if (data.storeLogo) {
+        try {
+            const bitmap = await imageUrlToBitmap(data.storeLogo, 384);
+            const width = 384;
+            encoder.image(bitmap, width).newline();
+        } catch (error) {
+            console.error('Failed to load logo:', error);
+        }
+    }
+
+    encoder.bold(true).size(2, 2).text(data.storeName).newline()
         .size(1, 1).bold(false);
 
     if (data.storeAddress) {
@@ -65,6 +77,13 @@ export const generateThermalClassicCommands = (data: ReceiptData, encoder: EscPo
         encoder.newline().text(data.footer).newline();
     }
 
+    if (data.qrcode) {
+        encoder.newline()
+            .align('center')
+            .qrcode(data.qrcode, 6)
+            .newline();
+    }
+
     encoder.newline()
         .text('Thank You!').newline()
         .newline()
@@ -72,9 +91,7 @@ export const generateThermalClassicCommands = (data: ReceiptData, encoder: EscPo
         .cut();
 };
 
-export const generateThermalCompactCommands = (data: ReceiptData, encoder: EscPosEncoder) => {
-    // Similar structure but more compact
-    // Implementation simplified for brevity, following classic logic but tighter spacing
+export const generateThermalCompactCommands = async (data: ReceiptData, encoder: EscPosEncoder) => {
     const currency = data.currencySymbol || '$';
 
     encoder.initialize()
@@ -96,7 +113,6 @@ export const generateThermalCompactCommands = (data: ReceiptData, encoder: EscPo
     encoder.cut();
 };
 
-export const generateThermalDetailedCommands = (data: ReceiptData, encoder: EscPosEncoder) => {
-    // Detailed implementation
-    generateThermalClassicCommands(data, encoder); // Reuse classic for now as base
+export const generateThermalDetailedCommands = async (data: ReceiptData, encoder: EscPosEncoder) => {
+    await generateThermalClassicCommands(data, encoder);
 };
