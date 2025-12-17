@@ -51,12 +51,10 @@ export function ItemTaxesTable({
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableRow>
-                            <TableHead>{t('app.itemTaxes.name')}</TableHead>
-                            <TableHead>{t('app.itemTaxes.type')}</TableHead>
-                            <TableHead>{t('app.itemTaxes.value')}</TableHead>
-                            <TableHead className="text-right">{t('app.itemTaxes.actions')}</TableHead>
-                        </TableRow>
+                        <TableHead>{t('app.itemTaxes.name')}</TableHead>
+                        <TableHead>{t('app.itemTaxes.type')}</TableHead>
+                        <TableHead>{t('app.itemTaxes.value')}</TableHead>
+                        <TableHead className="text-right">{t('app.itemTaxes.actions')}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
