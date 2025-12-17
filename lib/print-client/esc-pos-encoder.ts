@@ -83,20 +83,18 @@ export class EscPosEncoder {
         const height = bitmap.length / Math.ceil(width / 8);
         const bytesPerLine = Math.ceil(width / 8);
 
-        const xL = width % 256;
-        const xH = Math.floor(width / 256);
-        const yL = height % 256;
-        const yH = Math.floor(height / 256);
+        for (let y = 0; y < height; y += 24) {
+            const sliceHeight = Math.min(24, height - y);
 
-        this.buffer.push(0x1D, 0x76, 0x30, 0x00, xL, xH, yL, yH);
+            this.buffer.push(0x1D, 0x76, 0x30, 0x00);
+            this.buffer.push(bytesPerLine & 0xFF, (bytesPerLine >> 8) & 0xFF);
+            this.buffer.push(sliceHeight & 0xFF, (sliceHeight >> 8) & 0xFF);
 
-        for (let line = 0; line < height; line++) {
-            const start = line * bytesPerLine;
-            const end = start + bytesPerLine;
-            this.buffer.push(...bitmap.slice(start, end));
-
-            if (line < height - 1) {
-                this.delay(10);
+            for (let sy = 0; sy < sliceHeight; sy++) {
+                const lineIndex = (y + sy) * bytesPerLine;
+                for (let x = 0; x < bytesPerLine; x++) {
+                    this.buffer.push(bitmap[lineIndex + x] || 0);
+                }
             }
         }
 
