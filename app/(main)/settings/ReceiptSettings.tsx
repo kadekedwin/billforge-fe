@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
-import { ReceiptData, ReceiptTemplateType } from '@/lib/receipt-generator';
-import { generateReceiptHTML, receiptTemplates } from '@/lib/receipt-generator';
+import { ReceiptData, ImageTemplateType, PrintTemplateType, imageTemplates, printTemplates } from '@/lib/receipt-generator';
+import { generateReceiptHTML } from '@/lib/receipt-generator';
 import { useReceiptTemplatePreference } from '@/lib/receipt-settings';
 import { Check, Loader2 } from 'lucide-react';
 import { useBusiness } from '@/contexts/business-context';
@@ -16,7 +16,7 @@ import { useTranslation } from '@/lib/i18n/useTranslation';
 interface ReceiptTemplateCardProps {
     template: {
         name: string;
-        type: ReceiptTemplateType;
+        type: ImageTemplateType | PrintTemplateType;
         description: string;
     };
     sampleReceipt: ReceiptData;
@@ -111,8 +111,10 @@ export default function ReceiptSettings() {
     const {
         isLoading,
         error,
-        template: selectedTemplate,
-        updateTemplate,
+        imageTemplate,
+        updateImageTemplate,
+        printTemplate,
+        updatePrintTemplate,
         includeLogo,
         updateIncludeLogo,
         footerMessage,
@@ -274,12 +276,15 @@ export default function ReceiptSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>{t('app.settings.receiptTab.template')}</CardTitle>
+                    <CardTitle>Image/PDF Template</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">
+                        Template used for generating PDF and image receipts
+                    </p>
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto pb-4">
-                        <div className="flex items-start gap-6 min-w-min" key={`${includeLogo}-${footerMessage}-${qrcodeValue}`}>
-                            {receiptTemplates.map((template) => (
+                        <div className="flex items-start gap-6 min-w-min" key={`image-${includeLogo}-${footerMessage}-${qrcodeValue}`}>
+                            {imageTemplates.map((template) => (
                                 <ReceiptTemplateCard
                                     key={template.type}
                                     template={template}
@@ -287,8 +292,35 @@ export default function ReceiptSettings() {
                                     includeLogo={includeLogo}
                                     footerMessage={footerMessage}
                                     qrcodeValue={qrcodeValue}
-                                    isSelected={selectedTemplate === template.type}
-                                    onSelect={() => updateTemplate(template.type)}
+                                    isSelected={imageTemplate === template.type}
+                                    onSelect={() => updateImageTemplate(template.type as ImageTemplateType)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Print Template</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">
+                        Template used for thermal printer output
+                    </p>
+                </CardHeader>
+                <CardContent>
+                    <div className="overflow-x-auto pb-4">
+                        <div className="flex items-start gap-6 min-w-min" key={`print-${includeLogo}-${footerMessage}-${qrcodeValue}`}>
+                            {printTemplates.map((template) => (
+                                <ReceiptTemplateCard
+                                    key={template.type}
+                                    template={template}
+                                    sampleReceipt={sampleReceipt}
+                                    includeLogo={includeLogo}
+                                    footerMessage={footerMessage}
+                                    qrcodeValue={qrcodeValue}
+                                    isSelected={printTemplate === template.type}
+                                    onSelect={() => updatePrintTemplate(template.type as PrintTemplateType)}
                                 />
                             ))}
                         </div>

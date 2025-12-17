@@ -4,7 +4,8 @@ export interface ReceiptSettings {
     id: number;
     uuid: string;
     business_uuid: string;
-    template_id: number;
+    image_template_id: number;
+    print_template_id: number;
     qrcode_data: string | null;
     footer_message: string | null;
     include_image: boolean;
@@ -17,7 +18,8 @@ export interface ReceiptSettings {
 
 export interface CreateReceiptSettingsRequest {
     business_uuid: string;
-    template_id?: number;
+    image_template_id?: number;
+    print_template_id?: number;
     qrcode_data?: string | null;
     footer_message?: string | null;
     include_image?: boolean;
@@ -26,7 +28,8 @@ export interface CreateReceiptSettingsRequest {
 }
 
 export interface UpdateReceiptSettingsRequest {
-    template_id?: number;
+    image_template_id?: number;
+    print_template_id?: number;
     qrcode_data?: string | null;
     footer_message?: string | null;
     include_image?: boolean;

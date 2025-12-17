@@ -1,23 +1,35 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { ReceiptTemplateType } from '@/lib/receipt-generator';
+import { ImageTemplateType, PrintTemplateType } from '@/lib/receipt-generator';
 import {
     getReceiptSettings,
     createReceiptSettings,
     updateReceiptSettings,
 } from '@/lib/api/receipt-settings';
 
-const TEMPLATE_ID_MAP: Record<number, ReceiptTemplateType> = {
+const IMAGE_TEMPLATE_ID_MAP: Record<number, ImageTemplateType> = {
     0: 'classic',
     1: 'sans-serif',
     2: 'modern-bold',
 };
 
-const TEMPLATE_TYPE_MAP: Record<ReceiptTemplateType, number> = {
+const IMAGE_TEMPLATE_TYPE_MAP: Record<ImageTemplateType, number> = {
     'classic': 0,
     'sans-serif': 1,
     'modern-bold': 2,
+};
+
+const PRINT_TEMPLATE_ID_MAP: Record<number, PrintTemplateType> = {
+    0: 'thermal-classic',
+    1: 'thermal-compact',
+    2: 'thermal-detailed',
+};
+
+const PRINT_TEMPLATE_TYPE_MAP: Record<PrintTemplateType, number> = {
+    'thermal-classic': 0,
+    'thermal-compact': 1,
+    'thermal-detailed': 2,
 };
 
 interface UseReceiptTemplatePreferenceProps {
@@ -29,7 +41,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     const [error, setError] = useState<string | null>(null);
     const isLoadingRef = useRef(false);
 
-    const [template, setTemplate] = useState<ReceiptTemplateType>('classic');
+    const [imageTemplate, setImageTemplate] = useState<ImageTemplateType>('classic');
+    const [printTemplate, setPrintTemplate] = useState<PrintTemplateType>('thermal-classic');
     const [includeLogo, setIncludeLogo] = useState<boolean>(false);
     const [footerMessage, setFooterMessage] = useState<string>('');
     const [qrcodeValue, setQrcodeValue] = useState<string>('');
@@ -52,7 +65,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
                 if (response.success && response.data) {
                     const data = response.data;
-                    setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
+                    setImageTemplate(IMAGE_TEMPLATE_ID_MAP[data.image_template_id] || 'classic');
+                    setPrintTemplate(PRINT_TEMPLATE_ID_MAP[data.print_template_id] || 'thermal-classic');
                     setIncludeLogo(data.include_image);
                     setFooterMessage(data.footer_message || '');
                     setQrcodeValue(data.qrcode_data || '');
@@ -62,7 +76,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
             } catch (err: any) {
                 if (err.statusCode === 404) {
                     const createResponse = await createReceiptSettings(businessUuid, {
-                        template_id: 0,
+                        image_template_id: 0,
+                        print_template_id: 0,
                         include_image: false,
                         footer_message: '',
                         qrcode_data: '',
@@ -72,7 +87,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
                     if (createResponse.success && createResponse.data) {
                         const data = createResponse.data;
-                        setTemplate(TEMPLATE_ID_MAP[data.template_id] || 'classic');
+                        setImageTemplate(IMAGE_TEMPLATE_ID_MAP[data.image_template_id] || 'classic');
+                        setPrintTemplate(PRINT_TEMPLATE_ID_MAP[data.print_template_id] || 'thermal-classic');
                         setIncludeLogo(data.include_image);
                         setFooterMessage(data.footer_message || '');
                         setQrcodeValue(data.qrcode_data || '');
@@ -98,18 +114,33 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         loadReceiptData();
     }, [loadReceiptData]);
 
-    const updateTemplate = async (newTemplate: ReceiptTemplateType) => {
+    const updateImageTemplate = async (newTemplate: ImageTemplateType) => {
         if (!businessUuid) return;
 
-        setTemplate(newTemplate);
+        setImageTemplate(newTemplate);
 
         try {
             await updateReceiptSettings(businessUuid, {
-                template_id: TEMPLATE_TYPE_MAP[newTemplate],
+                image_template_id: IMAGE_TEMPLATE_TYPE_MAP[newTemplate],
             });
         } catch (err) {
-            console.error('Error updating template:', err);
-            setError('Failed to update template');
+            console.error('Error updating image template:', err);
+            setError('Failed to update image template');
+        }
+    };
+
+    const updatePrintTemplate = async (newTemplate: PrintTemplateType) => {
+        if (!businessUuid) return;
+
+        setPrintTemplate(newTemplate);
+
+        try {
+            await updateReceiptSettings(businessUuid, {
+                print_template_id: PRINT_TEMPLATE_TYPE_MAP[newTemplate],
+            });
+        } catch (err) {
+            console.error('Error updating print template:', err);
+            setError('Failed to update print template');
         }
     };
 
@@ -191,8 +222,10 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     return {
         isLoading,
         error,
-        template,
-        updateTemplate,
+        imageTemplate,
+        updateImageTemplate,
+        printTemplate,
+        updatePrintTemplate,
         includeLogo,
         updateIncludeLogo,
         footerMessage,
