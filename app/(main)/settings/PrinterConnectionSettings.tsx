@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, Wifi, WifiOff, Bluetooth, Trash2 } from 'lucide-react';
+import { Loader2, Wifi, WifiOff, Bluetooth, Trash2, Printer } from 'lucide-react';
 import { PrintClientWebSocket } from '@/lib/print-client';
 import { BluetoothDevice, ConnectionStatus } from '@/types/printer';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -23,6 +23,7 @@ export default function PrinterConnectionSettings() {
     const [ignoreUnknown, setIgnoreUnknown] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [loadingDeviceId, setLoadingDeviceId] = useState<string | null>(null);
+    const [testingDeviceId, setTestingDeviceId] = useState<string | null>(null);
 
     const handleConnect = async () => {
         try {
@@ -174,6 +175,52 @@ export default function PrinterConnectionSettings() {
         } catch (err) {
             setError(t('app.settings.printerTab.errorClear'));
             console.error('Failed to clear devices:', err);
+        }
+    };
+
+    const handleTestPrint = async (deviceId: string) => {
+        if (!ws) return;
+
+        try {
+            setError(null);
+            setTestingDeviceId(deviceId);
+
+            const { EscPosEncoder } = await import('@/lib/print-client/esc-pos-encoder');
+            const encoder = new EscPosEncoder();
+
+            encoder.initialize()
+                .align('center')
+                .bold(true).size(2, 2).text('TEST PRINT').newline().size(1, 1).bold(false)
+                .newline()
+                .text('BillForge Printer Test').newline()
+                .text('Connection Successful!').newline()
+                .newline()
+                .dashedLine(48).newline()
+                .align('left')
+                .text('Date: ' + new Date().toLocaleDateString()).newline()
+                .text('Time: ' + new Date().toLocaleTimeString()).newline()
+                .dashedLine(48).newline()
+                .align('center')
+                .text('If you can read this,').newline()
+                .text('your printer is working correctly!').newline()
+                .newline()
+                .newline()
+                .newline()
+                .cut();
+
+            const rawData = encoder.getData();
+            await ws.sendData(deviceId, rawData);
+
+            import('sonner').then(({ toast }) => {
+                toast.success(t('app.settings.printerTab.testPrintSuccess'));
+            });
+        } catch (err) {
+            console.error('Failed to test print:', err);
+            import('sonner').then(({ toast }) => {
+                toast.error(t('app.settings.printerTab.testPrintFailed'));
+            });
+        } finally {
+            setTestingDeviceId(null);
         }
     };
 
@@ -388,17 +435,31 @@ export default function PrinterConnectionSettings() {
                                                 </p>
                                             </div>
 
-                                            <Button
-                                                onClick={() => handleDisconnectDevice(device.id)}
-                                                variant="outline"
-                                                size="sm"
-                                                disabled={loadingDeviceId === device.id}
-                                            >
-                                                {loadingDeviceId === device.id && (
-                                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                )}
-                                                {t('app.settings.printerTab.disconnectDevice')}
-                                            </Button>
+                                            <div className="flex gap-2">
+                                                <Button
+                                                    onClick={() => handleTestPrint(device.id)}
+                                                    variant="outline"
+                                                    size="sm"
+                                                    disabled={testingDeviceId === device.id || loadingDeviceId === device.id}
+                                                >
+                                                    {testingDeviceId === device.id && (
+                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                    )}
+                                                    <Printer className="mr-2 h-4 w-4" />
+                                                    {t('app.settings.printerTab.testPrint')}
+                                                </Button>
+                                                <Button
+                                                    onClick={() => handleDisconnectDevice(device.id)}
+                                                    variant="outline"
+                                                    size="sm"
+                                                    disabled={loadingDeviceId === device.id}
+                                                >
+                                                    {loadingDeviceId === device.id && (
+                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                    )}
+                                                    {t('app.settings.printerTab.disconnectDevice')}
+                                                </Button>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>

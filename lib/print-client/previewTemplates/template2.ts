@@ -60,7 +60,7 @@ export const generatePreviewTemplate2 = (data: ReceiptData): string => {
     ${data.changeAmount ? `<div class="row"><span>Change:</span><span>${currency}${data.changeAmount.toFixed(2)}</span></div>` : ''}
     ${data.footer ? `<div class="center footer">${data.footer}</div>` : ''}
     ${data.notes ? `<div class="center" style="margin-top: 10px; font-size: 10px; color: #666;">${data.notes}</div>` : ''}
-    ${data.qrcode ? `<div class="center" style="margin-top: 10px;"><img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(data.qrcode)}" alt="QR Code" style="width: 100px; height: 100px;" /></div>` : ''}
+    ${data.qrcode ? `<div class="center" style="margin-top: 10px;"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(data.qrcode)}" alt="QR Code" style="width: 150px; height: 150px;" /></div>` : ''}
   </div>
 </body>
 </html>
