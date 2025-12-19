@@ -52,9 +52,6 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
     else if (lineChar === '_') borderStyle = 'solid';
     else if (lineChar === '=') borderStyle = 'double';
 
-    const dividerStyle = `border-top: 1px ${borderStyle} #000; margin: 10px 0;`;
-
-    const font = settings.printer_font || 'A';
     const receiptStyleId = Number(settings.receipt_style_id ?? 0);
 
     let fontFamily = "'Courier New', Courier, monospace";
@@ -64,7 +61,7 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
         fontFamily = "Inter, system-ui, -apple-system, sans-serif";
     }
 
-    const fontSize = font === 'B' ? "12px" : "14px";
+    const dividerStyle = `border-top: 1px ${borderStyle} #000; margin: 10px 0;`;
 
     return `
 <!DOCTYPE html>
@@ -83,7 +80,7 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
         }
         .receipt {
             font-family: ${fontFamily};
-            font-size: ${fontSize};
+            font-size: 14px;
             font-weight: ${fontWeight};
             line-height: 1.4;
             max-width: 300px;

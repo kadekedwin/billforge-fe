@@ -293,7 +293,7 @@ export default function ReceiptSettings() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                         <div className="space-y-2">
-                            <Label htmlFor="receipt-style-select">Receipt Style</Label>
+                            <Label htmlFor="receipt-style-select">Receipt Style (Image/PDF)</Label>
                             <Select
                                 value={receiptStyle}
                                 onValueChange={(value) => updateReceiptStyle(value as any)}
@@ -309,7 +309,7 @@ export default function ReceiptSettings() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="font-select">Font</Label>
+                            <Label htmlFor="font-select">Font (Printer)</Label>
                             <Select value={printerFont || 'A'} onValueChange={updatePrinterFont}>
                                 <SelectTrigger id="font-select">
                                     <SelectValue placeholder="Select font" />
@@ -409,7 +409,6 @@ export default function ReceiptSettings() {
                                 transaction_prefix: transactionPrefix || null,
                                 transaction_next_number: transactionNextNumber,
 
-                                printer_font: printerFont || null,
                                 line_character: lineCharacter || null,
                                 item_layout: itemLayout,
 
