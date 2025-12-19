@@ -34,25 +34,13 @@ export const generateDynamicPrintCommand = async (
 
     encoder.initialize().align('center');
 
-    // Font selection (Example implementation logic, dependent on encoder capabilities)
-    // Assuming encoder supports font('A' | 'B') or similar if extended. 
-    // The standard esc-pos-encoder might not expose direct 'font' method easily without raw commands, 
-    // but we can try to use what's available or raw bytes if needed. 
-    // However, looking at standard `esc-pos-encoder` types used here (implied), we check if `font` exists or we skip.
-    // Use raw command for font if needed: ESC M n (0, 1, 48, 49)
-    if (settings.printer_font === 'B') {
-        // printerSettings.charsPerLine might need adjustment for Font B as it's smaller, 
-        // typically Font B is 64 chars on 80mm vs 48 for Font A.
-        // For now, we just pass the command if the encoder supports it, or raw.
-        // This specific encoder wrapper might not have it, so we'll leave it as a comment or try a generic approach if possible.
-        // If generic `size` is used, Font B is usually just smaller. 
-        // Let's assume standard Font A for now unless we have a specific 'font' command.
-        // A common way to switch to Font B in ESC/POS is ESC ! with bit 0 on, or ESC M 1.
-        // NOTE: Without a specific `font()` method on the passed `encoder` object (which seems to be a custom or specific lib wrapper),
-        // we might just stick to default or minimal changes. 
-        // *However*, user asked for "font .string".
-        // Let's assuming the encoder has a `font` method or we simply ignore for this MVP step if the library doesn't support it 
-        // without seeing `esc-pos-encoder` def. We'll proceed without breaking code.
+    const selectedFont = settings.printer_font || 'A';
+    if (selectedFont === 'B') {
+        encoder.raw([0x1B, 0x4D, 0x01]);
+    } else if (selectedFont === 'C') {
+        encoder.raw([0x1B, 0x4D, 0x02]);
+    } else {
+        encoder.raw([0x1B, 0x4D, 0x00]);
     }
 
     if (settings.include_image && data.storeLogo) {

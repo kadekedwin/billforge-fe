@@ -315,8 +315,9 @@ export default function ReceiptSettings() {
                                     <SelectValue placeholder="Select font" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="A">Font A (Default)</SelectItem>
-                                    <SelectItem value="B">Font B (Small)</SelectItem>
+                                    <SelectItem value="A">Font A (12x24)</SelectItem>
+                                    <SelectItem value="B">Font B (9x17)</SelectItem>
+                                    <SelectItem value="C">Font C (9x24)</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
