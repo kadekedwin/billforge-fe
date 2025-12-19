@@ -1,1204 +1,1305 @@
 {
-  "common": {
-    "loading": "Memuat...",
-    "error": "Kesalahan",
-    "success": "Berhasil",
-    "cancel": "Batal",
-    "save": "Simpan",
-    "delete": "Hapus",
-    "edit": "Ubah",
-    "create": "Buat",
-    "update": "Perbarui",
-    "search": "Cari",
-    "filter": "Filter",
-    "close": "Tutup",
-    "back": "Kembali",
-    "next": "Berikutnya",
-    "previous": "Sebelumnya",
-    "submit": "Kirim",
-    "confirm": "Konfirmasi",
-    "yes": "Ya",
-    "no": "Tidak"
-  },
-  "landing": {
-    "hero": {
-      "title": "Sistem POS & Billing Modern yang Mudah",
-      "description": "Transformasi bisnis Anda dengan struk profesional, checkout instan, dan analitik canggih. Dirancang untuk kafe, restoran, toko retail, dan usaha kecil di mana saja.",
-      "cta": "Mulai Uji Coba Gratis"
-    },
-    "features": {
-      "title": "Semua yang Anda Butuhkan untuk Menjalankan Bisnis",
-      "description": "Fitur-fitur canggih dirancang untuk menyederhanakan penjualan, mengelola pelanggan, dan mengembangkan bisnis Anda secara efisien.",
-      "receipt": {
-        "title": "Struk Profesional",
-        "description": "Buat struk cantik dan dapat disesuaikan dengan logo Anda, kode QR, dan pesan khusus. Pilih dari berbagai template profesional yang meningkatkan citra merek Anda."
-      },
-      "checkout": {
-        "title": "Proses Checkout Cepat",
-        "description": "Percepat transaksi Anda dengan antarmuka POS yang intuitif. Proses penjualan dengan cepat, terima berbagai metode pembayaran, dan layani pelanggan Anda lebih efisien."
-      },
-      "customer": {
-        "title": "Manajemen Pelanggan",
-        "description": "Bangun hubungan jangka panjang dengan profil pelanggan dan riwayat pembelian. Lacak preferensi, pola pengeluaran, dan berikan layanan personal kepada pelanggan setia Anda."
-      },
-      "discount": {
-        "title": "Diskon & Pajak Cerdas",
-        "description": "Kelola diskon persentase atau jumlah tetap dan berbagai tarif pajak dengan mudah. Terapkan promosi ke item tertentu atau seluruh transaksi hanya dengan beberapa klik."
-      },
-      "analytics": {
-        "title": "Analitik Real-time",
-        "description": "Dapatkan wawasan instan tentang kinerja penjualan Anda. Lacak pendapatan harian, item terlaris, dan tren transaksi untuk membuat keputusan bisnis berdasarkan data."
-      },
-      "cloud": {
-        "title": "Akses dari Mana Saja",
-        "description": "Sistem berbasis cloud bekerja di perangkat apa pun - desktop, tablet, atau smartphone. Kelola bisnis Anda dari mana saja dengan sinkronisasi data yang aman dan real-time."
-      }
-    },
-    "nav": {
-      "features": "Fitur",
-      "pricing": "Harga",
-      "faq": "Pertanyaan Umum",
-      "login": "Masuk",
-      "signup": "Daftar",
-      "signIn": "Masuk",
-      "getStarted": "Mulai",
-      "home": "Beranda",
-      "testimonials": "Testimoni",
-      "drawerTitle": "Menu Navigasi"
-    },
-    "faq": {
-      "title": "Pertanyaan yang Sering Diajukan",
-      "description": "Semua yang perlu Anda ketahui tentang BillForge dan bagaimana hal itu dapat membantu bisnis Anda.",
-      "items": {
-        "item1": {
-          "question": "Apakah BillForge benar-benar gratis?",
-          "answer": "Ya! Paket Gratis kami mencakup 1 bisnis, 50 item, 50 pelanggan, 50 transaksi per bulan, dan semua fitur dasar. Sempurna untuk usaha kecil yang baru memulai. Tingkatkan ke Pro atau Enterprise untuk batas yang lebih tinggi dan fitur canggih."
-        },
-        "item2": {
-          "question": "Apa perbedaan antara paket Gratis, Pro, dan Enterprise?",
-          "answer": "Paket Gratis memiliki batas dasar (1 bisnis, 50 item, 50 transaksi/bulan). Pro menawarkan 10 kali lipat batas tersebut (10 bisnis, 500 item, 500 transaksi/bulan). Enterprise memberikan item, pelanggan, dan transaksi tanpa batas dengan fitur canggih seperti akses multi-pengguna dan akses API."
-        },
-        "item3": {
-          "question": "Bisakah saya menyesuaikan struk saya?",
-          "answer": "Tentu! BillForge menawarkan berbagai template struk dengan opsi penyesuaian lengkap. Tambahkan logo bisnis Anda, pesan footer khusus, kode QR, dan pilih dari desain profesional yang beragam. Struk dapat dicetak atau dikirim secara digital kepada pelanggan."
-        },
-        "item4": {
-          "question": "Metode pembayaran apa yang bisa saya terima?",
-          "answer": "BillForge mendukung semua metode pembayaran utama termasuk tunai, kartu kredit/debit, pembayaran seluler, dan dompet digital. Paket Gratis memungkinkan hingga 5 metode pembayaran, sementara Pro dan Enterprise menawarkan opsi metode pembayaran tanpa batas."
-        },
-        "item5": {
-          "question": "Bagaimana cara saya mengelola diskon dan pajak?",
-          "answer": "Platform kami mencakup manajemen diskon dan pajak bawaan. Buat diskon persentase atau jumlah tetap, terapkan ke item tertentu atau seluruh transaksi. Atur berbagai tarif pajak untuk kategori produk yang berbeda. Paket Gratis mencakup 30 konfigurasi diskon dan pajak."
-        },
-        "item6": {
-          "question": "Apakah data bisnis saya aman?",
-          "answer": "Ya! Semua data disimpan dengan aman di cloud dengan enkripsi. Kami melakukan pencadangan rutin dan menggunakan praktik keamanan standar industri. Riwayat transaksi, informasi pelanggan, dan data bisnis Anda dilindungi dan hanya dapat diakses oleh Anda."
-        },
-        "item7": {
-          "question": "Bisakah saya melacak riwayat pembelian pelanggan?",
-          "answer": "Ya! BillForge mencakup fitur manajemen pelanggan. Simpan detail pelanggan, lihat riwayat pembelian, dan bangun hubungan yang lebih baik dengan pelanggan setia Anda. Lacak apa yang mereka beli, kapan mereka mengunjungi, dan total pengeluaran mereka untuk memberikan layanan personal."
-        },
-        "item8": {
-          "question": "Apakah saya memerlukan perangkat keras khusus?",
-          "answer": "Tidak perlu perangkat keras khusus! BillForge berfungsi di perangkat apa pun dengan browser web - desktop, tablet, atau smartphone. Jika ingin mencetak struk, Anda dapat menggunakan printer standar apa pun. Sistem berbasis cloud, jadi Anda dapat mengaksesnya dari mana saja."
-        },
-        "item9": {
-          "question": "Apa yang terjadi jika saya melebihi batas transaksi bulanan saya?",
-          "answer": "Pada paket Gratis, Anda terbatas pada 50 transaksi per bulan. Jika Anda membutuhkan lebih banyak, Anda dapat meningkatkan ke Pro (500 transaksi/bulan) atau Enterprise (tanpa batas). Data Anda tidak akan pernah dihapus, dan Anda selalu dapat melihat transaksi masa lalu terlepas dari paket Anda saat ini."
-        },
-        "item10": {
-          "question": "Bagaimana cara mendapatkan dukungan jika saya membutuhkan bantuan?",
-          "answer": "Kami menawarkan dukungan email untuk semua pengguna. Pelanggan Pro dan Enterprise mendapatkan dukungan prioritas dengan waktu respons lebih cepat. Pelanggan Enterprise juga menerima dukungan 24/7 dan manajer akun khusus. Periksa dokumentasi dan tutorial kami untuk panduan bantuan mandiri cepat."
-        }
-      }
-    },
-    "pricing": {
-      "title": "Harga Sederhana & Transparan",
-      "description": "Pilih paket yang sempurna untuk bisnis Anda. Mulai gratis dan tingkatkan seiring pertumbuhan Anda.",
-      "monthly": "/bulan",
-      "mostPopular": "Paling Populer",
-      "plans": {
-        "free": {
-          "name": "Gratis",
-          "description": "Sempurna untuk usaha kecil yang baru memulai dengan billing digital.",
-          "button": "Mulai Gratis",
-          "features": {
-            "business": "1 Bisnis",
-            "items": "50 Item",
-            "customers": "50 Pelanggan",
-            "transactions": "50 Transaksi/bulan",
-            "paymentMethods": "5 Metode Pembayaran",
-            "discountsTaxes": "30 Diskon & Pajak",
-            "templates": "Template Struk Dasar",
-            "storage": "Penyimpanan Cloud"
-          }
-        },
-        "pro": {
-          "name": "Pro",
-          "description": "Ideal untuk bisnis berkembang dengan berbagai lokasi dan volume tinggi.",
-          "button": "Mulai Uji Coba Pro",
-          "features": {
-            "business": "10 Bisnis",
-            "items": "500 Item",
-            "customers": "500 Pelanggan",
-            "transactions": "500 Transaksi/bulan",
-            "paymentMethods": "50 Metode Pembayaran",
-            "discountsTaxes": "300 Diskon & Pajak",
-            "templates": "Template Struk Premium",
-            "support": "Dukungan Prioritas",
-            "analytics": "Analitik Lanjutan",
-            "branding": "Branding Khusus"
-          }
-        },
-        "enterprise": {
-          "name": "Enterprise",
-          "description": "Untuk bisnis besar yang memerlukan fitur canggih dan dukungan khusus.",
-          "button": "Hubungi Penjualan",
-          "features": {
-            "business": "Bisnis Tanpa Batas",
-            "items": "Item Tanpa Batas",
-            "customers": "Pelanggan Tanpa Batas",
-            "transactions": "Transaksi Tanpa Batas",
-            "paymentMethods": "Metode Pembayaran Tanpa Batas",
-            "discountsTaxes": "Diskon & Pajak Tanpa Batas",
-            "api": "Akses API",
-            "support": "Dukungan Prioritas 24/7"
-          }
-        }
-      }
-    },
-    "testimonials": {
-      "title": "Testimoni",
-      "items": {
-        "item1": {
-          "name": "Sarah Martinez",
-          "designation": "Pemilik Kafe",
-          "company": "The Daily Grind Cafe",
-          "text": "BillForge telah merevolusi cara kami menangani transaksi di kafe kami. Penyesuaian struk sangat bagus, dan pelanggan kami menyukai menerima struk digital. Kami telah mengurangi biaya kertas sebesar 80% dan waktu checkout tidak pernah lebih cepat!"
-        },
-        "item2": {
-          "name": "Budi Santoso",
-          "designation": "Manajer Toko",
-          "company": "Warung Maju Jakarta",
-          "text": "Sejak menggunakan BillForge, mengelola warung jadi jauh lebih mudah. Antarmukanya mudah dipahami dan laporan penjualannya sangat membantu. Sangat direkomendasikan untuk pengusaha UMKM!"
-        },
-        "item3": {
-          "name": "Michael Chen",
-          "designation": "Pemilik Restoran",
-          "company": "Chen's Asian Bistro",
-          "text": "Mengelola berbagai metode pembayaran dulunya adalah mimpi buruk. BillForge membuatnya mulus! Fitur riwayat transaksi dan manajemen pelanggan telah membantu kami membangun hubungan yang lebih baik dengan pelanggan setia. Keputusan POS terbaik yang pernah kami buat!"
-        },
-        "item4": {
-          "name": "Emma Thompson",
-          "designation": "Pemilik Butik",
-          "company": "Elegance Fashion Boutique",
-          "text": "Manajemen diskon dan pajak di BillForge adalah apa yang kami butuhkan untuk penjualan musiman kami. Membuat struk bermerek yang indah telah meningkatkan pengalaman pelanggan kami. Proses checkout kami sekarang profesional dan efisien!"
-        },
-        "item5": {
-          "name": "James Wilson",
-          "designation": "Pemilik Bakery",
-          "company": "Sweet Treats Bakery",
-          "text": "Kami beralih ke BillForge tiga bulan lalu dan tidak ingin kembali. Sistem manajemen item membuat inventaris kami tetap terorganisir, dan template struk terlihat profesional. Checkout pelanggan sekarang mudah, bahkan saat rush pagi kami yang sibuk!"
-        },
-        "item6": {
-          "name": "Lisa Rodriguez",
-          "designation": "Manajer Retail",
-          "company": "TechGadgets Plus",
-          "text": "Pelacakan transaksi BillForge telah memberi kami wawasan luar biasa tentang pola penjualan kami. Database pelanggan membantu kami memberikan layanan personal, dan struk dengan kode QR sangat disukai pelanggan tech-savvy kami. Ini paket lengkapnya!"
-        }
-      }
-    },
-    "footer": {
-      "contact": "Hubungi Kami",
-      "legal": "Hukum",
-      "legalLinks": {
-        "terms": "Syarat",
-        "privacy": "Privasi"
-      },
-      "description": "Sederhanakan proses billing Anda dengan manajemen invoice yang cerdas",
-      "copyright": "© 2025 BillForge. Semua hak dilindungi.",
-      "madeWith": "Dibuat dengan ❤️ di Bali",
-      "links": {
-        "terms": "Syarat Layanan",
-        "privacy": "Kebijakan Privasi"
-      }
-    }
-  },
-  "auth": {
-    "login": {
-      "title": "Selamat Datang Kembali",
-      "description": "Masuk ke akun BillForge Anda",
-      "emailLabel": "Alamat Email",
-      "emailPlaceholder": "anda@email.com",
-      "passwordLabel": "Kata Sandi",
-      "passwordPlaceholder": "••••••••",
-      "forgotPassword": "Lupa kata sandi?",
-      "submit": "Masuk",
-      "submitting": "Sedang masuk...",
-      "noAccount": "Belum punya akun?",
-      "signUp": "Buat satu",
-      "errorGeneric": "Email atau kata sandi salah. Coba lagi."
-    },
-    "register": {
-      "title": "Buat Akun Anda",
-      "description": "Bergabunglah dengan BillForge untuk mengelola bisnis Anda",
-      "nameLabel": "Nama Lengkap",
-      "namePlaceholder": "John Doe",
-      "emailLabel": "Alamat Email",
-      "emailPlaceholder": "anda@email.com",
-      "passwordLabel": "Kata Sandi",
-      "passwordPlaceholder": "Minimal 8 karakter",
-      "confirmPasswordLabel": "Konfirmasi Kata Sandi",
-      "confirmPasswordPlaceholder": "••••••••",
-      "termsAgreement": "Dengan membuat akun, Anda setuju dengan",
-      "terms": "Syarat Layanan",
-      "and": "dan",
-      "privacy": "Kebijakan Privasi",
-      "submit": "Buat akun",
-      "submitting": "Sedang membuat akun...",
-      "hasAccount": "Sudah punya akun?",
-      "signIn": "Masuk di sini",
-      "errorMatch": "Kata sandi tidak cocok",
-      "errorGeneric": "Pendaftaran gagal. Coba lagi."
-    },
-    "forgotPassword": {
-      "title": "Atur Ulang Kata Sandi Anda",
-      "description": "Masukkan alamat email Anda dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi Anda.",
-      "emailLabel": "Alamat Email",
-      "emailPlaceholder": "anda@email.com",
-      "submit": "Kirim tautan reset",
-      "submitting": "Sedang mengirim...",
-      "backToLogin": "Kembali ke login",
-      "checkEmailTitle": "Periksa Email Anda",
-      "checkEmailDescription": "Kami telah mengirim instruksi reset kata sandi ke",
-      "checkEmailNote1": "Periksa inbox Anda untuk tautan reset.",
-      "checkEmailNote2": "Jika Anda tidak melihat email, periksa folder spam.",
-      "tryAnotherEmail": "Coba email lain",
-      "errorGeneric": "Terjadi kesalahan. Coba lagi."
-    },
-    "resetPassword": {
-      "title": "Buat Kata Sandi Baru",
-      "description": "Masukkan kata sandi baru Anda di bawah ini.",
-      "emailLabel": "Alamat Email",
-      "emailPlaceholder": "anda@email.com",
-      "newPasswordLabel": "Kata Sandi Baru",
-      "newPasswordPlaceholder": "Minimal 8 karakter",
-      "passwordHint": "Harus minimal 8 karakter",
-      "confirmPasswordLabel": "Konfirmasi Kata Sandi",
-      "confirmPasswordPlaceholder": "••••••••",
-      "submit": "Atur ulang kata sandi",
-      "submitting": "Sedang mengatur ulang kata sandi...",
-      "backToLogin": "Kembali ke login",
-      "successTitle": "Kata Sandi Atur Ulang",
-      "successDescription": "Kata sandi Anda telah berhasil diatur ulang.",
-      "redirecting": "Mengalihkan ke login...",
-      "goToLogin": "Ke login",
-      "errorGeneric": "Terjadi kesalahan. Coba lagi.",
-      "errorMatch": "Kata sandi tidak cocok",
-      "errorLength": "Kata sandi harus minimal 8 karakter"
-    },
-    "verifyEmail": {
-      "title": "Verifikasi Email Anda",
-      "description": "Kami mengirim email verifikasi ke",
-      "instruction": "Silakan periksa inbox Anda dan klik tautan verifikasi untuk mengaktifkan akun Anda.",
-      "resend": "Kirim Ulang Email Verifikasi",
-      "resending": "Sedang mengirim...",
-      "changeEmail": "Gunakan alamat email yang berbeda",
-      "verifyingTitle": "Sedang Memverifikasi Email...",
-      "verifyingDescription": "Silakan tunggu sambil kami memverifikasi alamat email Anda.",
-      "successTitle": "Email Terverifikasi",
-      "successDescription": "Email Anda telah berhasil diverifikasi!",
-      "goToSale": "Lanjut ke Dashboard",
-      "alreadyVerifiedTitle": "Sudah Terverifikasi",
-      "alreadyVerifiedDescription": "Email Anda sudah terverifikasi. Anda dapat melanjutkan.",
-      "failedTitle": "Verifikasi Gagal",
-      "failedDescription": "Tautan verifikasi telah kedaluwarsa atau tidak valid.",
-      "resendSuccess": "Email verifikasi terkirim! Silakan periksa inbox Anda.",
-      "changeEmailTitle": "Ubah Alamat Email?",
-      "changeEmailDescription": "Anda akan keluar dan dialihkan ke halaman pendaftaran untuk mendaftar dengan alamat email baru.",
-      "cancel": "Batal",
-      "continue": "Lanjutkan",
-      "errorGeneric": "Terjadi kesalahan. Coba lagi."
-    },
-    "confirmDeletion": {
-      "title": "Hapus Akun",
-      "description": "Peringatan: Ini akan secara permanen menghapus:",
-      "warningTitle": "Menghapus akun Anda akan menghapus:",
-      "warningItem1": "Semua bisnis dan data Anda",
-      "warningItem2": "Semua catatan transaksi dan penjualan",
-      "warningItem3": "Semua item dan inventaris",
-      "warningItem4": "Profil dan informasi akun Anda",
-      "warningReversal": "Tindakan ini tidak dapat dibatalkan.",
-      "inputLabel": "Ketik KONFIRMASI untuk menghapus akun Anda",
-      "confirmWord": "KONFIRMASI",
-      "inputLabelSuffix": "untuk melanjutkan dengan penghapusan",
-      "inputPlaceholder": "Ketik KONFIRMASI di sini",
-      "cancel": "Batal",
-      "delete": "Hapus Akun",
-      "deleting": "Sedang menghapus...",
-      "success": "Akun berhasil dihapus",
-      "errorGeneric": "Terjadi kesalahan. Coba lagi.",
-      "errorMatch": "Ketik KONFIRMASI dengan tepat",
-      "errorMissingToken": "Permintaan tidak valid. Coba lagi.",
-      "invalidLinkTitle": "Tautan Tidak Valid atau Kedaluwarsa",
-      "invalidLinkDescription": "Tautan penghapusan ini telah kedaluwarsa atau tidak valid.",
-      "returnToSettings": "Kembali ke Pengaturan"
-    }
-  },
-  "business": {
-    "name": "Nama Bisnis",
-    "address": "Alamat",
-    "phone": "Nomor Telepon",
-    "currency": "Mata Uang",
-    "language": "Bahasa",
-    "region": "Wilayah",
-    "create": "Buat Bisnis",
-    "edit": "Ubah Bisnis",
-    "delete": "Hapus Bisnis",
-    "select": "Pilih Bisnis",
-    "noBusiness": "Bisnis tidak ditemukan",
-    "createFirst": "Buat bisnis pertama Anda untuk memulai"
-  },
-  "validation": {
-    "required": "Bidang ini wajib diisi",
-    "email": "Silakan masukkan alamat email yang valid",
-    "minLength": "Harus minimal {min} karakter",
-    "maxLength": "Harus maksimal {max} karakter",
-    "passwordMatch": "Kata sandi tidak cocok",
-    "invalidFormat": "Format tidak valid"
-  },
-  "privacy": {
-    "title": "Kebijakan Privasi",
-    "lastUpdated": "Terakhir diperbarui: 8 Desember 2025",
-    "intro": {
-      "title": "Pendahuluan",
-      "content": "Di BillForge, kami menanggapi privasi Anda dengan serius. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, mengungkapkan, dan menjaga informasi Anda ketika Anda menggunakan layanan penagihan dan manajemen faktur kami. Harap baca kebijakan privasi ini dengan saksama. Jika Anda tidak setuju dengan ketentuan kebijakan privasi ini, harap jangan akses aplikasi."
-    },
-    "infoCollect": {
-      "title": "1. Informasi yang Kami Kumpulkan",
-      "personal": {
-        "title": "Informasi Pribadi",
-        "intro": "Kami mengumpulkan informasi yang Anda berikan secara langsung kepada kami, termasuk:",
-        "items": {
-          "contact": "Nama dan informasi kontak (alamat email, nomor telepon)",
-          "business": "Informasi bisnis (nama perusahaan, alamat, ID pajak)",
-          "payment": "Informasi pembayaran (diproses secara aman melalui pemroses pembayaran pihak ketiga)",
-          "credentials": "Kredensial akun (nama pengguna, kata sandi)"
-        }
-      },
-      "businessData": {
-        "title": "Data Bisnis",
-        "intro": "Ketika Anda menggunakan BillForge, kami mengumpulkan dan menyimpan:",
-        "items": {
-          "customers": "Informasi pelanggan yang Anda masukkan",
-          "invoices": "Data faktur dan transaksi",
-          "items": "Katalog barang dan informasi harga",
-          "tax": "Konfigurasi pajak dan diskon",
-          "settings": "Pengaturan dan preferensi bisnis"
-        }
-      },
-      "auto": {
-        "title": "Informasi yang Dikumpulkan Secara Otomatis",
-        "intro": "Ketika Anda mengakses BillForge, kami secara otomatis mengumpulkan:",
-        "items": {
-          "log": "Data log (alamat IP, jenis browser, sistem operasi)",
-          "device": "Informasi perangkat",
-          "usage": "Data penggunaan (halaman yang dikunjungi, fitur yang digunakan, waktu yang dihabiskan)",
-          "cookies": "Cookie dan teknologi pelacakan serupa"
-        }
-      }
-    },
-    "howWeUse": {
-      "title": "2. Bagaimana Kami Menggunakan Informasi Anda",
-      "intro": "Kami menggunakan informasi yang kami kumpulkan untuk:",
-      "items": {
-        "provide": "Menyediakan, memelihara, dan meningkatkan layanan kami",
-        "process": "Memproses transaksi Anda dan mengelola akun Anda",
-        "send": "Mengirim pemberitahuan teknis, pembaruan, dan pesan dukungan",
-        "respond": "Menanggapi komentar, pertanyaan, dan permintaan layanan pelanggan Anda",
-        "monitor": "Memantau dan menganalisis tren, penggunaan, dan aktivitas",
-        "detect": "Mendeteksi, mencegah, dan mengatasi masalah teknis dan aktivitas penipuan",
-        "personalize": "Mempersonalisasi dan meningkatkan pengalaman Anda",
-        "marketing": "Mengirim komunikasi pemasaran (dengan persetujuan Anda)"
-      }
-    },
-    "sharing": {
-      "title": "3. Berbagi dan Pengungkapan Informasi",
-      "intro": "Kami tidak menjual informasi pribadi Anda. Kami dapat membagikan informasi Anda dalam keadaan berikut:",
-      "items": {
-        "providers": "Dengan penyedia layanan yang melakukan layanan atas nama kami",
-        "legal": "Untuk mematuhi kewajiban hukum atau menanggapi permintaan hukum",
-        "protect": "Untuk melindungi hak, properti, dan keselamatan BillForge, pengguna kami, atau orang lain",
-        "merger": "Sehubungan dengan merger, penjualan, atau akuisisi seluruh atau sebagian perusahaan kami",
-        "consent": "Dengan persetujuan Anda atau atas arahan Anda"
-      }
-    },
-    "security": {
-      "title": "4. Keamanan Data",
-      "intro": "Kami menerapkan langkah-langkah teknis dan organisasi yang tepat untuk melindungi informasi Anda, termasuk:",
-      "items": {
-        "encryption": "Enkripsi data saat transit dan saat istirahat",
-        "assessments": "Penilaian dan pembaruan keamanan rutin",
-        "access": "Kontrol akses dan mekanisme otentikasi",
-        "datacenters": "Pusat data aman dengan langkah-langkah keamanan fisik",
-        "backups": "Pencadangan rutin dan prosedur pemulihan bencana"
-      },
-      "disclaimer": "Namun, tidak ada metode transmisi melalui internet atau penyimpanan elektronik yang 100% aman. Meskipun kami berusaha menggunakan cara yang dapat diterima secara komersial untuk melindungi informasi Anda, kami tidak dapat menjamin keamanannya secara mutlak."
-    },
-    "retention": {
-      "title": "5. Penyimpanan Data",
-      "content": "Kami menyimpan informasi Anda selama akun Anda aktif atau sesuai kebutuhan untuk menyediakan layanan kepada Anda. Kami akan menyimpan dan menggunakan informasi Anda jika diperlukan untuk mematuhi kewajiban hukum, menyelesaikan sengketa, dan menegakkan perjanjian kami. Anda dapat meminta penghapusan data Anda dengan menghubungi kami, tunduk pada persyaratan penyimpanan hukum tertentu."
-    },
-    "rights": {
-      "title": "6. Hak dan Pilihan Anda",
-      "intro": "Anda memiliki hak tertentu terkait informasi pribadi Anda:",
-      "items": {
-        "access": "Mengakses dan menerima salinan informasi pribadi Anda",
-        "correct": "Mengoreksi atau memperbarui informasi yang tidak akurat",
-        "delete": "Meminta penghapusan informasi Anda",
-        "object": "Menolak atau membatasi pemrosesan tertentu atas informasi Anda",
-        "export": "Mengekspor data Anda dalam format portabel",
-        "optout": "Memilih keluar dari komunikasi pemasaran",
-        "withdraw": "Menarik persetujuan jika kami mengandalkan persetujuan untuk memproses informasi Anda"
-      },
-      "exercise": "Untuk menggunakan hak-hak ini, silakan hubungi kami menggunakan informasi yang disediakan di akhir kebijakan ini."
-    },
-    "cookies": {
-      "title": "7. Cookie dan Teknologi Pelacakan",
-      "intro": "Kami menggunakan cookie dan teknologi pelacakan serupa untuk mengumpulkan dan melacak informasi tentang penggunaan BillForge oleh Anda. Jenis cookie yang kami gunakan meliputi:",
-      "items": {
-        "essential": "Cookie esensial: Diperlukan untuk pengoperasian layanan kami",
-        "preference": "Cookie preferensi: Mengingat pengaturan dan preferensi Anda",
-        "analytics": "Cookie analitik: Membantu kami memahami bagaimana Anda menggunakan layanan kami",
-        "marketing": "Cookie pemasaran: Melacak aktivitas Anda untuk mengirimkan iklan yang relevan"
-      },
-      "control": "Anda dapat mengontrol cookie melalui pengaturan browser Anda dan alat lainnya. Namun, menonaktifkan cookie tertentu dapat membatasi kemampuan Anda untuk menggunakan beberapa fitur BillForge."
-    },
-    "thirdParty": {
-      "title": "8. Layanan Pihak Ketiga",
-      "intro": "BillForge dapat berisi tautan ke situs web pihak ketiga dan berintegrasi dengan layanan pihak ketiga. Kami tidak bertanggung jawab atas praktik privasi pihak ketiga ini. Kami mendorong Anda untuk membaca kebijakan privasi layanan pihak ketiga yang Anda gunakan.",
-      "services": "Layanan pihak ketiga yang mungkin kami gunakan meliputi pemroses pembayaran, penyedia analitik, dan penyedia infrastruktur cloud. Layanan ini memiliki kebijakan privasi mereka sendiri yang mengatur penggunaan informasi Anda."
-    },
-    "children": {
-      "title": "9. Privasi Anak-Anak",
-      "content": "BillForge tidak ditujukan untuk digunakan oleh anak-anak di bawah usia 18 tahun. Kami tidak secara sadar mengumpulkan informasi pribadi dari anak-anak di bawah 18 tahun. Jika kami mengetahui bahwa kami telah mengumpulkan informasi pribadi dari seorang anak di bawah 18 tahun, kami akan mengambil langkah-langkah untuk menghapus informasi tersebut."
-    },
-    "international": {
-      "title": "10. Transfer Data Internasional",
-      "content": "Informasi Anda dapat ditransfer ke dan dipelihara di server yang berlokasi di luar negara atau yurisdiksi Anda. Dengan menggunakan BillForge, Anda menyetujui transfer informasi Anda ke negara-negara yang mungkin memiliki undang-undang perlindungan data yang berbeda dari negara tempat tinggal Anda."
-    },
-    "changes": {
-      "title": "11. Perubahan pada Kebijakan Privasi Ini",
-      "content": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Kami akan memberi tahu Anda tentang perubahan materi apa pun dengan memposting Kebijakan Privasi baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\". Anda disarankan untuk meninjau Kebijakan Privasi ini secara berkala untuk setiap perubahan. Penggunaan BillForge yang berkelanjutan setelah modifikasi apa pun menunjukkan penerimaan Anda terhadap Kebijakan Privasi yang diperbarui."
-    },
-    "california": {
-      "title": "12. Hak Privasi California",
-      "intro": "Jika Anda adalah penduduk California, Anda memiliki hak tambahan berdasarkan California Consumer Privacy Act (CCPA):",
-      "items": {
-        "know": "Hak untuk mengetahui informasi pribadi apa yang dikumpulkan, digunakan, dibagikan, atau dijual",
-        "delete": "Hak untuk menghapus informasi pribadi",
-        "optout": "Hak untuk memilih keluar dari penjualan informasi pribadi (kami tidak menjual informasi pribadi)",
-        "nondiscrimination": "Hak untuk tidak mendiskriminasi karena menggunakan hak privasi Anda"
-      }
-    },
-    "gdpr": {
-      "title": "13. Hak GDPR (Pengguna Eropa)",
-      "intro": "Jika Anda berada di Area Ekonomi Eropa (EEA), Anda memiliki hak tambahan berdasarkan General Data Protection Regulation (GDPR):",
-      "items": {
-        "access": "Hak untuk mengakses data pribadi Anda",
-        "rectification": "Hak untuk perbaikan data yang tidak akurat",
-        "erasure": "Hak untuk penghapusan (hak untuk dilupakan)",
-        "restrict": "Hak untuk membatasi pemrosesan",
-        "portability": "Hak untuk portabilitas data",
-        "object": "Hak untuk menolak pemrosesan",
-        "complaint": "Hak untuk mengajukan keluhan kepada otoritas pengawas"
-      }
-    },
-    "contact": {
-      "title": "Hubungi Kami",
-      "description": "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini atau praktik data kami, silakan hubungi kami. Kami berkomitmen untuk bekerja sama dengan Anda untuk mendapatkan resolusi yang adil atas segala masalah privasi."
-    }
-  },
-  "terms": {
-    "title": "Ketentuan Layanan",
-    "lastUpdated": "Terakhir diperbarui: 8 Desember 2025",
-    "acceptance": {
-      "title": "1. Penerimaan Ketentuan",
-      "content": "Dengan mengakses dan menggunakan BillForge, Anda menerima dan setuju untuk terikat oleh ketentuan dan ketentuan perjanjian ini. Jika Anda tidak setuju untuk mematuhi hal-hal di atas, harap jangan gunakan layanan ini."
-    },
-    "license": {
-      "title": "2. Lisensi Penggunaan",
-      "intro": "Izin diberikan untuk mengakses dan menggunakan BillForge sementara untuk tujuan pribadi dan komersial. Ini adalah pemberian lisensi, bukan pengalihan hak milik, dan di bawah lisensi ini Anda tidak boleh:",
-      "items": {
-        "modify": "Memodifikasi atau menyalin materi",
-        "commercial": "Menggunakan materi untuk tujuan komersial tanpa berlangganan yang tepat",
-        "decompile": "Mencoba mendekompilasi atau merekayasa balik perangkat lunak apa pun yang terdapat di BillForge",
-        "remove": "Menghapus hak cipta atau notasi kepemilikan lainnya dari materi",
-        "transfer": "Mentransfer materi ke orang lain atau menyalin materi di server lain mana pun"
-      }
-    },
-    "account": {
-      "title": "3. Akun Pengguna",
-      "intro": "Untuk menggunakan fitur tertentu dari BillForge, Anda harus mendaftar akun. Anda setuju untuk:",
-      "items": {
-        "accurate": "Memberikan informasi yang akurat, terkini, dan lengkap selama pendaftaran",
-        "security": "Menjaga keamanan kata sandi dan akun Anda",
-        "notify": "Beri tahu kami segera tentang penggunaan tidak sah atas akun Anda",
-        "responsibility": "Menerima tanggung jawab atas semua aktivitas yang terjadi di bawah akun Anda"
-      }
-    },
-    "subscription": {
-      "title": "4. Langganan dan Pembayaran",
-      "intro": "BillForge menawarkan berbagai paket berlangganan. Dengan berlangganan, Anda setuju untuk:",
-      "items": {
-        "fees": "Membayar semua biaya yang terkait dengan paket berlangganan pilihan Anda",
-        "renewal": "Pembaruan otomatis langganan Anda kecuali dibatalkan",
-        "pricing": "Kemungkinan perubahan harga dengan pemberitahuan 30 hari sebelumnya",
-        "refunds": "Tidak ada pengembalian uang untuk bulan parsial atau layanan yang tidak digunakan"
-      }
-    },
-    "dataPrivacy": {
-      "title": "5. Data dan Privasi",
-      "content": "Penggunaan BillForge oleh Anda juga diatur oleh Kebijakan Privasi kami. Harap tinjau",
-      "link": "Kebijakan Privasi",
-      "toUnderstand": "kami untuk memahami praktik kami."
-    },
-    "prohibited": {
-      "title": "6. Aktivitas yang Dilarang",
-      "intro": "Anda tidak boleh menggunakan BillForge untuk:",
-      "items": {
-        "laws": "Melanggar hukum atau peraturan apa pun",
-        "infringe": "Melanggar hak kekayaan intelektual",
-        "malware": "Mengirimkan virus, malware, atau kode berbahaya lainnya",
-        "unauthorized": "Mencoba mendapatkan akses tidak sah ke sistem kami",
-        "harass": "Melecehkan, menyalahgunakan, atau membahayakan pengguna lain",
-        "fraud": "Menggunakan layanan untuk tujuan penipuan"
-      }
-    },
-    "availability": {
-      "title": "7. Ketersediaan Layanan",
-      "content": "Kami berusaha untuk menjaga ketersediaan BillForge yang tinggi, tetapi kami tidak menjamin akses tanpa gangguan. Kami berhak untuk memodifikasi, menangguhkan, atau menghentikan bagian mana pun dari layanan dengan atau tanpa pemberitahuan. Kami tidak bertanggung jawab atas modifikasi, penangguhan, atau penghentian layanan."
-    },
-    "intellectual": {
-      "title": "8. Kekayaan Intelektual",
-      "content": "Semua konten yang disertakan di BillForge, seperti teks, grafik, logo, gambar, dan perangkat lunak, adalah milik BillForge atau pemasok kontennya dan dilindungi oleh undang-undang hak cipta internasional. Kompilasi semua konten di situs ini adalah milik eksklusif BillForge."
-    },
-    "liability": {
-      "title": "9. Batasan Tanggung Jawab",
-      "content": "Dalam hal apa pun BillForge atau pemasoknya tidak bertanggung jawab atas kerusakan apa pun (termasuk, tanpa batasan, kerusakan karena kehilangan data atau keuntungan, atau karena gangguan bisnis) yang timbul dari penggunaan atau ketidakmampuan untuk menggunakan BillForge, bahkan jika BillForge atau perwakilan resmi BillForge telah diberitahu secara lisan atau tertulis tentang kemungkinan kerusakan tersebut."
-    },
-    "termination": {
-      "title": "10. Penghentian",
-      "content": "Kami dapat mengakhiri atau menangguhkan akun dan akses Anda ke BillForge segera, tanpa pemberitahuan atau kewajiban sebelumnya, dengan alasan apa pun, termasuk jika Anda melanggar Ketentuan Layanan ini. Setelah penghentian, hak Anda untuk menggunakan layanan akan segera berakhir."
-    },
-    "changesTerms": {
-      "title": "11. Perubahan Ketentuan",
-      "content": "Kami berhak untuk mengubah ketentuan ini kapan saja. Kami akan memberi tahu pengguna tentang perubahan materi apa pun dengan memposting Ketentuan Layanan baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\". Penggunaan BillForge yang berkelanjutan setelah modifikasi tersebut merupakan pengakuan dan penerimaan Anda terhadap ketentuan yang dimodifikasi."
-    },
-    "governing": {
-      "title": "12. Hukum yang Mengatur",
-      "content": "Ketentuan ini akan diatur dan ditafsirkan sesuai dengan hukum yang berlaku, tanpa memperhatikan pertentangan ketentuan hukumnya. Kegagalan kami untuk menegakkan hak atau ketentuan apa pun dari ketentuan ini tidak akan dianggap sebagai pengabaian atas hak-hak tersebut."
-    },
-    "contact": {
-      "title": "Hubungi Kami",
-      "description": "Jika Anda memiliki pertanyaan tentang Ketentuan Layanan ini, silakan hubungi kami."
-    }
-  },
-  "app": {
-    "sale": {
-      "title": "Penjualan",
-      "searchItems": "Cari item...",
-      "allCategories": "Semua Kategori",
-      "checkout": "Checkout",
-      "total": "Total:",
-      "items": "Item",
-      "noItems": "Item tidak ditemukan",
-      "addToCart": "Tambah ke Keranjang",
-      "removeFromCart": "Hapus",
-      "error": "Kesalahan",
-      "retry": "Coba Lagi",
-      "loading": "Memuat...",
-      "selectBusiness": "Silakan pilih bisnis dari sidebar untuk memulai",
-      "cartEmpty": "Keranjang Anda kosong. Mulai tambahkan item untuk melanjutkan.",
-      "backToItems": "Kembali ke Item",
-      "reviewOrder": "Periksa pesanan Anda dan selesaikan transaksi",
-      "orderSummary": "Ringkasan Pesanan",
-      "item": "Item",
-      "quantity": "Jumlah",
-      "price": "Harga",
-      "tax": "Pajak:",
-      "discount": "Diskon:",
-      "subtotal": "Subtotal:",
-      "paymentSummary": "Ringkasan Pembayaran",
-      "processing": "Sedang memproses...",
-      "completeTransaction": "Selesaikan Transaksi",
-      "transactionDetails": "Detail Transaksi",
-      "customer": "Pelanggan (Opsional)",
-      "selectCustomer": "Pilih pelanggan...",
-      "guestCustomer": "Pelanggan Tamu",
-      "paymentMethod": "Metode Pembayaran (Opsional)",
-      "paymentMethodsLoadError": "Gagal memuat metode pembayaran",
-      "created": "Dibuat",
-      "selectPaymentMethod": "Pilih metode pembayaran...",
-      "cash": "Tunai",
-      "notes": "Catatan (Opsional)",
-      "addNotes": "Tambahkan catatan tentang transaksi ini...",
-      "outOfStock": "Stok habis",
-      "noItemsAvailable": "Tidak ada item tersedia",
-      "addItemsToInventory": "Tambahkan item ke inventaris Anda untuk mulai membuat transaksi"
-    },
-    "items": {
-      "title": "Item",
-      "addItem": "Tambah Item",
-      "editItem": "Ubah Item",
-      "deleteItem": "Hapus Item",
-      "name": "Nama Item",
-      "price": "Harga",
-      "sku": "SKU (Satuan Persediaan)",
-      "category": "Kategori",
-      "description": "Deskripsi",
-      "noItems": "Item tidak ditemukan",
-      "loading": "Memuat item...",
-      "error": "Kesalahan memuat item",
-      "actions": "Tindakan",
-      "business": "Bisnis",
-      "unknownBusiness": "Bisnis Tidak Diketahui",
-      "addFirstItem": "Tambah Item Pertama Anda",
-      "image": "Gambar Item",
-      "status": "Status",
-      "created": "Tanggal Dibuat",
-      "active": "Aktif",
-      "inactive": "Tidak Aktif",
-      "createTitle": "Buat Item Baru",
-      "createDescription": "Tambahkan produk atau layanan baru ke inventaris Anda",
-      "editTitle": "Ubah Item",
-      "editDescription": "Perbarui informasi item",
-      "taxOptional": "Pajak (Opsional)",
-      "noTax": "Tanpa pajak",
-      "discountOptional": "Diskon (Opsional)",
-      "noDiscount": "Tanpa diskon",
-      "categoriesOptional": "Kategori (Opsional)",
-      "noCategoriesAvailable": "Tidak ada kategori tersedia. Buat kategori terlebih dahulu.",
-      "skuOptional": "SKU (Opsional)",
-      "descriptionOptional": "Deskripsi (Opsional)",
-      "itemImageOptional": "Gambar Item (Opsional)",
-      "supportedFormats": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Ukuran maksimal: 1MB",
-      "uploading": "Sedang mengunggah gambar...",
-      "update": "Perbarui Item",
-      "create": "Buat Item",
-      "deleteTitle": "Hapus Item?",
-      "deleteDescription": "Ini akan secara permanen menghapus {name} (SKU: {sku}). Tindakan ini tidak dapat dibatalkan.",
-      "deleting": "Sedang menghapus...",
-      "errorCreating": "Gagal membuat item",
-      "errorUpdating": "Gagal memperbarui item",
-      "errorDeleting": "Gagal menghapus item",
-      "uploadError": "Gagal mengunggah gambar",
-      "deleteError": "Gagal menghapus item",
-      "selectImageError": "Silakan pilih file gambar",
-      "imageSizeError": "Ukuran gambar harus kurang dari 1MB",
-      "loadingError": "Terjadi kesalahan saat memuat data",
-      "itemsLoadError": "Gagal memuat item",
-      "basePrice": "Harga Dasar"
-    },
-    "customers": {
-      "title": "Pelanggan",
-      "addCustomer": "Tambah Pelanggan",
-      "editCustomer": "Ubah Pelanggan",
-      "deleteCustomer": "Hapus Pelanggan",
-      "name": "Nama Pelanggan",
-      "email": "Email",
-      "phone": "Nomor Telepon",
-      "address": "Alamat",
-      "noCustomers": "Pelanggan tidak ditemukan",
-      "loading": "Memuat pelanggan...",
-      "error": "Kesalahan memuat pelanggan",
-      "actions": "Tindakan",
-      "addFirstCustomer": "Tambah Pelanggan Pertama Anda",
-      "editTitle": "Ubah Pelanggan",
-      "createTitle": "Tambah Pelanggan Baru",
-      "editDescription": "Perbarui informasi pelanggan",
-      "createDescription": "Tambahkan pelanggan baru ke database Anda",
-      "customerName": "Nama Lengkap",
-      "placeholderName": "John Doe",
-      "emailOptional": "Email (Opsional)",
-      "placeholderEmail": "john@contoh.com",
-      "phoneOptional": "Nomor Telepon (Opsional)",
-      "placeholderPhone": "+62123456789",
-      "addressOptional": "Alamat (Opsional)",
-      "placeholderAddress": "Jln. Utama No. 123, Kota, Provinsi, Kode Pos",
-      "deleteTitle": "Hapus Pelanggan?",
-      "deleting": "Sedang menghapus...",
-      "errorCreating": "Gagal membuat pelanggan",
-      "errorUpdating": "Gagal memperbarui pelanggan",
-      "errorDeleting": "Gagal menghapus pelanggan",
-      "deleteError": "Gagal menghapus pelanggan",
-      "customersLoadError": "Gagal memuat pelanggan",
-      "loadingError": "Terjadi kesalahan saat memuat data"
-    },
-    "transactions": {
-      "title": "Transaksi",
-      "viewDetails": "Lihat Detail",
-      "date": "Tanggal",
-      "customer": "Pelanggan",
-      "total": "Total",
-      "totalAmount": "Jumlah Total",
-      "finalAmount": "Jumlah Akhir",
-      "discountAmount": "Jumlah Diskon:",
-      "taxAmount": "Jumlah Pajak:",
-      "paymentMethod": "Metode Pembayaran",
-      "noTransactions": "Transaksi tidak ditemukan",
-      "actions": "Tindakan",
-      "loading": "Memuat transaksi...",
-      "error": "Kesalahan memuat transaksi",
-      "guestCustomer": "Tamu",
-      "transactionDetails": "Detail Transaksi",
-      "viewInfo": "Lihat informasi transaksi lengkap",
-      "items": "Item",
-      "noItems": "Item tidak ditemukan",
-      "item": "Item",
-      "quantity": "Jumlah",
-      "basePrice": "Harga Dasar",
-      "tax": "Pajak",
-      "discount": "Diskon",
-      "notes": "Catatan",
-      "transactionId": "ID Transaksi",
-      "downloadPDF": "Unduh PDF",
-      "downloadImage": "Unduh Gambar",
-      "sendEmail": "Kirim ke Email",
-      "sendWhatsApp": "Kirim via WhatsApp"
-    },
-    "settings": {
-      "title": "Pengaturan",
-      "profile": "Profil",
-      "business": "Bisnis",
-      "receipt": "Pengaturan Struk",
-      "preferences": "Preferensi",
-      "account": "Akun",
-      "profileTab": {
-        "name": "Nama Lengkap",
-        "email": "Alamat Email",
-        "currentPassword": "Kata Sandi Saat Ini",
-        "newPassword": "Kata Sandi Baru",
-        "confirmPassword": "Konfirmasi Kata Sandi",
-        "changePassword": "Ubah Kata Sandi",
-        "updateProfile": "Perbarui Profil",
-        "deleteAccount": "Hapus Akun",
-        "errorLoad": "Gagal memuat profil",
-        "imageSizeError": "Ukuran gambar harus kurang dari 1MB",
-        "successUpdate": "Profil berhasil diperbarui",
-        "errorUpdate": "Gagal memperbarui profil",
-        "errorFields": "Silakan periksa semua bidang",
-        "errorMatch": "Kata sandi tidak cocok",
-        "errorLength": "Kata sandi harus minimal 8 karakter",
-        "successPassword": "Kata sandi berhasil diubah",
-        "errorPassword": "Kata sandi saat ini tidak benar",
-        "confirmDelete": "Konfirmasi Penghapusan Akun",
-        "sentDelete": "Email konfirmasi penghapusan terkirim",
-        "errorDelete": "Gagal mengirim email penghapusan",
-        "profilePicture": "Foto Profil",
-        "profilePictureDescription": "Unggah foto profil untuk personalisasi akun Anda",
-        "uploadPhoto": "Unggah Foto",
-        "delete": "Hapus",
-        "imageRequirements": "JPG, PNG, GIF, WEBP. Maks 1MB",
-        "personalInfo": "Informasi Pribadi",
-        "fullName": "Nama Lengkap",
-        "enterFullName": "Masukkan nama lengkap Anda",
-        "enterEmail": "Masukkan email Anda",
-        "emailNote": "Email tidak dapat diubah",
-        "saving": "Sedang menyimpan...",
-        "saveChanges": "Simpan Perubahan",
-        "changePasswordDescription": "Perbarui kata sandi Anda untuk menjaga akun tetap aman",
-        "enterCurrentPassword": "Masukkan kata sandi saat ini",
-        "enterNewPassword": "Masukkan kata sandi baru (min 8 karakter)",
-        "confirmNewPassword": "Konfirmasi Kata Sandi Baru",
-        "enterConfirmNewPassword": "Konfirmasi kata sandi baru",
-        "changingPassword": "Sedang mengubah kata sandi...",
-        "deleteAccountDescription": "Setelah dihapus, akun dan semua data Anda tidak dapat dipulihkan",
-        "deleteWarning": "Peringatan: Tindakan ini tidak dapat dibatalkan",
-        "deleteConsequences": "Menghapus akun Anda akan:",
-        "deleteItem1": "Secara permanen menghapus semua bisnis Anda",
-        "deleteItem2": "Menghapus semua transaksi dan item",
-        "deleteItem3": "Menghapus semua data pribadi Anda",
-        "deleteConfirmation": "Anda akan menerima email konfirmasi dengan tautan untuk menyelesaikan penghapusan.",
-        "sendingEmail": "Sedang mengirim email...",
-        "requestDeletion": "Minta Penghapusan Akun"
-      },
-      "receiptTab": {
-        "options": "Kustomisasi Struk",
-        "includeLogo": "Sertakan Logo Bisnis di Struk",
-        "footerMessage": "Pesan Footer",
-        "footerPlaceholder": "Terima kasih atas bisnis Anda!",
-        "qrCode": "Data Kode QR",
-        "qrPlaceholder": "Masukkan nilai kode QR (mis. tautan media sosial)",
-        "prefix": "Awalan Transaksi",
-        "prefixHelp": "Awalan untuk nomor transaksi (mis. INV, STK)",
-        "nextNumber": "Nomor Transaksi Berikutnya",
-        "nextNumberHelp": "Nomor transaksi berikutnya yang akan digunakan",
-        "template": "Template Struk",
-        "selectBusiness": "Silakan pilih bisnis untuk mengonfigurasi pengaturan struk"
-      },
-      "preferencesTab": {
-        "language": "Bahasa",
-        "languageDescription": "Pilih bahasa pilihan Anda untuk antarmuka aplikasi.",
-        "currency": "Mata Uang",
-        "region": "Wilayah",
-        "timezone": "Zona Waktu",
-        "title": "Tampilan & Lokalisasi",
-        "description": "Sesuaikan tampilan dan perilaku BillForge",
-        "theme": "Tema",
-        "themeDescription": "Pilih tema warna pilihan Anda",
-        "light": "Terang",
-        "dark": "Gelap",
-        "system": "Default Sistem"
-      },
-      "printerTab": {
-        "encoding": "Encoding",
-        "autoPrint": "Cetak Otomatis Setelah Checkout",
-        "autoPrintDescription": "Cetak struk secara otomatis setelah menyelesaikan transaksi"
-      },
-      "receiptPopup": {
-        "printReceipt": "Cetak Struk"
-      },
-      "printer": {
-        "title": "Pengaturan Printer",
-        "noPrinterConnected": "Tidak Ada Printer Terhubung",
-        "printSuccess": "Cetak Berhasil",
-        "printFailed": "Cetak Gagal"
-      }
-    },
-    "categories": {
-      "title": "Kategori",
-      "addCategory": "Tambah Kategori",
-      "editCategory": "Ubah Kategori",
-      "deleteCategory": "Hapus Kategori",
-      "name": "Nama Kategori",
-      "noCategories": "Kategori tidak ditemukan",
-      "loading": "Memuat kategori...",
-      "error": "Kesalahan memuat kategori",
-      "actions": "Tindakan",
-      "addFirstCategory": "Tambah Kategori Pertama Anda",
-      "created": "Tanggal Dibuat",
-      "createTitle": "Buat Kategori Baru",
-      "createDescription": "Tambahkan kategori baru untuk mengorganisir item Anda",
-      "editTitle": "Ubah Kategori",
-      "editDescription": "Perbarui informasi kategori",
-      "categoryName": "Nama Kategori",
-      "placeholder": "mis. Elektronik, Makanan, Layanan",
-      "deleteTitle": "Hapus Kategori?",
-      "deleteDescription": "Ini akan secara permanen menghapus kategori '{name}'. Tindakan ini tidak dapat dibatalkan.",
-      "deleting": "Sedang menghapus...",
-      "errorCreating": "Gagal membuat kategori",
-      "errorUpdating": "Gagal memperbarui kategori",
-      "errorDeleting": "Gagal menghapus kategori",
-      "deleteError": "Gagal menghapus kategori",
-      "loadingError": "Terjadi kesalahan saat memuat data",
-      "categoriesLoadError": "Gagal memuat kategori"
-    },
-    "paymentMethods": {
-      "title": "Metode Pembayaran",
-      "addMethod": "Tambah Metode Pembayaran",
-      "editMethod": "Ubah Metode Pembayaran",
-      "deleteMethod": "Hapus Metode Pembayaran",
-      "name": "Nama Metode",
-      "noMethods": "Metode pembayaran tidak ditemukan",
-      "loading": "Memuat metode pembayaran...",
-      "error": "Kesalahan memuat metode pembayaran",
-      "actions": "Tindakan",
-      "addFirstMethod": "Tambah Metode Pembayaran Pertama Anda",
-      "createTitle": "Tambah Metode Pembayaran",
-      "createDescription": "Tambahkan metode pembayaran baru untuk menerima pembayaran",
-      "editTitle": "Ubah Metode Pembayaran",
-      "editDescription": "Perbarui detail metode pembayaran",
-      "deleteTitle": "Hapus Metode Pembayaran?",
-      "deleteDescription": "Ini akan secara permanen menghapus '{name}'. Tindakan ini tidak dapat dibatalkan.",
-      "deleting": "Sedang menghapus...",
-      "errorCreating": "Gagal membuat metode pembayaran",
-      "errorUpdating": "Gagal memperbarui metode pembayaran",
-      "errorDeleting": "Gagal menghapus metode pembayaran",
-      "deleteError": "Gagal menghapus metode pembayaran",
-      "methodName": "Nama Metode Pembayaran",
-      "placeholderName": "mis. Tunai, Kartu Kredit, Transfer Bank",
-      "created": "Tanggal Dibuat",
-      "paymentMethodsLoadError": "Gagal memuat metode pembayaran",
-      "loadingError": "Terjadi kesalahan saat memuat data"
-    },
-    "itemTaxes": {
-      "title": "Tarif Pajak",
-      "addTax": "Tambah Pajak",
-      "editTax": "Ubah Pajak",
-      "deleteTax": "Hapus Pajak",
-      "name": "Nama Pajak",
-      "rate": "Tarif Pajak",
-      "noTaxes": "Tidak ada pajak yang dikonfigurasi. Buat konfigurasi pajak pertama Anda.",
-      "loading": "Memuat pajak...",
-      "error": "Kesalahan memuat pajak",
-      "actions": "Tindakan",
-      "createTitle": "Tambah Tarif Pajak",
-      "createDescription": "Buat konfigurasi pajak baru",
-      "editTitle": "Ubah Tarif Pajak",
-      "editDescription": "Perbarui detail tarif pajak",
-      "deleteTitle": "Hapus Pajak?",
-      "deleteDescription": "Ini akan secara permanen menghapus '{name}'. Tindakan ini tidak dapat dibatalkan.",
-      "deleting": "Sedang menghapus...",
-      "errorCreating": "Gagal membuat pajak",
-      "errorUpdating": "Gagal memperbarui pajak",
-      "errorDeleting": "Gagal menghapus pajak",
-      "deleteError": "Gagal menghapus pajak",
-      "taxName": "Nama Pajak",
-      "placeholderName": "mis. PPN, Pajak Penjualan",
-      "type": "Tipe",
-      "percentage": "Persentase",
-      "fixed": "Jumlah Tetap",
-      "value": "Nilai",
-      "taxesLoadError": "Gagal memuat pajak",
-      "loadingError": "Terjadi kesalahan saat memuat data"
-    },
-    "itemDiscounts": {
-      "title": "Diskon",
-      "addDiscount": "Tambah Diskon",
-      "editDiscount": "Ubah Diskon",
-      "deleteDiscount": "Hapus Diskon",
-      "name": "Nama Diskon",
-      "type": "Tipe",
-      "value": "Nilai",
-      "noDiscounts": "Tidak ada diskon yang dikonfigurasi. Buat diskon pertama Anda.",
-      "loading": "Memuat diskon...",
-      "error": "Kesalahan memuat diskon",
-      "actions": "Tindakan",
-      "createTitle": "Tambah Diskon",
-      "createDescription": "Buat penawaran diskon baru",
-      "editTitle": "Ubah Diskon",
-      "editDescription": "Perbarui detail diskon",
-      "deleteTitle": "Hapus Diskon?",
-      "deleteDescription": "Ini akan secara permanen menghapus '{name}'. Tindakan ini tidak dapat dibatalkan.",
-      "deleting": "Sedang menghapus...",
-      "errorCreating": "Gagal membuat diskon",
-      "errorUpdating": "Gagal memperbarui diskon",
-      "errorDeleting": "Gagal menghapus diskon",
-      "deleteError": "Gagal menghapus diskon",
-      "discountName": "Nama Diskon",
-      "placeholderName": "mis. Diskon Liburan, Diskon Early Bird",
-      "percentage": "Persentase",
-      "fixed": "Jumlah Tetap",
-      "discountsLoadError": "Gagal memuat diskon",
-      "loadingError": "Terjadi kesalahan saat memuat data"
-    },
-    "sidebar": {
-      "sale": "Penjualan",
-      "transactions": "Transaksi",
-      "items": "Item",
-      "categories": "Kategori",
-      "customers": "Pelanggan",
-      "paymentMethods": "Metode Pembayaran",
-      "itemTaxes": "Pajak",
-      "itemDiscounts": "Diskon",
-      "settings": "Pengaturan",
-      "businessSelector": {
-        "switchBusiness": "Ganti Bisnis",
-        "addBusiness": "Tambah Bisnis",
-        "edit": "Ubah",
-        "delete": "Hapus"
-      },
-      "userProfile": {
-        "myAccount": "Akun Saya",
-        "logout": "Keluar",
-        "dialog": {
-          "title": "Konfirmasi Keluar",
-          "description": "Apakah Anda yakin ingin keluar? Anda perlu masuk lagi untuk mengakses akun Anda.",
-          "cancel": "Batal",
-          "confirm": "Keluar"
-        }
-      },
-      "businessDialog": {
-        "createTitle": "Buat Bisnis Baru",
-        "editTitle": "Ubah Bisnis",
-        "createDescription": "Tambahkan lokasi bisnis baru ke akun Anda",
-        "editDescription": "Perbarui informasi bisnis Anda",
-        "nameLabel": "Nama Bisnis",
-        "namePlaceholder": "Nama Bisnis Anda",
-        "addressLabel": "Alamat (Opsional)",
-        "addressPlaceholder": "Jln. Utama No. 123, Kota, Negara",
-        "phoneLabel": "Nomor Telepon (Opsional)",
-        "phonePlaceholder": "+62123456789",
-        "currencyLabel": "Mata Uang (Opsional)",
-        "currencyPlaceholder": "Pilih mata uang",
-        "languageLabel": "Bahasa (Opsional)",
-        "languagePlaceholder": "Pilih bahasa",
-        "regionLabel": "Wilayah (Opsional)",
-        "regionPlaceholder": "Pilih wilayah",
-        "logoLabel": "Logo Bisnis (Opsional)",
-        "logoHelp": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Ukuran maksimal: 1MB",
-        "uploading": "Sedang mengunggah logo...",
+    "common": {
+        "loading": "Memuat...",
+        "error": "Kesalahan",
+        "success": "Berhasil",
         "cancel": "Batal",
+        "save": "Simpan",
+        "delete": "Hapus",
+        "edit": "Ubah",
         "create": "Buat",
         "update": "Perbarui",
-        "errorGeneric": "Gagal menyimpan bisnis",
-        "errorCreate": "Gagal membuat bisnis",
-        "errorUpdate": "Gagal memperbarui bisnis",
-        "errorImageSize": "Ukuran gambar harus kurang dari 1MB"
-      },
-      "deleteBusinessDialog": {
-        "title": "Hapus Bisnis",
-        "description": "Apakah Anda yakin ingin menghapus '{name}'? Tindakan ini tidak dapat dibatalkan.",
-        "cancel": "Batal",
-        "delete": "Hapus"
-      }
-    }
-  },
-  "sidebar": {
-    "businessDialog": {
-      "errors": {
-        "imageSize": "Ukuran gambar harus kurang dari 1MB",
-        "updateFailed": "Gagal memperbarui bisnis",
-        "createFailed": "Gagal membuat bisnis",
-        "updateError": "Terjadi kesalahan saat pembaruan",
-        "createError": "Terjadi kesalahan saat pembuatan"
-      },
-      "edit": "Ubah Bisnis",
-      "create": "Buat Bisnis",
-      "description": {
-        "edit": "Perbarui informasi bisnis Anda",
-        "create": "Tambahkan bisnis baru ke akun Anda"
-      },
-      "form": {
-        "name": {
-          "label": "Nama Bisnis",
-          "placeholder": "Nama Bisnis Anda"
+        "search": "Cari",
+        "filter": "Filter",
+        "close": "Tutup",
+        "back": "Kembali",
+        "next": "Berikutnya",
+        "previous": "Sebelumnya",
+        "submit": "Kirim",
+        "confirm": "Konfirmasi",
+        "yes": "Ya",
+        "no": "Tidak"
+    },
+    "landing": {
+        "hero": {
+            "title": "Sistem POS & Billing Modern yang Mudah",
+            "description": "Transformasi bisnis Anda dengan struk profesional, checkout instan, dan analitik canggih. Dirancang untuk kafe, restoran, toko retail, dan usaha kecil di mana saja.",
+            "cta": "Mulai Uji Coba Gratis"
         },
-        "address": {
-          "label": "Alamat (Opsional)",
-          "placeholder": "Jln. Utama No. 123, Kota, Negara"
+        "features": {
+            "title": "Semua yang Anda Butuhkan untuk Menjalankan Bisnis",
+            "description": "Fitur-fitur canggih dirancang untuk menyederhanakan penjualan, mengelola pelanggan, dan mengembangkan bisnis Anda secara efisien.",
+            "receipt": {
+                "title": "Struk Profesional",
+                "description": "Buat struk cantik dan dapat disesuaikan dengan logo Anda, kode QR, dan pesan khusus. Pilih dari berbagai template profesional yang meningkatkan citra merek Anda."
+            },
+            "checkout": {
+                "title": "Proses Checkout Cepat",
+                "description": "Percepat transaksi Anda dengan antarmuka POS yang intuitif. Proses penjualan dengan cepat, terima berbagai metode pembayaran, dan layani pelanggan Anda lebih efisien."
+            },
+            "customer": {
+                "title": "Manajemen Pelanggan",
+                "description": "Bangun hubungan jangka panjang dengan profil pelanggan dan riwayat pembelian. Lacak preferensi, pola pengeluaran, dan berikan layanan personal kepada pelanggan setia Anda."
+            },
+            "discount": {
+                "title": "Diskon & Pajak Cerdas",
+                "description": "Kelola diskon persentase atau jumlah tetap dan berbagai tarif pajak dengan mudah. Terapkan promosi ke item tertentu atau seluruh transaksi hanya dengan beberapa klik."
+            },
+            "analytics": {
+                "title": "Analitik Real-time",
+                "description": "Dapatkan wawasan instan tentang kinerja penjualan Anda. Lacak pendapatan harian, item terlaris, dan tren transaksi untuk membuat keputusan bisnis berdasarkan data."
+            },
+            "cloud": {
+                "title": "Akses dari Mana Saja",
+                "description": "Sistem berbasis cloud bekerja di perangkat apa pun - desktop, tablet, atau smartphone. Kelola bisnis Anda dari mana saja dengan sinkronisasi data yang aman dan real-time."
+            }
         },
-        "phone": {
-          "label": "Nomor Telepon (Opsional)",
-          "placeholder": "+62123456789"
+        "nav": {
+            "features": "Fitur",
+            "pricing": "Harga",
+            "faq": "Pertanyaan Umum",
+            "login": "Masuk",
+            "signup": "Daftar",
+            "signIn": "Masuk",
+            "getStarted": "Mulai",
+            "home": "Beranda",
+            "testimonials": "Testimoni",
+            "drawerTitle": "Menu Navigasi"
         },
-        "currency": {
-          "label": "Mata Uang (Opsional)",
-          "placeholder": "Pilih mata uang"
+        "faq": {
+            "title": "Pertanyaan yang Sering Diajukan",
+            "description": "Semua yang perlu Anda ketahui tentang BillForge dan bagaimana hal itu dapat membantu bisnis Anda.",
+            "items": {
+                "item1": {
+                    "question": "Apakah BillForge benar-benar gratis?",
+                    "answer": "Ya! Paket Gratis kami mencakup 1 bisnis, 50 item, 50 pelanggan, 50 transaksi per bulan, dan semua fitur dasar. Sempurna untuk usaha kecil yang baru memulai. Tingkatkan ke Pro atau Enterprise untuk batas yang lebih tinggi dan fitur canggih."
+                },
+                "item2": {
+                    "question": "Apa perbedaan antara paket Gratis, Pro, dan Enterprise?",
+                    "answer": "Paket Gratis memiliki batas dasar (1 bisnis, 50 item, 50 transaksi/bulan). Pro menawarkan 10 kali lipat batas tersebut (10 bisnis, 500 item, 500 transaksi/bulan). Enterprise memberikan item, pelanggan, dan transaksi tanpa batas dengan fitur canggih seperti akses multi-pengguna dan akses API."
+                },
+                "item3": {
+                    "question": "Bisakah saya menyesuaikan struk saya?",
+                    "answer": "Tentu! BillForge menawarkan berbagai template struk dengan opsi penyesuaian lengkap. Tambahkan logo bisnis Anda, pesan footer khusus, kode QR, dan pilih dari desain profesional yang beragam. Struk dapat dicetak atau dikirim secara digital kepada pelanggan."
+                },
+                "item4": {
+                    "question": "Metode pembayaran apa yang bisa saya terima?",
+                    "answer": "BillForge mendukung semua metode pembayaran utama termasuk tunai, kartu kredit/debit, pembayaran seluler, dan dompet digital. Paket Gratis memungkinkan hingga 5 metode pembayaran, sementara Pro dan Enterprise menawarkan opsi metode pembayaran tanpa batas."
+                },
+                "item5": {
+                    "question": "Bagaimana cara saya mengelola diskon dan pajak?",
+                    "answer": "Platform kami mencakup manajemen diskon dan pajak bawaan. Buat diskon persentase atau jumlah tetap, terapkan ke item tertentu atau seluruh transaksi. Atur berbagai tarif pajak untuk kategori produk yang berbeda. Paket Gratis mencakup 30 konfigurasi diskon dan pajak."
+                },
+                "item6": {
+                    "question": "Apakah data bisnis saya aman?",
+                    "answer": "Ya! Semua data disimpan dengan aman di cloud dengan enkripsi. Kami melakukan pencadangan rutin dan menggunakan praktik keamanan standar industri. Riwayat transaksi, informasi pelanggan, dan data bisnis Anda dilindungi dan hanya dapat diakses oleh Anda."
+                },
+                "item7": {
+                    "question": "Bisakah saya melacak riwayat pembelian pelanggan?",
+                    "answer": "Ya! BillForge mencakup fitur manajemen pelanggan. Simpan detail pelanggan, lihat riwayat pembelian, dan bangun hubungan yang lebih baik dengan pelanggan setia Anda. Lacak apa yang mereka beli, kapan mereka mengunjungi, dan total pengeluaran mereka untuk memberikan layanan personal."
+                },
+                "item8": {
+                    "question": "Apakah saya memerlukan perangkat keras khusus?",
+                    "answer": "Tidak perlu perangkat keras khusus! BillForge berfungsi di perangkat apa pun dengan browser web - desktop, tablet, atau smartphone. Jika ingin mencetak struk, Anda dapat menggunakan printer standar apa pun. Sistem berbasis cloud, jadi Anda dapat mengaksesnya dari mana saja."
+                },
+                "item9": {
+                    "question": "Apa yang terjadi jika saya melebihi batas transaksi bulanan saya?",
+                    "answer": "Pada paket Gratis, Anda terbatas pada 50 transaksi per bulan. Jika Anda membutuhkan lebih banyak, Anda dapat meningkatkan ke Pro (500 transaksi/bulan) atau Enterprise (tanpa batas). Data Anda tidak akan pernah dihapus, dan Anda selalu dapat melihat transaksi masa lalu terlepas dari paket Anda saat ini."
+                },
+                "item10": {
+                    "question": "Bagaimana cara mendapatkan dukungan jika saya membutuhkan bantuan?",
+                    "answer": "Kami menawarkan dukungan email untuk semua pengguna. Pelanggan Pro dan Enterprise mendapatkan dukungan prioritas dengan waktu respons lebih cepat. Pelanggan Enterprise juga menerima dukungan 24/7 dan manajer akun khusus. Periksa dokumentasi dan tutorial kami untuk panduan bantuan mandiri cepat."
+                }
+            }
         },
-        "language": {
-          "label": "Bahasa (Opsional)",
-          "placeholder": "Pilih bahasa"
+        "pricing": {
+            "title": "Harga Sederhana & Transparan",
+            "description": "Pilih paket yang sempurna untuk bisnis Anda. Mulai gratis dan tingkatkan seiring pertumbuhan Anda.",
+            "monthly": "/bulan",
+            "mostPopular": "Paling Populer",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "description": "Sempurna untuk usaha kecil yang baru memulai dengan billing digital.",
+                    "button": "Mulai Gratis",
+                    "features": {
+                        "business": "1 Bisnis",
+                        "items": "50 Item",
+                        "customers": "50 Pelanggan",
+                        "transactions": "50 Transaksi/bulan",
+                        "paymentMethods": "5 Metode Pembayaran",
+                        "discountsTaxes": "30 Diskon & Pajak",
+                        "templates": "Template Struk Dasar",
+                        "storage": "Penyimpanan Cloud"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideal untuk bisnis berkembang dengan berbagai lokasi dan volume tinggi.",
+                    "button": "Mulai Uji Coba Pro",
+                    "features": {
+                        "business": "10 Bisnis",
+                        "items": "500 Item",
+                        "customers": "500 Pelanggan",
+                        "transactions": "500 Transaksi/bulan",
+                        "paymentMethods": "50 Metode Pembayaran",
+                        "discountsTaxes": "300 Diskon & Pajak",
+                        "templates": "Template Struk Premium",
+                        "support": "Dukungan Prioritas",
+                        "analytics": "Analitik Lanjutan",
+                        "branding": "Branding Khusus"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "Untuk bisnis besar yang memerlukan fitur canggih dan dukungan khusus.",
+                    "button": "Hubungi Penjualan",
+                    "features": {
+                        "business": "Bisnis Tanpa Batas",
+                        "items": "Item Tanpa Batas",
+                        "customers": "Pelanggan Tanpa Batas",
+                        "transactions": "Transaksi Tanpa Batas",
+                        "paymentMethods": "Metode Pembayaran Tanpa Batas",
+                        "discountsTaxes": "Diskon & Pajak Tanpa Batas",
+                        "api": "Akses API",
+                        "support": "Dukungan Prioritas 24/7"
+                    }
+                }
+            }
         },
-        "region": {
-          "label": "Wilayah (Opsional)",
-          "placeholder": "Pilih wilayah"
+        "testimonials": {
+            "title": "Testimoni",
+            "items": {
+                "item1": {
+                    "name": "Sarah Martinez",
+                    "designation": "Pemilik Kafe",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge telah merevolusi cara kami menangani transaksi di kafe kami. Penyesuaian struk sangat bagus, dan pelanggan kami menyukai menerima struk digital. Kami telah mengurangi biaya kertas sebesar 80% dan waktu checkout tidak pernah lebih cepat!"
+                },
+                "item2": {
+                    "name": "Budi Santoso",
+                    "designation": "Manajer Toko",
+                    "company": "Warung Maju Jakarta",
+                    "text": "Sejak menggunakan BillForge, mengelola warung jadi jauh lebih mudah. Antarmukanya mudah dipahami dan laporan penjualannya sangat membantu. Sangat direkomendasikan untuk pengusaha UMKM!"
+                },
+                "item3": {
+                    "name": "Michael Chen",
+                    "designation": "Pemilik Restoran",
+                    "company": "Chen's Asian Bistro",
+                    "text": "Mengelola berbagai metode pembayaran dulunya adalah mimpi buruk. BillForge membuatnya mulus! Fitur riwayat transaksi dan manajemen pelanggan telah membantu kami membangun hubungan yang lebih baik dengan pelanggan setia. Keputusan POS terbaik yang pernah kami buat!"
+                },
+                "item4": {
+                    "name": "Emma Thompson",
+                    "designation": "Pemilik Butik",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "Manajemen diskon dan pajak di BillForge adalah apa yang kami butuhkan untuk penjualan musiman kami. Membuat struk bermerek yang indah telah meningkatkan pengalaman pelanggan kami. Proses checkout kami sekarang profesional dan efisien!"
+                },
+                "item5": {
+                    "name": "James Wilson",
+                    "designation": "Pemilik Bakery",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Kami beralih ke BillForge tiga bulan lalu dan tidak ingin kembali. Sistem manajemen item membuat inventaris kami tetap terorganisir, dan template struk terlihat profesional. Checkout pelanggan sekarang mudah, bahkan saat rush pagi kami yang sibuk!"
+                },
+                "item6": {
+                    "name": "Lisa Rodriguez",
+                    "designation": "Manajer Retail",
+                    "company": "TechGadgets Plus",
+                    "text": "Pelacakan transaksi BillForge telah memberi kami wawasan luar biasa tentang pola penjualan kami. Database pelanggan membantu kami memberikan layanan personal, dan struk dengan kode QR sangat disukai pelanggan tech-savvy kami. Ini paket lengkapnya!"
+                }
+            }
         },
-        "logo": {
-          "label": "Logo Bisnis (Opsional)",
-          "helper": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Maks 1MB",
-          "uploading": "Sedang mengunggah..."
+        "footer": {
+            "contact": "Hubungi Kami",
+            "legal": "Hukum",
+            "legalLinks": {
+                "terms": "Syarat",
+                "privacy": "Privasi"
+            },
+            "description": "Sederhanakan proses billing Anda dengan manajemen invoice yang cerdas",
+            "copyright": "© 2025 BillForge. Semua hak dilindungi.",
+            "madeWith": "Dibuat dengan ❤️ di Bali",
+            "links": {
+                "terms": "Syarat Layanan",
+                "privacy": "Kebijakan Privasi"
+            }
         }
-      },
-      "buttons": {
-        "cancel": "Batal",
-        "update": "Perbarui",
-        "create": "Buat"
-      }
     },
-    "businessSelector": {
-      "switchBusiness": "Ganti Bisnis",
-      "edit": "Ubah",
-      "delete": "Hapus",
-      "addBusiness": "Tambah Bisnis"
+    "auth": {
+        "login": {
+            "title": "Selamat Datang Kembali",
+            "description": "Masuk ke akun BillForge Anda",
+            "emailLabel": "Alamat Email",
+            "emailPlaceholder": "anda@email.com",
+            "passwordLabel": "Kata Sandi",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Lupa kata sandi?",
+            "submit": "Masuk",
+            "submitting": "Sedang masuk...",
+            "noAccount": "Belum punya akun?",
+            "signUp": "Buat satu",
+            "errorGeneric": "Email atau kata sandi salah. Coba lagi."
+        },
+        "register": {
+            "title": "Buat Akun Anda",
+            "description": "Bergabunglah dengan BillForge untuk mengelola bisnis Anda",
+            "nameLabel": "Nama Lengkap",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "Alamat Email",
+            "emailPlaceholder": "anda@email.com",
+            "passwordLabel": "Kata Sandi",
+            "passwordPlaceholder": "Minimal 8 karakter",
+            "confirmPasswordLabel": "Konfirmasi Kata Sandi",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Dengan membuat akun, Anda setuju dengan",
+            "terms": "Syarat Layanan",
+            "and": "dan",
+            "privacy": "Kebijakan Privasi",
+            "submit": "Buat akun",
+            "submitting": "Sedang membuat akun...",
+            "hasAccount": "Sudah punya akun?",
+            "signIn": "Masuk di sini",
+            "errorMatch": "Kata sandi tidak cocok",
+            "errorGeneric": "Pendaftaran gagal. Coba lagi."
+        },
+        "forgotPassword": {
+            "title": "Atur Ulang Kata Sandi Anda",
+            "description": "Masukkan alamat email Anda dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi Anda.",
+            "emailLabel": "Alamat Email",
+            "emailPlaceholder": "anda@email.com",
+            "submit": "Kirim tautan reset",
+            "submitting": "Sedang mengirim...",
+            "backToLogin": "Kembali ke login",
+            "checkEmailTitle": "Periksa Email Anda",
+            "checkEmailDescription": "Kami telah mengirim instruksi reset kata sandi ke",
+            "checkEmailNote1": "Periksa inbox Anda untuk tautan reset.",
+            "checkEmailNote2": "Jika Anda tidak melihat email, periksa folder spam.",
+            "tryAnotherEmail": "Coba email lain",
+            "errorGeneric": "Terjadi kesalahan. Coba lagi."
+        },
+        "resetPassword": {
+            "title": "Buat Kata Sandi Baru",
+            "description": "Masukkan kata sandi baru Anda di bawah ini.",
+            "emailLabel": "Alamat Email",
+            "emailPlaceholder": "anda@email.com",
+            "newPasswordLabel": "Kata Sandi Baru",
+            "newPasswordPlaceholder": "Minimal 8 karakter",
+            "passwordHint": "Harus minimal 8 karakter",
+            "confirmPasswordLabel": "Konfirmasi Kata Sandi",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Atur ulang kata sandi",
+            "submitting": "Sedang mengatur ulang kata sandi...",
+            "backToLogin": "Kembali ke login",
+            "successTitle": "Kata Sandi Atur Ulang",
+            "successDescription": "Kata sandi Anda telah berhasil diatur ulang.",
+            "redirecting": "Mengalihkan ke login...",
+            "goToLogin": "Ke login",
+            "errorGeneric": "Terjadi kesalahan. Coba lagi.",
+            "errorMatch": "Kata sandi tidak cocok",
+            "errorLength": "Kata sandi harus minimal 8 karakter"
+        },
+        "verifyEmail": {
+            "title": "Verifikasi Email Anda",
+            "description": "Kami mengirim email verifikasi ke",
+            "instruction": "Silakan periksa inbox Anda dan klik tautan verifikasi untuk mengaktifkan akun Anda.",
+            "resend": "Kirim Ulang Email Verifikasi",
+            "resending": "Sedang mengirim...",
+            "changeEmail": "Gunakan alamat email yang berbeda",
+            "verifyingTitle": "Sedang Memverifikasi Email...",
+            "verifyingDescription": "Silakan tunggu sambil kami memverifikasi alamat email Anda.",
+            "successTitle": "Email Terverifikasi",
+            "successDescription": "Email Anda telah berhasil diverifikasi!",
+            "goToSale": "Lanjut ke Dashboard",
+            "alreadyVerifiedTitle": "Sudah Terverifikasi",
+            "alreadyVerifiedDescription": "Email Anda sudah terverifikasi. Anda dapat melanjutkan.",
+            "failedTitle": "Verifikasi Gagal",
+            "failedDescription": "Tautan verifikasi telah kedaluwarsa atau tidak valid.",
+            "resendSuccess": "Email verifikasi terkirim! Silakan periksa inbox Anda.",
+            "changeEmailTitle": "Ubah Alamat Email?",
+            "changeEmailDescription": "Anda akan keluar dan dialihkan ke halaman pendaftaran untuk mendaftar dengan alamat email baru.",
+            "cancel": "Batal",
+            "continue": "Lanjutkan",
+            "errorGeneric": "Terjadi kesalahan. Coba lagi."
+        },
+        "confirmDeletion": {
+            "title": "Hapus Akun",
+            "description": "Peringatan: Ini akan secara permanen menghapus:",
+            "warningTitle": "Menghapus akun Anda akan menghapus:",
+            "warningItem1": "Semua bisnis dan data Anda",
+            "warningItem2": "Semua catatan transaksi dan penjualan",
+            "warningItem3": "Semua item dan inventaris",
+            "warningItem4": "Profil dan informasi akun Anda",
+            "warningReversal": "Tindakan ini tidak dapat dibatalkan.",
+            "inputLabel": "Ketik KONFIRMASI untuk menghapus akun Anda",
+            "confirmWord": "KONFIRMASI",
+            "inputLabelSuffix": "untuk melanjutkan dengan penghapusan",
+            "inputPlaceholder": "Ketik KONFIRMASI di sini",
+            "cancel": "Batal",
+            "delete": "Hapus Akun",
+            "deleting": "Sedang menghapus...",
+            "success": "Akun berhasil dihapus",
+            "errorGeneric": "Terjadi kesalahan. Coba lagi.",
+            "errorMatch": "Ketik KONFIRMASI dengan tepat",
+            "errorMissingToken": "Permintaan tidak valid. Coba lagi.",
+            "invalidLinkTitle": "Tautan Tidak Valid atau Kedaluwarsa",
+            "invalidLinkDescription": "Tautan penghapusan ini telah kedaluwarsa atau tidak valid.",
+            "returnToSettings": "Kembali ke Pengaturan"
+        }
     },
-    "deleteBusinessDialog": {
-      "title": "Hapus Bisnis",
-      "description": "Apakah Anda yakin? Ini tidak dapat dibatalkan.",
-      "cancel": "Batal",
-      "confirm": "Hapus"
+    "business": {
+        "name": "Nama Bisnis",
+        "address": "Alamat",
+        "phone": "Nomor Telepon",
+        "currency": "Mata Uang",
+        "language": "Bahasa",
+        "region": "Wilayah",
+        "create": "Buat Bisnis",
+        "edit": "Ubah Bisnis",
+        "delete": "Hapus Bisnis",
+        "select": "Pilih Bisnis",
+        "noBusiness": "Bisnis tidak ditemukan",
+        "createFirst": "Buat bisnis pertama Anda untuk memulai"
     },
-    "userProfile": {
-      "myAccount": "Akun Saya",
-      "logout": "Keluar",
-      "dialog": {
-        "title": "Konfirmasi Keluar",
-        "description": "Apakah Anda yakin ingin keluar?",
-        "cancel": "Batal",
-        "confirm": "Keluar"
-      }
+    "validation": {
+        "required": "Bidang ini wajib diisi",
+        "email": "Silakan masukkan alamat email yang valid",
+        "minLength": "Harus minimal {min} karakter",
+        "maxLength": "Harus maksimal {max} karakter",
+        "passwordMatch": "Kata sandi tidak cocok",
+        "invalidFormat": "Format tidak valid"
     },
-    "reports": {
-      "title": "Laporan Penjualan",
-      "subtitle": "Lihat analisis dan wawasan penjualan yang komprehensif",
-      "dateRange": {
-        "title": "Rentang Tanggal",
-        "description": "Filter laporan berdasarkan rentang tanggal",
-        "startDate": "Tanggal Mulai",
-        "endDate": "Tanggal Akhir",
-        "applyFilter": "Terapkan Filter"
-      },
-      "summary": {
-        "totalSales": "Total Penjualan",
-        "transactions": "transaksi",
-        "averageTransaction": "Rata-rata Transaksi",
-        "perTransaction": "Per transaksi",
-        "itemsSold": "Item Terjual",
-        "totalUnits": "Total unit",
-        "totalTax": "Total Pajak",
-        "taxCollected": "Pajak terkumpul",
-        "totalDiscounts": "Total Diskon",
-        "discountsGiven": "Diskon diberikan"
-      },
-      "tabs": {
-        "byDate": "Berdasarkan Tanggal",
-        "byItem": "Berdasarkan Item",
-        "byCategory": "Berdasarkan Kategori",
-        "byPaymentMethod": "Berdasarkan Metode Pembayaran"
-      },
-      "byDate": {
-        "title": "Penjualan Berdasarkan Tanggal",
-        "description": "Rincian penjualan harian",
-        "date": "Tanggal",
-        "transactions": "Transaksi",
-        "totalAmount": "Total Jumlah"
-      },
-      "byItem": {
-        "title": "Penjualan Berdasarkan Item",
-        "description": "Item terlaris",
-        "itemName": "Nama Item",
-        "sku": "SKU",
-        "quantitySold": "Jumlah Terjual",
-        "totalRevenue": "Total Pendapatan"
-      },
-      "byCategory": {
-        "title": "Penjualan Berdasarkan Kategori",
-        "description": "Rincian kinerja kategori",
-        "category": "Kategori",
-        "quantitySold": "Jumlah Terjual",
-        "totalRevenue": "Total Pendapatan"
-      },
-      "byPaymentMethod": {
-        "title": "Penjualan Berdasarkan Metode Pembayaran",
-        "description": "Rincian metode pembayaran",
-        "paymentMethod": "Metode Pembayaran",
-        "transactions": "Transaksi",
-        "totalAmount": "Total Jumlah"
-      },
-      "noData": "Tidak ada data tersedia"
+    "privacy": {
+        "title": "Kebijakan Privasi",
+        "lastUpdated": "Terakhir diperbarui: 8 Desember 2025",
+        "intro": {
+            "title": "Pendahuluan",
+            "content": "Di BillForge, kami menanggapi privasi Anda dengan serius. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, mengungkapkan, dan menjaga informasi Anda ketika Anda menggunakan layanan penagihan dan manajemen faktur kami. Harap baca kebijakan privasi ini dengan saksama. Jika Anda tidak setuju dengan ketentuan kebijakan privasi ini, harap jangan akses aplikasi."
+        },
+        "infoCollect": {
+            "title": "1. Informasi yang Kami Kumpulkan",
+            "personal": {
+                "title": "Informasi Pribadi",
+                "intro": "Kami mengumpulkan informasi yang Anda berikan secara langsung kepada kami, termasuk:",
+                "items": {
+                    "contact": "Nama dan informasi kontak (alamat email, nomor telepon)",
+                    "business": "Informasi bisnis (nama perusahaan, alamat, ID pajak)",
+                    "payment": "Informasi pembayaran (diproses secara aman melalui pemroses pembayaran pihak ketiga)",
+                    "credentials": "Kredensial akun (nama pengguna, kata sandi)"
+                }
+            },
+            "businessData": {
+                "title": "Data Bisnis",
+                "intro": "Ketika Anda menggunakan BillForge, kami mengumpulkan dan menyimpan:",
+                "items": {
+                    "customers": "Informasi pelanggan yang Anda masukkan",
+                    "invoices": "Data faktur dan transaksi",
+                    "items": "Katalog barang dan informasi harga",
+                    "tax": "Konfigurasi pajak dan diskon",
+                    "settings": "Pengaturan dan preferensi bisnis"
+                }
+            },
+            "auto": {
+                "title": "Informasi yang Dikumpulkan Secara Otomatis",
+                "intro": "Ketika Anda mengakses BillForge, kami secara otomatis mengumpulkan:",
+                "items": {
+                    "log": "Data log (alamat IP, jenis browser, sistem operasi)",
+                    "device": "Informasi perangkat",
+                    "usage": "Data penggunaan (halaman yang dikunjungi, fitur yang digunakan, waktu yang dihabiskan)",
+                    "cookies": "Cookie dan teknologi pelacakan serupa"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Bagaimana Kami Menggunakan Informasi Anda",
+            "intro": "Kami menggunakan informasi yang kami kumpulkan untuk:",
+            "items": {
+                "provide": "Menyediakan, memelihara, dan meningkatkan layanan kami",
+                "process": "Memproses transaksi Anda dan mengelola akun Anda",
+                "send": "Mengirim pemberitahuan teknis, pembaruan, dan pesan dukungan",
+                "respond": "Menanggapi komentar, pertanyaan, dan permintaan layanan pelanggan Anda",
+                "monitor": "Memantau dan menganalisis tren, penggunaan, dan aktivitas",
+                "detect": "Mendeteksi, mencegah, dan mengatasi masalah teknis dan aktivitas penipuan",
+                "personalize": "Mempersonalisasi dan meningkatkan pengalaman Anda",
+                "marketing": "Mengirim komunikasi pemasaran (dengan persetujuan Anda)"
+            }
+        },
+        "sharing": {
+            "title": "3. Berbagi dan Pengungkapan Informasi",
+            "intro": "Kami tidak menjual informasi pribadi Anda. Kami dapat membagikan informasi Anda dalam keadaan berikut:",
+            "items": {
+                "providers": "Dengan penyedia layanan yang melakukan layanan atas nama kami",
+                "legal": "Untuk mematuhi kewajiban hukum atau menanggapi permintaan hukum",
+                "protect": "Untuk melindungi hak, properti, dan keselamatan BillForge, pengguna kami, atau orang lain",
+                "merger": "Sehubungan dengan merger, penjualan, atau akuisisi seluruh atau sebagian perusahaan kami",
+                "consent": "Dengan persetujuan Anda atau atas arahan Anda"
+            }
+        },
+        "security": {
+            "title": "4. Keamanan Data",
+            "intro": "Kami menerapkan langkah-langkah teknis dan organisasi yang tepat untuk melindungi informasi Anda, termasuk:",
+            "items": {
+                "encryption": "Enkripsi data saat transit dan saat istirahat",
+                "assessments": "Penilaian dan pembaruan keamanan rutin",
+                "access": "Kontrol akses dan mekanisme otentikasi",
+                "datacenters": "Pusat data aman dengan langkah-langkah keamanan fisik",
+                "backups": "Pencadangan rutin dan prosedur pemulihan bencana"
+            },
+            "disclaimer": "Namun, tidak ada metode transmisi melalui internet atau penyimpanan elektronik yang 100% aman. Meskipun kami berusaha menggunakan cara yang dapat diterima secara komersial untuk melindungi informasi Anda, kami tidak dapat menjamin keamanannya secara mutlak."
+        },
+        "retention": {
+            "title": "5. Penyimpanan Data",
+            "content": "Kami menyimpan informasi Anda selama akun Anda aktif atau sesuai kebutuhan untuk menyediakan layanan kepada Anda. Kami akan menyimpan dan menggunakan informasi Anda jika diperlukan untuk mematuhi kewajiban hukum, menyelesaikan sengketa, dan menegakkan perjanjian kami. Anda dapat meminta penghapusan data Anda dengan menghubungi kami, tunduk pada persyaratan penyimpanan hukum tertentu."
+        },
+        "rights": {
+            "title": "6. Hak dan Pilihan Anda",
+            "intro": "Anda memiliki hak tertentu terkait informasi pribadi Anda:",
+            "items": {
+                "access": "Mengakses dan menerima salinan informasi pribadi Anda",
+                "correct": "Mengoreksi atau memperbarui informasi yang tidak akurat",
+                "delete": "Meminta penghapusan informasi Anda",
+                "object": "Menolak atau membatasi pemrosesan tertentu atas informasi Anda",
+                "export": "Mengekspor data Anda dalam format portabel",
+                "optout": "Memilih keluar dari komunikasi pemasaran",
+                "withdraw": "Menarik persetujuan jika kami mengandalkan persetujuan untuk memproses informasi Anda"
+            },
+            "exercise": "Untuk menggunakan hak-hak ini, silakan hubungi kami menggunakan informasi yang disediakan di akhir kebijakan ini."
+        },
+        "cookies": {
+            "title": "7. Cookie dan Teknologi Pelacakan",
+            "intro": "Kami menggunakan cookie dan teknologi pelacakan serupa untuk mengumpulkan dan melacak informasi tentang penggunaan BillForge oleh Anda. Jenis cookie yang kami gunakan meliputi:",
+            "items": {
+                "essential": "Cookie esensial: Diperlukan untuk pengoperasian layanan kami",
+                "preference": "Cookie preferensi: Mengingat pengaturan dan preferensi Anda",
+                "analytics": "Cookie analitik: Membantu kami memahami bagaimana Anda menggunakan layanan kami",
+                "marketing": "Cookie pemasaran: Melacak aktivitas Anda untuk mengirimkan iklan yang relevan"
+            },
+            "control": "Anda dapat mengontrol cookie melalui pengaturan browser Anda dan alat lainnya. Namun, menonaktifkan cookie tertentu dapat membatasi kemampuan Anda untuk menggunakan beberapa fitur BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Layanan Pihak Ketiga",
+            "intro": "BillForge dapat berisi tautan ke situs web pihak ketiga dan berintegrasi dengan layanan pihak ketiga. Kami tidak bertanggung jawab atas praktik privasi pihak ketiga ini. Kami mendorong Anda untuk membaca kebijakan privasi layanan pihak ketiga yang Anda gunakan.",
+            "services": "Layanan pihak ketiga yang mungkin kami gunakan meliputi pemroses pembayaran, penyedia analitik, dan penyedia infrastruktur cloud. Layanan ini memiliki kebijakan privasi mereka sendiri yang mengatur penggunaan informasi Anda."
+        },
+        "children": {
+            "title": "9. Privasi Anak-Anak",
+            "content": "BillForge tidak ditujukan untuk digunakan oleh anak-anak di bawah usia 18 tahun. Kami tidak secara sadar mengumpulkan informasi pribadi dari anak-anak di bawah 18 tahun. Jika kami mengetahui bahwa kami telah mengumpulkan informasi pribadi dari seorang anak di bawah 18 tahun, kami akan mengambil langkah-langkah untuk menghapus informasi tersebut."
+        },
+        "international": {
+            "title": "10. Transfer Data Internasional",
+            "content": "Informasi Anda dapat ditransfer ke dan dipelihara di server yang berlokasi di luar negara atau yurisdiksi Anda. Dengan menggunakan BillForge, Anda menyetujui transfer informasi Anda ke negara-negara yang mungkin memiliki undang-undang perlindungan data yang berbeda dari negara tempat tinggal Anda."
+        },
+        "changes": {
+            "title": "11. Perubahan pada Kebijakan Privasi Ini",
+            "content": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Kami akan memberi tahu Anda tentang perubahan materi apa pun dengan memposting Kebijakan Privasi baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\". Anda disarankan untuk meninjau Kebijakan Privasi ini secara berkala untuk setiap perubahan. Penggunaan BillForge yang berkelanjutan setelah modifikasi apa pun menunjukkan penerimaan Anda terhadap Kebijakan Privasi yang diperbarui."
+        },
+        "california": {
+            "title": "12. Hak Privasi California",
+            "intro": "Jika Anda adalah penduduk California, Anda memiliki hak tambahan berdasarkan California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Hak untuk mengetahui informasi pribadi apa yang dikumpulkan, digunakan, dibagikan, atau dijual",
+                "delete": "Hak untuk menghapus informasi pribadi",
+                "optout": "Hak untuk memilih keluar dari penjualan informasi pribadi (kami tidak menjual informasi pribadi)",
+                "nondiscrimination": "Hak untuk tidak mendiskriminasi karena menggunakan hak privasi Anda"
+            }
+        },
+        "gdpr": {
+            "title": "13. Hak GDPR (Pengguna Eropa)",
+            "intro": "Jika Anda berada di Area Ekonomi Eropa (EEA), Anda memiliki hak tambahan berdasarkan General Data Protection Regulation (GDPR):",
+            "items": {
+                "access": "Hak untuk mengakses data pribadi Anda",
+                "rectification": "Hak untuk perbaikan data yang tidak akurat",
+                "erasure": "Hak untuk penghapusan (hak untuk dilupakan)",
+                "restrict": "Hak untuk membatasi pemrosesan",
+                "portability": "Hak untuk portabilitas data",
+                "object": "Hak untuk menolak pemrosesan",
+                "complaint": "Hak untuk mengajukan keluhan kepada otoritas pengawas"
+            }
+        },
+        "contact": {
+            "title": "Hubungi Kami",
+            "description": "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini atau praktik data kami, silakan hubungi kami. Kami berkomitmen untuk bekerja sama dengan Anda untuk mendapatkan resolusi yang adil atas segala masalah privasi."
+        }
+    },
+    "terms": {
+        "title": "Ketentuan Layanan",
+        "lastUpdated": "Terakhir diperbarui: 8 Desember 2025",
+        "acceptance": {
+            "title": "1. Penerimaan Ketentuan",
+            "content": "Dengan mengakses dan menggunakan BillForge, Anda menerima dan setuju untuk terikat oleh ketentuan dan ketentuan perjanjian ini. Jika Anda tidak setuju untuk mematuhi hal-hal di atas, harap jangan gunakan layanan ini."
+        },
+        "license": {
+            "title": "2. Lisensi Penggunaan",
+            "intro": "Izin diberikan untuk mengakses dan menggunakan BillForge sementara untuk tujuan pribadi dan komersial. Ini adalah pemberian lisensi, bukan pengalihan hak milik, dan di bawah lisensi ini Anda tidak boleh:",
+            "items": {
+                "modify": "Memodifikasi atau menyalin materi",
+                "commercial": "Menggunakan materi untuk tujuan komersial tanpa berlangganan yang tepat",
+                "decompile": "Mencoba mendekompilasi atau merekayasa balik perangkat lunak apa pun yang terdapat di BillForge",
+                "remove": "Menghapus hak cipta atau notasi kepemilikan lainnya dari materi",
+                "transfer": "Mentransfer materi ke orang lain atau menyalin materi di server lain mana pun"
+            }
+        },
+        "account": {
+            "title": "3. Akun Pengguna",
+            "intro": "Untuk menggunakan fitur tertentu dari BillForge, Anda harus mendaftar akun. Anda setuju untuk:",
+            "items": {
+                "accurate": "Memberikan informasi yang akurat, terkini, dan lengkap selama pendaftaran",
+                "security": "Menjaga keamanan kata sandi dan akun Anda",
+                "notify": "Beri tahu kami segera tentang penggunaan tidak sah atas akun Anda",
+                "responsibility": "Menerima tanggung jawab atas semua aktivitas yang terjadi di bawah akun Anda"
+            }
+        },
+        "subscription": {
+            "title": "4. Langganan dan Pembayaran",
+            "intro": "BillForge menawarkan berbagai paket berlangganan. Dengan berlangganan, Anda setuju untuk:",
+            "items": {
+                "fees": "Membayar semua biaya yang terkait dengan paket berlangganan pilihan Anda",
+                "renewal": "Pembaruan otomatis langganan Anda kecuali dibatalkan",
+                "pricing": "Kemungkinan perubahan harga dengan pemberitahuan 30 hari sebelumnya",
+                "refunds": "Tidak ada pengembalian uang untuk bulan parsial atau layanan yang tidak digunakan"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Data dan Privasi",
+            "content": "Penggunaan BillForge oleh Anda juga diatur oleh Kebijakan Privasi kami. Harap tinjau",
+            "link": "Kebijakan Privasi",
+            "toUnderstand": "kami untuk memahami praktik kami."
+        },
+        "prohibited": {
+            "title": "6. Aktivitas yang Dilarang",
+            "intro": "Anda tidak boleh menggunakan BillForge untuk:",
+            "items": {
+                "laws": "Melanggar hukum atau peraturan apa pun",
+                "infringe": "Melanggar hak kekayaan intelektual",
+                "malware": "Mengirimkan virus, malware, atau kode berbahaya lainnya",
+                "unauthorized": "Mencoba mendapatkan akses tidak sah ke sistem kami",
+                "harass": "Melecehkan, menyalahgunakan, atau membahayakan pengguna lain",
+                "fraud": "Menggunakan layanan untuk tujuan penipuan"
+            }
+        },
+        "availability": {
+            "title": "7. Ketersediaan Layanan",
+            "content": "Kami berusaha untuk menjaga ketersediaan BillForge yang tinggi, tetapi kami tidak menjamin akses tanpa gangguan. Kami berhak untuk memodifikasi, menangguhkan, atau menghentikan bagian mana pun dari layanan dengan atau tanpa pemberitahuan. Kami tidak bertanggung jawab atas modifikasi, penangguhan, atau penghentian layanan."
+        },
+        "intellectual": {
+            "title": "8. Kekayaan Intelektual",
+            "content": "Semua konten yang disertakan di BillForge, seperti teks, grafik, logo, gambar, dan perangkat lunak, adalah milik BillForge atau pemasok kontennya dan dilindungi oleh undang-undang hak cipta internasional. Kompilasi semua konten di situs ini adalah milik eksklusif BillForge."
+        },
+        "liability": {
+            "title": "9. Batasan Tanggung Jawab",
+            "content": "Dalam hal apa pun BillForge atau pemasoknya tidak bertanggung jawab atas kerusakan apa pun (termasuk, tanpa batasan, kerusakan karena kehilangan data atau keuntungan, atau karena gangguan bisnis) yang timbul dari penggunaan atau ketidakmampuan untuk menggunakan BillForge, bahkan jika BillForge atau perwakilan resmi BillForge telah diberitahu secara lisan atau tertulis tentang kemungkinan kerusakan tersebut."
+        },
+        "termination": {
+            "title": "10. Penghentian",
+            "content": "Kami dapat mengakhiri atau menangguhkan akun dan akses Anda ke BillForge segera, tanpa pemberitahuan atau kewajiban sebelumnya, dengan alasan apa pun, termasuk jika Anda melanggar Ketentuan Layanan ini. Setelah penghentian, hak Anda untuk menggunakan layanan akan segera berakhir."
+        },
+        "changesTerms": {
+            "title": "11. Perubahan Ketentuan",
+            "content": "Kami berhak untuk mengubah ketentuan ini kapan saja. Kami akan memberi tahu pengguna tentang perubahan materi apa pun dengan memposting Ketentuan Layanan baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\". Penggunaan BillForge yang berkelanjutan setelah modifikasi tersebut merupakan pengakuan dan penerimaan Anda terhadap ketentuan yang dimodifikasi."
+        },
+        "governing": {
+            "title": "12. Hukum yang Mengatur",
+            "content": "Ketentuan ini akan diatur dan ditafsirkan sesuai dengan hukum yang berlaku, tanpa memperhatikan pertentangan ketentuan hukumnya. Kegagalan kami untuk menegakkan hak atau ketentuan apa pun dari ketentuan ini tidak akan dianggap sebagai pengabaian atas hak-hak tersebut."
+        },
+        "contact": {
+            "title": "Hubungi Kami",
+            "description": "Jika Anda memiliki pertanyaan tentang Ketentuan Layanan ini, silakan hubungi kami."
+        }
+    },
+    "app": {
+        "sale": {
+            "title": "Penjualan",
+            "searchItems": "Cari item...",
+            "allCategories": "Semua Kategori",
+            "checkout": "Checkout",
+            "total": "Total:",
+            "items": "Item",
+            "noItems": "Item tidak ditemukan",
+            "addToCart": "Tambah ke Keranjang",
+            "removeFromCart": "Hapus",
+            "error": "Kesalahan",
+            "retry": "Coba Lagi",
+            "loading": "Memuat...",
+            "selectBusiness": "Silakan pilih bisnis dari sidebar untuk memulai",
+            "cartEmpty": "Keranjang Anda kosong. Mulai tambahkan item untuk melanjutkan.",
+            "backToItems": "Kembali ke Item",
+            "reviewOrder": "Periksa pesanan Anda dan selesaikan transaksi",
+            "orderSummary": "Ringkasan Pesanan",
+            "item": "Item",
+            "quantity": "Jumlah",
+            "price": "Harga",
+            "tax": "Pajak:",
+            "discount": "Diskon:",
+            "subtotal": "Subtotal:",
+            "paymentSummary": "Ringkasan Pembayaran",
+            "processing": "Sedang memproses...",
+            "completeTransaction": "Selesaikan Transaksi",
+            "transactionDetails": "Detail Transaksi",
+            "customer": "Pelanggan (Opsional)",
+            "selectCustomer": "Pilih pelanggan...",
+            "guestCustomer": "Pelanggan Tamu",
+            "paymentMethod": "Metode Pembayaran (Opsional)",
+            "paymentMethodsLoadError": "Gagal memuat metode pembayaran",
+            "created": "Dibuat",
+            "selectPaymentMethod": "Pilih metode pembayaran...",
+            "cash": "Tunai",
+            "notes": "Catatan (Opsional)",
+            "addNotes": "Tambahkan catatan tentang transaksi ini...",
+            "outOfStock": "Stok habis",
+            "noItemsAvailable": "Tidak ada item tersedia",
+            "addItemsToInventory": "Tambahkan item ke inventaris Anda untuk mulai membuat transaksi"
+        },
+        "items": {
+            "title": "Item",
+            "addItem": "Tambah Item",
+            "editItem": "Ubah Item",
+            "deleteItem": "Hapus Item",
+            "name": "Nama Item",
+            "price": "Harga",
+            "sku": "SKU (Satuan Persediaan)",
+            "category": "Kategori",
+            "description": "Deskripsi",
+            "noItems": "Item tidak ditemukan",
+            "loading": "Memuat item...",
+            "error": "Kesalahan memuat item",
+            "actions": "Tindakan",
+            "business": "Bisnis",
+            "unknownBusiness": "Bisnis Tidak Diketahui",
+            "addFirstItem": "Tambah Item Pertama Anda",
+            "image": "Gambar Item",
+            "status": "Status",
+            "created": "Tanggal Dibuat",
+            "active": "Aktif",
+            "inactive": "Tidak Aktif",
+            "createTitle": "Buat Item Baru",
+            "createDescription": "Tambahkan produk atau layanan baru ke inventaris Anda",
+            "editTitle": "Ubah Item",
+            "editDescription": "Perbarui informasi item",
+            "taxOptional": "Pajak (Opsional)",
+            "noTax": "Tanpa pajak",
+            "discountOptional": "Diskon (Opsional)",
+            "noDiscount": "Tanpa diskon",
+            "categoriesOptional": "Kategori (Opsional)",
+            "noCategoriesAvailable": "Tidak ada kategori tersedia. Buat kategori terlebih dahulu.",
+            "skuOptional": "SKU (Opsional)",
+            "descriptionOptional": "Deskripsi (Opsional)",
+            "itemImageOptional": "Gambar Item (Opsional)",
+            "supportedFormats": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Ukuran maksimal: 1MB",
+            "uploading": "Sedang mengunggah gambar...",
+            "update": "Perbarui Item",
+            "create": "Buat Item",
+            "deleteTitle": "Hapus Item?",
+            "deleteDescription": "Ini akan secara permanen menghapus {name} (SKU: {sku}). Tindakan ini tidak dapat dibatalkan.",
+            "deleting": "Sedang menghapus...",
+            "errorCreating": "Gagal membuat item",
+            "errorUpdating": "Gagal memperbarui item",
+            "errorDeleting": "Gagal menghapus item",
+            "uploadError": "Gagal mengunggah gambar",
+            "deleteError": "Gagal menghapus item",
+            "selectImageError": "Silakan pilih file gambar",
+            "imageSizeError": "Ukuran gambar harus kurang dari 1MB",
+            "loadingError": "Terjadi kesalahan saat memuat data",
+            "itemsLoadError": "Gagal memuat item",
+            "basePrice": "Harga Dasar"
+        },
+        "customers": {
+            "title": "Pelanggan",
+            "addCustomer": "Tambah Pelanggan",
+            "editCustomer": "Ubah Pelanggan",
+            "deleteCustomer": "Hapus Pelanggan",
+            "name": "Nama Pelanggan",
+            "email": "Email",
+            "phone": "Nomor Telepon",
+            "address": "Alamat",
+            "noCustomers": "Pelanggan tidak ditemukan",
+            "loading": "Memuat pelanggan...",
+            "error": "Kesalahan memuat pelanggan",
+            "actions": "Tindakan",
+            "addFirstCustomer": "Tambah Pelanggan Pertama Anda",
+            "editTitle": "Ubah Pelanggan",
+            "createTitle": "Tambah Pelanggan Baru",
+            "editDescription": "Perbarui informasi pelanggan",
+            "createDescription": "Tambahkan pelanggan baru ke database Anda",
+            "customerName": "Nama Lengkap",
+            "placeholderName": "John Doe",
+            "emailOptional": "Email (Opsional)",
+            "placeholderEmail": "john@contoh.com",
+            "phoneOptional": "Nomor Telepon (Opsional)",
+            "placeholderPhone": "+62123456789",
+            "addressOptional": "Alamat (Opsional)",
+            "placeholderAddress": "Jln. Utama No. 123, Kota, Provinsi, Kode Pos",
+            "deleteTitle": "Hapus Pelanggan?",
+            "deleting": "Sedang menghapus...",
+            "errorCreating": "Gagal membuat pelanggan",
+            "errorUpdating": "Gagal memperbarui pelanggan",
+            "errorDeleting": "Gagal menghapus pelanggan",
+            "deleteError": "Gagal menghapus pelanggan",
+            "customersLoadError": "Gagal memuat pelanggan",
+            "loadingError": "Terjadi kesalahan saat memuat data"
+        },
+        "transactions": {
+            "title": "Transaksi",
+            "viewDetails": "Lihat Detail",
+            "date": "Tanggal",
+            "customer": "Pelanggan",
+            "total": "Total",
+            "totalAmount": "Jumlah Total",
+            "finalAmount": "Jumlah Akhir",
+            "discountAmount": "Jumlah Diskon:",
+            "taxAmount": "Jumlah Pajak:",
+            "paymentMethod": "Metode Pembayaran",
+            "noTransactions": "Transaksi tidak ditemukan",
+            "actions": "Tindakan",
+            "loading": "Memuat transaksi...",
+            "error": "Kesalahan memuat transaksi",
+            "guestCustomer": "Tamu",
+            "transactionDetails": "Detail Transaksi",
+            "viewInfo": "Lihat informasi transaksi lengkap",
+            "items": "Item",
+            "noItems": "Item tidak ditemukan",
+            "item": "Item",
+            "quantity": "Jumlah",
+            "basePrice": "Harga Dasar",
+            "tax": "Pajak",
+            "discount": "Diskon",
+            "notes": "Catatan",
+            "transactionId": "ID Transaksi",
+            "downloadPDF": "Unduh PDF",
+            "downloadImage": "Unduh Gambar",
+            "sendEmail": "Kirim ke Email",
+            "sendWhatsApp": "Kirim via WhatsApp"
+        },
+        "settings": {
+            "title": "Pengaturan",
+            "profile": "Profil",
+            "business": "Bisnis",
+            "receipt": "Pengaturan Struk",
+            "preferences": "Preferensi",
+            "account": "Akun",
+            "profileTab": {
+                "name": "Nama Lengkap",
+                "email": "Alamat Email",
+                "currentPassword": "Kata Sandi Saat Ini",
+                "newPassword": "Kata Sandi Baru",
+                "confirmPassword": "Konfirmasi Kata Sandi",
+                "changePassword": "Ubah Kata Sandi",
+                "updateProfile": "Perbarui Profil",
+                "deleteAccount": "Hapus Akun",
+                "errorLoad": "Gagal memuat profil",
+                "imageSizeError": "Ukuran gambar harus kurang dari 1MB",
+                "successUpdate": "Profil berhasil diperbarui",
+                "errorUpdate": "Gagal memperbarui profil",
+                "errorFields": "Silakan periksa semua bidang",
+                "errorMatch": "Kata sandi tidak cocok",
+                "errorLength": "Kata sandi harus minimal 8 karakter",
+                "successPassword": "Kata sandi berhasil diubah",
+                "errorPassword": "Kata sandi saat ini tidak benar",
+                "confirmDelete": "Konfirmasi Penghapusan Akun",
+                "sentDelete": "Email konfirmasi penghapusan terkirim",
+                "errorDelete": "Gagal mengirim email penghapusan",
+                "profilePicture": "Foto Profil",
+                "profilePictureDescription": "Unggah foto profil untuk personalisasi akun Anda",
+                "uploadPhoto": "Unggah Foto",
+                "delete": "Hapus",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Maks 1MB",
+                "personalInfo": "Informasi Pribadi",
+                "fullName": "Nama Lengkap",
+                "enterFullName": "Masukkan nama lengkap Anda",
+                "enterEmail": "Masukkan email Anda",
+                "emailNote": "Email tidak dapat diubah",
+                "saving": "Sedang menyimpan...",
+                "saveChanges": "Simpan Perubahan",
+                "changePasswordDescription": "Perbarui kata sandi Anda untuk menjaga akun tetap aman",
+                "enterCurrentPassword": "Masukkan kata sandi saat ini",
+                "enterNewPassword": "Masukkan kata sandi baru (min 8 karakter)",
+                "confirmNewPassword": "Konfirmasi Kata Sandi Baru",
+                "enterConfirmNewPassword": "Konfirmasi kata sandi baru",
+                "changingPassword": "Sedang mengubah kata sandi...",
+                "deleteAccountDescription": "Setelah dihapus, akun dan semua data Anda tidak dapat dipulihkan",
+                "deleteWarning": "Peringatan: Tindakan ini tidak dapat dibatalkan",
+                "deleteConsequences": "Menghapus akun Anda akan:",
+                "deleteItem1": "Secara permanen menghapus semua bisnis Anda",
+                "deleteItem2": "Menghapus semua transaksi dan item",
+                "deleteItem3": "Menghapus semua data pribadi Anda",
+                "deleteConfirmation": "Anda akan menerima email konfirmasi dengan tautan untuk menyelesaikan penghapusan.",
+                "sendingEmail": "Sedang mengirim email...",
+                "requestDeletion": "Minta Penghapusan Akun"
+            },
+            "receiptTab": {
+                "options": "Kustomisasi Struk",
+                "includeLogo": "Sertakan Logo Bisnis di Struk",
+                "footerMessage": "Pesan Footer",
+                "footerPlaceholder": "Terima kasih atas bisnis Anda!",
+                "qrCode": "Data Kode QR",
+                "qrPlaceholder": "Masukkan nilai kode QR (mis. tautan media sosial)",
+                "prefix": "Awalan Transaksi",
+                "prefixHelp": "Awalan untuk nomor transaksi (mis. INV, STK)",
+                "nextNumber": "Nomor Transaksi Berikutnya",
+                "nextNumberHelp": "Nomor transaksi berikutnya yang akan digunakan",
+                "template": "Template Struk",
+                "selectBusiness": "Silakan pilih bisnis untuk mengonfigurasi pengaturan struk"
+            },
+            "preferencesTab": {
+                "language": "Bahasa",
+                "languageDescription": "Pilih bahasa pilihan Anda untuk antarmuka aplikasi.",
+                "currency": "Mata Uang",
+                "region": "Wilayah",
+                "timezone": "Zona Waktu",
+                "title": "Tampilan & Lokalisasi",
+                "description": "Sesuaikan tampilan dan perilaku BillForge",
+                "theme": "Tema",
+                "themeDescription": "Pilih tema warna pilihan Anda",
+                "light": "Terang",
+                "dark": "Gelap",
+                "system": "Default Sistem"
+            },
+            "printerTab": {
+                "encoding": "Encoding",
+                "autoPrint": "Cetak Otomatis Setelah Checkout",
+                "autoPrintDescription": "Secara otomatis mencetak struk setelah menyelesaikan transaksi",
+                "connection": "Koneksi Klien Cetak",
+                "connectionDescription": "Hubungkan ke Klien Cetak BillForge yang berjalan di mesin lokal Anda",
+                "status": "Status Koneksi",
+                "connected": "Terhubung",
+                "connecting": "Menghubungkan",
+                "disconnected": "Terputus",
+                "error": "Kesalahan",
+                "connect": "Hubungkan ke Klien Cetak",
+                "disconnect": "Putuskan",
+                "discovery": "Pencarian Perangkat",
+                "discoveryDescription": "Cari perangkat Bluetooth yang tersedia untuk mencetak",
+                "ignoreUnknown": "Abaikan Perangkat Tidak Dikenal",
+                "discoverDevices": "Cari Perangkat",
+                "clearDevices": "Bersihkan Daftar",
+                "discoveredDevices": "Perangkat Ditemukan",
+                "discoveredDevicesDescription": "Pilih perangkat untuk dihubungkan",
+                "connectedDevices": "Perangkat Terhubung",
+                "connectedDevicesDescription": "Perangkat Bluetooth yang terhubung saat ini",
+                "paired": "Dipasangkan",
+                "deviceConnected": "Terhubung",
+                "type": "Tipe",
+                "connectDevice": "Hubungkan",
+                "disconnectDevice": "Putuskan",
+                "active": "Aktif",
+                "errorConnect": "Gagal terhubung ke klien cetak. Pastikan berjalan di ws://localhost:42123",
+                "errorDiscover": "Gagal mencari perangkat",
+                "errorConnectDevice": "Gagal terhubung ke perangkat",
+                "errorDisconnectDevice": "Gagal memutuskan perangkat",
+                "errorClear": "Gagal membersihkan perangkat",
+                "configurations": "Konfigurasi Printer",
+                "configurationsDescription": "Konfigurasi pengaturan printer termal Anda",
+                "paperSize": "Ukuran Kertas",
+                "selectPaperSize": "Pilih ukuran kertas",
+                "chars": "karakter",
+                "paperWidth": "Lebar Kertas (mm)",
+                "charsPerLine": "Karakter Per Baris",
+                "feedLines": "Baris Umpan Setelah Cetak",
+                "autoCut": "Potong Kertas Otomatis",
+                "testPrint": "Uji Cetak",
+                "testPrintSuccess": "Uji cetak berhasil dikirim!",
+                "testPrintFailed": "Gagal mengirim uji cetak"
+            },
+            "receiptPopup": {
+                "printReceipt": "Cetak Struk"
+            },
+            "printer": {
+                "title": "Pengaturan Printer",
+                "noPrinterConnected": "Tidak Ada Printer Terhubung",
+                "printSuccess": "Cetak Berhasil",
+                "printFailed": "Cetak Gagal"
+            }
+        },
+        "categories": {
+            "title": "Kategori",
+            "addCategory": "Tambah Kategori",
+            "editCategory": "Ubah Kategori",
+            "deleteCategory": "Hapus Kategori",
+            "name": "Nama Kategori",
+            "noCategories": "Kategori tidak ditemukan",
+            "loading": "Memuat kategori...",
+            "error": "Kesalahan memuat kategori",
+            "actions": "Tindakan",
+            "addFirstCategory": "Tambah Kategori Pertama Anda",
+            "created": "Tanggal Dibuat",
+            "createTitle": "Buat Kategori Baru",
+            "createDescription": "Tambahkan kategori baru untuk mengorganisir item Anda",
+            "editTitle": "Ubah Kategori",
+            "editDescription": "Perbarui informasi kategori",
+            "categoryName": "Nama Kategori",
+            "placeholder": "mis. Elektronik, Makanan, Layanan",
+            "deleteTitle": "Hapus Kategori?",
+            "deleteDescription": "Ini akan secara permanen menghapus kategori '{name}'. Tindakan ini tidak dapat dibatalkan.",
+            "deleting": "Sedang menghapus...",
+            "errorCreating": "Gagal membuat kategori",
+            "errorUpdating": "Gagal memperbarui kategori",
+            "errorDeleting": "Gagal menghapus kategori",
+            "deleteError": "Gagal menghapus kategori",
+            "loadingError": "Terjadi kesalahan saat memuat data",
+            "categoriesLoadError": "Gagal memuat kategori"
+        },
+        "paymentMethods": {
+            "title": "Metode Pembayaran",
+            "addMethod": "Tambah Metode Pembayaran",
+            "editMethod": "Ubah Metode Pembayaran",
+            "deleteMethod": "Hapus Metode Pembayaran",
+            "name": "Nama Metode",
+            "noMethods": "Metode pembayaran tidak ditemukan",
+            "loading": "Memuat metode pembayaran...",
+            "error": "Kesalahan memuat metode pembayaran",
+            "actions": "Tindakan",
+            "addFirstMethod": "Tambah Metode Pembayaran Pertama Anda",
+            "createTitle": "Tambah Metode Pembayaran",
+            "createDescription": "Tambahkan metode pembayaran baru untuk menerima pembayaran",
+            "editTitle": "Ubah Metode Pembayaran",
+            "editDescription": "Perbarui detail metode pembayaran",
+            "deleteTitle": "Hapus Metode Pembayaran?",
+            "deleteDescription": "Ini akan secara permanen menghapus '{name}'. Tindakan ini tidak dapat dibatalkan.",
+            "deleting": "Sedang menghapus...",
+            "errorCreating": "Gagal membuat metode pembayaran",
+            "errorUpdating": "Gagal memperbarui metode pembayaran",
+            "errorDeleting": "Gagal menghapus metode pembayaran",
+            "deleteError": "Gagal menghapus metode pembayaran",
+            "methodName": "Nama Metode Pembayaran",
+            "placeholderName": "mis. Tunai, Kartu Kredit, Transfer Bank",
+            "created": "Tanggal Dibuat",
+            "paymentMethodsLoadError": "Gagal memuat metode pembayaran",
+            "loadingError": "Terjadi kesalahan saat memuat data"
+        },
+        "itemTaxes": {
+            "title": "Tarif Pajak",
+            "addTax": "Tambah Pajak",
+            "editTax": "Ubah Pajak",
+            "deleteTax": "Hapus Pajak",
+            "name": "Nama Pajak",
+            "rate": "Tarif Pajak",
+            "noTaxes": "Tidak ada pajak yang dikonfigurasi. Buat konfigurasi pajak pertama Anda.",
+            "loading": "Memuat pajak...",
+            "error": "Kesalahan memuat pajak",
+            "actions": "Tindakan",
+            "createTitle": "Tambah Tarif Pajak",
+            "createDescription": "Buat konfigurasi pajak baru",
+            "editTitle": "Ubah Tarif Pajak",
+            "editDescription": "Perbarui detail tarif pajak",
+            "deleteTitle": "Hapus Pajak?",
+            "deleteDescription": "Ini akan secara permanen menghapus '{name}'. Tindakan ini tidak dapat dibatalkan.",
+            "deleting": "Sedang menghapus...",
+            "errorCreating": "Gagal membuat pajak",
+            "errorUpdating": "Gagal memperbarui pajak",
+            "errorDeleting": "Gagal menghapus pajak",
+            "deleteError": "Gagal menghapus pajak",
+            "taxName": "Nama Pajak",
+            "placeholderName": "mis. PPN, Pajak Penjualan",
+            "type": "Tipe",
+            "percentage": "Persentase",
+            "fixed": "Jumlah Tetap",
+            "value": "Nilai",
+            "taxesLoadError": "Gagal memuat pajak",
+            "loadingError": "Terjadi kesalahan saat memuat data"
+        },
+        "itemDiscounts": {
+            "title": "Diskon",
+            "addDiscount": "Tambah Diskon",
+            "editDiscount": "Ubah Diskon",
+            "deleteDiscount": "Hapus Diskon",
+            "name": "Nama Diskon",
+            "type": "Tipe",
+            "value": "Nilai",
+            "noDiscounts": "Tidak ada diskon yang dikonfigurasi. Buat diskon pertama Anda.",
+            "loading": "Memuat diskon...",
+            "error": "Kesalahan memuat diskon",
+            "actions": "Tindakan",
+            "createTitle": "Tambah Diskon",
+            "createDescription": "Buat penawaran diskon baru",
+            "editTitle": "Ubah Diskon",
+            "editDescription": "Perbarui detail diskon",
+            "deleteTitle": "Hapus Diskon?",
+            "deleteDescription": "Ini akan secara permanen menghapus '{name}'. Tindakan ini tidak dapat dibatalkan.",
+            "deleting": "Sedang menghapus...",
+            "errorCreating": "Gagal membuat diskon",
+            "errorUpdating": "Gagal memperbarui diskon",
+            "errorDeleting": "Gagal menghapus diskon",
+            "deleteError": "Gagal menghapus diskon",
+            "discountName": "Nama Diskon",
+            "placeholderName": "mis. Diskon Liburan, Diskon Early Bird",
+            "percentage": "Persentase",
+            "fixed": "Jumlah Tetap",
+            "discountsLoadError": "Gagal memuat diskon",
+            "loadingError": "Terjadi kesalahan saat memuat data"
+        },
+        "sidebar": {
+            "sale": "Penjualan",
+            "transactions": "Transaksi",
+            "items": "Item",
+            "categories": "Kategori",
+            "customers": "Pelanggan",
+            "paymentMethods": "Metode Pembayaran",
+            "itemTaxes": "Pajak",
+            "itemDiscounts": "Diskon",
+            "settings": "Pengaturan",
+            "businessSelector": {
+                "switchBusiness": "Ganti Bisnis",
+                "addBusiness": "Tambah Bisnis",
+                "edit": "Ubah",
+                "delete": "Hapus"
+            },
+            "userProfile": {
+                "myAccount": "Akun Saya",
+                "logout": "Keluar",
+                "dialog": {
+                    "title": "Konfirmasi Keluar",
+                    "description": "Apakah Anda yakin ingin keluar? Anda perlu masuk lagi untuk mengakses akun Anda.",
+                    "cancel": "Batal",
+                    "confirm": "Keluar"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Buat Bisnis Baru",
+                "editTitle": "Ubah Bisnis",
+                "createDescription": "Tambahkan lokasi bisnis baru ke akun Anda",
+                "editDescription": "Perbarui informasi bisnis Anda",
+                "nameLabel": "Nama Bisnis",
+                "namePlaceholder": "Nama Bisnis Anda",
+                "addressLabel": "Alamat (Opsional)",
+                "addressPlaceholder": "Jln. Utama No. 123, Kota, Negara",
+                "phoneLabel": "Nomor Telepon (Opsional)",
+                "phonePlaceholder": "+62123456789",
+                "currencyLabel": "Mata Uang (Opsional)",
+                "currencyPlaceholder": "Pilih mata uang",
+                "languageLabel": "Bahasa (Opsional)",
+                "languagePlaceholder": "Pilih bahasa",
+                "regionLabel": "Wilayah (Opsional)",
+                "regionPlaceholder": "Pilih wilayah",
+                "logoLabel": "Logo Bisnis (Opsional)",
+                "logoHelp": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Ukuran maksimal: 1MB",
+                "uploading": "Sedang mengunggah logo...",
+                "cancel": "Batal",
+                "create": "Buat",
+                "update": "Perbarui",
+                "errorGeneric": "Gagal menyimpan bisnis",
+                "errorCreate": "Gagal membuat bisnis",
+                "errorUpdate": "Gagal memperbarui bisnis",
+                "errorImageSize": "Ukuran gambar harus kurang dari 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Hapus Bisnis",
+                "description": "Apakah Anda yakin ingin menghapus '{name}'? Tindakan ini tidak dapat dibatalkan.",
+                "cancel": "Batal",
+                "delete": "Hapus"
+            },
+            "reports": "Laporan"
+        },
+        "reports": {
+            "title": "Laporan Penjualan",
+            "subtitle": "Lihat analitik dan wawasan penjualan komprehensif",
+            "dateRange": {
+                "title": "Rentang Tanggal",
+                "description": "Filter laporan berdasarkan rentang tanggal",
+                "startDate": "Tanggal Mulai",
+                "endDate": "Tanggal Akhir",
+                "applyFilter": "Terapkan Filter"
+            },
+            "summary": {
+                "totalSales": "Total Penjualan",
+                "transactions": "transaksi",
+                "averageTransaction": "Rata-rata Transaksi",
+                "perTransaction": "Per transaksi",
+                "itemsSold": "Item Terjual",
+                "totalUnits": "Total unit",
+                "totalTax": "Total Pajak",
+                "taxCollected": "Pajak terkumpul",
+                "totalDiscounts": "Total Diskon",
+                "discountsGiven": "Diskon diberikan"
+            },
+            "tabs": {
+                "byDate": "Berdasarkan Tanggal",
+                "byItem": "Berdasarkan Item",
+                "byCategory": "Berdasarkan Kategori",
+                "byPaymentMethod": "Berdasarkan Metode Pembayaran"
+            },
+            "byDate": {
+                "title": "Penjualan berdasarkan Tanggal",
+                "description": "Rincian penjualan harian",
+                "date": "Tanggal",
+                "transactions": "Transaksi",
+                "totalAmount": "Total Jumlah"
+            },
+            "byItem": {
+                "title": "Penjualan berdasarkan Item",
+                "description": "Item terlaris",
+                "itemName": "Nama Item",
+                "sku": "SKU",
+                "quantitySold": "Jumlah Terjual",
+                "totalRevenue": "Total Pendapatan"
+            },
+            "byCategory": {
+                "title": "Penjualan berdasarkan Kategori",
+                "description": "Rincian kinerja kategori",
+                "category": "Kategori",
+                "quantitySold": "Jumlah Terjual",
+                "totalRevenue": "Total Pendapatan"
+            },
+            "byPaymentMethod": {
+                "title": "Penjualan berdasarkan Metode Pembayaran",
+                "description": "Rincian metode pembayaran",
+                "paymentMethod": "Metode Pembayaran",
+                "transactions": "Transaksi",
+                "totalAmount": "Total Jumlah"
+            },
+            "noData": "Tidak ada data tersedia"
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "Ukuran gambar harus kurang dari 1MB",
+                "updateFailed": "Gagal memperbarui bisnis",
+                "createFailed": "Gagal membuat bisnis",
+                "updateError": "Terjadi kesalahan saat pembaruan",
+                "createError": "Terjadi kesalahan saat pembuatan"
+            },
+            "edit": "Ubah Bisnis",
+            "create": "Buat Bisnis",
+            "description": {
+                "edit": "Perbarui informasi bisnis Anda",
+                "create": "Tambahkan bisnis baru ke akun Anda"
+            },
+            "form": {
+                "name": {
+                    "label": "Nama Bisnis",
+                    "placeholder": "Nama Bisnis Anda"
+                },
+                "address": {
+                    "label": "Alamat (Opsional)",
+                    "placeholder": "Jln. Utama No. 123, Kota, Negara"
+                },
+                "phone": {
+                    "label": "Nomor Telepon (Opsional)",
+                    "placeholder": "+62123456789"
+                },
+                "currency": {
+                    "label": "Mata Uang (Opsional)",
+                    "placeholder": "Pilih mata uang"
+                },
+                "language": {
+                    "label": "Bahasa (Opsional)",
+                    "placeholder": "Pilih bahasa"
+                },
+                "region": {
+                    "label": "Wilayah (Opsional)",
+                    "placeholder": "Pilih wilayah"
+                },
+                "logo": {
+                    "label": "Logo Bisnis (Opsional)",
+                    "helper": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Maks 1MB",
+                    "uploading": "Sedang mengunggah..."
+                }
+            },
+            "buttons": {
+                "cancel": "Batal",
+                "update": "Perbarui",
+                "create": "Buat"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Ganti Bisnis",
+            "edit": "Ubah",
+            "delete": "Hapus",
+            "addBusiness": "Tambah Bisnis"
+        },
+        "deleteBusinessDialog": {
+            "title": "Hapus Bisnis",
+            "description": "Apakah Anda yakin? Ini tidak dapat dibatalkan.",
+            "cancel": "Batal",
+            "confirm": "Hapus"
+        },
+        "userProfile": {
+            "myAccount": "Akun Saya",
+            "logout": "Keluar",
+            "dialog": {
+                "title": "Konfirmasi Keluar",
+                "description": "Apakah Anda yakin ingin keluar?",
+                "cancel": "Batal",
+                "confirm": "Keluar"
+            }
+        },
+        "reports": {
+            "title": "Laporan Penjualan",
+            "subtitle": "Lihat analisis dan wawasan penjualan yang komprehensif",
+            "dateRange": {
+                "title": "Rentang Tanggal",
+                "description": "Filter laporan berdasarkan rentang tanggal",
+                "startDate": "Tanggal Mulai",
+                "endDate": "Tanggal Akhir",
+                "applyFilter": "Terapkan Filter"
+            },
+            "summary": {
+                "totalSales": "Total Penjualan",
+                "transactions": "transaksi",
+                "averageTransaction": "Rata-rata Transaksi",
+                "perTransaction": "Per transaksi",
+                "itemsSold": "Item Terjual",
+                "totalUnits": "Total unit",
+                "totalTax": "Total Pajak",
+                "taxCollected": "Pajak terkumpul",
+                "totalDiscounts": "Total Diskon",
+                "discountsGiven": "Diskon diberikan"
+            },
+            "tabs": {
+                "byDate": "Berdasarkan Tanggal",
+                "byItem": "Berdasarkan Item",
+                "byCategory": "Berdasarkan Kategori",
+                "byPaymentMethod": "Berdasarkan Metode Pembayaran"
+            },
+            "byDate": {
+                "title": "Penjualan Berdasarkan Tanggal",
+                "description": "Rincian penjualan harian",
+                "date": "Tanggal",
+                "transactions": "Transaksi",
+                "totalAmount": "Total Jumlah"
+            },
+            "byItem": {
+                "title": "Penjualan Berdasarkan Item",
+                "description": "Item terlaris",
+                "itemName": "Nama Item",
+                "sku": "SKU",
+                "quantitySold": "Jumlah Terjual",
+                "totalRevenue": "Total Pendapatan"
+            },
+            "byCategory": {
+                "title": "Penjualan Berdasarkan Kategori",
+                "description": "Rincian kinerja kategori",
+                "category": "Kategori",
+                "quantitySold": "Jumlah Terjual",
+                "totalRevenue": "Total Pendapatan"
+            },
+            "byPaymentMethod": {
+                "title": "Penjualan Berdasarkan Metode Pembayaran",
+                "description": "Rincian metode pembayaran",
+                "paymentMethod": "Metode Pembayaran",
+                "transactions": "Transaksi",
+                "totalAmount": "Total Jumlah"
+            },
+            "noData": "Tidak ada data tersedia"
+        }
+    },
+    "printerTab": {
+        "title": "Printer",
+        "subtitle": "Kelola printer yang terhubung",
+        "scan": "Pindai perangkat",
+        "stopScan": "Hentikan pemindaian",
+        "noDevices": "Tidak ada perangkat ditemukan",
+        "connected": "Perangkat terhubung",
+        "available": "Perangkat tersedia"
+    },
+    "receiptPopup": {
+        "title": "Pengaturan Resi",
+        "autoPrint": "Cetak resi otomatis saat checkout",
+        "showPreview": "Tampilkan pratinjau sebelum mencetak"
+    },
+    "businessOnboarding": {
+        "welcome": "Selamat datang di BillForge",
+        "subtitle": "Mari siapkan bisnis Anda",
+        "businessName": "Nama Bisnis",
+        "currency": "Mata Uang",
+        "address": "Alamat",
+        "complete": "Selesaikan pengaturan"
     }
-  },
-  "printerTab": {
-    "title": "Printer",
-    "subtitle": "Kelola printer yang terhubung",
-    "scan": "Pindai perangkat",
-    "stopScan": "Hentikan pemindaian",
-    "noDevices": "Tidak ada perangkat ditemukan",
-    "connected": "Perangkat terhubung",
-    "available": "Perangkat tersedia"
-  },
-  "receiptPopup": {
-    "title": "Pengaturan Resi",
-    "autoPrint": "Cetak resi otomatis saat checkout",
-    "showPreview": "Tampilkan pratinjau sebelum mencetak"
-  },
-  "businessOnboarding": {
-    "welcome": "Selamat datang di BillForge",
-    "subtitle": "Mari siapkan bisnis Anda",
-    "businessName": "Nama Bisnis",
-    "currency": "Mata Uang",
-    "address": "Alamat",
-    "complete": "Selesaikan pengaturan"
-  }
 }

@@ -1,1219 +1,1320 @@
 {
-  "common": {
-    "loading": "Indlæser...",
-    "error": "Fejl",
-    "success": "Succes",
-    "cancel": "Annuller",
-    "save": "Gem",
-    "delete": "Slet",
-    "edit": "Rediger",
-    "create": "Opret",
-    "update": "Opdater",
-    "search": "Søg",
-    "filter": "Filtrér",
-    "close": "Luk",
-    "back": "Tilbage",
-    "next": "Næste",
-    "previous": "Forrige",
-    "submit": "Indsend",
-    "confirm": "Bekræft",
-    "yes": "Ja",
-    "no": "Nej"
-  },
-  "landing": {
-    "hero": {
-      "title": "Moderne POS & Fakturering Gjort Enkelt",
-      "description": "Transformér din virksomhed med professionelle kvitteringer, øjeblikkelig betaling og kraftig analyse. Designet til caféer, restauranter, detailbutikker og små virksomheder overalt.",
-      "cta": "Start Gratis Prøveperiode"
-    },
-    "features": {
-      "title": "Alt Du Har Brug for til at Drive Din Virksomhed",
-      "description": "Kraftfulde funktioner designet til at strømline dit salg, administrere kunder og vokse din virksomhed effektivt.",
-      "receipt": {
-        "title": "Professionelle Kvitteringer",
-        "description": "Opret smukke, tilpasselige kvitteringer med dit logo, QR-koder og tilpassede beskeder. Vælg fra flere professionelle skabeloner, der styrker dit brand."
-      },
-      "checkout": {
-        "title": "Hurtig Betalingsproces",
-        "description": "Fremskynde dine transaktioner med en intuitiv POS-grænseflade. Behandle salg hurtigt, acceptér flere betalingsmetoder og betjen dine kunder mere effektivt."
-      },
-      "customer": {
-        "title": "Kundehåndtering",
-        "description": "Byg langvarige relationer med kundeprofiler og købehistorik. Spor præferencer, udgiftsmønstre og giv personlig service til dine stamkunder."
-      },
-      "discount": {
-        "title": "Smart Rabatter & Afgifter",
-        "description": "Administrer procent- eller fastbeløbsrabatter og flere afgiftssatser med lethed. Anvend promoveringer på specifikke varer eller hele transaktioner med blot nogle få klik."
-      },
-      "analytics": {
-        "title": "Analyse i Realtid",
-        "description": "Få øjeblikkelig indsigt i dit salgspræstation. Spor daglig omsætning, bestsellere og transaktionstrends for at træffe datadrevne forretningsbeslutninger."
-      },
-      "cloud": {
-        "title": "Adgang Hvor Som Helst",
-        "description": "Cloudbaseret system fungerer på alle enheder - stationær computer, tablet eller smartphone. Administrér din virksomhed hvorfra som helst med sikker, realtids-datasynkronisering."
-      }
-    },
-    "nav": {
-      "features": "Funktioner",
-      "pricing": "Priser",
-      "faq": "Ofte Stillede Spørgsmål",
-      "login": "Log Ind",
-      "signup": "Tilmeld",
-      "signIn": "Log Ind",
-      "getStarted": "Kom i Gang",
-      "home": "Hjem",
-      "testimonials": "Anmeldelser",
-      "drawerTitle": "Navigationsmenu"
-    },
-    "faq": {
-      "title": "Ofte Stillede Spørgsmål",
-      "description": "Alt hvad du har brug for at vide om BillForge og hvordan det kan hjælpe din virksomhed.",
-      "items": {
-        "item1": {
-          "question": "Er BillForge virkelig gratis?",
-          "answer": "Ja! Vores gratis plan inkluderer 1 virksomhed, 50 produkter, 50 kunder, 50 transaktioner pr. måned og alle grundlæggende funktioner. Perfekt til små virksomheder, der lige starter. Opgrader til Pro eller Enterprise for højere grænser og avancerede funktioner."
-        },
-        "item2": {
-          "question": "Hvad er forskellen mellem Gratis, Pro og Enterprise planerne?",
-          "answer": "Gratis plan har grundlæggende grænser (1 virksomhed, 50 produkter, 50 transaktioner/måned). Pro tilbyder 10 gange disse grænser (10 virksomheder, 500 produkter, 500 transaktioner/måned). Enterprise giver ubegrænsede produkter, kunder og transaktioner med avancerede funktioner som multi-brugeradgang og API-adgang."
-        },
-        "item3": {
-          "question": "Kan jeg tilpasse mine kvitteringer?",
-          "answer": "Helt sikkert! BillForge tilbyder flere kvitteringsskabeloner med fulde tilpasningsmuligheder. Tilføj dit virksomhedslogo, tilpassede footermeddelelser, QR-koder og vælg fra forskellige professionelle designs. Kvitteringer kan printes eller sendes digitalt til kunder."
-        },
-        "item4": {
-          "question": "Hvilke betalingsmetoder kan jeg acceptere?",
-          "answer": "BillForge understøtter alle større betalingsmetoder, herunder kontant, kredit-/betalingskort, mobilbetalinger og digitale tegnebøger. Gratis plan tillader op til 5 betalingsmetoder, mens Pro og Enterprise tilbyder ubegrænsede betalingsmetoder."
-        },
-        "item5": {
-          "question": "Hvordan administrerer jeg rabatter og afgifter?",
-          "answer": "Vores platform inkluderer indbygget rabat- og afgiftshåndtering. Opret procent- eller fastbeløbsrabatter, anvend dem på specifikke varer eller hele transaktioner. Opsæt flere afgiftssatser for forskellige produktkategorier. Gratis plan inkluderer 30 rabat- og afgiftskonfigurationer."
-        },
-        "item6": {
-          "question": "Er mine forretningsdata sikre?",
-          "answer": "Ja! Alle data gemmes sikkert i skyen med kryptering. Vi udfører regelmæssige sikkerhedskopier og bruger standardiserede sikkerhedspraktikker. Dit transaktionshistorik, kundeoplysninger og forretningsdata er beskyttet og kan kun tilgås af dig."
-        },
-        "item7": {
-          "question": "Kan jeg spore kundeindkøbshistorik?",
-          "answer": "Ja! BillForge inkluderer kundehåndteringsfunktioner. Gem kundedetaljer, se købehistorik og opbyg bedre relationer med dine stamkunder. Spor hvad de køber, hvornår de besøger og deres samlede udgifter for at give personlig service."
-        },
-        "item8": {
-          "question": "Har jeg brug for særligt hardware?",
-          "answer": "Intet særligt hardware krævet! BillForge fungerer på alle enheder med en webbrowser - stationær computer, tablet eller smartphone. Hvis du vil printe kvitteringer, kan du bruge enhver standardprinter. Systemet er cloudbaseret, så du kan få adgang derfra hvor som helst."
-        },
-        "item9": {
-          "question": "Hvad sker der, hvis jeg overskrider min månedlige transaktionsgrænse?",
-          "answer": "På gratis plan er du begrænset til 50 transaktioner pr. måned. Hvis du har brug for flere, kan du opgradere til Pro (500 transaktioner/måned) eller Enterprise (ubegrænset). Dine data bliver aldrig slettet, og du kan altid se tidligere transaktioner uanset din nuværende plan."
-        },
-        "item10": {
-          "question": "Hvordan får jeg support, hvis jeg har brug for hjælp?",
-          "answer": "Vi tilbyder e-mailsupport til alle brugere. Pro og Enterprise-kunder får prioriteret support med hurtigere responstider. Enterprise-kunder modtager også 24/7 support og en dedikeret account manager. Tjek vores dokumentation og tutorials for hurtige selvhjælpsvejledninger."
-        }
-      }
-    },
-    "pricing": {
-      "title": "Enkel, Transparent Prissætning",
-      "description": "Vælg den perfekte plan til din virksomhed. Start gratis og opgrader, efterhånden som din virksomhed vokser.",
-      "monthly": "/måned",
-      "mostPopular": "Mest Popular",
-      "plans": {
-        "free": {
-          "name": "Gratis",
-          "description": "Perfekt til små virksomheder, der lige starter med digital fakturering.",
-          "button": "Start Gratis",
-          "features": {
-            "business": "1 Virksomhed",
-            "items": "50 Produkter",
-            "customers": "50 Kunder",
-            "transactions": "50 Transaktioner/måned",
-            "paymentMethods": "5 Betalingsmetoder",
-            "discountsTaxes": "30 Rabatter & Afgifter",
-            "templates": "Basis Kvitteringsskabeloner",
-            "storage": "Skystorage"
-          }
-        },
-        "pro": {
-          "name": "Pro",
-          "description": "Ideel til voksende virksomheder med flere lokationer og højere volumen.",
-          "button": "Start Pro Prøveperiode",
-          "features": {
-            "business": "10 Virksomheder",
-            "items": "500 Produkter",
-            "customers": "500 Kunder",
-            "transactions": "500 Transaktioner/måned",
-            "paymentMethods": "50 Betalingsmetoder",
-            "discountsTaxes": "300 Rabatter & Afgifter",
-            "templates": "Premium Kvitteringsskabeloner",
-            "support": "Prioriteret Support",
-            "analytics": "Avanceret Analyse",
-            "branding": "Tilpasset Branding"
-          }
-        },
-        "enterprise": {
-          "name": "Enterprise",
-          "description": "For store virksomheder, der kræver avancerede funktioner og dedikeret support.",
-          "button": "Kontakt Salg",
-          "features": {
-            "business": "Ubegrænsede Virksomheder",
-            "items": "Ubegrænsede Produkter",
-            "customers": "Ubegrænsede Kunder",
-            "transactions": "Ubegrænsede Transaktioner",
-            "paymentMethods": "Ubegrænsede Betalingsmetoder",
-            "discountsTaxes": "Ubegrænsede Rabatter & Afgifter",
-            "api": "API Adgang",
-            "support": "24/7 Prioriteret Support"
-          }
-        }
-      }
-    },
-    "testimonials": {
-      "title": "Anmeldelser",
-      "items": {
-        "item1": {
-          "name": "Sarah Martinez",
-          "designation": "Café Ejer",
-          "company": "The Daily Grind Cafe",
-          "text": "BillForge har revolutioneret, hvordan vi håndterer transaktioner på vores café. Kvitteringstilpasningen er fantastisk, og vores kunder elsker at modtage digitale kvitteringer. Vi har reduceret papiromkostninger med 80%, og betaling gik aldrig hurtigere!"
-        },
-        "item2": {
-          "name": "Budi Santoso",
-          "designation": "Butikschef",
-          "company": "Warung Maju Jakarta",
-          "text": "Siden jeg brugte BillForge er det blevet meget lettere at administrere butikken. Grænsefladen er let at forstå og salgsrapporter er meget hjælpsomme. Anbefales varmt til små og mellemstore virksomhedsejere!"
-        },
-        "item3": {
-          "name": "Michael Chen",
-          "designation": "Restaurant Ejer",
-          "company": "Chen's Asian Bistro",
-          "text": "At håndtere flere betalingsmetoder var engang et mareridt. BillForge gør det problemløst! Transaktionshistorik- og kundehåndteringsfunktionerne har hjulpet os med at opbygge bedre relationer med vores stamkunder. Bedste POS-beslutning vi nogensinde har taget!"
-        },
-        "item4": {
-          "name": "Emma Thompson",
-          "designation": "Butik Ejer",
-          "company": "Elegance Fashion Boutique",
-          "text": "Rabat- og afgiftsstyringen i BillForge er præcis hvad vi havde brug for til vores saisonsalg. At skabe smukke, mærkede kvitteringer har forbedret vores kundeservice. Vores betalingsproces er nu professionel og effektiv!"
-        },
-        "item5": {
-          "name": "James Wilson",
-          "designation": "Bageri Ejer",
-          "company": "Sweet Treats Bakery",
-          "text": "Vi skiftede til BillForge for tre måneder siden og har ikke set tilbage. Produkthåndteringssystemet holder vores lager organiseret, og kvitteringsskabelonerne ser professionelle ud. Kundebetaling er nu en leg, selv under vores travle morgenrusHour!"
-        },
-        "item6": {
-          "name": "Lisa Rodriguez",
-          "designation": "Detail Chef",
-          "company": "TechGadgets Plus",
-          "text": "BillForges transaktionssporing har givet os utrolige indsigter i vores salgsmønstre. Kundedatabasen hjælper os med at give personlig service, og QR-kode kvitteringer er et hit hos vores tech-savvy-kunder. Det er det komplette pakke!"
-        }
-      }
-    },
-    "footer": {
-      "contact": "Kontakt",
-      "legal": "Juridisk",
-      "legalLinks": {
-        "terms": "Vilkår",
-        "privacy": "Privatlivspolitik"
-      },
-      "description": "Strømline din fakturaproces med intelligent fakturaledelse",
-      "copyright": "© 2025 BillForge. Alle rettigheder forbeholdt.",
-      "madeWith": "Lavet med ❤️ på Bali",
-      "links": {
-        "terms": "Servicevilkår",
-        "privacy": "Privatlivspolitik"
-      }
-    }
-  },
-  "auth": {
-    "login": {
-      "title": "Velkommen Tilbage",
-      "description": "Log ind på din BillForge-konto",
-      "emailLabel": "E-mailadresse",
-      "emailPlaceholder": "din@email.com",
-      "passwordLabel": "Adgangskode",
-      "passwordPlaceholder": "••••••••",
-      "forgotPassword": "Glemt adgangskode?",
-      "submit": "Log Ind",
-      "submitting": "Logger ind...",
-      "noAccount": "Har du ikke en konto?",
-      "signUp": "Opret en",
-      "errorGeneric": "E-mail eller adgangskode er forkert. Prøv igen."
-    },
-    "register": {
-      "title": "Opret Din Konto",
-      "description": "Deltag i BillForge for at administrere din virksomhed",
-      "nameLabel": "Fuldt Navn",
-      "namePlaceholder": "John Doe",
-      "emailLabel": "E-mailadresse",
-      "emailPlaceholder": "din@email.com",
-      "passwordLabel": "Adgangskode",
-      "passwordPlaceholder": "Mindst 8 tegn",
-      "confirmPasswordLabel": "Bekræft Adgangskode",
-      "confirmPasswordPlaceholder": "••••••••",
-      "termsAgreement": "Ved at oprette en konto accepterer du vores",
-      "terms": "Servicevilkår",
-      "and": "og",
-      "privacy": "Privatlivspolitik",
-      "submit": "Opret Konto",
-      "submitting": "Opretter konto...",
-      "hasAccount": "Har du allerede en konto?",
-      "signIn": "Log ind her",
-      "errorMatch": "Adgangskoderne stemmer ikke overens",
-      "errorGeneric": "Registrering mislykkedes. Prøv igen."
-    },
-    "forgotPassword": {
-      "title": "Nulstil Din Adgangskode",
-      "description": "Indtast din e-mailadresse, og vi sender dig et link til at nulstille din adgangskode.",
-      "emailLabel": "E-mailadresse",
-      "emailPlaceholder": "din@email.com",
-      "submit": "Send Nulstillingslink",
-      "submitting": "Sender...",
-      "backToLogin": "Tilbage til login",
-      "checkEmailTitle": "Tjek Din E-mail",
-      "checkEmailDescription": "Vi har sendt adgangskodeomdirigeringsinstruktioner til",
-      "checkEmailNote1": "Tjek din indbakke for nulstillingslinkdet.",
-      "checkEmailNote2": "Hvis du ikke ser e-mailen, skal du tjekke din spammappe.",
-      "tryAnotherEmail": "Prøv en anden e-mail",
-      "errorGeneric": "Der opstod en fejl. Prøv igen."
-    },
-    "resetPassword": {
-      "title": "Opret Ny Adgangskode",
-      "description": "Indtast din nye adgangskode nedenfor.",
-      "emailLabel": "E-mailadresse",
-      "emailPlaceholder": "din@email.com",
-      "newPasswordLabel": "Ny Adgangskode",
-      "newPasswordPlaceholder": "Mindst 8 tegn",
-      "passwordHint": "Skal være mindst 8 tegn",
-      "confirmPasswordLabel": "Bekræft Adgangskode",
-      "confirmPasswordPlaceholder": "••••••••",
-      "submit": "Nulstil Adgangskode",
-      "submitting": "Nulstiller adgangskode...",
-      "backToLogin": "Tilbage til login",
-      "successTitle": "Adgangskode Nulstillet",
-      "successDescription": "Din adgangskode er blevet nulstillet med succes.",
-      "redirecting": "Omdirigerer til login...",
-      "goToLogin": "Gå til login",
-      "errorGeneric": "Der opstod en fejl. Prøv igen.",
-      "errorMatch": "Adgangskoderne stemmer ikke overens",
-      "errorLength": "Adgangskode skal være mindst 8 tegn"
-    },
-    "verifyEmail": {
-      "title": "Bekræft Din E-mail",
-      "description": "Vi sendte en bekræftelsesmail til",
-      "instruction": "Tjek venligst din indbakke og klik på bekræftelseslinkdet for at aktivere din konto.",
-      "resend": "Gensend Bekræftelsesmail",
-      "resending": "Sender...",
-      "changeEmail": "Brug en anden e-mailadresse",
-      "verifyingTitle": "Bekræfter E-mail...",
-      "verifyingDescription": "Vent venligst mens vi bekræfter din e-mailadresse.",
-      "successTitle": "E-mail Bekræftet",
-      "successDescription": "Din e-mail er blevet bekræftet med succes!",
-      "goToSale": "Gå til Dashboard",
-      "alreadyVerifiedTitle": "Allerede Bekræftet",
-      "alreadyVerifiedDescription": "Din e-mail er allerede bekræftet. Du kan fortsætte.",
-      "failedTitle": "Bekræftelse Mislykkedes",
-      "failedDescription": "Bekræftelseslinkdet er udløbet eller ugyldigt.",
-      "resendSuccess": "Bekræftelsesmail sendt! Tjek venligst din indbakke.",
-      "changeEmailTitle": "Skift E-mailadresse?",
-      "changeEmailDescription": "Du bliver logget ud og omdirigeret til tilmeldingssiden for at tilmelde dig med en ny e-mailadresse.",
-      "cancel": "Annuller",
-      "continue": "Fortsæt",
-      "errorGeneric": "Der opstod en fejl. Prøv igen."
-    },
-    "confirmDeletion": {
-      "title": "Slet Konto",
-      "description": "Advarsel: Dette vil permanent slette:",
-      "warningTitle": "Sletning af din konto vil fjerne:",
-      "warningItem1": "Alle dine virksomheder og forretningsdata",
-      "warningItem2": "Alle transaktions- og salgsposter",
-      "warningItem3": "Alle produkter og inventar",
-      "warningItem4": "Din profil og kontooplysninger",
-      "warningReversal": "Denne handling kan ikke fortrydes.",
-      "inputLabel": "Skriv BEKRÆFT for at slette din konto",
-      "confirmWord": "BEKRÆFT",
-      "inputLabelSuffix": "for at fortsætte med slettelse",
-      "inputPlaceholder": "Skriv BEKRÆFT her",
-      "cancel": "Annuller",
-      "delete": "Slet Konto",
-      "deleting": "Sletter...",
-      "success": "Konto slettet med succes",
-      "errorGeneric": "Der opstod en fejl. Prøv igen.",
-      "errorMatch": "Skriv BEKRÆFT præcis",
-      "errorMissingToken": "Ugyldig anmodning. Prøv igen.",
-      "invalidLinkTitle": "Ugyldigt eller Udløbet Link",
-      "invalidLinkDescription": "Dette sletningslink er udløbet eller ugyldigt.",
-      "returnToSettings": "Tilbage til Indstillinger"
-    }
-  },
-  "business": {
-    "name": "Virksomhedsnavn",
-    "address": "Adresse",
-    "phone": "Telefonnummer",
-    "currency": "Valuta",
-    "language": "Sprog",
-    "region": "Region",
-    "create": "Opret Virksomhed",
-    "edit": "Rediger Virksomhed",
-    "delete": "Slet Virksomhed",
-    "select": "Vælg Virksomhed",
-    "noBusiness": "Ingen virksomheder fundet",
-    "createFirst": "Opret din første virksomhed for at komme i gang"
-  },
-  "validation": {
-    "required": "Dette felt er påkrævet",
-    "email": "Indtast venligst en gyldig e-mailadresse",
-    "minLength": "Skal være mindst {min} tegn",
-    "maxLength": "Skal være højst {max} tegn",
-    "passwordMatch": "Adgangskoderne stemmer ikke overens",
-    "invalidFormat": "Ugyldigt format"
-  },
-  "privacy": {
-    "title": "Privatlivspolitik",
-    "lastUpdated": "Sidst opdateret: 8. december 2025",
-    "intro": {
-      "title": "Introduktion",
-      "content": "Hos BillForge tager vi dit privatliv seriøst. Denne privatlivspolitik forklarer, hvordan vi indsamler, bruger, videregiver og beskytter dine oplysninger, når du bruger vores fakturerings- og fakturahåndteringstjeneste. Læs venligst denne privatlivspolitik omhyggeligt. Hvis du ikke er enig i vilkårene i denne privatlivspolitik, bedes du undlade at bruge applikationen."
-    },
-    "infoCollect": {
-      "title": "1. Oplysninger vi indsamler",
-      "personal": {
-        "title": "Personlige oplysninger",
-        "intro": "Vi indsamler oplysninger, som du giver direkte til os, herunder:",
-        "items": {
-          "contact": "Navn og kontaktoplysninger (e-mailadresse, telefonnummer)",
-          "business": "Virksomhedsoplysninger (firmanavn, adresse, CVR-nummer)",
-          "payment": "Betalingsoplysninger (behandles sikkert gennem tredjepartsbetalingsbehandlere)",
-          "credentials": "Kontooplysninger (brugernavn, adgangskode)"
-        }
-      },
-      "businessData": {
-        "title": "Virksomhedsdata",
-        "intro": "Når du bruger BillForge, indsamler og gemmer vi:",
-        "items": {
-          "customers": "Kundeoplysninger, du indtaster",
-          "invoices": "Faktura- og transaktionsdata",
-          "items": "Varekataloger og prisoplysninger",
-          "tax": "Skatte- og rabatkonfigurationer",
-          "settings": "Virksomhedsindstillinger og præferencer"
-        }
-      },
-      "auto": {
-        "title": "Automatisk indsamlede oplysninger",
-        "intro": "Når du tilgår BillForge, indsamler vi automatisk:",
-        "items": {
-          "log": "Logdata (IP-adresse, browsertype, operativsystem)",
-          "device": "Enhedsoplysninger",
-          "usage": "Brugsdata (besøgte sider, brugte funktioner, tidsforbrug)",
-          "cookies": "Cookies og lignende sporingsteknologier"
-        }
-      }
-    },
-    "howWeUse": {
-      "title": "2. Sådan bruger vi dine oplysninger",
-      "intro": "Vi bruger de oplysninger, vi indsamler, til at:",
-      "items": {
-        "provide": "Levere, vedligeholde og forbedre vores tjenester",
-        "process": "Behandle dine transaktioner og administrere din konto",
-        "send": "Sende dig tekniske meddelelser, opdateringer og supportmeddelelser",
-        "respond": "Besvare dine kommentarer, spørgsmål og kundeserviceanmodninger",
-        "monitor": "Overvåge og analysere tendenser, brug og aktiviteter",
-        "detect": "Opdage, forhindre og håndtere tekniske problemer og svigagtig aktivitet",
-        "personalize": "Personalisere og forbedre din oplevelse",
-        "marketing": "Sende dig markedsføringskommunikation (med dit samtykke)"
-      }
-    },
-    "sharing": {
-      "title": "3. Deling og videregivelse af oplysninger",
-      "intro": "Vi sælger ikke dine personlige oplysninger. Vi kan dele dine oplysninger under følgende omstændigheder:",
-      "items": {
-        "providers": "Med tjenesteudbydere, der udfører tjenester på vores vegne",
-        "legal": "For at overholde juridiske forpligtelser eller svare på juridiske anmodninger",
-        "protect": "For at beskytte rettigheder, ejendom og sikkerhed for BillForge, vores brugere eller andre",
-        "merger": "I forbindelse med fusion, salg eller overtagelse af hele eller dele af vores virksomhed",
-        "consent": "Med dit samtykke eller efter din anvisning"
-      }
-    },
-    "security": {
-      "title": "4. Datasikkerhed",
-      "intro": "Vi implementerer passende tekniske og organisatoriske foranstaltninger for at beskytte dine oplysninger, herunder:",
-      "items": {
-        "encryption": "Kryptering af data under overførsel og i hvile",
-        "assessments": "Regelmæssige sikkerhedsvurderinger og opdateringer",
-        "access": "Adgangskontrol og godkendelsesmekanismer",
-        "datacenters": "Sikre datacentre med fysiske sikkerhedsforanstaltninger",
-        "backups": "Regelmæssige sikkerhedskopier og procedurer for gendannelse efter katastrofer"
-      },
-      "disclaimer": "Ingen metode til transmission over internettet eller elektronisk lagring er dog 100 % sikker. Selvom vi bestræber os på at bruge kommercielt acceptable midler til at beskytte dine oplysninger, kan vi ikke garantere absolut sikkerhed."
-    },
-    "retention": {
-      "title": "5. Dataopbevaring",
-      "content": "Vi opbevarer dine oplysninger, så længe din konto er aktiv, eller som det er nødvendigt for at levere tjenester til dig. Vi vil opbevare og bruge dine oplysninger efter behov for at overholde juridiske forpligtelser, løse tvister og håndhæve vores aftaler. Du kan anmode om sletning af dine data ved at kontakte os, med forbehold for visse juridiske krav om opbevaring."
-    },
-    "rights": {
-      "title": "6. Dine rettigheder og valg",
-      "intro": "Du har visse rettigheder vedrørende dine personlige oplysninger:",
-      "items": {
-        "access": "Få adgang til og modtage en kopi af dine personlige oplysninger",
-        "correct": "Rette eller opdatere unøjagtige oplysninger",
-        "delete": "Anmode om sletning af dine oplysninger",
-        "object": "Gøre indsigelse mod eller begrænse visse behandlinger af dine oplysninger",
-        "export": "Eksportere dine data i et bærbart format",
-        "optout": "Fravælge markedsføringskommunikation",
-        "withdraw": "Trække samtykke tilbage, hvor vi er afhængige af samtykke til at behandle dine oplysninger"
-      },
-      "exercise": "For at udøve disse rettigheder bedes du kontakte os ved hjælp af oplysningerne i slutningen af denne politik."
-    },
-    "cookies": {
-      "title": "7. Cookies og sporingsteknologier",
-      "intro": "Vi bruger cookies og lignende sporingsteknologier til at indsamle og spore oplysninger om din brug af BillForge. Typer af cookies, vi bruger, inkluderer:",
-      "items": {
-        "essential": "Nødvendige cookies: Påkrævet for driften af vores tjeneste",
-        "preference": "Præferencecookies: Husker dine indstillinger og præferencer",
-        "analytics": "Analysecookies: Hjælper os med at forstå, hvordan du bruger vores tjeneste",
-        "marketing": "Markedsføringscookies: Sporer din aktivitet for at levere relevante annoncer"
-      },
-      "control": "Du kan styre cookies via dine browserindstillinger og andre værktøjer. Deaktivering af visse cookies kan dog begrænse din mulighed for at bruge nogle funktioner i BillForge."
-    },
-    "thirdParty": {
-      "title": "8. Tredjepartstjenester",
-      "intro": "BillForge kan indeholde links til tredjepartswebsteder og integreres med tredjepartstjenester. Vi er ikke ansvarlige for disse tredjeparters praksis for beskyttelse af personlige oplysninger. Vi opfordrer dig til at læse privatlivspolitikkerne for alle tredjepartstjenester, du interagerer med.",
-      "services": "Tredjepartstjenester, vi kan bruge, omfatter betalingsbehandlere, analyseudbydere og udbydere af cloudinfrastruktur. Disse tjenester har deres egne privatlivspolitikker, der regulerer deres brug af dine oplysninger."
-    },
-    "children": {
-      "title": "9. Børns privatliv",
-      "content": "BillForge er ikke beregnet til brug af børn under 18 år. Vi indsamler ikke bevidst personlige oplysninger fra børn under 18 år. Hvis vi bliver opmærksomme på, at vi har indsamlet personlige oplysninger fra et barn under 18 år, vil vi tage skridt til at slette disse oplysninger."
-    },
-    "international": {
-      "title": "10. Internationale dataoverførsler",
-      "content": "Dine oplysninger kan overføres til og vedligeholdes på servere placeret uden for dit land eller jurisdiktion. Ved at bruge BillForge giver du samtykke til overførsel af dine oplysninger til lande, der kan have andre databeskyttelseslove end dit bopælsland."
-    },
-    "changes": {
-      "title": "11. Ændringer i denne privatlivspolitik",
-      "content": "Vi kan opdatere denne privatlivspolitik fra tid til anden. Vi vil underrette dig om væsentlige ændringer ved at offentliggøre den nye privatlivspolitik på denne side og opdatere datoen \"Sidst opdateret\". Du rådes til at gennemgå denne privatlivspolitik med jævne mellemrum for eventuelle ændringer. Din fortsatte brug af BillForge efter eventuelle ændringer indikerer din accept af den opdaterede privatlivspolitik."
-    },
-    "california": {
-      "title": "12. Californiens rettigheder til privatlivets fred",
-      "intro": "Hvis du er bosiddende i Californien, har du yderligere rettigheder i henhold til California Consumer Privacy Act (CCPA):",
-      "items": {
-        "know": "Ret til at vide, hvilke personlige oplysninger der indsamles, bruges, deles eller sælges",
-        "delete": "Ret til at slette personlige oplysninger",
-        "optout": "Ret til at fravælge salg af personlige oplysninger (vi sælger ikke personlige oplysninger)",
-        "nondiscrimination": "Ret til ikke-diskriminering for udøvelse af dine privatlivsrettigheder"
-      }
-    },
-    "gdpr": {
-      "title": "13. GDPR-rettigheder (europæiske brugere)",
-      "intro": "Hvis du befinder dig i Det Europæiske Økonomiske Samarbejdsområde (EØS), har du yderligere rettigheder i henhold til den generelle forordning om databeskyttelse (GDPR):",
-      "items": {
-        "access": "Ret til indsigt i dine personoplysninger",
-        "rectification": "Ret til berigtigelse af unøjagtige data",
-        "erasure": "Ret til sletning (retten til at blive glemt)",
-        "restrict": "Ret til begrænsning af behandling",
-        "portability": "Ret til dataportabilitet",
-        "object": "Ret til indsigelse mod behandling",
-        "complaint": "Ret til at indgive en klage til en tilsynsmyndighed"
-      }
-    },
-    "contact": {
-      "title": "Kontakt os",
-      "description": "Hvis du har spørgsmål om denne privatlivspolitik eller vores datapraksis, bedes du kontakte os. Vi er forpligtet til at samarbejde med dig for at opnå en rimelig løsning på eventuelle bekymringer om privatlivets fred."
-    }
-  },
-  "terms": {
-    "title": "Servicevilkår",
-    "lastUpdated": "Sidst opdateret: 8. december 2025",
-    "acceptance": {
-      "title": "1. Accept af vilkår",
-      "content": "Ved at få adgang til og bruge BillForge accepterer du og indvilliger i at være bundet af vilkårene og bestemmelserne i denne aftale. Hvis du ikke accepterer at overholde ovenstående, bedes du undlade at bruge denne tjeneste."
-    },
-    "license": {
-      "title": "2. Brugslicens",
-      "intro": "Der gives tilladelse til midlertidigt at få adgang til og bruge BillForge til personlige og kommercielle formål. Dette er tildeling af en licens, ikke en overdragelse af ejendomsret, og under denne licens må du ikke:",
-      "items": {
-        "modify": "Ændre eller kopiere materialerne",
-        "commercial": "Bruge materialerne til ethvert kommercielt formål uden ordentligt abonnement",
-        "decompile": "Forsøge at dekompilere eller foretage reverse engineering af software indeholdt på BillForge",
-        "remove": "Fjerne ophavsretlige eller andre ejendomsretlige betegnelser fra materialerne",
-        "transfer": "Overføre materialerne til en anden person eller \"spejle\" materialerne på enhver anden server"
-      }
-    },
-    "account": {
-      "title": "3. Brugerkonto",
-      "intro": "For at bruge visse funktioner i BillForge skal du registrere en konto. Du accepterer at:",
-      "items": {
-        "accurate": "Give nøjagtige, opdaterede og fuldstændige oplysninger under registreringen",
-        "security": "Opretholde sikkerheden for din adgangskode og konto",
-        "notify": "Underrette os straks om enhver uautoriseret brug af din konto",
-        "responsibility": "Acceptere ansvaret for alle aktiviteter, der foregår under din konto"
-      }
-    },
-    "subscription": {
-      "title": "4. Abonnement og betaling",
-      "intro": "BillForge tilbyder forskellige abonnementsplaner. Ved at abonnere accepterer du:",
-      "items": {
-        "fees": "At betale alle gebyrer forbundet med din valgte abonnementsplan",
-        "renewal": "Automatisk fornyelse af dit abonnement, medmindre det opsiges",
-        "pricing": "Mulige ændringer i priser med 30 dages varsel",
-        "refunds": "Ingen refusion for delvise måneder eller ubrugte tjenester"
-      }
-    },
-    "dataPrivacy": {
-      "title": "5. Data og privatliv",
-      "content": "Din brug af BillForge er også underlagt vores privatlivspolitik. Gennemgå venligst vores",
-      "link": "Privatlivspolitik",
-      "toUnderstand": "for at forstå vores praksis."
-    },
-    "prohibited": {
-      "title": "6. Forbudte aktiviteter",
-      "intro": "Du må ikke bruge BillForge til at:",
-      "items": {
-        "laws": "Overtræde love eller regler",
-        "infringe": "Krænke intellektuelle ejendomsrettigheder",
-        "malware": "Overføre virus, malware eller anden ondsindet kode",
-        "unauthorized": "Forsøge at få uautoriseret adgang til vores systemer",
-        "harass": "Chikanere, misbruge eller skade andre brugere",
-        "fraud": "Bruge tjenesten til svigagtige formål"
-      }
-    },
-    "availability": {
-      "title": "7. Tjenestens tilgængelighed",
-      "content": "Vi bestræber os på at opretholde høj tilgængelighed af BillForge, men vi garanterer ikke uafbrudt adgang. Vi forbeholder os retten til at ændre, suspendere eller afbryde enhver del af tjenesten med eller uden varsel. Vi er ikke ansvarlige for ændring, suspension eller afbrydelse af tjenesten."
-    },
-    "intellectual": {
-      "title": "8. Intellektuel ejendom",
-      "content": "Alt indhold inkluderet på BillForge, såsom tekst, grafik, logoer, billeder og software, tilhører BillForge eller dets indholdsleverandører og er beskyttet af internationale ophavsretslove. Samlingen af alt indhold på dette websted er BillForges eksklusive ejendom."
-    },
-    "liability": {
-      "title": "9. Ansvarsbegrænsning",
-      "content": "Under ingen omstændigheder skal BillForge eller dets leverandører holdes ansvarlige for skader (herunder, uden begrænsning, skader for tab af data eller fortjeneste, eller på grund af forretningsafbrydelse), der opstår som følge af brugen eller manglende evne til at bruge BillForge, selvom BillForge eller en autoriseret repræsentant for BillForge er blevet underrettet mundtligt eller skriftligt om muligheden for sådan skade."
-    },
-    "termination": {
-      "title": "10. Opsigelse",
-      "content": "Vi kan opsige eller suspendere din konto og adgang til BillForge øjeblikkeligt, uden forudgående varsel eller ansvar, af enhver årsag, herunder hvis du overtræder disse servicevilkår. Ved opsigelse ophører din ret til at bruge tjenesten øjeblikkeligt."
-    },
-    "changesTerms": {
-      "title": "11. Ændringer i vilkår",
-      "content": "Vi forbeholder os retten til at ændre disse vilkår til enhver tid. Vi vil underrette brugere om væsentlige ændringer ved at offentliggøre de nye servicevilkår på denne side og opdatere datoen \"Sidst opdateret\". Din fortsatte brug af BillForge efter sådanne ændringer udgør din anerkendelse og accept af de ændrede vilkår."
-    },
-    "governing": {
-      "title": "12. Gældende lov",
-      "content": "Disse vilkår skal styres og fortolkes i overensstemmelse med gældende love, uden hensyntagen til lovkonfliktbestemmelser. Vores manglende håndhævelse af en rettighed eller bestemmelse i disse vilkår vil ikke blive betragtet som et afkald på disse rettigheder."
-    },
-    "contact": {
-      "title": "Kontakt os",
-      "description": "Hvis du har spørgsmål om disse servicevilkår, bedes du kontakte os."
-    }
-  },
-  "app": {
-    "sale": {
-      "title": "Salg",
-      "searchItems": "Søg efter produkter...",
-      "allCategories": "Alle Kategorier",
-      "checkout": "Betaling",
-      "total": "Total:",
-      "items": "Produkter",
-      "noItems": "Ingen produkter fundet",
-      "addToCart": "Tilføj til Kurv",
-      "removeFromCart": "Fjern",
-      "error": "Fejl",
-      "retry": "Prøv Igen",
-      "loading": "Indlæser...",
-      "selectBusiness": "Vælg venligst en virksomhed fra sidebjælken for at begynde",
-      "cartEmpty": "Din kurv er tom. Begynd at tilføje produkter for at fortsætte.",
-      "backToItems": "Tilbage til Produkter",
-      "reviewOrder": "Gennemgå din ordre og gennemfør transaktionen",
-      "orderSummary": "Ordreoversigt",
-      "item": "Produkt",
-      "quantity": "Mængde",
-      "price": "Pris",
-      "tax": "Afgift:",
-      "discount": "Rabat:",
-      "subtotal": "Subtotal:",
-      "paymentSummary": "Betalingsoversigt",
-      "processing": "Behandler...",
-      "completeTransaction": "Gennemfør Transaktion",
-      "transactionDetails": "Transaktionsdetaljer",
-      "customer": "Kunde (Valgfrit)",
-      "selectCustomer": "Vælg kunde...",
-      "guestCustomer": "Gæstkunde",
-      "paymentMethod": "Betalingsmetode (Valgfrit)",
-      "paymentMethodsLoadError": "Kunne ikke indlæse betalingsmetoder",
-      "created": "Oprettet",
-      "selectPaymentMethod": "Vælg betalingsmetode...",
-      "cash": "Kontant",
-      "notes": "Noter (Valgfrit)",
-      "addNotes": "Tilføj noter til denne transaktion...",
-      "outOfStock": "Ikke på lager",
-      "noItemsAvailable": "Ingen produkter tilgængelige",
-      "addItemsToInventory": "Tilføj produkter til dit lager for at begynde at oprette transaktioner"
-    },
-    "items": {
-      "title": "Produkter",
-      "addItem": "Tilføj Produkt",
-      "editItem": "Rediger Produkt",
-      "deleteItem": "Slet Produkt",
-      "name": "Produktnavn",
-      "price": "Pris",
-      "sku": "SKU (Lagerbevaringsenheder)",
-      "category": "Kategori",
-      "description": "Beskrivelse",
-      "noItems": "Ingen produkter fundet",
-      "loading": "Indlæser produkter...",
-      "error": "Fejl ved indlæsning af produkter",
-      "actions": "Handlinger",
-      "business": "Virksomhed",
-      "unknownBusiness": "Ukendt Virksomhed",
-      "addFirstItem": "Tilføj Dit Første Produkt",
-      "image": "Produktbillede",
-      "status": "Status",
-      "created": "Oprettelsesdato",
-      "active": "Aktiv",
-      "inactive": "Inaktiv",
-      "createTitle": "Opret Nyt Produkt",
-      "createDescription": "Tilføj et nyt produkt eller en ny service til dit lager",
-      "editTitle": "Rediger Produkt",
-      "editDescription": "Opdater produktinformationer",
-      "taxOptional": "Afgift (Valgfrit)",
-      "noTax": "Ingen afgift",
-      "discountOptional": "Rabat (Valgfrit)",
-      "noDiscount": "Ingen rabat",
-      "categoriesOptional": "Kategorier (Valgfrit)",
-      "noCategoriesAvailable": "Ingen kategorier tilgængelige. Opret kategorier først.",
-      "skuOptional": "SKU (Valgfrit)",
-      "descriptionOptional": "Beskrivelse (Valgfrit)",
-      "itemImageOptional": "Produktbillede (Valgfrit)",
-      "supportedFormats": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
-      "uploading": "Uploader billede...",
-      "update": "Opdater Produkt",
-      "create": "Opret Produkt",
-      "deleteTitle": "Slet Produkt?",
-      "deleteDescription": "Dette vil permanent slette {name} (SKU: {sku}). Denne handling kan ikke fortrydes.",
-      "deleting": "Sletter...",
-      "errorCreating": "Fejl ved oprettelse af produkt",
-      "errorUpdating": "Fejl ved opdatering af produkt",
-      "errorDeleting": "Fejl ved sletning af produkt",
-      "uploadError": "Fejl ved upload af billede",
-      "deleteError": "Fejl ved sletning af produkt",
-      "selectImageError": "Vælg venligst en billedfil",
-      "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
-      "loadingError": "Der opstod en fejl under indlæsning af data",
-      "itemsLoadError": "Fejl ved indlæsning af produkter",
-      "basePrice": "Basispris"
-    },
-    "customers": {
-      "title": "Kunder",
-      "addCustomer": "Tilføj Kunde",
-      "editCustomer": "Rediger Kunde",
-      "deleteCustomer": "Slet Kunde",
-      "name": "Kundenavn",
-      "email": "E-mail",
-      "phone": "Telefonnummer",
-      "address": "Adresse",
-      "noCustomers": "Ingen kunder fundet",
-      "loading": "Indlæser kunder...",
-      "error": "Fejl ved indlæsning af kunder",
-      "actions": "Handlinger",
-      "addFirstCustomer": "Tilføj Din Første Kunde",
-      "editTitle": "Rediger Kunde",
-      "createTitle": "Tilføj Ny Kunde",
-      "editDescription": "Opdater kundeoplysninger",
-      "createDescription": "Tilføj en ny kunde til din database",
-      "customerName": "Fuldt Navn",
-      "placeholderName": "John Doe",
-      "emailOptional": "E-mail (Valgfrit)",
-      "placeholderEmail": "john@example.com",
-      "phoneOptional": "Telefonnummer (Valgfrit)",
-      "placeholderPhone": "+4540123456",
-      "addressOptional": "Adresse (Valgfrit)",
-      "placeholderAddress": "Hovedgaden 123, By, Postnummer",
-      "deleteTitle": "Slet Kunde?",
-      "deleting": "Sletter...",
-      "errorCreating": "Fejl ved oprettelse af kunde",
-      "errorUpdating": "Fejl ved opdatering af kunde",
-      "errorDeleting": "Fejl ved sletning af kunde",
-      "deleteError": "Fejl ved sletning af kunde",
-      "customersLoadError": "Fejl ved indlæsning af kunder",
-      "loadingError": "Der opstod en fejl under indlæsning af data"
-    },
-    "transactions": {
-      "title": "Transaktioner",
-      "viewDetails": "Se Detaljer",
-      "date": "Dato",
-      "customer": "Kunde",
-      "total": "Total",
-      "totalAmount": "Samlet Beløb",
-      "finalAmount": "Endeligt Beløb",
-      "discountAmount": "Rabatbeløb:",
-      "taxAmount": "Afgiftsbeløb:",
-      "paymentMethod": "Betalingsmetode",
-      "noTransactions": "Ingen transaktioner fundet",
-      "actions": "Handlinger",
-      "loading": "Indlæser transaktioner...",
-      "error": "Fejl ved indlæsning af transaktioner",
-      "guestCustomer": "Gæst",
-      "transactionDetails": "Transaktionsdetaljer",
-      "viewInfo": "Se fuldstændig transaktionsinformation",
-      "items": "Produkter",
-      "noItems": "Ingen produkter fundet",
-      "item": "Produkt",
-      "quantity": "Mængde",
-      "basePrice": "Basispris",
-      "tax": "Afgift",
-      "discount": "Rabat",
-      "notes": "Noter",
-      "transactionId": "Transaktions-ID",
-      "downloadPDF": "Download PDF",
-      "downloadImage": "Download Billede",
-      "sendEmail": "Send til E-mail",
-      "sendWhatsApp": "Send via WhatsApp"
-    },
-    "settings": {
-      "title": "Indstillinger",
-      "profile": "Profil",
-      "business": "Virksomhed",
-      "receipt": "Kvitteringsindstillinger",
-      "preferences": "Præferencer",
-      "account": "Konto",
-      "profileTab": {
-        "name": "Fuldt Navn",
-        "email": "E-mailadresse",
-        "currentPassword": "Nuværende Adgangskode",
-        "newPassword": "Ny Adgangskode",
-        "confirmPassword": "Bekræft Adgangskode",
-        "changePassword": "Skift Adgangskode",
-        "updateProfile": "Opdater Profil",
-        "deleteAccount": "Slet Konto",
-        "errorLoad": "Fejl ved indlæsning af profil",
-        "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
-        "successUpdate": "Profilen blev opdateret med succes",
-        "errorUpdate": "Fejl ved opdatering af profil",
-        "errorFields": "Kontroller venligst alle felter",
-        "errorMatch": "Adgangskoderne stemmer ikke overens",
-        "errorLength": "Adgangskode skal være mindst 8 tegn",
-        "successPassword": "Adgangskode ændret med succes",
-        "errorPassword": "Nuværende adgangskode er forkert",
-        "confirmDelete": "Bekræft Sletning af Konto",
-        "sentDelete": "Bekræftelsesmail for sletning sendt",
-        "errorDelete": "Fejl ved sending af sletningsmail",
-        "profilePicture": "Profilbillede",
-        "profilePictureDescription": "Upload et profilbillede for at personalisere din konto",
-        "uploadPhoto": "Upload Foto",
-        "delete": "Slet",
-        "imageRequirements": "JPG, PNG, GIF, WEBP. Maks 1MB",
-        "personalInfo": "Personlige Oplysninger",
-        "fullName": "Fuldt Navn",
-        "enterFullName": "Indtast dit fulde navn",
-        "enterEmail": "Indtast din e-mail",
-        "emailNote": "E-mail kan ikke ændres",
-        "saving": "Gemmer...",
-        "saveChanges": "Gem Ændringer",
-        "changePasswordDescription": "Opdater din adgangskode for at holde din konto sikker",
-        "enterCurrentPassword": "Indtast nuværende adgangskode",
-        "enterNewPassword": "Indtast ny adgangskode (min 8 tegn)",
-        "confirmNewPassword": "Bekræft Ny Adgangskode",
-        "enterConfirmNewPassword": "Bekræft ny adgangskode",
-        "changingPassword": "Ændrer adgangskode...",
-        "deleteAccountDescription": "Efter sletning kan din konto og alle dine data ikke gendannes",
-        "deleteWarning": "Advarsel: Denne handling kan ikke fortrydes",
-        "deleteConsequences": "Sletning af din konto vil:",
-        "deleteItem1": "Permanent slette alle dine virksomheder",
-        "deleteItem2": "Fjerne alle transaktioner og produkter",
-        "deleteItem3": "Slette alle dine personlige data",
-        "deleteConfirmation": "Du vil modtage en bekræftelsesmail med et link til at gennemføre sletningen.",
-        "sendingEmail": "Sender e-mail...",
-        "requestDeletion": "Anmod Sletning af Konto"
-      },
-      "receiptTab": {
-        "options": "Tilpasning af Kvittering",
-        "includeLogo": "Inkludér Virksomhedslogo på Kvitteringer",
-        "footerMessage": "Fooder-besked",
-        "footerPlaceholder": "Tak for dit køb!",
-        "qrCode": "QR-kodedata",
-        "qrPlaceholder": "Indtast QR-kodeværdi (f.eks. socialmedieprofil)",
-        "prefix": "Transaktionsbetegnelse",
-        "prefixHelp": "Betegnelse for transaktionsnumre (f.eks. INV, RCP)",
-        "nextNumber": "Næste Transaktionsnummer",
-        "nextNumberHelp": "Det næste transaktionsnummer der skal bruges",
-        "template": "Kvitteringsskabelon",
-        "selectBusiness": "Vælg venligst en virksomhed for at konfigurere kvitteringsindstillinger"
-      },
-      "receiptPopup": {
-        "title": "Transaktion Fuldført!",
-        "description": "Din transaktion er blevet gennemført med succes. Download eller send kvitteringen.",
-        "downloadPDF": "Download PDF",
-        "downloadImage": "Download Billede",
-        "sendEmail": "Send E-mail",
-        "sendWhatsApp": "Send via WhatsApp",
-        "receiptPreview": "Kvittering Forhåndsvisning",
-        "failedDownload": "Kunne ikke downloade kvittering",
-        "failedDownloadImage": "Kunne ikke downloade kvitteringsbillede",
-        "receiptWillBeSent": "Kvittering vil blive sendt til",
-        "failedSendEmail": "Kunne ikke sende e-mail",
-        "failedSendWhatsApp": "Kunne ikke sende WhatsApp-besked",
-        "printReceipt": "Udskriv Kvittering"
-      },
-      "businessOnboarding": {
-        "title": "Velkommen til BillForge",
-        "description": "Start med at oprette din første virksomhed",
-        "businessName": "Virksomhedsnavn",
-        "businessNamePlaceholder": "Min Virksomhed",
-        "phone": "Telefon (Valgfrit)",
-        "phonePlaceholder": "+4540123456",
-        "address": "Adresse (Valgfrit)",
-        "addressPlaceholder": "Hovedgaden 123, By, Region, Postnummer",
-        "currency": "Valuta (Valgfrit)",
-        "selectCurrency": "Vælg valuta",
-        "language": "Sprog (Valgfrit)",
-        "selectLanguage": "Vælg sprog",
-        "region": "Region (Valgfrit)",
-        "selectRegion": "Vælg region",
-        "logo": "Virksomhedslogo (Valgfrit)",
-        "logoPreview": "Forhåndsvisning af virksomhedslogo",
-        "logoFallback": "Logo",
-        "logoHelp": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
-        "uploadingLogo": "Uploader logo...",
-        "createButton": "Opret Virksomhed",
-        "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
-        "createError": "Kunne ikke oprette virksomhed",
-        "genericError": "Der opstod en fejl under oprettelse af virksomhed"
-      },
-      "preferencesTab": {
-        "language": "Sprog",
-        "languageDescription": "Vælg dit foretrukne sprog til applikationsgrænsefladen.",
-        "currency": "Valuta",
-        "region": "Region",
-        "timezone": "Tidszone",
-        "title": "Udseende & Lokalisering",
-        "description": "Tilpas udseendet og opførslen af BillForge",
-        "theme": "Tema",
-        "themeDescription": "Vælg dit foretrukne farvetema",
-        "light": "Lyst",
-        "dark": "Mørkt",
-        "system": "Systemstandard"
-      },
-      "printerTab": {
-        "encoding": "Kodning",
-        "autoPrint": "Auto-udskriv Efter Betaling",
-        "autoPrintDescription": "Udskriv kvitteringer automatisk efter gennemførelse af en transaktion"
-      },
-      "printer": {
-        "title": "Printerindstillinger",
-        "noPrinterConnected": "Ingen Printer Tilsluttet",
-        "printSuccess": "Udskrivning Lykkedes",
-        "printFailed": "Udskrivning Mislykkedes"
-      }
-    },
-    "categories": {
-      "title": "Kategorier",
-      "addCategory": "Tilføj Kategori",
-      "editCategory": "Rediger Kategori",
-      "deleteCategory": "Slet Kategori",
-      "name": "Kategorinavn",
-      "noCategories": "Ingen kategorier fundet",
-      "loading": "Indlæser kategorier...",
-      "error": "Fejl ved indlæsning af kategorier",
-      "actions": "Handlinger",
-      "addFirstCategory": "Tilføj Din Første Kategori",
-      "created": "Oprettelsesdato",
-      "createTitle": "Opret Ny Kategori",
-      "createDescription": "Tilføj en ny kategori for at organisere dine produkter",
-      "editTitle": "Rediger Kategori",
-      "editDescription": "Opdater kategorioplysninger",
-      "categoryName": "Kategorinavn",
-      "placeholder": "f.eks. Elektronik, Mad, Tjenester",
-      "deleteTitle": "Slet Kategori?",
-      "deleteDescription": "Dette vil permanent slette kategorien '{name}'. Denne handling kan ikke fortrydes.",
-      "deleting": "Sletter...",
-      "errorCreating": "Fejl ved oprettelse af kategori",
-      "errorUpdating": "Fejl ved opdatering af kategori",
-      "errorDeleting": "Fejl ved sletning af kategori",
-      "deleteError": "Fejl ved sletning af kategori",
-      "loadingError": "Der opstod en fejl under indlæsning af data",
-      "categoriesLoadError": "Fejl ved indlæsning af kategorier"
-    },
-    "paymentMethods": {
-      "title": "Betalingsmetoder",
-      "addMethod": "Tilføj Betalingsmetode",
-      "editMethod": "Rediger Betalingsmetode",
-      "deleteMethod": "Slet Betalingsmetode",
-      "name": "Metodenavn",
-      "noMethods": "Ingen betalingsmetoder fundet",
-      "loading": "Indlæser betalingsmetoder...",
-      "error": "Fejl ved indlæsning af betalingsmetoder",
-      "actions": "Handlinger",
-      "addFirstMethod": "Tilføj Din Første Betalingsmetode",
-      "createTitle": "Tilføj Betalingsmetode",
-      "createDescription": "Tilføj en ny betalingsmetode for at acceptere betalinger",
-      "editTitle": "Rediger Betalingsmetode",
-      "editDescription": "Opdater betalingsmetodedetaljer",
-      "deleteTitle": "Slet Betalingsmetode?",
-      "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
-      "deleting": "Sletter...",
-      "errorCreating": "Fejl ved oprettelse af betalingsmetode",
-      "errorUpdating": "Fejl ved opdatering af betalingsmetode",
-      "errorDeleting": "Fejl ved sletning af betalingsmetode",
-      "deleteError": "Fejl ved sletning af betalingsmetode",
-      "methodName": "Betalingsmetodenavn",
-      "placeholderName": "f.eks. Kontant, Kreditkort, Bankoverførsel",
-      "created": "Oprettelsesdato",
-      "paymentMethodsLoadError": "Fejl ved indlæsning af betalingsmetoder",
-      "loadingError": "Der opstod en fejl under indlæsning af data"
-    },
-    "itemTaxes": {
-      "title": "Afgiftssatser",
-      "addTax": "Tilføj Afgift",
-      "editTax": "Rediger Afgift",
-      "deleteTax": "Slet Afgift",
-      "name": "Afgiftsnavn",
-      "rate": "Afgiftssats",
-      "noTaxes": "Ingen afgifter konfigureret. Opret din første afgiftskonfiguration.",
-      "loading": "Indlæser afgifter...",
-      "error": "Fejl ved indlæsning af afgifter",
-      "actions": "Handlinger",
-      "createTitle": "Tilføj Afgiftssats",
-      "createDescription": "Opret en ny afgiftskonfiguration",
-      "editTitle": "Rediger Afgiftssats",
-      "editDescription": "Opdater afgiftssatsdetaljer",
-      "deleteTitle": "Slet Afgift?",
-      "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
-      "deleting": "Sletter...",
-      "errorCreating": "Fejl ved oprettelse af afgift",
-      "errorUpdating": "Fejl ved opdatering af afgift",
-      "errorDeleting": "Fejl ved sletning af afgift",
-      "deleteError": "Fejl ved sletning af afgift",
-      "taxName": "Afgiftsnavn",
-      "placeholderName": "f.eks. Moms, Salgsskat",
-      "type": "Type",
-      "percentage": "Procent",
-      "fixed": "Fast Beløb",
-      "value": "Værdi",
-      "taxesLoadError": "Fejl ved indlæsning af afgifter",
-      "loadingError": "Der opstod en fejl under indlæsning af data"
-    },
-    "itemDiscounts": {
-      "title": "Rabatter",
-      "addDiscount": "Tilføj Rabat",
-      "editDiscount": "Rediger Rabat",
-      "deleteDiscount": "Slet Rabat",
-      "name": "Rabatbetegnelse",
-      "type": "Type",
-      "value": "Værdi",
-      "noDiscounts": "Ingen rabatter konfigureret. Opret din første rabat.",
-      "loading": "Indlæser rabatter...",
-      "error": "Fejl ved indlæsning af rabatter",
-      "actions": "Handlinger",
-      "createTitle": "Tilføj Rabat",
-      "createDescription": "Opret et nyt rabattilbud",
-      "editTitle": "Rediger Rabat",
-      "editDescription": "Opdater rabatdetaljer",
-      "deleteTitle": "Slet Rabat?",
-      "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
-      "deleting": "Sletter...",
-      "errorCreating": "Fejl ved oprettelse af rabat",
-      "errorUpdating": "Fejl ved opdatering af rabat",
-      "errorDeleting": "Fejl ved sletning af rabat",
-      "deleteError": "Fejl ved sletning af rabat",
-      "discountName": "Rabatbetegnelse",
-      "placeholderName": "f.eks. Ferierabat, Tidlig Fugl Rabat",
-      "percentage": "Procent",
-      "fixed": "Fast Beløb",
-      "discountsLoadError": "Fejl ved indlæsning af rabatter",
-      "loadingError": "Der opstod en fejl under indlæsning af data"
-    },
-    "sidebar": {
-      "sale": "Salg",
-      "transactions": "Transaktioner",
-      "items": "Produkter",
-      "categories": "Kategorier",
-      "customers": "Kunder",
-      "paymentMethods": "Betalingsmetoder",
-      "itemTaxes": "Afgifter",
-      "itemDiscounts": "Rabatter",
-      "settings": "Indstillinger",
-      "businessSelector": {
-        "switchBusiness": "Skift Virksomhed",
-        "addBusiness": "Tilføj Virksomhed",
-        "edit": "Rediger",
-        "delete": "Slet"
-      },
-      "userProfile": {
-        "myAccount": "Min Konto",
-        "logout": "Log Ud",
-        "dialog": {
-          "title": "Bekræft Log Ud",
-          "description": "Er du sikker på, at du vil logge ud? Du skal logge ind igen for at få adgang til din konto.",
-          "cancel": "Annuller",
-          "confirm": "Log Ud"
-        }
-      },
-      "businessDialog": {
-        "createTitle": "Opret Ny Virksomhed",
-        "editTitle": "Rediger Virksomhed",
-        "createDescription": "Tilføj en ny virksomhedslokation til din konto",
-        "editDescription": "Opdater dine virksomhedsoplysninger",
-        "nameLabel": "Virksomhedsnavn",
-        "namePlaceholder": "Dit Virksomhedsnavn",
-        "addressLabel": "Adresse (Valgfrit)",
-        "addressPlaceholder": "Hovedgaden 123, By, Land",
-        "phoneLabel": "Telefonnummer (Valgfrit)",
-        "phonePlaceholder": "+4540123456",
-        "currencyLabel": "Valuta (Valgfrit)",
-        "currencyPlaceholder": "Vælg valuta",
-        "languageLabel": "Sprog (Valgfrit)",
-        "languagePlaceholder": "Vælg sprog",
-        "regionLabel": "Region (Valgfrit)",
-        "regionPlaceholder": "Vælg region",
-        "logoLabel": "Virksomhedslogo (Valgfrit)",
-        "logoHelp": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
-        "uploading": "Uploader logo...",
+    "common": {
+        "loading": "Indlæser...",
+        "error": "Fejl",
+        "success": "Succes",
         "cancel": "Annuller",
+        "save": "Gem",
+        "delete": "Slet",
+        "edit": "Rediger",
         "create": "Opret",
         "update": "Opdater",
-        "errorGeneric": "Fejl ved gemning af virksomhed",
-        "errorCreate": "Fejl ved oprettelse af virksomhed",
-        "errorUpdate": "Fejl ved opdatering af virksomhed",
-        "errorImageSize": "Billeddestørrelsen skal være mindre end 1MB"
-      },
-      "deleteBusinessDialog": {
-        "title": "Slet Virksomhed",
-        "description": "Er du sikker på, at du vil slette '{name}'? Denne handling kan ikke fortrydes.",
-        "cancel": "Annuller",
-        "delete": "Slet"
-      }
-    }
-  },
-  "sidebar": {
-    "businessDialog": {
-      "errors": {
-        "imageSize": "Billeddestørrelsen skal være mindre end 1MB",
-        "updateFailed": "Fejl ved opdatering af virksomhed",
-        "createFailed": "Fejl ved oprettelse af virksomhed",
-        "updateError": "En fejl opstod under opdateringen",
-        "createError": "En fejl opstod under oprettelsen"
-      },
-      "edit": "Rediger Virksomhed",
-      "create": "Opret Virksomhed",
-      "description": {
-        "edit": "Opdater dine virksomhedsoplysninger",
-        "create": "Tilføj en ny virksomhed til din konto"
-      },
-      "form": {
-        "name": {
-          "label": "Virksomhedsnavn",
-          "placeholder": "Dit Virksomhedsnavn"
+        "search": "Søg",
+        "filter": "Filtrér",
+        "close": "Luk",
+        "back": "Tilbage",
+        "next": "Næste",
+        "previous": "Forrige",
+        "submit": "Indsend",
+        "confirm": "Bekræft",
+        "yes": "Ja",
+        "no": "Nej"
+    },
+    "landing": {
+        "hero": {
+            "title": "Moderne POS & Fakturering Gjort Enkelt",
+            "description": "Transformér din virksomhed med professionelle kvitteringer, øjeblikkelig betaling og kraftig analyse. Designet til caféer, restauranter, detailbutikker og små virksomheder overalt.",
+            "cta": "Start Gratis Prøveperiode"
         },
-        "address": {
-          "label": "Adresse (Valgfrit)",
-          "placeholder": "Hovedgaden 123, By, Land"
+        "features": {
+            "title": "Alt Du Har Brug for til at Drive Din Virksomhed",
+            "description": "Kraftfulde funktioner designet til at strømline dit salg, administrere kunder og vokse din virksomhed effektivt.",
+            "receipt": {
+                "title": "Professionelle Kvitteringer",
+                "description": "Opret smukke, tilpasselige kvitteringer med dit logo, QR-koder og tilpassede beskeder. Vælg fra flere professionelle skabeloner, der styrker dit brand."
+            },
+            "checkout": {
+                "title": "Hurtig Betalingsproces",
+                "description": "Fremskynde dine transaktioner med en intuitiv POS-grænseflade. Behandle salg hurtigt, acceptér flere betalingsmetoder og betjen dine kunder mere effektivt."
+            },
+            "customer": {
+                "title": "Kundehåndtering",
+                "description": "Byg langvarige relationer med kundeprofiler og købehistorik. Spor præferencer, udgiftsmønstre og giv personlig service til dine stamkunder."
+            },
+            "discount": {
+                "title": "Smart Rabatter & Afgifter",
+                "description": "Administrer procent- eller fastbeløbsrabatter og flere afgiftssatser med lethed. Anvend promoveringer på specifikke varer eller hele transaktioner med blot nogle få klik."
+            },
+            "analytics": {
+                "title": "Analyse i Realtid",
+                "description": "Få øjeblikkelig indsigt i dit salgspræstation. Spor daglig omsætning, bestsellere og transaktionstrends for at træffe datadrevne forretningsbeslutninger."
+            },
+            "cloud": {
+                "title": "Adgang Hvor Som Helst",
+                "description": "Cloudbaseret system fungerer på alle enheder - stationær computer, tablet eller smartphone. Administrér din virksomhed hvorfra som helst med sikker, realtids-datasynkronisering."
+            }
         },
-        "phone": {
-          "label": "Telefonnummer (Valgfrit)",
-          "placeholder": "+4540123456"
+        "nav": {
+            "features": "Funktioner",
+            "pricing": "Priser",
+            "faq": "Ofte Stillede Spørgsmål",
+            "login": "Log Ind",
+            "signup": "Tilmeld",
+            "signIn": "Log Ind",
+            "getStarted": "Kom i Gang",
+            "home": "Hjem",
+            "testimonials": "Anmeldelser",
+            "drawerTitle": "Navigationsmenu"
         },
-        "currency": {
-          "label": "Valuta (Valgfrit)",
-          "placeholder": "Vælg valuta"
+        "faq": {
+            "title": "Ofte Stillede Spørgsmål",
+            "description": "Alt hvad du har brug for at vide om BillForge og hvordan det kan hjælpe din virksomhed.",
+            "items": {
+                "item1": {
+                    "question": "Er BillForge virkelig gratis?",
+                    "answer": "Ja! Vores gratis plan inkluderer 1 virksomhed, 50 produkter, 50 kunder, 50 transaktioner pr. måned og alle grundlæggende funktioner. Perfekt til små virksomheder, der lige starter. Opgrader til Pro eller Enterprise for højere grænser og avancerede funktioner."
+                },
+                "item2": {
+                    "question": "Hvad er forskellen mellem Gratis, Pro og Enterprise planerne?",
+                    "answer": "Gratis plan har grundlæggende grænser (1 virksomhed, 50 produkter, 50 transaktioner/måned). Pro tilbyder 10 gange disse grænser (10 virksomheder, 500 produkter, 500 transaktioner/måned). Enterprise giver ubegrænsede produkter, kunder og transaktioner med avancerede funktioner som multi-brugeradgang og API-adgang."
+                },
+                "item3": {
+                    "question": "Kan jeg tilpasse mine kvitteringer?",
+                    "answer": "Helt sikkert! BillForge tilbyder flere kvitteringsskabeloner med fulde tilpasningsmuligheder. Tilføj dit virksomhedslogo, tilpassede footermeddelelser, QR-koder og vælg fra forskellige professionelle designs. Kvitteringer kan printes eller sendes digitalt til kunder."
+                },
+                "item4": {
+                    "question": "Hvilke betalingsmetoder kan jeg acceptere?",
+                    "answer": "BillForge understøtter alle større betalingsmetoder, herunder kontant, kredit-/betalingskort, mobilbetalinger og digitale tegnebøger. Gratis plan tillader op til 5 betalingsmetoder, mens Pro og Enterprise tilbyder ubegrænsede betalingsmetoder."
+                },
+                "item5": {
+                    "question": "Hvordan administrerer jeg rabatter og afgifter?",
+                    "answer": "Vores platform inkluderer indbygget rabat- og afgiftshåndtering. Opret procent- eller fastbeløbsrabatter, anvend dem på specifikke varer eller hele transaktioner. Opsæt flere afgiftssatser for forskellige produktkategorier. Gratis plan inkluderer 30 rabat- og afgiftskonfigurationer."
+                },
+                "item6": {
+                    "question": "Er mine forretningsdata sikre?",
+                    "answer": "Ja! Alle data gemmes sikkert i skyen med kryptering. Vi udfører regelmæssige sikkerhedskopier og bruger standardiserede sikkerhedspraktikker. Dit transaktionshistorik, kundeoplysninger og forretningsdata er beskyttet og kan kun tilgås af dig."
+                },
+                "item7": {
+                    "question": "Kan jeg spore kundeindkøbshistorik?",
+                    "answer": "Ja! BillForge inkluderer kundehåndteringsfunktioner. Gem kundedetaljer, se købehistorik og opbyg bedre relationer med dine stamkunder. Spor hvad de køber, hvornår de besøger og deres samlede udgifter for at give personlig service."
+                },
+                "item8": {
+                    "question": "Har jeg brug for særligt hardware?",
+                    "answer": "Intet særligt hardware krævet! BillForge fungerer på alle enheder med en webbrowser - stationær computer, tablet eller smartphone. Hvis du vil printe kvitteringer, kan du bruge enhver standardprinter. Systemet er cloudbaseret, så du kan få adgang derfra hvor som helst."
+                },
+                "item9": {
+                    "question": "Hvad sker der, hvis jeg overskrider min månedlige transaktionsgrænse?",
+                    "answer": "På gratis plan er du begrænset til 50 transaktioner pr. måned. Hvis du har brug for flere, kan du opgradere til Pro (500 transaktioner/måned) eller Enterprise (ubegrænset). Dine data bliver aldrig slettet, og du kan altid se tidligere transaktioner uanset din nuværende plan."
+                },
+                "item10": {
+                    "question": "Hvordan får jeg support, hvis jeg har brug for hjælp?",
+                    "answer": "Vi tilbyder e-mailsupport til alle brugere. Pro og Enterprise-kunder får prioriteret support med hurtigere responstider. Enterprise-kunder modtager også 24/7 support og en dedikeret account manager. Tjek vores dokumentation og tutorials for hurtige selvhjælpsvejledninger."
+                }
+            }
         },
-        "language": {
-          "label": "Sprog (Valgfrit)",
-          "placeholder": "Vælg sprog"
+        "pricing": {
+            "title": "Enkel, Transparent Prissætning",
+            "description": "Vælg den perfekte plan til din virksomhed. Start gratis og opgrader, efterhånden som din virksomhed vokser.",
+            "monthly": "/måned",
+            "mostPopular": "Mest Popular",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "description": "Perfekt til små virksomheder, der lige starter med digital fakturering.",
+                    "button": "Start Gratis",
+                    "features": {
+                        "business": "1 Virksomhed",
+                        "items": "50 Produkter",
+                        "customers": "50 Kunder",
+                        "transactions": "50 Transaktioner/måned",
+                        "paymentMethods": "5 Betalingsmetoder",
+                        "discountsTaxes": "30 Rabatter & Afgifter",
+                        "templates": "Basis Kvitteringsskabeloner",
+                        "storage": "Skystorage"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "Ideel til voksende virksomheder med flere lokationer og højere volumen.",
+                    "button": "Start Pro Prøveperiode",
+                    "features": {
+                        "business": "10 Virksomheder",
+                        "items": "500 Produkter",
+                        "customers": "500 Kunder",
+                        "transactions": "500 Transaktioner/måned",
+                        "paymentMethods": "50 Betalingsmetoder",
+                        "discountsTaxes": "300 Rabatter & Afgifter",
+                        "templates": "Premium Kvitteringsskabeloner",
+                        "support": "Prioriteret Support",
+                        "analytics": "Avanceret Analyse",
+                        "branding": "Tilpasset Branding"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "For store virksomheder, der kræver avancerede funktioner og dedikeret support.",
+                    "button": "Kontakt Salg",
+                    "features": {
+                        "business": "Ubegrænsede Virksomheder",
+                        "items": "Ubegrænsede Produkter",
+                        "customers": "Ubegrænsede Kunder",
+                        "transactions": "Ubegrænsede Transaktioner",
+                        "paymentMethods": "Ubegrænsede Betalingsmetoder",
+                        "discountsTaxes": "Ubegrænsede Rabatter & Afgifter",
+                        "api": "API Adgang",
+                        "support": "24/7 Prioriteret Support"
+                    }
+                }
+            }
         },
-        "region": {
-          "label": "Region (Valgfrit)",
-          "placeholder": "Vælg region"
+        "testimonials": {
+            "title": "Anmeldelser",
+            "items": {
+                "item1": {
+                    "name": "Sarah Martinez",
+                    "designation": "Café Ejer",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge har revolutioneret, hvordan vi håndterer transaktioner på vores café. Kvitteringstilpasningen er fantastisk, og vores kunder elsker at modtage digitale kvitteringer. Vi har reduceret papiromkostninger med 80%, og betaling gik aldrig hurtigere!"
+                },
+                "item2": {
+                    "name": "Budi Santoso",
+                    "designation": "Butikschef",
+                    "company": "Warung Maju Jakarta",
+                    "text": "Siden jeg brugte BillForge er det blevet meget lettere at administrere butikken. Grænsefladen er let at forstå og salgsrapporter er meget hjælpsomme. Anbefales varmt til små og mellemstore virksomhedsejere!"
+                },
+                "item3": {
+                    "name": "Michael Chen",
+                    "designation": "Restaurant Ejer",
+                    "company": "Chen's Asian Bistro",
+                    "text": "At håndtere flere betalingsmetoder var engang et mareridt. BillForge gør det problemløst! Transaktionshistorik- og kundehåndteringsfunktionerne har hjulpet os med at opbygge bedre relationer med vores stamkunder. Bedste POS-beslutning vi nogensinde har taget!"
+                },
+                "item4": {
+                    "name": "Emma Thompson",
+                    "designation": "Butik Ejer",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "Rabat- og afgiftsstyringen i BillForge er præcis hvad vi havde brug for til vores saisonsalg. At skabe smukke, mærkede kvitteringer har forbedret vores kundeservice. Vores betalingsproces er nu professionel og effektiv!"
+                },
+                "item5": {
+                    "name": "James Wilson",
+                    "designation": "Bageri Ejer",
+                    "company": "Sweet Treats Bakery",
+                    "text": "Vi skiftede til BillForge for tre måneder siden og har ikke set tilbage. Produkthåndteringssystemet holder vores lager organiseret, og kvitteringsskabelonerne ser professionelle ud. Kundebetaling er nu en leg, selv under vores travle morgenrusHour!"
+                },
+                "item6": {
+                    "name": "Lisa Rodriguez",
+                    "designation": "Detail Chef",
+                    "company": "TechGadgets Plus",
+                    "text": "BillForges transaktionssporing har givet os utrolige indsigter i vores salgsmønstre. Kundedatabasen hjælper os med at give personlig service, og QR-kode kvitteringer er et hit hos vores tech-savvy-kunder. Det er det komplette pakke!"
+                }
+            }
         },
-        "logo": {
-          "label": "Virksomhedslogo (Valgfrit)",
-          "helper": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks 1MB",
-          "uploading": "Uploader..."
+        "footer": {
+            "contact": "Kontakt",
+            "legal": "Juridisk",
+            "legalLinks": {
+                "terms": "Vilkår",
+                "privacy": "Privatlivspolitik"
+            },
+            "description": "Strømline din fakturaproces med intelligent fakturaledelse",
+            "copyright": "© 2025 BillForge. Alle rettigheder forbeholdt.",
+            "madeWith": "Lavet med ❤️ på Bali",
+            "links": {
+                "terms": "Servicevilkår",
+                "privacy": "Privatlivspolitik"
+            }
         }
-      },
-      "buttons": {
-        "cancel": "Annuller",
-        "update": "Opdater",
-        "create": "Opret"
-      }
     },
-    "businessSelector": {
-      "switchBusiness": "Skift Virksomhed",
-      "edit": "Rediger",
-      "delete": "Slet",
-      "addBusiness": "Tilføj Virksomhed"
+    "auth": {
+        "login": {
+            "title": "Velkommen Tilbage",
+            "description": "Log ind på din BillForge-konto",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "passwordLabel": "Adgangskode",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Glemt adgangskode?",
+            "submit": "Log Ind",
+            "submitting": "Logger ind...",
+            "noAccount": "Har du ikke en konto?",
+            "signUp": "Opret en",
+            "errorGeneric": "E-mail eller adgangskode er forkert. Prøv igen."
+        },
+        "register": {
+            "title": "Opret Din Konto",
+            "description": "Deltag i BillForge for at administrere din virksomhed",
+            "nameLabel": "Fuldt Navn",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "passwordLabel": "Adgangskode",
+            "passwordPlaceholder": "Mindst 8 tegn",
+            "confirmPasswordLabel": "Bekræft Adgangskode",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "Ved at oprette en konto accepterer du vores",
+            "terms": "Servicevilkår",
+            "and": "og",
+            "privacy": "Privatlivspolitik",
+            "submit": "Opret Konto",
+            "submitting": "Opretter konto...",
+            "hasAccount": "Har du allerede en konto?",
+            "signIn": "Log ind her",
+            "errorMatch": "Adgangskoderne stemmer ikke overens",
+            "errorGeneric": "Registrering mislykkedes. Prøv igen."
+        },
+        "forgotPassword": {
+            "title": "Nulstil Din Adgangskode",
+            "description": "Indtast din e-mailadresse, og vi sender dig et link til at nulstille din adgangskode.",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "submit": "Send Nulstillingslink",
+            "submitting": "Sender...",
+            "backToLogin": "Tilbage til login",
+            "checkEmailTitle": "Tjek Din E-mail",
+            "checkEmailDescription": "Vi har sendt adgangskodeomdirigeringsinstruktioner til",
+            "checkEmailNote1": "Tjek din indbakke for nulstillingslinkdet.",
+            "checkEmailNote2": "Hvis du ikke ser e-mailen, skal du tjekke din spammappe.",
+            "tryAnotherEmail": "Prøv en anden e-mail",
+            "errorGeneric": "Der opstod en fejl. Prøv igen."
+        },
+        "resetPassword": {
+            "title": "Opret Ny Adgangskode",
+            "description": "Indtast din nye adgangskode nedenfor.",
+            "emailLabel": "E-mailadresse",
+            "emailPlaceholder": "din@email.com",
+            "newPasswordLabel": "Ny Adgangskode",
+            "newPasswordPlaceholder": "Mindst 8 tegn",
+            "passwordHint": "Skal være mindst 8 tegn",
+            "confirmPasswordLabel": "Bekræft Adgangskode",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "Nulstil Adgangskode",
+            "submitting": "Nulstiller adgangskode...",
+            "backToLogin": "Tilbage til login",
+            "successTitle": "Adgangskode Nulstillet",
+            "successDescription": "Din adgangskode er blevet nulstillet med succes.",
+            "redirecting": "Omdirigerer til login...",
+            "goToLogin": "Gå til login",
+            "errorGeneric": "Der opstod en fejl. Prøv igen.",
+            "errorMatch": "Adgangskoderne stemmer ikke overens",
+            "errorLength": "Adgangskode skal være mindst 8 tegn"
+        },
+        "verifyEmail": {
+            "title": "Bekræft Din E-mail",
+            "description": "Vi sendte en bekræftelsesmail til",
+            "instruction": "Tjek venligst din indbakke og klik på bekræftelseslinkdet for at aktivere din konto.",
+            "resend": "Gensend Bekræftelsesmail",
+            "resending": "Sender...",
+            "changeEmail": "Brug en anden e-mailadresse",
+            "verifyingTitle": "Bekræfter E-mail...",
+            "verifyingDescription": "Vent venligst mens vi bekræfter din e-mailadresse.",
+            "successTitle": "E-mail Bekræftet",
+            "successDescription": "Din e-mail er blevet bekræftet med succes!",
+            "goToSale": "Gå til Dashboard",
+            "alreadyVerifiedTitle": "Allerede Bekræftet",
+            "alreadyVerifiedDescription": "Din e-mail er allerede bekræftet. Du kan fortsætte.",
+            "failedTitle": "Bekræftelse Mislykkedes",
+            "failedDescription": "Bekræftelseslinkdet er udløbet eller ugyldigt.",
+            "resendSuccess": "Bekræftelsesmail sendt! Tjek venligst din indbakke.",
+            "changeEmailTitle": "Skift E-mailadresse?",
+            "changeEmailDescription": "Du bliver logget ud og omdirigeret til tilmeldingssiden for at tilmelde dig med en ny e-mailadresse.",
+            "cancel": "Annuller",
+            "continue": "Fortsæt",
+            "errorGeneric": "Der opstod en fejl. Prøv igen."
+        },
+        "confirmDeletion": {
+            "title": "Slet Konto",
+            "description": "Advarsel: Dette vil permanent slette:",
+            "warningTitle": "Sletning af din konto vil fjerne:",
+            "warningItem1": "Alle dine virksomheder og forretningsdata",
+            "warningItem2": "Alle transaktions- og salgsposter",
+            "warningItem3": "Alle produkter og inventar",
+            "warningItem4": "Din profil og kontooplysninger",
+            "warningReversal": "Denne handling kan ikke fortrydes.",
+            "inputLabel": "Skriv BEKRÆFT for at slette din konto",
+            "confirmWord": "BEKRÆFT",
+            "inputLabelSuffix": "for at fortsætte med slettelse",
+            "inputPlaceholder": "Skriv BEKRÆFT her",
+            "cancel": "Annuller",
+            "delete": "Slet Konto",
+            "deleting": "Sletter...",
+            "success": "Konto slettet med succes",
+            "errorGeneric": "Der opstod en fejl. Prøv igen.",
+            "errorMatch": "Skriv BEKRÆFT præcis",
+            "errorMissingToken": "Ugyldig anmodning. Prøv igen.",
+            "invalidLinkTitle": "Ugyldigt eller Udløbet Link",
+            "invalidLinkDescription": "Dette sletningslink er udløbet eller ugyldigt.",
+            "returnToSettings": "Tilbage til Indstillinger"
+        }
     },
-    "deleteBusinessDialog": {
-      "title": "Slet Virksomhed",
-      "description": "Er du sikker? Dette kan ikke fortrydes.",
-      "cancel": "Annuller",
-      "confirm": "Slet"
+    "business": {
+        "name": "Virksomhedsnavn",
+        "address": "Adresse",
+        "phone": "Telefonnummer",
+        "currency": "Valuta",
+        "language": "Sprog",
+        "region": "Region",
+        "create": "Opret Virksomhed",
+        "edit": "Rediger Virksomhed",
+        "delete": "Slet Virksomhed",
+        "select": "Vælg Virksomhed",
+        "noBusiness": "Ingen virksomheder fundet",
+        "createFirst": "Opret din første virksomhed for at komme i gang"
     },
-    "userProfile": {
-      "myAccount": "Min Konto",
-      "logout": "Log Ud",
-      "dialog": {
-        "title": "Bekræft Log Ud",
-        "description": "Er du sikker på, at du vil logge ud?",
-        "cancel": "Annuller",
-        "confirm": "Log Ud"
-      }
+    "validation": {
+        "required": "Dette felt er påkrævet",
+        "email": "Indtast venligst en gyldig e-mailadresse",
+        "minLength": "Skal være mindst {min} tegn",
+        "maxLength": "Skal være højst {max} tegn",
+        "passwordMatch": "Adgangskoderne stemmer ikke overens",
+        "invalidFormat": "Ugyldigt format"
     },
-    "reports": {
-      "title": "Salgsrapporter",
-      "subtitle": "Se omfattende salgsanalyser og indsigt",
-      "dateRange": {
-        "title": "Datointerval",
-        "description": "Filtrer rapporter efter datointerval",
-        "startDate": "Startdato",
-        "endDate": "Slutdato",
-        "applyFilter": "Anvend Filter"
-      },
-      "summary": {
-        "totalSales": "Samlet Salg",
-        "transactions": "transaktioner",
-        "averageTransaction": "Gennemsnitlig Transaktion",
-        "perTransaction": "Per transaktion",
-        "itemsSold": "Solgte Varer",
-        "totalUnits": "Samlede enheder",
-        "totalTax": "Samlet Skat",
-        "taxCollected": "Skat opkrævet",
-        "totalDiscounts": "Samlede Rabatter",
-        "discountsGiven": "Rabatter givet"
-      },
-      "tabs": {
-        "byDate": "Efter Dato",
-        "byItem": "Efter Vare",
-        "byCategory": "Efter Kategori",
-        "byPaymentMethod": "Efter Betalingsmetode"
-      },
-      "byDate": {
-        "title": "Salg efter Dato",
-        "description": "Daglig salgsfordeling",
-        "date": "Dato",
-        "transactions": "Transaktioner",
-        "totalAmount": "Samlet Beløb"
-      },
-      "byItem": {
-        "title": "Salg efter Vare",
-        "description": "Mest solgte varer",
-        "itemName": "Varenavn",
-        "sku": "Varenummer",
-        "quantitySold": "Antal Solgt",
-        "totalRevenue": "Samlet Omsætning"
-      },
-      "byCategory": {
-        "title": "Salg efter Kategori",
-        "description": "Præstationsfordeling efter kategori",
-        "category": "Kategori",
-        "quantitySold": "Antal Solgt",
-        "totalRevenue": "Samlet Omsætning"
-      },
-      "byPaymentMethod": {
-        "title": "Salg efter Betalingsmetode",
-        "description": "Fordeling efter betalingsmetode",
-        "paymentMethod": "Betalingsmetode",
-        "transactions": "Transaktioner",
-        "totalAmount": "Samlet Beløb"
-      },
-      "noData": "Ingen data tilgængelige"
+    "privacy": {
+        "title": "Privatlivspolitik",
+        "lastUpdated": "Sidst opdateret: 8. december 2025",
+        "intro": {
+            "title": "Introduktion",
+            "content": "Hos BillForge tager vi dit privatliv seriøst. Denne privatlivspolitik forklarer, hvordan vi indsamler, bruger, videregiver og beskytter dine oplysninger, når du bruger vores fakturerings- og fakturahåndteringstjeneste. Læs venligst denne privatlivspolitik omhyggeligt. Hvis du ikke er enig i vilkårene i denne privatlivspolitik, bedes du undlade at bruge applikationen."
+        },
+        "infoCollect": {
+            "title": "1. Oplysninger vi indsamler",
+            "personal": {
+                "title": "Personlige oplysninger",
+                "intro": "Vi indsamler oplysninger, som du giver direkte til os, herunder:",
+                "items": {
+                    "contact": "Navn og kontaktoplysninger (e-mailadresse, telefonnummer)",
+                    "business": "Virksomhedsoplysninger (firmanavn, adresse, CVR-nummer)",
+                    "payment": "Betalingsoplysninger (behandles sikkert gennem tredjepartsbetalingsbehandlere)",
+                    "credentials": "Kontooplysninger (brugernavn, adgangskode)"
+                }
+            },
+            "businessData": {
+                "title": "Virksomhedsdata",
+                "intro": "Når du bruger BillForge, indsamler og gemmer vi:",
+                "items": {
+                    "customers": "Kundeoplysninger, du indtaster",
+                    "invoices": "Faktura- og transaktionsdata",
+                    "items": "Varekataloger og prisoplysninger",
+                    "tax": "Skatte- og rabatkonfigurationer",
+                    "settings": "Virksomhedsindstillinger og præferencer"
+                }
+            },
+            "auto": {
+                "title": "Automatisk indsamlede oplysninger",
+                "intro": "Når du tilgår BillForge, indsamler vi automatisk:",
+                "items": {
+                    "log": "Logdata (IP-adresse, browsertype, operativsystem)",
+                    "device": "Enhedsoplysninger",
+                    "usage": "Brugsdata (besøgte sider, brugte funktioner, tidsforbrug)",
+                    "cookies": "Cookies og lignende sporingsteknologier"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. Sådan bruger vi dine oplysninger",
+            "intro": "Vi bruger de oplysninger, vi indsamler, til at:",
+            "items": {
+                "provide": "Levere, vedligeholde og forbedre vores tjenester",
+                "process": "Behandle dine transaktioner og administrere din konto",
+                "send": "Sende dig tekniske meddelelser, opdateringer og supportmeddelelser",
+                "respond": "Besvare dine kommentarer, spørgsmål og kundeserviceanmodninger",
+                "monitor": "Overvåge og analysere tendenser, brug og aktiviteter",
+                "detect": "Opdage, forhindre og håndtere tekniske problemer og svigagtig aktivitet",
+                "personalize": "Personalisere og forbedre din oplevelse",
+                "marketing": "Sende dig markedsføringskommunikation (med dit samtykke)"
+            }
+        },
+        "sharing": {
+            "title": "3. Deling og videregivelse af oplysninger",
+            "intro": "Vi sælger ikke dine personlige oplysninger. Vi kan dele dine oplysninger under følgende omstændigheder:",
+            "items": {
+                "providers": "Med tjenesteudbydere, der udfører tjenester på vores vegne",
+                "legal": "For at overholde juridiske forpligtelser eller svare på juridiske anmodninger",
+                "protect": "For at beskytte rettigheder, ejendom og sikkerhed for BillForge, vores brugere eller andre",
+                "merger": "I forbindelse med fusion, salg eller overtagelse af hele eller dele af vores virksomhed",
+                "consent": "Med dit samtykke eller efter din anvisning"
+            }
+        },
+        "security": {
+            "title": "4. Datasikkerhed",
+            "intro": "Vi implementerer passende tekniske og organisatoriske foranstaltninger for at beskytte dine oplysninger, herunder:",
+            "items": {
+                "encryption": "Kryptering af data under overførsel og i hvile",
+                "assessments": "Regelmæssige sikkerhedsvurderinger og opdateringer",
+                "access": "Adgangskontrol og godkendelsesmekanismer",
+                "datacenters": "Sikre datacentre med fysiske sikkerhedsforanstaltninger",
+                "backups": "Regelmæssige sikkerhedskopier og procedurer for gendannelse efter katastrofer"
+            },
+            "disclaimer": "Ingen metode til transmission over internettet eller elektronisk lagring er dog 100 % sikker. Selvom vi bestræber os på at bruge kommercielt acceptable midler til at beskytte dine oplysninger, kan vi ikke garantere absolut sikkerhed."
+        },
+        "retention": {
+            "title": "5. Dataopbevaring",
+            "content": "Vi opbevarer dine oplysninger, så længe din konto er aktiv, eller som det er nødvendigt for at levere tjenester til dig. Vi vil opbevare og bruge dine oplysninger efter behov for at overholde juridiske forpligtelser, løse tvister og håndhæve vores aftaler. Du kan anmode om sletning af dine data ved at kontakte os, med forbehold for visse juridiske krav om opbevaring."
+        },
+        "rights": {
+            "title": "6. Dine rettigheder og valg",
+            "intro": "Du har visse rettigheder vedrørende dine personlige oplysninger:",
+            "items": {
+                "access": "Få adgang til og modtage en kopi af dine personlige oplysninger",
+                "correct": "Rette eller opdatere unøjagtige oplysninger",
+                "delete": "Anmode om sletning af dine oplysninger",
+                "object": "Gøre indsigelse mod eller begrænse visse behandlinger af dine oplysninger",
+                "export": "Eksportere dine data i et bærbart format",
+                "optout": "Fravælge markedsføringskommunikation",
+                "withdraw": "Trække samtykke tilbage, hvor vi er afhængige af samtykke til at behandle dine oplysninger"
+            },
+            "exercise": "For at udøve disse rettigheder bedes du kontakte os via oplysningerne i slutningen af denne politik."
+        },
+        "cookies": {
+            "title": "7. Cookies og sporingsteknologier",
+            "intro": "Vi bruger cookies og lignende sporingsteknologier til at indsamle og spore oplysninger om din brug af BillForge. Typer af cookies, vi bruger, inkluderer:",
+            "items": {
+                "essential": "Nødvendige cookies: Påkrævet for driften af vores tjeneste",
+                "preference": "Præferencecookies: Husker dine indstillinger og præferencer",
+                "analytics": "Analysecookies: Hjælper os med at forstå, hvordan du bruger vores tjeneste",
+                "marketing": "Markedsføringscookies: Sporer din aktivitet for at levere relevante annoncer"
+            },
+            "control": "Du kan styre cookies via dine browserindstillinger og andre værktøjer. Deaktivering af visse cookies kan dog begrænse din mulighed for at bruge nogle funktioner i BillForge."
+        },
+        "thirdParty": {
+            "title": "8. Tredjepartstjenester",
+            "intro": "BillForge kan indeholde links til tredjepartswebsteder og integreres med tredjepartstjenester. Vi er ikke ansvarlige for disse tredjeparters praksis for beskyttelse af personlige oplysninger. Vi opfordrer dig til at læse privatlivspolitikkerne for alle tredjepartstjenester, du interagerer med.",
+            "services": "Tredjepartstjenester, vi kan bruge, omfatter betalingsbehandlere, analyseudbydere og udbydere af cloudinfrastruktur. Disse tjenester har deres egne privatlivspolitikker, der regulerer deres brug af dine oplysninger."
+        },
+        "children": {
+            "title": "9. Børns privatliv",
+            "content": "BillForge er ikke beregnet til brug af børn under 18 år. Vi indsamler ikke bevidst personlige oplysninger fra børn under 18 år. Hvis vi bliver opmærksomme på, at vi har indsamlet personlige oplysninger fra et barn under 18 år, vil vi tage skridt til at slette disse oplysninger."
+        },
+        "international": {
+            "title": "10. Internationale dataoverførsler",
+            "content": "Dine oplysninger kan overføres til og vedligeholdes på servere placeret uden for dit land eller jurisdiktion. Ved at bruge BillForge giver du samtykke til overførsel af dine oplysninger til lande, der kan have andre databeskyttelseslove end dit bopælsland."
+        },
+        "changes": {
+            "title": "11. Ændringer i denne privatlivspolitik",
+            "content": "Vi kan opdatere denne privatlivspolitik fra tid til anden. Vi vil underrette dig om væsentlige ændringer ved at offentliggøre den nye privatlivspolitik på denne side og opdatere datoen \"Sidst opdateret\". Du rådes til at gennemgå denne privatlivspolitik med jævne mellemrum for eventuelle ændringer. Din fortsatte brug af BillForge efter eventuelle ændringer indikerer din accept af den opdaterede privatlivspolitik."
+        },
+        "california": {
+            "title": "12. Californiens rettigheder til privatlivets fred",
+            "intro": "Hvis du er bosiddende i Californien, har du yderligere rettigheder i henhold til California Consumer Privacy Act (CCPA):",
+            "items": {
+                "know": "Ret til at vide, hvilke personlige oplysninger der indsamles, bruges, deles eller sælges",
+                "delete": "Ret til at slette personlige oplysninger",
+                "optout": "Ret til at fravælge salg af personlige oplysninger (vi sælger ikke personlige oplysninger)",
+                "nondiscrimination": "Ret til ikke-diskriminering for udøvelse af dine privatlivsrettigheder"
+            }
+        },
+        "gdpr": {
+            "title": "13. GDPR-rettigheder (europæiske brugere)",
+            "intro": "Hvis du befinder dig i Det Europæiske Økonomiske Samarbejdsområde (EØS), har du yderligere rettigheder i henhold til den generelle forordning om databeskyttelse (GDPR):",
+            "items": {
+                "access": "Ret til indsigt i dine personoplysninger",
+                "rectification": "Ret til berigtigelse af unøjagtige data",
+                "erasure": "Ret til sletning (retten til at blive glemt)",
+                "restrict": "Ret til begrænsning af behandling",
+                "portability": "Ret til dataportabilitet",
+                "object": "Ret til indsigelse mod behandling",
+                "complaint": "Ret til at indgive en klage til en tilsynsmyndighed"
+            }
+        },
+        "contact": {
+            "title": "Kontakt os",
+            "description": "Hvis du har spørgsmål om denne privatlivspolitik eller vores datapraksis, bedes du kontakte os. Vi er forpligtet til at samarbejde med dig for at opnå en rimelig løsning på eventuelle bekymringer om privatlivets fred."
+        }
+    },
+    "terms": {
+        "title": "Servicevilkår",
+        "lastUpdated": "Sidst opdateret: 8. december 2025",
+        "acceptance": {
+            "title": "1. Accept af vilkår",
+            "content": "Ved at få adgang til og bruge BillForge accepterer du og indvilliger i at være bundet af vilkårene og bestemmelserne i denne aftale. Hvis du ikke accepterer at overholde ovenstående, bedes du undlade at bruge denne tjeneste."
+        },
+        "license": {
+            "title": "2. Brugslicens",
+            "intro": "Der gives tilladelse til midlertidigt at få adgang til og bruge BillForge til personlige og kommercielle formål. Dette er tildeling af en licens, ikke en overdragelse af ejendomsret, og under denne licens må du ikke:",
+            "items": {
+                "modify": "Ændre eller kopiere materialerne",
+                "commercial": "Bruge materialerne til ethvert kommercielt formål uden ordentligt abonnement",
+                "decompile": "Forsøge at dekompilere eller foretage reverse engineering af software indeholdt på BillForge",
+                "remove": "Fjerne ophavsretlige eller andre ejendomsretlige betegnelser fra materialerne",
+                "transfer": "Overføre materialerne til en anden person eller \"spejle\" materialerne på enhver anden server"
+            }
+        },
+        "account": {
+            "title": "3. Brugerkonto",
+            "intro": "For at bruge visse funktioner i BillForge skal du registrere en konto. Du accepterer at:",
+            "items": {
+                "accurate": "Give nøjagtige, opdaterede og fuldstændige oplysninger under registreringen",
+                "security": "Opretholde sikkerheden for din adgangskode og konto",
+                "notify": "Underrette os straks om enhver uautoriseret brug af din konto",
+                "responsibility": "Acceptere ansvaret for alle aktiviteter, der foregår under din konto"
+            }
+        },
+        "subscription": {
+            "title": "4. Abonnement og betaling",
+            "intro": "BillForge tilbyder forskellige abonnementsplaner. Ved at abonnere accepterer du:",
+            "items": {
+                "fees": "At betale alle gebyrer forbundet med din valgte abonnementsplan",
+                "renewal": "Automatisk fornyelse af dit abonnement, medmindre det opsiges",
+                "pricing": "Mulige ændringer i priser med 30 dages varsel",
+                "refunds": "Ingen refusion for delvise måneder eller ubrugte tjenester"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. Data og privatliv",
+            "content": "Din brug af BillForge er også underlagt vores privatlivspolitik. Gennemgå venligst vores",
+            "link": "Privatlivspolitik",
+            "toUnderstand": "for at forstå vores praksis."
+        },
+        "prohibited": {
+            "title": "6. Forbudte aktiviteter",
+            "intro": "Du må ikke bruge BillForge til at:",
+            "items": {
+                "laws": "Overtræde love eller regler",
+                "infringe": "Krænke intellektuelle ejendomsrettigheder",
+                "malware": "Overføre virus, malware eller anden ondsindet kode",
+                "unauthorized": "Forsøge at få uautoriseret adgang til vores systemer",
+                "harass": "Chikanere, misbruge eller skade andre brugere",
+                "fraud": "Bruge tjenesten til svigagtige formål"
+            }
+        },
+        "availability": {
+            "title": "7. Tjenestens tilgængelighed",
+            "content": "Vi bestræber os på at opretholde høj tilgængelighed af BillForge, men vi garanterer ikke uafbrudt adgang. Vi forbeholder os retten til at ændre, suspendere eller afbryde enhver del af tjenesten med eller uden varsel. Vi er ikke ansvarlige for ændring, suspension eller afbrydelse af tjenesten."
+        },
+        "intellectual": {
+            "title": "8. Intellektuel ejendom",
+            "content": "Alt indhold inkluderet på BillForge, såsom tekst, grafik, logoer, billeder og software, tilhører BillForge eller dets indholdsleverandører og er beskyttet af internationale ophavsretslove. Samlingen af alt indhold på dette websted er BillForges eksklusive ejendom."
+        },
+        "liability": {
+            "title": "9. Ansvarsbegrænsning",
+            "content": "Under ingen omstændigheder skal BillForge eller dets leverandører holdes ansvarlige for skader (herunder, uden begrænsning, skader for tab af data eller fortjeneste, eller på grund af forretningsafbrydelse), der opstår som følge af brugen eller manglende evne til at bruge BillForge, selvom BillForge eller en autoriseret repræsentant for BillForge er blevet underrettet mundtligt eller skriftligt om muligheden for sådan skade."
+        },
+        "termination": {
+            "title": "10. Opsigelse",
+            "content": "Vi kan opsige eller suspendere din konto og adgang til BillForge øjeblikkeligt, uden forudgående varsel eller ansvar, af enhver årsag, herunder hvis du overtræder disse servicevilkår. Ved opsigelse ophører din ret til at bruge tjenesten øjeblikkeligt."
+        },
+        "changesTerms": {
+            "title": "11. Ændringer i vilkår",
+            "content": "Vi forbeholder os retten til at ændre disse vilkår til enhver tid. Vi vil underrette brugere om væsentlige ændringer ved at offentliggøre de nye servicevilkår på denne side og opdatere datoen \"Sidst opdateret\". Din fortsatte brug af BillForge efter sådanne ændringer udgør din anerkendelse og accept af de ændrede vilkår."
+        },
+        "governing": {
+            "title": "12. Gældende lov",
+            "content": "Disse vilkår skal styres og fortolkes i overensstemmelse med gældende love, uden hensyntagen til lovkonfliktbestemmelser. Vores manglende håndhævelse af en rettighed eller bestemmelse i disse vilkår vil ikke blive betragtet som et afkald på disse rettigheder."
+        },
+        "contact": {
+            "title": "Kontakt os",
+            "description": "Hvis du har spørgsmål om disse servicevilkår, bedes du kontakte os."
+        }
+    },
+    "app": {
+        "sale": {
+            "title": "Salg",
+            "searchItems": "Søg efter produkter...",
+            "allCategories": "Alle Kategorier",
+            "checkout": "Betaling",
+            "total": "Total:",
+            "items": "Produkter",
+            "noItems": "Ingen produkter fundet",
+            "addToCart": "Tilføj til Kurv",
+            "removeFromCart": "Fjern",
+            "error": "Fejl",
+            "retry": "Prøv Igen",
+            "loading": "Indlæser...",
+            "selectBusiness": "Vælg venligst en virksomhed fra sidebjælken for at begynde",
+            "cartEmpty": "Din kurv er tom. Begynd at tilføje produkter for at fortsætte.",
+            "backToItems": "Tilbage til Produkter",
+            "reviewOrder": "Gennemgå din ordre og gennemfør transaktionen",
+            "orderSummary": "Ordreoversigt",
+            "item": "Produkt",
+            "quantity": "Mængde",
+            "price": "Pris",
+            "tax": "Afgift:",
+            "discount": "Rabat:",
+            "subtotal": "Subtotal:",
+            "paymentSummary": "Betalingsoversigt",
+            "processing": "Behandler...",
+            "completeTransaction": "Gennemfør Transaktion",
+            "transactionDetails": "Transaktionsdetaljer",
+            "customer": "Kunde (Valgfrit)",
+            "selectCustomer": "Vælg kunde...",
+            "guestCustomer": "Gæstkunde",
+            "paymentMethod": "Betalingsmetode (Valgfrit)",
+            "paymentMethodsLoadError": "Kunne ikke indlæse betalingsmetoder",
+            "created": "Oprettet",
+            "selectPaymentMethod": "Vælg betalingsmetode...",
+            "cash": "Kontant",
+            "notes": "Noter (Valgfrit)",
+            "addNotes": "Tilføj noter til denne transaktion...",
+            "outOfStock": "Ikke på lager",
+            "noItemsAvailable": "Ingen produkter tilgængelige",
+            "addItemsToInventory": "Tilføj produkter til dit lager for at begynde at oprette transaktioner"
+        },
+        "items": {
+            "title": "Produkter",
+            "addItem": "Tilføj Produkt",
+            "editItem": "Rediger Produkt",
+            "deleteItem": "Slet Produkt",
+            "name": "Produktnavn",
+            "price": "Pris",
+            "sku": "SKU (Lagerbevaringsenheder)",
+            "category": "Kategori",
+            "description": "Beskrivelse",
+            "noItems": "Ingen produkter fundet",
+            "loading": "Indlæser produkter...",
+            "error": "Fejl ved indlæsning af produkter",
+            "actions": "Handlinger",
+            "business": "Virksomhed",
+            "unknownBusiness": "Ukendt Virksomhed",
+            "addFirstItem": "Tilføj Dit Første Produkt",
+            "image": "Produktbillede",
+            "status": "Status",
+            "created": "Oprettelsesdato",
+            "active": "Aktiv",
+            "inactive": "Inaktiv",
+            "createTitle": "Opret Nyt Produkt",
+            "createDescription": "Tilføj et nyt produkt eller en ny service til dit lager",
+            "editTitle": "Rediger Produkt",
+            "editDescription": "Opdater produktinformationer",
+            "taxOptional": "Afgift (Valgfrit)",
+            "noTax": "Ingen afgift",
+            "discountOptional": "Rabat (Valgfrit)",
+            "noDiscount": "Ingen rabat",
+            "categoriesOptional": "Kategorier (Valgfrit)",
+            "noCategoriesAvailable": "Ingen kategorier tilgængelige. Opret kategorier først.",
+            "skuOptional": "SKU (Valgfrit)",
+            "descriptionOptional": "Beskrivelse (Valgfrit)",
+            "itemImageOptional": "Produktbillede (Valgfrit)",
+            "supportedFormats": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
+            "uploading": "Uploader billede...",
+            "update": "Opdater Produkt",
+            "create": "Opret Produkt",
+            "deleteTitle": "Slet Produkt?",
+            "deleteDescription": "Dette vil permanent slette {name} (SKU: {sku}). Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af produkt",
+            "errorUpdating": "Fejl ved opdatering af produkt",
+            "errorDeleting": "Fejl ved sletning af produkt",
+            "uploadError": "Fejl ved upload af billede",
+            "deleteError": "Fejl ved sletning af produkt",
+            "selectImageError": "Vælg venligst en billedfil",
+            "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
+            "loadingError": "Der opstod en fejl under indlæsning af data",
+            "itemsLoadError": "Fejl ved indlæsning af produkter",
+            "basePrice": "Basispris"
+        },
+        "customers": {
+            "title": "Kunder",
+            "addCustomer": "Tilføj Kunde",
+            "editCustomer": "Rediger Kunde",
+            "deleteCustomer": "Slet Kunde",
+            "name": "Kundenavn",
+            "email": "E-mail",
+            "phone": "Telefonnummer",
+            "address": "Adresse",
+            "noCustomers": "Ingen kunder fundet",
+            "loading": "Indlæser kunder...",
+            "error": "Fejl ved indlæsning af kunder",
+            "actions": "Handlinger",
+            "addFirstCustomer": "Tilføj Din Første Kunde",
+            "editTitle": "Rediger Kunde",
+            "createTitle": "Tilføj Ny Kunde",
+            "editDescription": "Opdater kundeoplysninger",
+            "createDescription": "Tilføj en ny kunde til din database",
+            "customerName": "Fuldt Navn",
+            "placeholderName": "John Doe",
+            "emailOptional": "E-mail (Valgfrit)",
+            "placeholderEmail": "john@example.com",
+            "phoneOptional": "Telefonnummer (Valgfrit)",
+            "placeholderPhone": "+4540123456",
+            "addressOptional": "Adresse (Valgfrit)",
+            "placeholderAddress": "Hovedgaden 123, By, Postnummer",
+            "deleteTitle": "Slet Kunde?",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af kunde",
+            "errorUpdating": "Fejl ved opdatering af kunde",
+            "errorDeleting": "Fejl ved sletning af kunde",
+            "deleteError": "Fejl ved sletning af kunde",
+            "customersLoadError": "Fejl ved indlæsning af kunder",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "transactions": {
+            "title": "Transaktioner",
+            "viewDetails": "Se Detaljer",
+            "date": "Dato",
+            "customer": "Kunde",
+            "total": "Total",
+            "totalAmount": "Samlet Beløb",
+            "finalAmount": "Endeligt Beløb",
+            "discountAmount": "Rabatbeløb:",
+            "taxAmount": "Afgiftsbeløb:",
+            "paymentMethod": "Betalingsmetode",
+            "noTransactions": "Ingen transaktioner fundet",
+            "actions": "Handlinger",
+            "loading": "Indlæser transaktioner...",
+            "error": "Fejl ved indlæsning af transaktioner",
+            "guestCustomer": "Gæst",
+            "transactionDetails": "Transaktionsdetaljer",
+            "viewInfo": "Se fuldstændig transaktionsinformation",
+            "items": "Produkter",
+            "noItems": "Ingen produkter fundet",
+            "item": "Produkt",
+            "quantity": "Mængde",
+            "basePrice": "Basispris",
+            "tax": "Afgift",
+            "discount": "Rabat",
+            "notes": "Noter",
+            "transactionId": "Transaktions-ID",
+            "downloadPDF": "Download PDF",
+            "downloadImage": "Download Billede",
+            "sendEmail": "Send til E-mail",
+            "sendWhatsApp": "Send via WhatsApp"
+        },
+        "settings": {
+            "title": "Indstillinger",
+            "profile": "Profil",
+            "business": "Virksomhed",
+            "receipt": "Kvitteringsindstillinger",
+            "preferences": "Præferencer",
+            "account": "Konto",
+            "profileTab": {
+                "name": "Fuldt Navn",
+                "email": "E-mailadresse",
+                "currentPassword": "Nuværende Adgangskode",
+                "newPassword": "Ny Adgangskode",
+                "confirmPassword": "Bekræft Adgangskode",
+                "changePassword": "Skift Adgangskode",
+                "updateProfile": "Opdater Profil",
+                "deleteAccount": "Slet Konto",
+                "errorLoad": "Fejl ved indlæsning af profil",
+                "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
+                "successUpdate": "Profilen blev opdateret med succes",
+                "errorUpdate": "Fejl ved opdatering af profil",
+                "errorFields": "Kontroller venligst alle felter",
+                "errorMatch": "Adgangskoderne stemmer ikke overens",
+                "errorLength": "Adgangskode skal være mindst 8 tegn",
+                "successPassword": "Adgangskode ændret med succes",
+                "errorPassword": "Nuværende adgangskode er forkert",
+                "confirmDelete": "Bekræft Sletning af Konto",
+                "sentDelete": "Bekræftelsesmail for sletning sendt",
+                "errorDelete": "Fejl ved sending af sletningsmail",
+                "profilePicture": "Profilbillede",
+                "profilePictureDescription": "Upload et profilbillede for at personalisere din konto",
+                "uploadPhoto": "Upload Foto",
+                "delete": "Slet",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. Maks 1MB",
+                "personalInfo": "Personlige Oplysninger",
+                "fullName": "Fuldt Navn",
+                "enterFullName": "Indtast dit fulde navn",
+                "enterEmail": "Indtast din e-mail",
+                "emailNote": "E-mail kan ikke ændres",
+                "saving": "Gemmer...",
+                "saveChanges": "Gem Ændringer",
+                "changePasswordDescription": "Opdater din adgangskode for at holde din konto sikker",
+                "enterCurrentPassword": "Indtast nuværende adgangskode",
+                "enterNewPassword": "Indtast ny adgangskode (min 8 tegn)",
+                "confirmNewPassword": "Bekræft Ny Adgangskode",
+                "enterConfirmNewPassword": "Bekræft ny adgangskode",
+                "changingPassword": "Ændrer adgangskode...",
+                "deleteAccountDescription": "Efter sletning kan din konto og alle dine data ikke gendannes",
+                "deleteWarning": "Advarsel: Denne handling kan ikke fortrydes",
+                "deleteConsequences": "Sletning af din konto vil:",
+                "deleteItem1": "Permanent slette alle dine virksomheder",
+                "deleteItem2": "Fjerne alle transaktioner og produkter",
+                "deleteItem3": "Slette alle dine personlige data",
+                "deleteConfirmation": "Du vil modtage en bekræftelsesmail med et link til at gennemføre sletningen.",
+                "sendingEmail": "Sender e-mail...",
+                "requestDeletion": "Anmod Sletning af Konto"
+            },
+            "receiptTab": {
+                "options": "Tilpasning af Kvittering",
+                "includeLogo": "Inkludér Virksomhedslogo på Kvitteringer",
+                "footerMessage": "Fooder-besked",
+                "footerPlaceholder": "Tak for dit køb!",
+                "qrCode": "QR-kodedata",
+                "qrPlaceholder": "Indtast QR-kodeværdi (f.eks. socialmedieprofil)",
+                "prefix": "Transaktionsbetegnelse",
+                "prefixHelp": "Betegnelse for transaktionsnumre (f.eks. INV, RCP)",
+                "nextNumber": "Næste Transaktionsnummer",
+                "nextNumberHelp": "Det næste transaktionsnummer der skal bruges",
+                "template": "Kvitteringsskabelon",
+                "selectBusiness": "Vælg venligst en virksomhed for at konfigurere kvitteringsindstillinger"
+            },
+            "receiptPopup": {
+                "title": "Transaktion Fuldført!",
+                "description": "Din transaktion er blevet gennemført med succes. Download eller send kvitteringen.",
+                "downloadPDF": "Download PDF",
+                "downloadImage": "Download Billede",
+                "sendEmail": "Send E-mail",
+                "sendWhatsApp": "Send via WhatsApp",
+                "receiptPreview": "Kvittering Forhåndsvisning",
+                "failedDownload": "Kunne ikke downloade kvittering",
+                "failedDownloadImage": "Kunne ikke downloade kvitteringsbillede",
+                "receiptWillBeSent": "Kvittering vil blive sendt til",
+                "failedSendEmail": "Kunne ikke sende e-mail",
+                "failedSendWhatsApp": "Kunne ikke sende WhatsApp-besked",
+                "printReceipt": "Udskriv Kvittering"
+            },
+            "businessOnboarding": {
+                "title": "Velkommen til BillForge",
+                "description": "Start med at oprette din første virksomhed",
+                "businessName": "Virksomhedsnavn",
+                "businessNamePlaceholder": "Min Virksomhed",
+                "phone": "Telefon (Valgfrit)",
+                "phonePlaceholder": "+4540123456",
+                "address": "Adresse (Valgfrit)",
+                "addressPlaceholder": "Hovedgaden 123, By, Region, Postnummer",
+                "currency": "Valuta (Valgfrit)",
+                "selectCurrency": "Vælg valuta",
+                "language": "Sprog (Valgfrit)",
+                "selectLanguage": "Vælg sprog",
+                "region": "Region (Valgfrit)",
+                "selectRegion": "Vælg region",
+                "logo": "Virksomhedslogo (Valgfrit)",
+                "logoPreview": "Forhåndsvisning af virksomhedslogo",
+                "logoFallback": "Logo",
+                "logoHelp": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
+                "uploadingLogo": "Uploader logo...",
+                "createButton": "Opret Virksomhed",
+                "imageSizeError": "Billeddestørrelsen skal være mindre end 1MB",
+                "createError": "Kunne ikke oprette virksomhed",
+                "genericError": "Der opstod en fejl under oprettelse af virksomhed"
+            },
+            "preferencesTab": {
+                "language": "Sprog",
+                "languageDescription": "Vælg dit foretrukne sprog til applikationsgrænsefladen.",
+                "currency": "Valuta",
+                "region": "Region",
+                "timezone": "Tidszone",
+                "title": "Udseende & Lokalisering",
+                "description": "Tilpas udseendet og opførslen af BillForge",
+                "theme": "Tema",
+                "themeDescription": "Vælg dit foretrukne farvetema",
+                "light": "Lyst",
+                "dark": "Mørkt",
+                "system": "Systemstandard"
+            },
+            "printerTab": {
+                "encoding": "Kodning",
+                "autoPrint": "Automatisk udskrift efter betaling",
+                "autoPrintDescription": "Udskriv automatisk kvittering efter gennemført transaktion",
+                "connection": "Print Client Forbindelse",
+                "status": "Forbindelsesstatus",
+                "error": "Fejl",
+                "connectionDescription": "Opret forbindelse til BillForge Print Client, der kører på din lokale maskine",
+                "connected": "Tilsluttet",
+                "connecting": "Tilslutter",
+                "disconnected": "Afbrudt",
+                "connect": "Tilslut til Print Client",
+                "disconnect": "Afbryd",
+                "discovery": "Enhedsregistrering",
+                "discoveryDescription": "Find Bluetooth-enheder tilgængelige for udskrivning",
+                "ignoreUnknown": "Ignorer ukendte enheder",
+                "discoverDevices": "Find enheder",
+                "clearDevices": "Ryd liste",
+                "discoveredDevices": "Fundne enheder",
+                "discoveredDevicesDescription": "Vælg en enhed at oprette forbindelse til",
+                "connectedDevices": "Tilsluttede enheder",
+                "connectedDevicesDescription": "Aktuelt tilsluttede Bluetooth-enheder",
+                "paired": "Parret",
+                "deviceConnected": "Tilsluttet",
+                "type": "Type",
+                "connectDevice": "Tilslut",
+                "disconnectDevice": "Afbryd",
+                "active": "Aktiv",
+                "errorConnect": "Kunne ikke oprette forbindelse til print client. Sørg for at den kører på ws://localhost:42123",
+                "errorDiscover": "Kunne ikke finde enheder",
+                "errorConnectDevice": "Kunne ikke oprette forbindelse til enheden",
+                "errorDisconnectDevice": "Kunne ikke afbryde enheden",
+                "errorClear": "Kunne ikke rydde enheder",
+                "configurations": "Printerkonfigurationer",
+                "configurationsDescription": "Konfigurer dine termiske printerindstillinger",
+                "paperSize": "Papirstørrelse (forudindstillet)",
+                "selectPaperSize": "Vælg papirstørrelse",
+                "chars": "tegn",
+                "paperWidth": "Papirbredde (mm)",
+                "charsPerLine": "Tegn pr. linje",
+                "feedLines": "Fremfør linjer efter udskrivning",
+                "autoCut": "Automatisk papirklip",
+                "testPrint": "Testudskrift",
+                "testPrintSuccess": "Testudskrift sendt!",
+                "testPrintFailed": "Kunne ikke sende testudskrift"
+            },
+            "printer": {
+                "title": "Printerindstillinger",
+                "noPrinterConnected": "Ingen Printer Tilsluttet",
+                "printSuccess": "Udskrivning Lykkedes",
+                "printFailed": "Udskrivning Mislykkedes"
+            }
+        },
+        "categories": {
+            "title": "Kategorier",
+            "addCategory": "Tilføj Kategori",
+            "editCategory": "Rediger Kategori",
+            "deleteCategory": "Slet Kategori",
+            "name": "Kategorinavn",
+            "noCategories": "Ingen kategorier fundet",
+            "loading": "Indlæser kategorier...",
+            "error": "Fejl ved indlæsning af kategorier",
+            "actions": "Handlinger",
+            "addFirstCategory": "Tilføj Din Første Kategori",
+            "created": "Oprettelsesdato",
+            "createTitle": "Opret Ny Kategori",
+            "createDescription": "Tilføj en ny kategori for at organisere dine produkter",
+            "editTitle": "Rediger Kategori",
+            "editDescription": "Opdater kategorioplysninger",
+            "categoryName": "Kategorinavn",
+            "placeholder": "f.eks. Elektronik, Mad, Tjenester",
+            "deleteTitle": "Slet Kategori?",
+            "deleteDescription": "Dette vil permanent slette kategorien '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af kategori",
+            "errorUpdating": "Fejl ved opdatering af kategori",
+            "errorDeleting": "Fejl ved sletning af kategori",
+            "deleteError": "Fejl ved sletning af kategori",
+            "loadingError": "Der opstod en fejl under indlæsning af data",
+            "categoriesLoadError": "Fejl ved indlæsning af kategorier"
+        },
+        "paymentMethods": {
+            "title": "Betalingsmetoder",
+            "addMethod": "Tilføj Betalingsmetode",
+            "editMethod": "Rediger Betalingsmetode",
+            "deleteMethod": "Slet Betalingsmetode",
+            "name": "Metodenavn",
+            "noMethods": "Ingen betalingsmetoder fundet",
+            "loading": "Indlæser betalingsmetoder...",
+            "error": "Fejl ved indlæsning af betalingsmetoder",
+            "actions": "Handlinger",
+            "addFirstMethod": "Tilføj Din Første Betalingsmetode",
+            "createTitle": "Tilføj Betalingsmetode",
+            "createDescription": "Tilføj en ny betalingsmetode for at acceptere betalinger",
+            "editTitle": "Rediger Betalingsmetode",
+            "editDescription": "Opdater betalingsmetodedetaljer",
+            "deleteTitle": "Slet Betalingsmetode?",
+            "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af betalingsmetode",
+            "errorUpdating": "Fejl ved opdatering af betalingsmetode",
+            "errorDeleting": "Fejl ved sletning af betalingsmetode",
+            "deleteError": "Fejl ved sletning af betalingsmetode",
+            "methodName": "Betalingsmetodenavn",
+            "placeholderName": "f.eks. Kontant, Kreditkort, Bankoverførsel",
+            "created": "Oprettelsesdato",
+            "paymentMethodsLoadError": "Fejl ved indlæsning af betalingsmetoder",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "itemTaxes": {
+            "title": "Afgiftssatser",
+            "addTax": "Tilføj Afgift",
+            "editTax": "Rediger Afgift",
+            "deleteTax": "Slet Afgift",
+            "name": "Afgiftsnavn",
+            "rate": "Afgiftssats",
+            "noTaxes": "Ingen afgifter konfigureret. Opret din første afgiftskonfiguration.",
+            "loading": "Indlæser afgifter...",
+            "error": "Fejl ved indlæsning af afgifter",
+            "actions": "Handlinger",
+            "createTitle": "Tilføj Afgiftssats",
+            "createDescription": "Opret en ny afgiftskonfiguration",
+            "editTitle": "Rediger Afgiftssats",
+            "editDescription": "Opdater afgiftssatsdetaljer",
+            "deleteTitle": "Slet Afgift?",
+            "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af afgift",
+            "errorUpdating": "Fejl ved opdatering af afgift",
+            "errorDeleting": "Fejl ved sletning af afgift",
+            "deleteError": "Fejl ved sletning af afgift",
+            "taxName": "Afgiftsnavn",
+            "placeholderName": "f.eks. Moms, Salgsskat",
+            "type": "Type",
+            "percentage": "Procent",
+            "fixed": "Fast Beløb",
+            "value": "Værdi",
+            "taxesLoadError": "Fejl ved indlæsning af afgifter",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "itemDiscounts": {
+            "title": "Rabatter",
+            "addDiscount": "Tilføj Rabat",
+            "editDiscount": "Rediger Rabat",
+            "deleteDiscount": "Slet Rabat",
+            "name": "Rabatbetegnelse",
+            "type": "Type",
+            "value": "Værdi",
+            "noDiscounts": "Ingen rabatter konfigureret. Opret din første rabat.",
+            "loading": "Indlæser rabatter...",
+            "error": "Fejl ved indlæsning af rabatter",
+            "actions": "Handlinger",
+            "createTitle": "Tilføj Rabat",
+            "createDescription": "Opret et nyt rabattilbud",
+            "editTitle": "Rediger Rabat",
+            "editDescription": "Opdater rabatdetaljer",
+            "deleteTitle": "Slet Rabat?",
+            "deleteDescription": "Dette vil permanent slette '{name}'. Denne handling kan ikke fortrydes.",
+            "deleting": "Sletter...",
+            "errorCreating": "Fejl ved oprettelse af rabat",
+            "errorUpdating": "Fejl ved opdatering af rabat",
+            "errorDeleting": "Fejl ved sletning af rabat",
+            "deleteError": "Fejl ved sletning af rabat",
+            "discountName": "Rabatbetegnelse",
+            "placeholderName": "f.eks. Ferierabat, Tidlig Fugl Rabat",
+            "percentage": "Procent",
+            "fixed": "Fast Beløb",
+            "discountsLoadError": "Fejl ved indlæsning af rabatter",
+            "loadingError": "Der opstod en fejl under indlæsning af data"
+        },
+        "sidebar": {
+            "sale": "Salg",
+            "transactions": "Transaktioner",
+            "items": "Produkter",
+            "categories": "Kategorier",
+            "customers": "Kunder",
+            "paymentMethods": "Betalingsmetoder",
+            "itemTaxes": "Afgifter",
+            "itemDiscounts": "Rabatter",
+            "settings": "Indstillinger",
+            "businessSelector": {
+                "switchBusiness": "Skift Virksomhed",
+                "addBusiness": "Tilføj Virksomhed",
+                "edit": "Rediger",
+                "delete": "Slet"
+            },
+            "userProfile": {
+                "myAccount": "Min Konto",
+                "logout": "Log Ud",
+                "dialog": {
+                    "title": "Bekræft Log Ud",
+                    "description": "Er du sikker på, at du vil logge ud? Du skal logge ind igen for at få adgang til din konto.",
+                    "cancel": "Annuller",
+                    "confirm": "Log Ud"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "Opret Ny Virksomhed",
+                "editTitle": "Rediger Virksomhed",
+                "createDescription": "Tilføj en ny virksomhedslokation til din konto",
+                "editDescription": "Opdater dine virksomhedsoplysninger",
+                "nameLabel": "Virksomhedsnavn",
+                "namePlaceholder": "Dit Virksomhedsnavn",
+                "addressLabel": "Adresse (Valgfrit)",
+                "addressPlaceholder": "Hovedgaden 123, By, Land",
+                "phoneLabel": "Telefonnummer (Valgfrit)",
+                "phonePlaceholder": "+4540123456",
+                "currencyLabel": "Valuta (Valgfrit)",
+                "currencyPlaceholder": "Vælg valuta",
+                "languageLabel": "Sprog (Valgfrit)",
+                "languagePlaceholder": "Vælg sprog",
+                "regionLabel": "Region (Valgfrit)",
+                "regionPlaceholder": "Vælg region",
+                "logoLabel": "Virksomhedslogo (Valgfrit)",
+                "logoHelp": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks størrelse: 1MB",
+                "uploading": "Uploader logo...",
+                "cancel": "Annuller",
+                "create": "Opret",
+                "update": "Opdater",
+                "errorGeneric": "Fejl ved gemning af virksomhed",
+                "errorCreate": "Fejl ved oprettelse af virksomhed",
+                "errorUpdate": "Fejl ved opdatering af virksomhed",
+                "errorImageSize": "Billeddestørrelsen skal være mindre end 1MB"
+            },
+            "deleteBusinessDialog": {
+                "title": "Slet Virksomhed",
+                "description": "Er du sikker på, at du vil slette '{name}'? Denne handling kan ikke fortrydes.",
+                "cancel": "Annuller",
+                "delete": "Slet"
+            },
+            "reports": "Rapporter"
+        },
+        "reports": {
+            "title": "Salgsrapporter",
+            "noData": "Ingen data tilgængelige",
+            "subtitle": "Se omfattende salgsanalyse og indsigt",
+            "dateRange": {
+                "title": "Datointerval",
+                "description": "Filtrer rapporter efter datointerval",
+                "startDate": "Startdato",
+                "endDate": "Slutdato",
+                "applyFilter": "Anvend filter"
+            },
+            "summary": {
+                "totalSales": "Samlet salg",
+                "transactions": "transaktioner",
+                "averageTransaction": "Gennemsnitlig transaktion",
+                "perTransaction": "Pr. transaktion",
+                "itemsSold": "Solgte varer",
+                "totalUnits": "Samlede enheder",
+                "totalTax": "Samlet skat",
+                "taxCollected": "Opkrævet skat",
+                "totalDiscounts": "Samlede rabatter",
+                "discountsGiven": "Givne rabatter"
+            },
+            "tabs": {
+                "byDate": "Efter dato",
+                "byItem": "Efter vare",
+                "byCategory": "Efter kategori",
+                "byPaymentMethod": "Efter betalingsmetode"
+            },
+            "byDate": {
+                "title": "Salg efter dato",
+                "description": "Daglig salgsoversigt",
+                "date": "Dato",
+                "transactions": "Transaktioner",
+                "totalAmount": "Totalbeløb"
+            },
+            "byItem": {
+                "title": "Salg efter vare",
+                "description": "Bedst sælgende varer",
+                "itemName": "Varenavn",
+                "sku": "SKU",
+                "quantitySold": "Solgt antal",
+                "totalRevenue": "Samlet omsætning"
+            },
+            "byCategory": {
+                "title": "Salg efter kategori",
+                "description": "Oversigt over kategoriydelse",
+                "category": "Kategori",
+                "quantitySold": "Solgt antal",
+                "totalRevenue": "Samlet omsætning"
+            },
+            "byPaymentMethod": {
+                "title": "Salg efter betalingsmetode",
+                "description": "Oversigt over betalingsmetoder",
+                "paymentMethod": "Betalingsmetode",
+                "transactions": "Transaktioner",
+                "totalAmount": "Totalbeløb"
+            }
+        }
+    },
+    "sidebar": {
+        "businessDialog": {
+            "errors": {
+                "imageSize": "Billeddestørrelsen skal være mindre end 1MB",
+                "updateFailed": "Fejl ved opdatering af virksomhed",
+                "createFailed": "Fejl ved oprettelse af virksomhed",
+                "updateError": "En fejl opstod under opdateringen",
+                "createError": "En fejl opstod under oprettelsen"
+            },
+            "edit": "Rediger Virksomhed",
+            "create": "Opret Virksomhed",
+            "description": {
+                "edit": "Opdater dine virksomhedsoplysninger",
+                "create": "Tilføj en ny virksomhed til din konto"
+            },
+            "form": {
+                "name": {
+                    "label": "Virksomhedsnavn",
+                    "placeholder": "Dit Virksomhedsnavn"
+                },
+                "address": {
+                    "label": "Adresse (Valgfrit)",
+                    "placeholder": "Hovedgaden 123, By, Land"
+                },
+                "phone": {
+                    "label": "Telefonnummer (Valgfrit)",
+                    "placeholder": "+4540123456"
+                },
+                "currency": {
+                    "label": "Valuta (Valgfrit)",
+                    "placeholder": "Vælg valuta"
+                },
+                "language": {
+                    "label": "Sprog (Valgfrit)",
+                    "placeholder": "Vælg sprog"
+                },
+                "region": {
+                    "label": "Region (Valgfrit)",
+                    "placeholder": "Vælg region"
+                },
+                "logo": {
+                    "label": "Virksomhedslogo (Valgfrit)",
+                    "helper": "Understøttede formater: JPG, JPEG, PNG, GIF, WEBP. Maks 1MB",
+                    "uploading": "Uploader..."
+                }
+            },
+            "buttons": {
+                "cancel": "Annuller",
+                "update": "Opdater",
+                "create": "Opret"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "Skift Virksomhed",
+            "edit": "Rediger",
+            "delete": "Slet",
+            "addBusiness": "Tilføj Virksomhed"
+        },
+        "deleteBusinessDialog": {
+            "title": "Slet Virksomhed",
+            "description": "Er du sikker? Dette kan ikke fortrydes.",
+            "cancel": "Annuller",
+            "confirm": "Slet"
+        },
+        "userProfile": {
+            "myAccount": "Min Konto",
+            "logout": "Log Ud",
+            "dialog": {
+                "title": "Bekræft Log Ud",
+                "description": "Er du sikker på, at du vil logge ud?",
+                "cancel": "Annuller",
+                "confirm": "Log Ud"
+            }
+        },
+        "reports": {
+            "title": "Salgsrapporter",
+            "subtitle": "Se omfattende salgsanalyser og indsigt",
+            "dateRange": {
+                "title": "Datointerval",
+                "description": "Filtrer rapporter efter datointerval",
+                "startDate": "Startdato",
+                "endDate": "Slutdato",
+                "applyFilter": "Anvend Filter"
+            },
+            "summary": {
+                "totalSales": "Samlet Salg",
+                "transactions": "transaktioner",
+                "averageTransaction": "Gennemsnitlig Transaktion",
+                "perTransaction": "Per transaktion",
+                "itemsSold": "Solgte Varer",
+                "totalUnits": "Samlede enheder",
+                "totalTax": "Samlet Skat",
+                "taxCollected": "Skat opkrævet",
+                "totalDiscounts": "Samlede Rabatter",
+                "discountsGiven": "Rabatter givet"
+            },
+            "tabs": {
+                "byDate": "Efter Dato",
+                "byItem": "Efter Vare",
+                "byCategory": "Efter Kategori",
+                "byPaymentMethod": "Efter Betalingsmetode"
+            },
+            "byDate": {
+                "title": "Salg efter Dato",
+                "description": "Daglig salgsfordeling",
+                "date": "Dato",
+                "transactions": "Transaktioner",
+                "totalAmount": "Samlet Beløb"
+            },
+            "byItem": {
+                "title": "Salg efter Vare",
+                "description": "Mest solgte varer",
+                "itemName": "Varenavn",
+                "sku": "Varenummer",
+                "quantitySold": "Antal Solgt",
+                "totalRevenue": "Samlet Omsætning"
+            },
+            "byCategory": {
+                "title": "Salg efter Kategori",
+                "description": "Præstationsfordeling efter kategori",
+                "category": "Kategori",
+                "quantitySold": "Antal Solgt",
+                "totalRevenue": "Samlet Omsætning"
+            },
+            "byPaymentMethod": {
+                "title": "Salg efter Betalingsmetode",
+                "description": "Fordeling efter betalingsmetode",
+                "paymentMethod": "Betalingsmetode",
+                "transactions": "Transaktioner",
+                "totalAmount": "Samlet Beløb"
+            },
+            "noData": "Ingen data tilgængelige"
+        }
     }
-  }
 }

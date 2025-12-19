@@ -1,1204 +1,1304 @@
 {
-  "common": {
-    "loading": "로딩 중...",
-    "error": "오류",
-    "success": "성공",
-    "cancel": "취소",
-    "save": "저장",
-    "delete": "삭제",
-    "edit": "편집",
-    "create": "생성",
-    "update": "업데이트",
-    "search": "검색",
-    "filter": "필터",
-    "close": "닫기",
-    "back": "뒤로",
-    "next": "다음",
-    "previous": "이전",
-    "submit": "제출",
-    "confirm": "확인",
-    "yes": "예",
-    "no": "아니오"
-  },
-  "landing": {
-    "hero": {
-      "title": "현대적인 POS 및 청구 시스템을 간단하게",
-      "description": "전문적인 영수증, 즉시 결제, 강력한 분석으로 비즈니스를 변환합니다. 카페, 레스토랑, 소매점 및 세계 곳곳의 소규모 비즈니스를 위해 설계되었습니다.",
-      "cta": "무료 평가판 시작"
-    },
-    "features": {
-      "title": "비즈니스를 운영하기 위해 필요한 모든 것",
-      "description": "판매를 간소화하고, 고객을 관리하고, 효율적으로 비즈니스를 성장시키도록 설계된 강력한 기능.",
-      "receipt": {
-        "title": "전문적인 영수증",
-        "description": "로고, QR 코드 및 사용자 정의 메시지가 포함된 아름답고 사용자 정의 가능한 영수증을 만듭니다. 여러 전문 템플릿에서 선택하여 브랜드를 강화합니다."
-      },
-      "checkout": {
-        "title": "빠른 체크아웃 프로세스",
-        "description": "직관적인 POS 인터페이스로 거래를 가속화합니다. 판매를 빠르게 처리하고, 여러 결제 방법을 받아들이며, 고객에게 더 효율적으로 서비스를 제공합니다."
-      },
-      "customer": {
-        "title": "고객 관리",
-        "description": "고객 프로필 및 구매 이력으로 장기적인 관계를 구축합니다. 선호도와 지출 패턴을 추적하고 단골 고객에게 맞춤형 서비스를 제공합니다."
-      },
-      "discount": {
-        "title": "스마트한 할인 및 세금",
-        "description": "백분율 또는 고정 금액 할인 및 여러 세율을 쉽게 관리합니다. 특정 항목 또는 전체 거래에 프로모션을 몇 번의 클릭으로 적용합니다."
-      },
-      "analytics": {
-        "title": "실시간 분석",
-        "description": "판매 성과에 대한 즉각적인 통찰력을 얻습니다. 일일 수익, 베스트셀러 및 거래 트렌드를 추적하여 데이터 기반의 비즈니스 결정을 내립니다."
-      },
-      "cloud": {
-        "title": "어디서나 액세스",
-        "description": "클라우드 기반 시스템은 모든 기기(데스크톱, 태블릿, 스마트폰)에서 작동합니다. 안전한 실시간 데이터 동기화로 어디서나 비즈니스를 관리합니다."
-      }
-    },
-    "nav": {
-      "features": "기능",
-      "pricing": "가격",
-      "faq": "자주 묻는 질문",
-      "login": "로그인",
-      "signup": "가입",
-      "signIn": "로그인",
-      "getStarted": "시작하기",
-      "home": "홈",
-      "testimonials": "후기",
-      "drawerTitle": "네비게이션 메뉴"
-    },
-    "faq": {
-      "title": "자주 묻는 질문",
-      "description": "BillForge에 대해 알아야 할 모든 것과 비즈니스에 어떻게 도움이 될 수 있는지에 대해.",
-      "items": {
-        "item1": {
-          "question": "BillForge는 정말 무료입니까?",
-          "answer": "예! 무료 플랜에는 1개의 비즈니스, 50개 항목, 50명의 고객, 월 50개 거래 및 모든 기본 기능이 포함됩니다. 이제 막 시작한 소규모 비즈니스에 완벽합니다. 더 높은 한계와 고급 기능을 위해 Pro 또는 Enterprise로 업그레이드하세요."
-        },
-        "item2": {
-          "question": "무료, Pro 및 Enterprise 플랜의 차이점은 무엇입니까?",
-          "answer": "무료 플랜에는 기본 제한(1개 비즈니스, 50개 항목, 50개 거래/월)이 있습니다. Pro는 이러한 제한의 10배를 제공합니다(10개 비즈니스, 500개 항목, 500개 거래/월). Enterprise는 무제한 항목, 고객 및 거래를 제공하며 다중 사용자 액세스 및 API 액세스와 같은 고급 기능이 있습니다."
-        },
-        "item3": {
-          "question": "영수증을 사용자 정의할 수 있습니까?",
-          "answer": "물론입니다! BillForge는 완전한 사용자 정의 옵션이 있는 여러 영수증 템플릿을 제공합니다. 회사 로고, 사용자 정의 바닥글 메시지, QR 코드를 추가하고 여러 전문 디자인 중에서 선택합니다. 영수증을 인쇄하거나 고객에게 디지털 방식으로 보낼 수 있습니다."
-        },
-        "item4": {
-          "question": "어떤 결제 방법을 받아들일 수 있습니까?",
-          "answer": "BillForge는 현금, 신용/직불카드, 모바일 결제 및 디지털 지갑을 포함한 모든 주요 결제 방법을 지원합니다. 무료 플랜은 최대 5개의 결제 방법을 허용하지만 Pro 및 Enterprise는 무제한의 결제 옵션을 제공합니다."
-        },
-        "item5": {
-          "question": "할인 및 세금을 관리하려면 어떻게 해야 합니까?",
-          "answer": "당사 플랫폼에는 통합된 할인 및 세금 관리가 포함되어 있습니다. 백분율 또는 고정 금액 할인을 만들고 특정 항목 또는 전체 거래에 적용합니다. 다양한 제품 범주에 대해 여러 세율을 설정합니다. 무료 플랜에는 30개의 할인 및 세금 구성이 포함됩니다."
-        },
-        "item6": {
-          "question": "비즈니스 데이터가 안전한가요?",
-          "answer": "예! 모든 데이터는 암호화를 사용하여 클라우드에 안전하게 저장됩니다. 정기적인 백업을 수행하고 업계 표준 보안 관행을 사용합니다. 거래 이력, 고객 정보 및 비즈니스 데이터는 보호되며 귀사만 액세스할 수 있습니다."
-        },
-        "item7": {
-          "question": "고객의 구매 이력을 추적할 수 있습니까?",
-          "answer": "예! BillForge에는 고객 관리 기능이 포함되어 있습니다. 고객 세부 정보를 저장하고 구매 이력을 확인하여 단골 고객과의 더 나은 관계를 구축합니다. 무엇을 구입하는지, 언제 방문하는지, 총 지출액을 추적하여 맞춤형 서비스를 제공합니다."
-        },
-        "item8": {
-          "question": "특별한 하드웨어가 필요합니까?",
-          "answer": "특별한 하드웨어가 필요하지 않습니다! BillForge는 웹 브라우저가 있는 모든 기기(데스크톱, 태블릿, 스마트폰)에서 작동합니다. 영수증을 인쇄하려면 표준 프린터를 사용할 수 있습니다. 시스템은 클라우드 기반이므로 어디서나 액세스할 수 있습니다."
-        },
-        "item9": {
-          "question": "월간 거래 제한을 초과하면 어떻게 됩니까?",
-          "answer": "무료 플랜에서는 월 50개의 거래로 제한됩니다. 더 필요하다면 Pro(월 500개 거래) 또는 Enterprise(무제한)로 업그레이드할 수 있습니다. 귀하의 데이터는 절대 삭제되지 않으며 현재 플랜에 관계없이 언제든지 과거 거래를 볼 수 있습니다."
-        },
-        "item10": {
-          "question": "도움이 필요한 경우 지원을 어떻게 받습니까?",
-          "answer": "모든 사용자에게 이메일 지원을 제공합니다. Pro 및 Enterprise 고객은 더 빠른 응답 시간과 함께 우선 지원을 받습니다. Enterprise 고객은 24/7 지원 및 전담 계정 관리자도 받습니다. 빠른 자습 가이드는 문서 및 자습서를 참조하세요."
-        }
-      }
-    },
-    "pricing": {
-      "title": "간단하고 투명한 가격",
-      "description": "비즈니스에 완벽한 플랜을 선택하세요. 무료로 시작하고 비즈니스가 성장할 때 업그레이드하세요.",
-      "monthly": "/월",
-      "mostPopular": "가장 인기",
-      "plans": {
-        "free": {
-          "name": "무료",
-          "description": "디지털 청구를 시작한 소규모 비즈니스에 완벽합니다.",
-          "button": "무료로 시작",
-          "features": {
-            "business": "1개 비즈니스",
-            "items": "50개 항목",
-            "customers": "50명 고객",
-            "transactions": "50개 거래/월",
-            "paymentMethods": "5개 결제 방법",
-            "discountsTaxes": "30개 할인 및 세금",
-            "templates": "기본 영수증 템플릿",
-            "storage": "클라우드 스토리지"
-          }
-        },
-        "pro": {
-          "name": "Pro",
-          "description": "여러 위치와 높은 볼륨을 가진 성장하는 비즈니스에 이상적입니다.",
-          "button": "Pro 평가판 시작",
-          "features": {
-            "business": "10개 비즈니스",
-            "items": "500개 항목",
-            "customers": "500명 고객",
-            "transactions": "500개 거래/월",
-            "paymentMethods": "50개 결제 방법",
-            "discountsTaxes": "300개 할인 및 세금",
-            "templates": "프리미엄 영수증 템플릿",
-            "support": "우선 지원",
-            "analytics": "고급 분석",
-            "branding": "맞춤 브랜딩"
-          }
-        },
-        "enterprise": {
-          "name": "Enterprise",
-          "description": "고급 기능 및 전담 지원이 필요한 대규모 비즈니스를 위해.",
-          "button": "영업팀 문의",
-          "features": {
-            "business": "무제한 비즈니스",
-            "items": "무제한 항목",
-            "customers": "무제한 고객",
-            "transactions": "무제한 거래",
-            "paymentMethods": "무제한 결제 방법",
-            "discountsTaxes": "무제한 할인 및 세금",
-            "api": "API 액세스",
-            "support": "24/7 우선 지원"
-          }
-        }
-      }
-    },
-    "testimonials": {
-      "title": "후기",
-      "items": {
-        "item1": {
-          "name": "김태희",
-          "designation": "카페 소유자",
-          "company": "The Daily Grind Cafe",
-          "text": "BillForge는 저희 카페에서의 거래 관리 방식을 혁신했습니다. 영수증 사용자 정의가 훌륭하고, 고객들이 디지털 영수증을 좋아합니다. 종이 비용을 80% 줄였고 결제는 이제 그 어느 때보다 빠릅니다!"
-        },
-        "item2": {
-          "name": "이순신",
-          "designation": "매장 관리자",
-          "company": "이종합상점",
-          "text": "BillForge를 사용하기 시작한 이후로 매장 관리가 훨씬 쉬워졌습니다. 인터페이스는 이해하기 쉽고 판매 보고서는 매우 유용합니다. 소규모 사업가들에게 강력히 추천합니다!"
-        },
-        "item3": {
-          "name": "박영희",
-          "designation": "레스토랑 소유자",
-          "company": "박 비스트로",
-          "text": "여러 결제 방법을 처리하는 것은 과거 악몽이었습니다. BillForge가 이를 원활하게 만들었습니다! 거래 이력 및 고객 관리 기능으로 단골과의 관계를 개선했습니다. 지금까지의 최고의 POS 결정입니다!"
-        },
-        "item4": {
-          "name": "최민지",
-          "designation": "부티크 소유자",
-          "company": "Elegance Fashion Boutique",
-          "text": "BillForge의 할인 및 세금 관리는 정계절 판매에 필요한 것과 정확히 같습니다. 아름다운 브랜드 영수증을 만드는 것이 고객 경험을 개선했습니다. 우리의 결제 프로세스는 이제 전문적이고 효율적입니다!"
-        },
-        "item5": {
-          "name": "정준호",
-          "designation": "베이커리 소유자",
-          "company": "Sweet Treats Bakery",
-          "text": "3개월 전에 BillForge로 전환했고 뒤돌아보지 않습니다. 항목 관리 시스템은 인벤토리를 정돈된 상태로 유지하고 영수증 템플릿은 전문적으로 보입니다. 고객 결제는 이제 즐거우며, 아침 바쁜 시간에도 마찬가지입니다!"
-        },
-        "item6": {
-          "name": "강현아",
-          "designation": "소매 관리자",
-          "company": "TechGadgets Plus",
-          "text": "BillForge의 거래 추적은 판매 패턴에 대한 놀라운 통찰력을 제공했습니다. 고객 데이터베이스는 맞춤형 서비스를 제공하는 데 도움이 되며 QR 코드 영수증은 기술에 정통한 고객들에게 인기입니다. 완벽한 패키지입니다!"
-        }
-      }
-    },
-    "footer": {
-      "contact": "문의",
-      "legal": "법적 고지",
-      "legalLinks": {
-        "terms": "약관",
-        "privacy": "개인정보"
-      },
-      "description": "지능형 송장 관리로 청구 프로세스를 간소화하세요",
-      "copyright": "© 2025 BillForge. 모든 권리 보유.",
-      "madeWith": "바리에서 ❤️로 만들어졌습니다",
-      "links": {
-        "terms": "서비스 약관",
-        "privacy": "개인정보 보호정책"
-      }
-    }
-  },
-  "auth": {
-    "login": {
-      "title": "다시 돌아오셨네요",
-      "description": "BillForge 계정에 로그인",
-      "emailLabel": "이메일 주소",
-      "emailPlaceholder": "your@email.com",
-      "passwordLabel": "비밀번호",
-      "passwordPlaceholder": "••••••••",
-      "forgotPassword": "비밀번호를 잊으셨나요?",
-      "submit": "로그인",
-      "submitting": "로그인 중...",
-      "noAccount": "계정이 없으신가요?",
-      "signUp": "만들기",
-      "errorGeneric": "이메일 또는 비밀번호가 올바르지 않습니다. 다시 시도해주세요."
-    },
-    "register": {
-      "title": "계정 만들기",
-      "description": "BillForge에 참여하여 비즈니스 관리",
-      "nameLabel": "전체 이름",
-      "namePlaceholder": "John Doe",
-      "emailLabel": "이메일 주소",
-      "emailPlaceholder": "your@email.com",
-      "passwordLabel": "비밀번호",
-      "passwordPlaceholder": "8자 이상",
-      "confirmPasswordLabel": "비밀번호 확인",
-      "confirmPasswordPlaceholder": "••••••••",
-      "termsAgreement": "계정을 만들면 당사의 동의하게 됩니다",
-      "terms": "서비스 약관",
-      "and": "및",
-      "privacy": "개인정보 보호정책",
-      "submit": "계정 만들기",
-      "submitting": "계정 생성 중...",
-      "hasAccount": "이미 계정이 있으신가요?",
-      "signIn": "여기서 로그인",
-      "errorMatch": "비밀번호가 일치하지 않습니다",
-      "errorGeneric": "등록 실패. 다시 시도해주세요."
-    },
-    "forgotPassword": {
-      "title": "비밀번호 재설정",
-      "description": "이메일 주소를 입력하면 비밀번호를 재설정할 수 있는 링크를 보내드립니다.",
-      "emailLabel": "이메일 주소",
-      "emailPlaceholder": "your@email.com",
-      "submit": "재설정 링크 전송",
-      "submitting": "전송 중...",
-      "backToLogin": "로그인으로 돌아가기",
-      "checkEmailTitle": "이메일 확인",
-      "checkEmailDescription": "비밀번호 재설정 지침을 보냈습니다",
-      "checkEmailNote1": "재설정 링크를 위해 받은편지함을 확인하세요.",
-      "checkEmailNote2": "이메일이 보이지 않으면 스팸 폴더를 확인하세요.",
-      "tryAnotherEmail": "다른 이메일 시도",
-      "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요."
-    },
-    "resetPassword": {
-      "title": "새 비밀번호 만들기",
-      "description": "아래에 새 비밀번호를 입력하세요.",
-      "emailLabel": "이메일 주소",
-      "emailPlaceholder": "your@email.com",
-      "newPasswordLabel": "새 비밀번호",
-      "newPasswordPlaceholder": "8자 이상",
-      "passwordHint": "8자 이상이어야 합니다",
-      "confirmPasswordLabel": "비밀번호 확인",
-      "confirmPasswordPlaceholder": "••••••••",
-      "submit": "비밀번호 재설정",
-      "submitting": "비밀번호 재설정 중...",
-      "backToLogin": "로그인으로 돌아가기",
-      "successTitle": "비밀번호 재설정됨",
-      "successDescription": "비밀번호가 성공적으로 재설정되었습니다.",
-      "redirecting": "로그인으로 리다이렉트 중...",
-      "goToLogin": "로그인으로 이동",
-      "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요.",
-      "errorMatch": "비밀번호가 일치하지 않습니다",
-      "errorLength": "비밀번호는 8자 이상이어야 합니다"
-    },
-    "verifyEmail": {
-      "title": "이메일 확인",
-      "description": "확인 이메일을 보냈습니다",
-      "instruction": "받은편지함을 확인하고 확인 링크를 클릭하여 계정을 활성화하세요.",
-      "resend": "확인 이메일 재전송",
-      "resending": "전송 중...",
-      "changeEmail": "다른 이메일 주소 사용",
-      "verifyingTitle": "이메일 확인 중...",
-      "verifyingDescription": "이메일 주소를 확인하고 있으니 기다려주세요.",
-      "successTitle": "이메일 확인됨",
-      "successDescription": "이메일이 성공적으로 확인되었습니다!",
-      "goToSale": "대시보드로 이동",
-      "alreadyVerifiedTitle": "이미 확인됨",
-      "alreadyVerifiedDescription": "이메일은 이미 확인되었습니다. 계속 진행할 수 있습니다.",
-      "failedTitle": "확인 실패",
-      "failedDescription": "확인 링크가 만료되었거나 유효하지 않습니다.",
-      "resendSuccess": "확인 이메일을 보냈습니다! 받은편지함을 확인하세요.",
-      "changeEmailTitle": "이메일 주소를 변경하시겠어요?",
-      "changeEmailDescription": "로그아웃되고 새 이메일 주소로 가입할 등록 페이지로 리다이렉트됩니다.",
-      "cancel": "취소",
-      "continue": "계속",
-      "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요."
-    },
-    "confirmDeletion": {
-      "title": "계정 삭제",
-      "description": "경고: 이것은 영구적으로 삭제됩니다:",
-      "warningTitle": "계정 삭제 결과:",
-      "warningItem1": "모든 비즈니스를 영구적으로 삭제",
-      "warningItem2": "모든 거래 및 판매 기록 삭제",
-      "warningItem3": "모든 항목 및 인벤토리 삭제",
-      "warningItem4": "프로필 및 계정 정보 삭제",
-      "warningReversal": "이 작업은 취소할 수 없습니다.",
-      "inputLabel": "계정을 삭제하려면 \"확인\"을 입력하세요",
-      "confirmWord": "확인",
-      "inputLabelSuffix": "삭제 진행",
-      "inputPlaceholder": "여기에 \"확인\"을 입력하세요",
-      "cancel": "취소",
-      "delete": "계정 삭제",
-      "deleting": "삭제 중...",
-      "success": "계정이 성공적으로 삭제되었습니다",
-      "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요.",
-      "errorMatch": "\"확인\"을 정확히 입력하세요",
-      "errorMissingToken": "요청이 유효하지 않습니다. 다시 시도해주세요.",
-      "invalidLinkTitle": "링크가 유효하지 않거나 만료됨",
-      "invalidLinkDescription": "이 삭제 링크가 만료되었거나 유효하지 않습니다.",
-      "returnToSettings": "설정으로 돌아가기"
-    }
-  },
-  "business": {
-    "name": "비즈니스 이름",
-    "address": "주소",
-    "phone": "전화번호",
-    "currency": "통화",
-    "language": "언어",
-    "region": "지역",
-    "create": "비즈니스 생성",
-    "edit": "비즈니스 편집",
-    "delete": "비즈니스 삭제",
-    "select": "비즈니스 선택",
-    "noBusiness": "비즈니스를 찾을 수 없습니다",
-    "createFirst": "시작하려면 첫 번째 비즈니스를 생성하세요"
-  },
-  "validation": {
-    "required": "이 필드는 필수입니다",
-    "email": "유효한 이메일 주소를 입력하세요",
-    "minLength": "최소 {min}자 이상이어야 합니다",
-    "maxLength": "최대 {max}자까지 가능합니다",
-    "passwordMatch": "비밀번호가 일치하지 않습니다",
-    "invalidFormat": "유효하지 않은 형식"
-  },
-  "privacy": {
-    "title": "개인정보 처리방침",
-    "lastUpdated": "최종 업데이트: 2025년 12월 8일",
-    "intro": {
-      "title": "소개",
-      "content": "BillForge는 귀하의 개인정보를 중요하게 생각합니다. 본 개인정보 처리방침은 귀하가 당사의 청구 및 송장 관리 서비스를 이용할 때 당사가 귀하의 정보를 수집, 사용, 공개 및 보호하는 방법을 설명합니다. 본 개인정보 처리방침을 주의 깊게 읽어 주십시오. 본 개인정보 처리방침의 약관에 동의하지 않으시면 애플리케이션에 액세스하지 마십시오."
-    },
-    "infoCollect": {
-      "title": "1. 수집하는 정보",
-      "personal": {
-        "title": "개인 정보",
-        "intro": "당사는 귀하가 직접 제공하는 다음과 같은 정보를 수집합니다.",
-        "items": {
-          "contact": "이름 및 연락처 정보(이메일 주소, 전화번호)",
-          "business": "사업자 정보(회사명, 주소, 사업자 등록번호)",
-          "payment": "결제 정보(제3자 결제 처리업체를 통해 안전하게 처리됨)",
-          "credentials": "계정 자격 증명(사용자 이름, 비밀번호)"
-        }
-      },
-      "businessData": {
-        "title": "비즈니스 데이터",
-        "intro": "BillForge를 사용할 때 당사는 다음을 수집하고 저장합니다.",
-        "items": {
-          "customers": "귀하가 입력한 고객 정보",
-          "invoices": "송장 및 거래 데이터",
-          "items": "품목 카탈로그 및 가격 정보",
-          "tax": "세금 및 할인 설정",
-          "settings": "비즈니스 설정 및 환경 설정"
-        }
-      },
-      "auto": {
-        "title": "자동으로 수집되는 정보",
-        "intro": "BillForge에 액세스할 때 당사는 다음을 자동으로 수집합니다.",
-        "items": {
-          "log": "로그 데이터(IP 주소, 브라우저 유형, 운영 체제)",
-          "device": "기기 정보",
-          "usage": "사용 데이터(방문한 페이지, 사용한 기능, 체류 시간)",
-          "cookies": "쿠키 및 유사한 추적 기술"
-        }
-      }
-    },
-    "howWeUse": {
-      "title": "2. 정보 사용 방법",
-      "intro": "당사는 수집한 정보를 다음과 같은 목적으로 사용합니다.",
-      "items": {
-        "provide": "서비스 제공, 유지 및 개선",
-        "process": "거래 처리 및 계정 관리",
-        "send": "기술 통지, 업데이트 및 지원 메시지 전송",
-        "respond": "의견, 질문 및 고객 서비스 요청에 대한 응답",
-        "monitor": "추세, 사용 및 활동 모니터링 및 분석",
-        "detect": "기술적 문제 및 사기 활동 감지, 예방 및 해결",
-        "personalize": "경험 개인화 및 개선",
-        "marketing": "마케팅 커뮤니케이션 전송(귀하의 동의 하에)"
-      }
-    },
-    "sharing": {
-      "title": "3. 정보 공유 및 공개",
-      "intro": "당사는 귀하의 개인 정보를 판매하지 않습니다. 당사는 다음과 같은 상황에서 귀하의 정보를 공유할 수 있습니다.",
-      "items": {
-        "providers": "당사를 대신하여 서비스를 수행하는 서비스 제공업체와 공유",
-        "legal": "법적 의무 준수 또는 법적 요청에 대한 응답",
-        "protect": "BillForge, 사용자 또는 타인의 권리, 재산 및 안전 보호",
-        "merger": "당사 회사의 전부 또는 일부의 합병, 매각 또는 인수와 관련하여",
-        "consent": "귀하의 동의가 있거나 귀하의 지시에 따라"
-      }
-    },
-    "security": {
-      "title": "4. 데이터 보안",
-      "intro": "당사는 귀하의 정보를 보호하기 위해 다음과 같은 적절한 기술적, 관리적 조치를 취합니다.",
-      "items": {
-        "encryption": "전송 중 및 저장 중인 데이터 암호화",
-        "assessments": "정기적인 보안 평가 및 업데이트",
-        "access": "액세스 제어 및 인증 메커니즘",
-        "datacenters": "물리적 보안 조치를 갖춘 안전한 데이터 센터",
-        "backups": "정기적인 백업 및 재해 복구 절차"
-      },
-      "disclaimer": "그러나 인터넷을 통한 전송이나 전자 저장 방법 중 100% 안전한 것은 없습니다. 당사는 귀하의 정보를 보호하기 위해 상업적으로 허용되는 수단을 사용하려고 노력하지만 절대적인 보안을 보장할 수는 없습니다."
-    },
-    "retention": {
-      "title": "5. 데이터 보존",
-      "content": "당사는 귀하의 계정이 활성화되어 있거나 서비스 제공에 필요한 기간 동안 귀하의 정보를 보유합니다. 당사는 법적 의무를 준수하고, 분쟁을 해결하며, 계약을 이행하기 위해 필요한 경우 정보를 보유하고 사용합니다. 특정 법적 보존 요구 사항을 따르는 것을 전제로 당사에 연락하여 데이터 삭제를 요청할 수 있습니다."
-    },
-    "rights": {
-      "title": "6. 귀하의 권리와 선택",
-      "intro": "귀하는 귀하의 개인 정보와 관련하여 다음과 같은 권리를 갖습니다.",
-      "items": {
-        "access": "개인 정보에 대한 액세스 및 사본 수령",
-        "correct": "부정확한 정보 수정 또는 업데이트",
-        "delete": "정보 삭제 요청",
-        "object": "정보의 특정 처리에 대한 반대 또는 제한",
-        "export": "휴대용 형식으로 데이터 내보내기",
-        "optout": "마케팅 커뮤니케이션 수신 거부",
-        "withdraw": "동의에 기반하여 정보를 처리하는 경우 동의 철회"
-      },
-      "exercise": "이러한 권리를 행사하려면 본 방침의 끝에 제공된 정보를 사용하여 당사에 문의하십시오."
-    },
-    "cookies": {
-      "title": "7. 쿠키 및 추적 기술",
-      "intro": "당사는 쿠키 및 유사한 추적 기술을 사용하여 BillForge 사용에 대한 정보를 수집하고 추적합니다. 당사가 사용하는 쿠키 유형은 다음과 같습니다.",
-      "items": {
-        "essential": "필수 쿠키: 서비스 운영에 필요",
-        "preference": "기본 설정 쿠키: 설정 및 기본 설정 기억",
-        "analytics": "분석 쿠키: 서비스 사용 방식 파악 지원",
-        "marketing": "마케팅 쿠키: 관련 광고를 제공하기 위해 활동 추적"
-      },
-      "control": "브라우저 설정 및 기타 도구를 통해 쿠키를 제어할 수 있습니다. 그러나 특정 쿠키를 비활성화하면 BillForge의 일부 기능을 사용하지 못할 수 있습니다."
-    },
-    "thirdParty": {
-      "title": "8. 제3자 서비스",
-      "intro": "BillForge는 제3자 웹사이트에 대한 링크를 포함하고 제3자 서비스와 통합될 수 있습니다. 당사는 이러한 제3자의 개인정보 보호 관행에 대해 책임을 지지 않습니다. 상호 작용하는 제3자 서비스의 개인정보 처리방침을 읽어보는 것이 좋습니다.",
-      "services": "당사가 사용할 수 있는 제3자 서비스에는 결제 처리업체, 분석 제공업체 및 클라우드 인프라 제공업체가 포함됩니다. 이러한 서비스는 귀하의 정보 사용을 규율하는 자체 개인정보 처리방침을 가지고 있습니다."
-    },
-    "children": {
-      "title": "9. 아동의 개인정보 보호",
-      "content": "BillForge는 18세 미만의 아동이 사용하도록 의도되지 않았습니다. 당사는 18세 미만 아동의 개인 정보를 고의로 수집하지 않습니다. 18세 미만 아동의 개인 정보를 수집한 사실을 알게 되면 해당 정보를 삭제하는 조치를 취할 것입니다."
-    },
-    "international": {
-      "title": "10. 해외 데이터 전송",
-      "content": "귀하의 정보는 귀하의 국가 또는 관할 구역 외부에 있는 서버로 전송되어 유지될 수 있습니다. BillForge를 사용함으로써 귀하는 거주 국가와 다른 데이터 보호법을 가진 국가로 정보를 전송하는 데 동의하게 됩니다."
-    },
-    "changes": {
-      "title": "11. 본 개인정보 처리방침의 변경",
-      "content": "당사는 본 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 당사는 이 페이지에 새로운 개인정보 처리방침을 게시하고 \"최종 업데이트\" 날짜를 업데이트하여 중요한 변경 사항을 귀하에게 알릴 것입니다. 변경 사항이 있는지 주기적으로 본 개인정보 처리방침을 검토하는 것이 좋습니다. 수정 후에도 BillForge를 계속 사용하는 것은 업데이트된 개인정보 처리방침을 수락하는 것으로 간주됩니다."
-    },
-    "california": {
-      "title": "12. 캘리포니아 개인정보 보호 권리",
-      "intro": "귀하가 캘리포니아 거주자인 경우 캘리포니아 소비자 개인정보 보호법(CCPA)에 따라 다음과 같은 추가 권리를 갖습니다.",
-      "items": {
-        "know": "어떤 개인 정보가 수집, 사용, 공유 또는 판매되었는지 알 권리",
-        "delete": "개인 정보를 삭제할 권리",
-        "optout": "개인 정보 판매를 거부할 권리(당사는 개인 정보를 판매하지 않음)",
-        "nondiscrimination": "개인정보 보호 권리 행사에 대해 차별받지 않을 권리"
-      }
-    },
-    "gdpr": {
-      "title": "13. GDPR 권리(유럽 사용자)",
-      "intro": "귀하가 유럽 경제 지역(EEA)에 있는 경우 일반 데이터 보호 규정(GDPR)에 따라 다음과 같은 추가 권리를 갖습니다.",
-      "items": {
-        "access": "개인 데이터에 액세스할 권리",
-        "rectification": "부정확한 데이터를 정정할 권리",
-        "erasure": "삭제할 권리(잊혀질 권리)",
-        "restrict": "처리를 제한할 권리",
-        "portability": "데이터 이동성에 대한 권리",
-        "object": "처리에 반대할 권리",
-        "complaint": "감독 당국에 불만을 제기할 권리"
-      }
-    },
-    "contact": {
-      "title": "문의하기",
-      "description": "본 개인정보 처리방침이나 당사의 데이터 관행에 대해 질문이 있는 경우 당사에 문의하십시오. 당사는 개인정보 보호 문제를 공정하게 해결하기 위해 귀하와 협력하기 위해 최선을 다하고 있습니다."
-    }
-  },
-  "terms": {
-    "title": "서비스 약관",
-    "lastUpdated": "최종 업데이트: 2025년 12월 8일",
-    "acceptance": {
-      "title": "1. 약관의 수락",
-      "content": "BillForge에 액세스하고 사용함으로써 귀하는 본 계약의 약관 및 규정을 준수할 것에 동의하게 됩니다. 위의 사항을 준수하는 데 동의하지 않는 경우 이 서비스를 사용하지 마십시오."
-    },
-    "license": {
-      "title": "2. 사용 라이선스",
-      "intro": "개인적 및 상업적 목적으로 BillForge에 일시적으로 액세스하고 사용할 수 있는 권한이 부여됩니다. 이는 라이선스의 부여이며 소유권의 이전이 아니며, 이 라이선스에 따라 귀하는 다음을 수행할 수 없습니다.",
-      "items": {
-        "modify": "자료 수정 또는 복사",
-        "commercial": "적절한 구독 없이 상업적 목적으로 자료 사용",
-        "decompile": "BillForge에 포함된 소프트웨어를 디컴파일하거나 역엔지니어링하려는 시도",
-        "remove": "자료에서 저작권 또는 기타 독점 표기 제거",
-        "transfer": "자료를 다른 사람에게 전송하거나 다른 서버에 자료를 \"미러링\""
-      }
-    },
-    "account": {
-      "title": "3. 사용자 계정",
-      "intro": "BillForge의 특정 기능을 사용하려면 계정을 등록해야 합니다. 귀하는 다음 사항에 동의합니다.",
-      "items": {
-        "accurate": "등록 시 정확하고 최신의 완전한 정보 제공",
-        "security": "비밀번호 및 계정의 보안 유지",
-        "notify": "계정의 무단 사용에 대해 즉시 당사에 통지",
-        "responsibility": "귀하의 계정에서 발생하는 모든 활동에 대한 책임 수락"
-      }
-    },
-    "subscription": {
-      "title": "4. 구독 및 결제",
-      "intro": "BillForge는 다양한 구독 요금제를 제공합니다. 구독함으로써 귀하는 다음 사항에 동의하게 됩니다.",
-      "items": {
-        "fees": "선택한 구독 요금제와 관련된 모든 수수료 지불",
-        "renewal": "취소하지 않는 한 구독 자동 갱신",
-        "pricing": "30일 사전 통지 시 가격 변경 가능",
-        "refunds": "일부 사용한 달 또는 사용하지 않은 서비스에 대한 환불 없음"
-      }
-    },
-    "dataPrivacy": {
-      "title": "5. 데이터 및 개인정보 보호",
-      "content": "귀하의 BillForge 사용은 당사의 개인정보 처리방침의 적용을 받습니다. 당사의 관행을 이해하려면",
-      "link": "개인정보 처리방침",
-      "toUnderstand": "을 검토하십시오."
-    },
-    "prohibited": {
-      "title": "6. 금지된 활동",
-      "intro": "귀하는 다음을 위해 BillForge를 사용할 수 없습니다.",
-      "items": {
-        "laws": "법률 또는 규정 위반",
-        "infringe": "지적 재산권 침해",
-        "malware": "바이러스, 맬웨어 또는 기타 악성 코드 전송",
-        "unauthorized": "시스템에 대한 무단 액세스 시도",
-        "harass": "다른 사용자 괴롭힘, 학대 또는 해를 끼침",
-        "fraud": "사기 목적으로 서비스 사용"
-      }
-    },
-    "availability": {
-      "title": "7. 서비스 가용성",
-      "content": "당사는 BillForge의 높은 가용성을 유지하기 위해 노력하지만 중단 없는 액세스를 보장하지는 않습니다. 당사는 통지 유무에 관계없이 서비스의 일부를 수정, 일시 중단 또는 중단할 권리를 보유합니다. 당사는 서비스의 수정, 일시 중단 또는 중단에 대해 책임을 지지 않습니다."
-    },
-    "intellectual": {
-      "title": "8. 지적 재산",
-      "content": "텍스트, 그래픽, 로고, 이미지 및 소프트웨어와 같이 BillForge에 포함된 모든 콘텐츠는 BillForge 또는 콘텐츠 공급업체의 자산이며 국제 저작권법의 보호를 받습니다. 본 사이트의 모든 콘텐츠 편집물은 BillForge의 독점 자산입니다."
-    },
-    "liability": {
-      "title": "9. 책임의 제한",
-      "content": "어떠한 경우에도 BillForge 또는 그 공급업체는 BillForge 또는 BillForge 공인 대리인이 그러한 손해의 가능성에 대해 구두 또는 서면으로 통지를 받은 경우에도 BillForge의 사용 또는 사용 불가능으로 인해 발생하는 모든 손해(데이터 또는 이익 손실 또는 영업 중단으로 인한 손해를 포함하되 이에 국한되지 않음)에 대해 책임을 지지 않습니다."
-    },
-    "termination": {
-      "title": "10. 종료",
-      "content": "당사는 귀하가 본 서비스 약관을 위반하는 경우를 포함하여 어떠한 이유로든 사전 통지나 책임 없이 귀하의 계정 및 BillForge 액세스를 즉시 종료하거나 일시 중단할 수 있습니다. 종료 시 서비스 사용 권한은 즉시 중단됩니다."
-    },
-    "changesTerms": {
-      "title": "11. 약관의 변경",
-      "content": "당사는 언제든지 본 약관을 수정할 권리를 보유합니다. 당사는 이 페이지에 새로운 서비스 약관을 게시하고 \"최종 업데이트\" 날짜를 업데이트하여 중요한 변경 사항을 사용자에게 알립니다. 그러한 수정 후에도 BillForge를 계속 사용하는 것은 수정된 약관을 인정하고 수락하는 것으로 간주됩니다."
-    },
-    "governing": {
-      "title": "12. 준거법",
-      "content": "본 약관은 법의 저촉 조항과 관계없이 관련 법률에 따라 규율되고 해석됩니다. 본 약관의 권리 또는 조항을 집행하지 못하는 경우 해당 권리의 포기로 간주되지 않습니다."
-    },
-    "contact": {
-      "title": "문의하기",
-      "description": "본 서비스 약관에 대해 질문이 있는 경우 당사에 문의하십시오."
-    }
-  },
-  "app": {
-    "sale": {
-      "title": "판매",
-      "searchItems": "항목 검색...",
-      "allCategories": "모든 카테고리",
-      "checkout": "체크아웃",
-      "total": "합계:",
-      "items": "항목",
-      "noItems": "항목을 찾을 수 없습니다",
-      "addToCart": "장바구니에 추가",
-      "removeFromCart": "제거",
-      "error": "오류",
-      "retry": "재시도",
-      "loading": "로딩 중...",
-      "selectBusiness": "시작하려면 사이드바에서 비즈니스를 선택하세요",
-      "cartEmpty": "장바구니가 비어있습니다. 계속하려면 항목 추가를 시작하세요.",
-      "backToItems": "항목으로 돌아가기",
-      "reviewOrder": "주문을 검토하고 거래를 완료하세요",
-      "orderSummary": "주문 요약",
-      "item": "항목",
-      "quantity": "수량",
-      "price": "가격",
-      "tax": "세금:",
-      "discount": "할인:",
-      "subtotal": "소계:",
-      "paymentSummary": "결제 요약",
-      "processing": "처리 중...",
-      "completeTransaction": "거래 완료",
-      "transactionDetails": "거래 상세",
-      "customer": "고객 (선택사항)",
-      "selectCustomer": "고객 선택...",
-      "guestCustomer": "게스트 고객",
-      "paymentMethod": "결제 방법 (선택사항)",
-      "paymentMethodsLoadError": "결제 방법을 로드할 수 없습니다",
-      "created": "생성됨",
-      "selectPaymentMethod": "결제 방법 선택...",
-      "cash": "현금",
-      "notes": "메모 (선택사항)",
-      "addNotes": "이 거래에 메모 추가...",
-      "outOfStock": "재고 없음",
-      "noItemsAvailable": "사용 가능한 항목이 없습니다",
-      "addItemsToInventory": "거래를 시작하려면 인벤토리에 항목을 추가하세요"
-    },
-    "items": {
-      "title": "항목",
-      "addItem": "항목 추가",
-      "editItem": "항목 편집",
-      "deleteItem": "항목 삭제",
-      "name": "항목 이름",
-      "price": "가격",
-      "sku": "SKU (재고관리단위)",
-      "category": "카테고리",
-      "description": "설명",
-      "noItems": "항목을 찾을 수 없습니다",
-      "loading": "항목 로딩 중...",
-      "error": "항목 로드 오류",
-      "actions": "작업",
-      "business": "비즈니스",
-      "unknownBusiness": "알 수 없는 비즈니스",
-      "addFirstItem": "첫 번째 항목 추가",
-      "image": "항목 이미지",
-      "status": "상태",
-      "created": "생성 날짜",
-      "active": "활성",
-      "inactive": "비활성",
-      "createTitle": "새 항목 만들기",
-      "createDescription": "인벤토리에 새 제품 또는 서비스 추가",
-      "editTitle": "항목 편집",
-      "editDescription": "항목 정보 업데이트",
-      "taxOptional": "세금 (선택사항)",
-      "noTax": "세금 없음",
-      "discountOptional": "할인 (선택사항)",
-      "noDiscount": "할인 없음",
-      "categoriesOptional": "카테고리 (선택사항)",
-      "noCategoriesAvailable": "사용 가능한 카테고리가 없습니다. 먼저 카테고리를 만드세요.",
-      "skuOptional": "SKU (선택사항)",
-      "descriptionOptional": "설명 (선택사항)",
-      "itemImageOptional": "항목 이미지 (선택사항)",
-      "supportedFormats": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 크기: 1MB",
-      "uploading": "이미지 업로드 중...",
-      "update": "항목 업데이트",
-      "create": "항목 만들기",
-      "deleteTitle": "항목을 삭제하시겠어요?",
-      "deleteDescription": "이것은 {name} (SKU: {sku})를 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
-      "deleting": "삭제 중...",
-      "errorCreating": "항목 생성 오류",
-      "errorUpdating": "항목 업데이트 오류",
-      "errorDeleting": "항목 삭제 오류",
-      "uploadError": "이미지 업로드 오류",
-      "deleteError": "항목 삭제 오류",
-      "selectImageError": "이미지 파일을 선택하세요",
-      "imageSizeError": "이미지 크기는 1MB 미만이어야 합니다",
-      "loadingError": "데이터 로드 중 오류가 발생했습니다",
-      "itemsLoadError": "항목 로드 오류",
-      "basePrice": "기본 가격"
-    },
-    "customers": {
-      "title": "고객",
-      "addCustomer": "고객 추가",
-      "editCustomer": "고객 편집",
-      "deleteCustomer": "고객 삭제",
-      "name": "고객 이름",
-      "email": "이메일",
-      "phone": "전화번호",
-      "address": "주소",
-      "noCustomers": "고객을 찾을 수 없습니다",
-      "loading": "고객 로딩 중...",
-      "error": "고객 로드 오류",
-      "actions": "작업",
-      "addFirstCustomer": "첫 번째 고객 추가",
-      "editTitle": "고객 편집",
-      "createTitle": "새 고객 추가",
-      "editDescription": "고객 정보 업데이트",
-      "createDescription": "데이터베이스에 새 고객 추가",
-      "customerName": "전체 이름",
-      "placeholderName": "John Doe",
-      "emailOptional": "이메일 (선택사항)",
-      "placeholderEmail": "john@example.com",
-      "phoneOptional": "전화번호 (선택사항)",
-      "placeholderPhone": "+82101234567",
-      "addressOptional": "주소 (선택사항)",
-      "placeholderAddress": "메인 스트리트 123, 도시, 우편번호",
-      "deleteTitle": "고객을 삭제하시겠어요?",
-      "deleting": "삭제 중...",
-      "errorCreating": "고객 생성 오류",
-      "errorUpdating": "고객 업데이트 오류",
-      "errorDeleting": "고객 삭제 오류",
-      "deleteError": "고객 삭제 오류",
-      "customersLoadError": "고객 로드 오류",
-      "loadingError": "데이터 로드 중 오류가 발생했습니다"
-    },
-    "transactions": {
-      "title": "거래",
-      "viewDetails": "상세 보기",
-      "date": "날짜",
-      "customer": "고객",
-      "total": "합계",
-      "totalAmount": "합계 금액",
-      "finalAmount": "최종 금액",
-      "discountAmount": "할인 금액:",
-      "taxAmount": "세금 금액:",
-      "paymentMethod": "결제 방법",
-      "noTransactions": "거래를 찾을 수 없습니다",
-      "actions": "작업",
-      "loading": "거래 로딩 중...",
-      "error": "거래 로드 오류",
-      "guestCustomer": "게스트",
-      "transactionDetails": "거래 상세",
-      "viewInfo": "전체 거래 정보 보기",
-      "items": "항목",
-      "noItems": "항목을 찾을 수 없습니다",
-      "item": "항목",
-      "quantity": "수량",
-      "basePrice": "기본 가격",
-      "tax": "세금",
-      "discount": "할인",
-      "notes": "메모",
-      "transactionId": "거래 ID",
-      "downloadPDF": "PDF 다운로드",
-      "downloadImage": "이미지 다운로드",
-      "sendEmail": "이메일 전송",
-      "sendWhatsApp": "WhatsApp으로 전송"
-    },
-    "settings": {
-      "title": "설정",
-      "profile": "프로필",
-      "business": "비즈니스",
-      "receipt": "영수증 설정",
-      "preferences": "기본 설정",
-      "account": "계정",
-      "profileTab": {
-        "name": "전체 이름",
-        "email": "이메일 주소",
-        "currentPassword": "현재 비밀번호",
-        "newPassword": "새 비밀번호",
-        "confirmPassword": "비밀번호 확인",
-        "changePassword": "비밀번호 변경",
-        "updateProfile": "프로필 업데이트",
-        "deleteAccount": "계정 삭제",
-        "errorLoad": "프로필 로드 오류",
-        "imageSizeError": "이미지 크기는 1MB 미만이어야 합니다",
-        "successUpdate": "프로필이 성공적으로 업데이트되었습니다",
-        "errorUpdate": "프로필 업데이트 오류",
-        "errorFields": "모든 필드를 확인하세요",
-        "errorMatch": "비밀번호가 일치하지 않습니다",
-        "errorLength": "비밀번호는 8자 이상이어야 합니다",
-        "successPassword": "비밀번호가 성공적으로 변경되었습니다",
-        "errorPassword": "현재 비밀번호가 올바르지 않습니다",
-        "confirmDelete": "계정 삭제 확인",
-        "sentDelete": "삭제 확인 이메일을 보냈습니다",
-        "errorDelete": "삭제 이메일 전송 오류",
-        "profilePicture": "프로필 사진",
-        "profilePictureDescription": "프로필 사진을 업로드하여 계정을 사용자 정의하세요",
-        "uploadPhoto": "사진 업로드",
+    "common": {
+        "loading": "로딩 중...",
+        "error": "오류",
+        "success": "성공",
+        "cancel": "취소",
+        "save": "저장",
         "delete": "삭제",
-        "imageRequirements": "JPG, PNG, GIF, WEBP. 최대 1MB",
-        "personalInfo": "개인 정보",
-        "fullName": "전체 이름",
-        "enterFullName": "전체 이름을 입력하세요",
-        "enterEmail": "이메일을 입력하세요",
-        "emailNote": "이메일은 변경할 수 없습니다",
-        "saving": "저장 중...",
-        "saveChanges": "변경 사항 저장",
-        "changePasswordDescription": "계정을 안전하게 유지하려면 비밀번호를 업데이트하세요",
-        "enterCurrentPassword": "현재 비밀번호를 입력하세요",
-        "enterNewPassword": "새 비밀번호를 입력하세요 (최소 8자)",
-        "confirmNewPassword": "새 비밀번호 확인",
-        "enterConfirmNewPassword": "새 비밀번호를 확인하세요",
-        "changingPassword": "비밀번호 변경 중...",
-        "deleteAccountDescription": "삭제 후 계정 및 모든 데이터는 복구할 수 없습니다",
-        "deleteWarning": "경고: 이 작업은 취소할 수 없습니다",
-        "deleteConsequences": "계정 삭제 결과:",
-        "deleteItem1": "모든 비즈니스를 영구적으로 삭제",
-        "deleteItem2": "모든 거래 및 항목 제거",
-        "deleteItem3": "모든 개인 데이터 삭제",
-        "deleteConfirmation": "삭제를 완료하기 위한 링크가 포함된 확인 이메일을 받으실 것입니다.",
-        "sendingEmail": "이메일 전송 중...",
-        "requestDeletion": "계정 삭제 요청"
-      },
-      "receiptTab": {
-        "options": "영수증 사용자 정의",
-        "includeLogo": "영수증에 비즈니스 로고 포함",
-        "footerMessage": "바닥글 메시지",
-        "footerPlaceholder": "구매해주셔서 감사합니다!",
-        "qrCode": "QR 코드 데이터",
-        "qrPlaceholder": "QR 코드 값 입력 (예: 소셜 미디어 링크)",
-        "prefix": "거래 접두사",
-        "prefixHelp": "거래 번호의 접두사 (예: INV, RCP)",
-        "nextNumber": "다음 거래 번호",
-        "nextNumberHelp": "사용할 다음 거래 번호",
-        "template": "영수증 템플릿",
-        "selectBusiness": "영수증 설정을 구성하려면 비즈니스를 선택하세요"
-      },
-      "preferencesTab": {
-        "language": "언어",
-        "languageDescription": "애플리케이션 인터페이스에 대한 선호하는 언어를 선택하십시오.",
+        "edit": "편집",
+        "create": "생성",
+        "update": "업데이트",
+        "search": "검색",
+        "filter": "필터",
+        "close": "닫기",
+        "back": "뒤로",
+        "next": "다음",
+        "previous": "이전",
+        "submit": "제출",
+        "confirm": "확인",
+        "yes": "예",
+        "no": "아니오"
+    },
+    "landing": {
+        "hero": {
+            "title": "현대적인 POS 및 청구 시스템을 간단하게",
+            "description": "전문적인 영수증, 즉시 결제, 강력한 분석으로 비즈니스를 변환합니다. 카페, 레스토랑, 소매점 및 세계 곳곳의 소규모 비즈니스를 위해 설계되었습니다.",
+            "cta": "무료 평가판 시작"
+        },
+        "features": {
+            "title": "비즈니스를 운영하기 위해 필요한 모든 것",
+            "description": "판매를 간소화하고, 고객을 관리하고, 효율적으로 비즈니스를 성장시키도록 설계된 강력한 기능.",
+            "receipt": {
+                "title": "전문적인 영수증",
+                "description": "로고, QR 코드 및 사용자 정의 메시지가 포함된 아름답고 사용자 정의 가능한 영수증을 만듭니다. 여러 전문 템플릿에서 선택하여 브랜드를 강화합니다."
+            },
+            "checkout": {
+                "title": "빠른 체크아웃 프로세스",
+                "description": "직관적인 POS 인터페이스로 거래를 가속화합니다. 판매를 빠르게 처리하고, 여러 결제 방법을 받아들이며, 고객에게 더 효율적으로 서비스를 제공합니다."
+            },
+            "customer": {
+                "title": "고객 관리",
+                "description": "고객 프로필 및 구매 이력으로 장기적인 관계를 구축합니다. 선호도와 지출 패턴을 추적하고 단골 고객에게 맞춤형 서비스를 제공합니다."
+            },
+            "discount": {
+                "title": "스마트한 할인 및 세금",
+                "description": "백분율 또는 고정 금액 할인 및 여러 세율을 쉽게 관리합니다. 특정 항목 또는 전체 거래에 프로모션을 몇 번의 클릭으로 적용합니다."
+            },
+            "analytics": {
+                "title": "실시간 분석",
+                "description": "판매 성과에 대한 즉각적인 통찰력을 얻습니다. 일일 수익, 베스트셀러 및 거래 트렌드를 추적하여 데이터 기반의 비즈니스 결정을 내립니다."
+            },
+            "cloud": {
+                "title": "어디서나 액세스",
+                "description": "클라우드 기반 시스템은 모든 기기(데스크톱, 태블릿, 스마트폰)에서 작동합니다. 안전한 실시간 데이터 동기화로 어디서나 비즈니스를 관리합니다."
+            }
+        },
+        "nav": {
+            "features": "기능",
+            "pricing": "가격",
+            "faq": "자주 묻는 질문",
+            "login": "로그인",
+            "signup": "가입",
+            "signIn": "로그인",
+            "getStarted": "시작하기",
+            "home": "홈",
+            "testimonials": "후기",
+            "drawerTitle": "네비게이션 메뉴"
+        },
+        "faq": {
+            "title": "자주 묻는 질문",
+            "description": "BillForge에 대해 알아야 할 모든 것과 비즈니스에 어떻게 도움이 될 수 있는지에 대해.",
+            "items": {
+                "item1": {
+                    "question": "BillForge는 정말 무료입니까?",
+                    "answer": "예! 무료 플랜에는 1개의 비즈니스, 50개 항목, 50명의 고객, 월 50개 거래 및 모든 기본 기능이 포함됩니다. 이제 막 시작한 소규모 비즈니스에 완벽합니다. 더 높은 한계와 고급 기능을 위해 Pro 또는 Enterprise로 업그레이드하세요."
+                },
+                "item2": {
+                    "question": "무료, Pro 및 Enterprise 플랜의 차이점은 무엇입니까?",
+                    "answer": "무료 플랜에는 기본 제한(1개 비즈니스, 50개 항목, 50개 거래/월)이 있습니다. Pro는 이러한 제한의 10배를 제공합니다(10개 비즈니스, 500개 항목, 500개 거래/월). Enterprise는 무제한 항목, 고객 및 거래를 제공하며 다중 사용자 액세스 및 API 액세스와 같은 고급 기능이 있습니다."
+                },
+                "item3": {
+                    "question": "영수증을 사용자 정의할 수 있습니까?",
+                    "answer": "물론입니다! BillForge는 완전한 사용자 정의 옵션이 있는 여러 영수증 템플릿을 제공합니다. 회사 로고, 사용자 정의 바닥글 메시지, QR 코드를 추가하고 여러 전문 디자인 중에서 선택합니다. 영수증을 인쇄하거나 고객에게 디지털 방식으로 보낼 수 있습니다."
+                },
+                "item4": {
+                    "question": "어떤 결제 방법을 받아들일 수 있습니까?",
+                    "answer": "BillForge는 현금, 신용/직불카드, 모바일 결제 및 디지털 지갑을 포함한 모든 주요 결제 방법을 지원합니다. 무료 플랜은 최대 5개의 결제 방법을 허용하지만 Pro 및 Enterprise는 무제한의 결제 옵션을 제공합니다."
+                },
+                "item5": {
+                    "question": "할인 및 세금을 관리하려면 어떻게 해야 합니까?",
+                    "answer": "당사 플랫폼에는 통합된 할인 및 세금 관리가 포함되어 있습니다. 백분율 또는 고정 금액 할인을 만들고 특정 항목 또는 전체 거래에 적용합니다. 다양한 제품 범주에 대해 여러 세율을 설정합니다. 무료 플랜에는 30개의 할인 및 세금 구성이 포함됩니다."
+                },
+                "item6": {
+                    "question": "비즈니스 데이터가 안전한가요?",
+                    "answer": "예! 모든 데이터는 암호화를 사용하여 클라우드에 안전하게 저장됩니다. 정기적인 백업을 수행하고 업계 표준 보안 관행을 사용합니다. 거래 이력, 고객 정보 및 비즈니스 데이터는 보호되며 귀사만 액세스할 수 있습니다."
+                },
+                "item7": {
+                    "question": "고객의 구매 이력을 추적할 수 있습니까?",
+                    "answer": "예! BillForge에는 고객 관리 기능이 포함되어 있습니다. 고객 세부 정보를 저장하고 구매 이력을 확인하여 단골 고객과의 더 나은 관계를 구축합니다. 무엇을 구입하는지, 언제 방문하는지, 총 지출액을 추적하여 맞춤형 서비스를 제공합니다."
+                },
+                "item8": {
+                    "question": "특별한 하드웨어가 필요합니까?",
+                    "answer": "특별한 하드웨어가 필요하지 않습니다! BillForge는 웹 브라우저가 있는 모든 기기(데스크톱, 태블릿, 스마트폰)에서 작동합니다. 영수증을 인쇄하려면 표준 프린터를 사용할 수 있습니다. 시스템은 클라우드 기반이므로 어디서나 액세스할 수 있습니다."
+                },
+                "item9": {
+                    "question": "월간 거래 제한을 초과하면 어떻게 됩니까?",
+                    "answer": "무료 플랜에서는 월 50개의 거래로 제한됩니다. 더 필요하다면 Pro(월 500개 거래) 또는 Enterprise(무제한)로 업그레이드할 수 있습니다. 귀하의 데이터는 절대 삭제되지 않으며 현재 플랜에 관계없이 언제든지 과거 거래를 볼 수 있습니다."
+                },
+                "item10": {
+                    "question": "도움이 필요한 경우 지원을 어떻게 받습니까?",
+                    "answer": "모든 사용자에게 이메일 지원을 제공합니다. Pro 및 Enterprise 고객은 더 빠른 응답 시간과 함께 우선 지원을 받습니다. Enterprise 고객은 24/7 지원 및 전담 계정 관리자도 받습니다. 빠른 자습 가이드는 문서 및 자습서를 참조하세요."
+                }
+            }
+        },
+        "pricing": {
+            "title": "간단하고 투명한 가격",
+            "description": "비즈니스에 완벽한 플랜을 선택하세요. 무료로 시작하고 비즈니스가 성장할 때 업그레이드하세요.",
+            "monthly": "/월",
+            "mostPopular": "가장 인기",
+            "plans": {
+                "free": {
+                    "name": "무료",
+                    "description": "디지털 청구를 시작한 소규모 비즈니스에 완벽합니다.",
+                    "button": "무료로 시작",
+                    "features": {
+                        "business": "1개 비즈니스",
+                        "items": "50개 항목",
+                        "customers": "50명 고객",
+                        "transactions": "50개 거래/월",
+                        "paymentMethods": "5개 결제 방법",
+                        "discountsTaxes": "30개 할인 및 세금",
+                        "templates": "기본 영수증 템플릿",
+                        "storage": "클라우드 스토리지"
+                    }
+                },
+                "pro": {
+                    "name": "Pro",
+                    "description": "여러 위치와 높은 볼륨을 가진 성장하는 비즈니스에 이상적입니다.",
+                    "button": "Pro 평가판 시작",
+                    "features": {
+                        "business": "10개 비즈니스",
+                        "items": "500개 항목",
+                        "customers": "500명 고객",
+                        "transactions": "500개 거래/월",
+                        "paymentMethods": "50개 결제 방법",
+                        "discountsTaxes": "300개 할인 및 세금",
+                        "templates": "프리미엄 영수증 템플릿",
+                        "support": "우선 지원",
+                        "analytics": "고급 분석",
+                        "branding": "맞춤 브랜딩"
+                    }
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "description": "고급 기능 및 전담 지원이 필요한 대규모 비즈니스를 위해.",
+                    "button": "영업팀 문의",
+                    "features": {
+                        "business": "무제한 비즈니스",
+                        "items": "무제한 항목",
+                        "customers": "무제한 고객",
+                        "transactions": "무제한 거래",
+                        "paymentMethods": "무제한 결제 방법",
+                        "discountsTaxes": "무제한 할인 및 세금",
+                        "api": "API 액세스",
+                        "support": "24/7 우선 지원"
+                    }
+                }
+            }
+        },
+        "testimonials": {
+            "title": "후기",
+            "items": {
+                "item1": {
+                    "name": "김태희",
+                    "designation": "카페 소유자",
+                    "company": "The Daily Grind Cafe",
+                    "text": "BillForge는 저희 카페에서의 거래 관리 방식을 혁신했습니다. 영수증 사용자 정의가 훌륭하고, 고객들이 디지털 영수증을 좋아합니다. 종이 비용을 80% 줄였고 결제는 이제 그 어느 때보다 빠릅니다!"
+                },
+                "item2": {
+                    "name": "이순신",
+                    "designation": "매장 관리자",
+                    "company": "이종합상점",
+                    "text": "BillForge를 사용하기 시작한 이후로 매장 관리가 훨씬 쉬워졌습니다. 인터페이스는 이해하기 쉽고 판매 보고서는 매우 유용합니다. 소규모 사업가들에게 강력히 추천합니다!"
+                },
+                "item3": {
+                    "name": "박영희",
+                    "designation": "레스토랑 소유자",
+                    "company": "박 비스트로",
+                    "text": "여러 결제 방법을 처리하는 것은 과거 악몽이었습니다. BillForge가 이를 원활하게 만들었습니다! 거래 이력 및 고객 관리 기능으로 단골과의 관계를 개선했습니다. 지금까지의 최고의 POS 결정입니다!"
+                },
+                "item4": {
+                    "name": "최민지",
+                    "designation": "부티크 소유자",
+                    "company": "Elegance Fashion Boutique",
+                    "text": "BillForge의 할인 및 세금 관리는 정계절 판매에 필요한 것과 정확히 같습니다. 아름다운 브랜드 영수증을 만드는 것이 고객 경험을 개선했습니다. 우리의 결제 프로세스는 이제 전문적이고 효율적입니다!"
+                },
+                "item5": {
+                    "name": "정준호",
+                    "designation": "베이커리 소유자",
+                    "company": "Sweet Treats Bakery",
+                    "text": "3개월 전에 BillForge로 전환했고 뒤돌아보지 않습니다. 항목 관리 시스템은 인벤토리를 정돈된 상태로 유지하고 영수증 템플릿은 전문적으로 보입니다. 고객 결제는 이제 즐거우며, 아침 바쁜 시간에도 마찬가지입니다!"
+                },
+                "item6": {
+                    "name": "강현아",
+                    "designation": "소매 관리자",
+                    "company": "TechGadgets Plus",
+                    "text": "BillForge의 거래 추적은 판매 패턴에 대한 놀라운 통찰력을 제공했습니다. 고객 데이터베이스는 맞춤형 서비스를 제공하는 데 도움이 되며 QR 코드 영수증은 기술에 정통한 고객들에게 인기입니다. 완벽한 패키지입니다!"
+                }
+            }
+        },
+        "footer": {
+            "contact": "문의",
+            "legal": "법적 고지",
+            "legalLinks": {
+                "terms": "약관",
+                "privacy": "개인정보"
+            },
+            "description": "지능형 송장 관리로 청구 프로세스를 간소화하세요",
+            "copyright": "© 2025 BillForge. 모든 권리 보유.",
+            "madeWith": "바리에서 ❤️로 만들어졌습니다",
+            "links": {
+                "terms": "서비스 약관",
+                "privacy": "개인정보 보호정책"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "다시 돌아오셨네요",
+            "description": "BillForge 계정에 로그인",
+            "emailLabel": "이메일 주소",
+            "emailPlaceholder": "your@email.com",
+            "passwordLabel": "비밀번호",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "비밀번호를 잊으셨나요?",
+            "submit": "로그인",
+            "submitting": "로그인 중...",
+            "noAccount": "계정이 없으신가요?",
+            "signUp": "만들기",
+            "errorGeneric": "이메일 또는 비밀번호가 올바르지 않습니다. 다시 시도해주세요."
+        },
+        "register": {
+            "title": "계정 만들기",
+            "description": "BillForge에 참여하여 비즈니스 관리",
+            "nameLabel": "전체 이름",
+            "namePlaceholder": "John Doe",
+            "emailLabel": "이메일 주소",
+            "emailPlaceholder": "your@email.com",
+            "passwordLabel": "비밀번호",
+            "passwordPlaceholder": "8자 이상",
+            "confirmPasswordLabel": "비밀번호 확인",
+            "confirmPasswordPlaceholder": "••••••••",
+            "termsAgreement": "계정을 만들면 당사의 동의하게 됩니다",
+            "terms": "서비스 약관",
+            "and": "및",
+            "privacy": "개인정보 보호정책",
+            "submit": "계정 만들기",
+            "submitting": "계정 생성 중...",
+            "hasAccount": "이미 계정이 있으신가요?",
+            "signIn": "여기서 로그인",
+            "errorMatch": "비밀번호가 일치하지 않습니다",
+            "errorGeneric": "등록 실패. 다시 시도해주세요."
+        },
+        "forgotPassword": {
+            "title": "비밀번호 재설정",
+            "description": "이메일 주소를 입력하면 비밀번호를 재설정할 수 있는 링크를 보내드립니다.",
+            "emailLabel": "이메일 주소",
+            "emailPlaceholder": "your@email.com",
+            "submit": "재설정 링크 전송",
+            "submitting": "전송 중...",
+            "backToLogin": "로그인으로 돌아가기",
+            "checkEmailTitle": "이메일 확인",
+            "checkEmailDescription": "비밀번호 재설정 지침을 보냈습니다",
+            "checkEmailNote1": "재설정 링크를 위해 받은편지함을 확인하세요.",
+            "checkEmailNote2": "이메일이 보이지 않으면 스팸 폴더를 확인하세요.",
+            "tryAnotherEmail": "다른 이메일 시도",
+            "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요."
+        },
+        "resetPassword": {
+            "title": "새 비밀번호 만들기",
+            "description": "아래에 새 비밀번호를 입력하세요.",
+            "emailLabel": "이메일 주소",
+            "emailPlaceholder": "your@email.com",
+            "newPasswordLabel": "새 비밀번호",
+            "newPasswordPlaceholder": "8자 이상",
+            "passwordHint": "8자 이상이어야 합니다",
+            "confirmPasswordLabel": "비밀번호 확인",
+            "confirmPasswordPlaceholder": "••••••••",
+            "submit": "비밀번호 재설정",
+            "submitting": "비밀번호 재설정 중...",
+            "backToLogin": "로그인으로 돌아가기",
+            "successTitle": "비밀번호 재설정됨",
+            "successDescription": "비밀번호가 성공적으로 재설정되었습니다.",
+            "redirecting": "로그인으로 리다이렉트 중...",
+            "goToLogin": "로그인으로 이동",
+            "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요.",
+            "errorMatch": "비밀번호가 일치하지 않습니다",
+            "errorLength": "비밀번호는 8자 이상이어야 합니다"
+        },
+        "verifyEmail": {
+            "title": "이메일 확인",
+            "description": "확인 이메일을 보냈습니다",
+            "instruction": "받은편지함을 확인하고 확인 링크를 클릭하여 계정을 활성화하세요.",
+            "resend": "확인 이메일 재전송",
+            "resending": "전송 중...",
+            "changeEmail": "다른 이메일 주소 사용",
+            "verifyingTitle": "이메일 확인 중...",
+            "verifyingDescription": "이메일 주소를 확인하고 있으니 기다려주세요.",
+            "successTitle": "이메일 확인됨",
+            "successDescription": "이메일이 성공적으로 확인되었습니다!",
+            "goToSale": "대시보드로 이동",
+            "alreadyVerifiedTitle": "이미 확인됨",
+            "alreadyVerifiedDescription": "이메일은 이미 확인되었습니다. 계속 진행할 수 있습니다.",
+            "failedTitle": "확인 실패",
+            "failedDescription": "확인 링크가 만료되었거나 유효하지 않습니다.",
+            "resendSuccess": "확인 이메일을 보냈습니다! 받은편지함을 확인하세요.",
+            "changeEmailTitle": "이메일 주소를 변경하시겠어요?",
+            "changeEmailDescription": "로그아웃되고 새 이메일 주소로 가입할 등록 페이지로 리다이렉트됩니다.",
+            "cancel": "취소",
+            "continue": "계속",
+            "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요."
+        },
+        "confirmDeletion": {
+            "title": "계정 삭제",
+            "description": "경고: 이것은 영구적으로 삭제됩니다:",
+            "warningTitle": "계정 삭제 결과:",
+            "warningItem1": "모든 비즈니스를 영구적으로 삭제",
+            "warningItem2": "모든 거래 및 판매 기록 삭제",
+            "warningItem3": "모든 항목 및 인벤토리 삭제",
+            "warningItem4": "프로필 및 계정 정보 삭제",
+            "warningReversal": "이 작업은 취소할 수 없습니다.",
+            "inputLabel": "계정을 삭제하려면 \"확인\"을 입력하세요",
+            "confirmWord": "확인",
+            "inputLabelSuffix": "삭제 진행",
+            "inputPlaceholder": "여기에 \"확인\"을 입력하세요",
+            "cancel": "취소",
+            "delete": "계정 삭제",
+            "deleting": "삭제 중...",
+            "success": "계정이 성공적으로 삭제되었습니다",
+            "errorGeneric": "오류가 발생했습니다. 다시 시도해주세요.",
+            "errorMatch": "\"확인\"을 정확히 입력하세요",
+            "errorMissingToken": "요청이 유효하지 않습니다. 다시 시도해주세요.",
+            "invalidLinkTitle": "링크가 유효하지 않거나 만료됨",
+            "invalidLinkDescription": "이 삭제 링크가 만료되었거나 유효하지 않습니다.",
+            "returnToSettings": "설정으로 돌아가기"
+        }
+    },
+    "business": {
+        "name": "비즈니스 이름",
+        "address": "주소",
+        "phone": "전화번호",
         "currency": "통화",
+        "language": "언어",
         "region": "지역",
-        "timezone": "시간대",
-        "title": "모양 및 지역화",
-        "description": "BillForge의 모양과 동작을 사용자 정의하세요",
-        "theme": "테마",
-        "themeDescription": "선호하는 색상 테마를 선택하세요",
-        "light": "밝음",
-        "dark": "어두움",
-        "system": "시스템 기본값"
-      },
-      "printerTab": {
-        "encoding": "인코딩",
-        "autoPrint": "결제 후 자동 인쇄",
-        "autoPrintDescription": "거래 완료 후 자동으로 영수증 인쇄"
-      },
-      "receiptPopup": {
-        "printReceipt": "영수증 인쇄"
-      },
-      "printer": {
-        "title": "프린터 설정",
-        "noPrinterConnected": "연결된 프린터 없음",
-        "printSuccess": "인쇄 성공",
-        "printFailed": "인쇄 실패"
-      }
+        "create": "비즈니스 생성",
+        "edit": "비즈니스 편집",
+        "delete": "비즈니스 삭제",
+        "select": "비즈니스 선택",
+        "noBusiness": "비즈니스를 찾을 수 없습니다",
+        "createFirst": "시작하려면 첫 번째 비즈니스를 생성하세요"
     },
-    "categories": {
-      "title": "카테고리",
-      "addCategory": "카테고리 추가",
-      "editCategory": "카테고리 편집",
-      "deleteCategory": "카테고리 삭제",
-      "name": "카테고리 이름",
-      "noCategories": "카테고리를 찾을 수 없습니다",
-      "loading": "카테고리 로딩 중...",
-      "error": "카테고리 로드 오류",
-      "actions": "작업",
-      "addFirstCategory": "첫 번째 카테고리 추가",
-      "created": "생성 날짜",
-      "createTitle": "새 카테고리 만들기",
-      "createDescription": "항목을 정리하기 위한 새 카테고리 추가",
-      "editTitle": "카테고리 편집",
-      "editDescription": "카테고리 정보 업데이트",
-      "categoryName": "카테고리 이름",
-      "placeholder": "예: 전자제품, 식품, 서비스",
-      "deleteTitle": "카테고리를 삭제하시겠어요?",
-      "deleteDescription": "이것은 '{name}' 카테고리를 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
-      "deleting": "삭제 중...",
-      "errorCreating": "카테고리 생성 오류",
-      "errorUpdating": "카테고리 업데이트 오류",
-      "errorDeleting": "카테고리 삭제 오류",
-      "deleteError": "카테고리 삭제 오류",
-      "loadingError": "데이터 로드 중 오류가 발생했습니다",
-      "categoriesLoadError": "카테고리 로드 오류"
+    "validation": {
+        "required": "이 필드는 필수입니다",
+        "email": "유효한 이메일 주소를 입력하세요",
+        "minLength": "최소 {min}자 이상이어야 합니다",
+        "maxLength": "최대 {max}자까지 가능합니다",
+        "passwordMatch": "비밀번호가 일치하지 않습니다",
+        "invalidFormat": "유효하지 않은 형식"
     },
-    "paymentMethods": {
-      "title": "결제 방법",
-      "addMethod": "결제 방법 추가",
-      "editMethod": "결제 방법 편집",
-      "deleteMethod": "결제 방법 삭제",
-      "name": "방법 이름",
-      "noMethods": "결제 방법을 찾을 수 없습니다",
-      "loading": "결제 방법 로딩 중...",
-      "error": "결제 방법 로드 오류",
-      "actions": "작업",
-      "addFirstMethod": "첫 번째 결제 방법 추가",
-      "createTitle": "결제 방법 추가",
-      "createDescription": "결제를 받기 위한 새 결제 방법 추가",
-      "editTitle": "결제 방법 편집",
-      "editDescription": "결제 방법 세부 정보 업데이트",
-      "deleteTitle": "결제 방법을 삭제하시겠어요?",
-      "deleteDescription": "이것은 '{name}'을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
-      "deleting": "삭제 중...",
-      "errorCreating": "결제 방법 생성 오류",
-      "errorUpdating": "결제 방법 업데이트 오류",
-      "errorDeleting": "결제 방법 삭제 오류",
-      "deleteError": "결제 방법 삭제 오류",
-      "methodName": "결제 방법 이름",
-      "placeholderName": "예: 현금, 신용카드, 은행 송금",
-      "created": "생성 날짜",
-      "paymentMethodsLoadError": "결제 방법 로드 오류",
-      "loadingError": "데이터 로드 중 오류가 발생했습니다"
+    "privacy": {
+        "title": "개인정보 처리방침",
+        "lastUpdated": "최종 업데이트: 2025년 12월 8일",
+        "intro": {
+            "title": "소개",
+            "content": "BillForge는 귀하의 개인정보를 중요하게 생각합니다. 본 개인정보 처리방침은 귀하가 당사의 청구 및 송장 관리 서비스를 이용할 때 당사가 귀하의 정보를 수집, 사용, 공개 및 보호하는 방법을 설명합니다. 본 개인정보 처리방침을 주의 깊게 읽어 주십시오. 본 개인정보 처리방침의 약관에 동의하지 않으시면 애플리케이션에 액세스하지 마십시오."
+        },
+        "infoCollect": {
+            "title": "1. 수집하는 정보",
+            "personal": {
+                "title": "개인 정보",
+                "intro": "당사는 귀하가 직접 제공하는 다음과 같은 정보를 수집합니다.",
+                "items": {
+                    "contact": "이름 및 연락처 정보(이메일 주소, 전화번호)",
+                    "business": "사업자 정보(회사명, 주소, 사업자 등록번호)",
+                    "payment": "결제 정보(제3자 결제 처리업체를 통해 안전하게 처리됨)",
+                    "credentials": "계정 자격 증명(사용자 이름, 비밀번호)"
+                }
+            },
+            "businessData": {
+                "title": "비즈니스 데이터",
+                "intro": "BillForge를 사용할 때 당사는 다음을 수집하고 저장합니다.",
+                "items": {
+                    "customers": "귀하가 입력한 고객 정보",
+                    "invoices": "송장 및 거래 데이터",
+                    "items": "품목 카탈로그 및 가격 정보",
+                    "tax": "세금 및 할인 설정",
+                    "settings": "비즈니스 설정 및 환경 설정"
+                }
+            },
+            "auto": {
+                "title": "자동으로 수집되는 정보",
+                "intro": "BillForge에 액세스할 때 당사는 다음을 자동으로 수집합니다.",
+                "items": {
+                    "log": "로그 데이터(IP 주소, 브라우저 유형, 운영 체제)",
+                    "device": "기기 정보",
+                    "usage": "사용 데이터(방문한 페이지, 사용한 기능, 체류 시간)",
+                    "cookies": "쿠키 및 유사한 추적 기술"
+                }
+            }
+        },
+        "howWeUse": {
+            "title": "2. 정보 사용 방법",
+            "intro": "당사는 수집한 정보를 다음과 같은 목적으로 사용합니다.",
+            "items": {
+                "provide": "서비스 제공, 유지 및 개선",
+                "process": "거래 처리 및 계정 관리",
+                "send": "기술 통지, 업데이트 및 지원 메시지 전송",
+                "respond": "의견, 질문 및 고객 서비스 요청에 대한 응답",
+                "monitor": "추세, 사용 및 활동 모니터링 및 분석",
+                "detect": "기술적 문제 및 사기 활동 감지, 예방 및 해결",
+                "personalize": "경험 개인화 및 개선",
+                "marketing": "마케팅 커뮤니케이션 전송(귀하의 동의 하에)"
+            }
+        },
+        "sharing": {
+            "title": "3. 정보 공유 및 공개",
+            "intro": "당사는 귀하의 개인 정보를 판매하지 않습니다. 당사는 다음과 같은 상황에서 귀하의 정보를 공유할 수 있습니다.",
+            "items": {
+                "providers": "당사를 대신하여 서비스를 수행하는 서비스 제공업체와 공유",
+                "legal": "법적 의무 준수 또는 법적 요청에 대한 응답",
+                "protect": "BillForge, 사용자 또는 타인의 권리, 재산 및 안전 보호",
+                "merger": "당사 회사의 전부 또는 일부의 합병, 매각 또는 인수와 관련하여",
+                "consent": "귀하의 동의가 있거나 귀하의 지시에 따라"
+            }
+        },
+        "security": {
+            "title": "4. 데이터 보안",
+            "intro": "당사는 귀하의 정보를 보호하기 위해 다음과 같은 적절한 기술적, 관리적 조치를 취합니다.",
+            "items": {
+                "encryption": "전송 중 및 저장 중인 데이터 암호화",
+                "assessments": "정기적인 보안 평가 및 업데이트",
+                "access": "액세스 제어 및 인증 메커니즘",
+                "datacenters": "물리적 보안 조치를 갖춘 안전한 데이터 센터",
+                "backups": "정기적인 백업 및 재해 복구 절차"
+            },
+            "disclaimer": "그러나 인터넷을 통한 전송이나 전자 저장 방법 중 100% 안전한 것은 없습니다. 당사는 귀하의 정보를 보호하기 위해 상업적으로 허용되는 수단을 사용하려고 노력하지만 절대적인 보안을 보장할 수는 없습니다."
+        },
+        "retention": {
+            "title": "5. 데이터 보존",
+            "content": "당사는 귀하의 계정이 활성화되어 있거나 서비스 제공에 필요한 기간 동안 귀하의 정보를 보유합니다. 당사는 법적 의무를 준수하고, 분쟁을 해결하며, 계약을 이행하기 위해 필요한 경우 정보를 보유하고 사용합니다. 특정 법적 보존 요구 사항을 따르는 것을 전제로 당사에 연락하여 데이터 삭제를 요청할 수 있습니다."
+        },
+        "rights": {
+            "title": "6. 귀하의 권리와 선택",
+            "intro": "귀하는 귀하의 개인 정보와 관련하여 다음과 같은 권리를 갖습니다.",
+            "items": {
+                "access": "개인 정보에 대한 액세스 및 사본 수령",
+                "correct": "부정확한 정보 수정 또는 업데이트",
+                "delete": "정보 삭제 요청",
+                "object": "정보의 특정 처리에 대한 반대 또는 제한",
+                "export": "휴대용 형식으로 데이터 내보내기",
+                "optout": "마케팅 커뮤니케이션 수신 거부",
+                "withdraw": "동의에 기반하여 정보를 처리하는 경우 동의 철회"
+            },
+            "exercise": "이러한 권리를 행사하려면 본 방침의 끝에 제공된 정보를 사용하여 당사에 문의하십시오."
+        },
+        "cookies": {
+            "title": "7. 쿠키 및 추적 기술",
+            "intro": "당사는 쿠키 및 유사한 추적 기술을 사용하여 BillForge 사용에 대한 정보를 수집하고 추적합니다. 당사가 사용하는 쿠키 유형은 다음과 같습니다.",
+            "items": {
+                "essential": "필수 쿠키: 서비스 운영에 필요",
+                "preference": "기본 설정 쿠키: 설정 및 기본 설정 기억",
+                "analytics": "분석 쿠키: 서비스 사용 방식 파악 지원",
+                "marketing": "마케팅 쿠키: 관련 광고를 제공하기 위해 활동 추적"
+            },
+            "control": "브라우저 설정 및 기타 도구를 통해 쿠키를 제어할 수 있습니다. 그러나 특정 쿠키를 비활성화하면 BillForge의 일부 기능을 사용하지 못할 수 있습니다."
+        },
+        "thirdParty": {
+            "title": "8. 제3자 서비스",
+            "intro": "BillForge는 제3자 웹사이트에 대한 링크를 포함하고 제3자 서비스와 통합될 수 있습니다. 당사는 이러한 제3자의 개인정보 보호 관행에 대해 책임을 지지 않습니다. 상호 작용하는 제3자 서비스의 개인정보 처리방침을 읽어보는 것이 좋습니다.",
+            "services": "당사가 사용할 수 있는 제3자 서비스에는 결제 처리업체, 분석 제공업체 및 클라우드 인프라 제공업체가 포함됩니다. 이러한 서비스는 귀하의 정보 사용을 규율하는 자체 개인정보 처리방침을 가지고 있습니다."
+        },
+        "children": {
+            "title": "9. 아동의 개인정보 보호",
+            "content": "BillForge는 18세 미만의 아동이 사용하도록 의도되지 않았습니다. 당사는 18세 미만 아동의 개인 정보를 고의로 수집하지 않습니다. 18세 미만 아동의 개인 정보를 수집한 사실을 알게 되면 해당 정보를 삭제하는 조치를 취할 것입니다."
+        },
+        "international": {
+            "title": "10. 해외 데이터 전송",
+            "content": "귀하의 정보는 귀하의 국가 또는 관할 구역 외부에 있는 서버로 전송되어 유지될 수 있습니다. BillForge를 사용함으로써 귀하는 거주 국가와 다른 데이터 보호법을 가진 국가로 정보를 전송하는 데 동의하게 됩니다."
+        },
+        "changes": {
+            "title": "11. 본 개인정보 처리방침의 변경",
+            "content": "당사는 본 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 당사는 이 페이지에 새로운 개인정보 처리방침을 게시하고 \"최종 업데이트\" 날짜를 업데이트하여 중요한 변경 사항을 귀하에게 알릴 것입니다. 변경 사항이 있는지 주기적으로 본 개인정보 처리방침을 검토하는 것이 좋습니다. 수정 후에도 BillForge를 계속 사용하는 것은 업데이트된 개인정보 처리방침을 수락하는 것으로 간주됩니다."
+        },
+        "california": {
+            "title": "12. 캘리포니아 개인정보 보호 권리",
+            "intro": "귀하가 캘리포니아 거주자인 경우 캘리포니아 소비자 개인정보 보호법(CCPA)에 따라 다음과 같은 추가 권리를 갖습니다.",
+            "items": {
+                "know": "어떤 개인 정보가 수집, 사용, 공유 또는 판매되었는지 알 권리",
+                "delete": "개인 정보를 삭제할 권리",
+                "optout": "개인 정보 판매를 거부할 권리(당사는 개인 정보를 판매하지 않음)",
+                "nondiscrimination": "개인정보 보호 권리 행사에 대해 차별받지 않을 권리"
+            }
+        },
+        "gdpr": {
+            "title": "13. GDPR 권리(유럽 사용자)",
+            "intro": "귀하가 유럽 경제 지역(EEA)에 있는 경우 일반 데이터 보호 규정(GDPR)에 따라 다음과 같은 추가 권리를 갖습니다.",
+            "items": {
+                "access": "개인 데이터에 액세스할 권리",
+                "rectification": "부정확한 데이터를 정정할 권리",
+                "erasure": "삭제할 권리(잊혀질 권리)",
+                "restrict": "처리를 제한할 권리",
+                "portability": "데이터 이동성에 대한 권리",
+                "object": "처리에 반대할 권리",
+                "complaint": "감독 당국에 불만을 제기할 권리"
+            }
+        },
+        "contact": {
+            "title": "문의하기",
+            "description": "본 개인정보 처리방침이나 당사의 데이터 관행에 대해 질문이 있는 경우 당사에 문의하십시오. 당사는 개인정보 보호 문제를 공정하게 해결하기 위해 귀하와 협력하기 위해 최선을 다하고 있습니다."
+        }
     },
-    "itemTaxes": {
-      "title": "세율",
-      "addTax": "세금 추가",
-      "editTax": "세금 편집",
-      "deleteTax": "세금 삭제",
-      "name": "세금 이름",
-      "rate": "세율",
-      "noTaxes": "구성된 세금이 없습니다. 첫 번째 세금 설정을 만드세요.",
-      "loading": "세금 로딩 중...",
-      "error": "세금 로드 오류",
-      "actions": "작업",
-      "createTitle": "세율 추가",
-      "createDescription": "새 세금 설정 만들기",
-      "editTitle": "세율 편집",
-      "editDescription": "세율 세부 정보 업데이트",
-      "deleteTitle": "세금을 삭제하시겠어요?",
-      "deleteDescription": "이것은 '{name}'을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
-      "deleting": "삭제 중...",
-      "errorCreating": "세금 생성 오류",
-      "errorUpdating": "세금 업데이트 오류",
-      "errorDeleting": "세금 삭제 오류",
-      "deleteError": "세금 삭제 오류",
-      "taxName": "세금 이름",
-      "placeholderName": "예: VAT, 판매세",
-      "type": "유형",
-      "percentage": "백분율",
-      "fixed": "고정 금액",
-      "value": "값",
-      "taxesLoadError": "세금 로드 오류",
-      "loadingError": "데이터 로드 중 오류가 발생했습니다"
+    "terms": {
+        "title": "서비스 약관",
+        "lastUpdated": "최종 업데이트: 2025년 12월 8일",
+        "acceptance": {
+            "title": "1. 약관의 수락",
+            "content": "BillForge에 액세스하고 사용함으로써 귀하는 본 계약의 약관 및 규정을 준수할 것에 동의하게 됩니다. 위의 사항을 준수하는 데 동의하지 않는 경우 이 서비스를 사용하지 마십시오."
+        },
+        "license": {
+            "title": "2. 사용 라이선스",
+            "intro": "개인적 및 상업적 목적으로 BillForge에 일시적으로 액세스하고 사용할 수 있는 권한이 부여됩니다. 이는 라이선스의 부여이며 소유권의 이전이 아니며, 이 라이선스에 따라 귀하는 다음을 수행할 수 없습니다.",
+            "items": {
+                "modify": "자료 수정 또는 복사",
+                "commercial": "적절한 구독 없이 상업적 목적으로 자료 사용",
+                "decompile": "BillForge에 포함된 소프트웨어를 디컴파일하거나 역엔지니어링하려는 시도",
+                "remove": "자료에서 저작권 또는 기타 독점 표기 제거",
+                "transfer": "자료를 다른 사람에게 전송하거나 다른 서버에 자료를 \"미러링\""
+            }
+        },
+        "account": {
+            "title": "3. 사용자 계정",
+            "intro": "BillForge의 특정 기능을 사용하려면 계정을 등록해야 합니다. 귀하는 다음 사항에 동의합니다.",
+            "items": {
+                "accurate": "등록 시 정확하고 최신의 완전한 정보 제공",
+                "security": "비밀번호 및 계정의 보안 유지",
+                "notify": "계정의 무단 사용에 대해 즉시 당사에 통지",
+                "responsibility": "귀하의 계정에서 발생하는 모든 활동에 대한 책임 수락"
+            }
+        },
+        "subscription": {
+            "title": "4. 구독 및 결제",
+            "intro": "BillForge는 다양한 구독 요금제를 제공합니다. 구독함으로써 귀하는 다음 사항에 동의하게 됩니다.",
+            "items": {
+                "fees": "선택한 구독 요금제와 관련된 모든 수수료 지불",
+                "renewal": "취소하지 않는 한 구독 자동 갱신",
+                "pricing": "30일 사전 통지 시 가격 변경 가능",
+                "refunds": "일부 사용한 달 또는 사용하지 않은 서비스에 대한 환불 없음"
+            }
+        },
+        "dataPrivacy": {
+            "title": "5. 데이터 및 개인정보 보호",
+            "content": "귀하의 BillForge 사용은 당사의 개인정보 처리방침의 적용을 받습니다. 당사의 관행을 이해하려면",
+            "link": "개인정보 처리방침",
+            "toUnderstand": "을 검토하십시오."
+        },
+        "prohibited": {
+            "title": "6. 금지된 활동",
+            "intro": "귀하는 다음을 위해 BillForge를 사용할 수 없습니다.",
+            "items": {
+                "laws": "법률 또는 규정 위반",
+                "infringe": "지적 재산권 침해",
+                "malware": "바이러스, 맬웨어 또는 기타 악성 코드 전송",
+                "unauthorized": "시스템에 대한 무단 액세스 시도",
+                "harass": "다른 사용자 괴롭힘, 학대 또는 해를 끼침",
+                "fraud": "사기 목적으로 서비스 사용"
+            }
+        },
+        "availability": {
+            "title": "7. 서비스 가용성",
+            "content": "당사는 BillForge의 높은 가용성을 유지하기 위해 노력하지만 중단 없는 액세스를 보장하지는 않습니다. 당사는 통지 유무에 관계없이 서비스의 일부를 수정, 일시 중단 또는 중단할 권리를 보유합니다. 당사는 서비스의 수정, 일시 중단 또는 중단에 대해 책임을 지지 않습니다."
+        },
+        "intellectual": {
+            "title": "8. 지적 재산",
+            "content": "텍스트, 그래픽, 로고, 이미지 및 소프트웨어와 같이 BillForge에 포함된 모든 콘텐츠는 BillForge 또는 콘텐츠 공급업체의 자산이며 국제 저작권법의 보호를 받습니다. 본 사이트의 모든 콘텐츠 편집물은 BillForge의 독점 자산입니다."
+        },
+        "liability": {
+            "title": "9. 책임의 제한",
+            "content": "어떠한 경우에도 BillForge 또는 그 공급업체는 BillForge 또는 BillForge 공인 대리인이 그러한 손해의 가능성에 대해 구두 또는 서면으로 통지를 받은 경우에도 BillForge의 사용 또는 사용 불가능으로 인해 발생하는 모든 손해(데이터 또는 이익 손실 또는 영업 중단으로 인한 손해를 포함하되 이에 국한되지 않음)에 대해 책임을 지지 않습니다."
+        },
+        "termination": {
+            "title": "10. 종료",
+            "content": "당사는 귀하가 본 서비스 약관을 위반하는 경우를 포함하여 어떠한 이유로든 사전 통지나 책임 없이 귀하의 계정 및 BillForge 액세스를 즉시 종료하거나 일시 중단할 수 있습니다. 종료 시 서비스 사용 권한은 즉시 중단됩니다."
+        },
+        "changesTerms": {
+            "title": "11. 약관의 변경",
+            "content": "당사는 언제든지 본 약관을 수정할 권리를 보유합니다. 당사는 이 페이지에 새로운 서비스 약관을 게시하고 \"최종 업데이트\" 날짜를 업데이트하여 중요한 변경 사항을 사용자에게 알립니다. 그러한 수정 후에도 BillForge를 계속 사용하는 것은 수정된 약관을 인정하고 수락하는 것으로 간주됩니다."
+        },
+        "governing": {
+            "title": "12. 준거법",
+            "content": "본 약관은 법의 저촉 조항과 관계없이 관련 법률에 따라 규율되고 해석됩니다. 본 약관의 권리 또는 조항을 집행하지 못하는 경우 해당 권리의 포기로 간주되지 않습니다."
+        },
+        "contact": {
+            "title": "문의하기",
+            "description": "본 서비스 약관에 대해 질문이 있는 경우 당사에 문의하십시오."
+        }
     },
-    "itemDiscounts": {
-      "title": "할인",
-      "addDiscount": "할인 추가",
-      "editDiscount": "할인 편집",
-      "deleteDiscount": "할인 삭제",
-      "name": "할인 이름",
-      "type": "유형",
-      "value": "값",
-      "noDiscounts": "구성된 할인이 없습니다. 첫 번째 할인을 만드세요.",
-      "loading": "할인 로딩 중...",
-      "error": "할인 로드 오류",
-      "actions": "작업",
-      "createTitle": "할인 추가",
-      "createDescription": "새 할인 제안 만들기",
-      "editTitle": "할인 편집",
-      "editDescription": "할인 세부 정보 업데이트",
-      "deleteTitle": "할인을 삭제하시겠어요?",
-      "deleteDescription": "이것은 '{name}'을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
-      "deleting": "삭제 중...",
-      "errorCreating": "할인 생성 오류",
-      "errorUpdating": "할인 업데이트 오류",
-      "errorDeleting": "할인 삭제 오류",
-      "deleteError": "할인 삭제 오류",
-      "discountName": "할인 이름",
-      "placeholderName": "예: 휴일 할인, 조기 구매자 할인",
-      "percentage": "백분율",
-      "fixed": "고정 금액",
-      "discountsLoadError": "할인 로드 오류",
-      "loadingError": "데이터 로드 중 오류가 발생했습니다"
+    "app": {
+        "sale": {
+            "title": "판매",
+            "searchItems": "항목 검색...",
+            "allCategories": "모든 카테고리",
+            "checkout": "체크아웃",
+            "total": "합계:",
+            "items": "항목",
+            "noItems": "항목을 찾을 수 없습니다",
+            "addToCart": "장바구니에 추가",
+            "removeFromCart": "제거",
+            "error": "오류",
+            "retry": "재시도",
+            "loading": "로딩 중...",
+            "selectBusiness": "시작하려면 사이드바에서 비즈니스를 선택하세요",
+            "cartEmpty": "장바구니가 비어있습니다. 계속하려면 항목 추가를 시작하세요.",
+            "backToItems": "항목으로 돌아가기",
+            "reviewOrder": "주문을 검토하고 거래를 완료하세요",
+            "orderSummary": "주문 요약",
+            "item": "항목",
+            "quantity": "수량",
+            "price": "가격",
+            "tax": "세금:",
+            "discount": "할인:",
+            "subtotal": "소계:",
+            "paymentSummary": "결제 요약",
+            "processing": "처리 중...",
+            "completeTransaction": "거래 완료",
+            "transactionDetails": "거래 상세",
+            "customer": "고객 (선택사항)",
+            "selectCustomer": "고객 선택...",
+            "guestCustomer": "게스트 고객",
+            "paymentMethod": "결제 방법 (선택사항)",
+            "paymentMethodsLoadError": "결제 방법을 로드할 수 없습니다",
+            "created": "생성됨",
+            "selectPaymentMethod": "결제 방법 선택...",
+            "cash": "현금",
+            "notes": "메모 (선택사항)",
+            "addNotes": "이 거래에 메모 추가...",
+            "outOfStock": "재고 없음",
+            "noItemsAvailable": "사용 가능한 항목이 없습니다",
+            "addItemsToInventory": "거래를 시작하려면 인벤토리에 항목을 추가하세요"
+        },
+        "items": {
+            "title": "항목",
+            "addItem": "항목 추가",
+            "editItem": "항목 편집",
+            "deleteItem": "항목 삭제",
+            "name": "항목 이름",
+            "price": "가격",
+            "sku": "SKU (재고관리단위)",
+            "category": "카테고리",
+            "description": "설명",
+            "noItems": "항목을 찾을 수 없습니다",
+            "loading": "항목 로딩 중...",
+            "error": "항목 로드 오류",
+            "actions": "작업",
+            "business": "비즈니스",
+            "unknownBusiness": "알 수 없는 비즈니스",
+            "addFirstItem": "첫 번째 항목 추가",
+            "image": "항목 이미지",
+            "status": "상태",
+            "created": "생성 날짜",
+            "active": "활성",
+            "inactive": "비활성",
+            "createTitle": "새 항목 만들기",
+            "createDescription": "인벤토리에 새 제품 또는 서비스 추가",
+            "editTitle": "항목 편집",
+            "editDescription": "항목 정보 업데이트",
+            "taxOptional": "세금 (선택사항)",
+            "noTax": "세금 없음",
+            "discountOptional": "할인 (선택사항)",
+            "noDiscount": "할인 없음",
+            "categoriesOptional": "카테고리 (선택사항)",
+            "noCategoriesAvailable": "사용 가능한 카테고리가 없습니다. 먼저 카테고리를 만드세요.",
+            "skuOptional": "SKU (선택사항)",
+            "descriptionOptional": "설명 (선택사항)",
+            "itemImageOptional": "항목 이미지 (선택사항)",
+            "supportedFormats": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 크기: 1MB",
+            "uploading": "이미지 업로드 중...",
+            "update": "항목 업데이트",
+            "create": "항목 만들기",
+            "deleteTitle": "항목을 삭제하시겠어요?",
+            "deleteDescription": "이것은 {name} (SKU: {sku})를 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
+            "deleting": "삭제 중...",
+            "errorCreating": "항목 생성 오류",
+            "errorUpdating": "항목 업데이트 오류",
+            "errorDeleting": "항목 삭제 오류",
+            "uploadError": "이미지 업로드 오류",
+            "deleteError": "항목 삭제 오류",
+            "selectImageError": "이미지 파일을 선택하세요",
+            "imageSizeError": "이미지 크기는 1MB 미만이어야 합니다",
+            "loadingError": "데이터 로드 중 오류가 발생했습니다",
+            "itemsLoadError": "항목 로드 오류",
+            "basePrice": "기본 가격"
+        },
+        "customers": {
+            "title": "고객",
+            "addCustomer": "고객 추가",
+            "editCustomer": "고객 편집",
+            "deleteCustomer": "고객 삭제",
+            "name": "고객 이름",
+            "email": "이메일",
+            "phone": "전화번호",
+            "address": "주소",
+            "noCustomers": "고객을 찾을 수 없습니다",
+            "loading": "고객 로딩 중...",
+            "error": "고객 로드 오류",
+            "actions": "작업",
+            "addFirstCustomer": "첫 번째 고객 추가",
+            "editTitle": "고객 편집",
+            "createTitle": "새 고객 추가",
+            "editDescription": "고객 정보 업데이트",
+            "createDescription": "데이터베이스에 새 고객 추가",
+            "customerName": "전체 이름",
+            "placeholderName": "John Doe",
+            "emailOptional": "이메일 (선택사항)",
+            "placeholderEmail": "john@example.com",
+            "phoneOptional": "전화번호 (선택사항)",
+            "placeholderPhone": "+82101234567",
+            "addressOptional": "주소 (선택사항)",
+            "placeholderAddress": "메인 스트리트 123, 도시, 우편번호",
+            "deleteTitle": "고객을 삭제하시겠어요?",
+            "deleting": "삭제 중...",
+            "errorCreating": "고객 생성 오류",
+            "errorUpdating": "고객 업데이트 오류",
+            "errorDeleting": "고객 삭제 오류",
+            "deleteError": "고객 삭제 오류",
+            "customersLoadError": "고객 로드 오류",
+            "loadingError": "데이터 로드 중 오류가 발생했습니다"
+        },
+        "transactions": {
+            "title": "거래",
+            "viewDetails": "상세 보기",
+            "date": "날짜",
+            "customer": "고객",
+            "total": "합계",
+            "totalAmount": "합계 금액",
+            "finalAmount": "최종 금액",
+            "discountAmount": "할인 금액:",
+            "taxAmount": "세금 금액:",
+            "paymentMethod": "결제 방법",
+            "noTransactions": "거래를 찾을 수 없습니다",
+            "actions": "작업",
+            "loading": "거래 로딩 중...",
+            "error": "거래 로드 오류",
+            "guestCustomer": "게스트",
+            "transactionDetails": "거래 상세",
+            "viewInfo": "전체 거래 정보 보기",
+            "items": "항목",
+            "noItems": "항목을 찾을 수 없습니다",
+            "item": "항목",
+            "quantity": "수량",
+            "basePrice": "기본 가격",
+            "tax": "세금",
+            "discount": "할인",
+            "notes": "메모",
+            "transactionId": "거래 ID",
+            "downloadPDF": "PDF 다운로드",
+            "downloadImage": "이미지 다운로드",
+            "sendEmail": "이메일 전송",
+            "sendWhatsApp": "WhatsApp으로 전송"
+        },
+        "settings": {
+            "title": "설정",
+            "profile": "프로필",
+            "business": "비즈니스",
+            "receipt": "영수증 설정",
+            "preferences": "기본 설정",
+            "account": "계정",
+            "profileTab": {
+                "name": "전체 이름",
+                "email": "이메일 주소",
+                "currentPassword": "현재 비밀번호",
+                "newPassword": "새 비밀번호",
+                "confirmPassword": "비밀번호 확인",
+                "changePassword": "비밀번호 변경",
+                "updateProfile": "프로필 업데이트",
+                "deleteAccount": "계정 삭제",
+                "errorLoad": "프로필 로드 오류",
+                "imageSizeError": "이미지 크기는 1MB 미만이어야 합니다",
+                "successUpdate": "프로필이 성공적으로 업데이트되었습니다",
+                "errorUpdate": "프로필 업데이트 오류",
+                "errorFields": "모든 필드를 확인하세요",
+                "errorMatch": "비밀번호가 일치하지 않습니다",
+                "errorLength": "비밀번호는 8자 이상이어야 합니다",
+                "successPassword": "비밀번호가 성공적으로 변경되었습니다",
+                "errorPassword": "현재 비밀번호가 올바르지 않습니다",
+                "confirmDelete": "계정 삭제 확인",
+                "sentDelete": "삭제 확인 이메일을 보냈습니다",
+                "errorDelete": "삭제 이메일 전송 오류",
+                "profilePicture": "프로필 사진",
+                "profilePictureDescription": "프로필 사진을 업로드하여 계정을 사용자 정의하세요",
+                "uploadPhoto": "사진 업로드",
+                "delete": "삭제",
+                "imageRequirements": "JPG, PNG, GIF, WEBP. 최대 1MB",
+                "personalInfo": "개인 정보",
+                "fullName": "전체 이름",
+                "enterFullName": "전체 이름을 입력하세요",
+                "enterEmail": "이메일을 입력하세요",
+                "emailNote": "이메일은 변경할 수 없습니다",
+                "saving": "저장 중...",
+                "saveChanges": "변경 사항 저장",
+                "changePasswordDescription": "계정을 안전하게 유지하려면 비밀번호를 업데이트하세요",
+                "enterCurrentPassword": "현재 비밀번호를 입력하세요",
+                "enterNewPassword": "새 비밀번호를 입력하세요 (최소 8자)",
+                "confirmNewPassword": "새 비밀번호 확인",
+                "enterConfirmNewPassword": "새 비밀번호를 확인하세요",
+                "changingPassword": "비밀번호 변경 중...",
+                "deleteAccountDescription": "삭제 후 계정 및 모든 데이터는 복구할 수 없습니다",
+                "deleteWarning": "경고: 이 작업은 취소할 수 없습니다",
+                "deleteConsequences": "계정 삭제 결과:",
+                "deleteItem1": "모든 비즈니스를 영구적으로 삭제",
+                "deleteItem2": "모든 거래 및 항목 제거",
+                "deleteItem3": "모든 개인 데이터 삭제",
+                "deleteConfirmation": "삭제를 완료하기 위한 링크가 포함된 확인 이메일을 받으실 것입니다.",
+                "sendingEmail": "이메일 전송 중...",
+                "requestDeletion": "계정 삭제 요청"
+            },
+            "receiptTab": {
+                "options": "영수증 사용자 정의",
+                "includeLogo": "영수증에 비즈니스 로고 포함",
+                "footerMessage": "바닥글 메시지",
+                "footerPlaceholder": "구매해주셔서 감사합니다!",
+                "qrCode": "QR 코드 데이터",
+                "qrPlaceholder": "QR 코드 값 입력 (예: 소셜 미디어 링크)",
+                "prefix": "거래 접두사",
+                "prefixHelp": "거래 번호의 접두사 (예: INV, RCP)",
+                "nextNumber": "다음 거래 번호",
+                "nextNumberHelp": "사용할 다음 거래 번호",
+                "template": "영수증 템플릿",
+                "selectBusiness": "영수증 설정을 구성하려면 비즈니스를 선택하세요"
+            },
+            "preferencesTab": {
+                "language": "언어",
+                "languageDescription": "애플리케이션 인터페이스에 대한 선호하는 언어를 선택하십시오.",
+                "currency": "통화",
+                "region": "지역",
+                "timezone": "시간대",
+                "title": "모양 및 지역화",
+                "description": "BillForge의 모양과 동작을 사용자 정의하세요",
+                "theme": "테마",
+                "themeDescription": "선호하는 색상 테마를 선택하세요",
+                "light": "밝음",
+                "dark": "어두움",
+                "system": "시스템 기본값"
+            },
+            "printerTab": {
+                "encoding": "인코딩",
+                "autoPrint": "결제 후 자동 인쇄",
+                "autoPrintDescription": "거래 완료 후 영수증 자동 인쇄",
+                "connection": "인쇄 클라이언트 연결",
+                "connectionDescription": "로컬 머신의 BillForge 인쇄 클라이언트에 연결",
+                "status": "연결 상태",
+                "connected": "연결됨",
+                "connecting": "연결 중",
+                "disconnected": "연결 끊김",
+                "error": "오류",
+                "connect": "클라이언트 연결",
+                "disconnect": "연결 해제",
+                "discovery": "장치 검색",
+                "discoveryDescription": "블루투스 프린터 검색",
+                "ignoreUnknown": "알 수 없는 장치 무시",
+                "discoverDevices": "장치 검색",
+                "clearDevices": "목록 지우기",
+                "discoveredDevices": "발견된 장치",
+                "discoveredDevicesDescription": "연결할 장치 선택",
+                "connectedDevices": "연결된 장치",
+                "connectedDevicesDescription": "현재 연결된 블루투스 장치",
+                "paired": "페어링됨",
+                "deviceConnected": "연결됨",
+                "type": "유형",
+                "connectDevice": "연결",
+                "disconnectDevice": "연결 해제",
+                "active": "활성",
+                "errorConnect": "연결 실패",
+                "errorDiscover": "검색 실패",
+                "errorConnectDevice": "장치 연결 실패",
+                "errorDisconnectDevice": "장치 연결 해제 실패",
+                "errorClear": "지우기 실패",
+                "configurations": "프린터 구성",
+                "configurationsDescription": "감열 프린터 설정 구성",
+                "paperSize": "용지 크기",
+                "selectPaperSize": "크기 선택",
+                "chars": "자",
+                "paperWidth": "용지 너비 (mm)",
+                "charsPerLine": "줄당 문자 수",
+                "feedLines": "인쇄 후 라인 피드",
+                "autoCut": "자동 절단",
+                "testPrint": "테스트 인쇄",
+                "testPrintSuccess": "테스트 인쇄 전송 성공",
+                "testPrintFailed": "전송 실패"
+            },
+            "receiptPopup": {
+                "printReceipt": "영수증 인쇄"
+            },
+            "printer": {
+                "title": "프린터 설정",
+                "noPrinterConnected": "연결된 프린터 없음",
+                "printSuccess": "인쇄 성공",
+                "printFailed": "인쇄 실패"
+            }
+        },
+        "categories": {
+            "title": "카테고리",
+            "addCategory": "카테고리 추가",
+            "editCategory": "카테고리 편집",
+            "deleteCategory": "카테고리 삭제",
+            "name": "카테고리 이름",
+            "noCategories": "카테고리를 찾을 수 없습니다",
+            "loading": "카테고리 로딩 중...",
+            "error": "카테고리 로드 오류",
+            "actions": "작업",
+            "addFirstCategory": "첫 번째 카테고리 추가",
+            "created": "생성 날짜",
+            "createTitle": "새 카테고리 만들기",
+            "createDescription": "항목을 정리하기 위한 새 카테고리 추가",
+            "editTitle": "카테고리 편집",
+            "editDescription": "카테고리 정보 업데이트",
+            "categoryName": "카테고리 이름",
+            "placeholder": "예: 전자제품, 식품, 서비스",
+            "deleteTitle": "카테고리를 삭제하시겠어요?",
+            "deleteDescription": "이것은 '{name}' 카테고리를 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
+            "deleting": "삭제 중...",
+            "errorCreating": "카테고리 생성 오류",
+            "errorUpdating": "카테고리 업데이트 오류",
+            "errorDeleting": "카테고리 삭제 오류",
+            "deleteError": "카테고리 삭제 오류",
+            "loadingError": "데이터 로드 중 오류가 발생했습니다",
+            "categoriesLoadError": "카테고리 로드 오류"
+        },
+        "paymentMethods": {
+            "title": "결제 방법",
+            "addMethod": "결제 방법 추가",
+            "editMethod": "결제 방법 편집",
+            "deleteMethod": "결제 방법 삭제",
+            "name": "방법 이름",
+            "noMethods": "결제 방법을 찾을 수 없습니다",
+            "loading": "결제 방법 로딩 중...",
+            "error": "결제 방법 로드 오류",
+            "actions": "작업",
+            "addFirstMethod": "첫 번째 결제 방법 추가",
+            "createTitle": "결제 방법 추가",
+            "createDescription": "결제를 받기 위한 새 결제 방법 추가",
+            "editTitle": "결제 방법 편집",
+            "editDescription": "결제 방법 세부 정보 업데이트",
+            "deleteTitle": "결제 방법을 삭제하시겠어요?",
+            "deleteDescription": "이것은 '{name}'을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
+            "deleting": "삭제 중...",
+            "errorCreating": "결제 방법 생성 오류",
+            "errorUpdating": "결제 방법 업데이트 오류",
+            "errorDeleting": "결제 방법 삭제 오류",
+            "deleteError": "결제 방법 삭제 오류",
+            "methodName": "결제 방법 이름",
+            "placeholderName": "예: 현금, 신용카드, 은행 송금",
+            "created": "생성 날짜",
+            "paymentMethodsLoadError": "결제 방법 로드 오류",
+            "loadingError": "데이터 로드 중 오류가 발생했습니다"
+        },
+        "itemTaxes": {
+            "title": "세율",
+            "addTax": "세금 추가",
+            "editTax": "세금 편집",
+            "deleteTax": "세금 삭제",
+            "name": "세금 이름",
+            "rate": "세율",
+            "noTaxes": "구성된 세금이 없습니다. 첫 번째 세금 설정을 만드세요.",
+            "loading": "세금 로딩 중...",
+            "error": "세금 로드 오류",
+            "actions": "작업",
+            "createTitle": "세율 추가",
+            "createDescription": "새 세금 설정 만들기",
+            "editTitle": "세율 편집",
+            "editDescription": "세율 세부 정보 업데이트",
+            "deleteTitle": "세금을 삭제하시겠어요?",
+            "deleteDescription": "이것은 '{name}'을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
+            "deleting": "삭제 중...",
+            "errorCreating": "세금 생성 오류",
+            "errorUpdating": "세금 업데이트 오류",
+            "errorDeleting": "세금 삭제 오류",
+            "deleteError": "세금 삭제 오류",
+            "taxName": "세금 이름",
+            "placeholderName": "예: VAT, 판매세",
+            "type": "유형",
+            "percentage": "백분율",
+            "fixed": "고정 금액",
+            "value": "값",
+            "taxesLoadError": "세금 로드 오류",
+            "loadingError": "데이터 로드 중 오류가 발생했습니다"
+        },
+        "itemDiscounts": {
+            "title": "할인",
+            "addDiscount": "할인 추가",
+            "editDiscount": "할인 편집",
+            "deleteDiscount": "할인 삭제",
+            "name": "할인 이름",
+            "type": "유형",
+            "value": "값",
+            "noDiscounts": "구성된 할인이 없습니다. 첫 번째 할인을 만드세요.",
+            "loading": "할인 로딩 중...",
+            "error": "할인 로드 오류",
+            "actions": "작업",
+            "createTitle": "할인 추가",
+            "createDescription": "새 할인 제안 만들기",
+            "editTitle": "할인 편집",
+            "editDescription": "할인 세부 정보 업데이트",
+            "deleteTitle": "할인을 삭제하시겠어요?",
+            "deleteDescription": "이것은 '{name}'을 영구적으로 삭제합니다. 이 작업은 취소할 수 없습니다.",
+            "deleting": "삭제 중...",
+            "errorCreating": "할인 생성 오류",
+            "errorUpdating": "할인 업데이트 오류",
+            "errorDeleting": "할인 삭제 오류",
+            "deleteError": "할인 삭제 오류",
+            "discountName": "할인 이름",
+            "placeholderName": "예: 휴일 할인, 조기 구매자 할인",
+            "percentage": "백분율",
+            "fixed": "고정 금액",
+            "discountsLoadError": "할인 로드 오류",
+            "loadingError": "데이터 로드 중 오류가 발생했습니다"
+        },
+        "sidebar": {
+            "sale": "판매",
+            "transactions": "거래",
+            "items": "항목",
+            "categories": "카테고리",
+            "customers": "고객",
+            "paymentMethods": "결제 방법",
+            "itemTaxes": "세금",
+            "itemDiscounts": "할인",
+            "settings": "설정",
+            "businessSelector": {
+                "switchBusiness": "비즈니스 전환",
+                "addBusiness": "비즈니스 추가",
+                "edit": "편집",
+                "delete": "삭제"
+            },
+            "userProfile": {
+                "myAccount": "내 계정",
+                "logout": "로그아웃",
+                "dialog": {
+                    "title": "로그아웃 확인",
+                    "description": "로그아웃하시겠어요? 계정에 접근하려면 다시 로그인해야 합니다.",
+                    "cancel": "취소",
+                    "confirm": "로그아웃"
+                }
+            },
+            "businessDialog": {
+                "createTitle": "새 비즈니스 만들기",
+                "editTitle": "비즈니스 편집",
+                "createDescription": "계정에 새 비즈니스 위치 추가",
+                "editDescription": "비즈니스 정보 업데이트",
+                "nameLabel": "비즈니스 이름",
+                "namePlaceholder": "비즈니스 이름",
+                "addressLabel": "주소 (선택사항)",
+                "addressPlaceholder": "메인 스트리트 123, 도시, 국가",
+                "phoneLabel": "전화번호 (선택사항)",
+                "phonePlaceholder": "+82101234567",
+                "currencyLabel": "통화 (선택사항)",
+                "currencyPlaceholder": "통화 선택",
+                "languageLabel": "언어 (선택사항)",
+                "languagePlaceholder": "언어 선택",
+                "regionLabel": "지역 (선택사항)",
+                "regionPlaceholder": "지역 선택",
+                "logoLabel": "비즈니스 로고 (선택사항)",
+                "logoHelp": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 크기: 1MB",
+                "uploading": "로고 업로드 중...",
+                "cancel": "취소",
+                "create": "만들기",
+                "update": "업데이트",
+                "errorGeneric": "비즈니스 저장 오류",
+                "errorCreate": "비즈니스 생성 오류",
+                "errorUpdate": "비즈니스 업데이트 오류",
+                "errorImageSize": "이미지 크기는 1MB 미만이어야 합니다"
+            },
+            "deleteBusinessDialog": {
+                "title": "비즈니스 삭제",
+                "description": "'{name}'을 삭제하시겠어요? 이 작업은 취소할 수 없습니다.",
+                "cancel": "취소",
+                "delete": "삭제"
+            }
+        },
+        "reports": {
+            "title": "매출 보고서",
+            "subtitle": "종합 매출 분석",
+            "dateRange": {
+                "title": "기간",
+                "description": "날짜로 필터링",
+                "startDate": "시작일",
+                "endDate": "종료일",
+                "applyFilter": "필터 적용"
+            },
+            "summary": {
+                "totalSales": "총 매출",
+                "transactions": "거래 수",
+                "averageTransaction": "평균 거래액",
+                "perTransaction": "건당",
+                "itemsSold": "판매 품목 수",
+                "totalUnits": "총 수량",
+                "totalTax": "총 세금",
+                "taxCollected": "징수 세금",
+                "totalDiscounts": "총 할인",
+                "discountsGiven": "제공된 할인"
+            },
+            "tabs": {
+                "byDate": "날짜별",
+                "byItem": "품목별",
+                "byCategory": "카테고리별",
+                "byPaymentMethod": "결제 수단별"
+            },
+            "byDate": {
+                "title": "날짜별 매출",
+                "description": "일별 내역",
+                "date": "날짜",
+                "transactions": "거래 수",
+                "totalAmount": "총액"
+            },
+            "byItem": {
+                "title": "품목별 매출",
+                "description": "인기 품목",
+                "itemName": "품목명",
+                "sku": "SKU",
+                "quantitySold": "판매 수량",
+                "totalRevenue": "총 수익"
+            },
+            "byCategory": {
+                "title": "카테고리별 매출",
+                "description": "카테고리 실적",
+                "category": "카테고리",
+                "quantitySold": "판매 수량",
+                "totalRevenue": "수익"
+            },
+            "byPaymentMethod": {
+                "title": "결제 수단별 매출",
+                "description": "결제 내역",
+                "paymentMethod": "수단",
+                "transactions": "거래 수",
+                "totalAmount": "금액"
+            },
+            "noData": "데이터 없음"
+        }
     },
     "sidebar": {
-      "sale": "판매",
-      "transactions": "거래",
-      "items": "항목",
-      "categories": "카테고리",
-      "customers": "고객",
-      "paymentMethods": "결제 방법",
-      "itemTaxes": "세금",
-      "itemDiscounts": "할인",
-      "settings": "설정",
-      "businessSelector": {
-        "switchBusiness": "비즈니스 전환",
-        "addBusiness": "비즈니스 추가",
-        "edit": "편집",
-        "delete": "삭제"
-      },
-      "userProfile": {
-        "myAccount": "내 계정",
-        "logout": "로그아웃",
-        "dialog": {
-          "title": "로그아웃 확인",
-          "description": "로그아웃하시겠어요? 계정에 접근하려면 다시 로그인해야 합니다.",
-          "cancel": "취소",
-          "confirm": "로그아웃"
+        "businessDialog": {
+            "errors": {
+                "imageSize": "이미지 크기는 1MB 미만이어야 합니다",
+                "updateFailed": "비즈니스 업데이트 실패",
+                "createFailed": "비즈니스 생성 실패",
+                "updateError": "업데이트 중 오류가 발생했습니다",
+                "createError": "생성 중 오류가 발생했습니다"
+            },
+            "edit": "비즈니스 편집",
+            "create": "비즈니스 만들기",
+            "description": {
+                "edit": "비즈니스 정보 업데이트",
+                "create": "계정에 새 비즈니스 추가"
+            },
+            "form": {
+                "name": {
+                    "label": "비즈니스 이름",
+                    "placeholder": "비즈니스 이름"
+                },
+                "address": {
+                    "label": "주소 (선택사항)",
+                    "placeholder": "메인 스트리트 123, 도시, 국가"
+                },
+                "phone": {
+                    "label": "전화번호 (선택사항)",
+                    "placeholder": "+82101234567"
+                },
+                "currency": {
+                    "label": "통화 (선택사항)",
+                    "placeholder": "통화 선택"
+                },
+                "language": {
+                    "label": "언어 (선택사항)",
+                    "placeholder": "언어 선택"
+                },
+                "region": {
+                    "label": "지역 (선택사항)",
+                    "placeholder": "지역 선택"
+                },
+                "logo": {
+                    "label": "비즈니스 로고 (선택사항)",
+                    "helper": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 1MB",
+                    "uploading": "업로드 중..."
+                }
+            },
+            "buttons": {
+                "cancel": "취소",
+                "update": "업데이트",
+                "create": "만들기"
+            }
+        },
+        "businessSelector": {
+            "switchBusiness": "비즈니스 전환",
+            "edit": "편집",
+            "delete": "삭제",
+            "addBusiness": "비즈니스 추가"
+        },
+        "deleteBusinessDialog": {
+            "title": "비즈니스 삭제",
+            "description": "확실한가요? 이것은 취소할 수 없습니다.",
+            "cancel": "취소",
+            "confirm": "삭제"
+        },
+        "userProfile": {
+            "myAccount": "내 계정",
+            "logout": "로그아웃",
+            "dialog": {
+                "title": "로그아웃 확인",
+                "description": "로그아웃하시겠어요?",
+                "cancel": "취소",
+                "confirm": "로그아웃"
+            }
+        },
+        "reports": {
+            "title": "판매 보고서",
+            "subtitle": "포괄적인 판매 분석 및 통계 보기",
+            "dateRange": {
+                "title": "날짜 범위",
+                "description": "날짜 범위로 보고서 필터링",
+                "startDate": "시작 날짜",
+                "endDate": "종료 날짜",
+                "applyFilter": "필터 적용"
+            },
+            "summary": {
+                "totalSales": "총 판매",
+                "transactions": "거래",
+                "averageTransaction": "평균 거래",
+                "perTransaction": "거래 당",
+                "itemsSold": "판매된 항목",
+                "totalUnits": "총 단위",
+                "totalTax": "총 세금",
+                "taxCollected": "징수된 세금",
+                "totalDiscounts": "총 할인",
+                "discountsGiven": "제공된 할인"
+            },
+            "tabs": {
+                "byDate": "날짜별",
+                "byItem": "항목별",
+                "byCategory": "카테고리별",
+                "byPaymentMethod": "결제 방법별"
+            },
+            "byDate": {
+                "title": "날짜별 판매",
+                "description": "일별 판매 내역",
+                "date": "날짜",
+                "transactions": "거래 수",
+                "totalAmount": "총 금액"
+            },
+            "byItem": {
+                "title": "항목별 판매",
+                "description": "베스트셀러 항목",
+                "itemName": "항목 이름",
+                "sku": "SKU",
+                "quantitySold": "판매 수량",
+                "totalRevenue": "총 수익"
+            },
+            "byCategory": {
+                "title": "카테고리별 판매",
+                "description": "카테고리 성과 분석",
+                "category": "카테고리",
+                "quantitySold": "판매 수량",
+                "totalRevenue": "총 수익"
+            },
+            "byPaymentMethod": {
+                "title": "결제 방법별 판매",
+                "description": "결제 방법 분석",
+                "paymentMethod": "결제 방법",
+                "transactions": "거래 수",
+                "totalAmount": "총 금액"
+            },
+            "noData": "데이터 없음"
         }
-      },
-      "businessDialog": {
-        "createTitle": "새 비즈니스 만들기",
-        "editTitle": "비즈니스 편집",
-        "createDescription": "계정에 새 비즈니스 위치 추가",
-        "editDescription": "비즈니스 정보 업데이트",
-        "nameLabel": "비즈니스 이름",
-        "namePlaceholder": "비즈니스 이름",
-        "addressLabel": "주소 (선택사항)",
-        "addressPlaceholder": "메인 스트리트 123, 도시, 국가",
-        "phoneLabel": "전화번호 (선택사항)",
-        "phonePlaceholder": "+82101234567",
-        "currencyLabel": "통화 (선택사항)",
-        "currencyPlaceholder": "통화 선택",
-        "languageLabel": "언어 (선택사항)",
-        "languagePlaceholder": "언어 선택",
-        "regionLabel": "지역 (선택사항)",
-        "regionPlaceholder": "지역 선택",
-        "logoLabel": "비즈니스 로고 (선택사항)",
-        "logoHelp": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 크기: 1MB",
-        "uploading": "로고 업로드 중...",
-        "cancel": "취소",
-        "create": "만들기",
-        "update": "업데이트",
-        "errorGeneric": "비즈니스 저장 오류",
-        "errorCreate": "비즈니스 생성 오류",
-        "errorUpdate": "비즈니스 업데이트 오류",
-        "errorImageSize": "이미지 크기는 1MB 미만이어야 합니다"
-      },
-      "deleteBusinessDialog": {
-        "title": "비즈니스 삭제",
-        "description": "'{name}'을 삭제하시겠어요? 이 작업은 취소할 수 없습니다.",
-        "cancel": "취소",
-        "delete": "삭제"
-      }
+    },
+    "printerTab": {
+        "title": "프린터",
+        "subtitle": "연결된 프린터 관리",
+        "scan": "장치 스캔",
+        "stopScan": "스캔 중지",
+        "noDevices": "장치를 찾을 수 없음",
+        "connected": "연결된 장치",
+        "available": "사용 가능한 장치"
+    },
+    "receiptPopup": {
+        "title": "영수증 설정",
+        "autoPrint": "결제 시 영수증 자동 인쇄",
+        "showPreview": "인쇄 전 미리보기 표시"
+    },
+    "businessOnboarding": {
+        "welcome": "BillForge에 오신 것을 환영합니다",
+        "subtitle": "비즈니스를 설정해 봅시다",
+        "businessName": "비즈니스 이름",
+        "currency": "통화",
+        "address": "주소",
+        "complete": "설정 완료"
     }
-  },
-  "sidebar": {
-    "businessDialog": {
-      "errors": {
-        "imageSize": "이미지 크기는 1MB 미만이어야 합니다",
-        "updateFailed": "비즈니스 업데이트 실패",
-        "createFailed": "비즈니스 생성 실패",
-        "updateError": "업데이트 중 오류가 발생했습니다",
-        "createError": "생성 중 오류가 발생했습니다"
-      },
-      "edit": "비즈니스 편집",
-      "create": "비즈니스 만들기",
-      "description": {
-        "edit": "비즈니스 정보 업데이트",
-        "create": "계정에 새 비즈니스 추가"
-      },
-      "form": {
-        "name": {
-          "label": "비즈니스 이름",
-          "placeholder": "비즈니스 이름"
-        },
-        "address": {
-          "label": "주소 (선택사항)",
-          "placeholder": "메인 스트리트 123, 도시, 국가"
-        },
-        "phone": {
-          "label": "전화번호 (선택사항)",
-          "placeholder": "+82101234567"
-        },
-        "currency": {
-          "label": "통화 (선택사항)",
-          "placeholder": "통화 선택"
-        },
-        "language": {
-          "label": "언어 (선택사항)",
-          "placeholder": "언어 선택"
-        },
-        "region": {
-          "label": "지역 (선택사항)",
-          "placeholder": "지역 선택"
-        },
-        "logo": {
-          "label": "비즈니스 로고 (선택사항)",
-          "helper": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 1MB",
-          "uploading": "업로드 중..."
-        }
-      },
-      "buttons": {
-        "cancel": "취소",
-        "update": "업데이트",
-        "create": "만들기"
-      }
-    },
-    "businessSelector": {
-      "switchBusiness": "비즈니스 전환",
-      "edit": "편집",
-      "delete": "삭제",
-      "addBusiness": "비즈니스 추가"
-    },
-    "deleteBusinessDialog": {
-      "title": "비즈니스 삭제",
-      "description": "확실한가요? 이것은 취소할 수 없습니다.",
-      "cancel": "취소",
-      "confirm": "삭제"
-    },
-    "userProfile": {
-      "myAccount": "내 계정",
-      "logout": "로그아웃",
-      "dialog": {
-        "title": "로그아웃 확인",
-        "description": "로그아웃하시겠어요?",
-        "cancel": "취소",
-        "confirm": "로그아웃"
-      }
-    },
-    "reports": {
-      "title": "판매 보고서",
-      "subtitle": "포괄적인 판매 분석 및 통계 보기",
-      "dateRange": {
-        "title": "날짜 범위",
-        "description": "날짜 범위로 보고서 필터링",
-        "startDate": "시작 날짜",
-        "endDate": "종료 날짜",
-        "applyFilter": "필터 적용"
-      },
-      "summary": {
-        "totalSales": "총 판매",
-        "transactions": "거래",
-        "averageTransaction": "평균 거래",
-        "perTransaction": "거래 당",
-        "itemsSold": "판매된 항목",
-        "totalUnits": "총 단위",
-        "totalTax": "총 세금",
-        "taxCollected": "징수된 세금",
-        "totalDiscounts": "총 할인",
-        "discountsGiven": "제공된 할인"
-      },
-      "tabs": {
-        "byDate": "날짜별",
-        "byItem": "항목별",
-        "byCategory": "카테고리별",
-        "byPaymentMethod": "결제 방법별"
-      },
-      "byDate": {
-        "title": "날짜별 판매",
-        "description": "일별 판매 내역",
-        "date": "날짜",
-        "transactions": "거래 수",
-        "totalAmount": "총 금액"
-      },
-      "byItem": {
-        "title": "항목별 판매",
-        "description": "베스트셀러 항목",
-        "itemName": "항목 이름",
-        "sku": "SKU",
-        "quantitySold": "판매 수량",
-        "totalRevenue": "총 수익"
-      },
-      "byCategory": {
-        "title": "카테고리별 판매",
-        "description": "카테고리 성과 분석",
-        "category": "카테고리",
-        "quantitySold": "판매 수량",
-        "totalRevenue": "총 수익"
-      },
-      "byPaymentMethod": {
-        "title": "결제 방법별 판매",
-        "description": "결제 방법 분석",
-        "paymentMethod": "결제 방법",
-        "transactions": "거래 수",
-        "totalAmount": "총 금액"
-      },
-      "noData": "데이터 없음"
-    }
-  },
-  "printerTab": {
-    "title": "프린터",
-    "subtitle": "연결된 프린터 관리",
-    "scan": "장치 스캔",
-    "stopScan": "스캔 중지",
-    "noDevices": "장치를 찾을 수 없음",
-    "connected": "연결된 장치",
-    "available": "사용 가능한 장치"
-  },
-  "receiptPopup": {
-    "title": "영수증 설정",
-    "autoPrint": "결제 시 영수증 자동 인쇄",
-    "showPreview": "인쇄 전 미리보기 표시"
-  },
-  "businessOnboarding": {
-    "welcome": "BillForge에 오신 것을 환영합니다",
-    "subtitle": "비즈니스를 설정해 봅시다",
-    "businessName": "비즈니스 이름",
-    "currency": "통화",
-    "address": "주소",
-    "complete": "설정 완료"
-  }
 }
