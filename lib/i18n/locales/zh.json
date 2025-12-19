@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "编码",
                 "autoPrint": "结账后自动打印",
-                "autoPrintDescription": "交易完成后自动打印收据",
                 "connection": "打印客户端连接",
                 "connectionDescription": "连接到在本地机器上运行的 BillForge 打印客户端",
                 "status": "连接状态",

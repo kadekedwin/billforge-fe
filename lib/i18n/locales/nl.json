@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Codering",
                 "autoPrint": "Automatisch Printen",
-                "autoPrintDescription": "Print bon automatisch na betaling",
                 "connection": "Print Client Verbinding",
                 "connectionDescription": "Verbind met lokale BillForge Print Client",
                 "status": "Status",

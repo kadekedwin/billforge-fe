@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Kodning",
                 "autoPrint": "Automatisk udskrift efter betaling",
-                "autoPrintDescription": "Udskriv automatisk kvittering efter gennemført transaktion",
                 "connection": "Print Client Forbindelse",
                 "status": "Forbindelsesstatus",
                 "error": "Fejl",

@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Kodning",
                 "autoPrint": "Auto-utskrift Efter Betalning",
-                "autoPrintDescription": "Skriv ut kvitton automatiskt efter att ha slutfört en transaktion",
                 "connection": "Utskriftsklient",
                 "status": "Status",
                 "error": "Fel",

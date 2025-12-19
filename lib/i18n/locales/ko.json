@@ -854,7 +854,6 @@
             "printerTab": {
                 "encoding": "인코딩",
                 "autoPrint": "결제 후 자동 인쇄",
-                "autoPrintDescription": "거래 완료 후 영수증 자동 인쇄",
                 "connection": "인쇄 클라이언트 연결",
                 "connectionDescription": "로컬 머신의 BillForge 인쇄 클라이언트에 연결",
                 "status": "연결 상태",

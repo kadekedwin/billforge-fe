@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "الترميز",
                 "autoPrint": "طباعة تلقائية بعد الدفع",
-                "autoPrintDescription": "طباعة الإيصال تلقائياً بعد إتمام المعاملة",
                 "connection": "اتصال عميل الطباعة",
                 "connectionDescription": "الاتصال بعميل BillForge للطباعة الذي يعمل على جهازك المحلي",
                 "status": "حالة الاتصال",

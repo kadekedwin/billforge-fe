@@ -854,7 +854,6 @@
             "printerTab": {
                 "encoding": "Encoding",
                 "autoPrint": "Cetak Otomatis Setelah Checkout",
-                "autoPrintDescription": "Secara otomatis mencetak struk setelah menyelesaikan transaksi",
                 "connection": "Koneksi Klien Cetak",
                 "connectionDescription": "Hubungkan ke Klien Cetak BillForge yang berjalan di mesin lokal Anda",
                 "status": "Status Koneksi",

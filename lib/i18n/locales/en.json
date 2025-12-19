@@ -938,7 +938,6 @@
                 "autoCut": "Auto Cut Paper",
                 "encoding": "Encoding",
                 "autoPrint": "Auto Print After Checkout",
-                "autoPrintDescription": "Automatically print receipts after completing a transaction",
                 "testPrint": "Test Print",
                 "testPrintSuccess": "Test print sent successfully!",
                 "testPrintFailed": "Failed to send test print"

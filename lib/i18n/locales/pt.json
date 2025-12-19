@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Codificação",
                 "autoPrint": "Impressão Automática",
-                "autoPrintDescription": "Imprimir recibo automaticamente após venda",
                 "connection": "Conexão Cliente de Impressão",
                 "connectionDescription": "Conectar ao cliente de impressão local",
                 "status": "Estado",

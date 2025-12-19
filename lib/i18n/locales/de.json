@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Kodierung",
                 "autoPrint": "Automatischer Druck",
-                "autoPrintDescription": "Beleg nach Transaktion automatisch drucken",
                 "connection": "Druck-Client Verbindung",
                 "connectionDescription": "Verbinden Sie sich mit dem BillForge Druck-Client auf Ihrem lokalen Computer",
                 "status": "Verbindungsstatus",

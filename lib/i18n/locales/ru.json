@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Кодировка",
                 "autoPrint": "Автопечать",
-                "autoPrintDescription": "Автопечать чека после оплаты",
                 "connection": "Подключение Клиента Печати",
                 "connectionDescription": "Подключиться к клиенту печати BillForge",
                 "status": "Статус",

@@ -876,7 +876,6 @@
             "printerTab": {
                 "encoding": "エンコーディング",
                 "autoPrint": "会計後自動印刷",
-                "autoPrintDescription": "取引完了後にレシートを自動印刷する",
                 "connection": "プリントクライアント接続",
                 "connectionDescription": "ローカルマシンのBillForgeプリントクライアントに接続",
                 "status": "接続ステータス",

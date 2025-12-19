@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Codifica",
                 "autoPrint": "Stampa Automatica",
-                "autoPrintDescription": "Stampa scontrino automaticamente dopo il pagamento",
                 "connection": "Connessione Client Stampa",
                 "connectionDescription": "Connetti al client di stampa BillForge locale",
                 "status": "Stato",

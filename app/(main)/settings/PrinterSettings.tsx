@@ -137,17 +137,12 @@ export default function PrinterSettings() {
                                 <Label>{t('app.settings.printerTab.autoCut')}</Label>
                             </div>
 
-                            <div className="flex items-center justify-between space-x-2">
-                                <div className="space-y-0.5">
-                                    <Label>{t('app.settings.printerTab.autoPrint')}</Label>
-                                    <p className="text-sm text-muted-foreground">
-                                        {t('app.settings.printerTab.autoPrintDescription')}
-                                    </p>
-                                </div>
+                            <div className="flex items-center space-x-2">
                                 <Switch
                                     checked={autoPrint}
                                     onCheckedChange={(checked) => updateAutoPrint(checked)}
                                 />
+                                <Label>{t('app.settings.printerTab.autoPrint')}</Label>
                             </div>
                         </div>
                     )}

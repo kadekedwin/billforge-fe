@@ -894,7 +894,6 @@
             "printerTab": {
                 "encoding": "Encodage",
                 "autoPrint": "Impression auto après paiement",
-                "autoPrintDescription": "Imprimer le reçu automatiquement après la transaction",
                 "connection": "Connexion Client d'Impression",
                 "connectionDescription": "Connectez-vous au client d'impression BillForge sur votre machine locale",
                 "status": "État de la connexion",
