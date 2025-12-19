@@ -37,8 +37,8 @@ export default function ReceiptSettings() {
         transactionNextNumber,
         updateTransactionNextNumber,
 
-        font,
-        updateFont,
+        printerFont,
+        updatePrinterFont,
         lineCharacter,
         updateLineCharacter,
         itemLayout,
@@ -310,7 +310,7 @@ export default function ReceiptSettings() {
 
                         <div className="space-y-2">
                             <Label htmlFor="font-select">Font</Label>
-                            <Select value={font || 'A'} onValueChange={updateFont}>
+                            <Select value={printerFont || 'A'} onValueChange={updatePrinterFont}>
                                 <SelectTrigger id="font-select">
                                     <SelectValue placeholder="Select font" />
                                 </SelectTrigger>
@@ -391,7 +391,7 @@ export default function ReceiptSettings() {
                 <CardContent className="flex justify-center bg-gray-100/50 p-6">
                     <div className="bg-white p-4 shadow-sm border border-gray-200">
                         <iframe
-                            key={`${font}-${lineCharacter}-${itemLayout}-${receiptStyle}-${includeLogo}-${footerMessage}-${qrcodeValue}`}
+                            key={`${printerFont}-${lineCharacter}-${itemLayout}-${receiptStyle}-${includeLogo}-${footerMessage}-${qrcodeValue}`}
                             srcDoc={generateDynamicReceiptHTML({
                                 ...sampleReceipt,
                                 storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
@@ -409,7 +409,7 @@ export default function ReceiptSettings() {
                                 transaction_prefix: transactionPrefix || null,
                                 transaction_next_number: transactionNextNumber,
 
-                                font: font || null,
+                                printer_font: printerFont || null,
                                 line_character: lineCharacter || null,
                                 item_layout: itemLayout,
 

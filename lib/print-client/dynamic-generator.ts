@@ -40,7 +40,7 @@ export const generateDynamicPrintCommand = async (
     // but we can try to use what's available or raw bytes if needed. 
     // However, looking at standard `esc-pos-encoder` types used here (implied), we check if `font` exists or we skip.
     // Use raw command for font if needed: ESC M n (0, 1, 48, 49)
-    if (settings.font === 'B') {
+    if (settings.printer_font === 'B') {
         // printerSettings.charsPerLine might need adjustment for Font B as it's smaller, 
         // typically Font B is 64 chars on 80mm vs 48 for Font A.
         // For now, we just pass the command if the encoder supports it, or raw.

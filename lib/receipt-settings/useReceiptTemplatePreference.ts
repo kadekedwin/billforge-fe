@@ -39,8 +39,8 @@ export interface UseReceiptTemplatePreferenceResult {
     transactionNextNumber: number;
     updateTransactionNextNumber: (value: number) => Promise<void>;
 
-    font: string;
-    updateFont: (value: string) => Promise<void>;
+    printerFont: string;
+    updatePrinterFont: (value: string) => Promise<void>;
     lineCharacter: string;
     updateLineCharacter: (value: string) => Promise<void>;
     itemLayout: number;
@@ -118,7 +118,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     const [transactionPrefix, setTransactionPrefix] = useState<string>('');
     const [transactionNextNumber, setTransactionNextNumber] = useState<number>(1);
 
-    const [font, setFont] = useState<string>('');
+    const [printerFont, setPrinterFont] = useState<string>('');
     const [lineCharacter, setLineCharacter] = useState<string>('');
     const [itemLayout, setItemLayout] = useState<number>(0);
 
@@ -175,7 +175,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                     setTransactionPrefix(data.transaction_prefix || '');
                     setTransactionNextNumber(data.transaction_next_number);
 
-                    setFont(data.font || '');
+                    setPrinterFont(data.printer_font || '');
                     setLineCharacter(data.line_character || '');
                     setItemLayout(Number(data.item_layout ?? 0));
 
@@ -229,7 +229,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                         setTransactionPrefix(data.transaction_prefix || '');
                         setTransactionNextNumber(data.transaction_next_number);
 
-                        setFont(data.font || '');
+                        setPrinterFont(data.printer_font || '');
                         setLineCharacter(data.line_character || '');
                         setItemLayout(Number(data.item_layout ?? 0));
 
@@ -349,14 +349,14 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         }
     };
 
-    const updateFont = async (value: string) => {
+    const updatePrinterFont = async (value: string) => {
         if (!businessUuid) return;
-        setFont(value);
+        setPrinterFont(value);
         try {
-            await updateReceiptSettings(businessUuid, { font: value || null });
+            await updateReceiptSettings(businessUuid, { printer_font: value || null });
         } catch (err) {
-            console.error('Error updating font:', err);
-            setError('Failed to update font');
+            console.error('Error updating printer font:', err);
+            setError('Failed to update printer font');
         }
     };
 
@@ -424,8 +424,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         transactionNextNumber,
         updateTransactionNextNumber,
 
-        font,
-        updateFont,
+        printerFont,
+        updatePrinterFont,
         lineCharacter,
         updateLineCharacter,
         itemLayout,

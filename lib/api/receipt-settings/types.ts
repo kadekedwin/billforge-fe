@@ -10,7 +10,7 @@ export interface ReceiptSettings {
     transaction_prefix: string | null;
     transaction_next_number: number;
     receipt_style_id: number | null;
-    font: string | null;
+    printer_font: string | null;
     line_character: string | null;
     item_layout: number;
 
@@ -55,7 +55,7 @@ export interface CreateReceiptSettingsRequest {
     transaction_prefix?: string | null;
     transaction_next_number?: number;
     receipt_style_id?: number | null;
-    font?: string | null;
+    printer_font?: string | null;
     line_character?: string | null;
     item_layout?: number;
 
@@ -96,7 +96,7 @@ export interface UpdateReceiptSettingsRequest {
     transaction_prefix?: string | null;
     transaction_next_number?: number;
     receipt_style_id?: number | null;
-    font?: string | null;
+    printer_font?: string | null;
     line_character?: string | null;
     item_layout?: number;
 

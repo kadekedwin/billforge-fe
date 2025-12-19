@@ -54,7 +54,7 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
 
     const dividerStyle = `border-top: 1px ${borderStyle} #000; margin: 10px 0;`;
 
-    const font = settings.font || 'A';
+    const font = settings.printer_font || 'A';
     const receiptStyleId = Number(settings.receipt_style_id ?? 0);
 
     let fontFamily = "'Courier New', Courier, monospace";

@@ -56,7 +56,7 @@ export function ReceiptPopup({
     const {
         includeLogo, footerMessage, qrcodeValue, receiptStyle,
         transactionPrefix, transactionNextNumber,
-        font, lineCharacter, itemLayout,
+        printerFont, lineCharacter, itemLayout,
         labelReceiptId, labelReceiptIdEnabled,
         labelTransactionId, labelTransactionIdEnabled,
         labelDate, labelDateEnabled,
@@ -107,7 +107,7 @@ export function ReceiptPopup({
         qrcode_data: qrcodeValue || null,
         transaction_prefix: transactionPrefix || null,
         transaction_next_number: transactionNextNumber,
-        font: font || 'A',
+        printer_font: printerFont || 'A',
         line_character: lineCharacter || '-',
         item_layout: itemLayout,
         label_receipt_id: labelReceiptId || null,
@@ -213,7 +213,7 @@ export function ReceiptPopup({
                     qrcode_data: qrcodeValue || null,
                     transaction_prefix: transactionPrefix || null,
                     transaction_next_number: transactionNextNumber,
-                    font: font || null,
+                    printer_font: printerFont || null,
                     line_character: lineCharacter || null,
                     item_layout: itemLayout,
 
@@ -262,7 +262,7 @@ export function ReceiptPopup({
         } finally {
             setIsPrinting(false);
         }
-    }, [printClient, printReceipt, receiptData, paperWidthMm, charsPerLine, encoding, feedLines, cutEnabled, t, includeLogo, footerMessage, qrcodeValue, transactionPrefix, transactionNextNumber, font, lineCharacter, itemLayout, labelReceiptId, labelReceiptIdEnabled, labelTransactionId, labelTransactionIdEnabled, labelDate, labelDateEnabled, labelTime, labelTimeEnabled, labelCashier, labelCashierEnabled, labelCustomer, labelCustomerEnabled, labelItems, labelItemsEnabled, labelSubtotal, labelSubtotalEnabled, labelDiscount, labelDiscountEnabled, labelTax, labelTaxEnabled, labelTotal, labelTotalEnabled, labelPaymentMethod, labelPaymentMethodEnabled, labelAmountPaid, labelAmountPaidEnabled, labelChange, labelChangeEnabled, selectedBusiness]);
+    }, [printClient, printReceipt, receiptData, paperWidthMm, charsPerLine, encoding, feedLines, cutEnabled, t, includeLogo, footerMessage, qrcodeValue, transactionPrefix, transactionNextNumber, printerFont, lineCharacter, itemLayout, labelReceiptId, labelReceiptIdEnabled, labelTransactionId, labelTransactionIdEnabled, labelDate, labelDateEnabled, labelTime, labelTimeEnabled, labelCashier, labelCashierEnabled, labelCustomer, labelCustomerEnabled, labelItems, labelItemsEnabled, labelSubtotal, labelSubtotalEnabled, labelDiscount, labelDiscountEnabled, labelTax, labelTaxEnabled, labelTotal, labelTotalEnabled, labelPaymentMethod, labelPaymentMethodEnabled, labelAmountPaid, labelAmountPaidEnabled, labelChange, labelChangeEnabled, selectedBusiness]);
 
     // Auto-print effect
     useEffect(() => {
@@ -289,7 +289,7 @@ export function ReceiptPopup({
                     qrcode_data: qrcodeValue || null,
                     transaction_prefix: transactionPrefix || null,
                     transaction_next_number: transactionNextNumber,
-                    font,
+                    printer_font: printerFont,
                     line_character: lineCharacter,
                     item_layout: itemLayout,
                     label_receipt_id: labelReceiptId || null,
@@ -344,7 +344,7 @@ export function ReceiptPopup({
                     qrcode_data: qrcodeValue || null,
                     transaction_prefix: transactionPrefix || null,
                     transaction_next_number: transactionNextNumber,
-                    font,
+                    printer_font: printerFont,
                     line_character: lineCharacter,
                     item_layout: itemLayout,
                     label_receipt_id: labelReceiptId || null,
