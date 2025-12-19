@@ -59,6 +59,7 @@ export default function ProfileSettings() {
                 const imageResult = await getImageUrl({
                     folder: 'users',
                     uuid: response.data.uuid,
+                    updatedAt: response.data.updated_at,
                 });
                 if (imageResult.success && imageResult.url) {
                     setAvatarUrl(imageResult.url);

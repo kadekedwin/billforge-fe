@@ -32,6 +32,7 @@ export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) 
                 const result = await getImageUrl({
                     folder: 'businesses',
                     uuid: business.uuid,
+                    updatedAt: business.updated_at,
                 });
                 if (result.success && result.url) {
                     imageUrlCache.set(cacheKey, result.url);

@@ -99,6 +99,7 @@ export default function SalePage() {
                 const result = await getImageUrl({
                     folder: 'businesses',
                     uuid: selectedBusiness.uuid,
+                    updatedAt: selectedBusiness.updated_at,
                 });
                 if (result.success && result.url) {
                     setBusinessLogoUrl(result.url);

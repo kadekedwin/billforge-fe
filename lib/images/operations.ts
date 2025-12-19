@@ -122,7 +122,7 @@ export async function deleteImage(options: DeleteImageOptions): Promise<DeleteIm
 }
 
 export async function getImageUrl(options: GetImageUrlOptions): Promise<GetImageUrlResult> {
-    const { folder, uuid } = options;
+    const { folder, uuid, updatedAt } = options;
 
     try {
         const extensions = ['jpg', 'jpeg', 'png'];
@@ -138,7 +138,12 @@ export async function getImageUrl(options: GetImageUrlOptions): Promise<GetImage
                     })
                 );
 
-                const url = `${R2_ENDPOINT}/${key}`;
+                let url = `${R2_ENDPOINT}/${key}`;
+
+                if (updatedAt) {
+                    const timestamp = new Date(updatedAt).getTime();
+                    url += `?t=${timestamp}`;
+                }
 
                 return {
                     success: true,

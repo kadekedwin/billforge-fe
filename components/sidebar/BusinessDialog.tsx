@@ -53,11 +53,9 @@ export function BusinessDialog({
     const [isUploadingImage, setIsUploadingImage] = useState(false);
     const [imageDeleted, setImageDeleted] = useState(false);
 
-    // Load existing business data and image when editing
     useEffect(() => {
         const loadExistingData = async () => {
             if (open && editingBusiness) {
-                // Set form data
                 setFormData({
                     name: editingBusiness.name,
                     address: editingBusiness.address,
@@ -68,18 +66,17 @@ export function BusinessDialog({
                     region: editingBusiness.region,
                 });
 
-                // Load existing image
                 if (editingBusiness.image_size_bytes) {
                     const imageResult = await getImageUrl({
                         folder: 'businesses',
                         uuid: editingBusiness.uuid,
+                        updatedAt: editingBusiness.updated_at,
                     });
                     if (imageResult.success && imageResult.url) {
                         setImagePreview(imageResult.url);
                     }
                 }
             } else if (open && !editingBusiness) {
-                // Reset form for new business
                 setFormData({ name: "", address: null, phone: null, image_size_bytes: null, currency: null, language: null, region: null });
                 setImagePreview(null);
                 setSelectedImage(null);

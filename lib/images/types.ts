@@ -25,6 +25,7 @@ export interface DeleteImageResult {
 export interface GetImageUrlOptions {
     folder: 'users' | 'businesses' | 'items';
     uuid: string;
+    updatedAt?: string;
 }
 
 export interface GetImageUrlResult {

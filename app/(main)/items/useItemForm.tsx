@@ -153,6 +153,7 @@ export function useItemForm(): UseItemFormResult {
             const imageResult = await getImageUrl({
                 folder: 'items',
                 uuid: item.uuid,
+                updatedAt: item.updated_at,
             });
             if (imageResult.success && imageResult.url) {
                 setExistingImageUrl(imageResult.url);

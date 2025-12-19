@@ -55,6 +55,7 @@ export function UserProfile({ onNavigate }: UserProfileProps) {
                 const result = await getImageUrl({
                     folder: 'users',
                     uuid: user.uuid,
+                    updatedAt: user.updated_at,
                 });
                 if (result.success && result.url) {
                     imageUrlCache.set(cacheKey, result.url);

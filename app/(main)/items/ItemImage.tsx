@@ -30,6 +30,7 @@ export const ItemImage = memo(({ item }: ItemImageProps) => {
                 const result = await getImageUrl({
                     folder: 'items',
                     uuid: item.uuid,
+                    updatedAt: item.updated_at,
                 });
                 if (result.success && result.url) {
                     imageUrlCache.set(cacheKey, result.url);
