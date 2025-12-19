@@ -4,17 +4,15 @@ export interface ReceiptSettings {
     id: number;
     uuid: string;
     business_uuid: string;
-    receipt_style_id: number | null;
-
     qrcode_data: string | null;
     footer_message: string | null;
     include_image: boolean;
     transaction_prefix: string | null;
     transaction_next_number: number;
-
+    receipt_style_id: number | null;
     font: string | null;
     line_character: string | null;
-    item_layout: number; // 0 for horizontal, 1 for vertical
+    item_layout: number;
 
     label_receipt_id: string | null;
     label_receipt_id_enabled: boolean;
@@ -51,14 +49,12 @@ export interface ReceiptSettings {
 
 export interface CreateReceiptSettingsRequest {
     business_uuid: string;
-    receipt_style_id?: number | null;
-
     qrcode_data?: string | null;
     footer_message?: string | null;
     include_image?: boolean;
     transaction_prefix?: string | null;
     transaction_next_number?: number;
-
+    receipt_style_id?: number | null;
     font?: string | null;
     line_character?: string | null;
     item_layout?: number;
@@ -94,14 +90,12 @@ export interface CreateReceiptSettingsRequest {
 }
 
 export interface UpdateReceiptSettingsRequest {
-    receipt_style_id?: number | null;
-
     qrcode_data?: string | null;
     footer_message?: string | null;
     include_image?: boolean;
     transaction_prefix?: string | null;
     transaction_next_number?: number;
-
+    receipt_style_id?: number | null;
     font?: string | null;
     line_character?: string | null;
     item_layout?: number;
