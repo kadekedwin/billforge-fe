@@ -85,9 +85,6 @@ export const metadata: Metadata = {
         google: "your-google-verification-code",
         yandex: "your-yandex-verification-code",
     },
-    alternates: {
-        canonical: "/",
-    },
     category: "business",
 };
 
@@ -102,7 +99,6 @@ export default function RootLayout({
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
                 <meta name="theme-color" content="#000000" />
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://billforge.com'} />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
