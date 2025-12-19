@@ -190,22 +190,14 @@ export default function PrinterConnectionSettings() {
 
             encoder.initialize()
                 .align('center')
-                .bold(true).size(2, 2).text('TEST PRINT').newline().size(1, 1).bold(false)
+                .bold(true).size(2, 2).text('TEST PRINT').newline().size(1, 1)
+                .bold(false)
                 .newline()
-                .text('BillForge Printer Test').newline()
-                .text('Connection Successful!').newline()
-                .newline()
-                .dashedLine(48).newline()
                 .align('left')
                 .text('Date: ' + new Date().toLocaleDateString()).newline()
                 .text('Time: ' + new Date().toLocaleTimeString()).newline()
-                .dashedLine(48).newline()
-                .align('center')
-                .text('If you can read this,').newline()
-                .text('your printer is working correctly!').newline()
                 .newline()
-                .newline()
-                .newline()
+                .text('1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890').newline()
                 .cut();
 
             const rawData = encoder.getData();
