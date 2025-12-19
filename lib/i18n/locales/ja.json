@@ -482,7 +482,8 @@
                 "export": "ポータブル形式でのデータのエクスポート",
                 "optout": "マーケティングコミュニケーションのオプトアウト",
                 "withdraw": "同意に基づいて処理を行う場合の同意の撤回"
-            }
+            },
+            "exercise": "これらの権利を行使するには、このポリシーの最後にある情報を使用してご連絡ください。"
         },
         "cookies": {
             "title": "7. Cookieおよび追跡技術",
@@ -919,13 +920,50 @@
                 "testPrintFailed": "テスト送信失敗"
             },
             "receiptPopup": {
-                "printReceipt": "レシートを印刷"
+                "printReceipt": "レシートを印刷",
+                "title": "取引完了！",
+                "description": "取引が正常に完了しました。レシートをダウンロードまたは送信してください。",
+                "downloadPDF": "PDFをダウンロード",
+                "downloadImage": "画像をダウンロード",
+                "sendEmail": "メールで送信",
+                "sendWhatsApp": "WhatsAppで送信",
+                "receiptPreview": "レシートプレビュー",
+                "failedDownload": "レシートのダウンロードに失敗しました",
+                "failedDownloadImage": "レシート画像のダウンロードに失敗しました",
+                "receiptWillBeSent": "レシートの送信先",
+                "failedSendEmail": "メールの送信に失敗しました",
+                "failedSendWhatsApp": "WhatsAppメッセージの送信に失敗しました"
             },
             "printer": {
                 "title": "プリンター設定",
                 "noPrinterConnected": "プリンターが接続されていません",
                 "printSuccess": "印刷成功",
                 "printFailed": "印刷失敗"
+            },
+            "businessOnboarding": {
+                "title": "BillForgeへようこそ",
+                "description": "最初のビジネスを作成して始めましょう",
+                "businessName": "ビジネス名",
+                "businessNamePlaceholder": "マイビジネス",
+                "phone": "電話番号（任意）",
+                "phonePlaceholder": "03-1234-5678",
+                "address": "住所（任意）",
+                "addressPlaceholder": "東京都渋谷区...",
+                "currency": "通貨（任意）",
+                "selectCurrency": "通貨を選択",
+                "language": "言語（任意）",
+                "selectLanguage": "言語を選択",
+                "region": "地域（任意）",
+                "selectRegion": "地域を選択",
+                "logo": "ビジネスロゴ（任意）",
+                "logoPreview": "ビジネスロゴプレビュー",
+                "logoFallback": "ロゴ",
+                "logoHelp": "対応フォーマット: JPG, JPEG, PNG, GIF, WEBP。最大サイズ: 1MB",
+                "uploadingLogo": "ロゴをアップロード中...",
+                "createButton": "ビジネスを作成",
+                "imageSizeError": "画像サイズは1MB未満である必要があります",
+                "createError": "ビジネスの作成に失敗しました",
+                "genericError": "ビジネスの作成中にエラーが発生しました"
             }
         },
         "categories": {
@@ -1104,7 +1142,8 @@
                 "description": "'{name}'を削除してもよろしいですか?このアクションは元に戻せません。",
                 "cancel": "キャンセル",
                 "delete": "削除"
-            }
+            },
+            "reports": "レポート"
         },
         "reports": {
             "title": "売上レポート",

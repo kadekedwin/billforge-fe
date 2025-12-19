@@ -898,13 +898,50 @@
                 "testPrintFailed": "Gagal mengirim uji cetak"
             },
             "receiptPopup": {
-                "printReceipt": "Cetak Struk"
+                "printReceipt": "Cetak Struk",
+                "title": "Transaksi Selesai!",
+                "description": "Transaksi Anda telah berhasil diselesaikan. Unduh atau kirim struk.",
+                "downloadPDF": "Unduh PDF",
+                "downloadImage": "Unduh Gambar",
+                "sendEmail": "Kirim ke Email",
+                "sendWhatsApp": "Kirim ke WhatsApp",
+                "receiptPreview": "Pratinjau Struk",
+                "failedDownload": "Gagal mengunduh struk",
+                "failedDownloadImage": "Gagal mengunduh gambar struk",
+                "receiptWillBeSent": "Struk akan dikirim ke",
+                "failedSendEmail": "Gagal mengirim email",
+                "failedSendWhatsApp": "Gagal mengirim pesan WhatsApp"
             },
             "printer": {
                 "title": "Pengaturan Printer",
                 "noPrinterConnected": "Tidak Ada Printer Terhubung",
                 "printSuccess": "Cetak Berhasil",
                 "printFailed": "Cetak Gagal"
+            },
+            "businessOnboarding": {
+                "title": "Selamat Datang di BillForge",
+                "description": "Mulai dengan membuat bisnis pertama Anda",
+                "businessName": "Nama Bisnis",
+                "businessNamePlaceholder": "Bisnis Saya",
+                "phone": "Telepon (Opsional)",
+                "phonePlaceholder": "+6281234567890",
+                "address": "Alamat (Opsional)",
+                "addressPlaceholder": "Jl. Sudirman No. 1, Jakarta",
+                "currency": "Mata Uang (Opsional)",
+                "selectCurrency": "Pilih mata uang",
+                "language": "Bahasa (Opsional)",
+                "selectLanguage": "Pilih bahasa",
+                "region": "Wilayah (Opsional)",
+                "selectRegion": "Pilih wilayah",
+                "logo": "Logo Bisnis (Opsional)",
+                "logoPreview": "Pratinjau logo bisnis",
+                "logoFallback": "Logo",
+                "logoHelp": "Format yang didukung: JPG, JPEG, PNG, GIF, WEBP. Ukuran maks: 1MB",
+                "uploadingLogo": "Mengunggah logo...",
+                "createButton": "Buat Bisnis",
+                "imageSizeError": "Ukuran gambar harus kurang dari 1MB",
+                "createError": "Gagal membuat bisnis",
+                "genericError": "Terjadi kesalahan saat membuat bisnis"
             }
         },
         "categories": {

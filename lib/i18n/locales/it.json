@@ -1120,7 +1120,8 @@
                 "description": "Sei sicuro di voler eliminare '{name}'? Questa azione non può essere annullata.",
                 "cancel": "Annulla",
                 "delete": "Elimina"
-            }
+            },
+            "reports": "Rapporti"
         },
         "reports": {
             "title": "Rapporti Vendite",

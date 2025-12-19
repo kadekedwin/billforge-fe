@@ -898,13 +898,50 @@
                 "testPrintFailed": "전송 실패"
             },
             "receiptPopup": {
-                "printReceipt": "영수증 인쇄"
+                "printReceipt": "영수증 인쇄",
+                "title": "거래 완료!",
+                "description": "거래가 성공적으로 완료되었습니다. 영수증을 다운로드하거나 전송하세요.",
+                "downloadPDF": "PDF 다운로드",
+                "downloadImage": "이미지 다운로드",
+                "sendEmail": "이메일로 전송",
+                "sendWhatsApp": "WhatsApp으로 전송",
+                "receiptPreview": "영수증 미리보기",
+                "failedDownload": "영수증 다운로드 실패",
+                "failedDownloadImage": "영수증 이미지 다운로드 실패",
+                "receiptWillBeSent": "영수증 전송 대상",
+                "failedSendEmail": "이메일 전송 실패",
+                "failedSendWhatsApp": "WhatsApp 메시지 전송 실패"
             },
             "printer": {
                 "title": "프린터 설정",
                 "noPrinterConnected": "연결된 프린터 없음",
                 "printSuccess": "인쇄 성공",
                 "printFailed": "인쇄 실패"
+            },
+            "businessOnboarding": {
+                "title": "BillForge에 오신 것을 환영합니다",
+                "description": "첫 번째 비즈니스를 생성하여 시작하세요",
+                "businessName": "비즈니스 이름",
+                "businessNamePlaceholder": "내 비즈니스",
+                "phone": "전화번호 (선택 사항)",
+                "phonePlaceholder": "010-1234-5678",
+                "address": "주소 (선택 사항)",
+                "addressPlaceholder": "서울시 강남구...",
+                "currency": "통화 (선택 사항)",
+                "selectCurrency": "통화 선택",
+                "language": "언어 (선택 사항)",
+                "selectLanguage": "언어 선택",
+                "region": "지역 (선택 사항)",
+                "selectRegion": "지역 선택",
+                "logo": "비즈니스 로고 (선택 사항)",
+                "logoPreview": "비즈니스 로고 미리보기",
+                "logoFallback": "로고",
+                "logoHelp": "지원 형식: JPG, JPEG, PNG, GIF, WEBP. 최대 크기: 1MB",
+                "uploadingLogo": "로고 업로드 중...",
+                "createButton": "비즈니스 생성",
+                "imageSizeError": "이미지 크기는 1MB 미만이어야 합니다",
+                "createError": "비즈니스 생성 실패",
+                "genericError": "비즈니스 생성 중 오류 발생"
             }
         },
         "categories": {
@@ -1083,7 +1120,8 @@
                 "description": "'{name}'을 삭제하시겠어요? 이 작업은 취소할 수 없습니다.",
                 "cancel": "취소",
                 "delete": "삭제"
-            }
+            },
+            "reports": "보고서"
         },
         "reports": {
             "title": "매출 보고서",

@@ -920,13 +920,50 @@
                 "testPrintFailed": "टेस्ट प्रिंट भेजने में विफल"
             },
             "receiptPopup": {
-                "printReceipt": "रसीद प्रिंट करें"
+                "printReceipt": "रसीद प्रिंट करें",
+                "title": "लेन-देन पूरा हुआ!",
+                "description": "आपका लेन-देन सफलतापूर्वक पूरा हो गया है। रसीद डाउनलोड करें या भेजें।",
+                "downloadPDF": "पीडीएफ डाउनलोड करें",
+                "downloadImage": "छवि डाउनलोड करें",
+                "sendEmail": "ईमेल पर भेजें",
+                "sendWhatsApp": "व्हाट्सएप पर भेजें",
+                "receiptPreview": "रसीद पूर्वावलोकन",
+                "failedDownload": "रसीद डाउनलोड करने में विफल",
+                "failedDownloadImage": "रसीद छवि डाउनलोड करने में विफल",
+                "receiptWillBeSent": "रसीद भेजी जाएगी",
+                "failedSendEmail": "ईमेल भेजने में विफल",
+                "failedSendWhatsApp": "व्हाट्सएप संदेश भेजने में विफल"
             },
             "printer": {
                 "title": "प्रिंटर सेटिंग्स",
                 "noPrinterConnected": "कोई प्रिंटर कनेक्ट नहीं है",
                 "printSuccess": "प्रिंट सफल",
                 "printFailed": "प्रिंट विफल"
+            },
+            "businessOnboarding": {
+                "title": "BillForge में आपका स्वागत है",
+                "description": "अपना पहला व्यवसाय बनाकर शुरुआत करें",
+                "businessName": "व्यवसाय का नाम",
+                "businessNamePlaceholder": "मेरा व्यवसाय",
+                "phone": "फ़ोन (वैकल्पिक)",
+                "phonePlaceholder": "+919876543210",
+                "address": "पता (वैकल्पिक)",
+                "addressPlaceholder": "123 मुख्य सड़क, शहर, राज्य, पिन",
+                "currency": "मुद्रा (वैकल्पिक)",
+                "selectCurrency": "मुद्रा चुनें",
+                "language": "भाषा (वैकल्पिक)",
+                "selectLanguage": "भाषा चुनें",
+                "region": "क्षेत्र (वैकल्पिक)",
+                "selectRegion": "क्षेत्र चुनें",
+                "logo": "व्यवसाय लोगो (वैकल्पिक)",
+                "logoPreview": "व्यवसाय लोगो पूर्वावलोकन",
+                "logoFallback": "लोगो",
+                "logoHelp": "समर्थित प्रारूप: JPG, JPEG, PNG, GIF, WEBP। अधिकतम आकार: 1MB",
+                "uploadingLogo": "लोगो अपलोड हो रहा है...",
+                "createButton": "व्यवसाय बनाएं",
+                "imageSizeError": "छवि का आकार 1MB से कम होना चाहिए",
+                "createError": "व्यवसाय बनाने में विफल",
+                "genericError": "व्यवसाय बनाते समय एक त्रुटि हुई"
             }
         },
         "categories": {
@@ -1105,7 +1142,8 @@
                 "description": "क्या आप निश्चित हैं कि आप '{name}' को हटाना चाहते हैं? यह कार्रवाई को पूर्ववत नहीं किया जा सकता।",
                 "cancel": "रद्द करें",
                 "delete": "हटाएं"
-            }
+            },
+            "reports": "रिपोर्ट"
         },
         "reports": {
             "title": "बिक्री रिपोर्ट",
