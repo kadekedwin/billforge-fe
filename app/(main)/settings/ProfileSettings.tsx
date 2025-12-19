@@ -318,7 +318,7 @@ export default function ProfileSettings() {
                             <Input
                                 id="avatar-upload"
                                 type="file"
-                                accept="image/*"
+                                accept="image/jpeg,image/png"
                                 className="hidden"
                                 onChange={handleAvatarChange}
                             />

@@ -429,7 +429,7 @@ export function BusinessDialog({
                                         id="business-logo"
                                         name="business-logo"
                                         type="file"
-                                        accept="image/*"
+                                        accept="image/jpeg,image/png"
                                         onChange={handleImageChange}
                                         disabled={isSubmitting || isUploadingImage}
                                         className="cursor-pointer"

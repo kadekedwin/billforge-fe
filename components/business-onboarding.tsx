@@ -327,7 +327,7 @@ export function BusinessOnboarding() {
                   id="logo"
                   name="logo"
                   type="file"
-                  accept="image/*"
+                  accept="image/jpeg,image/png"
                   onChange={handleImageChange}
                   disabled={isSubmitting || isUploadingImage}
                   className="cursor-pointer"

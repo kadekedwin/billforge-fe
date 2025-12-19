@@ -226,7 +226,7 @@ export function ItemFormDialog({
                                             id="image"
                                             name="image"
                                             type="file"
-                                            accept="image/*"
+                                            accept="image/jpeg,image/png"
                                             onChange={onImageChange}
                                             disabled={isSubmitting || isUploadingImage}
                                             className="cursor-pointer"

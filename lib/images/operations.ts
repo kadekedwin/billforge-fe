@@ -18,12 +18,20 @@ export async function uploadImage(options: UploadImageOptions): Promise<UploadIm
 
     try {
         const extension = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+        const allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+        if (!allowedExtensions.includes(extension)) {
+            return {
+                success: false,
+                error: "Only JPG, JPEG, and PNG files are allowed",
+            };
+        }
         const key = `${folder}/${uuid}.${extension}`;
 
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
 
-        const allExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        const allExtensions = ['jpg', 'jpeg', 'png'];
         const otherExtensions = allExtensions.filter(ext => ext !== extension);
 
         for (const ext of otherExtensions) {
@@ -74,7 +82,7 @@ export async function deleteImage(options: DeleteImageOptions): Promise<DeleteIm
     const { folder, uuid } = options;
 
     try {
-        const extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        const extensions = ['jpg', 'jpeg', 'png'];
 
         for (const ext of extensions) {
             const key = `${folder}/${uuid}.${ext}`;
@@ -117,7 +125,7 @@ export async function getImageUrl(options: GetImageUrlOptions): Promise<GetImage
     const { folder, uuid } = options;
 
     try {
-        const extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        const extensions = ['jpg', 'jpeg', 'png'];
 
         for (const ext of extensions) {
             const key = `${folder}/${uuid}.${ext}`;

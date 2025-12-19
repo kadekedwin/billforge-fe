@@ -958,7 +958,7 @@
                 "logo": "ビジネスロゴ（任意）",
                 "logoPreview": "ビジネスロゴプレビュー",
                 "logoFallback": "ロゴ",
-                "logoHelp": "対応フォーマット: JPG, JPEG, PNG, GIF, WEBP。最大サイズ: 1MB",
+                "logoHelp": "対応フォーマット: JPG, JPEG, PNG, 。最大サイズ: 1MB",
                 "uploadingLogo": "ロゴをアップロード中...",
                 "createButton": "ビジネスを作成",
                 "imageSizeError": "画像サイズは1MB未満である必要があります",
