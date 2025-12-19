@@ -5,8 +5,7 @@ export type {
     ReceiptItem,
     ReceiptTemplateType,
     ImageTemplateType,
-    PrintTemplateType,
     ReceiptTemplate
 } from './types';
-export { receiptTemplates, imageTemplates, printTemplates, generateReceiptHTML } from './templates';
+export { receiptTemplates, imageTemplates, generateReceiptHTML } from './templates';
 export { convertTransactionToReceiptData } from './utils';

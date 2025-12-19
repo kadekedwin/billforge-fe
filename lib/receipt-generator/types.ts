@@ -32,8 +32,7 @@ export interface ReceiptData {
 }
 
 export type ImageTemplateType = 'classic' | 'sans-serif' | 'modern-bold';
-export type PrintTemplateType = 'thermal-classic' | 'thermal-compact' | 'thermal-detailed';
-export type ReceiptTemplateType = ImageTemplateType | PrintTemplateType;
+export type ReceiptTemplateType = ImageTemplateType;
 
 export interface ReceiptTemplate {
     name: string;

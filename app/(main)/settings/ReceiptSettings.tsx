@@ -5,8 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ReceiptData, ImageTemplateType, imageTemplates, ReceiptTemplate } from '@/lib/receipt-generator';
 import { generateReceiptHTML } from '@/lib/receipt-generator';
+import { generateDynamicPreviewHTML } from '@/lib/receipt-generator/dynamic-preview';
 import { useReceiptTemplatePreference } from '@/lib/receipt-settings';
 import { Check, Loader2 } from 'lucide-react';
 import { useBusiness } from '@/contexts/business-context';
@@ -120,34 +122,83 @@ export default function ReceiptSettings() {
         updateTransactionPrefix,
         transactionNextNumber,
         updateTransactionNextNumber,
+
+        font,
+        updateFont,
+        lineCharacter,
+        updateLineCharacter,
+        itemLayout,
+        updateItemLayout,
+
         labelReceiptId,
         updateLabelReceiptId,
+        labelReceiptIdEnabled,
+        updateLabelReceiptIdEnabled,
+
         labelTransactionId,
         updateLabelTransactionId,
+        labelTransactionIdEnabled,
+        updateLabelTransactionIdEnabled,
+
         labelDate,
         updateLabelDate,
+        labelDateEnabled,
+        updateLabelDateEnabled,
+
         labelTime,
         updateLabelTime,
+        labelTimeEnabled,
+        updateLabelTimeEnabled,
+
         labelCashier,
         updateLabelCashier,
+        labelCashierEnabled,
+        updateLabelCashierEnabled,
+
         labelCustomer,
         updateLabelCustomer,
+        labelCustomerEnabled,
+        updateLabelCustomerEnabled,
+
         labelItems,
         updateLabelItems,
+        labelItemsEnabled,
+        updateLabelItemsEnabled,
+
         labelSubtotal,
         updateLabelSubtotal,
+        labelSubtotalEnabled,
+        updateLabelSubtotalEnabled,
+
         labelDiscount,
         updateLabelDiscount,
+        labelDiscountEnabled,
+        updateLabelDiscountEnabled,
+
         labelTax,
         updateLabelTax,
+        labelTaxEnabled,
+        updateLabelTaxEnabled,
+
         labelTotal,
         updateLabelTotal,
+        labelTotalEnabled,
+        updateLabelTotalEnabled,
+
         labelPaymentMethod,
         updateLabelPaymentMethod,
+        labelPaymentMethodEnabled,
+        updateLabelPaymentMethodEnabled,
+
         labelAmountPaid,
         updateLabelAmountPaid,
+        labelAmountPaidEnabled,
+        updateLabelAmountPaidEnabled,
+
         labelChange,
         updateLabelChange,
+        labelChangeEnabled,
+        updateLabelChangeEnabled,
     } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
 
     const sampleReceipt: ReceiptData = {
@@ -211,6 +262,36 @@ export default function ReceiptSettings() {
             </div>
         );
     }
+
+    const renderLabelInput = (
+        id: string,
+        label: string,
+        value: string,
+        onChange: (v: string) => void,
+        enabled: boolean,
+        onEnabledChange: (v: boolean) => void
+    ) => (
+        <div className="space-y-2">
+            <Label htmlFor={id} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                {label}
+            </Label>
+            <div className="flex items-center gap-2">
+                <Input
+                    id={id}
+                    placeholder={label}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)}
+                    maxLength={100}
+                    disabled={!enabled}
+                    className={`flex-1 ${!enabled ? 'opacity-50' : ''}`}
+                />
+                <Switch
+                    checked={enabled}
+                    onCheckedChange={onEnabledChange}
+                />
+            </div>
+        </div>
+    );
 
     return (
         <div className="space-y-6">
@@ -294,6 +375,51 @@ export default function ReceiptSettings() {
                         />
                         <p className="text-xs text-muted-foreground">{t('app.settings.receiptTab.nextNumberHelp')}</p>
                     </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="font-select">Font</Label>
+                            <Select value={font || 'A'} onValueChange={updateFont}>
+                                <SelectTrigger id="font-select">
+                                    <SelectValue placeholder="Select font" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="A">Font A (Default)</SelectItem>
+                                    <SelectItem value="B">Font B (Small)</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="line-character-select">Line Character</Label>
+                            <Select value={lineCharacter || '-'} onValueChange={updateLineCharacter}>
+                                <SelectTrigger id="line-character-select">
+                                    <SelectValue placeholder="Select line style" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="-">Dashed (-)</SelectItem>
+                                    <SelectItem value=".">Dotted (.)</SelectItem>
+                                    <SelectItem value="_">Underscore (_)</SelectItem>
+                                    <SelectItem value="=">Double (=)</SelectItem>
+                                    <SelectItem value="*">Asterisk (*)</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="item-layout-select">Item Layout</Label>
+                            <Select value={itemLayout?.toString() || '0'} onValueChange={(val) => updateItemLayout(parseInt(val))}>
+                                <SelectTrigger id="item-layout-select">
+                                    <SelectValue placeholder="Select layout" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="0">Horizontal (Name & Price same line)</SelectItem>
+                                    <SelectItem value="1">Vertical (Name top, Price bottom)</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
+
                 </CardContent>
             </Card>
 
@@ -301,164 +427,95 @@ export default function ReceiptSettings() {
                 <CardHeader>
                     <CardTitle>Custom Labels</CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
-                        Customize the labels displayed on your receipts
+                        Customize and toggle visibility of receipt labels
                     </p>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="label-receipt-id">Receipt ID Label</Label>
-                            <Input
-                                id="label-receipt-id"
-                                placeholder="Receipt #"
-                                value={labelReceiptId}
-                                onChange={(e) => updateLabelReceiptId(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
+                        {renderLabelInput('label-receipt-id', 'Receipt ID Label', labelReceiptId, updateLabelReceiptId, labelReceiptIdEnabled, updateLabelReceiptIdEnabled)}
+                        {renderLabelInput('label-transaction-id', 'Transaction ID Label', labelTransactionId, updateLabelTransactionId, labelTransactionIdEnabled, updateLabelTransactionIdEnabled)}
+                        {renderLabelInput('label-date', 'Date Label', labelDate, updateLabelDate, labelDateEnabled, updateLabelDateEnabled)}
+                        {renderLabelInput('label-time', 'Time Label', labelTime, updateLabelTime, labelTimeEnabled, updateLabelTimeEnabled)}
+                        {renderLabelInput('label-cashier', 'Cashier Label', labelCashier, updateLabelCashier, labelCashierEnabled, updateLabelCashierEnabled)}
+                        {renderLabelInput('label-customer', 'Customer Label', labelCustomer, updateLabelCustomer, labelCustomerEnabled, updateLabelCustomerEnabled)}
+                        {renderLabelInput('label-items', 'Items Label', labelItems, updateLabelItems, labelItemsEnabled, updateLabelItemsEnabled)}
+                        {renderLabelInput('label-subtotal', 'Subtotal Label', labelSubtotal, updateLabelSubtotal, labelSubtotalEnabled, updateLabelSubtotalEnabled)}
+                        {renderLabelInput('label-discount', 'Discount Label', labelDiscount, updateLabelDiscount, labelDiscountEnabled, updateLabelDiscountEnabled)}
+                        {renderLabelInput('label-tax', 'Tax Label', labelTax, updateLabelTax, labelTaxEnabled, updateLabelTaxEnabled)}
+                        {renderLabelInput('label-total', 'Total Label', labelTotal, updateLabelTotal, labelTotalEnabled, updateLabelTotalEnabled)}
+                        {renderLabelInput('label-payment-method', 'Payment Method Label', labelPaymentMethod, updateLabelPaymentMethod, labelPaymentMethodEnabled, updateLabelPaymentMethodEnabled)}
+                        {renderLabelInput('label-amount-paid', 'Amount Paid Label', labelAmountPaid, updateLabelAmountPaid, labelAmountPaidEnabled, updateLabelAmountPaidEnabled)}
+                        {renderLabelInput('label-change', 'Change Label', labelChange, updateLabelChange, labelChangeEnabled, updateLabelChangeEnabled)}
+                    </div>
+                </CardContent>
+            </Card>
 
-                        <div className="space-y-2">
-                            <Label htmlFor="label-transaction-id">Transaction ID Label</Label>
-                            <Input
-                                id="label-transaction-id"
-                                placeholder="Transaction ID"
-                                value={labelTransactionId}
-                                onChange={(e) => updateLabelTransactionId(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Thermal Preview</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">
+                        Preview of how the receipt will look on a thermal printer
+                    </p>
+                </CardHeader>
+                <CardContent className="flex justify-center bg-gray-100/50 p-6">
+                    <div className="bg-white p-4 shadow-sm border border-gray-200">
+                        <iframe
+                            key={`${font}-${lineCharacter}-${itemLayout}-${includeLogo}-${footerMessage}-${qrcodeValue}`}
+                            srcDoc={generateDynamicPreviewHTML({
+                                ...sampleReceipt,
+                                storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
+                                footer: footerMessage,
+                                qrcode: qrcodeValue,
+                                currencySymbol: sampleReceipt.currencySymbol
+                            }, {
+                                id: 0,
+                                uuid: '',
+                                business_uuid: '',
+                                image_template_id: null,
+                                qrcode_data: qrcodeValue || null,
+                                footer_message: footerMessage || null,
+                                include_image: includeLogo,
+                                transaction_prefix: transactionPrefix || null,
+                                transaction_next_number: transactionNextNumber,
 
-                        <div className="space-y-2">
-                            <Label htmlFor="label-date">Date Label</Label>
-                            <Input
-                                id="label-date"
-                                placeholder="Date"
-                                value={labelDate}
-                                onChange={(e) => updateLabelDate(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
+                                font: font || null,
+                                line_character: lineCharacter || null,
+                                item_layout: itemLayout,
 
-                        <div className="space-y-2">
-                            <Label htmlFor="label-time">Time Label</Label>
-                            <Input
-                                id="label-time"
-                                placeholder="Time"
-                                value={labelTime}
-                                onChange={(e) => updateLabelTime(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-cashier">Cashier Label</Label>
-                            <Input
-                                id="label-cashier"
-                                placeholder="Cashier"
-                                value={labelCashier}
-                                onChange={(e) => updateLabelCashier(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-customer">Customer Label</Label>
-                            <Input
-                                id="label-customer"
-                                placeholder="Customer"
-                                value={labelCustomer}
-                                onChange={(e) => updateLabelCustomer(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-items">Items Label</Label>
-                            <Input
-                                id="label-items"
-                                placeholder="Items"
-                                value={labelItems}
-                                onChange={(e) => updateLabelItems(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-subtotal">Subtotal Label</Label>
-                            <Input
-                                id="label-subtotal"
-                                placeholder="Subtotal"
-                                value={labelSubtotal}
-                                onChange={(e) => updateLabelSubtotal(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-discount">Discount Label</Label>
-                            <Input
-                                id="label-discount"
-                                placeholder="Discount"
-                                value={labelDiscount}
-                                onChange={(e) => updateLabelDiscount(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-tax">Tax Label</Label>
-                            <Input
-                                id="label-tax"
-                                placeholder="Tax"
-                                value={labelTax}
-                                onChange={(e) => updateLabelTax(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-total">Total Label</Label>
-                            <Input
-                                id="label-total"
-                                placeholder="TOTAL"
-                                value={labelTotal}
-                                onChange={(e) => updateLabelTotal(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-payment-method">Payment Method Label</Label>
-                            <Input
-                                id="label-payment-method"
-                                placeholder="Payment Method"
-                                value={labelPaymentMethod}
-                                onChange={(e) => updateLabelPaymentMethod(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-amount-paid">Amount Paid Label</Label>
-                            <Input
-                                id="label-amount-paid"
-                                placeholder="Paid"
-                                value={labelAmountPaid}
-                                onChange={(e) => updateLabelAmountPaid(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="label-change">Change Label</Label>
-                            <Input
-                                id="label-change"
-                                placeholder="Change"
-                                value={labelChange}
-                                onChange={(e) => updateLabelChange(e.target.value)}
-                                maxLength={100}
-                            />
-                        </div>
+                                label_receipt_id: labelReceiptId || null,
+                                label_receipt_id_enabled: labelReceiptIdEnabled,
+                                label_transaction_id: labelTransactionId || null,
+                                label_transaction_id_enabled: labelTransactionIdEnabled,
+                                label_date: labelDate || null,
+                                label_date_enabled: labelDateEnabled,
+                                label_time: labelTime || null,
+                                label_time_enabled: labelTimeEnabled,
+                                label_cashier: labelCashier || null,
+                                label_cashier_enabled: labelCashierEnabled,
+                                label_customer: labelCustomer || null,
+                                label_customer_enabled: labelCustomerEnabled,
+                                label_items: labelItems || null,
+                                label_items_enabled: labelItemsEnabled,
+                                label_subtotal: labelSubtotal || null,
+                                label_subtotal_enabled: labelSubtotalEnabled,
+                                label_discount: labelDiscount || null,
+                                label_discount_enabled: labelDiscountEnabled,
+                                label_tax: labelTax || null,
+                                label_tax_enabled: labelTaxEnabled,
+                                label_total: labelTotal || null,
+                                label_total_enabled: labelTotalEnabled,
+                                label_payment_method: labelPaymentMethod || null,
+                                label_payment_method_enabled: labelPaymentMethodEnabled,
+                                label_amount_paid: labelAmountPaid || null,
+                                label_amount_paid_enabled: labelAmountPaidEnabled,
+                                label_change: labelChange || null,
+                                label_change_enabled: labelChangeEnabled,
+                                created_at: '',
+                                updated_at: ''
+                            })}
+                            className="w-[300px] h-[500px] border-0 bg-white"
+                            title="Thermal Preview"
+                        />
                     </div>
                 </CardContent>
             </Card>

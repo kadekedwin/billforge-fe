@@ -2,12 +2,8 @@ import { useCallback } from 'react';
 import { PrintClientWebSocket } from './websocket-print';
 import { ReceiptData } from '@/lib/receipt-generator';
 import { EscPosEncoder } from './esc-pos-encoder';
-import {
-    generatePrintTemplate0,
-    generatePrintTemplate1,
-    generatePrintTemplate2,
-    PrinterSettings
-} from './printTemplates';
+import { generateDynamicPrintCommand, PrinterSettings } from './dynamic-generator';
+import { ReceiptSettings } from '@/lib/api/receipt-settings/types';
 
 interface UseReceiptPrintProps {
     printClient: PrintClientWebSocket | null;
@@ -15,8 +11,8 @@ interface UseReceiptPrintProps {
 
 interface PrintOptions {
     printerId: string;
-    templateId: number;
-    settings?: PrinterSettings;
+    receiptSettings: ReceiptSettings;
+    printerSettings?: PrinterSettings;
 }
 
 export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
@@ -27,18 +23,12 @@ export function useReceiptPrint({ printClient }: UseReceiptPrintProps) {
 
         const encoder = new EscPosEncoder();
 
-        switch (options.templateId) {
-            case 1:
-                await generatePrintTemplate1(data, encoder, options.settings);
-                break;
-            case 2:
-                await generatePrintTemplate2(data, encoder, options.settings);
-                break;
-            case 0:
-            default:
-                await generatePrintTemplate0(data, encoder, options.settings);
-                break;
-        }
+        await generateDynamicPrintCommand(
+            data,
+            options.receiptSettings,
+            encoder,
+            options.printerSettings
+        );
 
         const rawData = encoder.getData();
 

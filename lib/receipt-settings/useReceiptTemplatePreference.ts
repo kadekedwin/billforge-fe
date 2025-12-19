@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { ImageTemplateType, PrintTemplateType } from '@/lib/receipt-generator';
+import { ImageTemplateType } from '@/lib/receipt-generator';
 import {
     getReceiptSettings,
     createReceiptSettings,
@@ -19,8 +19,6 @@ const IMAGE_TEMPLATE_TYPE_MAP: Record<ImageTemplateType, number> = {
     'sans-serif': 1,
     'modern-bold': 2,
 };
-
-
 
 interface UseReceiptTemplatePreferenceProps {
     businessUuid: string | null;
@@ -42,34 +40,70 @@ export interface UseReceiptTemplatePreferenceResult {
     updateTransactionPrefix: (value: string) => Promise<void>;
     transactionNextNumber: number;
     updateTransactionNextNumber: (value: number) => Promise<void>;
+
+    font: string;
+    updateFont: (value: string) => Promise<void>;
+    lineCharacter: string;
+    updateLineCharacter: (value: string) => Promise<void>;
+    itemLayout: number;
+    updateItemLayout: (value: number) => Promise<void>;
+
     labelReceiptId: string;
     updateLabelReceiptId: (value: string) => Promise<void>;
+    labelReceiptIdEnabled: boolean;
+    updateLabelReceiptIdEnabled: (value: boolean) => Promise<void>;
     labelTransactionId: string;
     updateLabelTransactionId: (value: string) => Promise<void>;
+    labelTransactionIdEnabled: boolean;
+    updateLabelTransactionIdEnabled: (value: boolean) => Promise<void>;
     labelDate: string;
     updateLabelDate: (value: string) => Promise<void>;
+    labelDateEnabled: boolean;
+    updateLabelDateEnabled: (value: boolean) => Promise<void>;
     labelTime: string;
     updateLabelTime: (value: string) => Promise<void>;
+    labelTimeEnabled: boolean;
+    updateLabelTimeEnabled: (value: boolean) => Promise<void>;
     labelCashier: string;
     updateLabelCashier: (value: string) => Promise<void>;
+    labelCashierEnabled: boolean;
+    updateLabelCashierEnabled: (value: boolean) => Promise<void>;
     labelCustomer: string;
     updateLabelCustomer: (value: string) => Promise<void>;
+    labelCustomerEnabled: boolean;
+    updateLabelCustomerEnabled: (value: boolean) => Promise<void>;
     labelItems: string;
     updateLabelItems: (value: string) => Promise<void>;
+    labelItemsEnabled: boolean;
+    updateLabelItemsEnabled: (value: boolean) => Promise<void>;
     labelSubtotal: string;
     updateLabelSubtotal: (value: string) => Promise<void>;
+    labelSubtotalEnabled: boolean;
+    updateLabelSubtotalEnabled: (value: boolean) => Promise<void>;
     labelDiscount: string;
     updateLabelDiscount: (value: string) => Promise<void>;
+    labelDiscountEnabled: boolean;
+    updateLabelDiscountEnabled: (value: boolean) => Promise<void>;
     labelTax: string;
     updateLabelTax: (value: string) => Promise<void>;
+    labelTaxEnabled: boolean;
+    updateLabelTaxEnabled: (value: boolean) => Promise<void>;
     labelTotal: string;
     updateLabelTotal: (value: string) => Promise<void>;
+    labelTotalEnabled: boolean;
+    updateLabelTotalEnabled: (value: boolean) => Promise<void>;
     labelPaymentMethod: string;
     updateLabelPaymentMethod: (value: string) => Promise<void>;
+    labelPaymentMethodEnabled: boolean;
+    updateLabelPaymentMethodEnabled: (value: boolean) => Promise<void>;
     labelAmountPaid: string;
     updateLabelAmountPaid: (value: string) => Promise<void>;
+    labelAmountPaidEnabled: boolean;
+    updateLabelAmountPaidEnabled: (value: boolean) => Promise<void>;
     labelChange: string;
     updateLabelChange: (value: string) => Promise<void>;
+    labelChangeEnabled: boolean;
+    updateLabelChangeEnabled: (value: boolean) => Promise<void>;
     refetch: () => Promise<void>;
 }
 
@@ -85,20 +119,39 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     const [qrcodeValue, setQrcodeValue] = useState<string>('');
     const [transactionPrefix, setTransactionPrefix] = useState<string>('');
     const [transactionNextNumber, setTransactionNextNumber] = useState<number>(1);
+
+    const [font, setFont] = useState<string>('');
+    const [lineCharacter, setLineCharacter] = useState<string>('');
+    const [itemLayout, setItemLayout] = useState<number>(0);
+
     const [labelReceiptId, setLabelReceiptId] = useState<string>('');
+    const [labelReceiptIdEnabled, setLabelReceiptIdEnabled] = useState<boolean>(true);
     const [labelTransactionId, setLabelTransactionId] = useState<string>('');
+    const [labelTransactionIdEnabled, setLabelTransactionIdEnabled] = useState<boolean>(true);
     const [labelDate, setLabelDate] = useState<string>('');
+    const [labelDateEnabled, setLabelDateEnabled] = useState<boolean>(true);
     const [labelTime, setLabelTime] = useState<string>('');
+    const [labelTimeEnabled, setLabelTimeEnabled] = useState<boolean>(true);
     const [labelCashier, setLabelCashier] = useState<string>('');
+    const [labelCashierEnabled, setLabelCashierEnabled] = useState<boolean>(true);
     const [labelCustomer, setLabelCustomer] = useState<string>('');
+    const [labelCustomerEnabled, setLabelCustomerEnabled] = useState<boolean>(true);
     const [labelItems, setLabelItems] = useState<string>('');
+    const [labelItemsEnabled, setLabelItemsEnabled] = useState<boolean>(true);
     const [labelSubtotal, setLabelSubtotal] = useState<string>('');
+    const [labelSubtotalEnabled, setLabelSubtotalEnabled] = useState<boolean>(true);
     const [labelDiscount, setLabelDiscount] = useState<string>('');
+    const [labelDiscountEnabled, setLabelDiscountEnabled] = useState<boolean>(true);
     const [labelTax, setLabelTax] = useState<string>('');
+    const [labelTaxEnabled, setLabelTaxEnabled] = useState<boolean>(true);
     const [labelTotal, setLabelTotal] = useState<string>('');
+    const [labelTotalEnabled, setLabelTotalEnabled] = useState<boolean>(true);
     const [labelPaymentMethod, setLabelPaymentMethod] = useState<string>('');
+    const [labelPaymentMethodEnabled, setLabelPaymentMethodEnabled] = useState<boolean>(true);
     const [labelAmountPaid, setLabelAmountPaid] = useState<string>('');
+    const [labelAmountPaidEnabled, setLabelAmountPaidEnabled] = useState<boolean>(true);
     const [labelChange, setLabelChange] = useState<string>('');
+    const [labelChangeEnabled, setLabelChangeEnabled] = useState<boolean>(true);
 
     const loadReceiptData = useCallback(async () => {
         if (!businessUuid || isLoadingRef.current) {
@@ -123,26 +176,44 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                     setQrcodeValue(data.qrcode_data || '');
                     setTransactionPrefix(data.transaction_prefix || '');
                     setTransactionNextNumber(data.transaction_next_number);
+
+                    setFont(data.font || '');
+                    setLineCharacter(data.line_character || '');
+                    setItemLayout(Number(data.item_layout ?? 0));
+
                     setLabelReceiptId(data.label_receipt_id || '');
+                    setLabelReceiptIdEnabled(data.label_receipt_id_enabled ?? true);
                     setLabelTransactionId(data.label_transaction_id || '');
+                    setLabelTransactionIdEnabled(data.label_transaction_id_enabled ?? true);
                     setLabelDate(data.label_date || '');
+                    setLabelDateEnabled(data.label_date_enabled ?? true);
                     setLabelTime(data.label_time || '');
+                    setLabelTimeEnabled(data.label_time_enabled ?? true);
                     setLabelCashier(data.label_cashier || '');
+                    setLabelCashierEnabled(data.label_cashier_enabled ?? true);
                     setLabelCustomer(data.label_customer || '');
+                    setLabelCustomerEnabled(data.label_customer_enabled ?? true);
                     setLabelItems(data.label_items || '');
+                    setLabelItemsEnabled(data.label_items_enabled ?? true);
                     setLabelSubtotal(data.label_subtotal || '');
+                    setLabelSubtotalEnabled(data.label_subtotal_enabled ?? true);
                     setLabelDiscount(data.label_discount || '');
+                    setLabelDiscountEnabled(data.label_discount_enabled ?? true);
                     setLabelTax(data.label_tax || '');
+                    setLabelTaxEnabled(data.label_tax_enabled ?? true);
                     setLabelTotal(data.label_total || '');
+                    setLabelTotalEnabled(data.label_total_enabled ?? true);
                     setLabelPaymentMethod(data.label_payment_method || '');
+                    setLabelPaymentMethodEnabled(data.label_payment_method_enabled ?? true);
                     setLabelAmountPaid(data.label_amount_paid || '');
+                    setLabelAmountPaidEnabled(data.label_amount_paid_enabled ?? true);
                     setLabelChange(data.label_change || '');
+                    setLabelChangeEnabled(data.label_change_enabled ?? true);
                 }
             } catch (error: unknown) {
                 if (typeof error === 'object' && error !== null && 'statusCode' in error && (error as { statusCode: number }).statusCode === 404) {
                     const createResponse = await createReceiptSettings(businessUuid, {
                         image_template_id: 0,
-
                         include_image: false,
                         footer_message: '',
                         qrcode_data: '',
@@ -159,20 +230,39 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
                         setQrcodeValue(data.qrcode_data || '');
                         setTransactionPrefix(data.transaction_prefix || '');
                         setTransactionNextNumber(data.transaction_next_number);
+
+                        setFont(data.font || '');
+                        setLineCharacter(data.line_character || '');
+                        setItemLayout(Number(data.item_layout ?? 0));
+
                         setLabelReceiptId(data.label_receipt_id || '');
+                        setLabelReceiptIdEnabled(data.label_receipt_id_enabled ?? true);
                         setLabelTransactionId(data.label_transaction_id || '');
+                        setLabelTransactionIdEnabled(data.label_transaction_id_enabled ?? true);
                         setLabelDate(data.label_date || '');
+                        setLabelDateEnabled(data.label_date_enabled ?? true);
                         setLabelTime(data.label_time || '');
+                        setLabelTimeEnabled(data.label_time_enabled ?? true);
                         setLabelCashier(data.label_cashier || '');
+                        setLabelCashierEnabled(data.label_cashier_enabled ?? true);
                         setLabelCustomer(data.label_customer || '');
+                        setLabelCustomerEnabled(data.label_customer_enabled ?? true);
                         setLabelItems(data.label_items || '');
+                        setLabelItemsEnabled(data.label_items_enabled ?? true);
                         setLabelSubtotal(data.label_subtotal || '');
+                        setLabelSubtotalEnabled(data.label_subtotal_enabled ?? true);
                         setLabelDiscount(data.label_discount || '');
+                        setLabelDiscountEnabled(data.label_discount_enabled ?? true);
                         setLabelTax(data.label_tax || '');
+                        setLabelTaxEnabled(data.label_tax_enabled ?? true);
                         setLabelTotal(data.label_total || '');
+                        setLabelTotalEnabled(data.label_total_enabled ?? true);
                         setLabelPaymentMethod(data.label_payment_method || '');
+                        setLabelPaymentMethodEnabled(data.label_payment_method_enabled ?? true);
                         setLabelAmountPaid(data.label_amount_paid || '');
+                        setLabelAmountPaidEnabled(data.label_amount_paid_enabled ?? true);
                         setLabelChange(data.label_change || '');
+                        setLabelChangeEnabled(data.label_change_enabled ?? true);
                     } else {
                         setError('Failed to create receipt data');
                     }
@@ -195,9 +285,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
     const updateImageTemplate = async (newTemplate: ImageTemplateType) => {
         if (!businessUuid) return;
-
         setImageTemplate(newTemplate);
-
         try {
             await updateReceiptSettings(businessUuid, {
                 image_template_id: IMAGE_TEMPLATE_TYPE_MAP[newTemplate],
@@ -208,17 +296,11 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         }
     };
 
-
-
     const updateIncludeLogo = async (value: boolean) => {
         if (!businessUuid) return;
-
         setIncludeLogo(value);
-
         try {
-            await updateReceiptSettings(businessUuid, {
-                include_image: value,
-            });
+            await updateReceiptSettings(businessUuid, { include_image: value });
         } catch (err) {
             console.error('Error updating include logo:', err);
             setError('Failed to update logo setting');
@@ -227,13 +309,9 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
     const updateFooterMessage = async (value: string) => {
         if (!businessUuid) return;
-
         setFooterMessage(value);
-
         try {
-            await updateReceiptSettings(businessUuid, {
-                footer_message: value || null,
-            });
+            await updateReceiptSettings(businessUuid, { footer_message: value || null });
         } catch (err) {
             console.error('Error updating footer message:', err);
             setError('Failed to update footer message');
@@ -242,13 +320,9 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
     const updateQrcodeValue = async (value: string) => {
         if (!businessUuid) return;
-
         setQrcodeValue(value);
-
         try {
-            await updateReceiptSettings(businessUuid, {
-                qrcode_data: value || null,
-            });
+            await updateReceiptSettings(businessUuid, { qrcode_data: value || null });
         } catch (err) {
             console.error('Error updating QR code:', err);
             setError('Failed to update QR code');
@@ -257,13 +331,9 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
     const updateTransactionPrefix = async (value: string) => {
         if (!businessUuid) return;
-
         setTransactionPrefix(value);
-
         try {
-            await updateReceiptSettings(businessUuid, {
-                transaction_prefix: value || null,
-            });
+            await updateReceiptSettings(businessUuid, { transaction_prefix: value || null });
         } catch (err) {
             console.error('Error updating transaction prefix:', err);
             setError('Failed to update transaction prefix');
@@ -272,156 +342,71 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
     const updateTransactionNextNumber = async (value: number) => {
         if (!businessUuid) return;
-
         setTransactionNextNumber(value);
-
         try {
-            await updateReceiptSettings(businessUuid, {
-                transaction_next_number: value,
-            });
+            await updateReceiptSettings(businessUuid, { transaction_next_number: value });
         } catch (err) {
             console.error('Error updating transaction number:', err);
             setError('Failed to update transaction number');
         }
     };
 
-    const updateLabelReceiptId = async (value: string) => {
+    const updateFont = async (value: string) => {
         if (!businessUuid) return;
-        setLabelReceiptId(value);
+        setFont(value);
         try {
-            await updateReceiptSettings(businessUuid, { label_receipt_id: value || null });
+            await updateReceiptSettings(businessUuid, { font: value || null });
         } catch (err) {
-            console.error('Error updating label:', err);
+            console.error('Error updating font:', err);
+            setError('Failed to update font');
         }
     };
 
-    const updateLabelTransactionId = async (value: string) => {
+    const updateLineCharacter = async (value: string) => {
         if (!businessUuid) return;
-        setLabelTransactionId(value);
+        setLineCharacter(value);
         try {
-            await updateReceiptSettings(businessUuid, { label_transaction_id: value || null });
+            await updateReceiptSettings(businessUuid, { line_character: value || null });
         } catch (err) {
-            console.error('Error updating label:', err);
+            console.error('Error updating line character:', err);
+            setError('Failed to update line character');
         }
     };
 
-    const updateLabelDate = async (value: string) => {
+    const updateItemLayout = async (value: number) => {
         if (!businessUuid) return;
-        setLabelDate(value);
+        setItemLayout(value);
         try {
-            await updateReceiptSettings(businessUuid, { label_date: value || null });
+            await updateReceiptSettings(businessUuid, { item_layout: value });
         } catch (err) {
-            console.error('Error updating label:', err);
+            console.error('Error updating item layout:', err);
+            setError('Failed to update item layout');
         }
     };
 
-    const updateLabelTime = async (value: string) => {
+    const createUpdateLabelFunction = (
+        setter: (val: string) => void,
+        field: keyof Omit<import('@/lib/api/receipt-settings/types').UpdateReceiptSettingsRequest, 'business_uuid'>
+    ) => async (value: string) => {
         if (!businessUuid) return;
-        setLabelTime(value);
+        setter(value);
         try {
-            await updateReceiptSettings(businessUuid, { label_time: value || null });
+            await updateReceiptSettings(businessUuid, { [field]: value || null });
         } catch (err) {
-            console.error('Error updating label:', err);
+            console.error(`Error updating ${String(field)}:`, err);
         }
     };
 
-    const updateLabelCashier = async (value: string) => {
+    const createUpdateEnabledFunction = (
+        setter: (val: boolean) => void,
+        field: keyof Omit<import('@/lib/api/receipt-settings/types').UpdateReceiptSettingsRequest, 'business_uuid'>
+    ) => async (value: boolean) => {
         if (!businessUuid) return;
-        setLabelCashier(value);
+        setter(value);
         try {
-            await updateReceiptSettings(businessUuid, { label_cashier: value || null });
+            await updateReceiptSettings(businessUuid, { [field]: value });
         } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelCustomer = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelCustomer(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_customer: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelItems = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelItems(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_items: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelSubtotal = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelSubtotal(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_subtotal: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelDiscount = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelDiscount(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_discount: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelTax = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelTax(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_tax: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelTotal = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelTotal(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_total: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelPaymentMethod = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelPaymentMethod(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_payment_method: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelAmountPaid = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelAmountPaid(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_amount_paid: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
-        }
-    };
-
-    const updateLabelChange = async (value: string) => {
-        if (!businessUuid) return;
-        setLabelChange(value);
-        try {
-            await updateReceiptSettings(businessUuid, { label_change: value || null });
-        } catch (err) {
-            console.error('Error updating label:', err);
+            console.error(`Error updating ${String(field)}:`, err);
         }
     };
 
@@ -430,7 +415,6 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         error,
         imageTemplate,
         updateImageTemplate,
-
         includeLogo,
         updateIncludeLogo,
         footerMessage,
@@ -441,34 +425,84 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         updateTransactionPrefix,
         transactionNextNumber,
         updateTransactionNextNumber,
+
+        font,
+        updateFont,
+        lineCharacter,
+        updateLineCharacter,
+        itemLayout,
+        updateItemLayout,
+
         labelReceiptId,
-        updateLabelReceiptId,
+        updateLabelReceiptId: createUpdateLabelFunction(setLabelReceiptId, 'label_receipt_id'),
+        labelReceiptIdEnabled,
+        updateLabelReceiptIdEnabled: createUpdateEnabledFunction(setLabelReceiptIdEnabled, 'label_receipt_id_enabled'),
+
         labelTransactionId,
-        updateLabelTransactionId,
+        updateLabelTransactionId: createUpdateLabelFunction(setLabelTransactionId, 'label_transaction_id'),
+        labelTransactionIdEnabled,
+        updateLabelTransactionIdEnabled: createUpdateEnabledFunction(setLabelTransactionIdEnabled, 'label_transaction_id_enabled'),
+
         labelDate,
-        updateLabelDate,
+        updateLabelDate: createUpdateLabelFunction(setLabelDate, 'label_date'),
+        labelDateEnabled,
+        updateLabelDateEnabled: createUpdateEnabledFunction(setLabelDateEnabled, 'label_date_enabled'),
+
         labelTime,
-        updateLabelTime,
+        updateLabelTime: createUpdateLabelFunction(setLabelTime, 'label_time'),
+        labelTimeEnabled,
+        updateLabelTimeEnabled: createUpdateEnabledFunction(setLabelTimeEnabled, 'label_time_enabled'),
+
         labelCashier,
-        updateLabelCashier,
+        updateLabelCashier: createUpdateLabelFunction(setLabelCashier, 'label_cashier'),
+        labelCashierEnabled,
+        updateLabelCashierEnabled: createUpdateEnabledFunction(setLabelCashierEnabled, 'label_cashier_enabled'),
+
         labelCustomer,
-        updateLabelCustomer,
+        updateLabelCustomer: createUpdateLabelFunction(setLabelCustomer, 'label_customer'),
+        labelCustomerEnabled,
+        updateLabelCustomerEnabled: createUpdateEnabledFunction(setLabelCustomerEnabled, 'label_customer_enabled'),
+
         labelItems,
-        updateLabelItems,
+        updateLabelItems: createUpdateLabelFunction(setLabelItems, 'label_items'),
+        labelItemsEnabled,
+        updateLabelItemsEnabled: createUpdateEnabledFunction(setLabelItemsEnabled, 'label_items_enabled'),
+
         labelSubtotal,
-        updateLabelSubtotal,
+        updateLabelSubtotal: createUpdateLabelFunction(setLabelSubtotal, 'label_subtotal'),
+        labelSubtotalEnabled,
+        updateLabelSubtotalEnabled: createUpdateEnabledFunction(setLabelSubtotalEnabled, 'label_subtotal_enabled'),
+
         labelDiscount,
-        updateLabelDiscount,
+        updateLabelDiscount: createUpdateLabelFunction(setLabelDiscount, 'label_discount'),
+        labelDiscountEnabled,
+        updateLabelDiscountEnabled: createUpdateEnabledFunction(setLabelDiscountEnabled, 'label_discount_enabled'),
+
         labelTax,
-        updateLabelTax,
+        updateLabelTax: createUpdateLabelFunction(setLabelTax, 'label_tax'),
+        labelTaxEnabled,
+        updateLabelTaxEnabled: createUpdateEnabledFunction(setLabelTaxEnabled, 'label_tax_enabled'),
+
         labelTotal,
-        updateLabelTotal,
+        updateLabelTotal: createUpdateLabelFunction(setLabelTotal, 'label_total'),
+        labelTotalEnabled,
+        updateLabelTotalEnabled: createUpdateEnabledFunction(setLabelTotalEnabled, 'label_total_enabled'),
+
         labelPaymentMethod,
-        updateLabelPaymentMethod,
+        updateLabelPaymentMethod: createUpdateLabelFunction(setLabelPaymentMethod, 'label_payment_method'),
+        labelPaymentMethodEnabled,
+        updateLabelPaymentMethodEnabled: createUpdateEnabledFunction(setLabelPaymentMethodEnabled, 'label_payment_method_enabled'),
+
         labelAmountPaid,
-        updateLabelAmountPaid,
+        updateLabelAmountPaid: createUpdateLabelFunction(setLabelAmountPaid, 'label_amount_paid'),
+        labelAmountPaidEnabled,
+        updateLabelAmountPaidEnabled: createUpdateEnabledFunction(setLabelAmountPaidEnabled, 'label_amount_paid_enabled'),
+
         labelChange,
-        updateLabelChange,
+        updateLabelChange: createUpdateLabelFunction(setLabelChange, 'label_change'),
+        labelChangeEnabled,
+        updateLabelChangeEnabled: createUpdateEnabledFunction(setLabelChangeEnabled, 'label_change_enabled'),
+
         refetch: async () => { await loadReceiptData(); },
     };
 }
