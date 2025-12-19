@@ -23,6 +23,28 @@ export async function uploadImage(options: UploadImageOptions): Promise<UploadIm
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
 
+        const allExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        const otherExtensions = allExtensions.filter(ext => ext !== extension);
+
+        for (const ext of otherExtensions) {
+            const oldKey = `${folder}/${uuid}.${ext}`;
+            try {
+                await r2Client.send(
+                    new HeadObjectCommand({
+                        Bucket: process.env.R2_BUCKET_NAME!,
+                        Key: oldKey,
+                    })
+                );
+                await r2Client.send(
+                    new DeleteObjectCommand({
+                        Bucket: process.env.R2_BUCKET_NAME!,
+                        Key: oldKey,
+                    })
+                );
+            } catch {
+            }
+        }
+
         await r2Client.send(
             new PutObjectCommand({
                 Bucket: process.env.R2_BUCKET_NAME!,
