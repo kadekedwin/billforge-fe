@@ -964,6 +964,11 @@
             "printerTab": {
                 "connection": "Print Client Connection",
                 "connectionDescription": "Connect to the BillForge Print Client running on your local machine",
+                "downloadClient": "Download Client App",
+                "downloadInstruction": "To enable printing, download and run the BillForge Print Client app for your operating system:",
+                "windows": "Windows",
+                "mac": "macOS",
+                "linux": "Linux",
                 "status": "Connection Status",
                 "connected": "Connected",
                 "connecting": "Connecting",

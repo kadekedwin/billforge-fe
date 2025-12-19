@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, Wifi, WifiOff, Bluetooth, Trash2, Printer } from 'lucide-react';
+import { Loader2, Wifi, WifiOff, Bluetooth, Trash2, Printer, Monitor, Apple, Terminal } from 'lucide-react';
 import { PrintClientWebSocket } from '@/lib/print-client';
 import { BluetoothDevice, ConnectionStatus } from '@/types/printer';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -264,6 +264,28 @@ export default function PrinterConnectionSettings() {
                     <CardDescription>{t('app.settings.printerTab.connectionDescription')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
+                    <div className="rounded-lg border bg-secondary/50 p-4">
+                        <div className="mb-4 space-y-1">
+                            <h3 className="font-medium">{t('app.settings.printerTab.downloadClient')}</h3>
+                            <p className="text-sm text-muted-foreground">
+                                {t('app.settings.printerTab.downloadInstruction')}
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                            <Button variant="outline" className="w-full" onClick={() => window.open('/download', '_blank')}>
+                                <Monitor className="mr-2 h-4 w-4" />
+                                {t('app.settings.printerTab.windows')}
+                            </Button>
+                            <Button variant="outline" className="w-full" onClick={() => window.open('/', '_blank')}>
+                                <Apple className="mr-2 h-4 w-4" />
+                                {t('app.settings.printerTab.mac')}
+                            </Button>
+                            <Button variant="outline" className="w-full" onClick={() => window.open('/', '_blank')}>
+                                <Terminal className="mr-2 h-4 w-4" />
+                                {t('app.settings.printerTab.linux')}
+                            </Button>
+                        </div>
+                    </div>
                     <div className="flex items-center justify-between">
                         <div className="space-y-1">
                             <Label>{t('app.settings.printerTab.status')}</Label>
