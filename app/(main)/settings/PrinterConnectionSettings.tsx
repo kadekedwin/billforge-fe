@@ -338,6 +338,65 @@ export default function PrinterConnectionSettings() {
                         </CardContent>
                     </Card>
 
+                    {connectedDevices.length > 0 && (
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>{t('app.settings.printerTab.connectedDevices')}</CardTitle>
+                                <CardDescription>
+                                    {t('app.settings.printerTab.connectedDevicesDescription')}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="space-y-3">
+                                    {connectedDevices.map((device) => (
+                                        <div
+                                            key={device.id}
+                                            className="flex items-center justify-between rounded-lg border border-primary/20 bg-primary/5 p-4"
+                                        >
+                                            <div className="space-y-1">
+                                                <div className="flex items-center gap-2">
+                                                    <p className="font-medium">{device.name}</p>
+                                                    <Badge variant="default" className="text-xs">
+                                                        {t('app.settings.printerTab.active')}
+                                                    </Badge>
+                                                </div>
+                                                <p className="text-sm text-muted-foreground">
+                                                    {device.address}
+                                                </p>
+                                            </div>
+
+                                            <div className="flex gap-2">
+                                                <Button
+                                                    onClick={() => handleTestPrint(device.id)}
+                                                    variant="outline"
+                                                    size="sm"
+                                                    disabled={testingDeviceId === device.id || loadingDeviceId === device.id}
+                                                >
+                                                    {testingDeviceId === device.id && (
+                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                    )}
+                                                    <Printer className="mr-2 h-4 w-4" />
+                                                    {t('app.settings.printerTab.testPrint')}
+                                                </Button>
+                                                <Button
+                                                    onClick={() => handleDisconnectDevice(device.id)}
+                                                    variant="outline"
+                                                    size="sm"
+                                                    disabled={loadingDeviceId === device.id}
+                                                >
+                                                    {loadingDeviceId === device.id && (
+                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                    )}
+                                                    {t('app.settings.printerTab.disconnectDevice')}
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )}
+
                     {devices.length > 0 && (
                         <Card>
                             <CardHeader>
@@ -401,65 +460,6 @@ export default function PrinterConnectionSettings() {
                                                     {t('app.settings.printerTab.connectDevice')}
                                                 </Button>
                                             )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
-
-                    {connectedDevices.length > 0 && (
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>{t('app.settings.printerTab.connectedDevices')}</CardTitle>
-                                <CardDescription>
-                                    {t('app.settings.printerTab.connectedDevicesDescription')}
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="space-y-3">
-                                    {connectedDevices.map((device) => (
-                                        <div
-                                            key={device.id}
-                                            className="flex items-center justify-between rounded-lg border border-primary/20 bg-primary/5 p-4"
-                                        >
-                                            <div className="space-y-1">
-                                                <div className="flex items-center gap-2">
-                                                    <p className="font-medium">{device.name}</p>
-                                                    <Badge variant="default" className="text-xs">
-                                                        {t('app.settings.printerTab.active')}
-                                                    </Badge>
-                                                </div>
-                                                <p className="text-sm text-muted-foreground">
-                                                    {device.address}
-                                                </p>
-                                            </div>
-
-                                            <div className="flex gap-2">
-                                                <Button
-                                                    onClick={() => handleTestPrint(device.id)}
-                                                    variant="outline"
-                                                    size="sm"
-                                                    disabled={testingDeviceId === device.id || loadingDeviceId === device.id}
-                                                >
-                                                    {testingDeviceId === device.id && (
-                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                    )}
-                                                    <Printer className="mr-2 h-4 w-4" />
-                                                    {t('app.settings.printerTab.testPrint')}
-                                                </Button>
-                                                <Button
-                                                    onClick={() => handleDisconnectDevice(device.id)}
-                                                    variant="outline"
-                                                    size="sm"
-                                                    disabled={loadingDeviceId === device.id}
-                                                >
-                                                    {loadingDeviceId === device.id && (
-                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                    )}
-                                                    {t('app.settings.printerTab.disconnectDevice')}
-                                                </Button>
-                                            </div>
                                         </div>
                                     ))}
                                 </div>
