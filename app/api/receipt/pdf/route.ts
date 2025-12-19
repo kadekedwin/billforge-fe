@@ -7,7 +7,8 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         const receiptData: ReceiptData = body.receiptData;
-        const options: PDFGeneratorOptions = body.options || {};
+        const receiptSettings = body.receiptSettings;
+        const options: PDFGeneratorOptions = { ...body.options, settings: receiptSettings };
 
         const pdfBuffer = await generateReceiptPDFBuffer(receiptData, options);
 

@@ -1,7 +1,8 @@
 import type { Transaction, TransactionItem, Business, Customer } from "@/lib/api";
-import { convertTransactionToReceiptData } from "@/lib/receipt-generator";
-import { ReceiptData, ReceiptTemplateType } from "@/lib/receipt-generator";
-import { PDFGeneratorOptions, ImageGeneratorOptions } from "@/lib/receipt-generator";
+import { PDFGeneratorOptions, ImageGeneratorOptions } from "@/lib/receipt-generator/useReceiptGenerator";
+import { ReceiptSettings } from "@/lib/api/receipt-settings/types";
+import { ReceiptData } from "@/lib/receipt-generator/types";
+import { convertTransactionToReceiptData } from "@/lib/receipt-generator/utils";
 
 
 interface GenerateReceiptParams {
@@ -17,8 +18,8 @@ interface GenerateReceiptParams {
 
 export async function handleDownloadPDF(
     params: GenerateReceiptParams,
-    generatePDF: (receiptData: ReceiptData, options?: PDFGeneratorOptions, template?: ReceiptTemplateType) => Promise<Blob>,
-    receiptTemplate: ReceiptTemplateType
+    generatePDF: (receiptData: ReceiptData, options?: PDFGeneratorOptions) => Promise<Blob>,
+    settings: ReceiptSettings
 ): Promise<void> {
     try {
         const receiptData = convertTransactionToReceiptData(
@@ -32,7 +33,7 @@ export async function handleDownloadPDF(
             params.qrcodeValue
         );
 
-        await generatePDF(receiptData, undefined, receiptTemplate);
+        await generatePDF(receiptData, { settings });
     } catch (err) {
         console.error("Error generating receipt:", err);
         throw new Error("Failed to generate receipt");
@@ -41,8 +42,8 @@ export async function handleDownloadPDF(
 
 export async function handleDownloadImage(
     params: GenerateReceiptParams,
-    generateImage: (receiptData: ReceiptData, options?: ImageGeneratorOptions, template?: ReceiptTemplateType) => Promise<Blob>,
-    receiptTemplate: ReceiptTemplateType
+    generateImage: (receiptData: ReceiptData, options?: ImageGeneratorOptions) => Promise<Blob>,
+    settings: ReceiptSettings
 ): Promise<void> {
     try {
         const receiptData = convertTransactionToReceiptData(
@@ -56,7 +57,7 @@ export async function handleDownloadImage(
             params.qrcodeValue
         );
 
-        await generateImage(receiptData, { type: 'png' }, receiptTemplate);
+        await generateImage(receiptData, { type: 'png', settings });
     } catch (err) {
         console.error("Error downloading image:", err);
         throw new Error("Failed to download receipt image");

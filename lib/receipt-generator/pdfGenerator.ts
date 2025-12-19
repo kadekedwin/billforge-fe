@@ -1,6 +1,7 @@
 import puppeteer, { PDFOptions } from 'puppeteer';
-import { ReceiptData, ReceiptTemplateType } from './types';
-import { generateReceiptHTML } from './templates';
+import { ReceiptData } from './types';
+import { ReceiptSettings } from '@/lib/api/receipt-settings/types';
+import { generateDynamicReceiptHTML } from './dynamic-preview';
 
 export interface PDFGeneratorOptions {
     width?: string;
@@ -12,7 +13,7 @@ export interface PDFGeneratorOptions {
         bottom?: string;
         left?: string;
     };
-    template?: ReceiptTemplateType;
+    settings?: ReceiptSettings;
 }
 
 export const generateReceiptPDF = async (
@@ -20,7 +21,10 @@ export const generateReceiptPDF = async (
     outputPath: string,
     options: PDFGeneratorOptions = {}
 ): Promise<void> => {
-    const html = generateReceiptHTML(data, options.template || 'classic');
+    if (!options.settings) {
+        throw new Error('Receipt settings are required for PDF generation');
+    }
+    const html = generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -61,7 +65,10 @@ export const generateReceiptPDFBuffer = async (
     data: ReceiptData,
     options: PDFGeneratorOptions = {}
 ): Promise<Uint8Array> => {
-    const html = generateReceiptHTML(data, options.template || 'classic');
+    if (!options.settings) {
+        throw new Error('Receipt settings are required for PDF generation');
+    }
+    const html = generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,

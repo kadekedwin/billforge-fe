@@ -3,9 +3,7 @@ export type { PDFGeneratorOptions, ImageGeneratorOptions } from './useReceiptGen
 export type {
     ReceiptData,
     ReceiptItem,
-    ReceiptTemplateType,
-    ImageTemplateType,
-    ReceiptTemplate
+    ImageTemplateId,
+    ImageTemplateType
 } from './types';
-export { receiptTemplates, imageTemplates, generateReceiptHTML } from './templates';
 export { convertTransactionToReceiptData } from './utils';

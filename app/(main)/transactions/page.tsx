@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import { getTransactionItems } from "@/lib/api/transaction-items";
 import { getImageUrl } from "@/lib/images/operations";
 import { useBusiness } from "@/contexts/business-context";
-import { useReceiptGenerator, generateReceiptHTML } from "@/lib/receipt-generator";
+import { useReceiptGenerator } from "@/lib/receipt-generator/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt-settings";
 import { usePrinterSettings } from "@/lib/printer-settings";
 import { useReceiptPrint, PrintClientWebSocket } from "@/lib/print-client";
+import { convertTransactionToReceiptData } from "@/lib/receipt-generator/utils";
+import { getCurrencySymbol } from "@/lib/utils/currency";
 import type { Transaction, TransactionItem } from "@/lib/api";
 import { TransactionsTable } from "./TransactionsTable";
 import { TransactionDetailsDialog } from "./TransactionDetailsDialog";
@@ -25,7 +27,7 @@ import { toast } from "sonner";
 export default function TransactionsPage() {
     const { t } = useTranslation();
     const { selectedBusiness } = useBusiness();
-    const { includeLogo, footerMessage, qrcodeValue, imageTemplate: receiptTemplate,
+    const { includeLogo, footerMessage, qrcodeValue, receiptStyle,
         font, lineCharacter, itemLayout,
         labelReceiptId, labelReceiptIdEnabled,
         labelTransactionId, labelTransactionIdEnabled,
@@ -138,7 +140,50 @@ export default function TransactionsPage() {
                     qrcodeValue: qrcodeValue || undefined,
                 },
                 generatePDF,
-                receiptTemplate
+                {
+                    id: 0,
+                    uuid: '',
+                    business_uuid: selectedBusiness.uuid,
+                    receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
+                    include_image: includeLogo,
+                    footer_message: footerMessage || null,
+                    qrcode_data: qrcodeValue || null,
+                    transaction_prefix: transactionPrefix || null,
+                    transaction_next_number: transactionNextNumber,
+                    font: font || null,
+                    line_character: lineCharacter || null,
+                    item_layout: itemLayout,
+                    label_receipt_id: labelReceiptId || null,
+                    label_receipt_id_enabled: labelReceiptIdEnabled,
+                    label_transaction_id: labelTransactionId || null,
+                    label_transaction_id_enabled: labelTransactionIdEnabled,
+                    label_date: labelDate || null,
+                    label_date_enabled: labelDateEnabled,
+                    label_time: labelTime || null,
+                    label_time_enabled: labelTimeEnabled,
+                    label_cashier: labelCashier || null,
+                    label_cashier_enabled: labelCashierEnabled,
+                    label_customer: labelCustomer || null,
+                    label_customer_enabled: labelCustomerEnabled,
+                    label_items: labelItems || null,
+                    label_items_enabled: labelItemsEnabled,
+                    label_subtotal: labelSubtotal || null,
+                    label_subtotal_enabled: labelSubtotalEnabled,
+                    label_discount: labelDiscount || null,
+                    label_discount_enabled: labelDiscountEnabled,
+                    label_tax: labelTax || null,
+                    label_tax_enabled: labelTaxEnabled,
+                    label_total: labelTotal || null,
+                    label_total_enabled: labelTotalEnabled,
+                    label_payment_method: labelPaymentMethod || null,
+                    label_payment_method_enabled: labelPaymentMethodEnabled,
+                    label_amount_paid: labelAmountPaid || null,
+                    label_amount_paid_enabled: labelAmountPaidEnabled,
+                    label_change: labelChange || null,
+                    label_change_enabled: labelChangeEnabled,
+                    created_at: '',
+                    updated_at: ''
+                }
             );
         } catch (err) {
             alert((err as Error).message);
@@ -166,7 +211,50 @@ export default function TransactionsPage() {
                     qrcodeValue: qrcodeValue || undefined,
                 },
                 generateImage,
-                receiptTemplate
+                {
+                    id: 0,
+                    uuid: '',
+                    business_uuid: selectedBusiness.uuid,
+                    receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
+                    include_image: includeLogo,
+                    footer_message: footerMessage || null,
+                    qrcode_data: qrcodeValue || null,
+                    transaction_prefix: transactionPrefix || null,
+                    transaction_next_number: transactionNextNumber,
+                    font: font || null,
+                    line_character: lineCharacter || null,
+                    item_layout: itemLayout,
+                    label_receipt_id: labelReceiptId || null,
+                    label_receipt_id_enabled: labelReceiptIdEnabled,
+                    label_transaction_id: labelTransactionId || null,
+                    label_transaction_id_enabled: labelTransactionIdEnabled,
+                    label_date: labelDate || null,
+                    label_date_enabled: labelDateEnabled,
+                    label_time: labelTime || null,
+                    label_time_enabled: labelTimeEnabled,
+                    label_cashier: labelCashier || null,
+                    label_cashier_enabled: labelCashierEnabled,
+                    label_customer: labelCustomer || null,
+                    label_customer_enabled: labelCustomerEnabled,
+                    label_items: labelItems || null,
+                    label_items_enabled: labelItemsEnabled,
+                    label_subtotal: labelSubtotal || null,
+                    label_subtotal_enabled: labelSubtotalEnabled,
+                    label_discount: labelDiscount || null,
+                    label_discount_enabled: labelDiscountEnabled,
+                    label_tax: labelTax || null,
+                    label_tax_enabled: labelTaxEnabled,
+                    label_total: labelTotal || null,
+                    label_total_enabled: labelTotalEnabled,
+                    label_payment_method: labelPaymentMethod || null,
+                    label_payment_method_enabled: labelPaymentMethodEnabled,
+                    label_amount_paid: labelAmountPaid || null,
+                    label_amount_paid_enabled: labelAmountPaidEnabled,
+                    label_change: labelChange || null,
+                    label_change_enabled: labelChangeEnabled,
+                    created_at: '',
+                    updated_at: ''
+                }
             );
         } catch (err) {
             alert((err as Error).message);
@@ -216,58 +304,22 @@ export default function TransactionsPage() {
         try {
             setIsPrinting(true);
 
-            // Reconstruct receipt data structure locally as handleDownloadPDF/Image helper does
-            // Note: Ideally extract this data construction to a shared utility
             const customer = getCustomer(selectedTransaction.customer_uuid, customers);
             const paymentMethodName = selectedTransaction.payment_method_uuid
                 ? getPaymentMethodName(selectedTransaction.payment_method_uuid, paymentMethods)
                 : "Cash";
 
-            // We need to map transaction items to receipt items format
-            // But wait, the handler helpers use a constructor function.
-            // Let's manually construct the ReceiptData object here to pass to printReceipt
-            // Or better, reuse the logic if possible.
-            // The helpers in receiptHandlers don't return the data object, they execute the action.
-            // I will construct it here manually for now, similar to how receipt-popup or helpers do it.
-
-            // Since we need to be quick and consistent, let's look at `receiptHandlers.ts` or `transactionsUtils.ts` if there is a mapper.
-            // There isn't an exposed mapper in imports.
-            // I'll do basic mapping here.
-
-            const receiptData = {
-                receiptNumber: selectedTransaction.transaction_id || selectedTransaction.id.toString(),
-                date: new Date(selectedTransaction.created_at).toLocaleDateString(),
-                time: new Date(selectedTransaction.created_at).toLocaleTimeString(),
-                items: transactionItems.map(item => ({
-                    id: item.uuid,
-                    name: item.name,
-                    quantity: item.quantity,
-                    price: parseFloat(item.base_price),
-                    total: parseFloat(item.total_price)
-                })),
-                subtotal: parseFloat(selectedTransaction.total_amount),
-                tax: parseFloat(selectedTransaction.tax_amount),
-                discount: parseFloat(selectedTransaction.discount_amount),
-                total: parseFloat(selectedTransaction.final_amount),
-                paymentMethod: paymentMethodName,
-                cashierName: "Admin",
-                customerName: customer ? customer.name : "Guest",
-                storeName: selectedBusiness.name,
-                storeAddress: selectedBusiness.address || "",
-                storePhone: selectedBusiness.phone || "",
-                currencySymbol: selectedBusiness.currency || "$",
-                footer: footerMessage || undefined,
-                qrcode: qrcodeValue || undefined,
-                storeLogo: businessLogoUrl,
-            };
-
-
-            const PRINT_TEMPLATE_TYPE_MAP: Record<string, number> = {
-                'thermal-classic': 0,
-                'thermal-compact': 1,
-                'thermal-detailed': 2,
-            };
-            // const templateId = PRINT_TEMPLATE_TYPE_MAP[printTemplate] ?? 0;
+            const receiptData = convertTransactionToReceiptData(
+                selectedTransaction,
+                transactionItems,
+                selectedBusiness,
+                customer?.name,
+                paymentMethodName,
+                footerMessage || undefined,
+                businessLogoUrl,
+                qrcodeValue || undefined,
+                getCurrencySymbol(selectedBusiness.currency)
+            );
 
             const connectedDevices = await printClient.getConnectedDevices();
             if (connectedDevices.devices.length === 0) {
@@ -276,7 +328,7 @@ export default function TransactionsPage() {
                 return;
             }
 
-            const printerId = connectedDevices.devices[0].id; // Use first available
+            const printerId = connectedDevices.devices[0].id;
 
             await printReceipt(receiptData, {
                 printerId,
@@ -288,10 +340,10 @@ export default function TransactionsPage() {
                     cutEnabled
                 },
                 receiptSettings: {
-                    id: 0, // Placeholder
-                    uuid: '', // Placeholder
+                    id: 0,
+                    uuid: '',
                     business_uuid: selectedBusiness.uuid,
-                    image_template_id: 0, // Not used for thermal
+                    receipt_style_id: 0,
                     include_image: includeLogo,
                     footer_message: footerMessage || null,
                     qrcode_data: qrcodeValue || null,
@@ -300,7 +352,6 @@ export default function TransactionsPage() {
                     font: font || null,
                     line_character: lineCharacter || null,
                     item_layout: itemLayout,
-
                     label_receipt_id: labelReceiptId || null,
                     label_receipt_id_enabled: labelReceiptIdEnabled,
                     label_transaction_id: labelTransactionId || null,
@@ -333,8 +384,8 @@ export default function TransactionsPage() {
                     updated_at: ''
                 }
             });
-            toast.success(t('app.settings.printer.printSuccess'));
 
+            toast.success(t('app.settings.printer.printSuccess'));
         } catch (err) {
             console.error("Error printing receipt:", err);
             toast.error(t('app.settings.printer.printFailed'));

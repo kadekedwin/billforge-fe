@@ -8,16 +8,14 @@ import {
     updateReceiptSettings,
 } from '@/lib/api/receipt-settings';
 
-const IMAGE_TEMPLATE_ID_MAP: Record<number, ImageTemplateType> = {
+const RECEIPT_STYLE_ID_MAP: Record<number, ImageTemplateType> = {
     0: 'classic',
     1: 'sans-serif',
-    2: 'modern-bold',
 };
 
-const IMAGE_TEMPLATE_TYPE_MAP: Record<ImageTemplateType, number> = {
+const RECEIPT_STYLE_TYPE_MAP: Record<ImageTemplateType, number> = {
     'classic': 0,
     'sans-serif': 1,
-    'modern-bold': 2,
 };
 
 interface UseReceiptTemplatePreferenceProps {
@@ -27,8 +25,8 @@ interface UseReceiptTemplatePreferenceProps {
 export interface UseReceiptTemplatePreferenceResult {
     isLoading: boolean;
     error: string | null;
-    imageTemplate: ImageTemplateType;
-    updateImageTemplate: (newTemplate: ImageTemplateType) => Promise<void>;
+    receiptStyle: ImageTemplateType;
+    updateReceiptStyle: (newStyle: ImageTemplateType) => Promise<void>;
 
     includeLogo: boolean;
     updateIncludeLogo: (value: boolean) => Promise<void>;
@@ -112,7 +110,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     const [error, setError] = useState<string | null>(null);
     const isLoadingRef = useRef(false);
 
-    const [imageTemplate, setImageTemplate] = useState<ImageTemplateType>('classic');
+    const [receiptStyle, setReceiptStyle] = useState<ImageTemplateType>('classic');
 
     const [includeLogo, setIncludeLogo] = useState<boolean>(false);
     const [footerMessage, setFooterMessage] = useState<string>('');
@@ -169,7 +167,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
                 if (response.success && response.data) {
                     const data = response.data;
-                    setImageTemplate(IMAGE_TEMPLATE_ID_MAP[data.image_template_id ?? 0] || 'classic');
+                    setReceiptStyle(RECEIPT_STYLE_ID_MAP[data.receipt_style_id ?? 0] || 'classic');
 
                     setIncludeLogo(data.include_image);
                     setFooterMessage(data.footer_message || '');
@@ -213,7 +211,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
             } catch (error: unknown) {
                 if (typeof error === 'object' && error !== null && 'statusCode' in error && (error as { statusCode: number }).statusCode === 404) {
                     const createResponse = await createReceiptSettings(businessUuid, {
-                        image_template_id: 0,
+                        receipt_style_id: 0,
                         include_image: false,
                         footer_message: '',
                         qrcode_data: '',
@@ -223,7 +221,7 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
 
                     if (createResponse.success && createResponse.data) {
                         const data = createResponse.data;
-                        setImageTemplate(IMAGE_TEMPLATE_ID_MAP[data.image_template_id ?? 0] || 'classic');
+                        setReceiptStyle(RECEIPT_STYLE_ID_MAP[data.receipt_style_id ?? 0] || 'classic');
 
                         setIncludeLogo(data.include_image);
                         setFooterMessage(data.footer_message || '');
@@ -283,16 +281,16 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
         loadReceiptData();
     }, [loadReceiptData]);
 
-    const updateImageTemplate = async (newTemplate: ImageTemplateType) => {
+    const updateReceiptStyle = async (newStyle: ImageTemplateType) => {
         if (!businessUuid) return;
-        setImageTemplate(newTemplate);
+        setReceiptStyle(newStyle);
         try {
             await updateReceiptSettings(businessUuid, {
-                image_template_id: IMAGE_TEMPLATE_TYPE_MAP[newTemplate],
+                receipt_style_id: RECEIPT_STYLE_TYPE_MAP[newStyle],
             });
         } catch (err) {
-            console.error('Error updating image template:', err);
-            setError('Failed to update image template');
+            console.error('Error updating receipt style:', err);
+            setError('Failed to update receipt style');
         }
     };
 
@@ -413,8 +411,8 @@ export function useReceiptTemplatePreference({ businessUuid }: UseReceiptTemplat
     return {
         isLoading,
         error,
-        imageTemplate,
-        updateImageTemplate,
+        receiptStyle,
+        updateReceiptStyle,
         includeLogo,
         updateIncludeLogo,
         footerMessage,

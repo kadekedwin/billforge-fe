@@ -7,7 +7,8 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         const receiptData: ReceiptData = body.receiptData;
-        const options: ImageGeneratorOptions = body.options || {};
+        const receiptSettings = body.receiptSettings;
+        const options: ImageGeneratorOptions = { ...body.options, settings: receiptSettings };
 
         const imageBuffer = await generateReceiptImageBuffer(receiptData, options);
 

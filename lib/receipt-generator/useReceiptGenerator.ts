@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ReceiptData, ReceiptTemplateType } from '@/lib/receipt-generator/types';
+import { ReceiptData } from '@/lib/receipt-generator/types';
+import { ReceiptSettings } from '@/lib/api/receipt-settings/types';
 
 export interface PDFGeneratorOptions {
     width?: string;
@@ -11,7 +12,7 @@ export interface PDFGeneratorOptions {
         bottom?: string;
         left?: string;
     };
-    template?: ReceiptTemplateType;
+    settings?: ReceiptSettings;
 }
 
 export interface ImageGeneratorOptions {
@@ -21,7 +22,7 @@ export interface ImageGeneratorOptions {
     omitBackground?: boolean;
     width?: number;
     height?: number;
-    template?: ReceiptTemplateType;
+    settings?: ReceiptSettings;
 }
 
 export const useReceiptGenerator = () => {
@@ -31,10 +32,9 @@ export const useReceiptGenerator = () => {
     const generatePDF = async (
         receiptData: ReceiptData,
         options: PDFGeneratorOptions = {},
-        template: ReceiptTemplateType = 'classic',
     ) => {
-        setLoading(true);
         setError(null);
+        setLoading(true);
 
         try {
             const response = await fetch('/api/receipt/pdf', {
@@ -42,7 +42,10 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options: { ...options, template } }),
+                body: JSON.stringify({
+                    receiptData,
+                    receiptSettings: options.settings
+                }),
             });
 
             if (!response.ok) {
@@ -73,10 +76,9 @@ export const useReceiptGenerator = () => {
     const generateImage = async (
         receiptData: ReceiptData,
         options: ImageGeneratorOptions = {},
-        template: ReceiptTemplateType = 'classic'
     ) => {
-        setLoading(true);
         setError(null);
+        setLoading(true);
 
         try {
             const response = await fetch('/api/receipt/image', {
@@ -84,7 +86,10 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options: { ...options, template } }),
+                body: JSON.stringify({
+                    receiptData,
+                    receiptSettings: options.settings
+                }),
             });
 
             if (!response.ok) {
@@ -116,10 +121,9 @@ export const useReceiptGenerator = () => {
     const previewPDF = async (
         receiptData: ReceiptData,
         options: PDFGeneratorOptions = {},
-        template: ReceiptTemplateType = 'classic'
     ) => {
-        setLoading(true);
         setError(null);
+        setLoading(true);
 
         try {
             const response = await fetch('/api/receipt/pdf', {
@@ -127,7 +131,10 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options: { ...options, template } }),
+                body: JSON.stringify({
+                    receiptData,
+                    receiptSettings: options.settings
+                }),
             });
 
             if (!response.ok) {
@@ -151,10 +158,9 @@ export const useReceiptGenerator = () => {
     const previewImage = async (
         receiptData: ReceiptData,
         options: ImageGeneratorOptions = {},
-        template: ReceiptTemplateType = 'classic'
     ) => {
-        setLoading(true);
         setError(null);
+        setLoading(true);
 
         try {
             const response = await fetch('/api/receipt/image', {
@@ -162,7 +168,10 @@ export const useReceiptGenerator = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ receiptData, options: { ...options, template } }),
+                body: JSON.stringify({
+                    receiptData,
+                    receiptSettings: options.settings
+                }),
             });
 
             if (!response.ok) {

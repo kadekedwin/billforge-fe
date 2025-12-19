@@ -10,14 +10,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, MessageCircle, Loader2, Printer } from "lucide-react";
-import { useReceiptGenerator } from "@/lib/receipt-generator";
+import { useReceiptGenerator } from "@/lib/receipt-generator/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt-settings";
 import { useBusiness } from "@/contexts/business-context";
 import { usePrinterSettings } from "@/lib/printer-settings";
 import { useReceiptPrint, PrintClientWebSocket } from "@/lib/print-client";
 import { useTranslation } from "@/lib/i18n/useTranslation";
-import type { ReceiptData } from "@/lib/receipt-generator";
-import { generateReceiptHTML } from "@/lib/receipt-generator";
+import { ReceiptData } from "@/lib/receipt-generator/types";
+import { generateDynamicReceiptHTML } from "@/lib/receipt-generator/dynamic-preview";
 
 interface ReceiptPopupProps {
     open: boolean;
@@ -54,8 +54,7 @@ export function ReceiptPopup({
     } = usePrinterSettings({ businessUuid: selectedBusiness?.uuid || null });
     const { printReceipt } = useReceiptPrint({ printClient });
     const {
-        imageTemplate: receiptTemplate,
-        includeLogo, footerMessage, qrcodeValue,
+        includeLogo, footerMessage, qrcodeValue, receiptStyle,
         transactionPrefix, transactionNextNumber,
         font, lineCharacter, itemLayout,
         labelReceiptId, labelReceiptIdEnabled,
@@ -98,9 +97,50 @@ export function ReceiptPopup({
         }
     }, [open, refetchSettings]);
 
-    // Moved auto-print effect below handlePrintReceipt
-
-    const templateHTML = generateReceiptHTML(receiptData, receiptTemplate);
+    const templateHTML = generateDynamicReceiptHTML(receiptData, {
+        id: 0,
+        uuid: '',
+        business_uuid: selectedBusiness?.uuid || '',
+        receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
+        include_image: includeLogo,
+        footer_message: footerMessage || null,
+        qrcode_data: qrcodeValue || null,
+        transaction_prefix: transactionPrefix || null,
+        transaction_next_number: transactionNextNumber,
+        font: font || 'A',
+        line_character: lineCharacter || '-',
+        item_layout: itemLayout,
+        label_receipt_id: labelReceiptId || null,
+        label_receipt_id_enabled: labelReceiptIdEnabled,
+        label_transaction_id: labelTransactionId || null,
+        label_transaction_id_enabled: labelTransactionIdEnabled,
+        label_date: labelDate || null,
+        label_date_enabled: labelDateEnabled,
+        label_time: labelTime || null,
+        label_time_enabled: labelTimeEnabled,
+        label_cashier: labelCashier || null,
+        label_cashier_enabled: labelCashierEnabled,
+        label_customer: labelCustomer || null,
+        label_customer_enabled: labelCustomerEnabled,
+        label_items: labelItems || null,
+        label_items_enabled: labelItemsEnabled,
+        label_subtotal: labelSubtotal || null,
+        label_subtotal_enabled: labelSubtotalEnabled,
+        label_discount: labelDiscount || null,
+        label_discount_enabled: labelDiscountEnabled,
+        label_tax: labelTax || null,
+        label_tax_enabled: labelTaxEnabled,
+        label_total: labelTotal || null,
+        label_total_enabled: labelTotalEnabled,
+        label_payment_method: labelPaymentMethod || null,
+        label_payment_method_enabled: labelPaymentMethodEnabled,
+        label_amount_paid: labelAmountPaid || null,
+        label_amount_paid_enabled: labelAmountPaidEnabled,
+        label_change: labelChange || null,
+        label_change_enabled: labelChangeEnabled,
+        created_at: '',
+        updated_at: ''
+    });
 
     useEffect(() => {
         const iframe = iframeRef.current;
@@ -142,13 +182,6 @@ export function ReceiptPopup({
 
         try {
             setIsPrinting(true);
-            const PRINT_TEMPLATE_TYPE_MAP: Record<string, number> = {
-                'thermal-classic': 0,
-                'thermal-compact': 1,
-                'thermal-detailed': 2,
-            };
-
-            // const templateId = PRINT_TEMPLATE_TYPE_MAP[printTemplate] ?? 0;
 
             const connectedDevices = await printClient.getConnectedDevices();
             if (connectedDevices.devices.length === 0) {
@@ -174,7 +207,7 @@ export function ReceiptPopup({
                     id: 0,
                     uuid: '',
                     business_uuid: selectedBusiness.uuid,
-                    image_template_id: 0,
+                    receipt_style_id: 0,
                     include_image: includeLogo,
                     footer_message: footerMessage || null,
                     qrcode_data: qrcodeValue || null,
@@ -245,7 +278,52 @@ export function ReceiptPopup({
 
     const handleDownloadPDF = async () => {
         try {
-            await generatePDF(receiptData, undefined, receiptTemplate);
+            await generatePDF(receiptData, {
+                settings: {
+                    id: 0,
+                    uuid: '',
+                    business_uuid: selectedBusiness?.uuid || '',
+                    receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
+                    include_image: includeLogo,
+                    footer_message: footerMessage || null,
+                    qrcode_data: qrcodeValue || null,
+                    transaction_prefix: transactionPrefix || null,
+                    transaction_next_number: transactionNextNumber,
+                    font,
+                    line_character: lineCharacter,
+                    item_layout: itemLayout,
+                    label_receipt_id: labelReceiptId || null,
+                    label_receipt_id_enabled: labelReceiptIdEnabled,
+                    label_transaction_id: labelTransactionId || null,
+                    label_transaction_id_enabled: labelTransactionIdEnabled,
+                    label_date: labelDate || null,
+                    label_date_enabled: labelDateEnabled,
+                    label_time: labelTime || null,
+                    label_time_enabled: labelTimeEnabled,
+                    label_cashier: labelCashier || null,
+                    label_cashier_enabled: labelCashierEnabled,
+                    label_customer: labelCustomer || null,
+                    label_customer_enabled: labelCustomerEnabled,
+                    label_items: labelItems || null,
+                    label_items_enabled: labelItemsEnabled,
+                    label_subtotal: labelSubtotal || null,
+                    label_subtotal_enabled: labelSubtotalEnabled,
+                    label_discount: labelDiscount || null,
+                    label_discount_enabled: labelDiscountEnabled,
+                    label_tax: labelTax || null,
+                    label_tax_enabled: labelTaxEnabled,
+                    label_total: labelTotal || null,
+                    label_total_enabled: labelTotalEnabled,
+                    label_payment_method: labelPaymentMethod || null,
+                    label_payment_method_enabled: labelPaymentMethodEnabled,
+                    label_amount_paid: labelAmountPaid || null,
+                    label_amount_paid_enabled: labelAmountPaidEnabled,
+                    label_change: labelChange || null,
+                    label_change_enabled: labelChangeEnabled,
+                    created_at: '',
+                    updated_at: ''
+                }
+            });
         } catch (err) {
             console.error("Error downloading PDF:", err);
             alert(t('app.settings.receiptPopup.failedDownload'));
@@ -254,7 +332,53 @@ export function ReceiptPopup({
 
     const handleDownloadImage = async () => {
         try {
-            await generateImage(receiptData, { type: 'png' }, receiptTemplate);
+            await generateImage(receiptData, {
+                type: 'png',
+                settings: {
+                    id: 0,
+                    uuid: '',
+                    business_uuid: selectedBusiness?.uuid || '',
+                    receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
+                    include_image: includeLogo,
+                    footer_message: footerMessage || null,
+                    qrcode_data: qrcodeValue || null,
+                    transaction_prefix: transactionPrefix || null,
+                    transaction_next_number: transactionNextNumber,
+                    font,
+                    line_character: lineCharacter,
+                    item_layout: itemLayout,
+                    label_receipt_id: labelReceiptId || null,
+                    label_receipt_id_enabled: labelReceiptIdEnabled,
+                    label_transaction_id: labelTransactionId || null,
+                    label_transaction_id_enabled: labelTransactionIdEnabled,
+                    label_date: labelDate || null,
+                    label_date_enabled: labelDateEnabled,
+                    label_time: labelTime || null,
+                    label_time_enabled: labelTimeEnabled,
+                    label_cashier: labelCashier || null,
+                    label_cashier_enabled: labelCashierEnabled,
+                    label_customer: labelCustomer || null,
+                    label_customer_enabled: labelCustomerEnabled,
+                    label_items: labelItems || null,
+                    label_items_enabled: labelItemsEnabled,
+                    label_subtotal: labelSubtotal || null,
+                    label_subtotal_enabled: labelSubtotalEnabled,
+                    label_discount: labelDiscount || null,
+                    label_discount_enabled: labelDiscountEnabled,
+                    label_tax: labelTax || null,
+                    label_tax_enabled: labelTaxEnabled,
+                    label_total: labelTotal || null,
+                    label_total_enabled: labelTotalEnabled,
+                    label_payment_method: labelPaymentMethod || null,
+                    label_payment_method_enabled: labelPaymentMethodEnabled,
+                    label_amount_paid: labelAmountPaid || null,
+                    label_amount_paid_enabled: labelAmountPaidEnabled,
+                    label_change: labelChange || null,
+                    label_change_enabled: labelChangeEnabled,
+                    created_at: '',
+                    updated_at: ''
+                }
+            });
         } catch (err) {
             console.error("Error downloading image:", err);
             alert(t('app.settings.receiptPopup.failedDownloadImage'));

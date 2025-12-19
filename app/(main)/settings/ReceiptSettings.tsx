@@ -6,101 +6,15 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ReceiptData, ImageTemplateType, imageTemplates, ReceiptTemplate } from '@/lib/receipt-generator';
-import { generateReceiptHTML } from '@/lib/receipt-generator';
-import { generateDynamicPreviewHTML } from '@/lib/receipt-generator/dynamic-preview';
+import { ReceiptData } from '@/lib/receipt-generator/types';
+import { generateDynamicReceiptHTML } from '@/lib/receipt-generator/dynamic-preview';
 import { useReceiptTemplatePreference } from '@/lib/receipt-settings';
 import { Check, Loader2 } from 'lucide-react';
 import { useBusiness } from '@/contexts/business-context';
 import { getCurrencySymbol } from '@/lib/utils/currency';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 
-interface ReceiptTemplateCardProps {
-    template: ReceiptTemplate;
-    sampleReceipt: ReceiptData;
-    includeLogo: boolean;
-    footerMessage: string;
-    qrcodeValue: string;
-    isSelected: boolean;
-    onSelect: () => void;
-}
 
-function ReceiptTemplateCard({ template, sampleReceipt, includeLogo, footerMessage, qrcodeValue, isSelected, onSelect }: ReceiptTemplateCardProps) {
-    const iframeRef = useRef<HTMLIFrameElement>(null);
-
-    useEffect(() => {
-        const iframe = iframeRef.current;
-        if (!iframe) return;
-
-        const adjustHeight = () => {
-            try {
-                const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
-                if (iframeDocument) {
-                    const height = iframeDocument.documentElement.scrollHeight;
-                    iframe.style.height = `${height}px`;
-                }
-            } catch (error) {
-                console.error('Error adjusting iframe height:', error);
-            }
-        };
-
-        iframe.addEventListener('load', adjustHeight);
-
-        const timer = setTimeout(adjustHeight, 500);
-
-        return () => {
-            iframe.removeEventListener('load', adjustHeight);
-            clearTimeout(timer);
-        };
-    }, [qrcodeValue, footerMessage, includeLogo]);
-
-    const templateHTML = generateReceiptHTML({
-        ...sampleReceipt,
-        storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
-        footer: footerMessage,
-        qrcode: qrcodeValue,
-        currencySymbol: sampleReceipt.currencySymbol
-    }, template.type);
-
-    return (
-        <button
-            onClick={onSelect}
-            className={`relative flex-shrink-0 p-4 border-2 rounded-lg transition-all text-left ${isSelected
-                ? 'border-blue-500 '
-                : 'border-gray-300 hover:border-gray-400'
-                }`}
-            style={{ width: '320px' }}
-        >
-            {isSelected && (
-                <div className="absolute top-3 right-3 bg-blue-500 rounded-full p-1.5 z-10">
-                    <Check className="h-4 w-4 text-white" />
-                </div>
-            )}
-
-            <div className="mb-3">
-                <div className="font-semibold text-lg">{template.name}</div>
-                <div className="text-sm text-gray-600 mt-1">{template.description}</div>
-            </div>
-
-            <div className="relative bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-                <iframe
-                    key={`${includeLogo}-${footerMessage}-${qrcodeValue}`}
-                    ref={iframeRef}
-                    srcDoc={templateHTML}
-                    className="w-full border-0 pointer-events-none"
-                    style={{
-                        width: '302px',
-                        minHeight: '400px',
-                        transform: 'scale(0.94)',
-                        transformOrigin: 'top left'
-                    }}
-                    title={`${template.name} preview`}
-                    sandbox="allow-same-origin allow-scripts"
-                />
-            </div>
-        </button>
-    );
-}
 
 
 export default function ReceiptSettings() {
@@ -109,8 +23,8 @@ export default function ReceiptSettings() {
     const {
         isLoading,
         error,
-        imageTemplate,
-        updateImageTemplate,
+        receiptStyle,
+        updateReceiptStyle,
 
         includeLogo,
         updateIncludeLogo,
@@ -377,6 +291,23 @@ export default function ReceiptSettings() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                        <div className="space-y-2">
+                            <Label htmlFor="receipt-style-select">Receipt Style</Label>
+                            <Select
+                                value={receiptStyle}
+                                onValueChange={(value) => updateReceiptStyle(value as any)}
+                            >
+                                <SelectTrigger id="receipt-style-select">
+                                    <SelectValue placeholder="Select a style" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="classic">Classic Monospace</SelectItem>
+                                    <SelectItem value="sans-serif">Modern Sans Serif</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
                         <div className="space-y-2">
                             <Label htmlFor="font-select">Font</Label>
                             <Select value={font || 'A'} onValueChange={updateFont}>
@@ -460,8 +391,8 @@ export default function ReceiptSettings() {
                 <CardContent className="flex justify-center bg-gray-100/50 p-6">
                     <div className="bg-white p-4 shadow-sm border border-gray-200">
                         <iframe
-                            key={`${font}-${lineCharacter}-${itemLayout}-${includeLogo}-${footerMessage}-${qrcodeValue}`}
-                            srcDoc={generateDynamicPreviewHTML({
+                            key={`${font}-${lineCharacter}-${itemLayout}-${receiptStyle}-${includeLogo}-${footerMessage}-${qrcodeValue}`}
+                            srcDoc={generateDynamicReceiptHTML({
                                 ...sampleReceipt,
                                 storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
                                 footer: footerMessage,
@@ -471,7 +402,7 @@ export default function ReceiptSettings() {
                                 id: 0,
                                 uuid: '',
                                 business_uuid: '',
-                                image_template_id: null,
+                                receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
                                 qrcode_data: qrcodeValue || null,
                                 footer_message: footerMessage || null,
                                 include_image: includeLogo,
@@ -520,32 +451,7 @@ export default function ReceiptSettings() {
                 </CardContent>
             </Card>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle>Image/PDF Template</CardTitle>
-                    <p className="text-sm text-muted-foreground mt-1">
-                        Template used for generating PDF and image receipts
-                    </p>
-                </CardHeader>
-                <CardContent>
-                    <div className="overflow-x-auto pb-4">
-                        <div className="flex items-start gap-6 min-w-min" key={`image-${includeLogo}-${footerMessage}-${qrcodeValue}`}>
-                            {imageTemplates.map((template) => (
-                                <ReceiptTemplateCard
-                                    key={template.type}
-                                    template={template}
-                                    sampleReceipt={sampleReceipt}
-                                    includeLogo={includeLogo}
-                                    footerMessage={footerMessage}
-                                    qrcodeValue={qrcodeValue}
-                                    isSelected={imageTemplate === template.type}
-                                    onSelect={() => updateImageTemplate(template.type as ImageTemplateType)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
+
 
 
         </div>

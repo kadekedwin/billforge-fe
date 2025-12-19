@@ -1,6 +1,7 @@
 import puppeteer, { ScreenshotOptions } from 'puppeteer';
-import { ReceiptData, ReceiptTemplateType } from './types';
-import { generateReceiptHTML } from './templates';
+import { ReceiptData } from './types';
+import { ReceiptSettings } from '@/lib/api/receipt-settings/types';
+import { generateDynamicReceiptHTML } from './dynamic-preview';
 
 export interface ImageGeneratorOptions {
     type?: 'png' | 'jpeg' | 'webp';
@@ -9,7 +10,7 @@ export interface ImageGeneratorOptions {
     omitBackground?: boolean;
     width?: number;
     height?: number;
-    template?: ReceiptTemplateType;
+    settings?: ReceiptSettings;
 }
 
 export const generateReceiptImage = async (
@@ -17,7 +18,10 @@ export const generateReceiptImage = async (
     outputPath: string,
     options: ImageGeneratorOptions = {}
 ): Promise<void> => {
-    const html = generateReceiptHTML(data, options.template || 'classic');
+    if (!options.settings) {
+        throw new Error('Receipt settings are required for image generation');
+    }
+    const html = generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -56,7 +60,10 @@ export const generateReceiptImageBuffer = async (
     data: ReceiptData,
     options: ImageGeneratorOptions = {}
 ): Promise<Buffer> => {
-    const html = generateReceiptHTML(data, options.template || 'classic');
+    if (!options.settings) {
+        throw new Error('Receipt settings are required for image generation');
+    }
+    const html = generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,

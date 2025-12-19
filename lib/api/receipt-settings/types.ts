@@ -4,7 +4,7 @@ export interface ReceiptSettings {
     id: number;
     uuid: string;
     business_uuid: string;
-    image_template_id: number | null;
+    receipt_style_id: number | null;
 
     qrcode_data: string | null;
     footer_message: string | null;
@@ -51,7 +51,7 @@ export interface ReceiptSettings {
 
 export interface CreateReceiptSettingsRequest {
     business_uuid: string;
-    image_template_id?: number | null;
+    receipt_style_id?: number | null;
 
     qrcode_data?: string | null;
     footer_message?: string | null;
@@ -94,7 +94,7 @@ export interface CreateReceiptSettingsRequest {
 }
 
 export interface UpdateReceiptSettingsRequest {
-    image_template_id?: number | null;
+    receipt_style_id?: number | null;
 
     qrcode_data?: string | null;
     footer_message?: string | null;

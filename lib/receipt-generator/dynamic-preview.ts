@@ -2,7 +2,7 @@
 import { ReceiptData } from './types';
 import { ReceiptSettings } from '@/lib/api/receipt-settings/types';
 
-export const generateDynamicPreviewHTML = (data: ReceiptData, settings: ReceiptSettings): string => {
+export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptSettings): string => {
     const currency = data.currencySymbol || '$';
 
     const isEnabled = (val: boolean | undefined) => val !== false;
@@ -55,7 +55,15 @@ export const generateDynamicPreviewHTML = (data: ReceiptData, settings: ReceiptS
     const dividerStyle = `border-top: 1px ${borderStyle} #000; margin: 10px 0;`;
 
     const font = settings.font || 'A';
-    const fontFamily = font === 'B' ? "'Courier New', Courier, monospace" : "'Courier New', Courier, monospace";
+    const receiptStyleId = Number(settings.receipt_style_id ?? 0);
+
+    let fontFamily = "'Courier New', Courier, monospace";
+    let fontWeight = "normal";
+
+    if (receiptStyleId === 1) { // Sans Serif
+        fontFamily = "Inter, system-ui, -apple-system, sans-serif";
+    }
+
     const fontSize = font === 'B' ? "12px" : "14px";
 
     return `
@@ -63,12 +71,24 @@ export const generateDynamicPreviewHTML = (data: ReceiptData, settings: ReceiptS
 <html>
 <head>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .receipt {
             font-family: ${fontFamily};
             font-size: ${fontSize};
+            font-weight: ${fontWeight};
             line-height: 1.4;
             max-width: 300px;
-            margin: 0 auto;
+            width: 100%;
+            background-color: white;
             padding: 20px;
             color: #000;
         }
@@ -101,6 +121,7 @@ export const generateDynamicPreviewHTML = (data: ReceiptData, settings: ReceiptS
     </style>
 </head>
 <body>
+    <div class="receipt">
     <div class="text-center">
         ${settings.include_image && data.storeLogo ? `<img src="${data.storeLogo}" class="logo" alt="Logo" />` : ''}
         <div class="header-large">${data.storeName}</div>
@@ -156,6 +177,7 @@ export const generateDynamicPreviewHTML = (data: ReceiptData, settings: ReceiptS
         </div>
     ` : ''}
 
+    </div>
 </body>
 </html>
     `;

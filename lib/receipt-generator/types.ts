@@ -31,12 +31,5 @@ export interface ReceiptData {
     currencySymbol?: string;
 }
 
-export type ImageTemplateType = 'classic' | 'sans-serif' | 'modern-bold';
-export type ReceiptTemplateType = ImageTemplateType;
-
-export interface ReceiptTemplate {
-    name: string;
-    type: ReceiptTemplateType;
-    description: string;
-    generateHTML: (data: ReceiptData) => string;
-}
+export type ImageTemplateId = 0 | 1;
+export type ImageTemplateType = 'classic' | 'sans-serif';
