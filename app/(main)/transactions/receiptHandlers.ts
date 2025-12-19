@@ -10,7 +10,7 @@ interface GenerateReceiptParams {
     transactionItems: TransactionItem[];
     business: Business;
     customer: Customer | null;
-    paymentMethodName: string;
+    paymentMethodName?: string;
     footerMessage?: string;
     businessLogoUrl?: string;
     qrcodeValue?: string;

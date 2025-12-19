@@ -55,7 +55,7 @@ export default function SalePage() {
     const [completedTransaction, setCompletedTransaction] = useState<Transaction | null>(null);
     const [completedTransactionItems, setCompletedTransactionItems] = useState<TransactionItem[]>([]);
     const [completedCustomerName, setCompletedCustomerName] = useState<string | undefined>(undefined);
-    const [completedPaymentMethodName, setCompletedPaymentMethodName] = useState<string>("Cash");
+    const [completedPaymentMethodName, setCompletedPaymentMethodName] = useState<string | undefined>(undefined);
     const [completedCustomerEmail, setCompletedCustomerEmail] = useState<string | null>(null);
     const [completedCustomerPhone, setCompletedCustomerPhone] = useState<string | null>(null);
     const [businessLogoUrl, setBusinessLogoUrl] = useState<string | undefined>(undefined);
@@ -155,7 +155,7 @@ export default function SalePage() {
             setCompletedTransaction(result.transaction);
             setCompletedTransactionItems(result.transactionItems);
             setCompletedCustomerName(result.customerName);
-            setCompletedPaymentMethodName(result.paymentMethodName || "Cash");
+            setCompletedPaymentMethodName(result.paymentMethodName || undefined);
             setCompletedCustomerEmail(result.customerEmail || null);
             setCompletedCustomerPhone(result.customerPhone || null);
             setIsReceiptPopupOpen(true);
@@ -313,7 +313,7 @@ export default function SalePage() {
                             setCompletedTransaction(null);
                             setCompletedTransactionItems([]);
                             setCompletedCustomerName(undefined);
-                            setCompletedPaymentMethodName("Cash");
+                            setCompletedPaymentMethodName(undefined);
                             setCompletedCustomerEmail(null);
                             setCompletedCustomerPhone(null);
                         }

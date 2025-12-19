@@ -22,7 +22,7 @@ export interface ReceiptData {
     tax?: number;
     discount?: number;
     total: number;
-    paymentMethod: string;
+    paymentMethod?: string;
     paymentAmount?: number;
     changeAmount?: number;
     footer?: string;

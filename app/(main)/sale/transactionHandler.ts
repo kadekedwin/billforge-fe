@@ -147,7 +147,7 @@ export async function completeTransaction({
             transaction,
             transactionItems: createdItems,
             customerName: customerData?.name,
-            paymentMethodName: paymentMethodData?.name || "Cash",
+            paymentMethodName: paymentMethodData?.name || undefined,
             customerEmail: customerData?.email || null,
             customerPhone: customerData?.phone || null,
         };

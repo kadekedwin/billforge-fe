@@ -92,7 +92,7 @@ export const convertTransactionToReceiptData = (
         tax: parseFloat(transaction.tax_amount),
         discount: parseFloat(transaction.discount_amount),
         total: parseFloat(transaction.final_amount),
-        paymentMethod: paymentMethodName || "Cash",
+        paymentMethod: paymentMethodName,
         footer: footer,
         qrcode: qrcode || undefined,
         notes: transaction.notes || undefined,

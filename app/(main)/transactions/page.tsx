@@ -126,7 +126,7 @@ export default function TransactionsPage() {
             const customer = getCustomer(selectedTransaction.customer_uuid, customers);
             const paymentMethodName = selectedTransaction.payment_method_uuid
                 ? getPaymentMethodName(selectedTransaction.payment_method_uuid, paymentMethods)
-                : "Cash";
+                : undefined;
 
             await handleDownloadPDF(
                 {
@@ -197,7 +197,7 @@ export default function TransactionsPage() {
             const customer = getCustomer(selectedTransaction.customer_uuid, customers);
             const paymentMethodName = selectedTransaction.payment_method_uuid
                 ? getPaymentMethodName(selectedTransaction.payment_method_uuid, paymentMethods)
-                : "Cash";
+                : undefined;
 
             await handleDownloadImage(
                 {
@@ -307,7 +307,7 @@ export default function TransactionsPage() {
             const customer = getCustomer(selectedTransaction.customer_uuid, customers);
             const paymentMethodName = selectedTransaction.payment_method_uuid
                 ? getPaymentMethodName(selectedTransaction.payment_method_uuid, paymentMethods)
-                : "Cash";
+                : undefined;
 
             const receiptData = convertTransactionToReceiptData(
                 selectedTransaction,
