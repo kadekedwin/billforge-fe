@@ -24,7 +24,10 @@ export const generatePrintTemplate0 = async (
     settings: PrinterSettings = DEFAULT_SETTINGS
 ) => {
     const currency = data.currencySymbol || '$';
-    const maxWidth = Math.floor((settings.paperWidthMm / 25.4) * 203);
+    const maxWidth = Math.min(
+        Math.floor((settings.paperWidthMm * 203 / 25.4) * 0.8),
+        576
+    );
 
     encoder.initialize().align('center');
 
