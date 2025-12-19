@@ -14,6 +14,8 @@ interface UseItemFormResult {
     imageDeleted: boolean;
     selectedCategoryUuids: string[];
     initialCategoryUuids: string[];
+    showCropper: boolean;
+    cropperImage: string | null;
     setFormData: React.Dispatch<React.SetStateAction<Omit<CreateItemRequest, 'business_uuid'>>>;
     setFormErrors: React.Dispatch<React.SetStateAction<Record<string, string>>>;
     setSelectedImage: React.Dispatch<React.SetStateAction<File | null>>;
@@ -25,6 +27,8 @@ interface UseItemFormResult {
     handleCategoryChange: (categoryUuid: string) => void;
     handleImageChange: (e: React.ChangeEvent<HTMLInputElement>, onError: (error: string) => void) => void;
     handleRemoveImage: () => void;
+    handleCropComplete: (croppedBlob: Blob) => void;
+    handleCropCancel: () => void;
     resetForm: () => void;
     loadItemForEdit: (item: Item, categoryUuids: string[]) => Promise<void>;
 }
@@ -50,6 +54,8 @@ export function useItemForm(): UseItemFormResult {
     const [imageDeleted, setImageDeleted] = useState(false);
     const [selectedCategoryUuids, setSelectedCategoryUuids] = useState<string[]>([]);
     const [initialCategoryUuids, setInitialCategoryUuids] = useState<string[]>([]);
+    const [showCropper, setShowCropper] = useState(false);
+    const [cropperImage, setCropperImage] = useState<string | null>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -102,14 +108,33 @@ export function useItemForm(): UseItemFormResult {
                 e.target.value = '';
                 return;
             }
-            setSelectedImage(file);
-            setImageDeleted(false);
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreview(reader.result as string);
+                setCropperImage(reader.result as string);
+                setShowCropper(true);
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    const handleCropComplete = (croppedBlob: Blob) => {
+        const file = new File([croppedBlob], 'cropped-image.jpg', { type: 'image/jpeg' });
+        setSelectedImage(file);
+        setImageDeleted(false);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setImagePreview(reader.result as string);
+        };
+        reader.readAsDataURL(croppedBlob);
+        setShowCropper(false);
+        setCropperImage(null);
+    };
+
+    const handleCropCancel = () => {
+        setShowCropper(false);
+        setCropperImage(null);
+        const fileInput = document.getElementById('image') as HTMLInputElement;
+        if (fileInput) fileInput.value = '';
     };
 
     const handleRemoveImage = () => {
@@ -175,6 +200,8 @@ export function useItemForm(): UseItemFormResult {
         imageDeleted,
         selectedCategoryUuids,
         initialCategoryUuids,
+        showCropper,
+        cropperImage,
         setFormData,
         setFormErrors,
         setSelectedImage,
@@ -186,6 +213,8 @@ export function useItemForm(): UseItemFormResult {
         handleCategoryChange,
         handleImageChange,
         handleRemoveImage,
+        handleCropComplete,
+        handleCropCancel,
         resetForm,
         loadItemForEdit,
     };

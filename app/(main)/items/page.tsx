@@ -18,6 +18,7 @@ import { useItemsData } from "./useItemsData";
 import { useItemForm } from "./useItemForm";
 import { handleCreateItem, handleUpdateItem, handleDeleteItem } from "./itemOperations";
 import { useTranslation } from "@/lib/i18n/useTranslation";
+import { ImageCropper } from "@/components/ImageCropper";
 
 export default function ItemsPage() {
     const { t } = useTranslation();
@@ -32,12 +33,16 @@ export default function ItemsPage() {
         imageDeleted,
         selectedCategoryUuids,
         initialCategoryUuids,
+        showCropper,
+        cropperImage,
         setFormErrors,
         handleInputChange,
         handleSwitchChange,
         handleCategoryChange,
         handleImageChange,
         handleRemoveImage,
+        handleCropComplete,
+        handleCropCancel,
         resetForm,
         loadItemForEdit,
     } = useItemForm();
@@ -226,6 +231,16 @@ export default function ItemsPage() {
                 isDeleting={!!deletingId}
                 onConfirm={handleDeleteConfirm}
             />
+
+            {showCropper && cropperImage && (
+                <ImageCropper
+                    open={showCropper}
+                    image={cropperImage}
+                    aspectRatio={1}
+                    onCropComplete={handleCropComplete}
+                    onCancel={handleCropCancel}
+                />
+            )}
         </div>
     );
 }
