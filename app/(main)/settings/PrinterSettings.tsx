@@ -124,8 +124,12 @@ export default function PrinterSettings() {
                                 <Label>{t('app.settings.printerTab.feedLines')}</Label>
                                 <Input
                                     type="number"
+                                    max="10"
                                     value={feedLines}
-                                    onChange={(e) => updateFeedLines(parseInt(e.target.value) || 0)}
+                                    onChange={(e) => {
+                                        const value = parseInt(e.target.value) || 0;
+                                        updateFeedLines(Math.min(Math.max(value, 0), 10));
+                                    }}
                                 />
                             </div>
 

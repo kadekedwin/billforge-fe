@@ -42,7 +42,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                     setPaperWidthMm(data.paper_width_mm);
                     setCharsPerLine(data.chars_per_line);
                     setEncoding(data.encoding);
-                    setFeedLines(data.feed_lines || 3);
+                    setFeedLines(data.feed_lines ?? 3);
                     setCutEnabled(data.cut_enabled ?? true);
                     setAutoPrint(data.auto_print ?? false);
                 }
@@ -62,7 +62,7 @@ export function usePrinterSettings({ businessUuid }: UsePrinterSettingsProps) {
                         setPaperWidthMm(data.paper_width_mm);
                         setCharsPerLine(data.chars_per_line);
                         setEncoding(data.encoding);
-                        setFeedLines(data.feed_lines || 3);
+                        setFeedLines(data.feed_lines ?? 3);
                         setCutEnabled(data.cut_enabled ?? true);
                         setAutoPrint(data.auto_print ?? false);
                     } else {
