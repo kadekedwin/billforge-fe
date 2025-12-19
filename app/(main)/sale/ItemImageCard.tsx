@@ -57,7 +57,7 @@ export const ItemImageCard = memo(({ item }: ItemImageCardProps) => {
                 src={imageUrl}
                 alt={item.name}
                 fill
-                className="object-cover transition-transform group-hover:scale-105"
+                className="object-contain transition-transform group-hover:scale-105"
             />
         );
     }
