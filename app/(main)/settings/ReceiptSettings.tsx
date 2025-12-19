@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -9,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ReceiptData } from '@/lib/receipt-generator/types';
 import { generateDynamicReceiptHTML } from '@/lib/receipt-generator/dynamic-preview';
 import { useReceiptTemplatePreference } from '@/lib/receipt-settings';
-import { Check, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useBusiness } from '@/contexts/business-context';
 import { getCurrencySymbol } from '@/lib/utils/currency';
 import { useTranslation } from '@/lib/i18n/useTranslation';
@@ -296,7 +295,7 @@ export default function ReceiptSettings() {
                             <Label htmlFor="receipt-style-select">{t('app.settings.receiptTab.receiptStyle')}</Label>
                             <Select
                                 value={receiptStyle}
-                                onValueChange={(value) => updateReceiptStyle(value as any)}
+                                onValueChange={(value) => updateReceiptStyle(value as 'classic' | 'sans-serif')}
                             >
                                 <SelectTrigger id="receipt-style-select">
                                     <SelectValue placeholder={t('app.settings.receiptTab.placeholders.selectStyle')} />

@@ -260,7 +260,7 @@ export function ReceiptPopup({
         } finally {
             setIsPrinting(false);
         }
-    }, [printClient, printReceipt, receiptData, paperWidthMm, charsPerLine, encoding, feedLines, cutEnabled, t, includeLogo, footerMessage, qrcodeValue, transactionPrefix, transactionNextNumber, printerFont, lineCharacter, itemLayout, labelReceiptId, labelReceiptIdEnabled, labelTransactionId, labelTransactionIdEnabled, labelDate, labelDateEnabled, labelTime, labelTimeEnabled, labelCashier, labelCashierEnabled, labelCustomer, labelCustomerEnabled, labelItems, labelItemsEnabled, labelSubtotal, labelSubtotalEnabled, labelDiscount, labelDiscountEnabled, labelTax, labelTaxEnabled, labelTotal, labelTotalEnabled, labelPaymentMethod, labelPaymentMethodEnabled, labelAmountPaid, labelAmountPaidEnabled, labelChange, labelChangeEnabled, selectedBusiness]);
+    }, [printClient, printReceipt, receiptData, paperWidthMm, charsPerLine, encoding, feedLines, cutEnabled, t, includeLogo, footerMessage, qrcodeValue, transactionPrefix, transactionNextNumber, lineCharacter, itemLayout, labelReceiptId, labelReceiptIdEnabled, labelTransactionId, labelTransactionIdEnabled, labelDate, labelDateEnabled, labelTime, labelTimeEnabled, labelCashier, labelCashierEnabled, labelCustomer, labelCustomerEnabled, labelItems, labelItemsEnabled, labelSubtotal, labelSubtotalEnabled, labelDiscount, labelDiscountEnabled, labelTax, labelTaxEnabled, labelTotal, labelTotalEnabled, labelPaymentMethod, labelPaymentMethodEnabled, labelAmountPaid, labelAmountPaidEnabled, labelChange, labelChangeEnabled, selectedBusiness]);
 
     // Auto-print effect
     useEffect(() => {

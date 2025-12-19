@@ -67,6 +67,7 @@ export default function PrinterConnectionSettings() {
                 ws.disconnect();
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleDisconnect = () => {

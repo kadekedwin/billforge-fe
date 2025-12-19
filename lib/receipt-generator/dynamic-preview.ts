@@ -55,7 +55,7 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
     const receiptStyleId = Number(settings.receipt_style_id ?? 0);
 
     let fontFamily = "'Courier New', Courier, monospace";
-    let fontWeight = "normal";
+    const fontWeight = "normal";
 
     if (receiptStyleId === 1) { // Sans Serif
         fontFamily = "Inter, system-ui, -apple-system, sans-serif";
