@@ -156,11 +156,12 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
         <span class="right">${currency}${data.total.toFixed(2)}</span>
     </div>` : ''}
 
+    ${(data.paymentMethod || data.paymentAmount || data.changeAmount) ? `
     <div class="divider"></div>
-
     ${data.paymentMethod ? getLabelRow(settings.label_payment_method_enabled, settings.label_payment_method || 'Payment', data.paymentMethod) : ''}
     ${data.paymentAmount ? getLabelRow(settings.label_amount_paid_enabled, settings.label_amount_paid || 'Paid', `${currency}${data.paymentAmount.toFixed(2)}`) : ''}
     ${data.changeAmount ? getLabelRow(settings.label_change_enabled, settings.label_change || 'Change', `${currency}${data.changeAmount.toFixed(2)}`) : ''}
+    ` : ''}
 
     ${(settings.footer_message || data.footer) ? `
         <div class="divider"></div>
