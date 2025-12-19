@@ -1,8 +1,9 @@
 
 import { ReceiptData } from './types';
 import { ReceiptSettings } from '@/lib/api/receipt-settings/types';
+import QRCode from 'qrcode';
 
-export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptSettings): string => {
+export const generateDynamicReceiptHTML = async (data: ReceiptData, settings: ReceiptSettings): Promise<string> => {
     const currency = data.currencySymbol || '$';
 
     const isEnabled = (val: boolean | undefined) => val !== false;
@@ -63,6 +64,24 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
 
     const dividerStyle = `border-top: 1px ${borderStyle} #000; margin: 10px 0;`;
 
+    // Generate QR Code if data is present
+    let qrCodeDataUrl = '';
+    const qrData = settings.qrcode_data || data.qrcode;
+    if (qrData) {
+        try {
+            qrCodeDataUrl = await QRCode.toDataURL(qrData, {
+                width: 128,
+                margin: 0,
+                color: {
+                    dark: '#000000',
+                    light: '#ffffff'
+                }
+            });
+        } catch (err) {
+            console.error('Error generating QR code:', err);
+        }
+    }
+
     return `
 <!DOCTYPE html>
 <html>
@@ -105,6 +124,12 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
             height: auto;
             display: block;
             margin: 0 auto 10px;
+        }
+        .qr-code {
+            display: block;
+            margin: 0 auto;
+            max-width: 128px;
+            height: auto;
         }
         .text {
             margin-bottom: 2px;
@@ -167,11 +192,9 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
         </div>
     ` : ''}
 
-    ${(settings.qrcode_data || data.qrcode) ? `
+    ${qrCodeDataUrl ? `
         <div style="margin-top: 15px; text-align: center;">
-            <div style="display: inline-block; padding: 10px; background: #fff; border: 1px solid #ccc;">
-                QR Code: ${settings.qrcode_data || data.qrcode}
-            </div>
+            <img src="${qrCodeDataUrl}" class="qr-code" alt="QR Code" />
         </div>
     ` : ''}
 
@@ -180,3 +203,4 @@ export const generateDynamicReceiptHTML = (data: ReceiptData, settings: ReceiptS
 </html>
     `;
 };
+

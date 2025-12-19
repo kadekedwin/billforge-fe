@@ -24,7 +24,7 @@ export const generateReceiptPDF = async (
     if (!options.settings) {
         throw new Error('Receipt settings are required for PDF generation');
     }
-    const html = generateDynamicReceiptHTML(data, options.settings);
+    const html = await generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -68,7 +68,7 @@ export const generateReceiptPDFBuffer = async (
     if (!options.settings) {
         throw new Error('Receipt settings are required for PDF generation');
     }
-    const html = generateDynamicReceiptHTML(data, options.settings);
+    const html = await generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -114,7 +115,7 @@ export default function ReceiptSettings() {
         updateLabelChangeEnabled,
     } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
 
-    const sampleReceipt: ReceiptData = {
+    const sampleReceipt: ReceiptData = useMemo(() => ({
         receiptNumber: 'RCP-001',
         transactionId: 'INV1001',
         date: '2025-12-07',
@@ -158,7 +159,113 @@ export default function ReceiptSettings() {
         footer: '',
         notes: 'Please visit us again soon',
         currencySymbol: getCurrencySymbol(selectedBusiness?.currency)
-    };
+    }), [selectedBusiness?.currency]);
+
+    const [previewHtml, setPreviewHtml] = useState<string>('');
+    const [isPreviewLoading, setIsPreviewLoading] = useState(false);
+
+    useEffect(() => {
+        let isMounted = true;
+        const generatePreview = async () => {
+            if (!selectedBusiness) return;
+
+            setIsPreviewLoading(true);
+            try {
+                const html = await generateDynamicReceiptHTML({
+                    ...sampleReceipt,
+                    storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
+                    footer: footerMessage,
+                    qrcode: qrcodeValue,
+                    currencySymbol: sampleReceipt.currencySymbol
+                }, {
+                    id: 0,
+                    uuid: '',
+                    business_uuid: '',
+                    receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
+                    qrcode_data: qrcodeValue || null,
+                    footer_message: footerMessage || null,
+                    include_image: includeLogo,
+                    transaction_prefix: transactionPrefix || null,
+                    transaction_next_number: transactionNextNumber,
+
+                    line_character: lineCharacter || null,
+                    item_layout: itemLayout,
+
+                    label_receipt_id: labelReceiptId || null,
+                    label_receipt_id_enabled: labelReceiptIdEnabled,
+                    label_transaction_id: labelTransactionId || null,
+                    label_transaction_id_enabled: labelTransactionIdEnabled,
+                    label_date: labelDate || null,
+                    label_date_enabled: labelDateEnabled,
+                    label_time: labelTime || null,
+                    label_time_enabled: labelTimeEnabled,
+                    label_cashier: labelCashier || null,
+                    label_cashier_enabled: labelCashierEnabled,
+                    label_customer: labelCustomer || null,
+                    label_customer_enabled: labelCustomerEnabled,
+                    label_items: labelItems || null,
+                    label_items_enabled: labelItemsEnabled,
+                    label_subtotal: labelSubtotal || null,
+                    label_subtotal_enabled: labelSubtotalEnabled,
+                    label_discount: labelDiscount || null,
+                    label_discount_enabled: labelDiscountEnabled,
+                    label_tax: labelTax || null,
+                    label_tax_enabled: labelTaxEnabled,
+                    label_total: labelTotal || null,
+                    label_total_enabled: labelTotalEnabled,
+                    label_payment_method: labelPaymentMethod || null,
+                    label_payment_method_enabled: labelPaymentMethodEnabled,
+                    label_amount_paid: labelAmountPaid || null,
+                    label_amount_paid_enabled: labelAmountPaidEnabled,
+                    label_change: labelChange || null,
+                    label_change_enabled: labelChangeEnabled,
+                    created_at: '',
+                    updated_at: ''
+                });
+
+                if (isMounted) {
+                    setPreviewHtml(html);
+                }
+            } catch (err) {
+                console.error("Failed to generate receipt preview:", err);
+            } finally {
+                if (isMounted) {
+                    setIsPreviewLoading(false);
+                }
+            }
+        };
+
+        generatePreview();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [
+        selectedBusiness,
+        sampleReceipt,
+        includeLogo,
+        footerMessage,
+        qrcodeValue,
+        receiptStyle,
+        transactionPrefix,
+        transactionNextNumber,
+        lineCharacter,
+        itemLayout,
+        labelReceiptId, labelReceiptIdEnabled,
+        labelTransactionId, labelTransactionIdEnabled,
+        labelDate, labelDateEnabled,
+        labelTime, labelTimeEnabled,
+        labelCashier, labelCashierEnabled,
+        labelCustomer, labelCustomerEnabled,
+        labelItems, labelItemsEnabled,
+        labelSubtotal, labelSubtotalEnabled,
+        labelDiscount, labelDiscountEnabled,
+        labelTax, labelTaxEnabled,
+        labelTotal, labelTotalEnabled,
+        labelPaymentMethod, labelPaymentMethodEnabled,
+        labelAmountPaid, labelAmountPaidEnabled,
+        labelChange, labelChangeEnabled
+    ]);
 
     if (!selectedBusiness) {
         return (
@@ -205,6 +312,8 @@ export default function ReceiptSettings() {
             </div>
         </div>
     );
+
+
 
     return (
         <div className="space-y-6">
@@ -389,70 +498,20 @@ export default function ReceiptSettings() {
                     </p>
                 </CardHeader>
                 <CardContent className="flex justify-center bg-gray-100/50 p-6">
-                    <div className="bg-white p-4 shadow-sm border border-gray-200">
+                    <div className="bg-white p-4 shadow-sm border border-gray-200 relative">
+                        {isPreviewLoading && (
+                            <div className="absolute inset-0 bg-white/80 flex items-center justify-center z-10">
+                                <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                            </div>
+                        )}
                         <iframe
-                            key={`${printerFont}-${lineCharacter}-${itemLayout}-${receiptStyle}-${includeLogo}-${footerMessage}-${qrcodeValue}`}
-                            srcDoc={generateDynamicReceiptHTML({
-                                ...sampleReceipt,
-                                storeLogo: includeLogo ? sampleReceipt.storeLogo : undefined,
-                                footer: footerMessage,
-                                qrcode: qrcodeValue,
-                                currencySymbol: sampleReceipt.currencySymbol
-                            }, {
-                                id: 0,
-                                uuid: '',
-                                business_uuid: '',
-                                receipt_style_id: Number(receiptStyle === 'classic' ? 0 : 1),
-                                qrcode_data: qrcodeValue || null,
-                                footer_message: footerMessage || null,
-                                include_image: includeLogo,
-                                transaction_prefix: transactionPrefix || null,
-                                transaction_next_number: transactionNextNumber,
-
-                                line_character: lineCharacter || null,
-                                item_layout: itemLayout,
-
-                                label_receipt_id: labelReceiptId || null,
-                                label_receipt_id_enabled: labelReceiptIdEnabled,
-                                label_transaction_id: labelTransactionId || null,
-                                label_transaction_id_enabled: labelTransactionIdEnabled,
-                                label_date: labelDate || null,
-                                label_date_enabled: labelDateEnabled,
-                                label_time: labelTime || null,
-                                label_time_enabled: labelTimeEnabled,
-                                label_cashier: labelCashier || null,
-                                label_cashier_enabled: labelCashierEnabled,
-                                label_customer: labelCustomer || null,
-                                label_customer_enabled: labelCustomerEnabled,
-                                label_items: labelItems || null,
-                                label_items_enabled: labelItemsEnabled,
-                                label_subtotal: labelSubtotal || null,
-                                label_subtotal_enabled: labelSubtotalEnabled,
-                                label_discount: labelDiscount || null,
-                                label_discount_enabled: labelDiscountEnabled,
-                                label_tax: labelTax || null,
-                                label_tax_enabled: labelTaxEnabled,
-                                label_total: labelTotal || null,
-                                label_total_enabled: labelTotalEnabled,
-                                label_payment_method: labelPaymentMethod || null,
-                                label_payment_method_enabled: labelPaymentMethodEnabled,
-                                label_amount_paid: labelAmountPaid || null,
-                                label_amount_paid_enabled: labelAmountPaidEnabled,
-                                label_change: labelChange || null,
-                                label_change_enabled: labelChangeEnabled,
-                                created_at: '',
-                                updated_at: ''
-                            })}
+                            srcDoc={previewHtml}
                             className="w-[300px] h-[500px] border-0 bg-white"
                             title={t('app.settings.receiptTab.thermalPreview')}
                         />
                     </div>
                 </CardContent>
             </Card>
-
-
-
-
         </div>
     );
 }

@@ -21,7 +21,7 @@ export const generateReceiptImage = async (
     if (!options.settings) {
         throw new Error('Receipt settings are required for image generation');
     }
-    const html = generateDynamicReceiptHTML(data, options.settings);
+    const html = await generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -63,7 +63,7 @@ export const generateReceiptImageBuffer = async (
     if (!options.settings) {
         throw new Error('Receipt settings are required for image generation');
     }
-    const html = generateDynamicReceiptHTML(data, options.settings);
+    const html = await generateDynamicReceiptHTML(data, options.settings);
 
     const browser = await puppeteer.launch({
         headless: true,
