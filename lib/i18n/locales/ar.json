@@ -999,6 +999,7 @@
                 "testPrintSuccess": "تم إرسال الطباعة الاختبارية بنجاح!",
                 "testPrintFailed": "فشل إرسال الطباعة الاختبارية"
             },
+            "printer_connection": "اتصال الطابعة",
             "printer": {
                 "title": "إعدادات الطابعة",
                 "noPrinterConnected": "لا توجد طابعة متصلة",

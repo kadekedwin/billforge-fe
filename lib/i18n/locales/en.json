@@ -795,6 +795,7 @@
                 "printSuccess": "Print Success",
                 "printFailed": "Print Failed"
             },
+            "printer_connection": "Printer Connection",
             "preferences": "Preferences",
             "account": "Account",
             "profileTab": {

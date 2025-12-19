@@ -974,6 +974,7 @@
                 "failedSendEmail": "이메일 전송 실패",
                 "failedSendWhatsApp": "WhatsApp 메시지 전송 실패"
             },
+            "printer_connection": "프린터 연결",
             "printer": {
                 "title": "프린터 설정",
                 "noPrinterConnected": "연결된 프린터 없음",

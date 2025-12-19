@@ -996,6 +996,7 @@
                 "failedSendEmail": "メールの送信に失敗しました",
                 "failedSendWhatsApp": "WhatsAppメッセージの送信に失敗しました"
             },
+            "printer_connection": "プリンター接続",
             "printer": {
                 "title": "プリンター設定",
                 "noPrinterConnected": "プリンターが接続されていません",

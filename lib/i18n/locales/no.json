@@ -999,6 +999,7 @@
                 "testPrintSuccess": "Testutskrift sendt!",
                 "testPrintFailed": "Kunne ikke sende testutskrift"
             },
+            "printer_connection": "Skrivertilkobling",
             "printer": {
                 "title": "Skriverinnstillinger",
                 "noPrinterConnected": "Ingen Skriver Tilkoblet",

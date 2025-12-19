@@ -999,6 +999,7 @@
                 "testPrintSuccess": "Testdruck erfolgreich",
                 "testPrintFailed": "Testdruck fehlgeschlagen"
             },
+            "printer_connection": "Druckerverbindung",
             "printer": {
                 "title": "Druckereinstellungen",
                 "noPrinterConnected": "Kein Drucker Verbunden",

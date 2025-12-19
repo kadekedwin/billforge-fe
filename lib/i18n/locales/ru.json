@@ -999,6 +999,7 @@
                 "testPrintSuccess": "Тест отправлен",
                 "testPrintFailed": "Ошибка теста"
             },
+            "printer_connection": "Подключение принтера",
             "printer": {
                 "title": "Настройки Принтера",
                 "noPrinterConnected": "Принтер Не Подключен",

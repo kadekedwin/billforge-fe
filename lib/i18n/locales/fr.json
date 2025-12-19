@@ -999,6 +999,7 @@
                 "testPrintSuccess": "Test envoyé avec succès",
                 "testPrintFailed": "Échec du test"
             },
+            "printer_connection": "Connexion de l'imprimante",
             "printer": {
                 "title": "Paramètres d'imprimante",
                 "noPrinterConnected": "Aucune Imprimante Connectée",

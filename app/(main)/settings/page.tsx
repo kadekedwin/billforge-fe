@@ -38,7 +38,7 @@ export default function SettingsPage() {
         },
         {
             id: 'printer-connection' as const,
-            label: 'Printer Connection',
+            label: t('app.settings.printer_connection'),
             icon: Wifi,
         },
     ];

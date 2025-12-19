@@ -999,6 +999,7 @@
                 "testPrintSuccess": "测试打印发送成功！",
                 "testPrintFailed": "发送测试打印失败"
             },
+            "printer_connection": "打印机连接",
             "printer": {
                 "title": "打印机设置",
                 "noPrinterConnected": "未连接打印机",

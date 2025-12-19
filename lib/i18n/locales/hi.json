@@ -996,6 +996,7 @@
                 "failedSendEmail": "ईमेल भेजने में विफल",
                 "failedSendWhatsApp": "व्हाट्सएप संदेश भेजने में विफल"
             },
+            "printer_connection": "प्रिंटर कनेक्शन",
             "printer": {
                 "title": "प्रिंटर सेटिंग्स",
                 "noPrinterConnected": "कोई प्रिंटर कनेक्ट नहीं है",

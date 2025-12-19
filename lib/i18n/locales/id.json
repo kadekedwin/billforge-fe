@@ -974,6 +974,7 @@
                 "failedSendEmail": "Gagal mengirim email",
                 "failedSendWhatsApp": "Gagal mengirim pesan WhatsApp"
             },
+            "printer_connection": "Koneksi Printer",
             "printer": {
                 "title": "Pengaturan Printer",
                 "noPrinterConnected": "Tidak Ada Printer Terhubung",

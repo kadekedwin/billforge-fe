@@ -999,6 +999,7 @@
                 "testPrintSuccess": "Test verzonden",
                 "testPrintFailed": "Test mislukt"
             },
+            "printer_connection": "Printerverbinding",
             "printer": {
                 "title": "Printerinstellingen",
                 "noPrinterConnected": "Geen Printer Verbonden",
