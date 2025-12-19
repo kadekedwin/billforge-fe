@@ -272,15 +272,15 @@ export default function PrinterConnectionSettings() {
                             </p>
                         </div>
                         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-                            <Button variant="outline" className="w-full" onClick={() => window.open('/download', '_blank')}>
+                            <Button variant="outline" className="w-full" onClick={() => window.open('/downloads/BillForge-Setup-Windows.exe', '_blank')}>
                                 <Monitor className="mr-2 h-4 w-4" />
                                 {t('app.settings.printerTab.windows')}
                             </Button>
-                            <Button variant="outline" className="w-full" onClick={() => window.open('/', '_blank')}>
+                            <Button variant="outline" className="w-full" onClick={() => window.open('/downloads/BillForge-Setup-Mac.dmg', '_blank')}>
                                 <Apple className="mr-2 h-4 w-4" />
                                 {t('app.settings.printerTab.mac')}
                             </Button>
-                            <Button variant="outline" className="w-full" onClick={() => window.open('/', '_blank')}>
+                            <Button variant="outline" className="w-full" onClick={() => window.open('/downloads/BillForge-Setup-Linux.zip', '_blank')}>
                                 <Terminal className="mr-2 h-4 w-4" />
                                 {t('app.settings.printerTab.linux')}
                             </Button>
