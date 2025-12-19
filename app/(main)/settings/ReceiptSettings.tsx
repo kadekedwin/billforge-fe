@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
-import { ReceiptData, ImageTemplateType, PrintTemplateType, imageTemplates, printTemplates } from '@/lib/receipt-generator';
+import { ReceiptData, ImageTemplateType, imageTemplates, ReceiptTemplate } from '@/lib/receipt-generator';
 import { generateReceiptHTML } from '@/lib/receipt-generator';
 import { useReceiptTemplatePreference } from '@/lib/receipt-settings';
 import { Check, Loader2 } from 'lucide-react';
@@ -14,11 +14,7 @@ import { getCurrencySymbol } from '@/lib/utils/currency';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 
 interface ReceiptTemplateCardProps {
-    template: {
-        name: string;
-        type: ImageTemplateType | PrintTemplateType;
-        description: string;
-    };
+    template: ReceiptTemplate;
     sampleReceipt: ReceiptData;
     includeLogo: boolean;
     footerMessage: string;
@@ -113,8 +109,7 @@ export default function ReceiptSettings() {
         error,
         imageTemplate,
         updateImageTemplate,
-        printTemplate,
-        updatePrintTemplate,
+
         includeLogo,
         updateIncludeLogo,
         footerMessage,
@@ -125,6 +120,34 @@ export default function ReceiptSettings() {
         updateTransactionPrefix,
         transactionNextNumber,
         updateTransactionNextNumber,
+        labelReceiptId,
+        updateLabelReceiptId,
+        labelTransactionId,
+        updateLabelTransactionId,
+        labelDate,
+        updateLabelDate,
+        labelTime,
+        updateLabelTime,
+        labelCashier,
+        updateLabelCashier,
+        labelCustomer,
+        updateLabelCustomer,
+        labelItems,
+        updateLabelItems,
+        labelSubtotal,
+        updateLabelSubtotal,
+        labelDiscount,
+        updateLabelDiscount,
+        labelTax,
+        updateLabelTax,
+        labelTotal,
+        updateLabelTotal,
+        labelPaymentMethod,
+        updateLabelPaymentMethod,
+        labelAmountPaid,
+        updateLabelAmountPaid,
+        labelChange,
+        updateLabelChange,
     } = useReceiptTemplatePreference({ businessUuid: selectedBusiness?.uuid || null });
 
     const sampleReceipt: ReceiptData = {
@@ -276,6 +299,172 @@ export default function ReceiptSettings() {
 
             <Card>
                 <CardHeader>
+                    <CardTitle>Custom Labels</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">
+                        Customize the labels displayed on your receipts
+                    </p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="label-receipt-id">Receipt ID Label</Label>
+                            <Input
+                                id="label-receipt-id"
+                                placeholder="Receipt #"
+                                value={labelReceiptId}
+                                onChange={(e) => updateLabelReceiptId(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-transaction-id">Transaction ID Label</Label>
+                            <Input
+                                id="label-transaction-id"
+                                placeholder="Transaction ID"
+                                value={labelTransactionId}
+                                onChange={(e) => updateLabelTransactionId(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-date">Date Label</Label>
+                            <Input
+                                id="label-date"
+                                placeholder="Date"
+                                value={labelDate}
+                                onChange={(e) => updateLabelDate(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-time">Time Label</Label>
+                            <Input
+                                id="label-time"
+                                placeholder="Time"
+                                value={labelTime}
+                                onChange={(e) => updateLabelTime(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-cashier">Cashier Label</Label>
+                            <Input
+                                id="label-cashier"
+                                placeholder="Cashier"
+                                value={labelCashier}
+                                onChange={(e) => updateLabelCashier(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-customer">Customer Label</Label>
+                            <Input
+                                id="label-customer"
+                                placeholder="Customer"
+                                value={labelCustomer}
+                                onChange={(e) => updateLabelCustomer(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-items">Items Label</Label>
+                            <Input
+                                id="label-items"
+                                placeholder="Items"
+                                value={labelItems}
+                                onChange={(e) => updateLabelItems(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-subtotal">Subtotal Label</Label>
+                            <Input
+                                id="label-subtotal"
+                                placeholder="Subtotal"
+                                value={labelSubtotal}
+                                onChange={(e) => updateLabelSubtotal(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-discount">Discount Label</Label>
+                            <Input
+                                id="label-discount"
+                                placeholder="Discount"
+                                value={labelDiscount}
+                                onChange={(e) => updateLabelDiscount(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-tax">Tax Label</Label>
+                            <Input
+                                id="label-tax"
+                                placeholder="Tax"
+                                value={labelTax}
+                                onChange={(e) => updateLabelTax(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-total">Total Label</Label>
+                            <Input
+                                id="label-total"
+                                placeholder="TOTAL"
+                                value={labelTotal}
+                                onChange={(e) => updateLabelTotal(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-payment-method">Payment Method Label</Label>
+                            <Input
+                                id="label-payment-method"
+                                placeholder="Payment Method"
+                                value={labelPaymentMethod}
+                                onChange={(e) => updateLabelPaymentMethod(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-amount-paid">Amount Paid Label</Label>
+                            <Input
+                                id="label-amount-paid"
+                                placeholder="Paid"
+                                value={labelAmountPaid}
+                                onChange={(e) => updateLabelAmountPaid(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="label-change">Change Label</Label>
+                            <Input
+                                id="label-change"
+                                placeholder="Change"
+                                value={labelChange}
+                                onChange={(e) => updateLabelChange(e.target.value)}
+                                maxLength={100}
+                            />
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
                     <CardTitle>Image/PDF Template</CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
                         Template used for generating PDF and image receipts
@@ -301,32 +490,7 @@ export default function ReceiptSettings() {
                 </CardContent>
             </Card>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle>Print Template</CardTitle>
-                    <p className="text-sm text-muted-foreground mt-1">
-                        Template used for thermal printer output
-                    </p>
-                </CardHeader>
-                <CardContent>
-                    <div className="overflow-x-auto pb-4">
-                        <div className="flex items-start gap-6 min-w-min" key={`print-${includeLogo}-${footerMessage}-${qrcodeValue}`}>
-                            {printTemplates.map((template) => (
-                                <ReceiptTemplateCard
-                                    key={template.type}
-                                    template={template}
-                                    sampleReceipt={sampleReceipt}
-                                    includeLogo={includeLogo}
-                                    footerMessage={footerMessage}
-                                    qrcodeValue={qrcodeValue}
-                                    isSelected={printTemplate === template.type}
-                                    onSelect={() => updatePrintTemplate(template.type as PrintTemplateType)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
+
         </div>
     );
 }
