@@ -6,6 +6,7 @@ import "react-image-crop/dist/ReactCrop.css";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface ImageCropperProps {
     open: boolean;
@@ -36,6 +37,7 @@ function centerAspectCrop(
 }
 
 export function ImageCropper({ open, image, aspectRatio = null, onCropComplete, onCancel }: ImageCropperProps) {
+    const { t } = useTranslation();
     const imgRef = useRef<HTMLImageElement>(null);
     const [isCropping, setIsCropping] = useState(false);
     const [crop, setCrop] = useState<Crop>();
@@ -103,7 +105,7 @@ export function ImageCropper({ open, image, aspectRatio = null, onCropComplete, 
         <Dialog open={open} onOpenChange={(open) => !open && onCancel()}>
             <DialogContent className="max-w-3xl p-0">
                 <DialogHeader className="px-6 pt-6">
-                    <DialogTitle>Crop Image</DialogTitle>
+                    <DialogTitle>{t('common.cropImage')}</DialogTitle>
                 </DialogHeader>
                 <div className="relative w-full overflow-auto bg-gray-100 max-h-[600px] flex items-center justify-center">
                     <ReactCrop
@@ -114,7 +116,7 @@ export function ImageCropper({ open, image, aspectRatio = null, onCropComplete, 
                     >
                         <img
                             ref={imgRef}
-                            alt="Crop"
+                            alt={t('common.crop')}
                             src={image}
                             onLoad={onImageLoad}
                             style={{ maxWidth: '100%', display: 'block' }}
@@ -123,11 +125,11 @@ export function ImageCropper({ open, image, aspectRatio = null, onCropComplete, 
                 </div>
                 <DialogFooter className="px-6 pb-6">
                     <Button variant="outline" onClick={onCancel} disabled={isCropping}>
-                        Cancel
+                        {t('common.cancel')}
                     </Button>
                     <Button onClick={handleCrop} disabled={isCropping}>
                         {isCropping && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        Crop
+                        {t('common.crop')}
                     </Button>
                 </DialogFooter>
             </DialogContent>

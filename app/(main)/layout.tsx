@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { useBusiness } from "@/contexts/business-context";
 import { BusinessOnboarding } from "@/components/business-onboarding";
 import ThemeToggle from "@/components/landing/theme-toggle";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export default function MainLayout({
     children,
@@ -16,6 +17,7 @@ export default function MainLayout({
     const { isAuthenticated, isLoading: isAuthLoading, user, refreshUser } = useAuth();
     const { businesses, isLoading: isBusinessLoading, selectedBusiness, setSelectedBusiness } = useBusiness();
     const router = useRouter();
+    const { t } = useTranslation();
     const [hasRefreshedUser, setHasRefreshedUser] = useState(false);
 
     useEffect(() => {
@@ -64,7 +66,7 @@ export default function MainLayout({
             <div className="flex h-screen items-center justify-center">
                 <div className="flex flex-col items-center">
                     <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-                    <p className="mt-4 text-sm text-muted-foreground">Loading businesses...</p>
+                    <p className="mt-4 text-sm text-muted-foreground">{t('common.loadingBusinesses')}</p>
                 </div>
             </div>
         );
@@ -82,7 +84,7 @@ export default function MainLayout({
                 <header className="flex h-14 items-center justify-between border-b px-3 lg:hidden">
                     <div className="flex items-center space-x-2">
                         <MobileSidebar />
-                        <span className="text-lg font-bold">BillForge</span>
+                        <span className="text-lg font-bold">{t('common.appName')}</span>
                     </div>
                     <ThemeToggle />
                 </header>

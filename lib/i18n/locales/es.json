@@ -18,7 +18,17 @@
         "submit": "Enviar",
         "confirm": "Confirmar",
         "yes": "Sí",
-        "no": "No"
+        "no": "No",
+        "system": "Sistema",
+        "toggleTheme": "Alternar tema",
+        "previousSlide": "Diapositiva anterior",
+        "nextSlide": "Siguiente diapositiva",
+        "loadingBusinesses": "Cargando negocios...",
+        "appName": "BillForge",
+        "toggleMenu": "Alternar menú",
+        "cropImage": "Recortar imagen",
+        "crop": "Recortar",
+        "pickDate": "Seleccionar fecha"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "El tamaño de la imagen debe ser menor a 1MB",
             "loadingError": "Ocurrió un error al cargar los datos",
             "itemsLoadError": "Error al cargar artículos",
-            "basePrice": "Precio Base"
+            "basePrice": "Precio Base",
+            "placeholders": {
+                "productName": "Nombre del producto",
+                "sku": "PROD-001",
+                "description": "Descripción del producto..."
+            },
+            "imageFallback": "IMG",
+            "previewAlt": "Vista previa del artículo"
         },
         "customers": {
             "title": "Clientes",
@@ -821,7 +838,9 @@
                 "deleteItem3": "Eliminación de todos tus datos personales",
                 "deleteConfirmation": "Recibirás un correo de confirmación con un enlace para completar la eliminación.",
                 "sendingEmail": "Enviando correo electrónico...",
-                "requestDeletion": "Solicitar Eliminación de Cuenta"
+                "requestDeletion": "Solicitar Eliminación de Cuenta",
+                "errorLoadData": "Error al cargar datos del usuario",
+                "loading": "Cargando perfil..."
             },
             "receiptTab": {
                 "options": "Personalización de Recibos",
@@ -835,7 +854,51 @@
                 "nextNumber": "Siguiente Número de Transacción",
                 "nextNumberHelp": "El siguiente número de transacción a usar",
                 "template": "Plantilla de Recibo",
-                "selectBusiness": "Por favor selecciona un negocio para configurar la configuración de recibos"
+                "selectBusiness": "Por favor selecciona un negocio para configurar la configuración de recibos",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Seleccionar fuente",
+                "receiptOptions": "Opciones de recibo",
+                "receiptStyle": "Estilo de recibo (Imagen/PDF)",
+                "classicMonospace": "Monoespaciado clásico",
+                "modernSansSerif": "Sans Serif moderno",
+                "lineCharacter": "Carácter de línea",
+                "dashed": "Guiones (-)",
+                "dotted": "Punteado (.)",
+                "underscore": "Guion bajo (_)",
+                "double": "Doble (=)",
+                "asterisk": "Asterisco (*)",
+                "itemLayout": "Diseño de artículos",
+                "horizontal": "Horizontal (Nombre y precio en la misma línea)",
+                "vertical": "Vertical (Nombre arriba, precio abajo)",
+                "customLabels": "Etiquetas personalizadas",
+                "customLabelsDesc": "Personalizar y alternar visibilidad de etiquetas de recibo",
+                "thermalPreview": "Vista previa térmica",
+                "thermalPreviewDesc": "Vista previa de cómo se verá el recibo en una impresora térmica",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Seleccionar estilo",
+                    "selectLineStyle": "Seleccionar estilo de línea",
+                    "selectLayout": "Seleccionar diseño"
+                },
+                "labels": {
+                    "receiptId": "ID de recibo",
+                    "transactionId": "ID de transacción",
+                    "date": "Etiqueta de fecha",
+                    "time": "Etiqueta de hora",
+                    "cashier": "Etiqueta de cajero",
+                    "customer": "Etiqueta de cliente",
+                    "items": "Etiqueta de artículos",
+                    "subtotal": "Etiqueta de subtotal",
+                    "discount": "Etiqueta de descuento",
+                    "tax": "Etiqueta de impuestos",
+                    "total": "Etiqueta de total",
+                    "paymentMethod": "Etiqueta de método de pago",
+                    "amountPaid": "Etiqueta de monto pagado",
+                    "change": "Etiqueta de cambio"
+                }
             },
             "receiptPopup": {
                 "title": "¡Transacción Completada!",

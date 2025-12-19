@@ -18,7 +18,17 @@
         "submit": "Send inn",
         "confirm": "Bekreft",
         "yes": "Ja",
-        "no": "Nei"
+        "no": "Nei",
+        "system": "System",
+        "toggleTheme": "Bytt tema",
+        "previousSlide": "Previous slide",
+        "nextSlide": "Next slide",
+        "loadingBusinesses": "Loading businesses...",
+        "appName": "BillForge",
+        "toggleMenu": "Toggle menu",
+        "cropImage": "Crop Image",
+        "crop": "Crop",
+        "pickDate": "Pick a date"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "Bildestørrelse må være mindre enn 1MB",
             "loadingError": "En feil oppstod ved lasting av data",
             "itemsLoadError": "Feil ved lasting av varer",
-            "basePrice": "Basispris"
+            "basePrice": "Basispris",
+            "placeholders": {
+                "productName": "Product Name",
+                "sku": "PROD-001",
+                "description": "Product description..."
+            },
+            "imageFallback": "IMG",
+            "previewAlt": "Item preview"
         },
         "customers": {
             "title": "Kunder",
@@ -821,7 +838,9 @@
                 "deleteItem3": "Sletting av all personlig data",
                 "deleteConfirmation": "Du mottar en bekreftelse e-post med en lenke for å fullføre slettingen.",
                 "sendingEmail": "Sender e-post...",
-                "requestDeletion": "Be om Kontosletting"
+                "requestDeletion": "Be om Kontosletting",
+                "errorLoadData": "Failed to load user data",
+                "loading": "Loading profile..."
             },
             "receiptTab": {
                 "options": "Kvitteringstilpasning",
@@ -835,7 +854,51 @@
                 "nextNumber": "Neste Transaksjonsnummer",
                 "nextNumberHelp": "Det neste transaksjonsnummeret som skal brukes",
                 "template": "Kvitteringsmal",
-                "selectBusiness": "Velg en virksomhet for å konfigurere kvitteringsinnstillinger"
+                "selectBusiness": "Velg en virksomhet for å konfigurere kvitteringsinnstillinger",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Select font",
+                "receiptOptions": "Receipt Options",
+                "receiptStyle": "Receipt Style (Image/PDF)",
+                "classicMonospace": "Classic Monospace",
+                "modernSansSerif": "Modern Sans Serif",
+                "lineCharacter": "Line Character",
+                "dashed": "Dashed (-)",
+                "dotted": "Dotted (.)",
+                "underscore": "Underscore (_)",
+                "double": "Double (=)",
+                "asterisk": "Asterisk (*)",
+                "itemLayout": "Item Layout",
+                "horizontal": "Horizontal (Name & Price same line)",
+                "vertical": "Vertical (Name top, Price bottom)",
+                "customLabels": "Custom Labels",
+                "customLabelsDesc": "Customize and toggle visibility of receipt labels",
+                "thermalPreview": "Thermal Preview",
+                "thermalPreviewDesc": "Preview of how the receipt will look on a thermal printer",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "Receipt ID Label",
+                    "transactionId": "Transaction ID Label",
+                    "date": "Date Label",
+                    "time": "Time Label",
+                    "cashier": "Cashier Label",
+                    "customer": "Customer Label",
+                    "items": "Items Label",
+                    "subtotal": "Subtotal Label",
+                    "discount": "Discount Label",
+                    "tax": "Tax Label",
+                    "total": "Total Label",
+                    "paymentMethod": "Payment Method Label",
+                    "amountPaid": "Amount Paid Label",
+                    "change": "Change Label"
+                }
             },
             "receiptPopup": {
                 "title": "Transaksjon Fullført!",

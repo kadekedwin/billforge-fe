@@ -18,7 +18,17 @@
         "submit": "Kirim",
         "confirm": "Konfirmasi",
         "yes": "Ya",
-        "no": "Tidak"
+        "no": "Tidak",
+        "system": "Sistem",
+        "toggleTheme": "Ubah tema",
+        "previousSlide": "Slide sebelumnya",
+        "nextSlide": "Slide berikutnya",
+        "loadingBusinesses": "Memuat bisnis...",
+        "appName": "BillForge",
+        "toggleMenu": "Buka/tutup menu",
+        "cropImage": "Potong gambar",
+        "crop": "Potong",
+        "pickDate": "Pilih tanggal"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "Ukuran gambar harus kurang dari 1MB",
             "loadingError": "Terjadi kesalahan saat memuat data",
             "itemsLoadError": "Gagal memuat item",
-            "basePrice": "Harga Dasar"
+            "basePrice": "Harga Dasar",
+            "placeholders": {
+                "productName": "Nama produk",
+                "sku": "PROD-001",
+                "description": "Deskripsi produk..."
+            },
+            "imageFallback": "GMB",
+            "previewAlt": "Pratinjau item"
         },
         "customers": {
             "title": "Pelanggan",
@@ -821,7 +838,9 @@
                 "deleteItem3": "Menghapus semua data pribadi Anda",
                 "deleteConfirmation": "Anda akan menerima email konfirmasi dengan tautan untuk menyelesaikan penghapusan.",
                 "sendingEmail": "Sedang mengirim email...",
-                "requestDeletion": "Minta Penghapusan Akun"
+                "requestDeletion": "Minta Penghapusan Akun",
+                "errorLoadData": "Gagal memuat data pengguna",
+                "loading": "Memuat profil..."
             },
             "receiptTab": {
                 "options": "Kustomisasi Struk",
@@ -835,7 +854,51 @@
                 "nextNumber": "Nomor Transaksi Berikutnya",
                 "nextNumberHelp": "Nomor transaksi berikutnya yang akan digunakan",
                 "template": "Template Struk",
-                "selectBusiness": "Silakan pilih bisnis untuk mengonfigurasi pengaturan struk"
+                "selectBusiness": "Silakan pilih bisnis untuk mengonfigurasi pengaturan struk",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Pilih font",
+                "receiptOptions": "Opsi struk",
+                "receiptStyle": "Gaya struk (Gambar/PDF)",
+                "classicMonospace": "Monospace klasik",
+                "modernSansSerif": "Sans Serif modern",
+                "lineCharacter": "Karakter garis",
+                "dashed": "Garis putus (-)",
+                "dotted": "Titik-titik (.)",
+                "underscore": "Garis bawah (_)",
+                "double": "Ganda (=)",
+                "asterisk": "Asterisk (*)",
+                "itemLayout": "Layout Item",
+                "horizontal": "Horizontal (Nama & Harga satu baris)",
+                "vertical": "Vertikal (Nama atas, Harga bawah)",
+                "customLabels": "Label Kustom",
+                "customLabelsDesc": "Kustomisasi dan toggle visibilitas label struk",
+                "thermalPreview": "Pratinjau Thermal",
+                "thermalPreviewDesc": "Pratinjau tampilan struk pada printer thermal",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Pilih gaya",
+                    "selectLineStyle": "Pilih gaya garis",
+                    "selectLayout": "Pilih layout"
+                },
+                "labels": {
+                    "receiptId": "Label ID Struk",
+                    "transactionId": "Label ID Transaksi",
+                    "date": "Label Tanggal",
+                    "time": "Label Waktu",
+                    "cashier": "Label Kasir",
+                    "customer": "Label Pelanggan",
+                    "items": "Label Item",
+                    "subtotal": "Label Subtotal",
+                    "discount": "Label Diskon",
+                    "tax": "Label Pajak",
+                    "total": "Label Total",
+                    "paymentMethod": "Label Metode Pembayaran",
+                    "amountPaid": "Label Jumlah Dibayar",
+                    "change": "Label Kembalian"
+                }
             },
             "preferencesTab": {
                 "language": "Bahasa",

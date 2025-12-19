@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { SidebarContent } from "./SidebarContent";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export function Sidebar() {
     return (
@@ -16,6 +17,7 @@ export function Sidebar() {
 
 export function MobileSidebar() {
     const [open, setOpen] = useState(false);
+    const { t } = useTranslation();
 
     return (
         <Sheet open={open} onOpenChange={setOpen}>
@@ -24,7 +26,7 @@ export function MobileSidebar() {
                     variant="ghost"
                     size="icon"
                     className="lg:hidden"
-                    aria-label="Toggle menu"
+                    aria-label={t('common.toggleMenu')}
                 >
                     {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>

@@ -158,7 +158,7 @@ export function ItemFormDialog({
                                 <Input
                                     id="name"
                                     name="name"
-                                    placeholder="Product Name"
+                                    placeholder={t('app.items.placeholders.productName')}
                                     value={formData.name}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -174,7 +174,7 @@ export function ItemFormDialog({
                                 <Input
                                     id="sku"
                                     name="sku"
-                                    placeholder="PROD-001"
+                                    placeholder={t('app.items.placeholders.sku')}
                                     value={formData.sku || ""}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -189,7 +189,7 @@ export function ItemFormDialog({
                                 <Textarea
                                     id="description"
                                     name="description"
-                                    placeholder="Product description..."
+                                    placeholder={t('app.items.placeholders.description')}
                                     value={formData.description || ""}
                                     onChange={onInputChange}
                                     disabled={isSubmitting}
@@ -206,8 +206,8 @@ export function ItemFormDialog({
                                     {imagePreview && (
                                         <div className="relative">
                                             <Avatar className="h-20 w-20">
-                                                <AvatarImage src={imagePreview} alt="Item preview" />
-                                                <AvatarFallback>IMG</AvatarFallback>
+                                                <AvatarImage src={imagePreview} alt={t('app.items.previewAlt')} />
+                                                <AvatarFallback>{t('app.items.imageFallback')}</AvatarFallback>
                                             </Avatar>
                                             <Button
                                                 type="button"

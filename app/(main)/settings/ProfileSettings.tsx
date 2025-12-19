@@ -264,7 +264,7 @@ export default function ProfileSettings() {
             <div className="flex items-center justify-center py-12">
                 <div className="flex flex-col items-center">
                     <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                    <p className="mt-4 text-sm text-muted-foreground">Loading profile...</p>
+                    <p className="mt-4 text-sm text-muted-foreground">{t('app.settings.profileTab.loading')}</p>
                 </div>
             </div>
         );
@@ -273,7 +273,7 @@ export default function ProfileSettings() {
     if (!user) {
         return (
             <div className="flex items-center justify-center py-12">
-                <p className="text-muted-foreground">Failed to load user data</p>
+                <p className="text-muted-foreground">{t('app.settings.profileTab.errorLoadData')}</p>
             </div>
         );
     }

@@ -18,7 +18,17 @@
         "submit": "Indienen",
         "confirm": "Bevestigen",
         "yes": "Ja",
-        "no": "Nee"
+        "no": "Nee",
+        "system": "Systeem",
+        "toggleTheme": "Thema wisselen",
+        "previousSlide": "Vorige dia",
+        "nextSlide": "Volgende dia",
+        "loadingBusinesses": "Loading businesses...",
+        "appName": "BillForge",
+        "toggleMenu": "Toggle menu",
+        "cropImage": "Crop Image",
+        "crop": "Crop",
+        "pickDate": "Pick a date"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "Afbeeldingsgrootte moet kleiner zijn dan 1MB",
             "loadingError": "Er is een fout opgetreden bij het laden van gegevens",
             "itemsLoadError": "Fout bij Laden van Artikelen",
-            "basePrice": "Basisprijs"
+            "basePrice": "Basisprijs",
+            "placeholders": {
+                "productName": "Product Name",
+                "sku": "PROD-001",
+                "description": "Product description..."
+            },
+            "imageFallback": "IMG",
+            "previewAlt": "Item preview"
         },
         "customers": {
             "title": "Klanten",
@@ -821,7 +838,9 @@
                 "deleteItem3": "Verwijdering van alle persoonlijke gegevens",
                 "deleteConfirmation": "Je ontvangt een bevestigingse-mail met een link om de verwijdering af te ronden.",
                 "sendingEmail": "Bezig met Verzenden van E-mail...",
-                "requestDeletion": "Accountverwijdering Aanvragen"
+                "requestDeletion": "Accountverwijdering Aanvragen",
+                "errorLoadData": "Failed to load user data",
+                "loading": "Loading profile..."
             },
             "receiptTab": {
                 "options": "Bonnetjesaanpassing",
@@ -835,7 +854,51 @@
                 "nextNumber": "Volgende Transactienummer",
                 "nextNumberHelp": "Het volgende transactienummer dat moet worden gebruikt",
                 "template": "Bonnetjessjabloon",
-                "selectBusiness": "Selecteer een bedrijf om bonnetjesinstellingen in te stellen"
+                "selectBusiness": "Selecteer een bedrijf om bonnetjesinstellingen in te stellen",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Select font",
+                "receiptOptions": "Receipt Options",
+                "receiptStyle": "Receipt Style (Image/PDF)",
+                "classicMonospace": "Classic Monospace",
+                "modernSansSerif": "Modern Sans Serif",
+                "lineCharacter": "Line Character",
+                "dashed": "Dashed (-)",
+                "dotted": "Dotted (.)",
+                "underscore": "Underscore (_)",
+                "double": "Double (=)",
+                "asterisk": "Asterisk (*)",
+                "itemLayout": "Item Layout",
+                "horizontal": "Horizontal (Name & Price same line)",
+                "vertical": "Vertical (Name top, Price bottom)",
+                "customLabels": "Custom Labels",
+                "customLabelsDesc": "Customize and toggle visibility of receipt labels",
+                "thermalPreview": "Thermal Preview",
+                "thermalPreviewDesc": "Preview of how the receipt will look on a thermal printer",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "Receipt ID Label",
+                    "transactionId": "Transaction ID Label",
+                    "date": "Date Label",
+                    "time": "Time Label",
+                    "cashier": "Cashier Label",
+                    "customer": "Customer Label",
+                    "items": "Items Label",
+                    "subtotal": "Subtotal Label",
+                    "discount": "Discount Label",
+                    "tax": "Tax Label",
+                    "total": "Total Label",
+                    "paymentMethod": "Payment Method Label",
+                    "amountPaid": "Amount Paid Label",
+                    "change": "Change Label"
+                }
             },
             "receiptPopup": {
                 "title": "Transactie Voltooid!",

@@ -18,7 +18,17 @@
         "submit": "제출",
         "confirm": "확인",
         "yes": "예",
-        "no": "아니오"
+        "no": "아니오",
+        "system": "시스템",
+        "toggleTheme": "테마 전환",
+        "previousSlide": "이전 슬라이드",
+        "nextSlide": "다음 슬라이드",
+        "loadingBusinesses": "Loading businesses...",
+        "appName": "BillForge",
+        "toggleMenu": "Toggle menu",
+        "cropImage": "Crop Image",
+        "crop": "Crop",
+        "pickDate": "Pick a date"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "이미지 크기는 1MB 미만이어야 합니다",
             "loadingError": "데이터 로드 중 오류가 발생했습니다",
             "itemsLoadError": "항목 로드 오류",
-            "basePrice": "기본 가격"
+            "basePrice": "기본 가격",
+            "placeholders": {
+                "productName": "Product Name",
+                "sku": "PROD-001",
+                "description": "Product description..."
+            },
+            "imageFallback": "IMG",
+            "previewAlt": "Item preview"
         },
         "customers": {
             "title": "고객",
@@ -821,7 +838,9 @@
                 "deleteItem3": "모든 개인 데이터 삭제",
                 "deleteConfirmation": "삭제를 완료하기 위한 링크가 포함된 확인 이메일을 받으실 것입니다.",
                 "sendingEmail": "이메일 전송 중...",
-                "requestDeletion": "계정 삭제 요청"
+                "requestDeletion": "계정 삭제 요청",
+                "errorLoadData": "Failed to load user data",
+                "loading": "Loading profile..."
             },
             "receiptTab": {
                 "options": "영수증 사용자 정의",
@@ -835,7 +854,51 @@
                 "nextNumber": "다음 거래 번호",
                 "nextNumberHelp": "사용할 다음 거래 번호",
                 "template": "영수증 템플릿",
-                "selectBusiness": "영수증 설정을 구성하려면 비즈니스를 선택하세요"
+                "selectBusiness": "영수증 설정을 구성하려면 비즈니스를 선택하세요",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Select font",
+                "receiptOptions": "Receipt Options",
+                "receiptStyle": "Receipt Style (Image/PDF)",
+                "classicMonospace": "Classic Monospace",
+                "modernSansSerif": "Modern Sans Serif",
+                "lineCharacter": "Line Character",
+                "dashed": "Dashed (-)",
+                "dotted": "Dotted (.)",
+                "underscore": "Underscore (_)",
+                "double": "Double (=)",
+                "asterisk": "Asterisk (*)",
+                "itemLayout": "Item Layout",
+                "horizontal": "Horizontal (Name & Price same line)",
+                "vertical": "Vertical (Name top, Price bottom)",
+                "customLabels": "Custom Labels",
+                "customLabelsDesc": "Customize and toggle visibility of receipt labels",
+                "thermalPreview": "Thermal Preview",
+                "thermalPreviewDesc": "Preview of how the receipt will look on a thermal printer",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "Receipt ID Label",
+                    "transactionId": "Transaction ID Label",
+                    "date": "Date Label",
+                    "time": "Time Label",
+                    "cashier": "Cashier Label",
+                    "customer": "Customer Label",
+                    "items": "Items Label",
+                    "subtotal": "Subtotal Label",
+                    "discount": "Discount Label",
+                    "tax": "Tax Label",
+                    "total": "Total Label",
+                    "paymentMethod": "Payment Method Label",
+                    "amountPaid": "Amount Paid Label",
+                    "change": "Change Label"
+                }
             },
             "preferencesTab": {
                 "language": "언어",

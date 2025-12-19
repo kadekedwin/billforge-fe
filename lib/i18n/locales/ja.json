@@ -40,7 +40,17 @@
         "submit": "送信",
         "confirm": "確認",
         "yes": "はい",
-        "no": "いいえ"
+        "no": "いいえ",
+        "system": "システム",
+        "toggleTheme": "テーマを切り替え",
+        "previousSlide": "前のスライド",
+        "nextSlide": "次のスライド",
+        "loadingBusinesses": "ビジネスを読み込んでいます...",
+        "appName": "BillForge",
+        "toggleMenu": "メニューを切り替え",
+        "cropImage": "画像を切り取る",
+        "crop": "切り取る",
+        "pickDate": "日付を選択"
     },
     "landing": {
         "hero": {
@@ -720,7 +730,14 @@
             "imageSizeError": "画像サイズは1MBより小さい必要があります",
             "loadingError": "データの読み込み時にエラーが発生しました",
             "itemsLoadError": "商品の読み込みエラー",
-            "basePrice": "基本価格"
+            "basePrice": "基本価格",
+            "placeholders": {
+                "productName": "商品名",
+                "sku": "PROD-001",
+                "description": "商品の説明..."
+            },
+            "imageFallback": "画像",
+            "previewAlt": "プレビュー"
         },
         "customers": {
             "title": "顧客",
@@ -843,7 +860,9 @@
                 "deleteItem3": "すべての個人データを削除",
                 "deleteConfirmation": "削除を完了するためのリンク付きの確認メールを受け取ります。",
                 "sendingEmail": "メール送信中...",
-                "requestDeletion": "アカウント削除をリクエスト"
+                "requestDeletion": "アカウント削除をリクエスト",
+                "errorLoadData": "Failed to load user data",
+                "loading": "Loading profile..."
             },
             "receiptTab": {
                 "options": "領収書カスタマイズ",
@@ -857,7 +876,51 @@
                 "nextNumber": "次の取引番号",
                 "nextNumberHelp": "使用する次の取引番号",
                 "template": "領収書テンプレート",
-                "selectBusiness": "領収書設定を構成するためにビジネスを選択してください"
+                "selectBusiness": "領収書設定を構成するためにビジネスを選択してください",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "フォントを選択",
+                "receiptOptions": "レシートオプション",
+                "receiptStyle": "レシートスタイル (画像/PDF)",
+                "classicMonospace": "クラシック等幅",
+                "modernSansSerif": "モダンサンセリフ",
+                "lineCharacter": "ライン文字",
+                "dashed": "破線 (-)",
+                "dotted": "点線 (.)",
+                "underscore": "アンダースコア (_)",
+                "double": "二重線 (=)",
+                "asterisk": "アスタリスク (*)",
+                "itemLayout": "商品レイアウト",
+                "horizontal": "水平 (商品名と価格を同じ行に)",
+                "vertical": "垂直 (商品名が上、価格が下)",
+                "customLabels": "カスタムラベル",
+                "customLabelsDesc": "レシートラベルの表示をカスタマイズ",
+                "thermalPreview": "サーマルプレビュー",
+                "thermalPreviewDesc": "サーマルプリンターでのレシートの見た目をプレビュー",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "レシートID",
+                    "transactionId": "取引ID",
+                    "date": "日付ラベル",
+                    "time": "時間ラベル",
+                    "cashier": "レジ係ラベル",
+                    "customer": "顧客ラベル",
+                    "items": "商品ラベル",
+                    "subtotal": "小計ラベル",
+                    "discount": "割引ラベル",
+                    "tax": "税金ラベル",
+                    "total": "合計ラベル",
+                    "paymentMethod": "支払い方法ラベル",
+                    "amountPaid": "支払額ラベル",
+                    "change": "お釣りラベル"
+                }
             },
             "preferencesTab": {
                 "language": "言語",

@@ -10,8 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 const ThemeToggle = () => {
+  const { t } = useTranslation();
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -35,21 +37,21 @@ const ThemeToggle = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
           {getIcon()}
-          <span className="sr-only">Toggle theme</span>
+          <span className="sr-only">{t('common.toggleTheme')}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <SunIcon className="mr-2 h-4 w-4" />
-          <span>Light</span>
+          <span>{t('app.settings.preferencesTab.light')}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <MoonIcon className="mr-2 h-4 w-4" />
-          <span>Dark</span>
+          <span>{t('app.settings.preferencesTab.dark')}</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <MonitorIcon className="mr-2 h-4 w-4" />
-          <span>System</span>
+          <span>{t('common.system')}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

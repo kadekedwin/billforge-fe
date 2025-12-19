@@ -40,7 +40,17 @@
         "submit": "सबमिट करें",
         "confirm": "पुष्टि करें",
         "yes": "हाँ",
-        "no": "नहीं"
+        "no": "नहीं",
+        "system": "प्रणाली",
+        "toggleTheme": "تغيير السمة",
+        "previousSlide": "Previous slide",
+        "nextSlide": "Next slide",
+        "loadingBusinesses": "Loading businesses...",
+        "appName": "BillForge",
+        "toggleMenu": "Toggle menu",
+        "cropImage": "Crop Image",
+        "crop": "Crop",
+        "pickDate": "Pick a date"
     },
     "landing": {
         "hero": {
@@ -720,7 +730,14 @@
             "imageSizeError": "छवि का आकार 1MB से कम होना चाहिए",
             "loadingError": "डेटा लोड करते समय एक त्रुटि हुई",
             "itemsLoadError": "आइटम लोड करने में त्रुटि",
-            "basePrice": "आधार मूल्य"
+            "basePrice": "आधार मूल्य",
+            "placeholders": {
+                "productName": "Product Name",
+                "sku": "PROD-001",
+                "description": "Product description..."
+            },
+            "imageFallback": "IMG",
+            "previewAlt": "Item preview"
         },
         "customers": {
             "title": "ग्राहक",
@@ -843,7 +860,9 @@
                 "deleteItem3": "अपनी सभी व्यक्तिगत जानकारी हटाना",
                 "deleteConfirmation": "आपको हटाने को पूरा करने के लिए एक लिंक के साथ एक पुष्टि ईमेल प्राप्त होगा।",
                 "sendingEmail": "ईमेल भेजा जा रहा है...",
-                "requestDeletion": "खाता हटाने का अनुरोध करें"
+                "requestDeletion": "खाता हटाने का अनुरोध करें",
+                "errorLoadData": "Failed to load user data",
+                "loading": "Loading profile..."
             },
             "receiptTab": {
                 "options": "रसीद अनुकूलन",
@@ -857,7 +876,51 @@
                 "nextNumber": "अगला लेनदेन संख्या",
                 "nextNumberHelp": "उपयोग करने के लिए अगली लेनदेन संख्या",
                 "template": "रसीद टेम्पलेट",
-                "selectBusiness": "रसीद सेटिंग्स कॉन्फ़िगर करने के लिए कृपया एक व्यवसाय चुनें"
+                "selectBusiness": "रसीद सेटिंग्स कॉन्फ़िगर करने के लिए कृपया एक व्यवसाय चुनें",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Select font",
+                "receiptOptions": "Receipt Options",
+                "receiptStyle": "Receipt Style (Image/PDF)",
+                "classicMonospace": "Classic Monospace",
+                "modernSansSerif": "Modern Sans Serif",
+                "lineCharacter": "Line Character",
+                "dashed": "Dashed (-)",
+                "dotted": "Dotted (.)",
+                "underscore": "Underscore (_)",
+                "double": "Double (=)",
+                "asterisk": "Asterisk (*)",
+                "itemLayout": "Item Layout",
+                "horizontal": "Horizontal (Name & Price same line)",
+                "vertical": "Vertical (Name top, Price bottom)",
+                "customLabels": "Custom Labels",
+                "customLabelsDesc": "Customize and toggle visibility of receipt labels",
+                "thermalPreview": "Thermal Preview",
+                "thermalPreviewDesc": "Preview of how the receipt will look on a thermal printer",
+                "placeholders": {
+                    "inv": "INV",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "Receipt ID Label",
+                    "transactionId": "Transaction ID Label",
+                    "date": "Date Label",
+                    "time": "Time Label",
+                    "cashier": "Cashier Label",
+                    "customer": "Customer Label",
+                    "items": "Items Label",
+                    "subtotal": "Subtotal Label",
+                    "discount": "Discount Label",
+                    "tax": "Tax Label",
+                    "total": "Total Label",
+                    "paymentMethod": "Payment Method Label",
+                    "amountPaid": "Amount Paid Label",
+                    "change": "Change Label"
+                }
             },
             "preferencesTab": {
                 "language": "भाषा",

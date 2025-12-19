@@ -217,7 +217,7 @@ export default function ReceiptSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Receipt Options</CardTitle>
+                    <CardTitle>{t('app.settings.receiptTab.receiptOptions')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="flex items-center space-x-2">
@@ -265,7 +265,7 @@ export default function ReceiptSettings() {
                         </Label>
                         <Input
                             id="transaction-prefix"
-                            placeholder="INV"
+                            placeholder={t('app.settings.receiptTab.placeholders.inv')}
                             value={transactionPrefix}
                             onChange={(e) => updateTransactionPrefix(e.target.value)}
                             maxLength={10}
@@ -293,60 +293,60 @@ export default function ReceiptSettings() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                         <div className="space-y-2">
-                            <Label htmlFor="receipt-style-select">Receipt Style (Image/PDF)</Label>
+                            <Label htmlFor="receipt-style-select">{t('app.settings.receiptTab.receiptStyle')}</Label>
                             <Select
                                 value={receiptStyle}
                                 onValueChange={(value) => updateReceiptStyle(value as any)}
                             >
                                 <SelectTrigger id="receipt-style-select">
-                                    <SelectValue placeholder="Select a style" />
+                                    <SelectValue placeholder={t('app.settings.receiptTab.placeholders.selectStyle')} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="classic">Classic Monospace</SelectItem>
-                                    <SelectItem value="sans-serif">Modern Sans Serif</SelectItem>
+                                    <SelectItem value="classic">{t('app.settings.receiptTab.classicMonospace')}</SelectItem>
+                                    <SelectItem value="sans-serif">{t('app.settings.receiptTab.modernSansSerif')}</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="font-select">Font (Printer)</Label>
+                            <Label htmlFor="font-select">{t('app.settings.receiptTab.printerFont')}</Label>
                             <Select value={printerFont || 'A'} onValueChange={updatePrinterFont}>
                                 <SelectTrigger id="font-select">
-                                    <SelectValue placeholder="Select font" />
+                                    <SelectValue placeholder={t('app.settings.receiptTab.selectFont')} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="A">Font A (12x24)</SelectItem>
-                                    <SelectItem value="B">Font B (9x17)</SelectItem>
-                                    <SelectItem value="C">Font C (9x24)</SelectItem>
+                                    <SelectItem value="A">{t('app.settings.receiptTab.fontA')}</SelectItem>
+                                    <SelectItem value="B">{t('app.settings.receiptTab.fontB')}</SelectItem>
+                                    <SelectItem value="C">{t('app.settings.receiptTab.fontC')}</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="line-character-select">Line Character</Label>
+                            <Label htmlFor="line-character-select">{t('app.settings.receiptTab.lineCharacter')}</Label>
                             <Select value={lineCharacter || '-'} onValueChange={updateLineCharacter}>
                                 <SelectTrigger id="line-character-select">
-                                    <SelectValue placeholder="Select line style" />
+                                    <SelectValue placeholder={t('app.settings.receiptTab.placeholders.selectLineStyle')} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="-">Dashed (-)</SelectItem>
-                                    <SelectItem value=".">Dotted (.)</SelectItem>
-                                    <SelectItem value="_">Underscore (_)</SelectItem>
-                                    <SelectItem value="=">Double (=)</SelectItem>
-                                    <SelectItem value="*">Asterisk (*)</SelectItem>
+                                    <SelectItem value="-">{t('app.settings.receiptTab.dashed')}</SelectItem>
+                                    <SelectItem value=".">{t('app.settings.receiptTab.dotted')}</SelectItem>
+                                    <SelectItem value="_">{t('app.settings.receiptTab.underscore')}</SelectItem>
+                                    <SelectItem value="=">{t('app.settings.receiptTab.double')}</SelectItem>
+                                    <SelectItem value="*">{t('app.settings.receiptTab.asterisk')}</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="item-layout-select">Item Layout</Label>
+                            <Label htmlFor="item-layout-select">{t('app.settings.receiptTab.itemLayout')}</Label>
                             <Select value={itemLayout?.toString() || '0'} onValueChange={(val) => updateItemLayout(parseInt(val))}>
                                 <SelectTrigger id="item-layout-select">
-                                    <SelectValue placeholder="Select layout" />
+                                    <SelectValue placeholder={t('app.settings.receiptTab.placeholders.selectLayout')} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="0">Horizontal (Name & Price same line)</SelectItem>
-                                    <SelectItem value="1">Vertical (Name top, Price bottom)</SelectItem>
+                                    <SelectItem value="0">{t('app.settings.receiptTab.horizontal')}</SelectItem>
+                                    <SelectItem value="1">{t('app.settings.receiptTab.vertical')}</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -357,36 +357,36 @@ export default function ReceiptSettings() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Custom Labels</CardTitle>
+                    <CardTitle>{t('app.settings.receiptTab.customLabels')}</CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
-                        Customize and toggle visibility of receipt labels
+                        {t('app.settings.receiptTab.customLabelsDesc')}
                     </p>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {renderLabelInput('label-receipt-id', 'Receipt ID Label', labelReceiptId, updateLabelReceiptId, labelReceiptIdEnabled, updateLabelReceiptIdEnabled)}
-                        {renderLabelInput('label-transaction-id', 'Transaction ID Label', labelTransactionId, updateLabelTransactionId, labelTransactionIdEnabled, updateLabelTransactionIdEnabled)}
-                        {renderLabelInput('label-date', 'Date Label', labelDate, updateLabelDate, labelDateEnabled, updateLabelDateEnabled)}
-                        {renderLabelInput('label-time', 'Time Label', labelTime, updateLabelTime, labelTimeEnabled, updateLabelTimeEnabled)}
-                        {renderLabelInput('label-cashier', 'Cashier Label', labelCashier, updateLabelCashier, labelCashierEnabled, updateLabelCashierEnabled)}
-                        {renderLabelInput('label-customer', 'Customer Label', labelCustomer, updateLabelCustomer, labelCustomerEnabled, updateLabelCustomerEnabled)}
-                        {renderLabelInput('label-items', 'Items Label', labelItems, updateLabelItems, labelItemsEnabled, updateLabelItemsEnabled)}
-                        {renderLabelInput('label-subtotal', 'Subtotal Label', labelSubtotal, updateLabelSubtotal, labelSubtotalEnabled, updateLabelSubtotalEnabled)}
-                        {renderLabelInput('label-discount', 'Discount Label', labelDiscount, updateLabelDiscount, labelDiscountEnabled, updateLabelDiscountEnabled)}
-                        {renderLabelInput('label-tax', 'Tax Label', labelTax, updateLabelTax, labelTaxEnabled, updateLabelTaxEnabled)}
-                        {renderLabelInput('label-total', 'Total Label', labelTotal, updateLabelTotal, labelTotalEnabled, updateLabelTotalEnabled)}
-                        {renderLabelInput('label-payment-method', 'Payment Method Label', labelPaymentMethod, updateLabelPaymentMethod, labelPaymentMethodEnabled, updateLabelPaymentMethodEnabled)}
-                        {renderLabelInput('label-amount-paid', 'Amount Paid Label', labelAmountPaid, updateLabelAmountPaid, labelAmountPaidEnabled, updateLabelAmountPaidEnabled)}
-                        {renderLabelInput('label-change', 'Change Label', labelChange, updateLabelChange, labelChangeEnabled, updateLabelChangeEnabled)}
+                        {renderLabelInput('label-receipt-id', t('app.settings.receiptTab.labels.receiptId'), labelReceiptId, updateLabelReceiptId, labelReceiptIdEnabled, updateLabelReceiptIdEnabled)}
+                        {renderLabelInput('label-transaction-id', t('app.settings.receiptTab.labels.transactionId'), labelTransactionId, updateLabelTransactionId, labelTransactionIdEnabled, updateLabelTransactionIdEnabled)}
+                        {renderLabelInput('label-date', t('app.settings.receiptTab.labels.date'), labelDate, updateLabelDate, labelDateEnabled, updateLabelDateEnabled)}
+                        {renderLabelInput('label-time', t('app.settings.receiptTab.labels.time'), labelTime, updateLabelTime, labelTimeEnabled, updateLabelTimeEnabled)}
+                        {renderLabelInput('label-cashier', t('app.settings.receiptTab.labels.cashier'), labelCashier, updateLabelCashier, labelCashierEnabled, updateLabelCashierEnabled)}
+                        {renderLabelInput('label-customer', t('app.settings.receiptTab.labels.customer'), labelCustomer, updateLabelCustomer, labelCustomerEnabled, updateLabelCustomerEnabled)}
+                        {renderLabelInput('label-items', t('app.settings.receiptTab.labels.items'), labelItems, updateLabelItems, labelItemsEnabled, updateLabelItemsEnabled)}
+                        {renderLabelInput('label-subtotal', t('app.settings.receiptTab.labels.subtotal'), labelSubtotal, updateLabelSubtotal, labelSubtotalEnabled, updateLabelSubtotalEnabled)}
+                        {renderLabelInput('label-discount', t('app.settings.receiptTab.labels.discount'), labelDiscount, updateLabelDiscount, labelDiscountEnabled, updateLabelDiscountEnabled)}
+                        {renderLabelInput('label-tax', t('app.settings.receiptTab.labels.tax'), labelTax, updateLabelTax, labelTaxEnabled, updateLabelTaxEnabled)}
+                        {renderLabelInput('label-total', t('app.settings.receiptTab.labels.total'), labelTotal, updateLabelTotal, labelTotalEnabled, updateLabelTotalEnabled)}
+                        {renderLabelInput('label-payment-method', t('app.settings.receiptTab.labels.paymentMethod'), labelPaymentMethod, updateLabelPaymentMethod, labelPaymentMethodEnabled, updateLabelPaymentMethodEnabled)}
+                        {renderLabelInput('label-amount-paid', t('app.settings.receiptTab.labels.amountPaid'), labelAmountPaid, updateLabelAmountPaid, labelAmountPaidEnabled, updateLabelAmountPaidEnabled)}
+                        {renderLabelInput('label-change', t('app.settings.receiptTab.labels.change'), labelChange, updateLabelChange, labelChangeEnabled, updateLabelChangeEnabled)}
                     </div>
                 </CardContent>
             </Card>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Thermal Preview</CardTitle>
+                    <CardTitle>{t('app.settings.receiptTab.thermalPreview')}</CardTitle>
                     <p className="text-sm text-muted-foreground mt-1">
-                        Preview of how the receipt will look on a thermal printer
+                        {t('app.settings.receiptTab.thermalPreviewDesc')}
                     </p>
                 </CardHeader>
                 <CardContent className="flex justify-center bg-gray-100/50 p-6">
@@ -445,7 +445,7 @@ export default function ReceiptSettings() {
                                 updated_at: ''
                             })}
                             className="w-[300px] h-[500px] border-0 bg-white"
-                            title="Thermal Preview"
+                            title={t('app.settings.receiptTab.thermalPreview')}
                         />
                     </div>
                 </CardContent>

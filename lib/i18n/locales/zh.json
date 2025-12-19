@@ -18,7 +18,17 @@
         "submit": "提交",
         "confirm": "确认",
         "yes": "是",
-        "no": "否"
+        "no": "否",
+        "system": "系统",
+        "toggleTheme": "切换主题",
+        "previousSlide": "上一张",
+        "nextSlide": "下一张",
+        "loadingBusinesses": "正在加载商家...",
+        "appName": "BillForge",
+        "toggleMenu": "切换菜单",
+        "cropImage": "裁剪图片",
+        "crop": "裁剪",
+        "pickDate": "选择日期"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "图像大小必须小于1MB",
             "loadingError": "加载数据时出错",
             "itemsLoadError": "加载项目时出错",
-            "basePrice": "基础价格"
+            "basePrice": "基础价格",
+            "placeholders": {
+                "productName": "产品名称",
+                "sku": "PROD-001",
+                "description": "产品描述..."
+            },
+            "imageFallback": "图片",
+            "previewAlt": "图片预览"
         },
         "customers": {
             "title": "客户",
@@ -821,7 +838,9 @@
                 "deleteItem3": "删除所有个人数据",
                 "deleteConfirmation": "您将收到一封确认电子邮件，其中包含完成删除的链接。",
                 "sendingEmail": "发送电子邮件中...",
-                "requestDeletion": "请求帐户删除"
+                "requestDeletion": "请求帐户删除",
+                "errorLoadData": "加载用户数​​据失败",
+                "loading": "正在加载个人资料..."
             },
             "receiptTab": {
                 "options": "收据自定义",
@@ -835,7 +854,51 @@
                 "nextNumber": "下一个交易编号",
                 "nextNumberHelp": "要使用的下一个交易编号",
                 "template": "收据模板",
-                "selectBusiness": "选择一个业务来配置收据设置"
+                "selectBusiness": "选择一个业务来配置收据设置",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "选择字体",
+                "receiptOptions": "收据选项",
+                "receiptStyle": "收据样式 (图片/PDF)",
+                "classicMonospace": "经典等宽",
+                "modernSansSerif": "现代无衬线",
+                "lineCharacter": "线条字符",
+                "dashed": "虚线 (-)",
+                "dotted": "点线 (.)",
+                "underscore": "下划线 (_)",
+                "double": "双线 (=)",
+                "asterisk": "星号 (*)",
+                "itemLayout": "项目布局",
+                "horizontal": "水平 (名称和价格在同一行)",
+                "vertical": "垂直 (名称在上, 价格在下)",
+                "customLabels": "自定义标签",
+                "customLabelsDesc": "自定义和切换收据标签可见性",
+                "thermalPreview": "热敏预览",
+                "thermalPreviewDesc": "预览收据在热敏打印机上的显示效果",
+                "placeholders": {
+                    "inv": "票据",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "收据ID",
+                    "transactionId": "交易ID",
+                    "date": "日期标签",
+                    "time": "时间标签",
+                    "cashier": "收银员标签",
+                    "customer": "客户标签",
+                    "items": "项目标签",
+                    "subtotal": "小计标签",
+                    "discount": "折扣标签",
+                    "tax": "税收标签",
+                    "total": "总计标签",
+                    "paymentMethod": "支付方式标签",
+                    "amountPaid": "支付金额标签",
+                    "change": "找零标签"
+                }
             },
             "receiptPopup": {
                 "title": "交易完成！",

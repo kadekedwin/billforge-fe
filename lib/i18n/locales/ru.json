@@ -18,7 +18,17 @@
         "submit": "Отправить",
         "confirm": "Подтвердить",
         "yes": "Да",
-        "no": "Нет"
+        "no": "Нет",
+        "system": "Система",
+        "toggleTheme": "Сменить тему",
+        "previousSlide": "Предыдущий слайд",
+        "nextSlide": "Следующий слайд",
+        "loadingBusinesses": "Загрузка бизнесов...",
+        "appName": "BillForge",
+        "toggleMenu": "Переключить меню",
+        "cropImage": "Обрезать изображение",
+        "crop": "Обрезать",
+        "pickDate": "Выбрать дату"
     },
     "landing": {
         "hero": {
@@ -698,7 +708,14 @@
             "imageSizeError": "Размер изображения должен быть менее 1MB",
             "loadingError": "Произошла ошибка при загрузке данных",
             "itemsLoadError": "Ошибка при загрузке товаров",
-            "basePrice": "Базовая Цена"
+            "basePrice": "Базовая Цена",
+            "placeholders": {
+                "productName": "Название продукта",
+                "sku": "PROD-001",
+                "description": "Описание продукта..."
+            },
+            "imageFallback": "ИЗО",
+            "previewAlt": "Предпросмотр товара"
         },
         "customers": {
             "title": "Клиенты",
@@ -821,7 +838,9 @@
                 "deleteItem3": "Удаление всей вашей личной информации",
                 "deleteConfirmation": "Вы получите письмо с подтверждением и ссылкой для завершения удаления.",
                 "sendingEmail": "Отправка письма...",
-                "requestDeletion": "Запросить Удаление Учетной Записи"
+                "requestDeletion": "Запросить Удаление Учетной Записи",
+                "errorLoadData": "Не удалось загрузить данные пользователя",
+                "loading": "Загрузка профиля..."
             },
             "receiptTab": {
                 "options": "Настройка Чека",
@@ -835,7 +854,51 @@
                 "nextNumber": "Следующий Номер Транзакции",
                 "nextNumberHelp": "Следующий номер транзакции для использования",
                 "template": "Шаблон Чека",
-                "selectBusiness": "Выберите бизнес для настройки параметров чека"
+                "selectBusiness": "Выберите бизнес для настройки параметров чека",
+                "printerFont": "Font (Printer)",
+                "fontA": "Font A (12x24)",
+                "fontB": "Font B (9x17)",
+                "fontC": "Font C (9x24)",
+                "selectFont": "Выбрать шрифт",
+                "receiptOptions": "Настройки чека",
+                "receiptStyle": "Стиль чека (Изображение/PDF)",
+                "classicMonospace": "Классический моноширинный",
+                "modernSansSerif": "Современный без засечек",
+                "lineCharacter": "Символ линии",
+                "dashed": "Тире (-)",
+                "dotted": "Точки (.)",
+                "underscore": "Подчеркивание (_)",
+                "double": "Двойная (=)",
+                "asterisk": "Звездочка (*)",
+                "itemLayout": "Расположение товаров",
+                "horizontal": "Горизонтально (Название и цена на одной строке)",
+                "vertical": "Вертикально (Название сверху, цена снизу)",
+                "customLabels": "Пользовательские метки",
+                "customLabelsDesc": "Настройка видимости меток чека",
+                "thermalPreview": "Термо-предпросмотр",
+                "thermalPreviewDesc": "Предпросмотр вида чека на термопринтере",
+                "placeholders": {
+                    "inv": "СЧЕТ",
+                    "selectStyle": "Select a style",
+                    "selectLineStyle": "Select line style",
+                    "selectLayout": "Select layout"
+                },
+                "labels": {
+                    "receiptId": "ID чека",
+                    "transactionId": "ID транзакции",
+                    "date": "Метка даты",
+                    "time": "Метка времени",
+                    "cashier": "Метка кассира",
+                    "customer": "Метка клиента",
+                    "items": "Метка товаров",
+                    "subtotal": "Метка подытога",
+                    "discount": "Метка скидки",
+                    "tax": "Метка налога",
+                    "total": "Метка итога",
+                    "paymentMethod": "Метка метода оплаты",
+                    "amountPaid": "Метка оплаченной суммы",
+                    "change": "Метка сдачи"
+                }
             },
             "receiptPopup": {
                 "title": "Транзакция Завершена!",
