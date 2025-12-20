@@ -1012,7 +1012,7 @@
                 "cancel": "Avbryt",
                 "currentConnection": "Gjeldende tilkoblingspunkt",
                 "websocketUrl": "WebSocket-URL",
-                "urlHelp": "Skriv inn WebSocket-URL (f.eks. ws://192.168.1.100:42123 eller bare 192.168.1.100:42123)"
+                "urlHelp": "Skriv inn WebSocket-URL (f.eks. ws://127.0.0.1:42123)"
             },
             "printer_connection": "Skrivertilkobling",
             "printer": {

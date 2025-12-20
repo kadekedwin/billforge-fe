@@ -1012,7 +1012,7 @@
                 "cancel": "Отмена",
                 "currentConnection": "Текущая конечная точка подключения",
                 "websocketUrl": "URL WebSocket",
-                "urlHelp": "Введите URL WebSocket (например, ws://192.168.1.100:42123 или просто 192.168.1.100:42123)"
+                "urlHelp": "Введите URL WebSocket (например, ws://127.0.0.1:42123)"
             },
             "printer_connection": "Подключение принтера",
             "printer": {

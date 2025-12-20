@@ -972,7 +972,7 @@
                 "cancel": "취소",
                 "currentConnection": "현재 연결 엔드포인트",
                 "websocketUrl": "WebSocket URL",
-                "urlHelp": "WebSocket URL을 입력하세요 (예: ws://192.168.1.100:42123 또는 192.168.1.100:42123)"
+                "urlHelp": "WebSocket URL을 입력하세요 (예: ws://127.0.0.1:42123)"
             },
             "receiptPopup": {
                 "printReceipt": "영수증 인쇄",

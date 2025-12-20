@@ -994,7 +994,7 @@
                 "cancel": "रद्द करें",
                 "currentConnection": "वर्तमान कनेक्शन एंडपॉइंट",
                 "websocketUrl": "WebSocket URL",
-                "urlHelp": "WebSocket URL दर्ज करें (जैसे ws://192.168.1.100:42123 या सिर्फ 192.168.1.100:42123)"
+                "urlHelp": "WebSocket URL दर्ज करें (जैसे ws://127.0.0.1:42123)"
             },
             "receiptPopup": {
                 "printReceipt": "रसीद प्रिंट करें",

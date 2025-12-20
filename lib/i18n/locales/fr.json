@@ -1012,7 +1012,7 @@
                 "cancel": "Annuler",
                 "currentConnection": "Point de connexion actuel",
                 "websocketUrl": "URL WebSocket",
-                "urlHelp": "Entrez l'URL WebSocket (par ex. ws://192.168.1.100:42123 ou simplement 192.168.1.100:42123)"
+                "urlHelp": "Entrez l'URL WebSocket (par ex. ws://127.0.0.1:42123)"
             },
             "printer_connection": "Connexion de l'imprimante",
             "printer": {

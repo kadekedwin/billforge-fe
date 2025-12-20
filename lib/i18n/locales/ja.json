@@ -994,7 +994,7 @@
                 "cancel": "キャンセル",
                 "currentConnection": "現在の接続エンドポイント",
                 "websocketUrl": "WebSocket URL",
-                "urlHelp": "WebSocket URLを入力してください（例：ws://192.168.1.100:42123 または 192.168.1.100:42123）"
+                "urlHelp": "WebSocket URLを入力してください（例：ws://127.0.0.1:42123）"
             },
             "receiptPopup": {
                 "printReceipt": "レシートを印刷",

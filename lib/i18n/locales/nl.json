@@ -1012,7 +1012,7 @@
                 "cancel": "Annuleren",
                 "currentConnection": "Huidig verbindingsendpoint",
                 "websocketUrl": "WebSocket-URL",
-                "urlHelp": "Voer de WebSocket-URL in (bijv. ws://192.168.1.100:42123 of alleen 192.168.1.100:42123)"
+                "urlHelp": "Voer de WebSocket-URL in (bijv. ws://127.0.0.1:42123)"
             },
             "printer_connection": "Printerverbinding",
             "printer": {

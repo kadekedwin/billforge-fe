@@ -13,7 +13,38 @@ import { useTranslation } from '@/lib/i18n/useTranslation';
 
 const STORAGE_KEY = 'printer_auto_connect';
 const URL_STORAGE_KEY = 'printer_client_url';
+const URL_TIMESTAMP_KEY = 'printer_client_url_timestamp';
 const DEFAULT_URL = '127.0.0.1:42123';
+const URL_EXPIRY_MS = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+
+const getStoredUrl = (): string => {
+    if (typeof window === 'undefined') return DEFAULT_URL;
+
+    const storedUrl = localStorage.getItem(URL_STORAGE_KEY);
+    const storedTimestamp = localStorage.getItem(URL_TIMESTAMP_KEY);
+
+    if (!storedUrl || !storedTimestamp) {
+        return DEFAULT_URL;
+    }
+
+    const timestamp = parseInt(storedTimestamp, 10);
+    const now = Date.now();
+
+    if (now - timestamp > URL_EXPIRY_MS) {
+        localStorage.removeItem(URL_STORAGE_KEY);
+        localStorage.removeItem(URL_TIMESTAMP_KEY);
+        return DEFAULT_URL;
+    }
+
+    return storedUrl;
+};
+
+const storeUrl = (url: string): void => {
+    if (typeof window === 'undefined') return;
+
+    localStorage.setItem(URL_STORAGE_KEY, url);
+    localStorage.setItem(URL_TIMESTAMP_KEY, Date.now().toString());
+};
 
 export default function PrinterConnectionSettings() {
     const { t } = useTranslation();
@@ -26,12 +57,7 @@ export default function PrinterConnectionSettings() {
     const [error, setError] = useState<string | null>(null);
     const [loadingDeviceId, setLoadingDeviceId] = useState<string | null>(null);
     const [testingDeviceId, setTestingDeviceId] = useState<string | null>(null);
-    const [printClientUrl, setPrintClientUrl] = useState<string>(() => {
-        if (typeof window !== 'undefined') {
-            return localStorage.getItem(URL_STORAGE_KEY) || DEFAULT_URL;
-        }
-        return DEFAULT_URL;
-    });
+    const [printClientUrl, setPrintClientUrl] = useState<string>(() => getStoredUrl());
     const [isEditingConnection, setIsEditingConnection] = useState(false);
     const [tempUrl, setTempUrl] = useState(printClientUrl);
 
@@ -45,7 +71,7 @@ export default function PrinterConnectionSettings() {
 
     const handleSaveConnection = () => {
         setPrintClientUrl(tempUrl);
-        localStorage.setItem(URL_STORAGE_KEY, tempUrl);
+        storeUrl(tempUrl);
         setIsEditingConnection(false);
     };
 
@@ -82,7 +108,7 @@ export default function PrinterConnectionSettings() {
             await client.connect();
             setWs(client);
             localStorage.setItem(STORAGE_KEY, 'true');
-            localStorage.setItem(URL_STORAGE_KEY, printClientUrl);
+            storeUrl(printClientUrl);
 
             try {
                 const response = await client.getConnectedDevices();

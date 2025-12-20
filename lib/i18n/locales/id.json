@@ -972,7 +972,7 @@
                 "cancel": "Batal",
                 "currentConnection": "Endpoint koneksi saat ini",
                 "websocketUrl": "URL WebSocket",
-                "urlHelp": "Masukkan URL WebSocket (mis. ws://192.168.1.100:42123 atau hanya 192.168.1.100:42123)"
+                "urlHelp": "Masukkan URL WebSocket (mis. ws://127.0.0.1:42123)"
             },
             "receiptPopup": {
                 "printReceipt": "Cetak Struk",
