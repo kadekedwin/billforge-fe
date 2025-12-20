@@ -36,7 +36,7 @@ export default function PrinterConnectionSettings() {
     const [tempUrl, setTempUrl] = useState(printClientUrl);
 
     const parseWebSocketUrl = (input: string): string => {
-        let cleaned = input.trim();
+        const cleaned = input.trim();
         if (cleaned.startsWith('ws://')) {
             return cleaned;
         }
