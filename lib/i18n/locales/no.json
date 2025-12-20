@@ -986,7 +986,7 @@
                 "connectDevice": "Koble til",
                 "disconnectDevice": "Koble fra",
                 "active": "Aktiv",
-                "errorConnect": "Kunne ikke koble til print client. Sørg for at den kjører på ws://localhost:42123",
+                "errorConnect": "Kunne ikke koble til printklient på {url}",
                 "errorDiscover": "Kunne ikke finne enheter",
                 "errorConnectDevice": "Kunne ikke koble til enheten",
                 "errorDisconnectDevice": "Kunne ikke koble fra enheten",
@@ -1002,7 +1002,17 @@
                 "autoCut": "Automatisk papirkutt",
                 "testPrint": "Testutskrift",
                 "testPrintSuccess": "Testutskrift sendt!",
-                "testPrintFailed": "Kunne ikke sende testutskrift"
+                "testPrintFailed": "Kunne ikke sende testutskrift",
+                "deviceDisconnected": "Enhet frakoblet",
+                "errorConnectRefused": "Tilkobling avvist. Sørg for at Print Client kjører og er tilgjengelig.",
+                "errorConnectTimeout": "Tilkoblingstidsavbrudd. Sjekk nettverkstilkoblingen og brannmurinnstillingene.",
+                "connectionSettings": "Tilkoblingsinnstillinger",
+                "edit": "Rediger",
+                "save": "Lagre",
+                "cancel": "Avbryt",
+                "currentConnection": "Gjeldende tilkoblingspunkt",
+                "websocketUrl": "WebSocket-URL",
+                "urlHelp": "Skriv inn WebSocket-URL (f.eks. ws://192.168.1.100:42123 eller bare 192.168.1.100:42123)"
             },
             "printer_connection": "Skrivertilkobling",
             "printer": {

@@ -991,7 +991,7 @@
                 "connectDevice": "Connect",
                 "disconnectDevice": "Disconnect",
                 "active": "Active",
-                "errorConnect": "Failed to connect to print client. Make sure it's running on ws://localhost:42123",
+                "errorConnect": "Failed to connect to print client on {url}",
                 "errorDiscover": "Failed to discover devices",
                 "errorConnectDevice": "Failed to connect to device",
                 "errorDisconnectDevice": "Failed to disconnect device",
@@ -1009,7 +1009,17 @@
                 "autoPrint": "Auto Print After Checkout",
                 "testPrint": "Test Print",
                 "testPrintSuccess": "Test print sent successfully!",
-                "testPrintFailed": "Failed to send test print"
+                "testPrintFailed": "Failed to send test print",
+                "deviceDisconnected": "Device disconnected",
+                "errorConnectRefused": "Connection refused. Make sure the Print Client is running and accessible.",
+                "errorConnectTimeout": "Connection timeout. Check your network connection and firewall settings.",
+                "connectionSettings": "Connection Settings",
+                "edit": "Edit",
+                "save": "Save",
+                "cancel": "Cancel",
+                "currentConnection": "Current connection endpoint",
+                "websocketUrl": "WebSocket URL",
+                "urlHelp": "Enter the WebSocket URL (e.g., ws://192.168.1.100:42123 or just 192.168.1.100:42123)"
             }
         },
         "categories": {

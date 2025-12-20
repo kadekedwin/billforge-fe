@@ -986,7 +986,7 @@
                 "connectDevice": "Подключить",
                 "disconnectDevice": "Отключить",
                 "active": "Активен",
-                "errorConnect": "Ошибка подключения",
+                "errorConnect": "Не удалось подключиться к клиенту печати на {url}",
                 "errorDiscover": "Ошибка поиска",
                 "errorConnectDevice": "Ошибка подключения уст.",
                 "errorDisconnectDevice": "Ошибка откл. уст.",
@@ -1002,7 +1002,17 @@
                 "autoCut": "Автообрезка",
                 "testPrint": "Тестовая печать",
                 "testPrintSuccess": "Тест отправлен",
-                "testPrintFailed": "Ошибка теста"
+                "testPrintFailed": "Ошибка теста",
+                "deviceDisconnected": "Устройство отключено",
+                "errorConnectRefused": "Соединение отклонено. Убедитесь, что клиент печати запущен и доступен.",
+                "errorConnectTimeout": "Тайм-аут соединения. Проверьте сетевое подключение и настройки брандмауэра.",
+                "connectionSettings": "Настройки Подключения",
+                "edit": "Редактировать",
+                "save": "Сохранить",
+                "cancel": "Отмена",
+                "currentConnection": "Текущая конечная точка подключения",
+                "websocketUrl": "URL WebSocket",
+                "urlHelp": "Введите URL WebSocket (например, ws://192.168.1.100:42123 или просто 192.168.1.100:42123)"
             },
             "printer_connection": "Подключение принтера",
             "printer": {

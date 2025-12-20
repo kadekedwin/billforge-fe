@@ -6,12 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, Wifi, WifiOff, Bluetooth, Trash2, Printer, Monitor, Apple, Terminal } from 'lucide-react';
+import { Loader2, Wifi, WifiOff, Bluetooth, Trash2, Printer, Monitor, Apple, Terminal, Edit2, Check, X } from 'lucide-react';
 import { PrintClientWebSocket } from '@/lib/print-client';
 import { BluetoothDevice, ConnectionStatus } from '@/types/printer';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 
 const STORAGE_KEY = 'printer_auto_connect';
+const URL_STORAGE_KEY = 'printer_client_url';
+const DEFAULT_URL = '127.0.0.1:42123';
 
 export default function PrinterConnectionSettings() {
     const { t } = useTranslation();
@@ -24,11 +26,39 @@ export default function PrinterConnectionSettings() {
     const [error, setError] = useState<string | null>(null);
     const [loadingDeviceId, setLoadingDeviceId] = useState<string | null>(null);
     const [testingDeviceId, setTestingDeviceId] = useState<string | null>(null);
+    const [printClientUrl, setPrintClientUrl] = useState<string>(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem(URL_STORAGE_KEY) || DEFAULT_URL;
+        }
+        return DEFAULT_URL;
+    });
+    const [isEditingConnection, setIsEditingConnection] = useState(false);
+    const [tempUrl, setTempUrl] = useState(printClientUrl);
+
+    const parseWebSocketUrl = (input: string): string => {
+        let cleaned = input.trim();
+        if (cleaned.startsWith('ws://')) {
+            return cleaned;
+        }
+        return `ws://${cleaned}`;
+    };
+
+    const handleSaveConnection = () => {
+        setPrintClientUrl(tempUrl);
+        localStorage.setItem(URL_STORAGE_KEY, tempUrl);
+        setIsEditingConnection(false);
+    };
+
+    const handleCancelEdit = () => {
+        setTempUrl(printClientUrl);
+        setIsEditingConnection(false);
+    };
 
     const handleConnect = async () => {
         try {
             setError(null);
-            const client = new PrintClientWebSocket();
+            const wsUrl = parseWebSocketUrl(printClientUrl);
+            const client = new PrintClientWebSocket(wsUrl);
 
             client.onStatusChange((status) => {
                 setConnectionStatus(status);
@@ -38,9 +68,21 @@ export default function PrinterConnectionSettings() {
                 }
             });
 
+            client.onDeviceDisconnect((deviceId) => {
+                console.log('Device disconnected:', deviceId);
+                setConnectedDevices(prev => prev.filter(d => d.id !== deviceId));
+                setDevices(prev => prev.map(d =>
+                    d.id === deviceId ? { ...d, connected: false } : d
+                ));
+                import('sonner').then(({ toast }) => {
+                    toast.info(t('app.settings.printerTab.deviceDisconnected'));
+                });
+            });
+
             await client.connect();
             setWs(client);
             localStorage.setItem(STORAGE_KEY, 'true');
+            localStorage.setItem(URL_STORAGE_KEY, printClientUrl);
 
             try {
                 const response = await client.getConnectedDevices();
@@ -51,7 +93,14 @@ export default function PrinterConnectionSettings() {
                 console.error('Failed to load connected devices:', err);
             }
         } catch (err) {
-            setError(t('app.settings.printerTab.errorConnect'));
+            const errorMessage = err instanceof Error ? err.message : String(err);
+            if (errorMessage.includes('failed') || errorMessage.includes('refused')) {
+                setError(t('app.settings.printerTab.errorConnectRefused'));
+            } else if (errorMessage.includes('timeout')) {
+                setError(t('app.settings.printerTab.errorConnectTimeout'));
+            } else {
+                setError(t('app.settings.printerTab.errorConnect').replace('{url}', printClientUrl));
+            }
             console.error('Failed to connect to print client:', err);
         }
     };
@@ -286,6 +335,71 @@ export default function PrinterConnectionSettings() {
                             </Button>
                         </div>
                     </div>
+
+                    <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                            <Label>{t('app.settings.printerTab.connectionSettings')}</Label>
+                            {!isEditingConnection && (connectionStatus === 'disconnected' || connectionStatus === 'error') && (
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => setIsEditingConnection(true)}
+                                >
+                                    <Edit2 className="mr-2 h-4 w-4" />
+                                    {t('app.settings.printerTab.edit')}
+                                </Button>
+                            )}
+                        </div>
+
+                        {isEditingConnection ? (
+                            <div className="space-y-3 rounded-lg border border-primary/20 bg-primary/5 p-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="edit-url">{t('app.settings.printerTab.websocketUrl')}</Label>
+                                    <input
+                                        id="edit-url"
+                                        type="text"
+                                        value={tempUrl}
+                                        onChange={(e) => setTempUrl(e.target.value)}
+                                        placeholder="ws://127.0.0.1:42123"
+                                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    />
+                                    <p className="text-xs text-muted-foreground">
+                                        {t('app.settings.printerTab.urlHelp')}
+                                    </p>
+                                </div>
+
+                                <div className="flex gap-2">
+                                    <Button
+                                        onClick={handleSaveConnection}
+                                        size="sm"
+                                        className="flex-1"
+                                    >
+                                        <Check className="mr-2 h-4 w-4" />
+                                        {t('app.settings.printerTab.save')}
+                                    </Button>
+                                    <Button
+                                        onClick={handleCancelEdit}
+                                        variant="outline"
+                                        size="sm"
+                                        className="flex-1"
+                                    >
+                                        <X className="mr-2 h-4 w-4" />
+                                        {t('app.settings.printerTab.cancel')}
+                                    </Button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="rounded-lg border bg-secondary/30 p-3">
+                                <div className="space-y-1">
+                                    <p className="text-sm font-medium">{parseWebSocketUrl(printClientUrl)}</p>
+                                    <p className="text-xs text-muted-foreground">
+                                        {t('app.settings.printerTab.currentConnection')}
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="flex items-center justify-between">
                         <div className="space-y-1">
                             <Label>{t('app.settings.printerTab.status')}</Label>

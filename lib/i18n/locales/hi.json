@@ -968,7 +968,7 @@
                 "connectDevice": "कनेक्ट करें",
                 "disconnectDevice": "डिस्कनेक्ट करें",
                 "active": "सक्रिय",
-                "errorConnect": "प्रिंट क्लाइंट से कनेक्ट करने में विफल। सुनिश्चित करें कि यह ws://localhost:42123 पर चल रहा है",
+                "errorConnect": "{url} पर प्रिंट क्लाइंट से कनेक्ट करने में विफल",
                 "errorDiscover": "डिवाइस खोजने में विफल",
                 "errorConnectDevice": "डिवाइस से कनेक्ट करने में विफल",
                 "errorDisconnectDevice": "डिवाइस को डिस्कनेक्ट करने में विफल",
@@ -984,7 +984,17 @@
                 "autoCut": "ऑटो कट पेपर",
                 "testPrint": "टेस्ट प्रिंट",
                 "testPrintSuccess": "टेस्ट प्रिंट सफलतापूर्वक भेजा गया!",
-                "testPrintFailed": "टेस्ट प्रिंट भेजने में विफल"
+                "testPrintFailed": "टेस्ट प्रिंट भेजने में विफल",
+                "deviceDisconnected": "डिवाइस डिस्कनेक्ट हो गया",
+                "errorConnectRefused": "कनेक्शन अस्वीकृत। सुनिश्चित करें कि प्रिंट क्लाइंट चल रहा है और सुलभ है।",
+                "errorConnectTimeout": "कनेक्शन समय समाप्त। अपने नेटवर्क कनेक्शन और फ़ायरवॉल सेटिंग्स की जांच करें।",
+                "connectionSettings": "कनेक्शन सेटिंग्स",
+                "edit": "संपादित करें",
+                "save": "सहेजें",
+                "cancel": "रद्द करें",
+                "currentConnection": "वर्तमान कनेक्शन एंडपॉइंट",
+                "websocketUrl": "WebSocket URL",
+                "urlHelp": "WebSocket URL दर्ज करें (जैसे ws://192.168.1.100:42123 या सिर्फ 192.168.1.100:42123)"
             },
             "receiptPopup": {
                 "printReceipt": "रसीद प्रिंट करें",

@@ -986,7 +986,7 @@
                 "connectDevice": "Verbinden",
                 "disconnectDevice": "Trennen",
                 "active": "Aktiv",
-                "errorConnect": "Verbindung fehlgeschlagen",
+                "errorConnect": "Verbindung zum Druck-Client auf {url} fehlgeschlagen",
                 "errorDiscover": "Suche fehlgeschlagen",
                 "errorConnectDevice": "Geräteverbindung fehlgeschlagen",
                 "errorDisconnectDevice": "Gerätetrennung fehlgeschlagen",
@@ -1002,7 +1002,17 @@
                 "autoCut": "Automatischer Schnitt",
                 "testPrint": "Testdruck",
                 "testPrintSuccess": "Testdruck erfolgreich",
-                "testPrintFailed": "Testdruck fehlgeschlagen"
+                "testPrintFailed": "Testdruck fehlgeschlagen",
+                "deviceDisconnected": "Gerät getrennt",
+                "errorConnectRefused": "Verbindung abgelehnt. Stellen Sie sicher, dass der Druck-Client läuft und erreichbar ist.",
+                "errorConnectTimeout": "Verbindungszeitüberschreitung. Überprüfen Sie Ihre Netzwerkverbindung und Firewall-Einstellungen.",
+                "connectionSettings": "Verbindungseinstellungen",
+                "edit": "Bearbeiten",
+                "save": "Speichern",
+                "cancel": "Abbrechen",
+                "currentConnection": "Aktueller Verbindungsendpunkt",
+                "websocketUrl": "WebSocket-URL",
+                "urlHelp": "Geben Sie die WebSocket-URL ein (z.B. ws://192.168.1.100:42123 oder nur 192.168.1.100:42123)"
             },
             "printer_connection": "Druckerverbindung",
             "printer": {

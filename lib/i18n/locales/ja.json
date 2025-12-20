@@ -968,7 +968,7 @@
                 "connectDevice": "接続",
                 "disconnectDevice": "切断",
                 "active": "アクティブ",
-                "errorConnect": "接続失敗",
+                "errorConnect": "{url} のプリントクライアントへの接続に失敗しました",
                 "errorDiscover": "検索失敗",
                 "errorConnectDevice": "デバイス接続失敗",
                 "errorDisconnectDevice": "デバイス切断失敗",
@@ -984,7 +984,17 @@
                 "autoCut": "自動カット",
                 "testPrint": "テスト印刷",
                 "testPrintSuccess": "テスト送信成功",
-                "testPrintFailed": "テスト送信失敗"
+                "testPrintFailed": "テスト送信失敗",
+                "deviceDisconnected": "デバイスが切断されました",
+                "errorConnectRefused": "接続が拒否されました。プリントクライアントが実行中でアクセス可能であることを確認してください。",
+                "errorConnectTimeout": "接続タイムアウト。ネットワーク接続とファイアウォール設定を確認してください。",
+                "connectionSettings": "接続設定",
+                "edit": "編集",
+                "save": "保存",
+                "cancel": "キャンセル",
+                "currentConnection": "現在の接続エンドポイント",
+                "websocketUrl": "WebSocket URL",
+                "urlHelp": "WebSocket URLを入力してください（例：ws://192.168.1.100:42123 または 192.168.1.100:42123）"
             },
             "receiptPopup": {
                 "printReceipt": "レシートを印刷",

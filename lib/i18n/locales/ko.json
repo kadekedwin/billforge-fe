@@ -946,7 +946,7 @@
                 "connectDevice": "연결",
                 "disconnectDevice": "연결 해제",
                 "active": "활성",
-                "errorConnect": "연결 실패",
+                "errorConnect": "{url}의 프린트 클라이언트에 연결하지 못했습니다",
                 "errorDiscover": "검색 실패",
                 "errorConnectDevice": "장치 연결 실패",
                 "errorDisconnectDevice": "장치 연결 해제 실패",
@@ -962,7 +962,17 @@
                 "autoCut": "자동 절단",
                 "testPrint": "테스트 인쇄",
                 "testPrintSuccess": "테스트 인쇄 전송 성공",
-                "testPrintFailed": "전송 실패"
+                "testPrintFailed": "전송 실패",
+                "deviceDisconnected": "장치 연결 해제됨",
+                "errorConnectRefused": "연결이 거부되었습니다. 프린트 클라이언트가 실행 중이고 액세스 가능한지 확인하세요.",
+                "errorConnectTimeout": "연결 시간 초과. 네트워크 연결 및 방화벽 설정을 확인하세요.",
+                "connectionSettings": "연결 설정",
+                "edit": "편집",
+                "save": "저장",
+                "cancel": "취소",
+                "currentConnection": "현재 연결 엔드포인트",
+                "websocketUrl": "WebSocket URL",
+                "urlHelp": "WebSocket URL을 입력하세요 (예: ws://192.168.1.100:42123 또는 192.168.1.100:42123)"
             },
             "receiptPopup": {
                 "printReceipt": "영수증 인쇄",

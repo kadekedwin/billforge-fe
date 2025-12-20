@@ -986,7 +986,7 @@
                 "connectDevice": "Conectar",
                 "disconnectDevice": "Desconectar",
                 "active": "Activo",
-                "errorConnect": "Error de conexión",
+                "errorConnect": "Error al conectar con el cliente de impresión en {url}",
                 "errorDiscover": "Error al buscar",
                 "errorConnectDevice": "Error al conectar dispositivo",
                 "errorDisconnectDevice": "Error al desconectar",
@@ -1002,7 +1002,17 @@
                 "autoCut": "Corte automático",
                 "testPrint": "Prueba de Impresión",
                 "testPrintSuccess": "Prueba enviada",
-                "testPrintFailed": "Fallo en prueba"
+                "testPrintFailed": "Fallo en prueba",
+                "deviceDisconnected": "Dispositivo desconectado",
+                "errorConnectRefused": "Conexión rechazada. Asegúrese de que el Cliente de Impresión esté en ejecución y accesible.",
+                "errorConnectTimeout": "Tiempo de espera de conexión agotado. Verifique su conexión de red y configuración del firewall.",
+                "connectionSettings": "Configuración de Conexión",
+                "edit": "Editar",
+                "save": "Guardar",
+                "cancel": "Cancelar",
+                "currentConnection": "Punto de conexión actual",
+                "websocketUrl": "URL de WebSocket",
+                "urlHelp": "Ingrese la URL de WebSocket (ej. ws://192.168.1.100:42123 o solo 192.168.1.100:42123)"
             },
             "printer_connection": "Conexión de impresora",
             "printer": {

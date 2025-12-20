@@ -986,7 +986,7 @@
                 "connectDevice": "اتصال",
                 "disconnectDevice": "قطع الاتصال",
                 "active": "نشط",
-                "errorConnect": "فشل الاتصال بعميل الطباعة. تأكد من أنه يعمل على ws://localhost:42123",
+                "errorConnect": "فشل الاتصال بعميل الطباعة على {url}",
                 "errorDiscover": "فشل اكتشاف الأجهزة",
                 "errorConnectDevice": "فشل الاتصال بالجهاز",
                 "errorDisconnectDevice": "فشل قطع الاتصال بالجهاز",
@@ -1002,7 +1002,17 @@
                 "autoCut": "قطع الورق تلقائياً",
                 "testPrint": "طباعة اختبارية",
                 "testPrintSuccess": "تم إرسال الطباعة الاختبارية بنجاح!",
-                "testPrintFailed": "فشل إرسال الطباعة الاختبارية"
+                "testPrintFailed": "فشل إرسال الطباعة الاختبارية",
+                "deviceDisconnected": "تم قطع اتصال الجهاز",
+                "errorConnectRefused": "تم رفض الاتصال. تأكد من تشغيل عميل الطباعة وإمكانية الوصول إليه.",
+                "errorConnectTimeout": "انتهت مهلة الاتصال. تحقق من اتصال الشبكة وإعدادات جدار الحماية.",
+                "connectionSettings": "إعدادات الاتصال",
+                "edit": "تعديل",
+                "save": "حفظ",
+                "cancel": "إلغاء",
+                "currentConnection": "نقطة الاتصال الحالية",
+                "websocketUrl": "عنوان URL لـ WebSocket",
+                "urlHelp": "أدخل عنوان URL لـ WebSocket (مثل ws://192.168.1.100:42123 أو فقط 192.168.1.100:42123)"
             },
             "printer_connection": "اتصال الطابعة",
             "printer": {

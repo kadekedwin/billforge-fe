@@ -23,9 +23,19 @@ export class PrintClientWebSocket {
     private maxReconnectAttempts = 5;
     private reconnectDelay = 2000;
     private statusCallback?: (status: ConnectionStatus) => void;
+    private deviceDisconnectCallback?: (deviceId: string) => void;
 
     constructor(url: string = 'ws://127.0.0.1:42123') {
         this.url = url;
+    }
+
+    onDeviceDisconnect(callback: (deviceId: string) => void) {
+        this.deviceDisconnectCallback = callback;
+        this.on('device_disconnected', (data: { deviceId: string }) => {
+            if (this.deviceDisconnectCallback) {
+                this.deviceDisconnectCallback(data.deviceId);
+            }
+        });
     }
 
     connect(): Promise<void> {

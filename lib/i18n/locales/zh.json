@@ -986,7 +986,7 @@
                 "connectDevice": "连接",
                 "disconnectDevice": "断开",
                 "active": "活跃",
-                "errorConnect": "无法连接到打印客户端。请确保它正在 ws://localhost:42123 上运行",
+                "errorConnect": "无法连接到 {url} 上的打印客户端",
                 "errorDiscover": "无法发现设备",
                 "errorConnectDevice": "无法连接到设备",
                 "errorDisconnectDevice": "无法断开设备",
@@ -1002,7 +1002,17 @@
                 "autoCut": "自动切纸",
                 "testPrint": "测试打印",
                 "testPrintSuccess": "测试打印发送成功！",
-                "testPrintFailed": "发送测试打印失败"
+                "testPrintFailed": "发送测试打印失败",
+                "deviceDisconnected": "设备已断开连接",
+                "errorConnectRefused": "连接被拒绝。请确保打印客户端正在运行且可访问。",
+                "errorConnectTimeout": "连接超时。请检查您的网络连接和防火墙设置。",
+                "connectionSettings": "连接设置",
+                "edit": "编辑",
+                "save": "保存",
+                "cancel": "取消",
+                "currentConnection": "当前连接端点",
+                "websocketUrl": "WebSocket URL",
+                "urlHelp": "输入WebSocket URL（例如 ws://192.168.1.100:42123 或仅 192.168.1.100:42123）"
             },
             "printer_connection": "打印机连接",
             "printer": {

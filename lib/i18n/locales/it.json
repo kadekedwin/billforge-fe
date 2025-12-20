@@ -986,7 +986,7 @@
                 "connectDevice": "Connetti",
                 "disconnectDevice": "Disconnetti",
                 "active": "Attivo",
-                "errorConnect": "Errore connessione",
+                "errorConnect": "Impossibile connettersi al client di stampa su {url}",
                 "errorDiscover": "Errore ricerca",
                 "errorConnectDevice": "Errore connessione dispositivo",
                 "errorDisconnectDevice": "Errore disconnessione",
@@ -1002,7 +1002,17 @@
                 "autoCut": "Taglio automatico",
                 "testPrint": "Stampa di Prova",
                 "testPrintSuccess": "Prova inviata",
-                "testPrintFailed": "Invio fallito"
+                "testPrintFailed": "Invio fallito",
+                "deviceDisconnected": "Dispositivo disconnesso",
+                "errorConnectRefused": "Connessione rifiutata. Assicurati che il Client di Stampa sia in esecuzione e accessibile.",
+                "errorConnectTimeout": "Timeout della connessione. Controlla la tua connessione di rete e le impostazioni del firewall.",
+                "connectionSettings": "Impostazioni di Connessione",
+                "edit": "Modifica",
+                "save": "Salva",
+                "cancel": "Annulla",
+                "currentConnection": "Endpoint di connessione corrente",
+                "websocketUrl": "URL WebSocket",
+                "urlHelp": "Inserisci l'URL WebSocket (es. ws://192.168.1.100:42123 o solo 192.168.1.100:42123)"
             },
             "printer_connection": "Connessione stampante",
             "printer": {

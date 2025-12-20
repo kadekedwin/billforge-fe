@@ -986,7 +986,7 @@
                 "connectDevice": "Verbinden",
                 "disconnectDevice": "Verbreek",
                 "active": "Actief",
-                "errorConnect": "Verbindingsfout",
+                "errorConnect": "Kan geen verbinding maken met printclient op {url}",
                 "errorDiscover": "Zoekfout",
                 "errorConnectDevice": "Apparaatverbindingsfout",
                 "errorDisconnectDevice": "Verbreeksfout",
@@ -1002,7 +1002,17 @@
                 "autoCut": "Automatisch snijden",
                 "testPrint": "Testafdruk",
                 "testPrintSuccess": "Test verzonden",
-                "testPrintFailed": "Test mislukt"
+                "testPrintFailed": "Test mislukt",
+                "deviceDisconnected": "Apparaat losgekoppeld",
+                "errorConnectRefused": "Verbinding geweigerd. Zorg ervoor dat de Print Client actief en toegankelijk is.",
+                "errorConnectTimeout": "Verbindingstime-out. Controleer uw netwerkverbinding en firewallinstellingen.",
+                "connectionSettings": "Verbindingsinstellingen",
+                "edit": "Bewerken",
+                "save": "Opslaan",
+                "cancel": "Annuleren",
+                "currentConnection": "Huidig verbindingsendpoint",
+                "websocketUrl": "WebSocket-URL",
+                "urlHelp": "Voer de WebSocket-URL in (bijv. ws://192.168.1.100:42123 of alleen 192.168.1.100:42123)"
             },
             "printer_connection": "Printerverbinding",
             "printer": {

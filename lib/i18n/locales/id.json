@@ -946,7 +946,7 @@
                 "connectDevice": "Hubungkan",
                 "disconnectDevice": "Putuskan",
                 "active": "Aktif",
-                "errorConnect": "Gagal terhubung ke klien cetak. Pastikan berjalan di ws://localhost:42123",
+                "errorConnect": "Gagal terhubung ke klien cetak di {url}",
                 "errorDiscover": "Gagal mencari perangkat",
                 "errorConnectDevice": "Gagal terhubung ke perangkat",
                 "errorDisconnectDevice": "Gagal memutuskan perangkat",
@@ -962,7 +962,17 @@
                 "autoCut": "Potong Kertas Otomatis",
                 "testPrint": "Uji Cetak",
                 "testPrintSuccess": "Uji cetak berhasil dikirim!",
-                "testPrintFailed": "Gagal mengirim uji cetak"
+                "testPrintFailed": "Gagal mengirim uji cetak",
+                "deviceDisconnected": "Perangkat terputus",
+                "errorConnectRefused": "Koneksi ditolak. Pastikan Klien Cetak berjalan dan dapat diakses.",
+                "errorConnectTimeout": "Waktu koneksi habis. Periksa koneksi jaringan dan pengaturan firewall Anda.",
+                "connectionSettings": "Pengaturan Koneksi",
+                "edit": "Edit",
+                "save": "Simpan",
+                "cancel": "Batal",
+                "currentConnection": "Endpoint koneksi saat ini",
+                "websocketUrl": "URL WebSocket",
+                "urlHelp": "Masukkan URL WebSocket (mis. ws://192.168.1.100:42123 atau hanya 192.168.1.100:42123)"
             },
             "receiptPopup": {
                 "printReceipt": "Cetak Struk",
