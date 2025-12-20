@@ -63,18 +63,6 @@ export class EscPosEncoder {
         return this.text(char.repeat(width));
     }
 
-    doubleLine(width: number = 48) {
-        return this.line('=', width);
-    }
-
-    dashedLine(width: number = 48) {
-        return this.line('-', width);
-    }
-
-    dottedLine(width: number = 48) {
-        return this.line('.', width);
-    }
-
     qrcode(data: string, size: number = 6) {
         const dataLength = data.length;
         const pL = (dataLength + 3) % 256;

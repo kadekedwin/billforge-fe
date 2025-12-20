@@ -63,10 +63,10 @@ export const generateDynamicPrintCommand = async (
 
     const lineChar = settings.line_character && settings.line_character.length > 0 ? settings.line_character[0] : '-';
     const createDivider = () => {
-        return lineChar.repeat(printerSettings.charsPerLine).substring(0, printerSettings.charsPerLine);
+        return encoder.line(lineChar, printerSettings.charsPerLine).getData();
     };
 
-    encoder.text(createDivider()).newline();
+    createDivider();
     encoder.align('left');
 
     const printLabelValue = (enabled: boolean | undefined, label: string | null | undefined, value: string | undefined) => {
@@ -81,14 +81,21 @@ export const generateDynamicPrintCommand = async (
 
     const isEnabled = (val: boolean | undefined) => val !== false;
 
-    if (isEnabled(settings.label_receipt_id_enabled)) printLabelValue(true, settings.label_receipt_id || 'Receipt #', data.receiptNumber);
-    if (isEnabled(settings.label_transaction_id_enabled)) printLabelValue(true, settings.label_transaction_id, data.transactionId);
-    if (isEnabled(settings.label_date_enabled)) printLabelValue(true, settings.label_date || 'Date', data.date);
-    if (isEnabled(settings.label_time_enabled)) printLabelValue(true, settings.label_time || 'Time', data.time);
-    if (isEnabled(settings.label_cashier_enabled)) printLabelValue(true, settings.label_cashier || 'Cashier', data.cashierName);
-    if (isEnabled(settings.label_customer_enabled)) printLabelValue(true, settings.label_customer || 'Customer', data.customerName);
+    let hasMetadata = false;
+    const printMetadata = () => {
+        if (isEnabled(settings.label_receipt_id_enabled) && data.receiptNumber) { printLabelValue(true, settings.label_receipt_id || 'Receipt #', data.receiptNumber); hasMetadata = true; }
+        if (isEnabled(settings.label_transaction_id_enabled) && data.transactionId) { printLabelValue(true, settings.label_transaction_id, data.transactionId); hasMetadata = true; }
+        if (isEnabled(settings.label_date_enabled) && data.date) { printLabelValue(true, settings.label_date || 'Date', data.date); hasMetadata = true; }
+        if (isEnabled(settings.label_time_enabled) && data.time) { printLabelValue(true, settings.label_time || 'Time', data.time); hasMetadata = true; }
+        if (isEnabled(settings.label_cashier_enabled) && data.cashierName) { printLabelValue(true, settings.label_cashier || 'Cashier', data.cashierName); hasMetadata = true; }
+        if (isEnabled(settings.label_customer_enabled) && data.customerName) { printLabelValue(true, settings.label_customer || 'Customer', data.customerName); hasMetadata = true; }
+    };
 
-    encoder.text(createDivider()).newline();
+    printMetadata();
+
+    if (hasMetadata) {
+        createDivider();
+    }
 
     if (isEnabled(settings.label_items_enabled) && settings.label_items) {
         encoder.align('center').text(`--- ${settings.label_items} ---`).newline().align('left');
@@ -113,7 +120,7 @@ export const generateDynamicPrintCommand = async (
         }
     });
 
-    encoder.text(createDivider()).newline();
+    createDivider();
 
     if (isEnabled(settings.label_subtotal_enabled)) printLabelValue(true, settings.label_subtotal || 'Subtotal', `${currency}${data.subtotal.toFixed(2)}`);
 
@@ -131,7 +138,13 @@ export const generateDynamicPrintCommand = async (
         encoder.bold(false);
     }
 
-    encoder.text(createDivider()).newline();
+    if (
+        isEnabled(settings.label_payment_method_enabled) && data.paymentMethod ||
+        isEnabled(settings.label_amount_paid_enabled) && data.paymentAmount ||
+        isEnabled(settings.label_change_enabled) && data.changeAmount
+    ) {
+        createDivider();
+    }
 
     if (isEnabled(settings.label_payment_method_enabled)) printLabelValue(true, settings.label_payment_method || 'Payment', data.paymentMethod);
 

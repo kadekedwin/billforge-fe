@@ -53,7 +53,7 @@ export const generateReceiptPDF = async (
         pdfOptions.height = options.height;
     } else {
         const bodyHeight = await page.evaluate(() => document.body.scrollHeight);
-        pdfOptions.height = `${bodyHeight}px`;
+        pdfOptions.height = `${bodyHeight + 20}px`;
     }
 
     await page.pdf(pdfOptions);
@@ -96,7 +96,7 @@ export const generateReceiptPDFBuffer = async (
         pdfOptions.height = options.height;
     } else {
         const bodyHeight = await page.evaluate(() => document.body.scrollHeight);
-        pdfOptions.height = `${bodyHeight}px`;
+        pdfOptions.height = `${bodyHeight + 20}px`;
     }
 
     const buffer = await page.pdf(pdfOptions);

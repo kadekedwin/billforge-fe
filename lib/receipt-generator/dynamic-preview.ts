@@ -82,6 +82,21 @@ export const generateDynamicReceiptHTML = async (data: ReceiptData, settings: Re
         }
     }
 
+    const metadataRows = [
+        getLabelRow(settings.label_receipt_id_enabled, settings.label_receipt_id || 'Receipt #', data.receiptNumber),
+        getLabelRow(settings.label_transaction_id_enabled, settings.label_transaction_id, data.transactionId),
+        getLabelRow(settings.label_date_enabled, settings.label_date || 'Date', data.date),
+        getLabelRow(settings.label_time_enabled, settings.label_time || 'Time', data.time),
+        getLabelRow(settings.label_cashier_enabled, settings.label_cashier || 'Cashier', data.cashierName),
+        getLabelRow(settings.label_customer_enabled, settings.label_customer || 'Customer', data.customerName)
+    ].filter(Boolean).join('');
+
+    const paymentRows = [
+        data.paymentMethod ? getLabelRow(settings.label_payment_method_enabled, settings.label_payment_method || 'Payment', data.paymentMethod) : '',
+        data.paymentAmount ? getLabelRow(settings.label_amount_paid_enabled, settings.label_amount_paid || 'Paid', `${currency}${data.paymentAmount.toFixed(2)}`) : '',
+        data.changeAmount ? getLabelRow(settings.label_change_enabled, settings.label_change || 'Change', `${currency}${data.changeAmount.toFixed(2)}`) : ''
+    ].filter(Boolean).join('');
+
     return `
 <!DOCTYPE html>
 <html>
@@ -153,14 +168,11 @@ export const generateDynamicReceiptHTML = async (data: ReceiptData, settings: Re
 
     <div class="divider"></div>
 
-    ${getLabelRow(settings.label_receipt_id_enabled, settings.label_receipt_id || 'Receipt #', data.receiptNumber)}
-    ${getLabelRow(settings.label_transaction_id_enabled, settings.label_transaction_id, data.transactionId)}
-    ${getLabelRow(settings.label_date_enabled, settings.label_date || 'Date', data.date)}
-    ${getLabelRow(settings.label_time_enabled, settings.label_time || 'Time', data.time)}
-    ${getLabelRow(settings.label_cashier_enabled, settings.label_cashier || 'Cashier', data.cashierName)}
-    ${getLabelRow(settings.label_customer_enabled, settings.label_customer || 'Customer', data.customerName)}
 
-    <div class="divider"></div>
+
+    ${metadataRows}
+
+    ${metadataRows ? '<div class="divider"></div>' : ''}
 
     ${(isEnabled(settings.label_items_enabled) && settings.label_items) ? `<div class="text-center bold" style="margin-bottom: 5px;">--- ${settings.label_items} ---</div>` : ''}
 
@@ -178,15 +190,12 @@ export const generateDynamicReceiptHTML = async (data: ReceiptData, settings: Re
         <span class="right">${currency}${data.total.toFixed(2)}</span>
     </div>` : ''}
 
-    ${(data.paymentMethod || data.paymentAmount || data.changeAmount) ? `
+    ${paymentRows ? `
     <div class="divider"></div>
-    ${data.paymentMethod ? getLabelRow(settings.label_payment_method_enabled, settings.label_payment_method || 'Payment', data.paymentMethod) : ''}
-    ${data.paymentAmount ? getLabelRow(settings.label_amount_paid_enabled, settings.label_amount_paid || 'Paid', `${currency}${data.paymentAmount.toFixed(2)}`) : ''}
-    ${data.changeAmount ? getLabelRow(settings.label_change_enabled, settings.label_change || 'Change', `${currency}${data.changeAmount.toFixed(2)}`) : ''}
+    ${paymentRows}
     ` : ''}
 
     ${(settings.footer_message || data.footer) ? `
-        <div class="divider"></div>
         <div class="text-center">
             ${settings.footer_message || data.footer}
         </div>
