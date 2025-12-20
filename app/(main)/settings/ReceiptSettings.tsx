@@ -187,7 +187,7 @@ export default function ReceiptSettings() {
                     include_image: includeLogo,
                     transaction_prefix: transactionPrefix || null,
                     transaction_next_number: transactionNextNumber,
-
+                    printer_font: printerFont || null,
                     line_character: lineCharacter || null,
                     item_layout: itemLayout,
 
