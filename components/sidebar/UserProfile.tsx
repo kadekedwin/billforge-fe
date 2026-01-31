@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -21,54 +21,26 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { useAuth } from "@/contexts/auth-context";
-import { getImageUrl } from "@/lib/images/operations";
 import { logout } from "@/lib/api/auth";
+import { useImage } from "@/hooks/use-image";
+import { ImageFolder } from "@/lib/db/images";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UserProfileProps {
     onNavigate?: () => void;
 }
 
-const imageUrlCache = new Map<string, string>();
-
 export function UserProfile({ onNavigate }: UserProfileProps) {
     const { t } = useTranslation();
     const { user, removeAuth } = useAuth();
-    const [userImageUrl, setUserImageUrl] = useState<string | null>(null);
     const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
-    useEffect(() => {
-        if (!user) {
-            setUserImageUrl(null);
-            return;
-        }
-
-        const cacheKey = `${user.uuid}-${user.updated_at}`;
-
-        if (imageUrlCache.has(cacheKey)) {
-            setUserImageUrl(imageUrlCache.get(cacheKey)!);
-            return;
-        }
-
-        const loadUserImage = async () => {
-            if (user.image_size_bytes) {
-                const result = await getImageUrl({
-                    folder: 'users',
-                    uuid: user.uuid,
-                    updatedAt: user.updated_at,
-                });
-                if (result.success && result.url) {
-                    imageUrlCache.set(cacheKey, result.url);
-                    setUserImageUrl(result.url);
-                }
-            } else {
-                setUserImageUrl(null);
-            }
-        };
-
-        loadUserImage();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user?.uuid, user?.updated_at]);
+    const { imageUrl: userImageUrl } = useImage({
+        uuid: user?.uuid || "",
+        updatedAt: user?.updated_at || "",
+        imageSizeBytes: user?.image_size_bytes || null,
+        folder: ImageFolder.USER,
+    });
 
     const handleLogout = async () => {
         setShowLogoutDialog(false);

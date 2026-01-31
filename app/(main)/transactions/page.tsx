@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { getTransactionItems } from "@/lib/api/transaction-items";
-import { getImageUrl } from "@/lib/images/operations";
+import { getImage, ImageFolder } from "@/lib/db/images";
 import { useBusiness } from "@/contexts/business-context";
 import { useReceiptGenerator } from "@/lib/receipt-generator/useReceiptGenerator";
 import { useReceiptTemplatePreference } from "@/lib/receipt-settings";
@@ -84,13 +84,9 @@ export default function TransactionsPage() {
     useEffect(() => {
         const fetchBusinessLogo = async () => {
             if (selectedBusiness && includeLogo && selectedBusiness.image_size_bytes) {
-                const result = await getImageUrl({
-                    folder: 'businesses',
-                    uuid: selectedBusiness.uuid,
-                    updatedAt: selectedBusiness.updated_at,
-                });
-                if (result.success && result.url) {
-                    setBusinessLogoUrl(result.url);
+                const url = await getImage(selectedBusiness.uuid, ImageFolder.BUSINESSES, selectedBusiness.updated_at);
+                if (url) {
+                    setBusinessLogoUrl(url);
                 } else {
                     setBusinessLogoUrl(undefined);
                 }

@@ -7,7 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { uploadImage, getImageUrl, deleteImage } from '@/lib/images/operations';
+import { uploadImage, deleteImage } from '@/lib/images/operations';
+import { getImage, ImageFolder } from "@/lib/db/images";
 import { getFileSizeBytes } from '@/lib/images/utils';
 import { Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock } from 'lucide-react';
 import { getUser, updateUser, User } from '@/lib/api/user';
@@ -56,13 +57,9 @@ export default function ProfileSettings() {
             });
 
             if (response.data.image_size_bytes) {
-                const imageResult = await getImageUrl({
-                    folder: 'users',
-                    uuid: response.data.uuid,
-                    updatedAt: response.data.updated_at,
-                });
-                if (imageResult.success && imageResult.url) {
-                    setAvatarUrl(imageResult.url);
+                const url = await getImage(response.data.uuid, ImageFolder.USER, response.data.updated_at);
+                if (url) {
+                    setAvatarUrl(url);
                 }
             }
         } catch (err) {

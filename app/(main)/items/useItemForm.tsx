@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Item, CreateItemRequest } from "@/lib/api";
-import { getImageUrl } from "@/lib/images/operations";
+import { getImage, ImageFolder } from "@/lib/db/images";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface UseItemFormResult {
@@ -175,14 +175,10 @@ export function useItemForm(): UseItemFormResult {
         setInitialCategoryUuids(categoryUuids);
 
         if (item.image_size_bytes) {
-            const imageResult = await getImageUrl({
-                folder: 'items',
-                uuid: item.uuid,
-                updatedAt: item.updated_at,
-            });
-            if (imageResult.success && imageResult.url) {
-                setExistingImageUrl(imageResult.url);
-                setImagePreview(imageResult.url);
+            const url = await getImage(item.uuid, ImageFolder.ITEMS, item.updated_at);
+            if (url) {
+                setExistingImageUrl(url);
+                setImagePreview(url);
             } else {
                 setExistingImageUrl(null);
             }

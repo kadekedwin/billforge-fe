@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Loader2, Search } from "lucide-react";
 import { useBusiness } from "@/contexts/business-context";
 import { useReceiptTemplatePreference } from "@/lib/receipt-settings";
-import { getImageUrl } from "@/lib/images/operations";
+import { getImage, ImageFolder } from "@/lib/db/images";
 import { getItemCategories } from "@/lib/api/item-categories";
 import { LIMITS, getLimitMessage } from "@/lib/config/limits";
 import { ReceiptPopup } from "@/components/receipt-popup";
@@ -96,13 +96,9 @@ export default function SalePage() {
     useEffect(() => {
         const fetchBusinessLogo = async () => {
             if (selectedBusiness && includeLogo && selectedBusiness.image_size_bytes) {
-                const result = await getImageUrl({
-                    folder: 'businesses',
-                    uuid: selectedBusiness.uuid,
-                    updatedAt: selectedBusiness.updated_at,
-                });
-                if (result.success && result.url) {
-                    setBusinessLogoUrl(result.url);
+                const url = await getImage(selectedBusiness.uuid, ImageFolder.BUSINESSES, selectedBusiness.updated_at);
+                if (url) {
+                    setBusinessLogoUrl(url);
                 } else {
                     setBusinessLogoUrl(undefined);
                 }
