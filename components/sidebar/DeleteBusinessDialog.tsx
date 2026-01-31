@@ -15,6 +15,7 @@ import {
 import { Business } from "@/lib/api";
 import { deleteBusiness } from "@/lib/api/businesses";
 import { deleteImage } from "@/lib/images/operations";
+import { deleteImageFromCache, ImageFolder } from "@/lib/db/images";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface DeleteBusinessDialogProps {
@@ -39,12 +40,12 @@ export function DeleteBusinessDialog({
         try {
             setIsDeleting(true);
 
-            // Delete logo if exists
             if (business.image_size_bytes) {
                 await deleteImage({
                     folder: 'businesses',
                     uuid: business.uuid,
                 });
+                await deleteImageFromCache(business.uuid, ImageFolder.BUSINESSES);
             }
 
             const response = await deleteBusiness(business.uuid);

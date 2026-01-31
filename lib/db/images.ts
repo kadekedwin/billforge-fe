@@ -25,6 +25,18 @@ export async function saveImageToCache(uuid: string, folder: ImageFolder, update
     });
 }
 
+export async function deleteImageFromCache(uuid: string, folder: ImageFolder): Promise<void> {
+    const db = await getDB();
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(STORES.CACHED_IMAGES, "readwrite");
+        const store = transaction.objectStore(STORES.CACHED_IMAGES);
+        const request = store.delete([uuid, folder]);
+
+        request.onsuccess = () => resolve();
+        request.onerror = () => reject(request.error);
+    });
+}
+
 export async function getImageFromCache(uuid: string, folder: ImageFolder): Promise<CachedImage | undefined> {
     const db = await getDB();
     return new Promise((resolve, reject) => {

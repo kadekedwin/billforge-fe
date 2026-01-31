@@ -19,7 +19,7 @@ import { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/ap
 import { CURRENCIES, LANGUAGES, REGIONS } from "@/lib/data/locale-data";
 import { createBusiness, updateBusiness } from "@/lib/api/businesses";
 import { uploadImage, deleteImage } from "@/lib/images/operations";
-import { getImage } from "@/lib/db/images";
+import { getImage, deleteImageFromCache } from "@/lib/db/images";
 import { ImageFolder } from "@/lib/db/images";
 
 import { getFileSizeBytes } from "@/lib/images/utils";
@@ -190,6 +190,7 @@ export function BusinessDialog({
                         folder: 'businesses',
                         uuid: editingBusiness.uuid,
                     });
+                    await deleteImageFromCache(editingBusiness.uuid, ImageFolder.BUSINESSES);
                     imageSizeBytes = null;
                     setIsUploadingImage(false);
                 }

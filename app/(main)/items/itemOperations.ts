@@ -1,6 +1,7 @@
 import { createItem, updateItem, deleteItem } from "@/lib/api/items";
 import { attachCategoryToItem, detachCategoryFromItem } from "@/lib/api/item-categories";
 import { uploadImage, deleteImage } from "@/lib/images/operations";
+import { deleteImageFromCache, ImageFolder } from "@/lib/db/images";
 import { getFileSizeBytes } from "@/lib/images/utils";
 import { ApiError } from "@/lib/api/errors";
 import type { Item, CreateItemRequest, UpdateItemRequest } from "@/lib/api";
@@ -110,6 +111,7 @@ export async function handleUpdateItem({
                 folder: 'items',
                 uuid: item.uuid,
             });
+            await deleteImageFromCache(item.uuid, ImageFolder.ITEMS);
             imageSizeBytes = null;
         } else if (existingImageUrl) {
             imageSizeBytes = item.image_size_bytes;
@@ -163,6 +165,7 @@ export async function handleDeleteItem(item: Item, t: (key: string) => string): 
                 folder: 'items',
                 uuid: item.uuid,
             });
+            await deleteImageFromCache(item.uuid, ImageFolder.ITEMS);
         }
 
         await deleteItem(item.uuid);

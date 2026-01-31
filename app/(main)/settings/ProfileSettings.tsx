@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { uploadImage, deleteImage } from '@/lib/images/operations';
-import { getImage, ImageFolder } from "@/lib/db/images";
+import { getImage, deleteImageFromCache, ImageFolder } from "@/lib/db/images";
 import { getFileSizeBytes } from '@/lib/images/utils';
 import { Upload, User as UserIcon, Mail, Save, Loader2, Trash2, CheckCircle2, Lock } from 'lucide-react';
 import { getUser, updateUser, User } from '@/lib/api/user';
@@ -124,6 +124,7 @@ export default function ProfileSettings() {
                     folder: 'users',
                     uuid: user.uuid,
                 });
+                await deleteImageFromCache(user.uuid, ImageFolder.USER);
                 imageSizeBytes = null;
             }
 
