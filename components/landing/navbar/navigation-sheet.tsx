@@ -18,15 +18,15 @@ export const NavigationSheet = () => {
   const { t } = useTranslation();
   return (
     <Sheet>
-      <VisuallyHiddenPrimitive>
-        <SheetTitle>{t('landing.nav.drawerTitle')}</SheetTitle>
-      </VisuallyHiddenPrimitive>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon">
           <Menu />
         </Button>
       </SheetTrigger>
       <SheetContent>
+        <VisuallyHiddenPrimitive>
+          <SheetTitle>{t('landing.nav.drawerTitle')}</SheetTitle>
+        </VisuallyHiddenPrimitive>
         <LogoText />
         <NavMenu orientation="vertical" className="mt-12" />
 

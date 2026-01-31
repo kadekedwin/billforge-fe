@@ -441,7 +441,6 @@ export function ReceiptPopup({
 
         try {
             setIsSendingEmail(true);
-            console.log("Send receipt to email:", customerEmail);
             alert(`${t('app.settings.receiptPopup.receiptWillBeSent')} ${customerEmail}`);
         } catch (err) {
             console.error("Error sending email:", err);

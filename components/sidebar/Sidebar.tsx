@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { SidebarContent } from "./SidebarContent";
 import { useTranslation } from "@/lib/i18n/useTranslation";
@@ -32,6 +32,7 @@ export function MobileSidebar() {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-64 p-0">
+                <SheetTitle className="sr-only">{t('common.menu')}</SheetTitle>
                 <SidebarContent onNavigate={() => setOpen(false)} />
             </SheetContent>
         </Sheet>

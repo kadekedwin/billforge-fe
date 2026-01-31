@@ -18,7 +18,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Business, CreateBusinessRequest, UpdateBusinessRequest } from "@/lib/api";
 import { CURRENCIES, LANGUAGES, REGIONS } from "@/lib/data/locale-data";
 import { createBusiness, updateBusiness } from "@/lib/api/businesses";
-import { uploadImage, deleteImage, getImageUrl } from "@/lib/images/operations";
+import { uploadImage, deleteImage } from "@/lib/images/operations";
+import { getImage } from "@/lib/db/images";
+import { ImageFolder } from "@/lib/db/images";
+
 import { getFileSizeBytes } from "@/lib/images/utils";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { ImageCropper } from "@/components/ImageCropper";
@@ -70,13 +73,9 @@ export function BusinessDialog({
                 });
 
                 if (editingBusiness.image_size_bytes) {
-                    const imageResult = await getImageUrl({
-                        folder: 'businesses',
-                        uuid: editingBusiness.uuid,
-                        updatedAt: editingBusiness.updated_at,
-                    });
-                    if (imageResult.success && imageResult.url) {
-                        setImagePreview(imageResult.url);
+                    const url = await getImage(editingBusiness.uuid, ImageFolder.BUSINESSES, editingBusiness.updated_at);
+                    if (url) {
+                        setImagePreview(url);
                     }
                 }
             } else if (open && !editingBusiness) {

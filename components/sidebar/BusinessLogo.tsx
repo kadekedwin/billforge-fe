@@ -1,49 +1,25 @@
 "use client";
 
-import { useState, useEffect, memo } from "react";
+import { memo } from "react";
 import { Building2, Loader2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getImageUrl } from "@/lib/images/operations";
 import { Business } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { useImage } from "@/hooks/use-image";
+import { ImageFolder } from "@/lib/db/images";
 
 interface BusinessLogoProps {
     business: Business;
     size?: "sm" | "lg";
 }
 
-const imageUrlCache = new Map<string, string>();
-
 export const BusinessLogo = memo(({ business, size = "sm" }: BusinessLogoProps) => {
-    const [imageUrl, setImageUrl] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        const cacheKey = `${business.uuid}-${business.updated_at}`;
-
-        if (imageUrlCache.has(cacheKey)) {
-            setImageUrl(imageUrlCache.get(cacheKey)!);
-            return;
-        }
-
-        const loadImage = async () => {
-            if (business.image_size_bytes) {
-                setLoading(true);
-                const result = await getImageUrl({
-                    folder: 'businesses',
-                    uuid: business.uuid,
-                    updatedAt: business.updated_at,
-                });
-                if (result.success && result.url) {
-                    imageUrlCache.set(cacheKey, result.url);
-                    setImageUrl(result.url);
-                }
-                setLoading(false);
-            }
-        };
-        loadImage();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [business.uuid, business.image_size_bytes, business.updated_at]);
+    const { imageUrl, loading } = useImage({
+        uuid: business.uuid,
+        updatedAt: business.updated_at,
+        imageSizeBytes: business.image_size_bytes,
+        folder: ImageFolder.BUSINESSES,
+    });
 
     const sizeClasses = size === "lg" ? "h-8 w-8" : "h-4 w-4";
 

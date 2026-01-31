@@ -67,7 +67,6 @@ export async function handleDownloadImage(
 export async function handleSendEmail(customerEmail: string): Promise<void> {
     try {
         // TODO: Implement email sending functionality
-        console.log("Send receipt to email:", customerEmail);
         alert(`Receipt will be sent to ${customerEmail}`);
     } catch (err) {
         console.error("Error sending email:", err);
@@ -81,8 +80,6 @@ export async function handleSendWhatsApp(
 ): Promise<void> {
     try {
         // TODO: Implement WhatsApp sending functionality
-        console.log("Send receipt to WhatsApp:", customerPhone);
-
         // For now, open WhatsApp web with the phone number
         const message = encodeURIComponent(`Receipt for transaction ${transactionUuid}`);
         const phoneNumber = customerPhone.replace(/[^0-9]/g, '');
