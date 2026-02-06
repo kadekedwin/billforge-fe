@@ -92,28 +92,28 @@ jobs:
           else
             echo "Service not found → creating..."
 
-            cat > ${SERVICE_FILE} << EOF
-            [Unit]
-            Description=${SERVICE_NAME}
-            After=network.target
+            cat > "${SERVICE_FILE}" <<EOF
+          [Unit]
+          Description=${SERVICE_NAME}
+          After=network.target
 
-            [Service]
-            Type=simple
-            User=${USER_NAME}
-            WorkingDirectory=${APP_DIR}
-            Environment=NODE_ENV=production
-            Environment=PORT=3000
-            ExecStart=/usr/bin/npm run start
-            Restart=always
-            RestartSec=5
-            NoNewPrivileges=true
-            PrivateTmp=true
-            StandardOutput=journal+append:/var/log/portfolio/billforge-fe.log
-            StandardError=journal+append:/var/log/portfolio/billforge-fe.error.log
+          [Service]
+          Type=simple
+          User=${USER_NAME}
+          WorkingDirectory=${APP_DIR}
+          Environment=NODE_ENV=production
+          Environment=PORT=3000
+          ExecStart=/usr/bin/npm run start
+          Restart=always
+          RestartSec=5
+          NoNewPrivileges=true
+          PrivateTmp=true
+          StandardOutput=journal+append:/var/log/portfolio/billforge-fe.log
+          StandardError=journal+append:/var/log/portfolio/billforge-fe.error.log
 
-            [Install]
-            WantedBy=multi-user.target
-            EOF
+          [Install]
+          WantedBy=multi-user.target
+          EOF
 
             echo "Reloading systemd..."
             systemctl daemon-reload
