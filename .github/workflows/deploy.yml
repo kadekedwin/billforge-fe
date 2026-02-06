@@ -1,6 +1,5 @@
 # requirements: 
 # - nodejs
-# - pm2
 
 name: Deploy to Production
 
@@ -76,13 +75,54 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.SERVER_PORT || '22' }}
         script: |
-          mkdir -p /root/billforge-fe
-          
+          SERVICE_NAME="billforge-fe"
+          SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
+          USER_NAME="root"
+          APP_DIR="/root/billforge-fe"
+
           # Extract artifact (includes .env*)
-          tar -xzf /tmp/release.tar.gz -C /root/billforge-fe
+          mkdir -p ${APP_DIR}
+          tar -xzf /tmp/release.tar.gz -C ${APP_DIR}
           rm /tmp/release.tar.gz
-          
-          cd /root/billforge-fe
-          
-          # Restart Application
-          PORT=3000 pm2 restart billforge-fe || PORT=3000 pm2 start server.js --name "billforge-fe"
+
+          # Check if service exists
+          if systemctl list-unit-files | grep -q "^${SERVICE_NAME}.service"; then
+            echo "Service exists → restarting..."
+            systemctl restart ${SERVICE_NAME}
+          else
+            echo "Service not found → creating..."
+
+            cat > ${SERVICE_FILE} << EOF
+            [Unit]
+            Description=${SERVICE_NAME}
+            After=network.target
+
+            [Service]
+            Type=simple
+            User=${USER_NAME}
+            WorkingDirectory=${APP_DIR}
+            Environment=NODE_ENV=production
+            Environment=PORT=3000
+            ExecStart=/usr/bin/npm run start
+            Restart=always
+            RestartSec=5
+            NoNewPrivileges=true
+            PrivateTmp=true
+            StandardOutput=journal+append:/var/log/portfolio/billforge-fe.log
+            StandardError=journal+append:/var/log/portfolio/billforge-fe.error.log
+
+            [Install]
+            WantedBy=multi-user.target
+            EOF
+
+            echo "Reloading systemd..."
+            systemctl daemon-reload
+
+            echo "Enabling service..."
+            systemctl enable ${SERVICE_NAME}
+
+            echo "Starting service..."
+            systemctl start ${SERVICE_NAME}
+          fi
+
+          echo "Done."
