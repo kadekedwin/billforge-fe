@@ -78,7 +78,7 @@ jobs:
           SERVICE_NAME="billforge-fe"
           SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
           USER_NAME="root"
-          APP_DIR="/root/billforge-fe"
+          APP_DIR="/root/${SERVICE_NAME}"
 
           # Ensure we know where node is
           NODE_PATH=$(which node)
@@ -114,8 +114,8 @@ jobs:
           RestartSec=5
           NoNewPrivileges=true
           PrivateTmp=true
-          StandardOutput=journal+append:/var/log/portfolio/billforge-fe.log
-          StandardError=journal+append:/var/log/portfolio/billforge-fe.error.log
+          StandardOutput=journal+append:/var/log/portfolio/${SERVICE_NAME}.log
+          StandardError=journal+append:/var/log/portfolio/${SERVICE_NAME}.error.log
 
           [Install]
           WantedBy=multi-user.target
