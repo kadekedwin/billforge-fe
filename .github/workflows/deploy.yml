@@ -80,6 +80,12 @@ jobs:
           USER_NAME="root"
           APP_DIR="/root/billforge-fe"
 
+          # Ensure we know where node is
+          NODE_PATH=$(which node)
+          if [ -z "$NODE_PATH" ]; then
+            NODE_PATH="/usr/bin/node"
+          fi
+
           # Extract artifact (includes .env*)
           mkdir -p ${APP_DIR}
           tar -xzf /tmp/release.tar.gz -C ${APP_DIR}
@@ -103,7 +109,7 @@ jobs:
           WorkingDirectory=${APP_DIR}
           Environment=NODE_ENV=production
           Environment=PORT=3000
-          ExecStart=/usr/bin/npm run start
+          ExecStart=${NODE_PATH} server.js
           Restart=always
           RestartSec=5
           NoNewPrivileges=true
@@ -119,7 +125,7 @@ jobs:
             systemctl daemon-reload
 
             echo "Enabling service..."
-            systemctl enable ${SERVICE_NAME}
+            systemctl enable $`{SERVICE_NAME}
 
             echo "Starting service..."
             systemctl start ${SERVICE_NAME}
