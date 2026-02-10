@@ -125,7 +125,7 @@ jobs:
             systemctl daemon-reload
 
             echo "Enabling service..."
-            systemctl enable $`{SERVICE_NAME}
+            systemctl enable ${SERVICE_NAME}
 
             echo "Starting service..."
             systemctl start ${SERVICE_NAME}
