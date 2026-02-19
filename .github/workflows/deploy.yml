@@ -1,134 +1,134 @@
-# requirements: 
-# - nodejs
+# # requirements: 
+# # - nodejs
 
-name: Deploy to Production
+# name: Deploy to Production
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v4
 
-    - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22.x
-        cache: 'npm'
+#     - name: Use Node.js 22.x
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: 22.x
+#         cache: 'npm'
 
-    - name: Create .env.production from Secret
-      run: |
-        cat > .env.production << EOF
-        R2_ACCOUNT_ID=${{ secrets.R2_ACCOUNT_ID }}
-        R2_ACCESS_KEY_ID=${{ secrets.R2_ACCESS_KEY_ID }}
-        R2_SECRET_ACCESS_KEY=${{ secrets.R2_SECRET_ACCESS_KEY }}
-        R2_BUCKET_NAME=${{ secrets.R2_BUCKET_NAME }}
-        NEXT_PUBLIC_BASE_URL=https://billforge.app
-        NEXT_PUBLIC_API_BASE_URL=https://api.billforge.app
-        NEXT_PUBLIC_R2_ENDPOINT=https://media.billforge.app
-        EOF
-        # Also log (safely) to confirm file creation
-        ls -la .env*
+#     - name: Create .env.production from Secret
+#       run: |
+#         cat > .env.production << EOF
+#         R2_ACCOUNT_ID=${{ secrets.R2_ACCOUNT_ID }}
+#         R2_ACCESS_KEY_ID=${{ secrets.R2_ACCESS_KEY_ID }}
+#         R2_SECRET_ACCESS_KEY=${{ secrets.R2_SECRET_ACCESS_KEY }}
+#         R2_BUCKET_NAME=${{ secrets.R2_BUCKET_NAME }}
+#         NEXT_PUBLIC_BASE_URL=https://billforge.app
+#         NEXT_PUBLIC_API_BASE_URL=https://api.billforge.app
+#         NEXT_PUBLIC_R2_ENDPOINT=https://media.billforge.app
+#         EOF
+#         # Also log (safely) to confirm file creation
+#         ls -la .env*
 
-    - name: Install dependencies
-      run: npm ci
+#     - name: Install dependencies
+#       run: npm ci
 
-    - name: Run Linter
-      run: npm run lint
+#     - name: Run Linter
+#       run: npm run lint
 
-    - name: Build Application
-      run: npm run build
+#     - name: Build Application
+#       run: npm run build
 
-    - name: Prepare Deployment Artifact
-      run: |
-        mkdir -p dist
-        # Copy Standalone build (Use /. to include hidden .next folder)
-        cp -r .next/standalone/. dist/
-        # Copy Static Assets
-        mkdir -p dist/.next
-        cp -r .next/static dist/.next/static
-        cp -r public dist/public
-        # Copy .env.production configuration for runtime
-        cp .env.production dist/
-        # Create tarball
-        tar -czf release.tar.gz -C dist .
+#     - name: Prepare Deployment Artifact
+#       run: |
+#         mkdir -p dist
+#         # Copy Standalone build (Use /. to include hidden .next folder)
+#         cp -r .next/standalone/. dist/
+#         # Copy Static Assets
+#         mkdir -p dist/.next
+#         cp -r .next/static dist/.next/static
+#         cp -r public dist/public
+#         # Copy .env.production configuration for runtime
+#         cp .env.production dist/
+#         # Create tarball
+#         tar -czf release.tar.gz -C dist .
 
-    - name: Copy Artifact to Server
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        port: ${{ secrets.SERVER_PORT || '22' }}
-        source: "release.tar.gz"
-        target: "/tmp/"
+#     - name: Copy Artifact to Server
+#       uses: appleboy/scp-action@v0.1.7
+#       with:
+#         host: ${{ secrets.SERVER_HOST }}
+#         username: ${{ secrets.SERVER_USER }}
+#         key: ${{ secrets.SERVER_SSH_KEY }}
+#         port: ${{ secrets.SERVER_PORT || '22' }}
+#         source: "release.tar.gz"
+#         target: "/tmp/"
 
-    - name: Deploy on Server
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        port: ${{ secrets.SERVER_PORT || '22' }}
-        script: |
-          SERVICE_NAME="billforge-fe"
-          SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
-          USER_NAME="root"
-          APP_DIR="/root/${SERVICE_NAME}"
+#     - name: Deploy on Server
+#       uses: appleboy/ssh-action@v1.0.3
+#       with:
+#         host: ${{ secrets.SERVER_HOST }}
+#         username: ${{ secrets.SERVER_USER }}
+#         key: ${{ secrets.SERVER_SSH_KEY }}
+#         port: ${{ secrets.SERVER_PORT || '22' }}
+#         script: |
+#           SERVICE_NAME="billforge-fe"
+#           SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
+#           USER_NAME="root"
+#           APP_DIR="/root/${SERVICE_NAME}"
 
-          # Ensure we know where node is
-          NODE_PATH=$(which node)
-          if [ -z "$NODE_PATH" ]; then
-            NODE_PATH="/usr/bin/node"
-          fi
+#           # Ensure we know where node is
+#           NODE_PATH=$(which node)
+#           if [ -z "$NODE_PATH" ]; then
+#             NODE_PATH="/usr/bin/node"
+#           fi
 
-          # Extract artifact (includes .env*)
-          mkdir -p ${APP_DIR}
-          tar -xzf /tmp/release.tar.gz -C ${APP_DIR}
-          rm /tmp/release.tar.gz
+#           # Extract artifact (includes .env*)
+#           mkdir -p ${APP_DIR}
+#           tar -xzf /tmp/release.tar.gz -C ${APP_DIR}
+#           rm /tmp/release.tar.gz
 
-          # Check if service exists
-          if systemctl list-unit-files | grep -q "^${SERVICE_NAME}.service"; then
-            echo "Service exists → restarting..."
-            systemctl restart ${SERVICE_NAME}
-          else
-            echo "Service not found → creating..."
+#           # Check if service exists
+#           if systemctl list-unit-files | grep -q "^${SERVICE_NAME}.service"; then
+#             echo "Service exists → restarting..."
+#             systemctl restart ${SERVICE_NAME}
+#           else
+#             echo "Service not found → creating..."
 
-            cat > "${SERVICE_FILE}" <<EOF
-          [Unit]
-          Description=${SERVICE_NAME}
-          After=network.target
+#             cat > "${SERVICE_FILE}" <<EOF
+#           [Unit]
+#           Description=${SERVICE_NAME}
+#           After=network.target
 
-          [Service]
-          Type=simple
-          User=${USER_NAME}
-          WorkingDirectory=${APP_DIR}
-          Environment=NODE_ENV=production
-          Environment=PORT=3000
-          ExecStart=${NODE_PATH} server.js
-          Restart=always
-          RestartSec=5
-          NoNewPrivileges=true
-          PrivateTmp=true
-          StandardOutput=journal+append:/var/log/portfolio/${SERVICE_NAME}.log
-          StandardError=journal+append:/var/log/portfolio/${SERVICE_NAME}.error.log
+#           [Service]
+#           Type=simple
+#           User=${USER_NAME}
+#           WorkingDirectory=${APP_DIR}
+#           Environment=NODE_ENV=production
+#           Environment=PORT=3000
+#           ExecStart=${NODE_PATH} server.js
+#           Restart=always
+#           RestartSec=5
+#           NoNewPrivileges=true
+#           PrivateTmp=true
+#           StandardOutput=journal+append:/var/log/portfolio/${SERVICE_NAME}.log
+#           StandardError=journal+append:/var/log/portfolio/${SERVICE_NAME}.error.log
 
-          [Install]
-          WantedBy=multi-user.target
-          EOF
+#           [Install]
+#           WantedBy=multi-user.target
+#           EOF
 
-            echo "Reloading systemd..."
-            systemctl daemon-reload
+#             echo "Reloading systemd..."
+#             systemctl daemon-reload
 
-            echo "Enabling service..."
-            systemctl enable ${SERVICE_NAME}
+#             echo "Enabling service..."
+#             systemctl enable ${SERVICE_NAME}
 
-            echo "Starting service..."
-            systemctl start ${SERVICE_NAME}
-          fi
+#             echo "Starting service..."
+#             systemctl start ${SERVICE_NAME}
+#           fi
 
-          echo "Done."
+#           echo "Done."
